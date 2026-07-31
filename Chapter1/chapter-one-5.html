@@ -1,706 +1,857 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Question Part 3 - Pointer & Advanced C</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 30px;
-        }
-        .section-title {
-            background-color: #eef2f3;
-            padding: 10px 15px;
-            border-left: 5px solid #3498db;
-            margin-top: 30px;
-            font-weight: bold;
-            font-size: 18px;
-            color: #2980b9;
-        }
-        .question-card {
-            border-bottom: 1px solid #eee;
-            padding: 20px 0;
-        }
-        .question-text {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #2c3e50;
-        }
-        .options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .option {
-            background: #f9f9f9;
-            padding: 10px 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .option:hover {
-            background: #f1f1f1;
-        }
-        .btn-ans {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-        .btn-ans:hover {
-            background-color: #2980b9;
-        }
-        .answer-block {
-            display: none;
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: #2ecc71;
-            color: white;
-            border-radius: 4px;
-            font-weight: bold;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+      }
+      .section-title {
+        background-color: #eef2f3;
+        padding: 10px 15px;
+        border-left: 5px solid #3498db;
+        margin-top: 30px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #2980b9;
+      }
+      .question-card {
+        border-bottom: 1px solid #eee;
+        padding: 20px 0;
+      }
+      .question-text {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #2c3e50;
+      }
+      .options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      .option {
+        background: #f9f9f9;
+        padding: 10px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .option:hover {
+        background: #f1f1f1;
+      }
+      .btn-ans {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s;
+      }
+      .btn-ans:hover {
+        background-color: #2980b9;
+      }
+      .answer-block {
+        display: none;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: #2ecc71;
+        color: white;
+        border-radius: 4px;
+        font-weight: bold;
+      }
     </style>
     <script>
-        function toggleAnswer(id) {
-            var ans = document.getElementById('ans-' + id);
-            if (ans.style.display === 'block') {
-                ans.style.display = 'none';
-            } else {
-                ans.style.display = 'block';
-            }
+      function toggleAnswer(id) {
+        var ans = document.getElementById("ans-" + id);
+        if (ans.style.display === "block") {
+          ans.style.display = "none";
+        } else {
+          ans.style.display = "block";
         }
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>ICT Lecturer MCQ - Part 3</h1>
-        
-        <div class="section-title">পয়েন্টার, স্ট্রাকচার, মেমোরি এবং অ্যাডভান্সড সি প্রোগ্রামিং</div>
+      <nav
+        class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6 no-print"
+      >
+        <a
+          href="chapter-one-1.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border text-color[#2980b9] hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 1</a
+        >
 
-        <div class="question-card">
-            <div class="question-text">১. &num নির্দেশ করে কোনটি?</div>
-            <div class="options">
-                <div class="option">A. num এর মান</div>
-            <div class="option">B. num এর ডেটা টাইপ</div>
-            <div class="option">C. num এর মেমোরি ঠিকানা (Address)</div>
-            <div class="option">D. num ফাংশন</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(1)">উত্তর দেখুন</button>
-            <div id="ans-1" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২. ফাংশন আর্গুমেন্ট আসলে কী?</div>
-            <div class="options">
-                <div class="option">A. ফাংশনের নাম</div>
-            <div class="option">B. ফাংশনের ইনপুট (Input)</div>
-            <div class="option">C. ফাংশনের আউটপুট</div>
-            <div class="option">D. ফাংশনের বডি</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(2)">উত্তর দেখুন</button>
-            <div id="ans-2" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩. Variable length argument সাধারণত কোন লাইব্রেরি ফাংশনে ব্যবহৃত হয়?</div>
-            <div class="options">
-                <div class="option">A. scanf() এ</div>
-            <div class="option">B. printf() এ</div>
-            <div class="option">C. main() এ</div>
-            <div class="option">D. add() এ</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(3)">উত্তর দেখুন</button>
-            <div id="ans-3" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪. ফাংশন ব্যবহারের ফলে কোড মূলত কীরূপ হয়?</div>
-            <div class="options">
-                <div class="option">A. দীর্ঘ বা বড় হয়</div>
-            <div class="option">B. জটিল আকার ধারণ করে</div>
-            <div class="option">C. পুনঃব্যবহারযোগ্য (Reusable) হয়</div>
-            <div class="option">D. কাজের গতি ধীর হয়</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(4)">উত্তর দেখুন</button>
-            <div id="ans-4" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৫. রিকার্সিভ (Recursive) ফাংশন কী?</div>
-            <div class="options">
-                <div class="option">A. যা অন্য কোনো ফাংশনকে কল করে</div>
-            <div class="option">B. যা নিজেই নিজেকে কল করে</div>
-            <div class="option">C. যা শুধুমাত্র main() কে কল করে</div>
-            <div class="option">D. যা লাইব্রেরি ফাংশনকে ডাকে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(5)">উত্তর দেখুন</button>
-            <div id="ans-5" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৬. রিকার্সিভ ফাংশনের জন্য সবচেয়ে গুরুত্বপূর্ণ শর্ত কোনটি?</div>
-            <div class="options">
-                <div class="option">A. Loop</div>
-            <div class="option">B. Pointer</div>
-            <div class="option">C. Array</div>
-            <div class="option">D. Base condition</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(6)">উত্তর দেখুন</button>
-            <div id="ans-6" class="answer-block">সঠিক উত্তর: D</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৭. রিকার্সিভ ফাংশনে Base condition না থাকলে কী ঘটবে?</div>
-            <div class="options">
-                <div class="option">A. সঠিক ফলাফল আসবে</div>
-            <div class="option">B. অসীম কল (Infinite Call) হতে থাকবে</div>
-            <div class="option">C. কম্পাইল এরর দেখাবে</div>
-            <div class="option">D. কোনো সমস্যা হবে না</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(7)">উত্তর দেখুন</button>
-            <div id="ans-7" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৮. রিকার্সিভ ফাংশনের আসল কল বা এক্সিকিউশন কখন হয়?</div>
-            <div class="options">
-                <div class="option">A. Base condition এ পৌঁছালে</div>
-            <div class="option">B. শর্ত পূরণ না হলে</div>
-            <div class="option">C. main() ফাংশনের ভেতর</div>
-            <div class="option">D. এক্সিকিউশন শেষে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(8)">উত্তর দেখুন</button>
-            <div id="ans-8" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৯. ফ্যাক্টোরিয়াল (Factorial) বের করার সমস্যাটি সাধারণত কোন পদ্ধতিতে ভালো সমাধান করা হয়?</div>
-            <div class="options">
-                <div class="option">A. রিকার্সন (Recursion) দিয়ে</div>
-            <div class="option">B. সাধারণ লুপ (Loop) দিয়ে</div>
-            <div class="option">C. অ্যারে (Array) ব্যবহার করে</div>
-            <div class="option">D. স্ট্রিং এর মাধ্যমে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(9)">উত্তর দেখুন</button>
-            <div id="ans-9" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১০. প্রতিটি রিকার্সিভ কল (Recursive Call) মেমোরিতে কী তৈরি করে?</div>
-            <div class="options">
-                <div class="option">A. heap</div>
-            <div class="option">B. queue</div>
-            <div class="option">C. stack frame</div>
-            <div class="option">D. array</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(10)">উত্তর দেখুন</button>
-            <div id="ans-10" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১১. রিকার্সনের প্রধান অসুবিধা কোনটি?</div>
-            <div class="options">
-                <div class="option">A. কোড ছোট বা সংক্ষিপ্ত হয়</div>
-            <div class="option">B. স্ট্যাক মেমোরি বেশি ব্যবহার হয়</div>
-            <div class="option">C. লজিক বুঝতে সহজ হয়</div>
-            <div class="option">D. দ্রুত এক্সিকিউশন হয়</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(11)">উত্তর দেখুন</button>
-            <div id="ans-11" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১২. রিকার্সনের বিকল্প হিসেবে নিচের কোনটি ব্যবহার করা যায়?</div>
-            <div class="options">
-                <div class="option">A. if স্টেটমেন্ট</div>
-            <div class="option">B. loop (লুপ)</div>
-            <div class="option">C. switch কেস</div>
-            <div class="option">D. goto স্টেটমেন্ট</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(12)">উত্তর দেখুন</button>
-            <div id="ans-12" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১৩. কম্পাইলারকে কোনো ফাংশন সম্পর্কে আগে থেকে ধারণা দিতে কী প্রয়োজন?</div>
-            <div class="options">
-                <div class="option">A. ইনপুট প্যারামিটার</div>
-            <div class="option">B. লুপ স্ট্রাকচার</div>
-            <div class="option">C. ফাংশন প্রোটোটাইপ (Prototype)</div>
-            <div class="option">D. আউটপুট ভ্যালু</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(13)">উত্তর দেখুন</button>
-            <div id="ans-13" class="answer-block">সঠিক উত্তর: D</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১৪. add(int a, int b); এই কোড অংশটি আসলে কী?</div>
-            <div class="options">
-                <div class="option">A. ফাংশন কল</div>
-            <div class="option">B. ফাংশন ডেফিনিশন</div>
-            <div class="option">C. ফাংশন প্রোটোটাইপ</div>
-            <div class="option">D. ফাংশন আর্গুমেন্ট</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(14)">উত্তর দেখুন</button>
-            <div id="ans-14" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১৫. ফাংশন ডেফিনিশন (Function Definition) এ মূলত কী থাকে?</div>
-            <div class="options">
-                <div class="option">A. শুধুমাত্র নাম</div>
-            <div class="option">B. শুধুমাত্র রিটার্ন</div>
-            <div class="option">C. ফাংশনের বডি (কোড)</div>
-            <div class="option">D. ফাংশনের হেডার</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(15)">উত্তর দেখুন</button>
-            <div id="ans-15" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১৬. return স্টেটমেন্ট প্রধানত কোথায় কাজ করে?</div>
-            <div class="options">
-                <div class="option">A. লুপের ভেতরে</div>
-            <div class="option">B. ফাংশনের ভেতরে</div>
-            <div class="option">C. অ্যারের ভেতরে</div>
-            <div class="option">D. অপারেটরের মাঝে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(16)">উত্তর দেখুন</button>
-            <div id="ans-16" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১৭. সি প্রোগ্রামে এক ফাংশন কি অন্য ফাংশনকে কল করতে পারে?</div>
-            <div class="options">
-                <div class="option">A. না, পারে না</div>
-            <div class="option">B. হ্যাঁ, অবশ্যই পারে</div>
-            <div class="option">C. কখনো কখনো পারে</div>
-            <div class="option">D. বিশেষ শর্তসাপেক্ষে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(17)">উত্তর দেখুন</button>
-            <div id="ans-17" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১৮. ফাংশন ব্যবহার করার ফলে ডিবাগিং (Debugging) কেমন হয়?</div>
-            <div class="options">
-                <div class="option">A. অত্যন্ত কঠিন হয়</div>
-            <div class="option">B. অনেক সহজ হয়</div>
-            <div class="option">C. একদম অসম্ভব হয়</div>
-            <div class="option">D. অপ্রয়োজনীয় হয়ে পড়ে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(18)">উত্তর দেখুন</button>
-            <div id="ans-18" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">১৯. ফাংশন সমগ্র প্রোগ্রামকে কেমন করে তোলে?</div>
-            <div class="options">
-                <div class="option">A. অসংগঠিত</div>
-            <div class="option">B. অপ্রয়োজনীয় বড়</div>
-            <div class="option">C. মডুলার (Modular)</div>
-            <div class="option">D. কাজের দিক থেকে ধীর</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(19)">উত্তর দেখুন</button>
-            <div id="ans-19" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২০. কলিং ফাংশন ছাড়া একটি সাধারণ ইউজার-ডিফাইনড ফাংশন-</div>
-            <div class="options">
-                <div class="option">A. কাজ করবে না</div>
-            <div class="option">B. স্বয়ংক্রিয়ভাবে কাজ করবে</div>
-            <div class="option">C. নিজে নিজেই চলবে</div>
-            <div class="option">D. অটো কল হবে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(20)">উত্তর দেখুন</button>
-            <div id="ans-20" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২১. ইউজার ডিফাইনড ফাংশনের সবচেয়ে বড় সুবিধা কোনটি?</div>
-            <div class="options">
-                <div class="option">A. কোড কম বোঝা যায়</div>
-            <div class="option">B. কোড পুনঃব্যবহার (Code Reuse) করা যায়</div>
-            <div class="option">C. মেমোরি নষ্ট হয়</div>
-            <div class="option">D. প্রোগ্রামের জটিলতা বাড়ে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(21)">উত্তর দেখুন</button>
-            <div id="ans-21" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২২. main() ফাংশনের রিটার্ন টাইপ সাধারণত কী হওয়া উচিত?</div>
-            <div class="options">
-                <div class="option">A. void</div>
-            <div class="option">B. char</div>
-            <div class="option">C. int</div>
-            <div class="option">D. float</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(22)">উত্তর দেখুন</button>
-            <div id="ans-22" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২৩. সি প্রোগ্রামে return 0; বলতে কী বোঝায়?</div>
-            <div class="options">
-                <div class="option">A. প্রোগ্রামে ত্রুটি আছে</div>
-            <div class="option">B. সফল সমাপ্তি (Successful execution)</div>
-            <div class="option">C. লুপ শেষ হওয়া</div>
-            <div class="option">D. ইনপুট শেষ হওয়া</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(23)">উত্তর দেখুন</button>
-            <div id="ans-23" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২৪. রিকার্সিভ ফাংশনে factorial(0) এর রিটার্ন মান কত হয়?</div>
-            <div class="options">
-                <div class="option">A. 0</div>
-            <div class="option">B. 1</div>
-            <div class="option">C. -1</div>
-            <div class="option">D. অসীম</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(24)">উত্তর দেখুন</button>
-            <div id="ans-24" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২৫. রিকার্সিভ ফাংশনের টোটাল কল সংখ্যা মূলত কোনটির উপর নির্ভর করে?</div>
-            <div class="options">
-                <div class="option">A. লুপের সংখ্যার উপর</div>
-            <div class="option">B. ডেটা টাইপের উপর</div>
-            <div class="option">C. অ্যারের সাইজের উপর</div>
-            <div class="option">D. ইনপুট মানের উপর</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(25)">উত্তর দেখুন</button>
-            <div id="ans-25" class="answer-block">সঠিক উত্তর: D</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২৬. রিকার্সিভ ফাংশনে ইন্টারনালি কোন মেমোরি ব্যবহৃত হয়?</div>
-            <div class="options">
-                <div class="option">A. Heap</div>
-            <div class="option">B. Stack</div>
-            <div class="option">C. ROM</div>
-            <div class="option">D. Cache</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(26)">উত্তর দেখুন</button>
-            <div id="ans-26" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২৭. add(10, 20); এখানে 10 এবং 20 কে কী বলা হয়?</div>
-            <div class="options">
-                <div class="option">A. প্যারামিটার</div>
-            <div class="option">B. আর্গুমেন্ট (Argument)</div>
-            <div class="option">C. ভ্যারিয়েবল</div>
-            <div class="option">D. কনস্ট্যান্ট</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(27)">উত্তর দেখুন</button>
-            <div id="ans-27" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২৮. int add(int x, int y) এখানে x এবং y কী?</div>
-            <div class="options">
-                <div class="option">A. আর্গুমেন্ট</div>
-            <div class="option">B. ভ্যারিয়েবল</div>
-            <div class="option">C. প্যারামিটার (Parameter)</div>
-            <div class="option">D. কনস্ট্যান্ট</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(28)">উত্তর দেখুন</button>
-            <div id="ans-28" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">২৯. Call by reference সাধারণত কোন ধরনের ডেটার ক্ষেত্রে বেশি উপযোগী?</div>
-            <div class="options">
-                <div class="option">A. ছোট ডেটার জন্য</div>
-            <div class="option">B. বড় ডেটার জন্য (Large Data)</div>
-            <div class="option">C. কনস্ট্যান্টের জন্য</div>
-            <div class="option">D. স্ট্রিং ছাড়া অন্য ডেটায়</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(29)">উত্তর দেখুন</button>
-            <div id="ans-29" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩০. ফাংশন ব্যবহারের মাধ্যমে পুরো প্রোগ্রামটি কেমন হয়ে ওঠে?</div>
-            <div class="options">
-                <div class="option">A. একঘেয়ে</div>
-            <div class="option">B. অস্পষ্ট</div>
-            <div class="option">C. রক্ষণাবেক্ষণযোগ্য (Maintainable)</div>
-            <div class="option">D. অকার্যকর</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(30)">উত্তর দেখুন</button>
-            <div id="ans-30" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩১. একটি প্রোগ্রামে একাধিক ফাংশন থাকার সুবিধা কোনটি?</div>
-            <div class="options">
-                <div class="option">A. কোড মডুলার ও ভাগ করা যায়</div>
-            <div class="option">B. রান টাইম বেশি লাগে</div>
-            <div class="option">C. মেমোরি লিক হয়</div>
-            <div class="option">D. সিনট্যাক্স সহজ হয়</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(31)">উত্তর দেখুন</button>
-            <div id="ans-31" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩২. রিকার্সন নিচের কোন ধরনের সমস্যায় সবচেয়ে বেশি উপযোগী?</div>
-            <div class="options">
-                <div class="option">A. পুনরাবৃত্তিমূলক সমস্যায় (Repetitive tasks)</div>
-            <div class="option">B. ইনপুট নেওয়ার ক্ষেত্রে</div>
-            <div class="option">C. আউটপুট দেখানোর ক্ষেত্রে</div>
-            <div class="option">D. ডেটা টাইপ নির্ধারণে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(32)">উত্তর দেখুন</button>
-            <div id="ans-32" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩৩. রিকার্সিভ ফাংশনের একটি বড় টেকনিক্যাল সমস্যা কোনটি হতে পারে?</div>
-            <div class="options">
-                <div class="option">A. স্ট্যাক ওভারফ্লো (Stack overflow)</div>
-            <div class="option">B. দ্রুত কাজ সম্পন্ন হওয়া</div>
-            <div class="option">C. কম মেমোরি লাগা</div>
-            <div class="option">D. কোড সহজ হওয়া</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(33)">উত্তর দেখুন</button>
-            <div id="ans-33" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩৪. সি ভাষায় লাইব্রেরি ফাংশনগুলো মূলত কোথায় সংরক্ষিত থাকে?</div>
-            <div class="options">
-                <div class="option">A. main() এর ভেতর</div>
-            <div class="option">B. হেডার ফাইলে (Header Files)</div>
-            <div class="option">C. অ্যারের ভেতর</div>
-            <div class="option">D. লুপের মাঝে</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(34)">উত্তর দেখুন</button>
-            <div id="ans-34" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩৫. math.h হেডার ফাইলে নিচের কোন ফাংশনটি থাকে?</div>
-            <div class="options">
-                <div class="option">A. printf</div>
-            <div class="option">B. scanf</div>
-            <div class="option">C. sqrt (বর্গমূল)</div>
-            <div class="option">D. strcpy</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(35)">উত্তর দেখুন</button>
-            <div id="ans-35" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩৬. সি ভাষায় string.h হেডার ফাইলটি কেন ব্যবহৃত হয়?</div>
-            <div class="options">
-                <div class="option">A. স্ট্রিং বা টেক্সট সংক্রান্ত কাজের জন্য</div>
-            <div class="option">B. গাণিতিক হিসাবের জন্য</div>
-            <div class="option">C. লুপ চালানোর জন্য</div>
-            <div class="option">D. ফাইল হ্যান্ডলিংয়ের জন্য</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(36)">উত্তর দেখুন</button>
-            <div id="ans-36" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩৭. stdio.h হেডার ফাইলটি মূলত কোন কাজের জন্য ব্যবহৃত হয়?</div>
-            <div class="options">
-                <div class="option">A. ইনপুট-আউটপুট (Standard Input-Output)</div>
-            <div class="option">B. গাণিতিক জটিল কাজের জন্য</div>
-            <div class="option">C. স্ট্রিং ম্যানিপুলেশনের জন্য</div>
-            <div class="option">D. মেমোরি ব্যবস্থাপনার জন্য</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(37)">উত্তর দেখুন</button>
-            <div id="ans-37" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩৮. ইউজার ডিফাইনড ফাংশন ব্যবহারের ফলে নিচের কোনটি সত্য?</div>
-            <div class="options">
-                <div class="option">A. কোড লেখার পরিমাণ বাড়ে</div>
-            <div class="option">B. কোড বড় হয়</div>
-            <div class="option">C. কোড পুনঃব্যবহার করা যায়</div>
-            <div class="option">D. কোড নষ্ট হয়</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(38)">উত্তর দেখুন</button>
-            <div id="ans-38" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৩৯. একটি সাধারণ সি প্রোগ্রামে সর্বোচ্চ কতটি ফাংশন থাকতে পারে?</div>
-            <div class="options">
-                <div class="option">A. ১টি</div>
-            <div class="option">B. ২টি</div>
-            <div class="option">C. সীমিত সংখ্যক</div>
-            <div class="option">D. অসীম বা প্রয়োজনমতো যেকোনো সংখ্যক</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(39)">উত্তর দেখুন</button>
-            <div id="ans-39" class="answer-block">সঠিক উত্তর: D</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪০. ফাংশন ব্যবহার না করলে দীর্ঘ প্রোগ্রামগুলো কেমন হয়ে পড়ে?</div>
-            <div class="options">
-                <div class="option">A. সুসংগঠিত</div>
-            <div class="option">B. বিশৃঙ্খল ও রক্ষণাবেক্ষণ কঠিন</div>
-            <div class="option">C. সহজ ও সরল</div>
-            <div class="option">D. দ্রুত এক্সিকিউট হয়</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(40)">উত্তর দেখুন</button>
-            <div id="ans-40" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪১. কলিং ফাংশন ছাড়া একটি ইউজার ডিফাইনড ফাংশন প্রোগ্রামে কেমন?</div>
-            <div class="options">
-                <div class="option">A. অপ্রয়োজনীয় বা অকার্যকর</div>
-            <div class="option">B. খুব দরকারী</div>
-            <div class="option">C. স্বয়ংক্রিয়</div>
-            <div class="option">D. লাইব্রেরি সমতুল্য</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(41)">উত্তর দেখুন</button>
-            <div id="ans-41" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪২. রিকার্সন বোঝার জন্য সবচেয়ে গুরুত্বপূর্ণ বিষয় কোনটি?</div>
-            <div class="options">
-                <div class="option">A. লুপ কাউন্টার</div>
-            <div class="option">B. অ্যারে ইনডেক্স</div>
-            <div class="option">C. বেস কন্ডিশন (Base condition)</div>
-            <div class="option">D. goto লেবেল</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(42)">উত্তর দেখুন</button>
-            <div id="ans-42" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪৩. রিকার্সিভ ফাংশনের ভেতরের কলটি সাধারণত কতবার হয়?</div>
-            <div class="options">
-                <div class="option">A. শুধুমাত্র একবার</div>
-            <div class="option">B. বেস কন্ডিশন না ছোঁয়া পর্যন্ত বারবার</div>
-            <div class="option">C. কখনো কল হয় না</div>
-            <div class="option">D. নির্দিষ্ট নয়</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(43)">উত্তর দেখুন</button>
-            <div id="ans-43" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪৪. ফাংশনের মাধ্যমে বড় প্রোগ্রামকে ছোট ছোট অংশে ভাগ করাকে কী বলে?</div>
-            <div class="options">
-                <div class="option">A. দীর্ঘ কোডিং</div>
-            <div class="option">B. কম রক্ষণাবেক্ষণ</div>
-            <div class="option">C. মডুলার প্রোগ্রামিং (Modular Programming)</div>
-            <div class="option">D. ধীর এক্সিকিউশন</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(44)">উত্তর দেখুন</button>
-            <div id="ans-44" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪৫. সি প্রোগ্রামিংয়ে হেডার ফাইল আসলে কী?</div>
-            <div class="options">
-                <div class="option">A. এক ধরনের ডেটা ফাইল</div>
-            <div class="option">B. ফাংশনের সংজ্ঞা ফাইল</div>
-            <div class="option">C. প্রি-লিখিত কোডের সংগ্রহ (Collection of pre-written code)</div>
-            <div class="option">D. মেইন এক্সিকিউটেবল ফাইল</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(45)">উত্তর দেখুন</button>
-            <div id="ans-45" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪৬. exit() ফাংশনটি ব্যবহার করতে কোন হেডার ফাইলের প্রয়োজন হয়?</div>
-            <div class="options">
-                <div class="option">A. math.h</div>
-            <div class="option">B. stdio.h</div>
-            <div class="option">C. stdlib.h</div>
-            <div class="option">D. string.h</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(46)">উত্তর দেখুন</button>
-            <div id="ans-46" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪৭. printf() এবং scanf() ফাংশনের জন্য কোন হেডার ফাইলটি আবশ্যিক?</div>
-            <div class="options">
-                <div class="option">A. stdio.h</div>
-            <div class="option">B. math.h</div>
-            <div class="option">C. stdlib.h</div>
-            <div class="option">D. conio.h</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(47)">উত্তর দেখুন</button>
-            <div id="ans-47" class="answer-block">সঠিক উত্তর: A</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪৮. ইউজার-ডিফাইনড হেডার ফাইলের এক্সটেনশন কোনটি হয়ে থাকে?</div>
-            <div class="options">
-                <div class="option">A. .c</div>
-            <div class="option">B. .exe</div>
-            <div class="option">C. .h</div>
-            <div class="option">D. .cpp</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(48)">উত্তর দেখুন</button>
-            <div id="ans-48" class="answer-block">সঠিক উত্তর: C</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৪৯. সি টোকেন (Token) বলতে কী বোঝায়?</div>
-            <div class="options">
-                <div class="option">A. বড় কোড ইউনিট</div>
-            <div class="option">B. প্রোগ্রামের সবচেয়ে ছোট ও অর্থবহ একক</div>
-            <div class="option">C. একটি টেক্সট ফাইল</div>
-            <div class="option">D. ফোল্ডারের নাম</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(49)">উত্তর দেখুন</button>
-            <div id="ans-49" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
-        <div class="question-card">
-            <div class="question-text">৫০. কম্পাইলারের কোন ধাপে টোকেন শনাক্ত করা হয়?</div>
-            <div class="options">
-                <div class="option">A. Syntax Analysis</div>
-            <div class="option">B. Lexical Analysis</div>
-            <div class="option">C. Execution</div>
-            <div class="option">D. Linking</div>
-        </div>
-            <button class="btn-ans" onclick="toggleAnswer(50)">উত্তর দেখুন</button>
-            <div id="ans-50" class="answer-block">সঠিক উত্তর: B</div>
-        </div>
-    
+        <a
+          href="chapter-one-2.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border text-color[#2980b9] hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 2</a
+        >
+        <a
+          href="chapter-one-3.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border text-color[#2980b9] hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 3</a
+        >
+        <a
+          href="chapter-one-4.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border text-color[#2980b9] hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 4</a
+        >
+        <a
+          href="chapter-one-5.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border text-color[#2980b9] hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 5</a
+        >
+        <a
+          href="chapter-one-6.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border text-color[#2980b9] hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 6</a
+        >
+        <a
+          href="chapter-one-7.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border text-color[#2980b9] hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 7</a
+        >
+        <a
+          href="chapter-one-7.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border text-color[#2980b9] hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 8</a
+        >
+      </nav>
+      <h1>ICT Lecturer MCQ - Part 3</h1>
+
+      <div class="section-title">
+        পয়েন্টার, স্ট্রাকচার, মেমোরি এবং অ্যাডভান্সড সি প্রোগ্রামিং
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">১. &num নির্দেশ করে কোনটি?</div>
+        <div class="options">
+          <div class="option">A. num এর মান</div>
+          <div class="option">B. num এর ডেটা টাইপ</div>
+          <div class="option">C. num এর মেমোরি ঠিকানা (Address)</div>
+          <div class="option">D. num ফাংশন</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(1)">উত্তর দেখুন</button>
+        <div id="ans-1" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">২. ফাংশন আর্গুমেন্ট আসলে কী?</div>
+        <div class="options">
+          <div class="option">A. ফাংশনের নাম</div>
+          <div class="option">B. ফাংশনের ইনপুট (Input)</div>
+          <div class="option">C. ফাংশনের আউটপুট</div>
+          <div class="option">D. ফাংশনের বডি</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(2)">উত্তর দেখুন</button>
+        <div id="ans-2" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩. Variable length argument সাধারণত কোন লাইব্রেরি ফাংশনে ব্যবহৃত হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. scanf() এ</div>
+          <div class="option">B. printf() এ</div>
+          <div class="option">C. main() এ</div>
+          <div class="option">D. add() এ</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(3)">উত্তর দেখুন</button>
+        <div id="ans-3" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪. ফাংশন ব্যবহারের ফলে কোড মূলত কীরূপ হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. দীর্ঘ বা বড় হয়</div>
+          <div class="option">B. জটিল আকার ধারণ করে</div>
+          <div class="option">C. পুনঃব্যবহারযোগ্য (Reusable) হয়</div>
+          <div class="option">D. কাজের গতি ধীর হয়</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(4)">উত্তর দেখুন</button>
+        <div id="ans-4" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">৫. রিকার্সিভ (Recursive) ফাংশন কী?</div>
+        <div class="options">
+          <div class="option">A. যা অন্য কোনো ফাংশনকে কল করে</div>
+          <div class="option">B. যা নিজেই নিজেকে কল করে</div>
+          <div class="option">C. যা শুধুমাত্র main() কে কল করে</div>
+          <div class="option">D. যা লাইব্রেরি ফাংশনকে ডাকে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(5)">উত্তর দেখুন</button>
+        <div id="ans-5" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৬. রিকার্সিভ ফাংশনের জন্য সবচেয়ে গুরুত্বপূর্ণ শর্ত কোনটি?
+        </div>
+        <div class="options">
+          <div class="option">A. Loop</div>
+          <div class="option">B. Pointer</div>
+          <div class="option">C. Array</div>
+          <div class="option">D. Base condition</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(6)">উত্তর দেখুন</button>
+        <div id="ans-6" class="answer-block">সঠিক উত্তর: D</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৭. রিকার্সিভ ফাংশনে Base condition না থাকলে কী ঘটবে?
+        </div>
+        <div class="options">
+          <div class="option">A. সঠিক ফলাফল আসবে</div>
+          <div class="option">B. অসীম কল (Infinite Call) হতে থাকবে</div>
+          <div class="option">C. কম্পাইল এরর দেখাবে</div>
+          <div class="option">D. কোনো সমস্যা হবে না</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(7)">উত্তর দেখুন</button>
+        <div id="ans-7" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৮. রিকার্সিভ ফাংশনের আসল কল বা এক্সিকিউশন কখন হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. Base condition এ পৌঁছালে</div>
+          <div class="option">B. শর্ত পূরণ না হলে</div>
+          <div class="option">C. main() ফাংশনের ভেতর</div>
+          <div class="option">D. এক্সিকিউশন শেষে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(8)">উত্তর দেখুন</button>
+        <div id="ans-8" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৯. ফ্যাক্টোরিয়াল (Factorial) বের করার সমস্যাটি সাধারণত কোন পদ্ধতিতে
+          ভালো সমাধান করা হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. রিকার্সন (Recursion) দিয়ে</div>
+          <div class="option">B. সাধারণ লুপ (Loop) দিয়ে</div>
+          <div class="option">C. অ্যারে (Array) ব্যবহার করে</div>
+          <div class="option">D. স্ট্রিং এর মাধ্যমে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(9)">উত্তর দেখুন</button>
+        <div id="ans-9" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১০. প্রতিটি রিকার্সিভ কল (Recursive Call) মেমোরিতে কী তৈরি করে?
+        </div>
+        <div class="options">
+          <div class="option">A. heap</div>
+          <div class="option">B. queue</div>
+          <div class="option">C. stack frame</div>
+          <div class="option">D. array</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(10)">উত্তর দেখুন</button>
+        <div id="ans-10" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">১১. রিকার্সনের প্রধান অসুবিধা কোনটি?</div>
+        <div class="options">
+          <div class="option">A. কোড ছোট বা সংক্ষিপ্ত হয়</div>
+          <div class="option">B. স্ট্যাক মেমোরি বেশি ব্যবহার হয়</div>
+          <div class="option">C. লজিক বুঝতে সহজ হয়</div>
+          <div class="option">D. দ্রুত এক্সিকিউশন হয়</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(11)">উত্তর দেখুন</button>
+        <div id="ans-11" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১২. রিকার্সনের বিকল্প হিসেবে নিচের কোনটি ব্যবহার করা যায়?
+        </div>
+        <div class="options">
+          <div class="option">A. if স্টেটমেন্ট</div>
+          <div class="option">B. loop (লুপ)</div>
+          <div class="option">C. switch কেস</div>
+          <div class="option">D. goto স্টেটমেন্ট</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(12)">উত্তর দেখুন</button>
+        <div id="ans-12" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১৩. কম্পাইলারকে কোনো ফাংশন সম্পর্কে আগে থেকে ধারণা দিতে কী প্রয়োজন?
+        </div>
+        <div class="options">
+          <div class="option">A. ইনপুট প্যারামিটার</div>
+          <div class="option">B. লুপ স্ট্রাকচার</div>
+          <div class="option">C. ফাংশন প্রোটোটাইপ (Prototype)</div>
+          <div class="option">D. আউটপুট ভ্যালু</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(13)">উত্তর দেখুন</button>
+        <div id="ans-13" class="answer-block">সঠিক উত্তর: D</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১৪. add(int a, int b); এই কোড অংশটি আসলে কী?
+        </div>
+        <div class="options">
+          <div class="option">A. ফাংশন কল</div>
+          <div class="option">B. ফাংশন ডেফিনিশন</div>
+          <div class="option">C. ফাংশন প্রোটোটাইপ</div>
+          <div class="option">D. ফাংশন আর্গুমেন্ট</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(14)">উত্তর দেখুন</button>
+        <div id="ans-14" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১৫. ফাংশন ডেফিনিশন (Function Definition) এ মূলত কী থাকে?
+        </div>
+        <div class="options">
+          <div class="option">A. শুধুমাত্র নাম</div>
+          <div class="option">B. শুধুমাত্র রিটার্ন</div>
+          <div class="option">C. ফাংশনের বডি (কোড)</div>
+          <div class="option">D. ফাংশনের হেডার</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(15)">উত্তর দেখুন</button>
+        <div id="ans-15" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১৬. return স্টেটমেন্ট প্রধানত কোথায় কাজ করে?
+        </div>
+        <div class="options">
+          <div class="option">A. লুপের ভেতরে</div>
+          <div class="option">B. ফাংশনের ভেতরে</div>
+          <div class="option">C. অ্যারের ভেতরে</div>
+          <div class="option">D. অপারেটরের মাঝে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(16)">উত্তর দেখুন</button>
+        <div id="ans-16" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১৭. সি প্রোগ্রামে এক ফাংশন কি অন্য ফাংশনকে কল করতে পারে?
+        </div>
+        <div class="options">
+          <div class="option">A. না, পারে না</div>
+          <div class="option">B. হ্যাঁ, অবশ্যই পারে</div>
+          <div class="option">C. কখনো কখনো পারে</div>
+          <div class="option">D. বিশেষ শর্তসাপেক্ষে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(17)">উত্তর দেখুন</button>
+        <div id="ans-17" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১৮. ফাংশন ব্যবহার করার ফলে ডিবাগিং (Debugging) কেমন হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. অত্যন্ত কঠিন হয়</div>
+          <div class="option">B. অনেক সহজ হয়</div>
+          <div class="option">C. একদম অসম্ভব হয়</div>
+          <div class="option">D. অপ্রয়োজনীয় হয়ে পড়ে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(18)">উত্তর দেখুন</button>
+        <div id="ans-18" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ১৯. ফাংশন সমগ্র প্রোগ্রামকে কেমন করে তোলে?
+        </div>
+        <div class="options">
+          <div class="option">A. অসংগঠিত</div>
+          <div class="option">B. অপ্রয়োজনীয় বড়</div>
+          <div class="option">C. মডুলার (Modular)</div>
+          <div class="option">D. কাজের দিক থেকে ধীর</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(19)">উত্তর দেখুন</button>
+        <div id="ans-19" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২০. কলিং ফাংশন ছাড়া একটি সাধারণ ইউজার-ডিফাইনড ফাংশন-
+        </div>
+        <div class="options">
+          <div class="option">A. কাজ করবে না</div>
+          <div class="option">B. স্বয়ংক্রিয়ভাবে কাজ করবে</div>
+          <div class="option">C. নিজে নিজেই চলবে</div>
+          <div class="option">D. অটো কল হবে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(20)">উত্তর দেখুন</button>
+        <div id="ans-20" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২১. ইউজার ডিফাইনড ফাংশনের সবচেয়ে বড় সুবিধা কোনটি?
+        </div>
+        <div class="options">
+          <div class="option">A. কোড কম বোঝা যায়</div>
+          <div class="option">B. কোড পুনঃব্যবহার (Code Reuse) করা যায়</div>
+          <div class="option">C. মেমোরি নষ্ট হয়</div>
+          <div class="option">D. প্রোগ্রামের জটিলতা বাড়ে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(21)">উত্তর দেখুন</button>
+        <div id="ans-21" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২২. main() ফাংশনের রিটার্ন টাইপ সাধারণত কী হওয়া উচিত?
+        </div>
+        <div class="options">
+          <div class="option">A. void</div>
+          <div class="option">B. char</div>
+          <div class="option">C. int</div>
+          <div class="option">D. float</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(22)">উত্তর দেখুন</button>
+        <div id="ans-22" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২৩. সি প্রোগ্রামে return 0; বলতে কী বোঝায়?
+        </div>
+        <div class="options">
+          <div class="option">A. প্রোগ্রামে ত্রুটি আছে</div>
+          <div class="option">B. সফল সমাপ্তি (Successful execution)</div>
+          <div class="option">C. লুপ শেষ হওয়া</div>
+          <div class="option">D. ইনপুট শেষ হওয়া</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(23)">উত্তর দেখুন</button>
+        <div id="ans-23" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২৪. রিকার্সিভ ফাংশনে factorial(0) এর রিটার্ন মান কত হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. 0</div>
+          <div class="option">B. 1</div>
+          <div class="option">C. -1</div>
+          <div class="option">D. অসীম</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(24)">উত্তর দেখুন</button>
+        <div id="ans-24" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২৫. রিকার্সিভ ফাংশনের টোটাল কল সংখ্যা মূলত কোনটির উপর নির্ভর করে?
+        </div>
+        <div class="options">
+          <div class="option">A. লুপের সংখ্যার উপর</div>
+          <div class="option">B. ডেটা টাইপের উপর</div>
+          <div class="option">C. অ্যারের সাইজের উপর</div>
+          <div class="option">D. ইনপুট মানের উপর</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(25)">উত্তর দেখুন</button>
+        <div id="ans-25" class="answer-block">সঠিক উত্তর: D</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২৬. রিকার্সিভ ফাংশনে ইন্টারনালি কোন মেমোরি ব্যবহৃত হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. Heap</div>
+          <div class="option">B. Stack</div>
+          <div class="option">C. ROM</div>
+          <div class="option">D. Cache</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(26)">উত্তর দেখুন</button>
+        <div id="ans-26" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২৭. add(10, 20); এখানে 10 এবং 20 কে কী বলা হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. প্যারামিটার</div>
+          <div class="option">B. আর্গুমেন্ট (Argument)</div>
+          <div class="option">C. ভ্যারিয়েবল</div>
+          <div class="option">D. কনস্ট্যান্ট</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(27)">উত্তর দেখুন</button>
+        <div id="ans-27" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২৮. int add(int x, int y) এখানে x এবং y কী?
+        </div>
+        <div class="options">
+          <div class="option">A. আর্গুমেন্ট</div>
+          <div class="option">B. ভ্যারিয়েবল</div>
+          <div class="option">C. প্যারামিটার (Parameter)</div>
+          <div class="option">D. কনস্ট্যান্ট</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(28)">উত্তর দেখুন</button>
+        <div id="ans-28" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ২৯. Call by reference সাধারণত কোন ধরনের ডেটার ক্ষেত্রে বেশি উপযোগী?
+        </div>
+        <div class="options">
+          <div class="option">A. ছোট ডেটার জন্য</div>
+          <div class="option">B. বড় ডেটার জন্য (Large Data)</div>
+          <div class="option">C. কনস্ট্যান্টের জন্য</div>
+          <div class="option">D. স্ট্রিং ছাড়া অন্য ডেটায়</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(29)">উত্তর দেখুন</button>
+        <div id="ans-29" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩০. ফাংশন ব্যবহারের মাধ্যমে পুরো প্রোগ্রামটি কেমন হয়ে ওঠে?
+        </div>
+        <div class="options">
+          <div class="option">A. একঘেয়ে</div>
+          <div class="option">B. অস্পষ্ট</div>
+          <div class="option">C. রক্ষণাবেক্ষণযোগ্য (Maintainable)</div>
+          <div class="option">D. অকার্যকর</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(30)">উত্তর দেখুন</button>
+        <div id="ans-30" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩১. একটি প্রোগ্রামে একাধিক ফাংশন থাকার সুবিধা কোনটি?
+        </div>
+        <div class="options">
+          <div class="option">A. কোড মডুলার ও ভাগ করা যায়</div>
+          <div class="option">B. রান টাইম বেশি লাগে</div>
+          <div class="option">C. মেমোরি লিক হয়</div>
+          <div class="option">D. সিনট্যাক্স সহজ হয়</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(31)">উত্তর দেখুন</button>
+        <div id="ans-31" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩২. রিকার্সন নিচের কোন ধরনের সমস্যায় সবচেয়ে বেশি উপযোগী?
+        </div>
+        <div class="options">
+          <div class="option">
+            A. পুনরাবৃত্তিমূলক সমস্যায় (Repetitive tasks)
+          </div>
+          <div class="option">B. ইনপুট নেওয়ার ক্ষেত্রে</div>
+          <div class="option">C. আউটপুট দেখানোর ক্ষেত্রে</div>
+          <div class="option">D. ডেটা টাইপ নির্ধারণে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(32)">উত্তর দেখুন</button>
+        <div id="ans-32" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩৩. রিকার্সিভ ফাংশনের একটি বড় টেকনিক্যাল সমস্যা কোনটি হতে পারে?
+        </div>
+        <div class="options">
+          <div class="option">A. স্ট্যাক ওভারফ্লো (Stack overflow)</div>
+          <div class="option">B. দ্রুত কাজ সম্পন্ন হওয়া</div>
+          <div class="option">C. কম মেমোরি লাগা</div>
+          <div class="option">D. কোড সহজ হওয়া</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(33)">উত্তর দেখুন</button>
+        <div id="ans-33" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩৪. সি ভাষায় লাইব্রেরি ফাংশনগুলো মূলত কোথায় সংরক্ষিত থাকে?
+        </div>
+        <div class="options">
+          <div class="option">A. main() এর ভেতর</div>
+          <div class="option">B. হেডার ফাইলে (Header Files)</div>
+          <div class="option">C. অ্যারের ভেতর</div>
+          <div class="option">D. লুপের মাঝে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(34)">উত্তর দেখুন</button>
+        <div id="ans-34" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩৫. math.h হেডার ফাইলে নিচের কোন ফাংশনটি থাকে?
+        </div>
+        <div class="options">
+          <div class="option">A. printf</div>
+          <div class="option">B. scanf</div>
+          <div class="option">C. sqrt (বর্গমূল)</div>
+          <div class="option">D. strcpy</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(35)">উত্তর দেখুন</button>
+        <div id="ans-35" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩৬. সি ভাষায় string.h হেডার ফাইলটি কেন ব্যবহৃত হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. স্ট্রিং বা টেক্সট সংক্রান্ত কাজের জন্য</div>
+          <div class="option">B. গাণিতিক হিসাবের জন্য</div>
+          <div class="option">C. লুপ চালানোর জন্য</div>
+          <div class="option">D. ফাইল হ্যান্ডলিংয়ের জন্য</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(36)">উত্তর দেখুন</button>
+        <div id="ans-36" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩৭. stdio.h হেডার ফাইলটি মূলত কোন কাজের জন্য ব্যবহৃত হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. ইনপুট-আউটপুট (Standard Input-Output)</div>
+          <div class="option">B. গাণিতিক জটিল কাজের জন্য</div>
+          <div class="option">C. স্ট্রিং ম্যানিপুলেশনের জন্য</div>
+          <div class="option">D. মেমোরি ব্যবস্থাপনার জন্য</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(37)">উত্তর দেখুন</button>
+        <div id="ans-37" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩৮. ইউজার ডিফাইনড ফাংশন ব্যবহারের ফলে নিচের কোনটি সত্য?
+        </div>
+        <div class="options">
+          <div class="option">A. কোড লেখার পরিমাণ বাড়ে</div>
+          <div class="option">B. কোড বড় হয়</div>
+          <div class="option">C. কোড পুনঃব্যবহার করা যায়</div>
+          <div class="option">D. কোড নষ্ট হয়</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(38)">উত্তর দেখুন</button>
+        <div id="ans-38" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৩৯. একটি সাধারণ সি প্রোগ্রামে সর্বোচ্চ কতটি ফাংশন থাকতে পারে?
+        </div>
+        <div class="options">
+          <div class="option">A. ১টি</div>
+          <div class="option">B. ২টি</div>
+          <div class="option">C. সীমিত সংখ্যক</div>
+          <div class="option">D. অসীম বা প্রয়োজনমতো যেকোনো সংখ্যক</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(39)">উত্তর দেখুন</button>
+        <div id="ans-39" class="answer-block">সঠিক উত্তর: D</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪০. ফাংশন ব্যবহার না করলে দীর্ঘ প্রোগ্রামগুলো কেমন হয়ে পড়ে?
+        </div>
+        <div class="options">
+          <div class="option">A. সুসংগঠিত</div>
+          <div class="option">B. বিশৃঙ্খল ও রক্ষণাবেক্ষণ কঠিন</div>
+          <div class="option">C. সহজ ও সরল</div>
+          <div class="option">D. দ্রুত এক্সিকিউট হয়</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(40)">উত্তর দেখুন</button>
+        <div id="ans-40" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪১. কলিং ফাংশন ছাড়া একটি ইউজার ডিফাইনড ফাংশন প্রোগ্রামে কেমন?
+        </div>
+        <div class="options">
+          <div class="option">A. অপ্রয়োজনীয় বা অকার্যকর</div>
+          <div class="option">B. খুব দরকারী</div>
+          <div class="option">C. স্বয়ংক্রিয়</div>
+          <div class="option">D. লাইব্রেরি সমতুল্য</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(41)">উত্তর দেখুন</button>
+        <div id="ans-41" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪২. রিকার্সন বোঝার জন্য সবচেয়ে গুরুত্বপূর্ণ বিষয় কোনটি?
+        </div>
+        <div class="options">
+          <div class="option">A. লুপ কাউন্টার</div>
+          <div class="option">B. অ্যারে ইনডেক্স</div>
+          <div class="option">C. বেস কন্ডিশন (Base condition)</div>
+          <div class="option">D. goto লেবেল</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(42)">উত্তর দেখুন</button>
+        <div id="ans-42" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪৩. রিকার্সিভ ফাংশনের ভেতরের কলটি সাধারণত কতবার হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. শুধুমাত্র একবার</div>
+          <div class="option">B. বেস কন্ডিশন না ছোঁয়া পর্যন্ত বারবার</div>
+          <div class="option">C. কখনো কল হয় না</div>
+          <div class="option">D. নির্দিষ্ট নয়</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(43)">উত্তর দেখুন</button>
+        <div id="ans-43" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪৪. ফাংশনের মাধ্যমে বড় প্রোগ্রামকে ছোট ছোট অংশে ভাগ করাকে কী বলে?
+        </div>
+        <div class="options">
+          <div class="option">A. দীর্ঘ কোডিং</div>
+          <div class="option">B. কম রক্ষণাবেক্ষণ</div>
+          <div class="option">C. মডুলার প্রোগ্রামিং (Modular Programming)</div>
+          <div class="option">D. ধীর এক্সিকিউশন</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(44)">উত্তর দেখুন</button>
+        <div id="ans-44" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪৫. সি প্রোগ্রামিংয়ে হেডার ফাইল আসলে কী?
+        </div>
+        <div class="options">
+          <div class="option">A. এক ধরনের ডেটা ফাইল</div>
+          <div class="option">B. ফাংশনের সংজ্ঞা ফাইল</div>
+          <div class="option">
+            C. প্রি-লিখিত কোডের সংগ্রহ (Collection of pre-written code)
+          </div>
+          <div class="option">D. মেইন এক্সিকিউটেবল ফাইল</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(45)">উত্তর দেখুন</button>
+        <div id="ans-45" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪৬. exit() ফাংশনটি ব্যবহার করতে কোন হেডার ফাইলের প্রয়োজন হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. math.h</div>
+          <div class="option">B. stdio.h</div>
+          <div class="option">C. stdlib.h</div>
+          <div class="option">D. string.h</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(46)">উত্তর দেখুন</button>
+        <div id="ans-46" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪৭. printf() এবং scanf() ফাংশনের জন্য কোন হেডার ফাইলটি আবশ্যিক?
+        </div>
+        <div class="options">
+          <div class="option">A. stdio.h</div>
+          <div class="option">B. math.h</div>
+          <div class="option">C. stdlib.h</div>
+          <div class="option">D. conio.h</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(47)">উত্তর দেখুন</button>
+        <div id="ans-47" class="answer-block">সঠিক উত্তর: A</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৪৮. ইউজার-ডিফাইনড হেডার ফাইলের এক্সটেনশন কোনটি হয়ে থাকে?
+        </div>
+        <div class="options">
+          <div class="option">A. .c</div>
+          <div class="option">B. .exe</div>
+          <div class="option">C. .h</div>
+          <div class="option">D. .cpp</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(48)">উত্তর দেখুন</button>
+        <div id="ans-48" class="answer-block">সঠিক উত্তর: C</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">৪৯. সি টোকেন (Token) বলতে কী বোঝায়?</div>
+        <div class="options">
+          <div class="option">A. বড় কোড ইউনিট</div>
+          <div class="option">B. প্রোগ্রামের সবচেয়ে ছোট ও অর্থবহ একক</div>
+          <div class="option">C. একটি টেক্সট ফাইল</div>
+          <div class="option">D. ফোল্ডারের নাম</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(49)">উত্তর দেখুন</button>
+        <div id="ans-49" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-text">
+          ৫০. কম্পাইলারের কোন ধাপে টোকেন শনাক্ত করা হয়?
+        </div>
+        <div class="options">
+          <div class="option">A. Syntax Analysis</div>
+          <div class="option">B. Lexical Analysis</div>
+          <div class="option">C. Execution</div>
+          <div class="option">D. Linking</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(50)">উত্তর দেখুন</button>
+        <div id="ans-50" class="answer-block">সঠিক উত্তর: B</div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

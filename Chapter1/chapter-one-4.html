@@ -1,817 +1,1040 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NTRCA ICT Lecturer MCQ Question Bank</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Kalpurush', Arial;
-            background-color: #f0f4f8;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        .header {
-            text-align: center;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: #2c3e50;
-            margin: 0;
-            font-size: 24px;
-        }
-        h2 {
-            color: #7f8c8d;
-            margin: 10px 0 0 0;
-            font-size: 18px;
-            font-weight: normal;
-        }
-        .section-title {
-            background-color: #2c3e50;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 6px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .quiz-card {
-            background: #fafbfc;
-            border-left: 4px solid #3498db;
-            border-top: 1px solid #e1e8ed;
-            border-right: 1px solid #e1e8ed;
-            border-bottom: 1px solid #e1e8ed;
-            margin: 0 0 20px 0;
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .quiz-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        .question {
-            font-weight: bold;
-            font-size: 16px;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-        .options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-        @media(max-width: 600px) {
-            .options {
-                grid-template-columns: 1fr;
-            }
-        }
-        .option {
-            background: #fff;
-            padding: 10px 15px;
-            border: 1px solid #dcdde1;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        .btn-ans {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-        .btn-ans:hover {
-            background-color: #2980b9;
-        }
-        .answer {
-            display: none;
-            margin-top: 15px;
-            padding: 12px 15px;
-            background-color: #d4edda;
-            border: 1px dashed #28a745;
-            color: #155724;
-            font-weight: bold;
-            border-radius: 6px;
-            font-size: 15px;
-        }
-        .code-block {
-            background: #272822;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', Courier, monospace;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            margin: 15px 0;
-            font-size: 14px;
-            direction: ltr;
-            text-align: left;
-        }
-    </style>
-</head>
-<body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-<div class="container">
-    <div class="header">
+    <style>
+      body {
+        font-family:
+          "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, "Kalpurush", Arial;
+        background-color: #f0f4f8;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .header {
+        text-align: center;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+      h1 {
+        color: #2c3e50;
+        margin: 0;
+        font-size: 24px;
+      }
+      h2 {
+        color: #7f8c8d;
+        margin: 10px 0 0 0;
+        font-size: 18px;
+        font-weight: normal;
+      }
+      .section-title {
+        background-color: #2c3e50;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 6px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .quiz-card {
+        background: #fafbfc;
+        border-left: 4px solid #3498db;
+        border-top: 1px solid #e1e8ed;
+        border-right: 1px solid #e1e8ed;
+        border-bottom: 1px solid #e1e8ed;
+        margin: 0 0 20px 0;
+        padding: 20px;
+        border-radius: 0 8px 8px 0;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .quiz-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+      .question {
+        font-weight: bold;
+        font-size: 16px;
+        color: #2c3e50;
+        margin-bottom: 15px;
+      }
+      .options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 15px;
+      }
+      @media (max-width: 600px) {
+        .options {
+          grid-template-columns: 1fr;
+        }
+      }
+      .option {
+        background: #fff;
+        padding: 10px 15px;
+        border: 1px solid #dcdde1;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .btn-ans {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+        transition: background 0.3s;
+      }
+      .btn-ans:hover {
+        background-color: #2980b9;
+      }
+      .answer {
+        display: none;
+        margin-top: 15px;
+        padding: 12px 15px;
+        background-color: #d4edda;
+        border: 1px dashed #28a745;
+        color: #155724;
+        font-weight: bold;
+        border-radius: 6px;
+        font-size: 15px;
+      }
+      .code-block {
+        background: #272822;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 6px;
+        font-family: "Courier New", Courier, monospace;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        margin: 15px 0;
+        font-size: 14px;
+        direction: ltr;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <nav
+          class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6 no-print"
+        >
+          <a
+            href="chapter-one-1.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 1</a
+          >
+          <a
+            href="chapter-one-2.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 2</a
+          >
+          <a
+            href="chapter-one-3.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 3</a
+          >
+          <a
+            href="chapter-one-4.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 4</a
+          >
+          <a
+            href="chapter-one-5.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 5</a
+          >
+          <a
+            href="chapter-one-6.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 6</a
+          >
+          <a
+            href="chapter-one-7.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 7</a
+          >
+          <a
+            href="chapter-one-8.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 8</a
+          >
+        </nav>
         <h1>NTRCA ICT Lecturer Preparation Bank</h1>
         <h2>MCQ সমাধান ও আত্মযাচাই পোর্টাল</h2>
-    </div>
+      </div>
 
-    <!-- SECTION 1 -->
-    <div class="section-title">NTRCA ICT lecturer - 5 MCQ</div>
-    
-    <div class="quiz-card">
-        <div class="question">১. সহজ উপায়ে কার্যকরী প্রোগ্রাম তৈরির জন্য যে নীতিমালা অনুসরণ করা হয় তাকে কী বলে?</div>
-        <div class="options">
-            <div class="option">A. প্রোগ্রাম কোড</div>
-            <div class="option">B. প্রোগ্রাম ডিজাইন মডেল</div>
-            <div class="option">C. অ্যালগরিদম</div>
-            <div class="option">D. ফ্লোচার্ট</div>
+      <!-- SECTION 1 -->
+      <div class="section-title">NTRCA ICT lecturer - 5 MCQ</div>
+
+      <div class="quiz-card">
+        <div class="question">
+          ১. সহজ উপায়ে কার্যকরী প্রোগ্রাম তৈরির জন্য যে নীতিমালা অনুসরণ করা হয়
+          তাকে কী বলে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. প্রোগ্রাম কোড</div>
+          <div class="option">B. প্রোগ্রাম ডিজাইন মডেল</div>
+          <div class="option">C. অ্যালগরিদম</div>
+          <div class="option">D. ফ্লোচার্ট</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (প্রোগ্রাম ডিজাইন মডেল)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">২. নিচের কোনটি প্রোগ্রাম ডিজাইন মডেল নয়?</div>
         <div class="options">
-            <div class="option">A. স্ট্রাকচার্ড</div>
-            <div class="option">B. অবজেক্ট ওরিয়েন্টেড</div>
-            <div class="option">C. ভিজ্যুয়াল</div>
-            <div class="option">D. মেশিন ভাষা</div>
+          <div class="option">A. স্ট্রাকচার্ড</div>
+          <div class="option">B. অবজেক্ট ওরিয়েন্টেড</div>
+          <div class="option">C. ভিজ্যুয়াল</div>
+          <div class="option">D. মেশিন ভাষা</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (মেশিন ভাষা)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৩. স্ট্রাকচার্ড প্রোগ্রামিং এর প্রথম ধারণা দেন কারা?</div>
-        <div class="options">
-            <div class="option">A. Dennis Ritchie, Bjarne Stroustrup</div>
-            <div class="option">B. Corrado Bohm, Guiseppe Jacopini</div>
-            <div class="option">C. James Gosling, Guido van Rossum</div>
-            <div class="option">D. Edsger W. Dijkstra, Dennis Ritchie</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৩. স্ট্রাকচার্ড প্রোগ্রামিং এর প্রথম ধারণা দেন কারা?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Dennis Ritchie, Bjarne Stroustrup</div>
+          <div class="option">B. Corrado Bohm, Guiseppe Jacopini</div>
+          <div class="option">C. James Gosling, Guido van Rossum</div>
+          <div class="option">D. Edsger W. Dijkstra, Dennis Ritchie</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (Corrado Bohm, Guiseppe Jacopini)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৪. স্ট্রাকচার্ড প্রোগ্রামিং এ কয়টি মৌলিক স্ট্রাকচার রয়েছে?</div>
-        <div class="options">
-            <div class="option">A. 2</div>
-            <div class="option">B. 3</div>
-            <div class="option">C. 4</div>
-            <div class="option">D. 5</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৪. স্ট্রাকচার্ড প্রোগ্রামিং এ কয়টি মৌলিক স্ট্রাকচার রয়েছে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. 2</div>
+          <div class="option">B. 3</div>
+          <div class="option">C. 4</div>
+          <div class="option">D. 5</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (3)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৫. স্ট্রাকচার্ড প্রোগ্রামিং এর তিনটি স্ট্রাকচার হলো-</div>
-        <div class="options">
-            <div class="option">A. Class, Object, Method</div>
-            <div class="option">B. Input, Output, Process</div>
-            <div class="option">C. Sequence, Decision, Loop</div>
-            <div class="option">D. Compile, Run, Debug</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৫. স্ট্রাকচার্ড প্রোগ্রামিং এর তিনটি স্ট্রাকচার হলো-
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Class, Object, Method</div>
+          <div class="option">B. Input, Output, Process</div>
+          <div class="option">C. Sequence, Decision, Loop</div>
+          <div class="option">D. Compile, Run, Debug</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (Sequence, Decision, Loop)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৬. স্ট্রাকচার্ড প্রোগ্রামিং পদ্ধতি জনপ্রিয় করেন কে?</div>
-        <div class="options">
-            <div class="option">A. Corrado Bohm</div>
-            <div class="option">B. James Gosling</div>
-            <div class="option">C. Edsger W. Dijkstra</div>
-            <div class="option">D. Guido van Rossum</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৬. স্ট্রাকচার্ড প্রোগ্রামিং পদ্ধতি জনপ্রিয় করেন কে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Corrado Bohm</div>
+          <div class="option">B. James Gosling</div>
+          <div class="option">C. Edsger W. Dijkstra</div>
+          <div class="option">D. Guido van Rossum</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (Edsger W. Dijkstra)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৭. স্ট্রাকচার্ড প্রোগ্রামিং এ সমস্যাকে ছোট অংশে ভাগ করে সমাধান করা হয়, একে বলে-</div>
-        <div class="options">
-            <div class="option">A. Encapsulation</div>
-            <div class="option">B. Modularization</div>
-            <div class="option">C. Inheritance</div>
-            <div class="option">D. Polymorphism</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৭. স্ট্রাকচার্ড প্রোগ্রামিং এ সমস্যাকে ছোট অংশে ভাগ করে সমাধান করা হয়,
+          একে বলে-
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Encapsulation</div>
+          <div class="option">B. Modularization</div>
+          <div class="option">C. Inheritance</div>
+          <div class="option">D. Polymorphism</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (Modularization)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৮. নিচের কোনটি স্ট্রাকচার্ড প্রোগ্রামিং ভাষা?</div>
-        <div class="options">
-            <div class="option">A. Java</div>
-            <div class="option">B. Python</div>
-            <div class="option">C. C</div>
-            <div class="option">D. C#</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৮. নিচের কোনটি স্ট্রাকচার্ড প্রোগ্রামিং ভাষা?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Java</div>
+          <div class="option">B. Python</div>
+          <div class="option">C. C</div>
+          <div class="option">D. C#</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (C)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৯. OOP এর পূর্ণরূপ কী?</div>
         <div class="options">
-            <div class="option">A. Object Oriented Process</div>
-            <div class="option">B. Open Oriented Program</div>
-            <div class="option">C. Open Object Programming</div>
-            <div class="option">D. Object Oriented Programming</div>
+          <div class="option">A. Object Oriented Process</div>
+          <div class="option">B. Open Oriented Program</div>
+          <div class="option">C. Open Object Programming</div>
+          <div class="option">D. Object Oriented Programming</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (Object Oriented Programming)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১০. নিচের কোনটি OOP এর বৈশিষ্ট্য নয়?</div>
         <div class="options">
-            <div class="option">A. Encapsulation</div>
-            <div class="option">B. Polymorphism</div>
-            <div class="option">C. Inheritance</div>
-            <div class="option">D. Compilation</div>
+          <div class="option">A. Encapsulation</div>
+          <div class="option">B. Polymorphism</div>
+          <div class="option">C. Inheritance</div>
+          <div class="option">D. Compilation</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (Compilation)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১১. পলিমরফিজম শব্দের অর্থ কী?</div>
         <div class="options">
-            <div class="option">A. একরূপ</div>
-            <div class="option">B. বহুরূপ</div>
-            <div class="option">C. দ্রুত কাজ</div>
-            <div class="option">D. পুনরাবৃত্তি</div>
+          <div class="option">A. একরূপ</div>
+          <div class="option">B. বহুরূপ</div>
+          <div class="option">C. দ্রুত কাজ</div>
+          <div class="option">D. পুনরাবৃত্তি</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (বহুরূপ)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১২. অবজেক্ট বলতে কী বোঝায়?</div>
         <div class="options">
-            <div class="option">A. শুধু ডেটা</div>
-            <div class="option">B. শুধু ফাংশন</div>
-            <div class="option">C. বাস্তব জগতের কোনো ব্যক্তি বা বস্তু</div>
-            <div class="option">D. কোডের অংশ</div>
+          <div class="option">A. শুধু ডেটা</div>
+          <div class="option">B. শুধু ফাংশন</div>
+          <div class="option">C. বাস্তব জগতের কোনো ব্যক্তি বা বস্তু</div>
+          <div class="option">D. কোডের অংশ</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (বাস্তব জগতের কোনো ব্যক্তি বা বস্তু)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১৩. ক্লাস হলো-</div>
         <div class="options">
-            <div class="option">A. ভেরিয়েবল ও মেথডের ব্লু-প্রিন্ট</div>
-            <div class="option">B. অবজেক্টের বাস্তব রূপ</div>
-            <div class="option">C. শুধু ডেটা সংরক্ষণ</div>
-            <div class="option">D. শুধু ফাংশনের সমষ্টি</div>
+          <div class="option">A. ভেরিয়েবল ও মেথডের ব্লু-প্রিন্ট</div>
+          <div class="option">B. অবজেক্টের বাস্তব রূপ</div>
+          <div class="option">C. শুধু ডেটা সংরক্ষণ</div>
+          <div class="option">D. শুধু ফাংশনের সমষ্টি</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: A (ভেরিয়েবল ও মেথডের ব্লু-প্রিন্ট)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">১৪. এক ক্লাসের বৈশিষ্ট্য অন্য ক্লাস ব্যবহার করলে তাকে কী বলে?</div>
-        <div class="options">
-            <div class="option">A. Encapsulation</div>
-            <div class="option">B. Polymorphism</div>
-            <div class="option">C. Inheritance</div>
-            <div class="option">D. Abstraction</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১৪. এক ক্লাসের বৈশিষ্ট্য অন্য ক্লাস ব্যবহার করলে তাকে কী বলে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Encapsulation</div>
+          <div class="option">B. Polymorphism</div>
+          <div class="option">C. Inheritance</div>
+          <div class="option">D. Abstraction</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (Inheritance)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১৫. OOP ভাষার উদাহরণ কোনটি?</div>
         <div class="options">
-            <div class="option">A. COBOL</div>
-            <div class="option">B. FORTRAN</div>
-            <div class="option">C. Java</div>
-            <div class="option">D. Assembly</div>
+          <div class="option">A. COBOL</div>
+          <div class="option">B. FORTRAN</div>
+          <div class="option">C. Java</div>
+          <div class="option">D. Assembly</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (Java)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">১৬. চিত্রভিত্তিক নির্দেশ ব্যবহার করে প্রোগ্রাম লেখাকে কী বলে?</div>
-        <div class="options">
-            <div class="option">A. Structured Programming</div>
-            <div class="option">B. Visual Programming</div>
-            <div class="option">C. Machine Programming</div>
-            <div class="option">D. Procedural Programming</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১৬. চিত্রভিত্তিক নির্দেশ ব্যবহার করে প্রোগ্রাম লেখাকে কী বলে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Structured Programming</div>
+          <div class="option">B. Visual Programming</div>
+          <div class="option">C. Machine Programming</div>
+          <div class="option">D. Procedural Programming</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (Visual Programming)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১৭. প্রথম ভিজ্যুয়াল প্রোগ্রামিং ভাষা কোনটি?</div>
         <div class="options">
-            <div class="option">A. Java</div>
-            <div class="option">B. Python</div>
-            <div class="option">C. Visual Basic</div>
-            <div class="option">D. C++</div>
+          <div class="option">A. Java</div>
+          <div class="option">B. Python</div>
+          <div class="option">C. Visual Basic</div>
+          <div class="option">D. C++</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (Visual Basic)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">১৮. সব ভিজ্যুয়াল প্রোগ্রাম মূলত কোন মডেলের উপর ভিত্তি করে?</div>
-        <div class="options">
-            <div class="option">A. Compiler Driven</div>
-            <div class="option">B. Event Driven</div>
-            <div class="option">C. Procedure Driven</div>
-            <div class="option">D. Machine Driven</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১৮. সব ভিজ্যুয়াল প্রোগ্রাম মূলত কোন মডেলের উপর ভিত্তি করে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Compiler Driven</div>
+          <div class="option">B. Event Driven</div>
+          <div class="option">C. Procedure Driven</div>
+          <div class="option">D. Machine Driven</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (Event Driven)</div>
-    </div>
+      </div>
 
-    <!-- SECTION 2 -->
-    <div class="section-title">NTRCA ICT lecturer - 9 MCQ</div>
+      <!-- SECTION 2 -->
+      <div class="section-title">NTRCA ICT lecturer - 9 MCQ</div>
 
-    <div class="quiz-card">
-        <div class="question">১. উৎস (Source) প্রোগ্রামকে বস্তু (Object) প্রোগ্রামে রূপান্তর করে যে প্রোগ্রাম তাকে বলে-</div>
-        <div class="options">
-            <div class="option">A. লিঙ্কার</div>
-            <div class="option">B. লোডার</div>
-            <div class="option">C. ডিবাগার</div>
-            <div class="option">D. অনুবাদক প্রোগ্রাম</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১. উৎস (Source) প্রোগ্রামকে বস্তু (Object) প্রোগ্রামে রূপান্তর করে যে
+          প্রোগ্রাম তাকে বলে-
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. লিঙ্কার</div>
+          <div class="option">B. লোডার</div>
+          <div class="option">C. ডিবাগার</div>
+          <div class="option">D. অনুবাদক প্রোগ্রাম</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (অনুবাদক প্রোগ্রাম)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">২. মেশিন ভাষায় লেখা প্রোগ্রামকে কী বলা হয়?</div>
         <div class="options">
-            <div class="option">A. সোর্স প্রোগ্রাম</div>
-            <div class="option">B. হাই লেভেল প্রোগ্রাম</div>
-            <div class="option">C. অবজেক্ট প্রোগ্রাম</div>
-            <div class="option">D. অ্যাসেম্বলি প্রোগ্রাম</div>
+          <div class="option">A. সোর্স প্রোগ্রাম</div>
+          <div class="option">B. হাই লেভেল প্রোগ্রাম</div>
+          <div class="option">C. অবজেক্ট প্রোগ্রাম</div>
+          <div class="option">D. অ্যাসেম্বলি প্রোগ্রাম</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (অবজেক্ট প্রোগ্রাম)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৩. নিচের কোনটি অনুবাদক প্রোগ্রামের প্রকারভেদ?</div>
-        <div class="options">
-            <div class="option">A. Debugger</div>
-            <div class="option">B. Editor</div>
-            <div class="option">C. Compiler</div>
-            <div class="option">D. Loader</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৩. নিচের কোনটি অনুবাদক প্রোগ্রামের প্রকারভেদ?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Debugger</div>
+          <div class="option">B. Editor</div>
+          <div class="option">C. Compiler</div>
+          <div class="option">D. Loader</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (Compiler)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৪. অ্যাসেম্বলার কোন ভাষাকে মেশিন ভাষায় রূপান্তর করে?</div>
-        <div class="options">
-            <div class="option">A. উচ্চস্তরের ভাষা</div>
-            <div class="option">B. অ্যাসেম্বলি ভাষা</div>
-            <div class="option">C. machine ভাষা</div>
-            <div class="option">D. প্রাকৃতিক ভাষা</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৪. অ্যাসেম্বলার কোন ভাষাকে মেশিন ভাষায় রূপান্তর করে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. উচ্চস্তরের ভাষা</div>
+          <div class="option">B. অ্যাসেম্বলি ভাষা</div>
+          <div class="option">C. machine ভাষা</div>
+          <div class="option">D. প্রাকৃতিক ভাষা</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (অ্যাসেম্বলি ভাষা)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৫. সিস্টেম ফ্লোচার্টে কী দেখানো হয়?</div>
         <div class="options">
-            <div class="option">A. শুধু কোড</div>
-            <div class="option">B. হার্ডওয়্যার নকশা</div>
-            <div class="option">C. সিস্টেমের কার্যপ্রণালি</div>
-            <div class="option">D. অ্যালগরিদম</div>
+          <div class="option">A. শুধু কোড</div>
+          <div class="option">B. হার্ডওয়্যার নকশা</div>
+          <div class="option">C. সিস্টেমের কার্যপ্রণালি</div>
+          <div class="option">D. অ্যালগরিদম</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (সিস্টেমের কার্যপ্রণালি)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৬. ইন্টারপ্রেটার কোনভাবে প্রোগ্রাম অনুবাদ করে?</div>
-        <div class="options">
-            <div class="option">A. সম্পূর্ণ একসাথে</div>
-            <div class="option">B. লাইন বাই লাইন</div>
-            <div class="option">C. ব্লক আকারে</div>
-            <div class="option">D. মডিউল আকারে</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৬. ইন্টারপ্রেটার কোনভাবে প্রোগ্রাম অনুবাদ করে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. সম্পূর্ণ একসাথে</div>
+          <div class="option">B. লাইন বাই লাইন</div>
+          <div class="option">C. ব্লক আকারে</div>
+          <div class="option">D. মডিউল আকারে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (লাইন বাই লাইন)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৭. কম্পাইলার প্রোগ্রামের ভুল কিভাবে দেখায়?</div>
         <div class="options">
-            <div class="option">A. একবারে সব</div>
-            <div class="option">B. লাইন বাই লাইন</div>
-            <div class="option">C. দেখায় না</div>
-            <div class="option">D. রান টাইমে</div>
+          <div class="option">A. একবারে সব</div>
+          <div class="option">B. লাইন বাই লাইন</div>
+          <div class="option">C. দেখায় না</div>
+          <div class="option">D. রান টাইমে</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: A (একবারে সব)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৮. ডিবাগিং ও টেস্টিং কোনটির ক্ষেত্রে দ্রুত?</div>
         <div class="options">
-            <div class="option">A. কম্পাইলার</div>
-            <div class="option">B. অ্যাসেম্বলার</div>
-            <div class="option">C. ইন্টারপ্রেটার</div>
-            <div class="option">D. লোডার</div>
+          <div class="option">A. কম্পাইলার</div>
+          <div class="option">B. অ্যাসেম্বলার</div>
+          <div class="option">C. ইন্টারপ্রেটার</div>
+          <div class="option">D. লোডার</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (ইন্টারপ্রেটার)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৯. প্রতিবার কাজের আগে অনুবাদ করতে হয়-</div>
         <div class="options">
-            <div class="option">A. কম্পাইলারে</div>
-            <div class="option">B. অ্যাসেম্বলারে</div>
-            <div class="option">C. ইন্টারপ্রেটারে</div>
-            <div class="option">D. লিঙ্কারে</div>
+          <div class="option">A. কম্পাইলারে</div>
+          <div class="option">B. অ্যাসেম্বলারে</div>
+          <div class="option">C. ইন্টারপ্রেটারে</div>
+          <div class="option">D. লিঙ্কারে</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (ইন্টারপ্রেটারে)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১০. পূর্ণাঙ্গ যান্ত্রিক প্রোগ্রাম তৈরি হয়-</div>
         <div class="options">
-            <div class="option">A. ইন্টারপ্রেটারে</div>
-            <div class="option">B. কম্পাইলারে</div>
-            <div class="option">C. ডিবাগারে</div>
-            <div class="option">D. এডিটরে</div>
+          <div class="option">A. ইন্টারপ্রেটারে</div>
+          <div class="option">B. কম্পাইলারে</div>
+          <div class="option">C. ডিবাগারে</div>
+          <div class="option">D. এডিটরে</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (কম্পাইলারে)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">১১. একটি পূর্ণাঙ্গ প্রোগ্রামের মৌলিক অংশ কয়টি?</div>
-        <div class="options">
-            <div class="option">A. ২টি</div>
-            <div class="option">B. ৩টি</div>
-            <div class="option">C. ৪টি</div>
-            <div class="option">D. ৫টি</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১১. একটি পূর্ণাঙ্গ প্রোগ্রামের মৌলিক অংশ কয়টি?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. ২টি</div>
+          <div class="option">B. ৩টি</div>
+          <div class="option">C. ৪টি</div>
+          <div class="option">D. ৫টি</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (৩টি)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১২. প্রোগ্রাম সংগঠনের প্রথম ধাপ কোনটি?</div>
         <div class="options">
-            <div class="option">A. প্রসেস</div>
-            <div class="option">B. আউটপুট</div>
-            <div class="option">C. ইনপুট</div>
-            <div class="option">D. ডিবাগিং</div>
+          <div class="option">A. প্রসেস</div>
+          <div class="option">B. আউটপুট</div>
+          <div class="option">C. ইনপুট</div>
+          <div class="option">D. ডিবাগিং</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (ইনপুট)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১৩. আদর্শ প্রোগ্রামের একটি বৈশিষ্ট্য নয়-</div>
         <div class="options">
-            <div class="option">A. সহজ ও বোধগম্য</div>
-            <div class="option">B. বেশি মেমোরি ব্যবহার</div>
-            <div class="option">C. রক্ষণাবেক্ষণযোগ্য</div>
-            <div class="option">D. ডিবাগিং সহজ</div>
+          <div class="option">A. সহজ ও বোধগম্য</div>
+          <div class="option">B. বেশি মেমোরি ব্যবহার</div>
+          <div class="option">C. রক্ষণাবেক্ষণযোগ্য</div>
+          <div class="option">D. ডিবাগিং সহজ</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (বেসি মেমোরি ব্যবহার)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১৪. প্রোগ্রাম তৈরির প্রথম ধাপ কোনটি?</div>
         <div class="options">
-            <div class="option">A. কোডিং</div>
-            <div class="option">B. সমস্যা বিশ্লেষণ</div>
-            <div class="option">C. সমস্যা নির্দিষ্টকরণ</div>
-            <div class="option">D. ডকুমেন্টেশন</div>
+          <div class="option">A. কোডিং</div>
+          <div class="option">B. সমস্যা বিশ্লেষণ</div>
+          <div class="option">C. সমস্যা নির্দিষ্টকরণ</div>
+          <div class="option">D. ডকুমেন্টেশন</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (সমস্যা নির্দিষ্টকরণ)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১৫. প্রোগ্রামের ভুলকে কী বলা হয়?</div>
         <div class="options">
-            <div class="option">A. Error</div>
-            <div class="option">B. Debug</div>
-            <div class="option">C. Virus</div>
-            <div class="option">D. Bug</div>
+          <div class="option">A. Error</div>
+          <div class="option">B. Debug</div>
+          <div class="option">C. Virus</div>
+          <div class="option">D. Bug</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (Bug)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১৬. সিনট্যাক্স ভুলকে আর কী বলা হয়?</div>
         <div class="options">
-            <div class="option">A. লজিক্যাল ভুল</div>
-            <div class="option">B. রান টাইম ভুল</div>
-            <div class="option">C. কম্পাইল টাইম ভুল</div>
-            <div class="option">D. ডেটাগত ভুল</div>
+          <div class="option">A. লজিক্যাল ভুল</div>
+          <div class="option">B. রান টাইম ভুল</div>
+          <div class="option">C. কম্পাইল টাইম ভুল</div>
+          <div class="option">D. ডেটাগত ভুল</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (কম্পাইল টাইম ভুল)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">১৭. কোন ভুল ভুল আউটপুট পাওয়া যায় কিন্তু Error Message আসে না?</div>
-        <div class="options">
-            <div class="option">A. সিনট্যাক্স ভুল</div>
-            <div class="option">B. ডেটাগত ভুল</div>
-            <div class="option">C. লজিক্যাল ভুল</div>
-            <div class="option">D. রান টাইম ভুল</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১৭. কোন ভুল ভুল আউটপুট পাওয়া যায় কিন্তু Error Message আসে না?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. সিনট্যাক্স ভুল</div>
+          <div class="option">B. ডেটাগত ভুল</div>
+          <div class="option">C. লজিক্যাল ভুল</div>
+          <div class="option">D. রান টাইম ভুল</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (লজিক্যাল ভুল)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">১৮. ভুল ডেটা বা প্যারামিটারের কারণে যে ভুল হয়-</div>
-        <div class="options">
-            <div class="option">A. সিনট্যাক্স ভুল</div>
-            <div class="option">B. রান টাইম এরর</div>
-            <div class="option">C. লজিক্যাল ভুল</div>
-            <div class="option">D. কম্পাইল টাইম ভুল</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১৮. ভুল ডেটা বা প্যারামিটারের কারণে যে ভুল হয়-
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. সিনট্যাক্স ভুল</div>
+          <div class="option">B. রান টাইম এরর</div>
+          <div class="option">C. লজিক্যাল ভুল</div>
+          <div class="option">D. কম্পাইল টাইম ভুল</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (রান টাইম এরর)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">১৯. ধাপে ধাপে সমস্যার সমাধানের লিখিত রূপকে বলে-</div>
-        <div class="options">
-            <div class="option">A. অ্যালগরিদম</div>
-            <div class="option">B. প্রোগ্রাম</div>
-            <div class="option">C. ফ্লোচার্ট</div>
-            <div class="option">D. সুডোকোড</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১৯. ধাপে ধাপে সমস্যার সমাধানের লিখিত রূপকে বলে-
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. অ্যালগরিদম</div>
+          <div class="option">B. প্রোগ্রাম</div>
+          <div class="option">C. ফ্লোচার্ট</div>
+          <div class="option">D. সুডোকোড</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: A (অ্যালগরিদম)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">২০. অ্যালগরিদম নামকরণ করা হয়েছে কার নামানুসারে?</div>
-        <div class="options">
-            <div class="option">A. নিউটনের নামে</div>
-            <div class="option">B. ডেনিস রিচির নামে</div>
-            <div class="option">C. আল খারিজমীর নামে</div>
-            <div class="option">D. এরিস্টটলের নামে</div>
+      <div class="quiz-card">
+        <div class="question">
+          ২০. অ্যালগরিদম নামকরণ করা হয়েছে কার নামানুসারে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. নিউটনের নামে</div>
+          <div class="option">B. ডেনিস রিচির নামে</div>
+          <div class="option">C. আল খারিজমীর নামে</div>
+          <div class="option">D. এরিস্টটলের নামে</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (আল খারিজমীর নামে)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">২১. অ্যালগরিদমে কোনটি থাকবে না?</div>
         <div class="options">
-            <div class="option">A. ধাপ</div>
-            <div class="option">B. ইনপুট</div>
-            <div class="option">C. আউটপুট</div>
-            <div class="option">D. প্রোগ্রাম কোড</div>
+          <div class="option">A. ধাপ</div>
+          <div class="option">B. ইনপুট</div>
+          <div class="option">C. আউটপুট</div>
+          <div class="option">D. প্রোগ্রাম কোড</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (প্রোগ্রাম কোড)</div>
-    </div>
+      </div>
 
-    <!-- SECTION 3 -->
-    <div class="section-title">NTRCA ICT lecturer - 14 & 15 MCQ ('C' Language Basics)</div>
+      <!-- SECTION 3 -->
+      <div class="section-title">
+        NTRCA ICT lecturer - 14 & 15 MCQ ('C' Language Basics)
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১. 'সি' প্রোগ্রামিং ভাষার উদ্ভাবক কে?</div>
         <div class="options">
-            <div class="option">A. James Gosling</div>
-            <div class="option">B. Dennis Ritchie</div>
-            <div class="option">C. Bjarne Stroustrup</div>
-            <div class="option">D. Guido van Rossum</div>
+          <div class="option">A. James Gosling</div>
+          <div class="option">B. Dennis Ritchie</div>
+          <div class="option">C. Bjarne Stroustrup</div>
+          <div class="option">D. Guido van Rossum</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (Dennis Ritchie)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">২. 'সি' ভাষা কোন ল্যাবে তৈরি করা হয়?</div>
         <div class="options">
-            <div class="option">A. IBM Lab</div>
-            <div class="option">B. Microsoft Lab</div>
-            <div class="option">C. Bell Laboratory</div>
-            <div class="option">D. Sun Microsystems</div>
+          <div class="option">A. IBM Lab</div>
+          <div class="option">B. Microsoft Lab</div>
+          <div class="option">C. Bell Laboratory</div>
+          <div class="option">D. Sun Microsystems</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (Bell Laboratory)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১০. 'সি' ভাষা কোন ধরনের ভাষা? (Case)</div>
         <div class="options">
-            <div class="option">A. Case insensitive</div>
-            <div class="option">B. Case sensitive</div>
-            <div class="option">C. Symbol insensitive</div>
-            <div class="option">D. Object sensitive</div>
+          <div class="option">A. Case insensitive</div>
+          <div class="option">B. Case sensitive</div>
+          <div class="option">C. Symbol insensitive</div>
+          <div class="option">D. Object sensitive</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (Case sensitive)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">১১. 'সি' প্রোগ্রামের প্রতিটি স্টেটমেন্টের শেষে কী থাকে?</div>
-        <div class="options">
-            <div class="option">A. Colon</div>
-            <div class="option">B. Dot</div>
-            <div class="option">C. Semicolon</div>
-            <div class="option">D. Comma</div>
+      <div class="quiz-card">
+        <div class="question">
+          ১১. 'সি' প্রোগ্রামের প্রতিটি স্টেটমেন্টের শেষে কী থাকে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. Colon</div>
+          <div class="option">B. Dot</div>
+          <div class="option">C. Semicolon</div>
+          <div class="option">D. Comma</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (Semicolon)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">২২. char ডেটা টাইপ কত বাইট জায়গা নেয়?</div>
         <div class="options">
-            <div class="option">A. 2</div>
-            <div class="option">B. 4</div>
-            <div class="option">C. 8</div>
-            <div class="option">D. 1</div>
+          <div class="option">A. 2</div>
+          <div class="option">B. 4</div>
+          <div class="option">C. 8</div>
+          <div class="option">D. 1</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (1)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৩৪. 'সি' ভাষায় কয়টি কিওয়ার্ড আছে?</div>
         <div class="options">
-            <div class="option">A. 30</div>
-            <div class="option">B. 31</div>
-            <div class="option">C. 32</div>
-            <div class="option">D. 33</div>
+          <div class="option">A. 30</div>
+          <div class="option">B. 31</div>
+          <div class="option">C. 32</div>
+          <div class="option">D. 33</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (32)</div>
-    </div>
+      </div>
 
-    <!-- SECTION 4 -->
-    <div class="section-title">Important ICT - Best Selection</div>
+      <!-- SECTION 4 -->
+      <div class="section-title">Important ICT - Best Selection</div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">১. C++ ভাষা টি উদ্ভাবন করেন কে?</div>
         <div class="options">
-            <div class="option">A. ডেনিস রিসি</div>
-            <div class="option">B. গুইডো ভ্যান রসম</div>
-            <div class="option">C. বজর্ন স্ট্রাউস্ট্রাপ</div>
-            <div class="option">D. অ্যাডা লাভলেস</div>
+          <div class="option">A. ডেনিস রিসি</div>
+          <div class="option">B. গুইডো ভ্যান রসম</div>
+          <div class="option">C. বজর্ন স্ট্রাউস্ট্রাপ</div>
+          <div class="option">D. অ্যাডা লাভলেস</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: C (বজর্ন স্ট্রাউস্ট্রাপ)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">২. সরাসরি কম্পিউটার এর সাথে সংযোগ স্থাপন করে কোন ভাষা?</div>
-        <div class="options">
-            <div class="option">A. মেশিন</div>
-            <div class="option">B. অ্যাসেম্বলি</div>
-            <div class="option">C. উচ্চতর</div>
-            <div class="option">D. অতিউচ্চতর</div>
+      <div class="quiz-card">
+        <div class="question">
+          ২. সরাসরি কম্পিউটার এর সাথে সংযোগ স্থাপন করে কোন ভাষা?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. মেশিন</div>
+          <div class="option">B. অ্যাসেম্বলি</div>
+          <div class="option">C. উচ্চতর</div>
+          <div class="option">D. অতিউচ্চতর</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: A (মেশিন)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৩. কোনটি মধ্যম স্তরের ভাষা?</div>
         <div class="options">
-            <div class="option">A. বেসিক</div>
-            <div class="option">B. কোবোল</div>
-            <div class="option">C. ফোরট্রান</div>
-            <div class="option">D. সি</div>
+          <div class="option">A. বেসিক</div>
+          <div class="option">B. কোবোল</div>
+          <div class="option">C. ফোরট্রান</div>
+          <div class="option">D. সি</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (সি)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৫. ইন্টারপ্রেটার এর কাজ কি?</div>
         <div class="options">
-            <div class="option">A. এক লাইন করে অনুবাদ করে</div>
-            <div class="option">B. এক সাথে পুরো প্রোগ্রাম অনুবাদ করে</div>
-            <div class="option">C. সব ভুল এক সাথে প্রদর্শন করে</div>
-            <div class="option">D. ডিবাগার দ্রুত কাজ করা</div>
+          <div class="option">A. এক লাইন করে অনুবাদ করে</div>
+          <div class="option">B. এক সাথে পুরো প্রোগ্রাম অনুবাদ করে</div>
+          <div class="option">C. সব ভুল এক সাথে প্রদর্শন করে</div>
+          <div class="option">D. ডিবাগার দ্রুত কাজ করা</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: A (এক লাইন করে অনুবাদ করে)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">২৩. প্রোগ্রাম ফ্লোচার্টে প্রক্রিয়াকরণে কোন প্রতীকটি ব্যবহৃত হয়?</div>
-        <div class="options">
-            <div class="option">A. সামান্তরিক</div>
-            <div class="option">B. আয়তক্ষেত্র</div>
-            <div class="option">C. রম্বস</div>
-            <div class="option">D. ওভাল</div>
+      <div class="quiz-card">
+        <div class="question">
+          ২৩. প্রোগ্রাম ফ্লোচার্টে প্রক্রিয়াকরণে কোন প্রতীকটি ব্যবহৃত হয়?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. সামান্তরিক</div>
+          <div class="option">B. আয়তক্ষেত্র</div>
+          <div class="option">C. রম্বস</div>
+          <div class="option">D. ওভাল</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (আয়তক্ষেত্র)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৩৮. পরবর্তী লাইনে যাওয়ার জন্য (New Line) ব্যবহৃত হয় কোনটি?</div>
-        <div class="options">
-            <div class="option">A. \a</div>
-            <div class="option">B. \b</div>
-            <div class="option">C. \v</div>
-            <div class="option">D. \n</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৩৮. পরবর্তী লাইনে যাওয়ার জন্য (New Line) ব্যবহৃত হয় কোনটি?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. \a</div>
+          <div class="option">B. \b</div>
+          <div class="option">C. \v</div>
+          <div class="option">D. \n</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: D (\n)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৪৩. সি-ভাষার এক্সপ্রেশন X = pow(3,2) + (5%2) + 3. X এর মান কত?</div>
-        <div class="options">
-            <div class="option">A. 10</div>
-            <div class="option">B. 11</div>
-            <div class="option">C. 12</div>
-            <div class="option">D. 13</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৪৩. সি-ভাষার এক্সপ্রেশন X = pow(3,2) + (5%2) + 3. X এর মান কত?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
-        <div class="answer">Ans: D (13) <br>ব্যাখ্যা: pow(3,2) = 9, 5%2 = 1 (ভাগশেষ), অতএব 9 + 1 + 3 = 13</div>
-    </div>
+        <div class="options">
+          <div class="option">A. 10</div>
+          <div class="option">B. 11</div>
+          <div class="option">C. 12</div>
+          <div class="option">D. 13</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
+        <div class="answer">
+          Ans: D (13) <br />ব্যাখ্যা: pow(3,2) = 9, 5%2 = 1 (ভাগশেষ), অতএব 9 + 1
+          + 3 = 13
+        </div>
+      </div>
 
-    <div class="quiz-card">
-        <div class="question">৬০. প্রোগ্রামের ভুলত্রুটি খুঁজে বের করে তা সংশোধনের পদ্ধতিকে কী বলে?</div>
-        <div class="options">
-            <div class="option">A. এনকোডিং</div>
-            <div class="option">B. ডিবাগিং</div>
-            <div class="option">C. কোডিং</div>
-            <div class="option">D. ডিকোডিং</div>
+      <div class="quiz-card">
+        <div class="question">
+          ৬০. প্রোগ্রামের ভুলত্রুটি খুঁজে বের করে তা সংশোধনের পদ্ধতিকে কী বলে?
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <div class="options">
+          <div class="option">A. এনকোডিং</div>
+          <div class="option">B. ডিবাগিং</div>
+          <div class="option">C. কোডিং</div>
+          <div class="option">D. ডিকোডিং</div>
+        </div>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: B (ডিবাগিং)</div>
-    </div>
+      </div>
 
-    <div class="quiz-card">
+      <div class="quiz-card">
         <div class="question">৬৮. কোন লুপটি কমপক্ষে একবার চলবেই?</div>
         <div class="options">
-            <div class="option">A. do-while</div>
-            <div class="option">B. while</div>
-            <div class="option">C. for</div>
-            <div class="option">D. সবগুলো</div>
+          <div class="option">A. do-while</div>
+          <div class="option">B. while</div>
+          <div class="option">C. for</div>
+          <div class="option">D. সবগুলো</div>
         </div>
-        <button class="btn-ans" onclick="toggleAnswer(this)">উত্তর দেখুন</button>
+        <button class="btn-ans" onclick="toggleAnswer(this)">
+          উত্তর দেখুন
+        </button>
         <div class="answer">Ans: A (do-while)</div>
+      </div>
     </div>
 
-</div>
-
-<script>
-    function toggleAnswer(button) {
+    <script>
+      function toggleAnswer(button) {
         var answerDiv = button.nextElementSibling;
-        if (answerDiv.style.display === "none" || answerDiv.style.display === "") {
-            answerDiv.style.display = "block";
-            button.textContent = "উত্তর লুকান";
-            button.style.backgroundColor = '#e74c3c';
+        if (
+          answerDiv.style.display === "none" ||
+          answerDiv.style.display === ""
+        ) {
+          answerDiv.style.display = "block";
+          button.textContent = "উত্তর লুকান";
+          button.style.backgroundColor = "#e74c3c";
         } else {
-            answerDiv.style.display = "none";
-            button.textContent = "উত্তর দেখুন";
-            button.style.backgroundColor = '#3498db';
+          answerDiv.style.display = "none";
+          button.textContent = "উত্তর দেখুন";
+          button.style.backgroundColor = "#3498db";
         }
-    }
-</script>
-
-</body>
+      }
+    </script>
+  </body>
 </html>

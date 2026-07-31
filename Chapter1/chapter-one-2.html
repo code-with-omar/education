@@ -1,392 +1,2017 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C Programming Master Question Bank (150 MCQs)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        body {
-            font-family: 'Hind Siliguri', 'Inter', sans-serif;
-            background-color: #f8fafc;
-        }
-        /* Custom scrollbar for better UI experience */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        /* Print Stylesheet Optimization */
-        @media print {
-            body {
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                padding: 0 !important;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .print-only {
-                display: block !important;
-            }
-            .question-card {
-                box-shadow: none !important;
-                border: 1px solid #e2e8f0 !important;
-                page-break-inside: avoid !important;
-                margin-bottom: 1.5rem !important;
-                background: #fff !important;
-            }
-            .ans-expl {
-                display: block !important;
-                opacity: 1 !important;
-            }
-        }
-    </style>
-</head>
-<body class="min-h-screen text-slate-800 transition-colors duration-300">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-    <header class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl py-8 px-4 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"></div>
-        <div class="max-w-6xl mx-auto relative z-10 text-center">
-            <span class="bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider">সি ও অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিং</span>
-            <h1 class="text-3xl md:text-5xl font-bold mt-4 mb-2 tracking-tight">সি প্রোগ্রামিং মাস্টার প্রশ্ন ব্যাংক</h1>
-            <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-6">১৭টি গুরুত্বপূর্ণ অধ্যায়ের মৌলিক ও অ্যাডভান্সড টপিকের ওপর ভিত্তি করে তৈরি চূড়ান্ত সংকলন (১৫০ MCQs)</p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto bg-slate-850/50 backdrop-blur-md rounded-2xl p-4 border border-slate-700/50">
-                <div class="text-center border-r border-slate-700/50 last:border-0">
-                    <p class="text-xs text-slate-400">মোট প্রশ্ন</p>
-                    <p class="text-xl md:text-2xl font-bold text-indigo-400">১৫০ টি</p>
-                </div>
-                <div class="text-center border-r border-slate-700/50 last:border-0 col-span-1">
-                    <p class="text-xs text-slate-400">অধ্যায় ক্যাটাগরি</p>
-                    <p class="text-xl md:text-2xl font-bold text-teal-400">১০ টি</p>
-                </div>
-                <div class="text-center border-r border-slate-700/50 last:border-0">
-                    <p class="text-xs text-slate-400">সঠিক উত্তর স্কোর</p>
-                    <p id="stats-score" class="text-xl md:text-2xl font-bold text-amber-400">০ / ০</p>
-                </div>
-                <div class="text-center last:border-0">
-                    <p class="text-xs text-slate-400">নেগেটিভ মার্কস</p>
-                    <p class="text-xl md:text-2xl font-bold text-red-400">০.২৫</p>
-                </div>
-            </div>
+    <style>
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      /* Custom scrollbar for better UI experience */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      /* Print Stylesheet Optimization */
+      @media print {
+        body {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+          padding: 0 !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .print-only {
+          display: block !important;
+        }
+        .question-card {
+          box-shadow: none !important;
+          border: 1px solid #e2e8f0 !important;
+          page-break-inside: avoid !important;
+          margin-bottom: 1.5rem !important;
+          background: #fff !important;
+        }
+        .ans-expl {
+          display: block !important;
+          opacity: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen text-slate-800 transition-colors duration-300">
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl py-8 px-4 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"
+      ></div>
+      <nav
+        class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6 no-print"
+      >
+        <a
+          href="chapter-one-1.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 1</a
+        >
+        <a
+          href="chapter-one-2.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 2</a
+        >
+        <a
+          href="chapter-one-3.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 3</a
+        >
+        <a
+          href="chapter-one-4.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 4</a
+        >
+        <a
+          href="chapter-one-5.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 5</a
+        >
+        <a
+          href="chapter-one-6.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 6</a
+        >
+        <a
+          href="chapter-one-7.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 7</a
+        >
+        <a
+          href="chapter-one-8.html"
+          class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+          >Part 8</a
+        >
+      </nav>
+      <div class="max-w-6xl mx-auto relative z-10 text-center">
+        <span
+          class="bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider"
+          >সি ও অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিং</span
+        >
+        <h1 class="text-3xl md:text-5xl font-bold mt-4 mb-2 tracking-tight">
+          সি প্রোগ্রামিং মাস্টার প্রশ্ন ব্যাংক
+        </h1>
+        <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-6">
+          ১৭টি গুরুত্বপূর্ণ অধ্যায়ের মৌলিক ও অ্যাডভান্সড টপিকের ওপর ভিত্তি করে
+          তৈরি চূড়ান্ত সংকলন (১৫০ MCQs)
+        </p>
+
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto bg-slate-850/50 backdrop-blur-md rounded-2xl p-4 border border-slate-700/50"
+        >
+          <div class="text-center border-r border-slate-700/50 last:border-0">
+            <p class="text-xs text-slate-400">মোট প্রশ্ন</p>
+            <p class="text-xl md:text-2xl font-bold text-indigo-400">১৫০ টি</p>
+          </div>
+          <div
+            class="text-center border-r border-slate-700/50 last:border-0 col-span-1"
+          >
+            <p class="text-xs text-slate-400">অধ্যায় ক্যাটাগরি</p>
+            <p class="text-xl md:text-2xl font-bold text-teal-400">১০ টি</p>
+          </div>
+          <div class="text-center border-r border-slate-700/50 last:border-0">
+            <p class="text-xs text-slate-400">সঠিক উত্তর স্কোর</p>
+            <p
+              id="stats-score"
+              class="text-xl md:text-2xl font-bold text-amber-400"
+            >
+              ০ / ০
+            </p>
+          </div>
+          <div class="text-center last:border-0">
+            <p class="text-xs text-slate-400">নেগেটিভ মার্কস</p>
+            <p class="text-xl md:text-2xl font-bold text-red-400">০.২৫</p>
+          </div>
         </div>
+      </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 py-8">
-        <section class="no-print bg-white rounded-2xl shadow-sm border border-slate-100 p-6 mb-8">
-            <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-6">
-                <div class="w-full md:w-1/3 relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="search-input" placeholder="প্রশ্ন বা টপিক খুঁজুন..." class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm">
-                </div>
-                
-                <div class="w-full md:w-1/3">
-                    <select id="category-filter" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm">
-                        <option value="all">সব অধ্যায় (১৫০টি প্রশ্ন)</option>
-                        <option value="1">১. ইতিহাস, অনুবাদক এবং বেসিক কনসেপ্ট (১-১০)</option>
-                        <option value="2">২. OOP এবং প্রোগ্রামের কাঠামো (১১-২০)</option>
-                        <option value="3">৩. অ্যালগরিদম, ফ্লোচার্ট ও এরর হ্যান্ডলিং (২১-৩০)</option>
-                        <option value="4">৪. ডেটা টাইপ, অপারেটর ও আই/ও (৩১-৪০)</option>
-                        <option value="5">৫. কন্ডিশনাল কন্ট্রোল ও লুপ স্টেটমেন্ট (৪১-৫০)</option>
-                        <option value="6">৬. অ্যারে এবং স্ট্রিং (৫১-৬০)</option>
-                        <option value="7">৭. ফাংশন, রিকার্সন এবং পয়েন্টার (৬১-৭০)</option>
-                        <option value="8">৮. অ্যাডভান্সড সি কুইজ - পার্ট ১ (৭১-৯০)</option>
-                        <option value="9">৯. অ্যাডভান্সড সি কুইজ - পার্ট ২ (৯১-১১০)</option>
-                        <option value="10">১০. অ্যাডভান্সড সি কুইজ - পার্ট ৩ (১১১-১৫০)</option>
-                    </select>
-                </div>
+      <section
+        class="no-print bg-white rounded-2xl shadow-sm border border-slate-100 p-6 mb-8"
+      >
+        <div
+          class="flex flex-col md:flex-row gap-4 items-center justify-between mb-6"
+        >
+          <div class="w-full md:w-1/3 relative">
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+            ></i>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="প্রশ্ন বা টপিক খুঁজুন..."
+              class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+            />
+          </div>
 
-                <div class="flex gap-2 w-full md:w-auto">
-                    <button id="btn-quiz-mode" onclick="setMode('quiz')" class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600">
-                        <i class="fa-solid fa-gamepad"></i> কুইজ মোড
-                    </button>
-                    <button id="btn-study-mode" onclick="setMode('study')" class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50">
-                        <i class="fa-solid fa-book-open"></i> অধ্যায়ন মোড
-                    </button>
-                </div>
-            </div>
+          <div class="w-full md:w-1/3">
+            <select
+              id="category-filter"
+              class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+            >
+              <option value="all">সব অধ্যায় (১৫০টি প্রশ্ন)</option>
+              <option value="1">
+                ১. ইতিহাস, অনুবাদক এবং বেসিক কনসেপ্ট (১-১০)
+              </option>
+              <option value="2">২. OOP এবং প্রোগ্রামের কাঠামো (১১-২০)</option>
+              <option value="3">
+                ৩. অ্যালগরিদম, ফ্লোচার্ট ও এরর হ্যান্ডলিং (২১-৩০)
+              </option>
+              <option value="4">৪. ডেটা টাইপ, অপারেটর ও আই/ও (৩১-৪০)</option>
+              <option value="5">
+                ৫. কন্ডিশনাল কন্ট্রোল ও লুপ স্টেটমেন্ট (৪১-৫০)
+              </option>
+              <option value="6">৬. অ্যারে এবং স্ট্রিং (৫১-৬০)</option>
+              <option value="7">৭. ফাংশন, রিকার্সন এবং পয়েন্টার (৬১-৭০)</option>
+              <option value="8">
+                ৮. অ্যাডভান্সড সি কুইজ - পার্ট ১ (৭১-৯০)
+              </option>
+              <option value="9">
+                ৯. অ্যাডভান্সড সি কুইজ - পার্ট ২ (৯১-১১০)
+              </option>
+              <option value="10">
+                ১০. অ্যাডভান্সড সি কুইজ - পার্ট ৩ (১১১-১৫০)
+              </option>
+            </select>
+          </div>
 
-            <div class="flex flex-wrap gap-3 items-center justify-between pt-4 border-t border-slate-100">
-                <div class="flex gap-2">
-                    <button onclick="resetQuiz()" class="flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 text-amber-700 border border-amber-200 rounded-lg text-xs font-semibold hover:bg-amber-100 transition-all">
-                        <i class="fa-solid fa-rotate-left"></i> কুইজ রিসেট
-                    </button>
-                    <button onclick="toggleExpl()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 border border-slate-200 rounded-lg text-xs font-semibold hover:bg-slate-200 transition-all">
-                        <i class="fa-solid fa-eye"></i> ব্যাখ্যা হাইড/শো
-                    </button>
-                </div>
-                
-                <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition-all shadow-md shadow-emerald-100">
-                    <i class="fa-solid fa-print"></i> PDF/প্রিন্ট করুন
-                </button>
-            </div>
-        </section>
-
-        <div id="questions-grid" class="space-y-6">
-            </div>
-
-        <div id="no-results" class="hidden text-center py-16 bg-white border border-slate-100 rounded-2xl">
-            <i class="fa-solid fa-folder-open text-5xl text-slate-300 mb-4"></i>
-            <h3 class="text-lg font-bold text-slate-600">কোনো প্রশ্ন পাওয়া যায়নি</h3>
-            <p class="text-sm text-slate-400">দয়া করে অন্য কোনো কিওয়ার্ড সার্চ করুন বা ক্যাটাগরি পরিবর্তন করুন।</p>
+          <div class="flex gap-2 w-full md:w-auto">
+            <button
+              id="btn-quiz-mode"
+              onclick="setMode('quiz')"
+              class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600"
+            >
+              <i class="fa-solid fa-gamepad"></i> কুইজ মোড
+            </button>
+            <button
+              id="btn-study-mode"
+              onclick="setMode('study')"
+              class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
+            >
+              <i class="fa-solid fa-book-open"></i> অধ্যায়ন মোড
+            </button>
+          </div>
         </div>
+
+        <div
+          class="flex flex-wrap gap-3 items-center justify-between pt-4 border-t border-slate-100"
+        >
+          <div class="flex gap-2">
+            <button
+              onclick="resetQuiz()"
+              class="flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 text-amber-700 border border-amber-200 rounded-lg text-xs font-semibold hover:bg-amber-100 transition-all"
+            >
+              <i class="fa-solid fa-rotate-left"></i> কুইজ রিসেট
+            </button>
+            <button
+              onclick="toggleExpl()"
+              class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 border border-slate-200 rounded-lg text-xs font-semibold hover:bg-slate-200 transition-all"
+            >
+              <i class="fa-solid fa-eye"></i> ব্যাখ্যা হাইড/শো
+            </button>
+          </div>
+
+          <button
+            onclick="window.print()"
+            class="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition-all shadow-md shadow-emerald-100"
+          >
+            <i class="fa-solid fa-print"></i> PDF/প্রিন্ট করুন
+          </button>
+        </div>
+      </section>
+
+      <div id="questions-grid" class="space-y-6"></div>
+
+      <div
+        id="no-results"
+        class="hidden text-center py-16 bg-white border border-slate-100 rounded-2xl"
+      >
+        <i class="fa-solid fa-folder-open text-5xl text-slate-300 mb-4"></i>
+        <h3 class="text-lg font-bold text-slate-600">
+          কোনো প্রশ্ন পাওয়া যায়নি
+        </h3>
+        <p class="text-sm text-slate-400">
+          দয়া করে অন্য কোনো কিওয়ার্ড সার্চ করুন বা ক্যাটাগরি পরিবর্তন করুন।
+        </p>
+      </div>
     </main>
 
-    <footer class="no-print mt-20 border-t border-slate-200 bg-white py-8 text-center">
-        <p class="text-sm text-slate-500">© 2026 C Programming Master Class. সর্বস্বত্ব সংরক্ষিত।</p>
-        <p class="text-xs text-slate-400 mt-2">শিক্ষার্থীদের সি প্রোগ্রামিং দক্ষতা বৃদ্ধির উদ্দেশ্যে প্রস্তুতকৃত কুইজ ব্যাংক।</p>
+    <footer
+      class="no-print mt-20 border-t border-slate-200 bg-white py-8 text-center"
+    >
+      <p class="text-sm text-slate-500">
+        © 2026 C Programming Master Class. সর্বস্বত্ব সংরক্ষিত।
+      </p>
+      <p class="text-xs text-slate-400 mt-2">
+        শিক্ষার্থীদের সি প্রোগ্রামিং দক্ষতা বৃদ্ধির উদ্দেশ্যে প্রস্তুতকৃত কুইজ
+        ব্যাংক।
+      </p>
     </footer>
 
     <script>
-        // Database of 150 Questions with sorted/shuffled options and dynamically tracked correct answer index (ans)
-        const masterQuestions = [
-            // CHAPTER 1 (1-10)
-            { id: 1, cat: 1, q: "C প্রোগ্রামিং ভাষাটি কে তৈরি করেছিলেন এবং এটি কত সালে উদ্ভাবিত হয়?", options: ["বজার্নে স্ট্রাউস্ট্রুপ, ১৯৮৩", "জেমস্ গসলিং, ১৯৯৫", "ডেনিস রিচি, ১৯৭২", "গুইডো ভ্যান রসাম, ১৯৮৯"], ans: 2, exp: "বেল ল্যাবরেটরিতে ডেনিস রিচি ১৯৭২ সালে ইউনিক্স অপারেটিং সিস্টেম তৈরির উদ্দেশ্যে C ল্যাঙ্গুয়েজ উদ্ভাবন করেন।" },
-            { id: 2, cat: 1, q: "C L্যাঙ্গুয়েজ তৈরির পূর্বে বেল ল্যাবসে কোন প্রোগ্রামিং ভাষাটি ব্যবহৃত হতো?", options: ["BCPL", "Pascal", "B ল্যাঙ্গুয়েজ", "Fortran"], ans: 2, exp: "কেন টম্পসন C ল্যাঙ্গুয়েজের আগে B ল্যাঙ্গুয়েজ তৈরি করেছিলেন, যা থেকে পরবর্তীতে ডেনিস রিচি C তৈরি করেন।" },
-            { id: 3, cat: 1, q: "কম্পাইলার (Compiler) এবং ইন্টারপ্রিটার (Interpreter) এর মধ্যে প্রধান পার্থক্য কী?", options: ["কম্পাইলার শুধু ভুল ধরে, ইন্টারপ্রিটার কোনো ভুল ধরে না।", "কম্পাইলার পুরো সোর্স কোড একসাথে অনুবাদ করে, আর ইন্টারপ্রিটার লাইন বাই লাইন অনুবাদ করে।", "ইন্টারপ্রিটার কম্পাইলারের চেয়ে দ্রুত কাজ করে।", "কম্পাইলার একটি লো-লেভেল ল্যাঙ্গুয়েজ।"], ans: 1, exp: "কম্পাইলার পুরো কোড একসাথে বাইনারিতে কনভার্ট করে রান করায়, ইন্টারপ্রিটার তা করে না।" },
-            { id: 4, cat: 1, q: "অ্যাসেম্বলি ভাষাকে মেশিন ভাষায় রূপান্তর করে কোনটি?", options: ["কম্পাইলার", "অ্যাসেম্বলার (Assembler)", "ইন্টারপ্রিটার", "লিংকার"], ans: 1, exp: "অ্যাসেম্বলার সুনির্দিষ্টভাবে অ্যাসেম্বলি কোডকে বাইনারি বা মেশিন কোডে রূপান্তর করার কাজে ব্যবহৃত হয়।" },
-            { id: 5, cat: 1, q: "C প্রোগ্রামিংকে কোন স্তরের ভাষা (Level of Language) বলা হয়?", options: ["লো-লেভেল ল্যাঙ্গুয়েজ", "হাই-লেভেল ল্যাঙ্গুয়েজ", "মিডল-লেভেল ল্যাঙ্গুয়েজ", "কোনোটিই নয়"], ans: 2, exp: "এটি একই সাথে হাই-লেভেল ল্যাঙ্গুয়েজের মতো সহজ এবং লো-লেভেল ল্যাঙ্গুয়েজের মতো হার্ডওয়্যার নিয়ন্ত্রণ করতে সক্ষম।" },
-            { id: 6, cat: 1, q: "নিচের কোনটি প্রথম উচ্চস্তরের প্রোগ্রামিং ভাষা (High-level Language)?", options: ["C", "COBOL", "Ada", "FORTRAN"], ans: 3, exp: "১৯৫০-এর দশকে আইবিএম বৈজ্ঞানিক এবং গাণিতিক হিসাব-নিকাশের জন্য ফোরট্রান তৈরি করে।" },
-            { id: 7, cat: 1, q: "সোর্স কোডকে অবজেক্ট কোডে রূপান্তর করার পর কোন ফাইল ফরম্যাট তৈরি হয়?", options: [".exe", ".obj বা .o", ".c", ".txt"], ans: 1, exp: "কম্পাইলার সোর্স ফাইল অনুবাদ করে প্রথমে মেশিন রিডাবল অবজেক্ট ফাইল তৈরি করে।" },
-            { id: 8, cat: 1, q: "ANSI C বলতে কী বোঝায়?", options: ["C ল্যাঙ্গুয়েজের একটি স্ট্যান্ডার্ড সংস্করণ", "একটি নতুন প্রোগ্রামিং ল্যাঙ্গুয়েজ", "একটি কম্পাইলারের নাম", "একটি ডাটা টাইপ"], ans: 0, exp: "American National Standards Institute কর্তৃক স্ট্যান্ডার্ডাইজড C সংস্করণ।" },
-            { id: 9, cat: 1, q: "C L্যাঙ্গুয়েজে ডাবল স্ল্যাশ (//) কেন ব্যবহার করা হয়?", options: ["মাল্টি-লাইন কমেন্ট শুরু করতে", "ভাগ করার জন্য", "এক লাইনের কমেন্ট লেখার জন্য", "পয়েন্টার ডিক্লেয়ার করতে"], ans: 2, exp: "// দিয়ে শুরু হওয়া সিঙ্গেল লাইনকে কম্পাইলার অবহেলা করে।" },
-            { id: 10, cat: 1, q: "নিচের কোনটি স্ট্রাকচার্ড প্রোগ্রামিং ল্যাঙ্গুয়েজের প্রধান বৈশিষ্ট্য?", options: ["অবজেক্ট এবং ক্লাসের ব্যবহার", "মডিউলারিটি এবং ফাংশনের ব্যবহার", "উচ্চ স্তরের ডেটা সিকিউরিটি", "ইনহেরিটেন্সের সুবিধা"], ans: 1, exp: "স্ট্রাকচার্ড কোড বড় সমস্যাকে ছোট ছোট স্বাধীন মডিউলে বিভক্ত করে সমাধান করে।" },
+      // Database of 150 Questions with sorted/shuffled options and dynamically tracked correct answer index (ans)
+      const masterQuestions = [
+        // CHAPTER 1 (1-10)
+        {
+          id: 1,
+          cat: 1,
+          q: "C প্রোগ্রামিং ভাষাটি কে তৈরি করেছিলেন এবং এটি কত সালে উদ্ভাবিত হয়?",
+          options: [
+            "বজার্নে স্ট্রাউস্ট্রুপ, ১৯৮৩",
+            "জেমস্ গসলিং, ১৯৯৫",
+            "ডেনিস রিচি, ১৯৭২",
+            "গুইডো ভ্যান রসাম, ১৯৮৯",
+          ],
+          ans: 2,
+          exp: "বেল ল্যাবরেটরিতে ডেনিস রিচি ১৯৭২ সালে ইউনিক্স অপারেটিং সিস্টেম তৈরির উদ্দেশ্যে C ল্যাঙ্গুয়েজ উদ্ভাবন করেন।",
+        },
+        {
+          id: 2,
+          cat: 1,
+          q: "C L্যাঙ্গুয়েজ তৈরির পূর্বে বেল ল্যাবসে কোন প্রোগ্রামিং ভাষাটি ব্যবহৃত হতো?",
+          options: ["BCPL", "Pascal", "B ল্যাঙ্গুয়েজ", "Fortran"],
+          ans: 2,
+          exp: "কেন টম্পসন C ল্যাঙ্গুয়েজের আগে B ল্যাঙ্গুয়েজ তৈরি করেছিলেন, যা থেকে পরবর্তীতে ডেনিস রিচি C তৈরি করেন।",
+        },
+        {
+          id: 3,
+          cat: 1,
+          q: "কম্পাইলার (Compiler) এবং ইন্টারপ্রিটার (Interpreter) এর মধ্যে প্রধান পার্থক্য কী?",
+          options: [
+            "কম্পাইলার শুধু ভুল ধরে, ইন্টারপ্রিটার কোনো ভুল ধরে না।",
+            "কম্পাইলার পুরো সোর্স কোড একসাথে অনুবাদ করে, আর ইন্টারপ্রিটার লাইন বাই লাইন অনুবাদ করে।",
+            "ইন্টারপ্রিটার কম্পাইলারের চেয়ে দ্রুত কাজ করে।",
+            "কম্পাইলার একটি লো-লেভেল ল্যাঙ্গুয়েজ।",
+          ],
+          ans: 1,
+          exp: "কম্পাইলার পুরো কোড একসাথে বাইনারিতে কনভার্ট করে রান করায়, ইন্টারপ্রিটার তা করে না।",
+        },
+        {
+          id: 4,
+          cat: 1,
+          q: "অ্যাসেম্বলি ভাষাকে মেশিন ভাষায় রূপান্তর করে কোনটি?",
+          options: [
+            "কম্পাইলার",
+            "অ্যাসেম্বলার (Assembler)",
+            "ইন্টারপ্রিটার",
+            "লিংকার",
+          ],
+          ans: 1,
+          exp: "অ্যাসেম্বলার সুনির্দিষ্টভাবে অ্যাসেম্বলি কোডকে বাইনারি বা মেশিন কোডে রূপান্তর করার কাজে ব্যবহৃত হয়।",
+        },
+        {
+          id: 5,
+          cat: 1,
+          q: "C প্রোগ্রামিংকে কোন স্তরের ভাষা (Level of Language) বলা হয়?",
+          options: [
+            "লো-লেভেল ল্যাঙ্গুয়েজ",
+            "হাই-লেভেল ল্যাঙ্গুয়েজ",
+            "মিডল-লেভেল ল্যাঙ্গুয়েজ",
+            "কোনোটিই নয়",
+          ],
+          ans: 2,
+          exp: "এটি একই সাথে হাই-লেভেল ল্যাঙ্গুয়েজের মতো সহজ এবং লো-লেভেল ল্যাঙ্গুয়েজের মতো হার্ডওয়্যার নিয়ন্ত্রণ করতে সক্ষম।",
+        },
+        {
+          id: 6,
+          cat: 1,
+          q: "নিচের কোনটি প্রথম উচ্চস্তরের প্রোগ্রামিং ভাষা (High-level Language)?",
+          options: ["C", "COBOL", "Ada", "FORTRAN"],
+          ans: 3,
+          exp: "১৯৫০-এর দশকে আইবিএম বৈজ্ঞানিক এবং গাণিতিক হিসাব-নিকাশের জন্য ফোরট্রান তৈরি করে।",
+        },
+        {
+          id: 7,
+          cat: 1,
+          q: "সোর্স কোডকে অবজেক্ট কোডে রূপান্তর করার পর কোন ফাইল ফরম্যাট তৈরি হয়?",
+          options: [".exe", ".obj বা .o", ".c", ".txt"],
+          ans: 1,
+          exp: "কম্পাইলার সোর্স ফাইল অনুবাদ করে প্রথমে মেশিন রিডাবল অবজেক্ট ফাইল তৈরি করে।",
+        },
+        {
+          id: 8,
+          cat: 1,
+          q: "ANSI C বলতে কী বোঝায়?",
+          options: [
+            "C ল্যাঙ্গুয়েজের একটি স্ট্যান্ডার্ড সংস্করণ",
+            "একটি নতুন প্রোগ্রামিং ল্যাঙ্গুয়েজ",
+            "একটি কম্পাইলারের নাম",
+            "একটি ডাটা টাইপ",
+          ],
+          ans: 0,
+          exp: "American National Standards Institute কর্তৃক স্ট্যান্ডার্ডাইজড C সংস্করণ।",
+        },
+        {
+          id: 9,
+          cat: 1,
+          q: "C L্যাঙ্গুয়েজে ডাবল স্ল্যাশ (//) কেন ব্যবহার করা হয়?",
+          options: [
+            "মাল্টি-লাইন কমেন্ট শুরু করতে",
+            "ভাগ করার জন্য",
+            "এক লাইনের কমেন্ট লেখার জন্য",
+            "পয়েন্টার ডিক্লেয়ার করতে",
+          ],
+          ans: 2,
+          exp: "// দিয়ে শুরু হওয়া সিঙ্গেল লাইনকে কম্পাইলার অবহেলা করে।",
+        },
+        {
+          id: 10,
+          cat: 1,
+          q: "নিচের কোনটি স্ট্রাকচার্ড প্রোগ্রামিং ল্যাঙ্গুয়েজের প্রধান বৈশিষ্ট্য?",
+          options: [
+            "অবজেক্ট এবং ক্লাসের ব্যবহার",
+            "মডিউলারিটি এবং ফাংশনের ব্যবহার",
+            "উচ্চ স্তরের ডেটা সিকিউরিটি",
+            "ইনহেরিটেন্সের সুবিধা",
+          ],
+          ans: 1,
+          exp: "স্ট্রাকচার্ড কোড বড় সমস্যাকে ছোট ছোট স্বাধীন মডিউলে বিভক্ত করে সমাধান করে।",
+        },
 
-            // CHAPTER 2 (11-20)
-            { id: 11, cat: 2, q: "OOP এর কোন বৈশিষ্ট্যের মাধ্যমে ডেটা এবং মেথডকে একটি সিঙ্গেল ইউনিটে আবদ্ধ করা হয়?", options: ["পলিমরফিজম", "ইনক্যাপসুলেশন (Encapsulation)", "ইনহেরিটেন্স", "অ্যাবস্ট্রাকশন"], ans: 1, exp: "ইনক্যাপসুলেশন ক্লাস আকারে ডেটা ও মেথডকে বাইন্ড করে বাইরের অ্যাক্সেস কন্ট্রোল করে।" },
-            { id: 12, cat: 2, q: "OOP-এর কোন ধারণার কারণে একই নামের ফাংশন ভিন্ন ভিন্ন আচরণ করতে পারে?", options: ["পলিমরফিজম (Polymorphism)", "ইনক্যাপসুলেশন", "ইনহেরিটেন্স", "ক্লাস"], ans: 0, exp: "একই ইন্টারফেস বা ফাংশন নাম দিয়ে মাল্টিপল ডাটা টাইপের কাজ করা পলিমরফিজম।" },
-            { id: 13, cat: 2, q: "নিচের কোন বৈশিষ্ট্যটি C ল্যাঙ্গুয়েজে নেই কিন্তু C++ এ আছে?", options: ["ফাংশন", "অ্যারে", "ক্লাস এবং অবজেক্ট", "পয়েন্টার"], ans: 2, exp: "C++ একটি অবজেক্ট ওরিয়েন্টেড ভাষা হলেও C মূলত প্রসিডিউরাল বা স্ট্রাকচার্ড ল্যাঙ্গুয়েজ।" },
-            { id: 14, cat: 2, q: "একটি C প্রোগ্রামের এক্সিকিউশন বা চলা কোন ফাংশন থেকে শুরু হয়?", options: ["printf()", "main()", "include", "start()"], ans: 1, exp: "যেকোনো C প্রোগ্রামের এন্ট্রি পয়েন্ট হলো main ফাংশন।" },
-            { id: 15, cat: 2, q: "নিচের কোনটি C প্রোগ্রামের একটি সঠিক প্রিপ্রসেসর ডিরেক্টিভ?", options: ["include <stdio.h>", "#import <stdio.h>", "using namespace std;", "#include <stdio.h>"], ans: 3, exp: "# নির্দেশিকা দিয়ে শুরু হওয়া ফাইল ইনক্লুশনই প্রিপ্রসেসর ডিরেক্টিভ।" },
-            { id: 16, cat: 2, q: "একটি অবজেক্ট ফাইলের সাথে প্রয়োজনীয় লাইব্রেরি ফাইল যুক্ত করে রানটাইম ফাইল (.exe) বানায় কে?", options: ["লিংকার (Linker)", "লোডার (Loader)", "কম্পাইলার", "অ্যাসেম্বলার"], ans: 0, exp: "লিংকার অবজেক্ট ফাইলের সাথে প্রয়োজনীয় হেডার ও লাইব্রেরি কোড লিংক করে এক্সিকিউটেবল ফাইল বানায়।" },
-            { id: 17, cat: 2, q: "নিচের কোনটি C ভাষার নিজস্ব কি-ওয়ার্ড (Keyword) নয়?", options: ["int", "class", "return", "struct"], ans: 1, exp: "C ল্যাঙ্গুয়েজের ৩২টি কীওয়ার্ডের মধ্যে class শব্দটি নেই, এটি C++ এ যুক্ত হয়েছে।" },
-            { id: 18, cat: 2, q: "সি ল্যাঙ্গুয়েজে `int a = 5/2;` করলে মেমোরিতে 'a' এর মান কত জমা হবে?", options: ["2.5", "3", "2", "0"], ans: 2, exp: "ইনটিজার ডিভিশনের ফলাফল সবসময় ইনটিজার হয়, দশমিক অংশ স্বয়ংক্রিয়ভাবে বাদ যায়।" },
-            { id: 19, cat: 2, q: "কোনো মেমোরি লোকেশনের নাম যা ডেটা ধরে রাখে এবং পরিবর্তিত হতে পারে তাকে কী বলে?", options: ["ভেরিয়েবল (Variable)", "কনস্ট্যান্ট (Constant)", "কি-ওয়ার্ড", "ফাংশন"], ans: 0, exp: "প্রোগ্রাম রান টাইমে ভেরিয়েবলের মেমোরি ভ্যালু পরিবর্তনশীল।" },
-            { id: 20, cat: 2, q: "নিচের কোনটি C ল্যাঙ্গুয়েজের একটি বৈধ ভেরিয়েবল নেম (Valid Variable Name)?", options: ["1st_student", "student_num", "student num", "int"], ans: 1, exp: "ভেরিয়েবলের শুরুতে সংখ্যা হতে পারে না, স্পেস থাকা অবৈধ এবং কি-ওয়ার্ড নিষিদ্ধ।" },
+        // CHAPTER 2 (11-20)
+        {
+          id: 11,
+          cat: 2,
+          q: "OOP এর কোন বৈশিষ্ট্যের মাধ্যমে ডেটা এবং মেথডকে একটি সিঙ্গেল ইউনিটে আবদ্ধ করা হয়?",
+          options: [
+            "পলিমরফিজম",
+            "ইনক্যাপসুলেশন (Encapsulation)",
+            "ইনহেরিটেন্স",
+            "অ্যাবস্ট্রাকশন",
+          ],
+          ans: 1,
+          exp: "ইনক্যাপসুলেশন ক্লাস আকারে ডেটা ও মেথডকে বাইন্ড করে বাইরের অ্যাক্সেস কন্ট্রোল করে।",
+        },
+        {
+          id: 12,
+          cat: 2,
+          q: "OOP-এর কোন ধারণার কারণে একই নামের ফাংশন ভিন্ন ভিন্ন আচরণ করতে পারে?",
+          options: [
+            "পলিমরফিজম (Polymorphism)",
+            "ইনক্যাপসুলেশন",
+            "ইনহেরিটেন্স",
+            "ক্লাস",
+          ],
+          ans: 0,
+          exp: "একই ইন্টারফেস বা ফাংশন নাম দিয়ে মাল্টিপল ডাটা টাইপের কাজ করা পলিমরফিজম।",
+        },
+        {
+          id: 13,
+          cat: 2,
+          q: "নিচের কোন বৈশিষ্ট্যটি C ল্যাঙ্গুয়েজে নেই কিন্তু C++ এ আছে?",
+          options: ["ফাংশন", "অ্যারে", "ক্লাস এবং অবজেক্ট", "পয়েন্টার"],
+          ans: 2,
+          exp: "C++ একটি অবজেক্ট ওরিয়েন্টেড ভাষা হলেও C মূলত প্রসিডিউরাল বা স্ট্রাকচার্ড ল্যাঙ্গুয়েজ।",
+        },
+        {
+          id: 14,
+          cat: 2,
+          q: "একটি C প্রোগ্রামের এক্সিকিউশন বা চলা কোন ফাংশন থেকে শুরু হয়?",
+          options: ["printf()", "main()", "include", "start()"],
+          ans: 1,
+          exp: "যেকোনো C প্রোগ্রামের এন্ট্রি পয়েন্ট হলো main ফাংশন।",
+        },
+        {
+          id: 15,
+          cat: 2,
+          q: "নিচের কোনটি C প্রোগ্রামের একটি সঠিক প্রিপ্রসেসর ডিরেক্টিভ?",
+          options: [
+            "include <stdio.h>",
+            "#import <stdio.h>",
+            "using namespace std;",
+            "#include <stdio.h>",
+          ],
+          ans: 3,
+          exp: "# নির্দেশিকা দিয়ে শুরু হওয়া ফাইল ইনক্লুশনই প্রিপ্রসেসর ডিরেক্টিভ।",
+        },
+        {
+          id: 16,
+          cat: 2,
+          q: "একটি অবজেক্ট ফাইলের সাথে প্রয়োজনীয় লাইব্রেরি ফাইল যুক্ত করে রানটাইম ফাইল (.exe) বানায় কে?",
+          options: [
+            "লিংকার (Linker)",
+            "লোডার (Loader)",
+            "কম্পাইলার",
+            "অ্যাসেম্বলার",
+          ],
+          ans: 0,
+          exp: "লিংকার অবজেক্ট ফাইলের সাথে প্রয়োজনীয় হেডার ও লাইব্রেরি কোড লিংক করে এক্সিকিউটেবল ফাইল বানায়।",
+        },
+        {
+          id: 17,
+          cat: 2,
+          q: "নিচের কোনটি C ভাষার নিজস্ব কি-ওয়ার্ড (Keyword) নয়?",
+          options: ["int", "class", "return", "struct"],
+          ans: 1,
+          exp: "C ল্যাঙ্গুয়েজের ৩২টি কীওয়ার্ডের মধ্যে class শব্দটি নেই, এটি C++ এ যুক্ত হয়েছে।",
+        },
+        {
+          id: 18,
+          cat: 2,
+          q: "সি ল্যাঙ্গুয়েজে `int a = 5/2;` করলে মেমোরিতে 'a' এর মান কত জমা হবে?",
+          options: ["2.5", "3", "2", "0"],
+          ans: 2,
+          exp: "ইনটিজার ডিভিশনের ফলাফল সবসময় ইনটিজার হয়, দশমিক অংশ স্বয়ংক্রিয়ভাবে বাদ যায়।",
+        },
+        {
+          id: 19,
+          cat: 2,
+          q: "কোনো মেমোরি লোকেশনের নাম যা ডেটা ধরে রাখে এবং পরিবর্তিত হতে পারে তাকে কী বলে?",
+          options: [
+            "ভেরিয়েবল (Variable)",
+            "কনস্ট্যান্ট (Constant)",
+            "কি-ওয়ার্ড",
+            "ফাংশন",
+          ],
+          ans: 0,
+          exp: "প্রোগ্রাম রান টাইমে ভেরিয়েবলের মেমোরি ভ্যালু পরিবর্তনশীল।",
+        },
+        {
+          id: 20,
+          cat: 2,
+          q: "নিচের কোনটি C ল্যাঙ্গুয়েজের একটি বৈধ ভেরিয়েবল নেম (Valid Variable Name)?",
+          options: ["1st_student", "student_num", "student num", "int"],
+          ans: 1,
+          exp: "ভেরিয়েবলের শুরুতে সংখ্যা হতে পারে না, স্পেস থাকা অবৈধ এবং কি-ওয়ার্ড নিষিদ্ধ।",
+        },
 
-            // CHAPTER 3 (21-30)
-            { id: 21, cat: 3, q: "ফ্লোচার্টে (Flowchart) প্রক্রিয়াকরণ বা প্রসেসিং বোঝাতে কোন প্রতীকটি ব্যবহার করা হয়?", options: ["সামান্তরিক (Parallelogram)", "হীরক বা রম্বস (Diamond)", "বৃত্ত (Circle)", "আয়তক্ষেত্র (Rectangle)"], ans: 3, exp: "গাণিতিক বা লজিক্যাল প্রসেসিং আয়তক্ষেত্র দ্বারা বোঝানো হয়।" },
-            { id: 22, cat: 3, q: "প্রোগ্রামে সেমিকোলন (;) দিতে ভুলে গেলে কোন ধরনের এরর ঘটে?", options: ["সিনট্যাক্স এরর (Syntax Error)", "লজিক্যাল এরর (Logical Error)", "রানটাইম এরর (Runtime Error)", "লিংকার এরর"], ans: 0, exp: "সিনট্যাক্স বা গ্রামাটিক্যাল নিয়ম ভঙ্গ করলে কম্পাইলার সিনট্যাক্স এরর দেয়।" },
-            { id: 23, cat: 3, q: "প্রোগ্রাম রান করার সময় শূন্য (০) দিয়ে কোনো সংখ্যাকে ভাগ করলে কোন ধরনের এরর ঘটে?", options: ["সিনট্যাক্স এরর (Syntax Error)", "রানটাইম এরর (Runtime Error)", "লিংকার এরর", "সিম্যান্টিক এরর"], ans: 1, exp: "ডিভিশন বাই জিরো একটি গাণিতিক বিপর্যয় যা রান টাইমে প্রোগ্রাম ক্র্যাশ করে।" },
-            { id: 24, cat: 3, q: "ফ্লোচার্টে ইনপুট বা আউটপুট প্রদর্শনের জন্য কোন প্রতীকটি ব্যবহৃত হয়?", options: ["সামান্তরিক (Parallelogram)", "আয়তক্ষেত্র (Rectangle)", "ডায়মন্ড (Diamond)", "ডিম্বাকার (Oval)"], ans: 0, exp: "ডেটা রিড করা বা রাইট করা সামান্তরিকের মাধ্যমে দেখানো হয়।" },
-            { id: 25, cat: 3, q: "কোডের ভুল খুঁজে বের করে তা সমাধান করার প্রক্রিয়াকে কী বলে?", options: ["কম্পাইলিং", "ডিবাগিং (Debugging)", "এক্সিকিউটিং", "এনকোডিং"], ans: 1, exp: "Bug বা ত্রুটি খুঁজে বের করে তা ফিক্স করা হলো ডিবাগিং।" },
-            { id: 26, cat: 3, q: "ফ্লোচার্টে 'সিদ্ধান্ত' (Decision) নেওয়ার চিহ্নে সর্বোচ্চ কয়টি আউটপুট লাইন বের হতে পারে?", options: ["১টি", "৩টি", "২টি (Yes / No)", "সীমাহীন"], ans: 2, exp: "সিদ্ধান্তের ফলাফল কেবল সত্য (Yes) অথবা মিথ্যা (No) হতে পারে।" },
-            { id: 27, cat: 3, q: "অ্যালগরিদম (Algorithm) কী?", options: ["কোনো সমস্যা সমাধানের ধাপভিত্তিক লিখিত বিবরণ", "ছবির মাধ্যমে সমস্যা সমাধান", "একটি অনুবাদক প্রোগ্রাম", "প্রোগ্রামের ভুল সংশোধনের পদ্ধতি"], ans: 0, exp: "ধাপে ধাপে সিকুয়েনশিয়াল লজিক ব্যবহার করে প্রবলেম সলভ করার বিবরণই অ্যালগরিদম।" },
-            { id: 28, cat: 3, q: "ফ্লোচার্টে দুটি আলাদা অংশকে যুক্ত করার জন্য কোন প্রতীক ব্যবহৃত হয়?", options: ["তীর চিহ্ন", "বৃত্ত বা কানেক্টর (Connector)", "রম্বস", "উপবৃত্ত"], ans: 1, exp: "ছোট সার্কেল দিয়ে ফ্লোচার্টের বিভিন্ন শাখার সংযোগ ঘটানো হয়।" },
-            { id: 29, cat: 3, q: "কম্পাইলারে 'Warning' এর অর্থ কী?", options: ["কোডটি সম্পূর্ণ ক্র্যাশ করেছে", "কোডের সিনট্যাক্স ভুল আছে", "কোনোটিই নয়", "কোডে সমস্যা হতে পারে তবে কোড রান হবে"], ans: 3, exp: "Warning কম্পাইল প্রক্রিয়া থামায় না, তবে নিরাপদ কোডিং এর স্বার্থে এগুলো ফিক্স করা উচিত।" },
-            { id: 30, cat: 3, q: "একটি ভালো অ্যালগরিদমের অন্যতম প্রধান শর্ত কী?", options: ["এটি অত্যন্ত দীর্ঘ হতে হবে", "ধাপ সংখ্যা সসীম বা নির্দিষ্ট হওয়া উচিত", "এটি নির্দিষ্ট কম্পিউটারের জন্য ফিক্সড হবে", "কোনোটিই নয়"], ans: 1, exp: "অসীম লুপ বা অসীম ধাপ অ্যালগরিদমকে অকার্যকর করে ফেলে।" },
+        // CHAPTER 3 (21-30)
+        {
+          id: 21,
+          cat: 3,
+          q: "ফ্লোচার্টে (Flowchart) প্রক্রিয়াকরণ বা প্রসেসিং বোঝাতে কোন প্রতীকটি ব্যবহার করা হয়?",
+          options: [
+            "সামান্তরিক (Parallelogram)",
+            "হীরক বা রম্বস (Diamond)",
+            "বৃত্ত (Circle)",
+            "আয়তক্ষেত্র (Rectangle)",
+          ],
+          ans: 3,
+          exp: "গাণিতিক বা লজিক্যাল প্রসেসিং আয়তক্ষেত্র দ্বারা বোঝানো হয়।",
+        },
+        {
+          id: 22,
+          cat: 3,
+          q: "প্রোগ্রামে সেমিকোলন (;) দিতে ভুলে গেলে কোন ধরনের এরর ঘটে?",
+          options: [
+            "সিনট্যাক্স এরর (Syntax Error)",
+            "লজিক্যাল এরর (Logical Error)",
+            "রানটাইম এরর (Runtime Error)",
+            "লিংকার এরর",
+          ],
+          ans: 0,
+          exp: "সিনট্যাক্স বা গ্রামাটিক্যাল নিয়ম ভঙ্গ করলে কম্পাইলার সিনট্যাক্স এরর দেয়।",
+        },
+        {
+          id: 23,
+          cat: 3,
+          q: "প্রোগ্রাম রান করার সময় শূন্য (০) দিয়ে কোনো সংখ্যাকে ভাগ করলে কোন ধরনের এরর ঘটে?",
+          options: [
+            "সিনট্যাক্স এরর (Syntax Error)",
+            "রানটাইম এরর (Runtime Error)",
+            "লিংকার এরর",
+            "সিম্যান্টিক এরর",
+          ],
+          ans: 1,
+          exp: "ডিভিশন বাই জিরো একটি গাণিতিক বিপর্যয় যা রান টাইমে প্রোগ্রাম ক্র্যাশ করে।",
+        },
+        {
+          id: 24,
+          cat: 3,
+          q: "ফ্লোচার্টে ইনপুট বা আউটপুট প্রদর্শনের জন্য কোন প্রতীকটি ব্যবহৃত হয়?",
+          options: [
+            "সামান্তরিক (Parallelogram)",
+            "আয়তক্ষেত্র (Rectangle)",
+            "ডায়মন্ড (Diamond)",
+            "ডিম্বাকার (Oval)",
+          ],
+          ans: 0,
+          exp: "ডেটা রিড করা বা রাইট করা সামান্তরিকের মাধ্যমে দেখানো হয়।",
+        },
+        {
+          id: 25,
+          cat: 3,
+          q: "কোডের ভুল খুঁজে বের করে তা সমাধান করার প্রক্রিয়াকে কী বলে?",
+          options: [
+            "কম্পাইলিং",
+            "ডিবাগিং (Debugging)",
+            "এক্সিকিউটিং",
+            "এনকোডিং",
+          ],
+          ans: 1,
+          exp: "Bug বা ত্রুটি খুঁজে বের করে তা ফিক্স করা হলো ডিবাগিং।",
+        },
+        {
+          id: 26,
+          cat: 3,
+          q: "ফ্লোচার্টে 'সিদ্ধান্ত' (Decision) নেওয়ার চিহ্নে সর্বোচ্চ কয়টি আউটপুট লাইন বের হতে পারে?",
+          options: ["১টি", "৩টি", "২টি (Yes / No)", "সীমাহীন"],
+          ans: 2,
+          exp: "সিদ্ধান্তের ফলাফল কেবল সত্য (Yes) অথবা মিথ্যা (No) হতে পারে।",
+        },
+        {
+          id: 27,
+          cat: 3,
+          q: "অ্যালগরিদম (Algorithm) কী?",
+          options: [
+            "কোনো সমস্যা সমাধানের ধাপভিত্তিক লিখিত বিবরণ",
+            "ছবির মাধ্যমে সমস্যা সমাধান",
+            "একটি অনুবাদক প্রোগ্রাম",
+            "প্রোগ্রামের ভুল সংশোধনের পদ্ধতি",
+          ],
+          ans: 0,
+          exp: "ধাপে ধাপে সিকুয়েনশিয়াল লজিক ব্যবহার করে প্রবলেম সলভ করার বিবরণই অ্যালগরিদম।",
+        },
+        {
+          id: 28,
+          cat: 3,
+          q: "ফ্লোচার্টে দুটি আলাদা অংশকে যুক্ত করার জন্য কোন প্রতীক ব্যবহৃত হয়?",
+          options: [
+            "তীর চিহ্ন",
+            "বৃত্ত বা কানেক্টর (Connector)",
+            "রম্বস",
+            "উপবৃত্ত",
+          ],
+          ans: 1,
+          exp: "ছোট সার্কেল দিয়ে ফ্লোচার্টের বিভিন্ন শাখার সংযোগ ঘটানো হয়।",
+        },
+        {
+          id: 29,
+          cat: 3,
+          q: "কম্পাইলারে 'Warning' এর অর্থ কী?",
+          options: [
+            "কোডটি সম্পূর্ণ ক্র্যাশ করেছে",
+            "কোডের সিনট্যাক্স ভুল আছে",
+            "কোনোটিই নয়",
+            "কোডে সমস্যা হতে পারে তবে কোড রান হবে",
+          ],
+          ans: 3,
+          exp: "Warning কম্পাইল প্রক্রিয়া থামায় না, তবে নিরাপদ কোডিং এর স্বার্থে এগুলো ফিক্স করা উচিত।",
+        },
+        {
+          id: 30,
+          cat: 3,
+          q: "একটি ভালো অ্যালগরিদমের অন্যতম প্রধান শর্ত কী?",
+          options: [
+            "এটি অত্যন্ত দীর্ঘ হতে হবে",
+            "ধাপ সংখ্যা সসীম বা নির্দিষ্ট হওয়া উচিত",
+            "এটি নির্দিষ্ট কম্পিউটারের জন্য ফিক্সড হবে",
+            "কোনোটিই নয়",
+          ],
+          ans: 1,
+          exp: "অসীম লুপ বা অসীম ধাপ অ্যালগরিদমকে অকার্যকর করে ফেলে।",
+        },
 
-            // CHAPTER 4 (31-40)
-            { id: 31, cat: 4, q: "সিষ্টেমে (৩২-বিট) একটি সাধারণ 'int' ডেটা টাইপ মেমোরিতে কত বাইট জায়গা নেয়?", options: ["১ byte", "৪ বাইট", "২ বাইট", "৮ বাইট"], ans: 1, exp: "আধুনিক ৩২ ও ৬৪ বিট সিস্টেমে ইনটিজার ৪ বাইট (৩২ বিট) মেমোরি নেয়।" },
-            { id: 32, cat: 4, q: "C L্যাঙ্গুয়েজে একটি ক্যারেক্টার (char) ডেটা টাইপ মেমোরিতে কতটুকু জায়গা নেয়?", options: ["1 Byte", "2 Bytes", "4 Bytes", "8 Bytes"], ans: 0, exp: "ক্যারেক্টার সাধারণত ১ বাইট বা ৮ বিট ডেটা মেমোরি নিয়ে থাকে।" },
-            { id: 33, cat: 4, q: "C প্রোগ্রামে মডুলাস বা ভাগশেষ নির্ণয়ের অপারেটর কোনটি?", options: ["/", "\& \&", "\%", "*"], ans: 2, exp: "মডুলাস অপারেটর (\%) দুটি পূর্ণসংখ্যার মডুলো বা ভাগশেষ দেয়।" },
-            { id: 34, cat: 4, q: "scanf() ফাংশনে ভেরিয়েবলের নামের আগে কেন '\&' (Ampersand) ব্যবহার করা হয়?", options: ["ভেরিয়েবলকে সুরক্ষিত করতে", "ভেরিয়েবলের মেমোরি অ্যাড্রেস নির্দেশ করার জন্য", "এটি একটি পয়েন্টার ভেরিয়েবল তাই", "ফরম্যাট স্পেসিফায়ার যুক্ত করতে"], ans: 1, exp: "scanf সরাসরি মেমোরি অ্যাড্রেসে ইউজার ইনপুট সংরক্ষণ করে।" },
-            { id: 35, cat: 4, q: "ফ্লোটিং পয়েন্ট (float) সংখ্যার জন্য ফরমেট স্পেসিফায়ার কোনটি?", options: ["\%d", "\%f", "\%c", "\%s"], ans: 1, exp: "\%f ব্যবহার করে দশমিক বা ফ্লোট ভ্যালু ইনপুট-আউটপুট নেওয়া হয়।" },
-            { id: 36, cat: 4, q: "নিচের কোনটি লজিক্যাল 'OR' অপারেটর?", options: ["\&\&", "!", "|", "||"], ans: 3, exp: "দুটি পাইপলাইন সিম্বল (||) লজিক্যাল OR অপারেশনের জন্য ব্যবহৃত হয়।" },
-            { id: 37, cat: 4, q: "যদি `int x = 5;` হয়, তবে `printf(\"\%d\", ++x);` এর আউটপুট কত হবে?", options: ["5", "6", "7", "Error"], ans: 1, exp: "++x হলো প্রি-ইক্রিমেন্ট যা লাইনেই প্রথমে ১ বাড়িয়ে ৬ করে ফেলে।" },
-            { id: 38, cat: 4, q: "একটি `double` ডেটা টাইপের সংখ্যা প্রিন্ট করার সঠিক ফরমেট স্পেসিফায়ার কোনটি?", options: ["\%f", "\%d", "\%lf", "\%c"], ans: 2, exp: "ডাবল বা লং ফ্লোটিং পয়েন্টের জন্য \%lf ব্যবহার করা হয়।" },
-            { id: 39, cat: 4, q: "আউটপুটে একটি নতুন লাইন (New Line) তৈরি করার এস্কেপ সিকোয়েন্স কোনটি?", options: ["\\t", "\\b", "\\n", "\\r"], ans: 2, exp: "নতুন লাইনের জন্য ব্যাকস্ল্যাশ n (\\n) ব্যবহৃত হয়।" },
-            { id: 40, cat: 4, q: "নিচের কোনটি অ্যাসাইনমেন্ট অপারেটর (Assignment Operator)?", options: ["==", "=", "!=", "+"], ans: 1, exp: "সিঙ্গেল ইকুয়াল (=) হলো ভ্যালু অ্যাসাইন করার অপারেটর।" },
+        // CHAPTER 4 (31-40)
+        {
+          id: 31,
+          cat: 4,
+          q: "সিষ্টেমে (৩২-বিট) একটি সাধারণ 'int' ডেটা টাইপ মেমোরিতে কত বাইট জায়গা নেয়?",
+          options: ["১ byte", "৪ বাইট", "২ বাইট", "৮ বাইট"],
+          ans: 1,
+          exp: "আধুনিক ৩২ ও ৬৪ বিট সিস্টেমে ইনটিজার ৪ বাইট (৩২ বিট) মেমোরি নেয়।",
+        },
+        {
+          id: 32,
+          cat: 4,
+          q: "C L্যাঙ্গুয়েজে একটি ক্যারেক্টার (char) ডেটা টাইপ মেমোরিতে কতটুকু জায়গা নেয়?",
+          options: ["1 Byte", "2 Bytes", "4 Bytes", "8 Bytes"],
+          ans: 0,
+          exp: "ক্যারেক্টার সাধারণত ১ বাইট বা ৮ বিট ডেটা মেমোরি নিয়ে থাকে।",
+        },
+        {
+          id: 33,
+          cat: 4,
+          q: "C প্রোগ্রামে মডুলাস বা ভাগশেষ নির্ণয়ের অপারেটর কোনটি?",
+          options: ["/", "\& \&", "\%", "*"],
+          ans: 2,
+          exp: "মডুলাস অপারেটর (\%) দুটি পূর্ণসংখ্যার মডুলো বা ভাগশেষ দেয়।",
+        },
+        {
+          id: 34,
+          cat: 4,
+          q: "scanf() ফাংশনে ভেরিয়েবলের নামের আগে কেন '\&' (Ampersand) ব্যবহার করা হয়?",
+          options: [
+            "ভেরিয়েবলকে সুরক্ষিত করতে",
+            "ভেরিয়েবলের মেমোরি অ্যাড্রেস নির্দেশ করার জন্য",
+            "এটি একটি পয়েন্টার ভেরিয়েবল তাই",
+            "ফরম্যাট স্পেসিফায়ার যুক্ত করতে",
+          ],
+          ans: 1,
+          exp: "scanf সরাসরি মেমোরি অ্যাড্রেসে ইউজার ইনপুট সংরক্ষণ করে।",
+        },
+        {
+          id: 35,
+          cat: 4,
+          q: "ফ্লোটিং পয়েন্ট (float) সংখ্যার জন্য ফরমেট স্পেসিফায়ার কোনটি?",
+          options: ["\%d", "\%f", "\%c", "\%s"],
+          ans: 1,
+          exp: "\%f ব্যবহার করে দশমিক বা ফ্লোট ভ্যালু ইনপুট-আউটপুট নেওয়া হয়।",
+        },
+        {
+          id: 36,
+          cat: 4,
+          q: "নিচের কোনটি লজিক্যাল 'OR' অপারেটর?",
+          options: ["\&\&", "!", "|", "||"],
+          ans: 3,
+          exp: "দুটি পাইপলাইন সিম্বল (||) লজিক্যাল OR অপারেশনের জন্য ব্যবহৃত হয়।",
+        },
+        {
+          id: 37,
+          cat: 4,
+          q: 'যদি `int x = 5;` হয়, তবে `printf("\%d", ++x);` এর আউটপুট কত হবে?',
+          options: ["5", "6", "7", "Error"],
+          ans: 1,
+          exp: "++x হলো প্রি-ইক্রিমেন্ট যা লাইনেই প্রথমে ১ বাড়িয়ে ৬ করে ফেলে।",
+        },
+        {
+          id: 38,
+          cat: 4,
+          q: "একটি `double` ডেটা টাইপের সংখ্যা প্রিন্ট করার সঠিক ফরমেট স্পেসিফায়ার কোনটি?",
+          options: ["\%f", "\%d", "\%lf", "\%c"],
+          ans: 2,
+          exp: "ডাবল বা লং ফ্লোটিং পয়েন্টের জন্য \%lf ব্যবহার করা হয়।",
+        },
+        {
+          id: 39,
+          cat: 4,
+          q: "আউটপুটে একটি নতুন লাইন (New Line) তৈরি করার এস্কেপ সিকোয়েন্স কোনটি?",
+          options: ["\\t", "\\b", "\\n", "\\r"],
+          ans: 2,
+          exp: "নতুন লাইনের জন্য ব্যাকস্ল্যাশ n (\\n) ব্যবহৃত হয়।",
+        },
+        {
+          id: 40,
+          cat: 4,
+          q: "নিচের কোনটি অ্যাসাইনমেন্ট অপারেটর (Assignment Operator)?",
+          options: ["==", "=", "!=", "+"],
+          ans: 1,
+          exp: "সিঙ্গেল ইকুয়াল (=) হলো ভ্যালু অ্যাসাইন করার অপারেটর।",
+        },
 
-            // CHAPTER 5 (41-50)
-            { id: 41, cat: 5, q: "switch স্টেটমেন্টে কোনো case ম্যাচ না করলে কোন অংশটি এক্সিকিউট হয়?", options: ["else", "break", "default", "continue"], ans: 2, exp: "যদি কোনো কেস সত্য না হয়, তবে ফলব্যাক হিসেবে default ব্লক চলে।" },
-            { id: 42, cat: 5, q: "কোন লুপটি কন্ডিশন সত্য বা মিথ্যা যাই হোক না কেন, অন্তত একবার অবশ্যই এক্সিকিউট হয়?", options: ["while লুপ", "do-while লুপ", "for লুপ", "সবগুলো লুপ"], ans: 1, exp: "do-while একটি exit-controlled লুপ হওয়ায় কন্ডিশন চেকের পূর্বেই একবার চলে।" },
-            { id: 43, cat: 5, q: "লুপের ভেতরের কোডের বর্তমান ইটারেশন স্কিপ করে পরবর্তী ইটারেশনে যাওয়ার জন্য কোনটি ব্যবহৃত হয়?", options: ["break", "continue", "goto", "return"], ans: 1, exp: "continue কি-ওয়ার্ড লুপের বর্তমান সাইকেল শেষ করে পরবর্তী সাইকেল শুরু করে।" },
-            { id: 44, cat: 5, q: "নিচের কোন অপারেটরটিকে 'টার্নারি অপারেটর' (Ternary Operator) বলা হয়?", options: ["\&\&", "++", "? :", "sizeof"], ans: 2, exp: "কন্ডিশনাল টার্নারি অপারেটর তিনটি অপারেন্ড নিয়ে সংক্ষিপ্ত if-else হিসেবে কাজ করে।" },
-            { id: 45, cat: 5, q: "switch স্টেটমেন্টের এক্সপ্রেশন বা কন্ডিশনের মান নিচের কোন টাইপটি হতে পারে না?", options: ["int", "float", "char", "enum"], ans: 1, exp: "switch এক্সপ্রেশনে দশমিক বা ফ্লোট টাইপ ব্যবহারের অনুমতি নেই।" },
-            { id: 46, cat: 5, q: "C L্যাঙ্গুয়েজে কন্ডিশনাল অপারেটর `? :` এর অ্যাসোসিয়েটিভিটি (Associativity) কোন দিক থেকে কোন দিকে?", options: ["ডান থেকে বামে (Right-to-Left)", "বাম থেকে ডানে (Left-to-Right)", "উভয় দিকে একসাথে", "কোনোটিই নয়"], ans: 0, exp: "টার্নারি অপারেটর ডান দিক থেকে সমাধান হতে হতে বাম দিকে আসে।" },
-            { id: 47, cat: 5, q: "C L্যাঙ্গুয়েজে `const` কীওয়ার্ড কেন ব্যবহৃত হয়?", options: ["লুপ দ্রুত চালানোর জন্য", "মেমোরি সাইজ কমাতে", "কোনোটিই নয়", "কোনো ভেরিয়েবলের মানকে অপরিবর্তনীয় বা ধ্রুবক করতে"], ans: 3, exp: "const কীওয়ার্ড ভেরিয়েবলের মানকে রিড-অনলি বা ধ্রুবক করে দেয়।" },
-            { id: 48, cat: 5, q: "একটি লুপের কন্ডিশন যদি সবসময় সত্য (True) থাকে, তবে সেই লুপকে কী বলে?", options: ["ইনফিনিট লুপ (Infinite Loop)", "নেস্টেড লুপ", "ফাইনাইট লুপ", "রিকার্সিভ লুপ"], ans: 0, exp: "যে লুপের কোনো ফিনিশিং কন্ডিশন থাকে না তা ইনফিনিট লুপ।" },
-            { id: 49, cat: 5, q: "do-while লুপের গঠন কাঠামোতে শেষে কোনটি দেওয়া বাধ্যতামুলক?", options: ["কমা (,)", "সেমিকোলন (;)", "কলোন (:)", "সেকেন্ড ব্র্যাকেট"], ans: 1, exp: "do-while লুপের শেষে while(condition); কন্ডিশন শেষে সেমিকোলন দেওয়া অত্যাবশ্যক।" },
-            { id: 50, cat: 5, q: "while লুপে কন্ডিশন কোথায় চেক করা হয়?", options: ["লুপের বডিতে প্রবেশের শুরুতে (Entry-controlled)", "লুপের বডির শেষে (Exit-controlled)", "লুপের মাঝখানে", "কোথাও নয়"], ans: 0, exp: "while লুপ শুরুতে চেক করে, সত্য হলেই বডিতে যায়।" },
+        // CHAPTER 5 (41-50)
+        {
+          id: 41,
+          cat: 5,
+          q: "switch স্টেটমেন্টে কোনো case ম্যাচ না করলে কোন অংশটি এক্সিকিউট হয়?",
+          options: ["else", "break", "default", "continue"],
+          ans: 2,
+          exp: "যদি কোনো কেস সত্য না হয়, তবে ফলব্যাক হিসেবে default ব্লক চলে।",
+        },
+        {
+          id: 42,
+          cat: 5,
+          q: "কোন লুপটি কন্ডিশন সত্য বা মিথ্যা যাই হোক না কেন, অন্তত একবার অবশ্যই এক্সিকিউট হয়?",
+          options: ["while লুপ", "do-while লুপ", "for লুপ", "সবগুলো লুপ"],
+          ans: 1,
+          exp: "do-while একটি exit-controlled লুপ হওয়ায় কন্ডিশন চেকের পূর্বেই একবার চলে।",
+        },
+        {
+          id: 43,
+          cat: 5,
+          q: "লুপের ভেতরের কোডের বর্তমান ইটারেশন স্কিপ করে পরবর্তী ইটারেশনে যাওয়ার জন্য কোনটি ব্যবহৃত হয়?",
+          options: ["break", "continue", "goto", "return"],
+          ans: 1,
+          exp: "continue কি-ওয়ার্ড লুপের বর্তমান সাইকেল শেষ করে পরবর্তী সাইকেল শুরু করে।",
+        },
+        {
+          id: 44,
+          cat: 5,
+          q: "নিচের কোন অপারেটরটিকে 'টার্নারি অপারেটর' (Ternary Operator) বলা হয়?",
+          options: ["\&\&", "++", "? :", "sizeof"],
+          ans: 2,
+          exp: "কন্ডিশনাল টার্নারি অপারেটর তিনটি অপারেন্ড নিয়ে সংক্ষিপ্ত if-else হিসেবে কাজ করে।",
+        },
+        {
+          id: 45,
+          cat: 5,
+          q: "switch স্টেটমেন্টের এক্সপ্রেশন বা কন্ডিশনের মান নিচের কোন টাইপটি হতে পারে না?",
+          options: ["int", "float", "char", "enum"],
+          ans: 1,
+          exp: "switch এক্সপ্রেশনে দশমিক বা ফ্লোট টাইপ ব্যবহারের অনুমতি নেই।",
+        },
+        {
+          id: 46,
+          cat: 5,
+          q: "C L্যাঙ্গুয়েজে কন্ডিশনাল অপারেটর `? :` এর অ্যাসোসিয়েটিভিটি (Associativity) কোন দিক থেকে কোন দিকে?",
+          options: [
+            "ডান থেকে বামে (Right-to-Left)",
+            "বাম থেকে ডানে (Left-to-Right)",
+            "উভয় দিকে একসাথে",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "টার্নারি অপারেটর ডান দিক থেকে সমাধান হতে হতে বাম দিকে আসে।",
+        },
+        {
+          id: 47,
+          cat: 5,
+          q: "C L্যাঙ্গুয়েজে `const` কীওয়ার্ড কেন ব্যবহৃত হয়?",
+          options: [
+            "লুপ দ্রুত চালানোর জন্য",
+            "মেমোরি সাইজ কমাতে",
+            "কোনোটিই নয়",
+            "কোনো ভেরিয়েবলের মানকে অপরিবর্তনীয় বা ধ্রুবক করতে",
+          ],
+          ans: 3,
+          exp: "const কীওয়ার্ড ভেরিয়েবলের মানকে রিড-অনলি বা ধ্রুবক করে দেয়।",
+        },
+        {
+          id: 48,
+          cat: 5,
+          q: "একটি লুপের কন্ডিশন যদি সবসময় সত্য (True) থাকে, তবে সেই লুপকে কী বলে?",
+          options: [
+            "ইনফিনিট লুপ (Infinite Loop)",
+            "নেস্টেড লুপ",
+            "ফাইনাইট লুপ",
+            "রিকার্সিভ লুপ",
+          ],
+          ans: 0,
+          exp: "যে লুপের কোনো ফিনিশিং কন্ডিশন থাকে না তা ইনফিনিট লুপ।",
+        },
+        {
+          id: 49,
+          cat: 5,
+          q: "do-while লুপের গঠন কাঠামোতে শেষে কোনটি দেওয়া বাধ্যতামুলক?",
+          options: ["কমা (,)", "সেমিকোলন (;)", "কলোন (:)", "সেকেন্ড ব্র্যাকেট"],
+          ans: 1,
+          exp: "do-while লুপের শেষে while(condition); কন্ডিশন শেষে সেমিকোলন দেওয়া অত্যাবশ্যক।",
+        },
+        {
+          id: 50,
+          cat: 5,
+          q: "while লুপে কন্ডিশন কোথায় চেক করা হয়?",
+          options: [
+            "লুপের বডিতে প্রবেশের শুরুতে (Entry-controlled)",
+            "লুপের বডির শেষে (Exit-controlled)",
+            "লুপের মাঝখানে",
+            "কোথাও নয়",
+          ],
+          ans: 0,
+          exp: "while লুপ শুরুতে চেক করে, সত্য হলেই বডিতে যায়।",
+        },
 
-            // CHAPTER 6 (51-60)
-            { id: 51, cat: 6, q: "যদি একটি অ্যারে `int arr[3][4];` হিসেবে ডিক্লেয়ার করা হয়, তবে এটি কোন ধরনের অ্যারে এবং এতে মোট কয়টি উপাদান রাখা যাবে?", options: ["1D অ্যারে, ৭টি উপাদান", "3D অ্যারে, ১২টি উপাদান", "2D অ্যারে, ১২টি উপাদান", "2D অ্যারে, ৭টি উপাদান"], ans: 2, exp: "রো এবং কলাম গুণের মাধ্যমে মোট ১২টি ইনটিজার সংরক্ষণযোগ্য।" },
-            { id: 52, cat: 6, q: "একটি অ্যারের ইনডেক্সিং (Indexing) সবসময় কোন সংখ্যা থেকে শুরু হয়?", options: ["1", "0", "-1", "যেকোনো সংখ্যা"], ans: 1, exp: "C ল্যাঙ্গুয়েজে অ্যারের প্রথম উপাদান ইনডেক্স ০ দিয়ে এক্সেস হয়।" },
-            { id: 53, cat: 6, q: "C স্ট্রিং (String) এর শেষে স্বয়ংক্রিয়ভাবে কোন ক্যারেক্টারটি যুক্ত হয়ে স্ট্রিংয়ের সমাপ্তি নির্দেশ করে?", options: ["নাল ক্যারেক্টার (\\0)", "নিউলাইন (\\n)", "স্পেস ক্যারেক্টার", "সেমিকোলন"], ans: 0, exp: "কম্পাইলার নাল ক্যারেক্টার দিয়ে স্ট্রিং এর মেমোরি সীমানা বোঝে।" },
-            { id: 54, cat: 6, q: "যদি `int arr[5] = {10, 20, 30};` হয়, তবে `arr[4]` এর মান কত হবে?", options: ["Garbage Value", "30", "0", "Error"], ans: 2, exp: "আংশিক ডিক্লারেশনের পর বাকি অ্যারে পজিশন স্বয়ংক্রিয়ভাবে ০ হয়ে যায়।" },
-            { id: 55, cat: 6, q: "ত্রিমাত্রিক (3D) অ্যারে ডিক্লেয়ার করার সঠিক পদ্ধতি কোনটি?", options: ["int arr[2,3,4];", "int arr[2][3][4];", "int arr{2}{3}{4};", "কোনোটিই নয়"], ans: 1, exp: "পরপর তিনটি স্কয়ার ব্র্যাকেটের মাধ্যমে ডাইমেনশন ডিফাইন করা হয়।" },
-            { id: 56, cat: 6, q: "একটি ১০ উপাদানের ইনটিজার অ্যারে মেমোরিতে মোট কত বাইট জায়গা নেবে? (int = 4 Bytes)", options: ["10 Bytes", "20 Bytes", "40 Bytes", "80 Bytes"], ans: 2, exp: "১০টি উপাদানের জন্য মোট ১০ x ৪ = ৪০ বাইট মেমোরি লাগবে।" },
-            { id: 57, cat: 6, q: "অ্যারের শেষ উপাদানের ইনডেক্স নম্বর কত হয় যদি অ্যারের সাইজ 'N' হয়?", options: ["N", "N - 1", "N + 1", "0"], ans: 1, exp: "ইনডেক্স ০ থেকে শুরু হওয়ার কারণে শেষ ইনডেক্স N - 1 হবে।" },
-            { id: 58, cat: 6, q: "২ডি অ্যারে `int matrix[2][3];` এর রো (Row) সংখ্যা কত?", options: ["2", "3", "6", "5"], ans: 0, exp: "প্রথম স্কয়ার ব্র্যাকেটটি রো সংখ্যা নির্দেশ করে যা এখানে ২।" },
-            { id: 59, cat: 6, q: "স্ট্রিংয়ের দৈর্ঘ্য (Length) নির্ণয় করার লাইব্রেরি ফাংশন কোনটি?", options: ["strcat()", "strlen()", "strcpy()", "strcmp()"], ans: 1, exp: "strlen() ফাংশনটি নাল ক্যারেক্টার বাদে স্ট্রিং লেন্থ কাউন্ট করে।" },
-            { id: 60, cat: 6, q: "মেমোরিতে স্ট্রিংয়ের শেষে 'Null' ক্যারেক্টার না থাকলে কী সমস্যা হতে পারে?", options: ["কম্পাইল এরর হবে", "কোড দ্রুত চলবে", "কোনো সমস্যা নেই", "প্রিন্ট করার সময় গারবেজ ভ্যালু দেখাবে"], ans: 3, exp: "নাল ছাড়া printf থামার জায়গা চিনে না এবং মেমোরির অতিরিক্ত গারবেজ প্রিন্ট করতেই থাকে।" },
+        // CHAPTER 6 (51-60)
+        {
+          id: 51,
+          cat: 6,
+          q: "যদি একটি অ্যারে `int arr[3][4];` হিসেবে ডিক্লেয়ার করা হয়, তবে এটি কোন ধরনের অ্যারে এবং এতে মোট কয়টি উপাদান রাখা যাবে?",
+          options: [
+            "1D অ্যারে, ৭টি উপাদান",
+            "3D অ্যারে, ১২টি উপাদান",
+            "2D অ্যারে, ১২টি উপাদান",
+            "2D অ্যারে, ৭টি উপাদান",
+          ],
+          ans: 2,
+          exp: "রো এবং কলাম গুণের মাধ্যমে মোট ১২টি ইনটিজার সংরক্ষণযোগ্য।",
+        },
+        {
+          id: 52,
+          cat: 6,
+          q: "একটি অ্যারের ইনডেক্সিং (Indexing) সবসময় কোন সংখ্যা থেকে শুরু হয়?",
+          options: ["1", "0", "-1", "যেকোনো সংখ্যা"],
+          ans: 1,
+          exp: "C ল্যাঙ্গুয়েজে অ্যারের প্রথম উপাদান ইনডেক্স ০ দিয়ে এক্সেস হয়।",
+        },
+        {
+          id: 53,
+          cat: 6,
+          q: "C স্ট্রিং (String) এর শেষে স্বয়ংক্রিয়ভাবে কোন ক্যারেক্টারটি যুক্ত হয়ে স্ট্রিংয়ের সমাপ্তি নির্দেশ করে?",
+          options: [
+            "নাল ক্যারেক্টার (\\0)",
+            "নিউলাইন (\\n)",
+            "স্পেস ক্যারেক্টার",
+            "সেমিকোলন",
+          ],
+          ans: 0,
+          exp: "কম্পাইলার নাল ক্যারেক্টার দিয়ে স্ট্রিং এর মেমোরি সীমানা বোঝে।",
+        },
+        {
+          id: 54,
+          cat: 6,
+          q: "যদি `int arr[5] = {10, 20, 30};` হয়, তবে `arr[4]` এর মান কত হবে?",
+          options: ["Garbage Value", "30", "0", "Error"],
+          ans: 2,
+          exp: "আংশিক ডিক্লারেশনের পর বাকি অ্যারে পজিশন স্বয়ংক্রিয়ভাবে ০ হয়ে যায়।",
+        },
+        {
+          id: 55,
+          cat: 6,
+          q: "ত্রিমাত্রিক (3D) অ্যারে ডিক্লেয়ার করার সঠিক পদ্ধতি কোনটি?",
+          options: [
+            "int arr[2,3,4];",
+            "int arr[2][3][4];",
+            "int arr{2}{3}{4};",
+            "কোনোটিই নয়",
+          ],
+          ans: 1,
+          exp: "পরপর তিনটি স্কয়ার ব্র্যাকেটের মাধ্যমে ডাইমেনশন ডিফাইন করা হয়।",
+        },
+        {
+          id: 56,
+          cat: 6,
+          q: "একটি ১০ উপাদানের ইনটিজার অ্যারে মেমোরিতে মোট কত বাইট জায়গা নেবে? (int = 4 Bytes)",
+          options: ["10 Bytes", "20 Bytes", "40 Bytes", "80 Bytes"],
+          ans: 2,
+          exp: "১০টি উপাদানের জন্য মোট ১০ x ৪ = ৪০ বাইট মেমোরি লাগবে।",
+        },
+        {
+          id: 57,
+          cat: 6,
+          q: "অ্যারের শেষ উপাদানের ইনডেক্স নম্বর কত হয় যদি অ্যারের সাইজ 'N' হয়?",
+          options: ["N", "N - 1", "N + 1", "0"],
+          ans: 1,
+          exp: "ইনডেক্স ০ থেকে শুরু হওয়ার কারণে শেষ ইনডেক্স N - 1 হবে।",
+        },
+        {
+          id: 58,
+          cat: 6,
+          q: "২ডি অ্যারে `int matrix[2][3];` এর রো (Row) সংখ্যা কত?",
+          options: ["2", "3", "6", "5"],
+          ans: 0,
+          exp: "প্রথম স্কয়ার ব্র্যাকেটটি রো সংখ্যা নির্দেশ করে যা এখানে ২।",
+        },
+        {
+          id: 59,
+          cat: 6,
+          q: "স্ট্রিংয়ের দৈর্ঘ্য (Length) নির্ণয় করার লাইব্রেরি ফাংশন কোনটি?",
+          options: ["strcat()", "strlen()", "strcpy()", "strcmp()"],
+          ans: 1,
+          exp: "strlen() ফাংশনটি নাল ক্যারেক্টার বাদে স্ট্রিং লেন্থ কাউন্ট করে।",
+        },
+        {
+          id: 60,
+          cat: 6,
+          q: "মেমোরিতে স্ট্রিংয়ের শেষে 'Null' ক্যারেক্টার না থাকলে কী সমস্যা হতে পারে?",
+          options: [
+            "কম্পাইল এরর হবে",
+            "কোড দ্রুত চলবে",
+            "কোনো সমস্যা নেই",
+            "প্রিন্ট করার সময় গারবেজ ভ্যালু দেখাবে",
+          ],
+          ans: 3,
+          exp: "নাল ছাড়া printf থামার জায়গা চিনে না এবং মেমোরির অতিরিক্ত গারবেজ প্রিন্ট করতেই থাকে।",
+        },
 
-            // CHAPTER 7 (61-70)
-            { id: 61, cat: 7, q: "ফাংশন 'Call by Reference' পদ্ধতিতে আর্গুমেন্ট হিসেবে কী পাস করা হয়?", options: ["ভেরিয়েবলের মেমোরি অ্যাড্রেস (Address)", "ভেরিয়েবলের মান (Value)", "ফাংশনের নাম", "ডাটা টাইপ"], ans: 0, exp: "ভেরিয়েবলের মেমোরি অ্যাড্রেস পাস হওয়ায় প্যারামিটারে সরাসরি মূল ডেটা চেঞ্জ করা যায়।" },
-            { id: 62, cat: 7, q: "রিকার্সন (Recursion) বলতে কী বোঝায়?", options: ["একটি লুপ যখন অনন্তকাল ধরে চলে", "একটি ফাংশন যখন নিজেই নিজেকে কল করে", "এক ফাংশন থেকে অন্য ফাংশনে জাম্প করা", "মেমোরি খালি করার একটি প্রক্রিয়া"], ans: 1, exp: "কোনো ফাংশন নিজের ভেতরে থেকে নিজেকেই এক্সিকিউট করা রিকার্সন।" },
-            { id: 63, cat: 7, q: "রিকার্সিভ ফাংশনে মেমোরির কোন অংশটি ব্যবহৃত হয়?", options: ["হিপ (Heap)", "স্ট্যাক (Stack)", "রেজিস্টার (Register)", "কোনোটিই নয়"], ans: 1, exp: "প্রতিবার নিজের ফাংশন কলের ট্র্যাক স্ট্যাক ফ্রেমে সংরক্ষিত থাকে।" },
-            { id: 64, cat: 7, q: "ফাংশন প্রোটোটাইপ (Function Prototype) কেন ব্যবহার করা হয়?", options: ["main ফাংশনের আগে কম্পাইলারকে ফাংশনের নাম, টাইপ ও প্যারামিটার জানানোর জন্য", "মেমোরি ডিলিট করতে", "ফাংশনের গতি বাড়াতে", "কোনোটিই নয়"], ans: 0, exp: "যাতে কম্পাইলার বুঝতে পারে নিচে বা অন্য ফাইলে এই ফাংশনের সংজ্ঞা রয়েছে।" },
-            { id: 65, cat: 7, q: "ফাংশন 'Call by Value' পদ্ধতিতে কী ঘটে?", options: ["মূল মেমোরি অ্যাড্রেস পাস হয়", "মূল ভেরিয়েবল পরিবর্তিত হয়ে যায়", "আর্গুমেন্টের একটি কপি পাস হয়, মূল ভেরিয়েবল অপরিবর্তিত থাকে", "কোনোটিই নয়"], ans: 2, exp: "মান কপির কারণে ফাংশনের ভেতরের মডিফিকেশন মূল ভেরিয়েবলে ইমপ্যাক্ট ফেলে না।" },
-            { id: 66, cat: 7, q: "রিকার্সিভ ফাংশনে লুপের মতো অনন্তকাল চলা বন্ধ করার কন্ডিশনকে কী বলে?", options: ["ইনফিনিট কেস", "বেস কেস (Base Case)", "বডি কেস", "ব্রেক স্টেটমেন্ট"], ans: 1, exp: "বেস কেস বা কন্ডিশন হিট করলেই কেবল রিকার্সন স্ট্যাক মেমোরি আনওয়াইন্ড বা ব্যাকট্র্যাক করে।" },
-            { id: 67, cat: 7, q: "যদি কোনো ফাংশন কোনো মান ফেরত না পাঠায়, তবে তার রিটার্ন টাইপ কী হওয়া উচিত?", options: ["int", "null", "void", "তার কোনো রিটার্ন টাইপ লেখার প্রয়োজন নেই"], ans: 2, exp: "void নির্দেশ করে যে ফাংশনটির কোনো রিটার্ন ভ্যালু নেই।" },
-            { id: 68, cat: 7, q: "নিচের কোনটি একটি গ্লোবাল ভেরিয়েবল (Global Variable) এর বৈশিষ্ট্য?", options: ["এটি সব ফাংশনের বাইরে ডিক্লেয়ার করা হয় এবং যেকোনো ফাংশন থেকে অ্যাক্সেস করা যায়", "এটি শুধু main ফাংশনের ভেতর কাজ করে", "এর মান পরিবর্তন করা যায় না", "মেমোরিতে কোনো জায়গা নেয় না"], ans: 0, exp: "গ্লোবাল ভেরিয়েবলের স্কোপ থাকে পুরো সোর্স কোড ফাইল জুড়ে।" },
-            { id: 69, cat: 7, q: "পয়েন্টার ভেরিয়েবল ডিক্লেয়ার করতে কোন চিহ্নটি ব্যবহার করা হয়?", options: ["\& (Ampersand)", "\#", "* (Asterisk)", "->"], ans: 2, exp: "স্টার চিহ্ন (*) নির্দেশ করে যে এটি একটি পয়েন্টার ভেরিয়েবল যা মেমোরি অ্যাড্রেস হোল্ড করবে।" },
-            { id: 70, cat: 7, q: "যদি রিকার্সিভ ফাংশনে বেস কেস (Base Case) না দেওয়া হয়, তবে মেমোরিতে কোন সমস্যাটি ঘটবে?", options: ["সিনট্যাক্স এরর", "মেমোরি লিক", "কোড দ্রুত রান হবে", "স্ট্যাক ওভারফ্লো (Stack Overflow)"], ans: 3, exp: "সীমা ছাড়া রিকার্সন স্ট্যাক মেমোরির লিমিট অতিক্রম করে ক্র্যাশ করে।" },
+        // CHAPTER 7 (61-70)
+        {
+          id: 61,
+          cat: 7,
+          q: "ফাংশন 'Call by Reference' পদ্ধতিতে আর্গুমেন্ট হিসেবে কী পাস করা হয়?",
+          options: [
+            "ভেরিয়েবলের মেমোরি অ্যাড্রেস (Address)",
+            "ভেরিয়েবলের মান (Value)",
+            "ফাংশনের নাম",
+            "ডাটা টাইপ",
+          ],
+          ans: 0,
+          exp: "ভেরিয়েবলের মেমোরি অ্যাড্রেস পাস হওয়ায় প্যারামিটারে সরাসরি মূল ডেটা চেঞ্জ করা যায়।",
+        },
+        {
+          id: 62,
+          cat: 7,
+          q: "রিকার্সন (Recursion) বলতে কী বোঝায়?",
+          options: [
+            "একটি লুপ যখন অনন্তকাল ধরে চলে",
+            "একটি ফাংশন যখন নিজেই নিজেকে কল করে",
+            "এক ফাংশন থেকে অন্য ফাংশনে জাম্প করা",
+            "মেমোরি খালি করার একটি প্রক্রিয়া",
+          ],
+          ans: 1,
+          exp: "কোনো ফাংশন নিজের ভেতরে থেকে নিজেকেই এক্সিকিউট করা রিকার্সন।",
+        },
+        {
+          id: 63,
+          cat: 7,
+          q: "রিকার্সিভ ফাংশনে মেমোরির কোন অংশটি ব্যবহৃত হয়?",
+          options: [
+            "হিপ (Heap)",
+            "স্ট্যাক (Stack)",
+            "রেজিস্টার (Register)",
+            "কোনোটিই নয়",
+          ],
+          ans: 1,
+          exp: "প্রতিবার নিজের ফাংশন কলের ট্র্যাক স্ট্যাক ফ্রেমে সংরক্ষিত থাকে।",
+        },
+        {
+          id: 64,
+          cat: 7,
+          q: "ফাংশন প্রোটোটাইপ (Function Prototype) কেন ব্যবহার করা হয়?",
+          options: [
+            "main ফাংশনের আগে কম্পাইলারকে ফাংশনের নাম, টাইপ ও প্যারামিটার জানানোর জন্য",
+            "মেমোরি ডিলিট করতে",
+            "ফাংশনের গতি বাড়াতে",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "যাতে কম্পাইলার বুঝতে পারে নিচে বা অন্য ফাইলে এই ফাংশনের সংজ্ঞা রয়েছে।",
+        },
+        {
+          id: 65,
+          cat: 7,
+          q: "ফাংশন 'Call by Value' পদ্ধতিতে কী ঘটে?",
+          options: [
+            "মূল মেমোরি অ্যাড্রেস পাস হয়",
+            "মূল ভেরিয়েবল পরিবর্তিত হয়ে যায়",
+            "আর্গুমেন্টের একটি কপি পাস হয়, মূল ভেরিয়েবল অপরিবর্তিত থাকে",
+            "কোনোটিই নয়",
+          ],
+          ans: 2,
+          exp: "মান কপির কারণে ফাংশনের ভেতরের মডিফিকেশন মূল ভেরিয়েবলে ইমপ্যাক্ট ফেলে না।",
+        },
+        {
+          id: 66,
+          cat: 7,
+          q: "রিকার্সিভ ফাংশনে লুপের মতো অনন্তকাল চলা বন্ধ করার কন্ডিশনকে কী বলে?",
+          options: [
+            "ইনফিনিট কেস",
+            "বেস কেস (Base Case)",
+            "বডি কেস",
+            "ব্রেক স্টেটমেন্ট",
+          ],
+          ans: 1,
+          exp: "বেস কেস বা কন্ডিশন হিট করলেই কেবল রিকার্সন স্ট্যাক মেমোরি আনওয়াইন্ড বা ব্যাকট্র্যাক করে।",
+        },
+        {
+          id: 67,
+          cat: 7,
+          q: "যদি কোনো ফাংশন কোনো মান ফেরত না পাঠায়, তবে তার রিটার্ন টাইপ কী হওয়া উচিত?",
+          options: [
+            "int",
+            "null",
+            "void",
+            "তার কোনো রিটার্ন টাইপ লেখার প্রয়োজন নেই",
+          ],
+          ans: 2,
+          exp: "void নির্দেশ করে যে ফাংশনটির কোনো রিটার্ন ভ্যালু নেই।",
+        },
+        {
+          id: 68,
+          cat: 7,
+          q: "নিচের কোনটি একটি গ্লোবাল ভেরিয়েবল (Global Variable) এর বৈশিষ্ট্য?",
+          options: [
+            "এটি সব ফাংশনের বাইরে ডিক্লেয়ার করা হয় এবং যেকোনো ফাংশন থেকে অ্যাক্সেস করা যায়",
+            "এটি শুধু main ফাংশনের ভেতর কাজ করে",
+            "এর মান পরিবর্তন করা যায় না",
+            "মেমোরিতে কোনো জায়গা নেয় না",
+          ],
+          ans: 0,
+          exp: "গ্লোবাল ভেরিয়েবলের স্কোপ থাকে পুরো সোর্স কোড ফাইল জুড়ে।",
+        },
+        {
+          id: 69,
+          cat: 7,
+          q: "পয়েন্টার ভেরিয়েবল ডিক্লেয়ার করতে কোন চিহ্নটি ব্যবহার করা হয়?",
+          options: ["\& (Ampersand)", "\#", "* (Asterisk)", "->"],
+          ans: 2,
+          exp: "স্টার চিহ্ন (*) নির্দেশ করে যে এটি একটি পয়েন্টার ভেরিয়েবল যা মেমোরি অ্যাড্রেস হোল্ড করবে।",
+        },
+        {
+          id: 70,
+          cat: 7,
+          q: "যদি রিকার্সিভ ফাংশনে বেস কেস (Base Case) না দেওয়া হয়, তবে মেমোরিতে কোন সমস্যাটি ঘটবে?",
+          options: [
+            "সিনট্যাক্স এরর",
+            "মেমোরি লিক",
+            "কোড দ্রুত রান হবে",
+            "স্ট্যাক ওভারফ্লো (Stack Overflow)",
+          ],
+          ans: 3,
+          exp: "সীমা ছাড়া রিকার্সন স্ট্যাক মেমোরির লিমিট অতিক্রম করে ক্র্যাশ করে।",
+        },
 
-            // CHAPTER 8 (71-90)
-            { id: 71, cat: 8, q: "C L্যাঙ্গুয়েজে `int a = 012;` লিখলে `a` এর ডেসিমেল মান কত হবে?", options: ["12", "10", "8", "18"], ans: 1, exp: "সংখ্যার শুরুতে ০ থাকলে কম্পাইলার এটিকে অক্টাল ধরে। অক্টাল ১২ এর ডেসিমেল মান ১০।" },
-            { id: 72, cat: 8, q: "নিচের কোডটির আউটপুট কী হবে? \n `int i = 5; printf(\"\%d\", i++ + ++i);`", options: ["10", "11", "Error", "12"], ans: 3, exp: "এটি কম্পাইলার ও সিকুয়েন্স পয়েন্টের উপর নির্ভর করে, তবে আধুনিক অধিকাংশ কম্পাইলারে এর মান ১২ প্রিন্ট হয়।" },
-            { id: 73, cat: 8, q: "যদি `int *p;` একটি পয়েন্টার হয়, তবে `p++` করলে কী পরিবর্তন ঘটে?", options: ["পয়েন্টারটি পরবর্তী ডেটা টাইপের সাইজ অনুযায়ী মেমোরি অ্যাড্রেস সরায়", "মেমোরি লোকেশনের ভ্যালু ১ বাড়ে", "পয়েন্টার নষ্ট হয়ে যায়", "Error দেখায়"], ans: 0, exp: "int এর ক্ষেত্রে পয়েন্টারটি ৪ বাইট পরের মেমোরি অ্যাড্রেস পয়েন্ট করবে।" },
-            { id: 74, cat: 8, q: "ডায়নামিক মেমোরি অ্যালোকেশনে `calloc()` ফাংশন মেমোরি স্পেসকে কী দিয়ে ইনিশিয়ালাইজ করে?", options: ["Garbage Value", "1", "Zero (0)", "NULL"], ans: 2, exp: "malloc গার্বেজ ভ্যালু রাখে, কিন্তু calloc সম্পূর্ণ অ্যালোকেটেড স্পেসকে শূন্য (০) দিয়ে ইনিশিয়ালাইজ করে।" },
-            { id: 75, cat: 8, q: "নিচের কোনটি একটি 'Dangling Pointer' তৈরির কারণ হতে পারে?", options: ["মেমোরি ফ্রি করার পর ওই পয়েন্টার ব্যবহার করলে", "পয়েন্টার ডিক্লেয়ার না করলে", "NULL পয়েন্টার তৈরি করলে", "সবগুলো"], ans: 0, exp: "যে মেমোরি ডিলিট বা ফ্রি হয়েছে, পয়েন্টার যদি এখনও সেখানে পয়েন্ট করে থাকে তাকে Dangling Pointer বলে।" },
-            { id: 76, cat: 8, q: "C L্যাঙ্গুয়েজে `sizeof(char)` এর মান সবসময় কত হয়?", options: ["2", "4", "1", "8"], ans: 2, exp: "C স্ট্যান্ডার্ড অনুযায়ী char এর মেমোরি সাইজ সবসময় ১ বাইট।" },
-            { id: 77, cat: 8, q: "একটি `union` এর সাইজ কীভাবে নির্ধারিত হয়?", options: ["সব উপাদানের সাইজের যোগফল অনুযায়ী", "সবচেয়ে বড় উপাদানের সাইজ অনুযায়ী", "সবচেয়ে ছোট উপাদানের সাইজ অনুযায়ী", "মেমোরি কম্পাইল সাইজ অনুযায়ী"], ans: 1, exp: "ইউনিয়নে সব মেম্বার একই মেমোরি শেয়ার করায় এর সাইজ হয় মেম্বারদের মধ্যে সর্বোচ্চ সাইজের সমান।" },
-            { id: 78, cat: 8, q: "`volatile` কীওয়ার্ড C-তে কেন ব্যবহৃত হয়?", options: ["মেমোরি সেভ করার জন্য", "কম্পাইলার অপ্টিমাইজেশন বন্ধ করার জন্য", "ভেরিয়েবল সুরক্ষিত করার জন্য", "কোড ফাস্ট করার জন্য"], ans: 1, exp: "volatile কম্পাইলারকে জানায় যে এই ভেরিয়েবলের মান যেকোনো সময় বাইরের কোনো হার্ডওয়্যার দ্বারা পরিবর্তিত হতে পারে।" },
-            { id: 79, cat: 8, q: "নিচের কোনটি স্ট্রিং কপি করার সঠিক ফাংশন?", options: ["strcpy()", "strcat()", "strcmp()", "strlen()"], ans: 0, exp: "strcpy(dest, src) ফাংশনটি সোর্স স্ট্রিংকে ডেস্টিনেশন মেমরিতে কপি করে।" },
-            { id: 80, cat: 8, q: "C-তে `FILE *fp;` এখানে `FILE` আসলে কী?", options: ["একটি বিল্ট-ইন ডেটা টাইপ", "একটি প্রিপ্রসেসর", "একটি স্ট্রাকচার (struct)", "পয়েন্টার কি-ওয়ার্ড"], ans: 2, exp: "FILE হলো একটি system defined structure যা ফিজিক্যাল ফাইলের স্ট্যাটাস ও বাফার ইনফরমেশন ধরে রাখে।" },
-            { id: 81, cat: 8, q: "নিচের কোন অপারেটরটির অগ্রাধিকার (Precedence) সবচেয়ে বেশি?", options: ["\&\&", "=", "()", "+"], ans: 2, exp: "প্যারেন্থেসিস বা ফার্স্ট ব্র্যাকেটের অগ্রাধিকার C অপারেটর তালিকায় সবার উপরে।" },
-            { id: 82, cat: 8, q: "যদি কোনো ফাংশনের ভেতর `static` ভেরিয়েবল ব্যবহার করা হয়, তবে কী ঘটে?", options: ["ভেরিয়েবলটি তার আগের মান ধরে রাখে", "ফাংশন কল শেষ হলে মান হারিয়ে যায়", "মান মেমোরি হিপে চলে যায়", "Error দেখায়"], ans: 0, exp: "static ভেরিয়েবল কেবল একবার ইনিশিয়ালাইজ হয় এবং লাইফটাইম জুড়ে আগের মান মেমোরিতে ধরে রাখে।" },
-            { id: 83, cat: 8, q: "`#define` প্রিপ্রসেসর ডিরেক্টিভ কেন ব্যবহৃত হয়?", options: ["ফাংশন ডিক্লেয়ার করতে", "ম্যাক্রো বা কনস্ট্যান্ট ডিফাইন করতে", "লাইব্রেরি ফাইল যুক্ত করতে", "এরর ডিটেক্ট করতে"], ans: 1, exp: "#define ব্যবহার করে গ্লোবাল কনস্ট্যান্ট বা কোড ম্যাক্রো তৈরি করা হয়।" },
-            { id: 84, cat: 8, q: "`enum` ডেটা টাইপে ডিফল্টভাবে প্রথম উপাদানের মান কত থাকে?", options: ["1", "-1", "Garbage Value", "0"], ans: 3, exp: "এনিউমারেশন (enum) উপাদানের মান ডিফল্টভাবে ০ থেকে ক্রমান্বয়ে ১ করে বাড়তে থাকে।" },
-            { id: 85, cat: 8, q: "অ্যারে নেম `arr` পয়েন্টার হিসেবে আসলে কী নির্দেশ করে?", options: ["পুরো অ্যারের সাইজ", "অ্যারের প্রথম উপাদানের অ্যাড্রেস", "অ্যারের শেষ উপাদানের অ্যাড্রেস", "গার্বেজ মেমোরি"], ans: 1, exp: "অ্যারের বেস নাম আসলে তার প্রথম ঘরের মেমোরি অ্যাড্রেস (\&arr[0]) নির্দেশ করে।" },
-            { id: 86, cat: 8, q: "C-তে `while(1)` লুপটি কতবার চলবে?", options: ["একবারও নয়", "১ বার", "অনন্তকাল (Infinite)", "১০ বার"], ans: 2, exp: "যেহেতু কন্ডিশন ১ (সবসময় সত্য), তাই লুপটি কখনো থামবে না।" },
-            { id: 87, cat: 8, q: "স্ট্রিংয়ের ক্ষেত্রে `scanf(\"\%s\", str);` কেন স্পেসসহ ইনপুট নিতে পারে না?", options: ["এটি শুধু একটি ক্যারেক্টার নেয়", "এটি স্পেস বা হোয়াইটস্পেস পেলে ইনপুট নেওয়া বন্ধ করে দেয়", "এটি অত্যন্ত স্লো ফাংশন", "কোনোটিই নয়"], ans: 1, exp: "scanf স্ট্রিং রিড করার সময় স্পেস বা ট্যাব পেলে ইনপুটের সমাপ্তি মনে করে।" },
-            { id: 88, cat: 8, q: "নিচের কোনটি 'Dereferencing' অপারেটর?", options: ["==", "\&", "->", "*"], ans: 3, exp: "পয়েন্টার ভেরিয়েবলের আগে স্টার (*) বসালে তা মেমোরি অ্যাড্রেস থেকে আসল মান রিড করে।" },
-            { id: 89, cat: 8, q: "暗-তে `void*` পয়েন্টারকে কী বলা হয়?", options: ["Generic Pointer", "Null Pointer", "Dangling Pointer", "Wild Pointer"], ans: 0, exp: "void* পয়েন্টারের নির্দিষ্ট কোনো টাইপ নেই, এটি যেকোনো টাইপের মেমোরি অ্যাড্রেস হোল্ড করতে পারে।" },
-            { id: 90, cat: 8, q: "ফাইল ওপেন করার সময় 'a' মোডের কাজ কী?", options: ["ফাইল নতুন করে লেখা (Write)", "ফাইল রিড করা", "ফাইলের শেষে নতুন ডেটা যোগ করা (Append)", "ফাইল ক্লোজ করা"], ans: 2, exp: "Append মোড আগের ডেটা মুছে না ফেলে ফাইলের শেষ থেকে নতুন লেখা শুরু করে।" },
+        // CHAPTER 8 (71-90)
+        {
+          id: 71,
+          cat: 8,
+          q: "C L্যাঙ্গুয়েজে `int a = 012;` লিখলে `a` এর ডেসিমেল মান কত হবে?",
+          options: ["12", "10", "8", "18"],
+          ans: 1,
+          exp: "সংখ্যার শুরুতে ০ থাকলে কম্পাইলার এটিকে অক্টাল ধরে। অক্টাল ১২ এর ডেসিমেল মান ১০।",
+        },
+        {
+          id: 72,
+          cat: 8,
+          q: 'নিচের কোডটির আউটপুট কী হবে? \n `int i = 5; printf("\%d", i++ + ++i);`',
+          options: ["10", "11", "Error", "12"],
+          ans: 3,
+          exp: "এটি কম্পাইলার ও সিকুয়েন্স পয়েন্টের উপর নির্ভর করে, তবে আধুনিক অধিকাংশ কম্পাইলারে এর মান ১২ প্রিন্ট হয়।",
+        },
+        {
+          id: 73,
+          cat: 8,
+          q: "যদি `int *p;` একটি পয়েন্টার হয়, তবে `p++` করলে কী পরিবর্তন ঘটে?",
+          options: [
+            "পয়েন্টারটি পরবর্তী ডেটা টাইপের সাইজ অনুযায়ী মেমোরি অ্যাড্রেস সরায়",
+            "মেমোরি লোকেশনের ভ্যালু ১ বাড়ে",
+            "পয়েন্টার নষ্ট হয়ে যায়",
+            "Error দেখায়",
+          ],
+          ans: 0,
+          exp: "int এর ক্ষেত্রে পয়েন্টারটি ৪ বাইট পরের মেমোরি অ্যাড্রেস পয়েন্ট করবে।",
+        },
+        {
+          id: 74,
+          cat: 8,
+          q: "ডায়নামিক মেমোরি অ্যালোকেশনে `calloc()` ফাংশন মেমোরি স্পেসকে কী দিয়ে ইনিশিয়ালাইজ করে?",
+          options: ["Garbage Value", "1", "Zero (0)", "NULL"],
+          ans: 2,
+          exp: "malloc গার্বেজ ভ্যালু রাখে, কিন্তু calloc সম্পূর্ণ অ্যালোকেটেড স্পেসকে শূন্য (০) দিয়ে ইনিশিয়ালাইজ করে।",
+        },
+        {
+          id: 75,
+          cat: 8,
+          q: "নিচের কোনটি একটি 'Dangling Pointer' তৈরির কারণ হতে পারে?",
+          options: [
+            "মেমোরি ফ্রি করার পর ওই পয়েন্টার ব্যবহার করলে",
+            "পয়েন্টার ডিক্লেয়ার না করলে",
+            "NULL পয়েন্টার তৈরি করলে",
+            "সবগুলো",
+          ],
+          ans: 0,
+          exp: "যে মেমোরি ডিলিট বা ফ্রি হয়েছে, পয়েন্টার যদি এখনও সেখানে পয়েন্ট করে থাকে তাকে Dangling Pointer বলে।",
+        },
+        {
+          id: 76,
+          cat: 8,
+          q: "C L্যাঙ্গুয়েজে `sizeof(char)` এর মান সবসময় কত হয়?",
+          options: ["2", "4", "1", "8"],
+          ans: 2,
+          exp: "C স্ট্যান্ডার্ড অনুযায়ী char এর মেমোরি সাইজ সবসময় ১ বাইট।",
+        },
+        {
+          id: 77,
+          cat: 8,
+          q: "একটি `union` এর সাইজ কীভাবে নির্ধারিত হয়?",
+          options: [
+            "সব উপাদানের সাইজের যোগফল অনুযায়ী",
+            "সবচেয়ে বড় উপাদানের সাইজ অনুযায়ী",
+            "সবচেয়ে ছোট উপাদানের সাইজ অনুযায়ী",
+            "মেমোরি কম্পাইল সাইজ অনুযায়ী",
+          ],
+          ans: 1,
+          exp: "ইউনিয়নে সব মেম্বার একই মেমোরি শেয়ার করায় এর সাইজ হয় মেম্বারদের মধ্যে সর্বোচ্চ সাইজের সমান।",
+        },
+        {
+          id: 78,
+          cat: 8,
+          q: "`volatile` কীওয়ার্ড C-তে কেন ব্যবহৃত হয়?",
+          options: [
+            "মেমোরি সেভ করার জন্য",
+            "কম্পাইলার অপ্টিমাইজেশন বন্ধ করার জন্য",
+            "ভেরিয়েবল সুরক্ষিত করার জন্য",
+            "কোড ফাস্ট করার জন্য",
+          ],
+          ans: 1,
+          exp: "volatile কম্পাইলারকে জানায় যে এই ভেরিয়েবলের মান যেকোনো সময় বাইরের কোনো হার্ডওয়্যার দ্বারা পরিবর্তিত হতে পারে।",
+        },
+        {
+          id: 79,
+          cat: 8,
+          q: "নিচের কোনটি স্ট্রিং কপি করার সঠিক ফাংশন?",
+          options: ["strcpy()", "strcat()", "strcmp()", "strlen()"],
+          ans: 0,
+          exp: "strcpy(dest, src) ফাংশনটি সোর্স স্ট্রিংকে ডেস্টিনেশন মেমরিতে কপি করে।",
+        },
+        {
+          id: 80,
+          cat: 8,
+          q: "C-তে `FILE *fp;` এখানে `FILE` আসলে কী?",
+          options: [
+            "একটি বিল্ট-ইন ডেটা টাইপ",
+            "একটি প্রিপ্রসেসর",
+            "একটি স্ট্রাকচার (struct)",
+            "পয়েন্টার কি-ওয়ার্ড",
+          ],
+          ans: 2,
+          exp: "FILE হলো একটি system defined structure যা ফিজিক্যাল ফাইলের স্ট্যাটাস ও বাফার ইনফরমেশন ধরে রাখে।",
+        },
+        {
+          id: 81,
+          cat: 8,
+          q: "নিচের কোন অপারেটরটির অগ্রাধিকার (Precedence) সবচেয়ে বেশি?",
+          options: ["\&\&", "=", "()", "+"],
+          ans: 2,
+          exp: "প্যারেন্থেসিস বা ফার্স্ট ব্র্যাকেটের অগ্রাধিকার C অপারেটর তালিকায় সবার উপরে।",
+        },
+        {
+          id: 82,
+          cat: 8,
+          q: "যদি কোনো ফাংশনের ভেতর `static` ভেরিয়েবল ব্যবহার করা হয়, তবে কী ঘটে?",
+          options: [
+            "ভেরিয়েবলটি তার আগের মান ধরে রাখে",
+            "ফাংশন কল শেষ হলে মান হারিয়ে যায়",
+            "মান মেমোরি হিপে চলে যায়",
+            "Error দেখায়",
+          ],
+          ans: 0,
+          exp: "static ভেরিয়েবল কেবল একবার ইনিশিয়ালাইজ হয় এবং লাইফটাইম জুড়ে আগের মান মেমোরিতে ধরে রাখে।",
+        },
+        {
+          id: 83,
+          cat: 8,
+          q: "`#define` প্রিপ্রসেসর ডিরেক্টিভ কেন ব্যবহৃত হয়?",
+          options: [
+            "ফাংশন ডিক্লেয়ার করতে",
+            "ম্যাক্রো বা কনস্ট্যান্ট ডিফাইন করতে",
+            "লাইব্রেরি ফাইল যুক্ত করতে",
+            "এরর ডিটেক্ট করতে",
+          ],
+          ans: 1,
+          exp: "#define ব্যবহার করে গ্লোবাল কনস্ট্যান্ট বা কোড ম্যাক্রো তৈরি করা হয়।",
+        },
+        {
+          id: 84,
+          cat: 8,
+          q: "`enum` ডেটা টাইপে ডিফল্টভাবে প্রথম উপাদানের মান কত থাকে?",
+          options: ["1", "-1", "Garbage Value", "0"],
+          ans: 3,
+          exp: "এনিউমারেশন (enum) উপাদানের মান ডিফল্টভাবে ০ থেকে ক্রমান্বয়ে ১ করে বাড়তে থাকে।",
+        },
+        {
+          id: 85,
+          cat: 8,
+          q: "অ্যারে নেম `arr` পয়েন্টার হিসেবে আসলে কী নির্দেশ করে?",
+          options: [
+            "পুরো অ্যারের সাইজ",
+            "অ্যারের প্রথম উপাদানের অ্যাড্রেস",
+            "অ্যারের শেষ উপাদানের অ্যাড্রেস",
+            "গার্বেজ মেমোরি",
+          ],
+          ans: 1,
+          exp: "অ্যারের বেস নাম আসলে তার প্রথম ঘরের মেমোরি অ্যাড্রেস (\&arr[0]) নির্দেশ করে।",
+        },
+        {
+          id: 86,
+          cat: 8,
+          q: "C-তে `while(1)` লুপটি কতবার চলবে?",
+          options: ["একবারও নয়", "১ বার", "অনন্তকাল (Infinite)", "১০ বার"],
+          ans: 2,
+          exp: "যেহেতু কন্ডিশন ১ (সবসময় সত্য), তাই লুপটি কখনো থামবে না।",
+        },
+        {
+          id: 87,
+          cat: 8,
+          q: 'স্ট্রিংয়ের ক্ষেত্রে `scanf("\%s", str);` কেন স্পেসসহ ইনপুট নিতে পারে না?',
+          options: [
+            "এটি শুধু একটি ক্যারেক্টার নেয়",
+            "এটি স্পেস বা হোয়াইটস্পেস পেলে ইনপুট নেওয়া বন্ধ করে দেয়",
+            "এটি অত্যন্ত স্লো ফাংশন",
+            "কোনোটিই নয়",
+          ],
+          ans: 1,
+          exp: "scanf স্ট্রিং রিড করার সময় স্পেস বা ট্যাব পেলে ইনপুটের সমাপ্তি মনে করে।",
+        },
+        {
+          id: 88,
+          cat: 8,
+          q: "নিচের কোনটি 'Dereferencing' অপারেটর?",
+          options: ["==", "\&", "->", "*"],
+          ans: 3,
+          exp: "পয়েন্টার ভেরিয়েবলের আগে স্টার (*) বসালে তা মেমোরি অ্যাড্রেস থেকে আসল মান রিড করে।",
+        },
+        {
+          id: 89,
+          cat: 8,
+          q: "暗-তে `void*` পয়েন্টারকে কী বলা হয়?",
+          options: [
+            "Generic Pointer",
+            "Null Pointer",
+            "Dangling Pointer",
+            "Wild Pointer",
+          ],
+          ans: 0,
+          exp: "void* পয়েন্টারের নির্দিষ্ট কোনো টাইপ নেই, এটি যেকোনো টাইপের মেমোরি অ্যাড্রেস হোল্ড করতে পারে।",
+        },
+        {
+          id: 90,
+          cat: 8,
+          q: "ফাইল ওপেন করার সময় 'a' মোডের কাজ কী?",
+          options: [
+            "ফাইল নতুন করে লেখা (Write)",
+            "ফাইল রিড করা",
+            "ফাইলের শেষে নতুন ডেটা যোগ করা (Append)",
+            "ফাইল ক্লোজ করা",
+          ],
+          ans: 2,
+          exp: "Append মোড আগের ডেটা মুছে না ফেলে ফাইলের শেষ থেকে নতুন লেখা শুরু করে।",
+        },
 
-            // CHAPTER 9 (91-110)
-            { id: 91, cat: 9, q: "ডায়নামিক মেমোরি রিলিজ বা ডিলিট করতে কোন ফাংশন ব্যবহৃত হয়?", options: ["delete()", "free()", "remove()", "clear()"], ans: 1, exp: "malloc/calloc দিয়ে অ্যালোকেটেড হিপ মেমোরি মুক্ত করতে free() ব্যবহার করতে হয়।" },
-            { id: 92, cat: 9, q: "পয়েন্টার টু পয়েন্টার (Pointer to Pointer) ডিক্লেয়ার করার সঠিক নিয়ম কোনটি?", options: ["int *p;", "int **p;", "int \&p;", "int ***p;"], ans: 1, exp: "ডাবল স্টার (**) দিয়ে আরেকটি পয়েন্টার ভেরিয়েবলের মেমোরি অ্যাড্রেস পয়েন্ট করার ভেরিয়েবল ডিফাইন করা হয়।" },
-            { id: 93, cat: 9, q: "`struct` and `union` এর মধ্যে মেমোরি ব্যবহারের প্রধান পার্থক্য কী?", options: ["struct এ সব উপাদান একই মেমোরি শেয়ার করে", "উভয়ই মেমোরি শেয়ার করে না", "union এ সব উপাদান একই মেমোরি শেয়ার করে", "struct বেশি ফাস্ট"], ans: 2, exp: "ইউনিয়নে মেমোরি ওভারল্যাপ হয়, স্ট্রাকচারে প্রতিটি মেম্বার আলাদা মেমোরি স্পেস পায়।" },
-            { id: 94, cat: 9, q: "নিচের কোনটি একটি 'Infinite' লুপের সঠিক রূপ?", options: ["while(0)", "for( ; ; )", "do\{\}while(0)", "for(i=0;i<10;i--)"], ans: 1, exp: "for লুপের ব্র্যাকেটে কোনো কন্ডিশন না দিলে তা ডিফল্টভাবে সত্য ধরে নিয়ে অনন্তকাল চলে।" },
-            { id: 95, cat: 9, q: "কোনো পয়েন্টার ভেরিয়েবলে যদি কোনো অ্যাড্রেস না থাকে, তবে সেটিকে কী হিসেবে ডিক্লেয়ার করা ভালো?", options: ["0", "Garbage Value", "NULL", "void"], ans: 2, exp: "NULL অ্যাসাইন করলে পয়েন্টারটি সুরক্ষিত থাকে এবং মেমোরির র্যান্ডম গার্বেজ পয়েন্ট করা বন্ধ হয়।" },
-            { id: 96, cat: 9, q: "`printf(\"\%\%d\");` লিখলে স্ক্রিনে আউটপুটে কী দেখাবে?", options: ["\%d এবং গার্বেজ ভ্যালু", "Error দেখাবে", "\%d", "কিছুই দেখাবে না"], ans: 2, exp: "ডাবল পারসেন্ট (\%) ক্যারেক্টারকে এস্কেপ করে স্ক্রিনে সিঙ্গেল \% প্রিন্ট করে।" },
-            { id: 97, cat: 9, q: "পয়েন্টার ভেরিয়েবল মেমোরিতে কতটুকু জায়গা নেয়?", options: ["১ বাইট সবসময়", "আর্কিটেকচার অনুযায়ী (৪ বা ৮ বাইট)", "৪ বাইট সবসময়", "কোনো জায়গা নেয় না"], ans: 1, exp: "৩২-বিট আর্কিটেকচারে পয়েন্টার ৪ বাইট এবং ৬৪-বিটে ৮ বাইট জায়গা দখল করে।" },
-            { id: 98, cat: 9, q: "`rand()` ফাংশন সি ল্যাঙ্গুয়েজের কোন হেডার ফাইলে থাকে?", options: ["stdio.h", "math.h", "stdlib.h", "time.h"], ans: 2, exp: "র্যান্ডম নম্বর জেনারেটর rand() ও srand() ফাংশন stdlib.h হেডার ফাইলে সংজ্ঞায়িত।" },
-            { id: 99, cat: 9, q: "নিচের কোনটি 'Pre-increment' অপারেটর?", options: ["i++", "++i", "i = i + 1", "i += 1"], ans: 1, exp: "ভেরিয়েবলের আগে অপারেটর থাকলে তাকে প্রি-ইনক্রিমেন্ট বলা হয়।" },
-            { id: 100, cat: 9, q: "একটি `for` লুপের বডি কি সম্পূর্ণ খালি (empty) হতে পারে?", options: ["না, এটি সিনট্যাক্স এরর", "হ্যাঁ, এটি বৈধ", "লুপ ক্র্যাশ করবে", "কম্পাইলার Warning দিবে"], ans: 1, exp: "যেমন `for(i=0; i<100; i++);` একটি সম্পূর্ণ খালি বডির লুপ যা ডিলে তৈরি করতে ব্যবহৃত হতে পারে।" },
-            { id: 101, cat: 9, q: "C L্যাঙ্গুয়েজকে কেন 'Case Sensitive' বলা হয়?", options: ["এটি বড় হাতের এবং ছোট হাতের অক্ষরকে আলাদা মনে করে", "এটি স্পেশাল ক্যারেক্টার সাপোর্ট করে না", "এটি খুব ফাস্ট রান করে", "কোনোটিই নয়"], ans: 0, exp: "C-তে `var` এবং `Var` সম্পূর্ণ আলাদা দুটি ভেরিয়েবল নির্দেশ করে।" },
-            { id: 102, cat: 9, q: "`switch` স্টেটমেন্টে `break` ব্যবহার না করলে কী ঘটবে?", options: ["কম্পাইল এরর হবে", "লুপ সাথে সাথে বন্ধ হবে", "পরবর্তী কেসগুলোও ক্রমান্বয়ে এক্সিকিউট হতে থাকবে (Fall-through)", "প্রোগ্রাম ক্র্যাশ করবে"], ans: 2, exp: "ব্রেক না পাওয়া পর্যন্ত switch নিচের সমস্ত কেস কন্ডিশন না দেখেই এক্সিকিউট করতে থাকে।" },
-            { id: 103, cat: 9, q: "ফাইলের শেষে পৌঁছালে `feof()` ফাংশন কী রিটার্ন করে?", options: ["0", "অসুন্য (Non-zero) মান", "NULL", "-1"], ans: 1, exp: "ফাইল রিডার যদি ফাইলের শেষ সীমানায় পোঁছায়, তবে feof() সত্য বা অশূন্য কোড রিটার্ন করে।" },
-            { id: 104, cat: 9, q: "নিচের কোনটি 'Type Casting' এর সঠিক উদাহরণ?", options: ["float(x)", "x(float)", "(float) x", "convert(x, float)"], ans: 2, exp: "C ল্যাঙ্গুয়েজে ডেটার ঠিক পূর্বে ব্র্যাকেটের ভেতর কাঙ্ক্ষিত টাইপের নাম লিখতে হয়।" },
-            { id: 105, cat: 9, q: "`goto` স্টেটমেন্ট কেন এড়িয়ে চলা উচিত?", options: ["এটি খুব ধীরগতির", "এটি কোডকে অগোছালো (Spaghetti code) করে তোলে", "এটি ব্যবহারের অনুমতি নেই", "কম্পাইলার এরর দেয়"], ans: 1, exp: "goto ব্যবহারে প্রোগ্রামের লজিক্যাল সিকুয়েন্স ট্র্যাক করা কঠিন হয়ে পড়ে।" },
-            { id: 106, cat: 9, q: "dynamic memory allocation বা হিপ মেমোরি বাড়াতে/কমাতে কোন ফাংশন ব্যবহৃত হয়?", options: ["malloc()", "realloc()", "calloc()", "free()"], ans: 1, exp: "realloc() পূর্বে অ্যালোকেটেড মেমোরি ব্লকের সাইজ ডাইনামিক্যালি রি-সাইজ করতে পারে।" },
-            { id: 107, cat: 9, q: "সি ল্যাঙ্গুয়েজে `int a = 10, *p = \&a;` হলে `*p` এর মান কত?", options: ["a এর মেমোরি অ্যাড্রেস", "10", "p এর মেমোরি অ্যাড্রেস", "Garbage value"], ans: 1, exp: "*p পয়েন্টারটি d-reference করে মেমোরি অ্যাড্রেসে থাকা আসল মান ১০ রিটার্ন করবে।" },
-            { id: 108, cat: 9, q: "C-তে dynamic memory allocation মেমোরির কোন এরিয়াতে ঘটে?", options: ["Heap", "Stack", "Code Segment", "Data Segment"], ans: 0, exp: "malloc, calloc, realloc রান টাইমে 'Heap' মেমোরি থেকে স্পেস বরাদ্দ নেয়।" },
-            { id: 109, cat: 9, q: "পয়েন্টার ভেরিয়েবল ব্যবহারের মাধ্যমে মেমোরি অ্যাড্রেস থেকে মান পাওয়ার প্রক্রিয়াকে কী বলে?", options: ["Referencing", "Address pointing", "Dereferencing", "Casting"], ans: 2, exp: "মেমোরি অ্যাড্রেস টার্গেট করে তার ভেতরের ভ্যালু এক্সট্র্যাক্ট করা হলো Dereferencing।" },
-            { id: 110, cat: 9, q: "`stdout` কোন ধরনের ফাইল স্ট্রিম নির্দেশ করে?", options: ["কনসোল স্ক্রিন বা আউটপুট ডিভাইস", "কিবোর্ড বা ইনপুট ডিভাইস", "হার্ডডিস্ক ফাইল", "প্রিন্টার"], ans: 0, exp: "Standard Output (stdout) ডিফল্টভাবে কম্পিউটারের মনিটর স্ক্রিনকে নির্দেশ করে।" },
+        // CHAPTER 9 (91-110)
+        {
+          id: 91,
+          cat: 9,
+          q: "ডায়নামিক মেমোরি রিলিজ বা ডিলিট করতে কোন ফাংশন ব্যবহৃত হয়?",
+          options: ["delete()", "free()", "remove()", "clear()"],
+          ans: 1,
+          exp: "malloc/calloc দিয়ে অ্যালোকেটেড হিপ মেমোরি মুক্ত করতে free() ব্যবহার করতে হয়।",
+        },
+        {
+          id: 92,
+          cat: 9,
+          q: "পয়েন্টার টু পয়েন্টার (Pointer to Pointer) ডিক্লেয়ার করার সঠিক নিয়ম কোনটি?",
+          options: ["int *p;", "int **p;", "int \&p;", "int ***p;"],
+          ans: 1,
+          exp: "ডাবল স্টার (**) দিয়ে আরেকটি পয়েন্টার ভেরিয়েবলের মেমোরি অ্যাড্রেস পয়েন্ট করার ভেরিয়েবল ডিফাইন করা হয়।",
+        },
+        {
+          id: 93,
+          cat: 9,
+          q: "`struct` and `union` এর মধ্যে মেমোরি ব্যবহারের প্রধান পার্থক্য কী?",
+          options: [
+            "struct এ সব উপাদান একই মেমোরি শেয়ার করে",
+            "উভয়ই মেমোরি শেয়ার করে না",
+            "union এ সব উপাদান একই মেমোরি শেয়ার করে",
+            "struct বেশি ফাস্ট",
+          ],
+          ans: 2,
+          exp: "ইউনিয়নে মেমোরি ওভারল্যাপ হয়, স্ট্রাকচারে প্রতিটি মেম্বার আলাদা মেমোরি স্পেস পায়।",
+        },
+        {
+          id: 94,
+          cat: 9,
+          q: "নিচের কোনটি একটি 'Infinite' লুপের সঠিক রূপ?",
+          options: [
+            "while(0)",
+            "for( ; ; )",
+            "do\{\}while(0)",
+            "for(i=0;i<10;i--)",
+          ],
+          ans: 1,
+          exp: "for লুপের ব্র্যাকেটে কোনো কন্ডিশন না দিলে তা ডিফল্টভাবে সত্য ধরে নিয়ে অনন্তকাল চলে।",
+        },
+        {
+          id: 95,
+          cat: 9,
+          q: "কোনো পয়েন্টার ভেরিয়েবলে যদি কোনো অ্যাড্রেস না থাকে, তবে সেটিকে কী হিসেবে ডিক্লেয়ার করা ভালো?",
+          options: ["0", "Garbage Value", "NULL", "void"],
+          ans: 2,
+          exp: "NULL অ্যাসাইন করলে পয়েন্টারটি সুরক্ষিত থাকে এবং মেমোরির র্যান্ডম গার্বেজ পয়েন্ট করা বন্ধ হয়।",
+        },
+        {
+          id: 96,
+          cat: 9,
+          q: '`printf("\%\%d");` লিখলে স্ক্রিনে আউটপুটে কী দেখাবে?',
+          options: [
+            "\%d এবং গার্বেজ ভ্যালু",
+            "Error দেখাবে",
+            "\%d",
+            "কিছুই দেখাবে না",
+          ],
+          ans: 2,
+          exp: "ডাবল পারসেন্ট (\%) ক্যারেক্টারকে এস্কেপ করে স্ক্রিনে সিঙ্গেল \% প্রিন্ট করে।",
+        },
+        {
+          id: 97,
+          cat: 9,
+          q: "পয়েন্টার ভেরিয়েবল মেমোরিতে কতটুকু জায়গা নেয়?",
+          options: [
+            "১ বাইট সবসময়",
+            "আর্কিটেকচার অনুযায়ী (৪ বা ৮ বাইট)",
+            "৪ বাইট সবসময়",
+            "কোনো জায়গা নেয় না",
+          ],
+          ans: 1,
+          exp: "৩২-বিট আর্কিটেকচারে পয়েন্টার ৪ বাইট এবং ৬৪-বিটে ৮ বাইট জায়গা দখল করে।",
+        },
+        {
+          id: 98,
+          cat: 9,
+          q: "`rand()` ফাংশন সি ল্যাঙ্গুয়েজের কোন হেডার ফাইলে থাকে?",
+          options: ["stdio.h", "math.h", "stdlib.h", "time.h"],
+          ans: 2,
+          exp: "র্যান্ডম নম্বর জেনারেটর rand() ও srand() ফাংশন stdlib.h হেডার ফাইলে সংজ্ঞায়িত।",
+        },
+        {
+          id: 99,
+          cat: 9,
+          q: "নিচের কোনটি 'Pre-increment' অপারেটর?",
+          options: ["i++", "++i", "i = i + 1", "i += 1"],
+          ans: 1,
+          exp: "ভেরিয়েবলের আগে অপারেটর থাকলে তাকে প্রি-ইনক্রিমেন্ট বলা হয়।",
+        },
+        {
+          id: 100,
+          cat: 9,
+          q: "একটি `for` লুপের বডি কি সম্পূর্ণ খালি (empty) হতে পারে?",
+          options: [
+            "না, এটি সিনট্যাক্স এরর",
+            "হ্যাঁ, এটি বৈধ",
+            "লুপ ক্র্যাশ করবে",
+            "কম্পাইলার Warning দিবে",
+          ],
+          ans: 1,
+          exp: "যেমন `for(i=0; i<100; i++);` একটি সম্পূর্ণ খালি বডির লুপ যা ডিলে তৈরি করতে ব্যবহৃত হতে পারে।",
+        },
+        {
+          id: 101,
+          cat: 9,
+          q: "C L্যাঙ্গুয়েজকে কেন 'Case Sensitive' বলা হয়?",
+          options: [
+            "এটি বড় হাতের এবং ছোট হাতের অক্ষরকে আলাদা মনে করে",
+            "এটি স্পেশাল ক্যারেক্টার সাপোর্ট করে না",
+            "এটি খুব ফাস্ট রান করে",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "C-তে `var` এবং `Var` সম্পূর্ণ আলাদা দুটি ভেরিয়েবল নির্দেশ করে।",
+        },
+        {
+          id: 102,
+          cat: 9,
+          q: "`switch` স্টেটমেন্টে `break` ব্যবহার না করলে কী ঘটবে?",
+          options: [
+            "কম্পাইল এরর হবে",
+            "লুপ সাথে সাথে বন্ধ হবে",
+            "পরবর্তী কেসগুলোও ক্রমান্বয়ে এক্সিকিউট হতে থাকবে (Fall-through)",
+            "প্রোগ্রাম ক্র্যাশ করবে",
+          ],
+          ans: 2,
+          exp: "ব্রেক না পাওয়া পর্যন্ত switch নিচের সমস্ত কেস কন্ডিশন না দেখেই এক্সিকিউট করতে থাকে।",
+        },
+        {
+          id: 103,
+          cat: 9,
+          q: "ফাইলের শেষে পৌঁছালে `feof()` ফাংশন কী রিটার্ন করে?",
+          options: ["0", "অসুন্য (Non-zero) মান", "NULL", "-1"],
+          ans: 1,
+          exp: "ফাইল রিডার যদি ফাইলের শেষ সীমানায় পোঁছায়, তবে feof() সত্য বা অশূন্য কোড রিটার্ন করে।",
+        },
+        {
+          id: 104,
+          cat: 9,
+          q: "নিচের কোনটি 'Type Casting' এর সঠিক উদাহরণ?",
+          options: ["float(x)", "x(float)", "(float) x", "convert(x, float)"],
+          ans: 2,
+          exp: "C ল্যাঙ্গুয়েজে ডেটার ঠিক পূর্বে ব্র্যাকেটের ভেতর কাঙ্ক্ষিত টাইপের নাম লিখতে হয়।",
+        },
+        {
+          id: 105,
+          cat: 9,
+          q: "`goto` স্টেটমেন্ট কেন এড়িয়ে চলা উচিত?",
+          options: [
+            "এটি খুব ধীরগতির",
+            "এটি কোডকে অগোছালো (Spaghetti code) করে তোলে",
+            "এটি ব্যবহারের অনুমতি নেই",
+            "কম্পাইলার এরর দেয়",
+          ],
+          ans: 1,
+          exp: "goto ব্যবহারে প্রোগ্রামের লজিক্যাল সিকুয়েন্স ট্র্যাক করা কঠিন হয়ে পড়ে।",
+        },
+        {
+          id: 106,
+          cat: 9,
+          q: "dynamic memory allocation বা হিপ মেমোরি বাড়াতে/কমাতে কোন ফাংশন ব্যবহৃত হয়?",
+          options: ["malloc()", "realloc()", "calloc()", "free()"],
+          ans: 1,
+          exp: "realloc() পূর্বে অ্যালোকেটেড মেমোরি ব্লকের সাইজ ডাইনামিক্যালি রি-সাইজ করতে পারে।",
+        },
+        {
+          id: 107,
+          cat: 9,
+          q: "সি ল্যাঙ্গুয়েজে `int a = 10, *p = \&a;` হলে `*p` এর মান কত?",
+          options: [
+            "a এর মেমোরি অ্যাড্রেস",
+            "10",
+            "p এর মেমোরি অ্যাড্রেস",
+            "Garbage value",
+          ],
+          ans: 1,
+          exp: "*p পয়েন্টারটি d-reference করে মেমোরি অ্যাড্রেসে থাকা আসল মান ১০ রিটার্ন করবে।",
+        },
+        {
+          id: 108,
+          cat: 9,
+          q: "C-তে dynamic memory allocation মেমোরির কোন এরিয়াতে ঘটে?",
+          options: ["Heap", "Stack", "Code Segment", "Data Segment"],
+          ans: 0,
+          exp: "malloc, calloc, realloc রান টাইমে 'Heap' মেমোরি থেকে স্পেস বরাদ্দ নেয়।",
+        },
+        {
+          id: 109,
+          cat: 9,
+          q: "পয়েন্টার ভেরিয়েবল ব্যবহারের মাধ্যমে মেমোরি অ্যাড্রেস থেকে মান পাওয়ার প্রক্রিয়াকে কী বলে?",
+          options: [
+            "Referencing",
+            "Address pointing",
+            "Dereferencing",
+            "Casting",
+          ],
+          ans: 2,
+          exp: "মেমোরি অ্যাড্রেস টার্গেট করে তার ভেতরের ভ্যালু এক্সট্র্যাক্ট করা হলো Dereferencing।",
+        },
+        {
+          id: 110,
+          cat: 9,
+          q: "`stdout` কোন ধরনের ফাইল স্ট্রিম নির্দেশ করে?",
+          options: [
+            "কনসোল স্ক্রিন বা আউটপুট ডিভাইস",
+            "কিবোর্ড বা ইনপুট ডিভাইস",
+            "হার্ডডিস্ক ফাইল",
+            "প্রিন্টার",
+          ],
+          ans: 0,
+          exp: "Standard Output (stdout) ডিফল্টভাবে কম্পিউটারের মনিটর স্ক্রিনকে নির্দেশ করে।",
+        },
 
-            // CHAPTER 10 (111-150)
-            { id: 111, cat: 10, q: "C-তে মেক্রো ফাংশন প্রসেসিং এর কাজ কে সম্পাদন করে?", options: ["Compiler", "Preprocessor", "Assembler", "Linker"], ans: 1, exp: "প্রিপ্রসেসর কোড কম্পাইল হওয়ার পূর্বেই ম্যাক্রো রিপ্লেসমেন্ট এবং হেডার ফাইল যুক্ত করার কাজ শেষ করে।" },
-            { id: 112, cat: 10, q: "`double` টাইপের ভেরিয়েবল মেমোরিতে কত বাইট জায়গা নেয়?", options: ["4 Bytes", "2 Bytes", "8 Bytes", "16 Bytes"], ans: 2, exp: "C স্ট্যান্ডার্ডে ডাবল প্রিসিশন ফ্লোট মেমোরিতে ৮ বাইট বা ৬৪ বিট জায়গা দখল করে।" },
-            { id: 113, cat: 10, q: "নিচের কোনটি ফাইল ওপেন করার সময় এরর চেক করার সঠিক উপায়?", options: ["if(fp == NULL)", "if(fp == 0)", "if(fp == 1)", "if(fp != NULL)"], ans: 0, exp: "যদি ফাইলটি ডিস্কে না থাকে বা ওপেন করতে ব্যর্থ হয়, fopen() ফাংশন NULL রিটার্ন করে।" },
-            { id: 114, cat: 10, q: "`fprintf()` ফাংশনের কাজ কী?", options: ["কনসোলে প্রিন্ট করা", "কোনো ফাইল স্ট্রিমে ফরম্যাটেড ডেটা রাইট করা", "ফাইল থেকে রিড করা", "ফাইল ক্লোজ করা"], ans: 1, exp: "fprintf নির্দিষ্ট ফাইলে ফরম্যাটেড আউটপুট লেখার জন্য ব্যবহৃত হয়।" },
-            { id: 115, cat: 10, q: "`fseek()` ফাংশনে `SEEK_END` কী নির্দেশ করে?", options: ["ফাইলের শুরুর অংশ", "ফাইলের শেষ অংশ", "ফাইলের বর্তমান অবস্থান", "ফাইলের যেকোনো র্যান্ডম পজিশন"], ans: 1, exp: "SEEK_END মেমোরি কার্সারকে ফাইলের एकदम শেষ প্রান্তে নিয়ে যায়।" },
-            { id: 116, cat: 10, q: "C L্যাঙ্গুয়েজের স্ট্রাকচার ডিক্লারেশনে মেম্বারদের মেমোরি কীভাবে ডিস্ট্রিবিউট হয়?", options: ["সব মেম্বার আলাদা মেমোরি পায়", "সব মেম্বার একই মেমোরি শেয়ার করে", "মেমোরি ডিস্ট্রিবিউট হয় না", "কোনোটিই নয়"], ans: 0, exp: "স্ট্রাকচারে মেম্বারদের মোট মেমোরি সাইজ তাদের ব্যক্তিগত সাইজের সমষ্টির সমান বা সামান্য বেশি হয়।" },
-            { id: 117, cat: 10, q: "`typedef` কীওয়ার্ড C-তে কেন ব্যবহৃত হয়?", options: ["কোনো ডেটা টাইপের নতুন নাম বা অ্যালিয়াস দিতে", "নতুন মেমোরি তৈরি করতে", "লুপ কন্ট্রোল করতে", "ফাংশন কল করতে"], ans: 0, exp: "typedef ব্যবহার করে বড় টাইপের নামকে ছোট ও বোধগম্য কাস্টম নাম দেওয়া যায়।" },
-            { id: 118, cat: 10, q: "`char *argv[]` সি ল্যাঙ্গুয়েজের `main` ফাংশনে কী নির্দেশ করে?", options: ["কমান্ড লাইন আর্গুমেন্টের স্ট্রিং অ্যারে", "ভেরিয়েবল সংখ্যা", "অপারেটিং সিস্টেম কোড", "মেমোরি সাইজ"], ans: 0, exp: "টার্মিনাল বা কমান্ড লাইন থেকে প্রোগ্রামে পাস করা সমস্ত প্যারামিটার argv অ্যারেতে জমা হয়।" },
-            { id: 119, cat: 10, q: "C-তে ফাইল ক্লোজ করার জন্য কোন ফাংশন ব্যবহার করতে হয়?", options: ["close()", "exit()", "fclose()", "free()"], ans: 2, exp: "ওপেন করা ফাইল বাফার ফ্লাশ করতে ও মেমোরি রিলিজ করতে fclose() ব্যবহার করতে হয়।" },
-            { id: 120, cat: 10, q: "`gets()` ফাংশন ব্যবহার করা কেন অত্যন্ত ঝুঁকিপূর্ণ মনে করা হয়?", options: ["এটি বাফার ওভারফ্লো (Buffer Overflow) ঘটাতে পারে", "এটি খুব স্লো", "এটি স্ট্রিং নেয় না", "Error দেয়"], ans: 0, exp: "gets() ইনপুট সাইজ চেক করে না, যা মেমোরির বাউন্ডারি অতিক্রম করে সিকিউরিটি রিস্ক তৈরি করে।" },
-            { id: 121, cat: 10, q: "পয়েন্টার ভেরিয়েবল ব্যবহারের মাধ্যমে মেমোরি ফাঁকা করতে `free(p);` করার পর পয়েন্টার p এর মান কী রাখা নিরাপদ?", options: ["p = 0;", "p = void;", "p = NULL;", "কোনো পরিবর্তন না করা"], ans: 2, exp: "Dangling pointer সমস্যা এড়াতে মেমোরি ফ্রি করার সাথে সাথে পয়েন্টারে NULL সেট করা সেরা অভ্যাস।" },
-            { id: 122, cat: 10, q: "`struct Student s1;` ডিক্লেয়ার করলে `s1` মেম্বারদের এক্সেস করতে কোন অপারেটর ব্যবহৃত হয়?", options: ["-> (Arrow Operator)", ". (Dot Operator)", "* (Asterisk)", "\&"], ans: 1, exp: "সাধারণ স্ট্রাকচার অবজেক্টের মেম্বার এক্সেস করতে ডট (.) অপারেটর ব্যবহৃত হয়।" },
-            { id: 123, cat: 10, q: "যদি `struct Student *ptr;` একটি স্ট্রাকচার পয়েন্টার হয়, তবে মেম্বার এক্সেসের জন্য কোন অপারেটর লাগবে?", options: ["-> (Arrow Operator)", ". (Dot Operator)", "* (Asterisk)", "\&"], ans: 0, exp: "স্ট্রাকচার পয়েন্টারের ক্ষেত্রে ডট অপারেটরের বদলে অ্যারো (->) অপারেটর ব্যবহার করতে হয়।" },
-            { id: 124, cat: 10, q: "C-তে প্রিপ্রসেসর কোড রিপ্লেসমেন্ট কোন চিহ্নের মাধ্যমে শুরু হয়?", options: ["\&", "*", "\$", "\#"], ans: 3, exp: "হ্যাশ (\#) সিম্বল দিয়ে শুরু হওয়া প্রতিটা লাইন প্রিপ্রসেসর ডিরেক্টিভ হিসেবে কাজ করে।" },
-            { id: 125, cat: 10, q: "`malloc()` মেমোরি বরাদ্দ করতে ব্যর্থ হলে কী রিটার্ন করে?", options: ["NULL", "0", "Garbage Value", "-1"], ans: 0, exp: "যদি সিস্টেমে পর্যাপ্ত মেমোরি না থাকে, malloc মেমোরি অ্যাড্রেস না দিয়ে NULL ফেরত পাঠায়।" },
-            { id: 126, cat: 10, q: "নিচের কোনটি ফাইল রিড করার একটি স্ট্যান্ডার্ড ফাংশন?", options: ["fprintf()", "fscanf()", "fwrite()", "printf()"], ans: 1, exp: "fscanf ফাইল থেকে ফরমেটেড ডেটা রিড করার জন্য ব্যবহৃত হয়।" },
-            { id: 127, cat: 10, q: "dynamic memory allocate করার পর `realloc(p, 0)` করলে কী ঘটবে?", options: ["মেমোরি ডাবল হবে", "এটি `free(p)` এর মতো কাজ করবে", "মেমোরি ডিলিট হবে না", "Error দেখাবে"], ans: 1, exp: "realloc-এ নতুন সাইজ ০ দিলে তা মেমোরি রিলিজ করে দেয়।" },
-            { id: 128, cat: 10, q: "`static` লোকাল ভেরিয়েবলের ডিফল্ট মান কত থাকে?", options: ["Garbage Value", "1", "0", "NULL"], ans: 2, exp: "static লোকাল ভেরিয়েবল ডিফল্টভাবে শূন্য (০) দিয়ে ইনিশিয়ালাইজ হয়।" },
-            { id: 129, cat: 10, q: "C-তে হেডার ফাইলের এক্সটেনশন কী হয়?", options: [".c", ".h", ".cpp", ".obj"], ans: 1, exp: "Header ফাইলের এক্সটেনশন .h হয়ে থাকে (যেমন: stdio.h)।" },
-            { id: 130, cat: 10, q: "`long double` ডেটা টাইপ সাধারণত মেমোরিতে কত বাইট নেয়?", options: ["8 Bytes", "4 Bytes", "10 Bytes", "12 or 16 Bytes"], ans: 3, exp: "অধিকাংশ আধুনিক সিস্টেমে দীর্ঘতম দশমিক মান ধারণ করতে এটি ১২ বা ১৬ বাইট নেয়।" },
-            { id: 131, cat: 10, q: "`strcmp(\"apple\", \"banana\")` এর ফলাফল কী হবে?", options: ["০ (Zero)", "ঋণাত্মক মান (Negative Value)", "ধনাত্মক মান (Positive Value)", "Error"], ans: 1, exp: "যেহেতু \"apple\" অভিধান অনুযায়ী \"banana\" এর আগে আসে, তাই strcmp ঋণাত্মক মান দিবে।" },
-            { id: 132, cat: 10, q: "C L্যাঙ্গুয়েজে `int a[5] = {[2] = 10};` এটি কোন ধরনের ইনিশিয়ালাইজেশন?", options: ["Partial Initialization", "Designated Initialization", "Error Syntax", "Dynamic Initialization"], ans: 1, exp: "সুনির্দিষ্ট ইনডেক্স উল্লেখ করে ভ্যালু সেট করার পদ্ধতিকে Designated Initialization বলা হয়।" },
-            { id: 133, cat: 10, q: "فাইল হ্যান্ডলিংয়ে `fgetc()` এর কাজ কী?", options: ["ফাইল থেকে একটি ক্যারেক্টার রিড করা", "ফাইল থেকে একটি স্ট্রিং রিড করা", "ফাইলে ক্যারেক্টার রাইট করা", "কোনোটিই নয়"], ans: 0, exp: "fgetc একটি করে ক্যারেক্টার ফাইল স্ট্রিম থেকে তুলে আনে।" },
-            { id: 134, cat: 10, q: "`const int *p;` এর অর্থ কী?", options: ["পয়েন্টার অ্যাড্রেসটি অপরিবর্তনীয়", "পয়েন্টারটি যে মানের দিকে নির্দেশ করছে তা অপরিবর্তনীয়", "উভয়ই অপরিবর্তনীয়", "কোনোটিই নয়"], ans: 1, exp: "মানটি কনস্ট্যান্ট কিন্তু পয়েন্টার p অন্য অ্যাড্রেস হোল্ড করতে পারে।" },
-            { id: 135, cat: 10, q: "`int * const p;` এর অর্থ কী?", options: ["পয়েন্টার অ্যাড্রেসটি অপরিবর্তনীয়", "পয়েন্টার নির্দেশিত মান অপরিবর্তনীয়", "উভয়ই অপরিবর্তনীয়", "কোনোটিই নয়"], ans: 0, exp: "পয়েন্টারের অ্যাড্রেস লকড বা কনস্ট্যান্ট কিন্তু নির্দেশিত অ্যাড্রেসের মান বদলানো সম্ভব।" },
-            { id: 136, cat: 10, q: "`rewind(fp)` ফাংশন ফাইলের কার্সারকে কোথায় নিয়ে যায়?", options: ["ফাইলের শুরুতে", "ফাইলের শেষে", "ফাইলের মাঝখানে", "কার্সার সরায় না"], ans: 0, exp: "rewind মেমোরি কার্সারকে পুনরায় ফাইলের প্রথম পজিশনে (0) রিসেট করে।" },
-            { id: 137, cat: 10, q: "C-তে বিটওয়াইজ শিফট অপারেটর `<<` এর কাজ কী?", options: ["ডান পাশে বিট শিফট করা", "বাম পাশে বিট শিফট করা (মান গুণ হওয়া)", "বিট অ্যান্ড অপারেশন করা", "বিট নট অপারেশন করা"], ans: 1, exp: "এক ঘর লেফট শিফটের অর্থ হলো সংখ্যাটিকে ২ দিয়ে গুণ করা।" },
-            { id: 138, cat: 10, q: "মেমোরিতে সরাসরি বাইনারি ডেটা রাইট করার জন্য কোন ফাংশন ব্যবহৃত হয়?", options: ["fprintf()", "fputs()", "fwrite()", "write()"], ans: 2, exp: "fwrite স্ট্রাকচার বা অ্যারের ব্লক অব মেমোরি সরাসরি বাইনারি মোডে ফাইলে লেখে।" },
-            { id: 139, cat: 10, q: "`int (*fp)(int);` এটি কী নির্দেশ করে?", options: ["একটি সাধারণ পয়েন্টার", "পয়েন্টার অ্যারে", "একটি ফাংশন পয়েন্টার (Function Pointer)", "কোনোটিই নয়"], ans: 2, exp: "এটি এমন একটি পয়েন্টার যা মেমোরিতে থাকা একটি ফাংশনকে পয়েন্ট করতে পারে।" },
-            { id: 140, cat: 10, q: "C-তে মেমোরি অ্যালোকেশনের পর `realloc(p, new_size);` করার সময় পূর্বের মেমোরি ডেটার কী হয়?", options: ["ডেটা ডিলিট হয়ে যায়", "ডেটা সুরক্ষিত থাকে", "ডেটা রি-ফরম্যাট হয়ে যায়", "Error হয়"], ans: 1, exp: "নতুন মেমোরি সাইজে পূর্বের সমস্ত ডেটা অক্ষত অবস্থায় কপি হয়ে যায়।" },
-            { id: 141, cat: 10, q: "C-তে `register` স্টোরেজ ক্লাস ভেরিয়েবলকে কোথায় মেমোরি দেয়?", options: ["RAM এ", "CPU Register এ", "ROM এ", "Cache Memory তে"], ans: 1, exp: "অত্যন্ত ফাস্ট এক্সেসের স্বার্থে কম্পাইলার সুযোগ থাকলে ভেরিয়েবলকে সরাসরি সিপিইউ রেজিস্ট্রারে মেমোরি দেয়।" },
-            { id: 142, cat: 10, q: "`#pragma` প্রিপ্রসেসর ডিরেক্টিভের কাজ কী?", options: ["কম্পাইলারকে বিশেষ নির্দেশনা প্রদান করা", "লাইব্রেরি এড করা", "ম্যাক্রো তৈরি করা", "কোনোটিই নয়"], ans: 0, exp: "বিভিন্ন কম্পাইলার ভেদে কোড বিহেভিয়ার পরিবর্তনের জন্য প্রাগমা (\#pragma) ব্যবহৃত হয়।" },
-            { id: 143, cat: 10, q: "`strcat(s1, s2)` করার সময় `s1` মেমোরি সাইজ ছোট হলে কী সমস্যা হতে পারে?", options: ["Buffer Overflow বা Runtime Error", "কম্পাইল এরর", "কোড হ্যাং করবে না", "কোনো সমস্যা হবে না"], ans: 0, exp: "ডেসিমেল ডেস্টিনেশনের সাইজ ছোট হলে ডেটা বাউন্ডারি অতিক্রম করে মেমোরি ওভাররাইট বা ক্র্যাশ করবে।" },
-            { id: 144, cat: 10, q: "`fgetpos()` এবং `fsetpos()` ফাংশন কেন ব্যবহৃত হয়?", options: ["ফাইল ডিলিট করতে", "ফাইলের কার্সার পজিশন ট্র্যাক ও রিসেট করতে", "ফাইল রিনেম করতে", "ফাইল তৈরি করতে"], ans: 1, exp: "অ্যাডвান্সড ফাইল সিস্টেমে কার্সারের পজিশন অবজেক্ট আকারে ধরে রাখতে এই ফাংশন জোড়া ব্যবহৃত হয়।" },
-            { id: 145, cat: 10, q: "C L্যাঙ্গুয়েজের স্ট্রাকচার ইনিশিয়ালাইজেশনে 'Self-Referential Structure' বলতে কী বোঝায়?", options: ["যে স্ট্রাকচার নিজের বডি কল করে", "যে স্ট্রাকচারে মেম্বার হিসেবে একই স্ট্রাকচারের একটি পয়েন্টার থাকে", "কোনোটিই নয়", "সবগুলো"], ans: 1, exp: "লিঙ্কড লিস্ট (Linked List) বা ট্রি (Tree) ডাটা স্ট্রাকচার তৈরিতে সেলফ-রেফারেনশিয়াল স্ট্রাকচার ব্যবহৃত হয়।" },
-            { id: 146, cat: 10, q: "`inline` ফাংশন C-তে কেন ব্যবহৃত হয়?", options: ["ফাংশন কলের ওভারহেড বা সময় কমাতে", "মেমোরি সেভ করতে", "এরর কমাতে", "সবগুলো"], ans: 0, exp: "inline কি-ওয়ার্ড কম্পাইলারকে নির্দেশ করে ফাংশন কলের জায়গায় সরাসরি ফাংশন কোড বসিয়ে দিতে।" },
-            { id: 147, cat: 10, q: "`union` ডিক্লারেশনের পর একই সাথে কি সব মেম্বারের মান আলাদাভাবে মেমোরিতে রাখা সম্ভব?", options: ["না, কেবল একটি উপাদানই মেমোরি হোল্ড করতে পারে", "হ্যাঁ, সম্ভব", "কম্পাইলারের ওপর নির্ভর করে", "Error দেখাবে"], ans: 0, exp: "যেহেতু মেমোরি স্পেস একটি, তাই শেষ অ্যাসাইন করা মেম্বারটি পূর্বের মেম্বারের ডেটা ওভাররাইট করে ফেলে।" },
-            { id: 148, cat: 10, q: "C L্যাঙ্গুয়েজে মেমোরি লিক (Memory Leak) কীভাবে ঘটে?", options: ["ভেরিয়েবল নষ্ট হয়ে গেলে", "ডায়নামিক মেমোরি অ্যালোকেট করার পর তা free() না করলে", "লুপ ইনফিনিট হলে", "Error হলে"], ans: 1, exp: "বরাদ্দকৃত মেমোরি মুক্ত না করলে তা মেমোরি ব্লক অবরুদ্ধ করে ফেলে, যাকে মেমোরি লিক বলে।" },
-            { id: 149, cat: 10, q: "সি ল্যাঙ্গুয়েজে `int *p = NULL;` করার গুরুত্ব কী?", options: ["পয়েন্টারটিকে সুরক্ষিত বা নিরাপদ পজিশনে রাখা", "পয়েন্টার মুছে ফেলা", "মেমোরি রিলিজ করা", "Error দূর করা"], ans: 0, exp: "NULL পয়েন্টার দিয়ে কম্পাইল চেক করা সহজ, ফলে র্যান্ডম মেমোরি অ্যাক্সেস করে ক্র্যাশ হওয়া এড়ানো যায়।" },
-            { id: 150, cat: 10, q: "একটি C প্রোগ্রাম সফলভাবে সম্পন্ন হওয়ার পর অপারেটিং সিস্টেমকে ফেরত পাঠানো কোড `EXIT_SUCCESS` এর ডেসিমেল মান কত?", options: ["1", "-1", "Garbage Value", "0"], ans: 3, exp: "স্ট্যান্ডার্ড লাইব্রেরির EXIT_SUCCESS আসলে ০ (Zero) মানকে নির্দেশ করে, যা সফলতার প্রতীক।" }
-        ];
+        // CHAPTER 10 (111-150)
+        {
+          id: 111,
+          cat: 10,
+          q: "C-তে মেক্রো ফাংশন প্রসেসিং এর কাজ কে সম্পাদন করে?",
+          options: ["Compiler", "Preprocessor", "Assembler", "Linker"],
+          ans: 1,
+          exp: "প্রিপ্রসেসর কোড কম্পাইল হওয়ার পূর্বেই ম্যাক্রো রিপ্লেসমেন্ট এবং হেডার ফাইল যুক্ত করার কাজ শেষ করে।",
+        },
+        {
+          id: 112,
+          cat: 10,
+          q: "`double` টাইপের ভেরিয়েবল মেমোরিতে কত বাইট জায়গা নেয়?",
+          options: ["4 Bytes", "2 Bytes", "8 Bytes", "16 Bytes"],
+          ans: 2,
+          exp: "C স্ট্যান্ডার্ডে ডাবল প্রিসিশন ফ্লোট মেমোরিতে ৮ বাইট বা ৬৪ বিট জায়গা দখল করে।",
+        },
+        {
+          id: 113,
+          cat: 10,
+          q: "নিচের কোনটি ফাইল ওপেন করার সময় এরর চেক করার সঠিক উপায়?",
+          options: [
+            "if(fp == NULL)",
+            "if(fp == 0)",
+            "if(fp == 1)",
+            "if(fp != NULL)",
+          ],
+          ans: 0,
+          exp: "যদি ফাইলটি ডিস্কে না থাকে বা ওপেন করতে ব্যর্থ হয়, fopen() ফাংশন NULL রিটার্ন করে।",
+        },
+        {
+          id: 114,
+          cat: 10,
+          q: "`fprintf()` ফাংশনের কাজ কী?",
+          options: [
+            "কনসোলে প্রিন্ট করা",
+            "কোনো ফাইল স্ট্রিমে ফরম্যাটেড ডেটা রাইট করা",
+            "ফাইল থেকে রিড করা",
+            "ফাইল ক্লোজ করা",
+          ],
+          ans: 1,
+          exp: "fprintf নির্দিষ্ট ফাইলে ফরম্যাটেড আউটপুট লেখার জন্য ব্যবহৃত হয়।",
+        },
+        {
+          id: 115,
+          cat: 10,
+          q: "`fseek()` ফাংশনে `SEEK_END` কী নির্দেশ করে?",
+          options: [
+            "ফাইলের শুরুর অংশ",
+            "ফাইলের শেষ অংশ",
+            "ফাইলের বর্তমান অবস্থান",
+            "ফাইলের যেকোনো র্যান্ডম পজিশন",
+          ],
+          ans: 1,
+          exp: "SEEK_END মেমোরি কার্সারকে ফাইলের एकदम শেষ প্রান্তে নিয়ে যায়।",
+        },
+        {
+          id: 116,
+          cat: 10,
+          q: "C L্যাঙ্গুয়েজের স্ট্রাকচার ডিক্লারেশনে মেম্বারদের মেমোরি কীভাবে ডিস্ট্রিবিউট হয়?",
+          options: [
+            "সব মেম্বার আলাদা মেমোরি পায়",
+            "সব মেম্বার একই মেমোরি শেয়ার করে",
+            "মেমোরি ডিস্ট্রিবিউট হয় না",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "স্ট্রাকচারে মেম্বারদের মোট মেমোরি সাইজ তাদের ব্যক্তিগত সাইজের সমষ্টির সমান বা সামান্য বেশি হয়।",
+        },
+        {
+          id: 117,
+          cat: 10,
+          q: "`typedef` কীওয়ার্ড C-তে কেন ব্যবহৃত হয়?",
+          options: [
+            "কোনো ডেটা টাইপের নতুন নাম বা অ্যালিয়াস দিতে",
+            "নতুন মেমোরি তৈরি করতে",
+            "লুপ কন্ট্রোল করতে",
+            "ফাংশন কল করতে",
+          ],
+          ans: 0,
+          exp: "typedef ব্যবহার করে বড় টাইপের নামকে ছোট ও বোধগম্য কাস্টম নাম দেওয়া যায়।",
+        },
+        {
+          id: 118,
+          cat: 10,
+          q: "`char *argv[]` সি ল্যাঙ্গুয়েজের `main` ফাংশনে কী নির্দেশ করে?",
+          options: [
+            "কমান্ড লাইন আর্গুমেন্টের স্ট্রিং অ্যারে",
+            "ভেরিয়েবল সংখ্যা",
+            "অপারেটিং সিস্টেম কোড",
+            "মেমোরি সাইজ",
+          ],
+          ans: 0,
+          exp: "টার্মিনাল বা কমান্ড লাইন থেকে প্রোগ্রামে পাস করা সমস্ত প্যারামিটার argv অ্যারেতে জমা হয়।",
+        },
+        {
+          id: 119,
+          cat: 10,
+          q: "C-তে ফাইল ক্লোজ করার জন্য কোন ফাংশন ব্যবহার করতে হয়?",
+          options: ["close()", "exit()", "fclose()", "free()"],
+          ans: 2,
+          exp: "ওপেন করা ফাইল বাফার ফ্লাশ করতে ও মেমোরি রিলিজ করতে fclose() ব্যবহার করতে হয়।",
+        },
+        {
+          id: 120,
+          cat: 10,
+          q: "`gets()` ফাংশন ব্যবহার করা কেন অত্যন্ত ঝুঁকিপূর্ণ মনে করা হয়?",
+          options: [
+            "এটি বাফার ওভারফ্লো (Buffer Overflow) ঘটাতে পারে",
+            "এটি খুব স্লো",
+            "এটি স্ট্রিং নেয় না",
+            "Error দেয়",
+          ],
+          ans: 0,
+          exp: "gets() ইনপুট সাইজ চেক করে না, যা মেমোরির বাউন্ডারি অতিক্রম করে সিকিউরিটি রিস্ক তৈরি করে।",
+        },
+        {
+          id: 121,
+          cat: 10,
+          q: "পয়েন্টার ভেরিয়েবল ব্যবহারের মাধ্যমে মেমোরি ফাঁকা করতে `free(p);` করার পর পয়েন্টার p এর মান কী রাখা নিরাপদ?",
+          options: ["p = 0;", "p = void;", "p = NULL;", "কোনো পরিবর্তন না করা"],
+          ans: 2,
+          exp: "Dangling pointer সমস্যা এড়াতে মেমোরি ফ্রি করার সাথে সাথে পয়েন্টারে NULL সেট করা সেরা অভ্যাস।",
+        },
+        {
+          id: 122,
+          cat: 10,
+          q: "`struct Student s1;` ডিক্লেয়ার করলে `s1` মেম্বারদের এক্সেস করতে কোন অপারেটর ব্যবহৃত হয়?",
+          options: [
+            "-> (Arrow Operator)",
+            ". (Dot Operator)",
+            "* (Asterisk)",
+            "\&",
+          ],
+          ans: 1,
+          exp: "সাধারণ স্ট্রাকচার অবজেক্টের মেম্বার এক্সেস করতে ডট (.) অপারেটর ব্যবহৃত হয়।",
+        },
+        {
+          id: 123,
+          cat: 10,
+          q: "যদি `struct Student *ptr;` একটি স্ট্রাকচার পয়েন্টার হয়, তবে মেম্বার এক্সেসের জন্য কোন অপারেটর লাগবে?",
+          options: [
+            "-> (Arrow Operator)",
+            ". (Dot Operator)",
+            "* (Asterisk)",
+            "\&",
+          ],
+          ans: 0,
+          exp: "স্ট্রাকচার পয়েন্টারের ক্ষেত্রে ডট অপারেটরের বদলে অ্যারো (->) অপারেটর ব্যবহার করতে হয়।",
+        },
+        {
+          id: 124,
+          cat: 10,
+          q: "C-তে প্রিপ্রসেসর কোড রিপ্লেসমেন্ট কোন চিহ্নের মাধ্যমে শুরু হয়?",
+          options: ["\&", "*", "\$", "\#"],
+          ans: 3,
+          exp: "হ্যাশ (\#) সিম্বল দিয়ে শুরু হওয়া প্রতিটা লাইন প্রিপ্রসেসর ডিরেক্টিভ হিসেবে কাজ করে।",
+        },
+        {
+          id: 125,
+          cat: 10,
+          q: "`malloc()` মেমোরি বরাদ্দ করতে ব্যর্থ হলে কী রিটার্ন করে?",
+          options: ["NULL", "0", "Garbage Value", "-1"],
+          ans: 0,
+          exp: "যদি সিস্টেমে পর্যাপ্ত মেমোরি না থাকে, malloc মেমোরি অ্যাড্রেস না দিয়ে NULL ফেরত পাঠায়।",
+        },
+        {
+          id: 126,
+          cat: 10,
+          q: "নিচের কোনটি ফাইল রিড করার একটি স্ট্যান্ডার্ড ফাংশন?",
+          options: ["fprintf()", "fscanf()", "fwrite()", "printf()"],
+          ans: 1,
+          exp: "fscanf ফাইল থেকে ফরমেটেড ডেটা রিড করার জন্য ব্যবহৃত হয়।",
+        },
+        {
+          id: 127,
+          cat: 10,
+          q: "dynamic memory allocate করার পর `realloc(p, 0)` করলে কী ঘটবে?",
+          options: [
+            "মেমোরি ডাবল হবে",
+            "এটি `free(p)` এর মতো কাজ করবে",
+            "মেমোরি ডিলিট হবে না",
+            "Error দেখাবে",
+          ],
+          ans: 1,
+          exp: "realloc-এ নতুন সাইজ ০ দিলে তা মেমোরি রিলিজ করে দেয়।",
+        },
+        {
+          id: 128,
+          cat: 10,
+          q: "`static` লোকাল ভেরিয়েবলের ডিফল্ট মান কত থাকে?",
+          options: ["Garbage Value", "1", "0", "NULL"],
+          ans: 2,
+          exp: "static লোকাল ভেরিয়েবল ডিফল্টভাবে শূন্য (০) দিয়ে ইনিশিয়ালাইজ হয়।",
+        },
+        {
+          id: 129,
+          cat: 10,
+          q: "C-তে হেডার ফাইলের এক্সটেনশন কী হয়?",
+          options: [".c", ".h", ".cpp", ".obj"],
+          ans: 1,
+          exp: "Header ফাইলের এক্সটেনশন .h হয়ে থাকে (যেমন: stdio.h)।",
+        },
+        {
+          id: 130,
+          cat: 10,
+          q: "`long double` ডেটা টাইপ সাধারণত মেমোরিতে কত বাইট নেয়?",
+          options: ["8 Bytes", "4 Bytes", "10 Bytes", "12 or 16 Bytes"],
+          ans: 3,
+          exp: "অধিকাংশ আধুনিক সিস্টেমে দীর্ঘতম দশমিক মান ধারণ করতে এটি ১২ বা ১৬ বাইট নেয়।",
+        },
+        {
+          id: 131,
+          cat: 10,
+          q: '`strcmp("apple", "banana")` এর ফলাফল কী হবে?',
+          options: [
+            "০ (Zero)",
+            "ঋণাত্মক মান (Negative Value)",
+            "ধনাত্মক মান (Positive Value)",
+            "Error",
+          ],
+          ans: 1,
+          exp: 'যেহেতু "apple" অভিধান অনুযায়ী "banana" এর আগে আসে, তাই strcmp ঋণাত্মক মান দিবে।',
+        },
+        {
+          id: 132,
+          cat: 10,
+          q: "C L্যাঙ্গুয়েজে `int a[5] = {[2] = 10};` এটি কোন ধরনের ইনিশিয়ালাইজেশন?",
+          options: [
+            "Partial Initialization",
+            "Designated Initialization",
+            "Error Syntax",
+            "Dynamic Initialization",
+          ],
+          ans: 1,
+          exp: "সুনির্দিষ্ট ইনডেক্স উল্লেখ করে ভ্যালু সেট করার পদ্ধতিকে Designated Initialization বলা হয়।",
+        },
+        {
+          id: 133,
+          cat: 10,
+          q: "فাইল হ্যান্ডলিংয়ে `fgetc()` এর কাজ কী?",
+          options: [
+            "ফাইল থেকে একটি ক্যারেক্টার রিড করা",
+            "ফাইল থেকে একটি স্ট্রিং রিড করা",
+            "ফাইলে ক্যারেক্টার রাইট করা",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "fgetc একটি করে ক্যারেক্টার ফাইল স্ট্রিম থেকে তুলে আনে।",
+        },
+        {
+          id: 134,
+          cat: 10,
+          q: "`const int *p;` এর অর্থ কী?",
+          options: [
+            "পয়েন্টার অ্যাড্রেসটি অপরিবর্তনীয়",
+            "পয়েন্টারটি যে মানের দিকে নির্দেশ করছে তা অপরিবর্তনীয়",
+            "উভয়ই অপরিবর্তনীয়",
+            "কোনোটিই নয়",
+          ],
+          ans: 1,
+          exp: "মানটি কনস্ট্যান্ট কিন্তু পয়েন্টার p অন্য অ্যাড্রেস হোল্ড করতে পারে।",
+        },
+        {
+          id: 135,
+          cat: 10,
+          q: "`int * const p;` এর অর্থ কী?",
+          options: [
+            "পয়েন্টার অ্যাড্রেসটি অপরিবর্তনীয়",
+            "পয়েন্টার নির্দেশিত মান অপরিবর্তনীয়",
+            "উভয়ই অপরিবর্তনীয়",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "পয়েন্টারের অ্যাড্রেস লকড বা কনস্ট্যান্ট কিন্তু নির্দেশিত অ্যাড্রেসের মান বদলানো সম্ভব।",
+        },
+        {
+          id: 136,
+          cat: 10,
+          q: "`rewind(fp)` ফাংশন ফাইলের কার্সারকে কোথায় নিয়ে যায়?",
+          options: [
+            "ফাইলের শুরুতে",
+            "ফাইলের শেষে",
+            "ফাইলের মাঝখানে",
+            "কার্সার সরায় না",
+          ],
+          ans: 0,
+          exp: "rewind মেমোরি কার্সারকে পুনরায় ফাইলের প্রথম পজিশনে (0) রিসেট করে।",
+        },
+        {
+          id: 137,
+          cat: 10,
+          q: "C-তে বিটওয়াইজ শিফট অপারেটর `<<` এর কাজ কী?",
+          options: [
+            "ডান পাশে বিট শিফট করা",
+            "বাম পাশে বিট শিফট করা (মান গুণ হওয়া)",
+            "বিট অ্যান্ড অপারেশন করা",
+            "বিট নট অপারেশন করা",
+          ],
+          ans: 1,
+          exp: "এক ঘর লেফট শিফটের অর্থ হলো সংখ্যাটিকে ২ দিয়ে গুণ করা।",
+        },
+        {
+          id: 138,
+          cat: 10,
+          q: "মেমোরিতে সরাসরি বাইনারি ডেটা রাইট করার জন্য কোন ফাংশন ব্যবহৃত হয়?",
+          options: ["fprintf()", "fputs()", "fwrite()", "write()"],
+          ans: 2,
+          exp: "fwrite স্ট্রাকচার বা অ্যারের ব্লক অব মেমোরি সরাসরি বাইনারি মোডে ফাইলে লেখে।",
+        },
+        {
+          id: 139,
+          cat: 10,
+          q: "`int (*fp)(int);` এটি কী নির্দেশ করে?",
+          options: [
+            "একটি সাধারণ পয়েন্টার",
+            "পয়েন্টার অ্যারে",
+            "একটি ফাংশন পয়েন্টার (Function Pointer)",
+            "কোনোটিই নয়",
+          ],
+          ans: 2,
+          exp: "এটি এমন একটি পয়েন্টার যা মেমোরিতে থাকা একটি ফাংশনকে পয়েন্ট করতে পারে।",
+        },
+        {
+          id: 140,
+          cat: 10,
+          q: "C-তে মেমোরি অ্যালোকেশনের পর `realloc(p, new_size);` করার সময় পূর্বের মেমোরি ডেটার কী হয়?",
+          options: [
+            "ডেটা ডিলিট হয়ে যায়",
+            "ডেটা সুরক্ষিত থাকে",
+            "ডেটা রি-ফরম্যাট হয়ে যায়",
+            "Error হয়",
+          ],
+          ans: 1,
+          exp: "নতুন মেমোরি সাইজে পূর্বের সমস্ত ডেটা অক্ষত অবস্থায় কপি হয়ে যায়।",
+        },
+        {
+          id: 141,
+          cat: 10,
+          q: "C-তে `register` স্টোরেজ ক্লাস ভেরিয়েবলকে কোথায় মেমোরি দেয়?",
+          options: ["RAM এ", "CPU Register এ", "ROM এ", "Cache Memory তে"],
+          ans: 1,
+          exp: "অত্যন্ত ফাস্ট এক্সেসের স্বার্থে কম্পাইলার সুযোগ থাকলে ভেরিয়েবলকে সরাসরি সিপিইউ রেজিস্ট্রারে মেমোরি দেয়।",
+        },
+        {
+          id: 142,
+          cat: 10,
+          q: "`#pragma` প্রিপ্রসেসর ডিরেক্টিভের কাজ কী?",
+          options: [
+            "কম্পাইলারকে বিশেষ নির্দেশনা প্রদান করা",
+            "লাইব্রেরি এড করা",
+            "ম্যাক্রো তৈরি করা",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "বিভিন্ন কম্পাইলার ভেদে কোড বিহেভিয়ার পরিবর্তনের জন্য প্রাগমা (\#pragma) ব্যবহৃত হয়।",
+        },
+        {
+          id: 143,
+          cat: 10,
+          q: "`strcat(s1, s2)` করার সময় `s1` মেমোরি সাইজ ছোট হলে কী সমস্যা হতে পারে?",
+          options: [
+            "Buffer Overflow বা Runtime Error",
+            "কম্পাইল এরর",
+            "কোড হ্যাং করবে না",
+            "কোনো সমস্যা হবে না",
+          ],
+          ans: 0,
+          exp: "ডেসিমেল ডেস্টিনেশনের সাইজ ছোট হলে ডেটা বাউন্ডারি অতিক্রম করে মেমোরি ওভাররাইট বা ক্র্যাশ করবে।",
+        },
+        {
+          id: 144,
+          cat: 10,
+          q: "`fgetpos()` এবং `fsetpos()` ফাংশন কেন ব্যবহৃত হয়?",
+          options: [
+            "ফাইল ডিলিট করতে",
+            "ফাইলের কার্সার পজিশন ট্র্যাক ও রিসেট করতে",
+            "ফাইল রিনেম করতে",
+            "ফাইল তৈরি করতে",
+          ],
+          ans: 1,
+          exp: "অ্যাডвান্সড ফাইল সিস্টেমে কার্সারের পজিশন অবজেক্ট আকারে ধরে রাখতে এই ফাংশন জোড়া ব্যবহৃত হয়।",
+        },
+        {
+          id: 145,
+          cat: 10,
+          q: "C L্যাঙ্গুয়েজের স্ট্রাকচার ইনিশিয়ালাইজেশনে 'Self-Referential Structure' বলতে কী বোঝায়?",
+          options: [
+            "যে স্ট্রাকচার নিজের বডি কল করে",
+            "যে স্ট্রাকচারে মেম্বার হিসেবে একই স্ট্রাকচারের একটি পয়েন্টার থাকে",
+            "কোনোটিই নয়",
+            "সবগুলো",
+          ],
+          ans: 1,
+          exp: "লিঙ্কড লিস্ট (Linked List) বা ট্রি (Tree) ডাটা স্ট্রাকচার তৈরিতে সেলফ-রেফারেনশিয়াল স্ট্রাকচার ব্যবহৃত হয়।",
+        },
+        {
+          id: 146,
+          cat: 10,
+          q: "`inline` ফাংশন C-তে কেন ব্যবহৃত হয়?",
+          options: [
+            "ফাংশন কলের ওভারহেড বা সময় কমাতে",
+            "মেমোরি সেভ করতে",
+            "এরর কমাতে",
+            "সবগুলো",
+          ],
+          ans: 0,
+          exp: "inline কি-ওয়ার্ড কম্পাইলারকে নির্দেশ করে ফাংশন কলের জায়গায় সরাসরি ফাংশন কোড বসিয়ে দিতে।",
+        },
+        {
+          id: 147,
+          cat: 10,
+          q: "`union` ডিক্লারেশনের পর একই সাথে কি সব মেম্বারের মান আলাদাভাবে মেমোরিতে রাখা সম্ভব?",
+          options: [
+            "না, কেবল একটি উপাদানই মেমোরি হোল্ড করতে পারে",
+            "হ্যাঁ, সম্ভব",
+            "কম্পাইলারের ওপর নির্ভর করে",
+            "Error দেখাবে",
+          ],
+          ans: 0,
+          exp: "যেহেতু মেমোরি স্পেস একটি, তাই শেষ অ্যাসাইন করা মেম্বারটি পূর্বের মেম্বারের ডেটা ওভাররাইট করে ফেলে।",
+        },
+        {
+          id: 148,
+          cat: 10,
+          q: "C L্যাঙ্গুয়েজে মেমোরি লিক (Memory Leak) কীভাবে ঘটে?",
+          options: [
+            "ভেরিয়েবল নষ্ট হয়ে গেলে",
+            "ডায়নামিক মেমোরি অ্যালোকেট করার পর তা free() না করলে",
+            "লুপ ইনফিনিট হলে",
+            "Error হলে",
+          ],
+          ans: 1,
+          exp: "বরাদ্দকৃত মেমোরি মুক্ত না করলে তা মেমোরি ব্লক অবরুদ্ধ করে ফেলে, যাকে মেমোরি লিক বলে।",
+        },
+        {
+          id: 149,
+          cat: 10,
+          q: "সি ল্যাঙ্গুয়েজে `int *p = NULL;` করার গুরুত্ব কী?",
+          options: [
+            "পয়েন্টারটিকে সুরক্ষিত বা নিরাপদ পজিশনে রাখা",
+            "পয়েন্টার মুছে ফেলা",
+            "মেমোরি রিলিজ করা",
+            "Error দূর করা",
+          ],
+          ans: 0,
+          exp: "NULL পয়েন্টার দিয়ে কম্পাইল চেক করা সহজ, ফলে র্যান্ডম মেমোরি অ্যাক্সেস করে ক্র্যাশ হওয়া এড়ানো যায়।",
+        },
+        {
+          id: 150,
+          cat: 10,
+          q: "একটি C প্রোগ্রাম সফলভাবে সম্পন্ন হওয়ার পর অপারেটিং সিস্টেমকে ফেরত পাঠানো কোড `EXIT_SUCCESS` এর ডেসিমেল মান কত?",
+          options: ["1", "-1", "Garbage Value", "0"],
+          ans: 3,
+          exp: "স্ট্যান্ডার্ড লাইব্রেরির EXIT_SUCCESS আসলে ০ (Zero) মানকে নির্দেশ করে, যা সফলতার প্রতীক।",
+        },
+      ];
 
-        let currentMode = 'quiz'; // Mode options: 'quiz' or 'study'
-        let userAnswers = {}; // To store interactive answers: { questionId: selectedIndex }
-        let showExplanation = true; // Visibility state of explanations
+      let currentMode = "quiz"; // Mode options: 'quiz' or 'study'
+      let userAnswers = {}; // To store interactive answers: { questionId: selectedIndex }
+      let showExplanation = true; // Visibility state of explanations
 
-        // DOM Elements
-        const searchInput = document.getElementById('search-input');
-        const categoryFilter = document.getElementById('category-filter');
-        const questionsGrid = document.getElementById('questions-grid');
-        const noResults = document.getElementById('no-results');
-        const statsScore = document.getElementById('stats-score');
+      // DOM Elements
+      const searchInput = document.getElementById("search-input");
+      const categoryFilter = document.getElementById("category-filter");
+      const questionsGrid = document.getElementById("questions-grid");
+      const noResults = document.getElementById("no-results");
+      const statsScore = document.getElementById("stats-score");
 
-        // Initial setup on window load
-        window.onload = function() {
-            renderQuestions();
-            setupEventListeners();
-        };
+      // Initial setup on window load
+      window.onload = function () {
+        renderQuestions();
+        setupEventListeners();
+      };
 
-        function setupEventListeners() {
-            searchInput.addEventListener('input', renderQuestions);
-            categoryFilter.addEventListener('change', renderQuestions);
+      function setupEventListeners() {
+        searchInput.addEventListener("input", renderQuestions);
+        categoryFilter.addEventListener("change", renderQuestions);
+      }
+
+      // Mode controller
+      function setMode(mode) {
+        currentMode = mode;
+        const btnQuiz = document.getElementById("btn-quiz-mode");
+        const btnStudy = document.getElementById("btn-study-mode");
+
+        if (mode === "quiz") {
+          btnQuiz.className =
+            "flex-grow md:flex-grow-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600";
+          btnStudy.className =
+            "flex-grow md:flex-grow-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50";
+        } else {
+          btnStudy.className =
+            "flex-grow md:flex-grow-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600";
+          btnQuiz.className =
+            "flex-grow md:flex-grow-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50";
         }
+        renderQuestions();
+      }
 
-        // Mode controller
-        function setMode(mode) {
-            currentMode = mode;
-            const btnQuiz = document.getElementById('btn-quiz-mode');
-            const btnStudy = document.getElementById('btn-study-mode');
-            
-            if (mode === 'quiz') {
-                btnQuiz.className = "flex-grow md:flex-grow-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600";
-                btnStudy.className = "flex-grow md:flex-grow-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50";
-            } else {
-                btnStudy.className = "flex-grow md:flex-grow-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600";
-                btnQuiz.className = "flex-grow md:flex-grow-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50";
-            }
-            renderQuestions();
+      // Render Questions Function
+      function renderQuestions() {
+        const query = searchInput.value.toLowerCase();
+        const cat = categoryFilter.value;
+
+        // Filter logic
+        const filtered = masterQuestions.filter((item) => {
+          const matchesSearch =
+            item.q.toLowerCase().includes(query) ||
+            item.exp.toLowerCase().includes(query);
+          const matchesCat = cat === "all" || item.cat.toString() === cat;
+          return matchesSearch && matchesCat;
+        });
+
+        // Handle empty search
+        if (filtered.length === 0) {
+          questionsGrid.innerHTML = "";
+          noResults.classList.remove("hidden");
+          return;
         }
+        noResults.classList.add("hidden");
 
-        // Render Questions Function
-        function renderQuestions() {
-            const query = searchInput.value.toLowerCase();
-            const cat = categoryFilter.value;
-            
-            // Filter logic
-            const filtered = masterQuestions.filter(item => {
-                const matchesSearch = item.q.toLowerCase().includes(query) || item.exp.toLowerCase().includes(query);
-                const matchesCat = (cat === 'all') || (item.cat.toString() === cat);
-                return matchesSearch && matchesCat;
-            });
+        // Build dynamic HTML
+        questionsGrid.innerHTML = filtered
+          .map((q) => {
+            const isAnswered = userAnswers[q.id] !== undefined;
+            const selectedAns = userAnswers[q.id];
 
-            // Handle empty search
-            if (filtered.length === 0) {
-                questionsGrid.innerHTML = '';
-                noResults.classList.remove('hidden');
-                return;
-            }
-            noResults.classList.add('hidden');
-
-            // Build dynamic HTML
-            questionsGrid.innerHTML = filtered.map(q => {
-                const isAnswered = userAnswers[q.id] !== undefined;
-                const selectedAns = userAnswers[q.id];
-
-                return `
+            return `
                     <div class="question-card bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all p-6 relative overflow-hidden">
                         <div class="flex justify-between items-center mb-4 border-b border-slate-50 pb-3">
                             <span class="text-sm font-bold text-indigo-600">প্রশ্ন #${q.id}</span>
@@ -396,40 +2021,53 @@
                         <h3 class="text-base md:text-lg font-bold text-slate-800 mb-4 leading-relaxed">${q.q}</h3>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                            ${q.options.map((opt, idx) => {
-                                let optionClass = "border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700";
+                            ${q.options
+                              .map((opt, idx) => {
+                                let optionClass =
+                                  "border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700";
                                 let icon = `<span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold mr-3 shrink-0">${String.fromCharCode(65 + idx)}</span>`;
 
-                                if (currentMode === 'study') {
-                                    // Study mode styles (directly highlights correct answer)
-                                    if (idx === q.ans) {
-                                        optionClass = "border-emerald-500 bg-emerald-50 text-emerald-800 font-semibold";
-                                        icon = `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-check"></i></span>`;
-                                    }
-                                } else if (currentMode === 'quiz' && isAnswered) {
-                                    // Interactive quiz mode styles after answering
-                                    if (idx === q.ans) {
-                                        optionClass = "border-emerald-500 bg-emerald-50 text-emerald-800 font-semibold";
-                                        icon = `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-check"></i></span>`;
-                                    } else if (idx === selectedAns) {
-                                        optionClass = "border-red-500 bg-red-50 text-red-800 font-medium";
-                                        icon = `<span class="w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-xmark"></i></span>`;
-                                    } else {
-                                        optionClass = "border-slate-200 bg-slate-50 text-slate-400 opacity-60 cursor-not-allowed";
-                                    }
+                                if (currentMode === "study") {
+                                  // Study mode styles (directly highlights correct answer)
+                                  if (idx === q.ans) {
+                                    optionClass =
+                                      "border-emerald-500 bg-emerald-50 text-emerald-800 font-semibold";
+                                    icon = `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-check"></i></span>`;
+                                  }
+                                } else if (
+                                  currentMode === "quiz" &&
+                                  isAnswered
+                                ) {
+                                  // Interactive quiz mode styles after answering
+                                  if (idx === q.ans) {
+                                    optionClass =
+                                      "border-emerald-500 bg-emerald-50 text-emerald-800 font-semibold";
+                                    icon = `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-check"></i></span>`;
+                                  } else if (idx === selectedAns) {
+                                    optionClass =
+                                      "border-red-500 bg-red-50 text-red-800 font-medium";
+                                    icon = `<span class="w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-xmark"></i></span>`;
+                                  } else {
+                                    optionClass =
+                                      "border-slate-200 bg-slate-50 text-slate-400 opacity-60 cursor-not-allowed";
+                                  }
                                 }
 
-                                const clickAttr = (currentMode === 'quiz' && !isAnswered) ? `onclick="selectAnswer(${q.id}, ${idx})"` : '';
+                                const clickAttr =
+                                  currentMode === "quiz" && !isAnswered
+                                    ? `onclick="selectAnswer(${q.id}, ${idx})"`
+                                    : "";
                                 return `
-                                    <button ${clickAttr} class="${optionClass} flex items-center w-full px-4 py-3 rounded-xl text-left text-sm transition-all focus:outline-none ${!isAnswered && currentMode === 'quiz' ? 'hover:-translate-y-0.5' : ''}">
+                                    <button ${clickAttr} class="${optionClass} flex items-center w-full px-4 py-3 rounded-xl text-left text-sm transition-all focus:outline-none ${!isAnswered && currentMode === "quiz" ? "hover:-translate-y-0.5" : ""}">
                                         ${icon}
                                         <span>${opt}</span>
                                     </button>
                                 `;
-                            }).join('')}
+                              })
+                              .join("")}
                         </div>
 
-                        <div class="ans-expl ${showExplanation && (currentMode === 'study' || isAnswered) ? 'block' : 'hidden'} mt-4 bg-slate-50 border-t border-dashed border-slate-200 pt-4 rounded-b-xl">
+                        <div class="ans-expl ${showExplanation && (currentMode === "study" || isAnswered) ? "block" : "hidden"} mt-4 bg-slate-50 border-t border-dashed border-slate-200 pt-4 rounded-b-xl">
                             <p class="text-sm text-slate-700">
                                 <strong class="text-emerald-700 flex items-center gap-1.5 mb-1">
                                     <i class="fa-solid fa-circle-info"></i> সঠিক উত্তর: ${q.options[q.ans]}
@@ -439,47 +2077,48 @@
                         </div>
                     </div>
                 `;
-            }).join('');
+          })
+          .join("");
 
-            updateScoreStats();
-        }
+        updateScoreStats();
+      }
 
-        // Select option handler
-        function selectAnswer(questionId, selectedIdx) {
-            userAnswers[questionId] = selectedIdx;
-            renderQuestions();
-        }
+      // Select option handler
+      function selectAnswer(questionId, selectedIdx) {
+        userAnswers[questionId] = selectedIdx;
+        renderQuestions();
+      }
 
-        // Global resets
-        function resetQuiz() {
-            userAnswers = {};
-            renderQuestions();
-        }
+      // Global resets
+      function resetQuiz() {
+        userAnswers = {};
+        renderQuestions();
+      }
 
-        // Hide/Show Explanations globally
-        function toggleExpl() {
-            showExplanation = !showExplanation;
-            renderQuestions();
-        }
+      // Hide/Show Explanations globally
+      function toggleExpl() {
+        showExplanation = !showExplanation;
+        renderQuestions();
+      }
 
-        // Calculate score & update statistics in navigation panel
-        function updateScoreStats() {
-            const totalAnswered = Object.keys(userAnswers).length;
-            let correctCount = 0;
-            let negativePenalty = 0;
+      // Calculate score & update statistics in navigation panel
+      function updateScoreStats() {
+        const totalAnswered = Object.keys(userAnswers).length;
+        let correctCount = 0;
+        let negativePenalty = 0;
 
-            Object.keys(userAnswers).forEach(qId => {
-                const q = masterQuestions.find(item => item.id.toString() === qId);
-                if (q && userAnswers[qId] === q.ans) {
-                    correctCount++;
-                } else if (q) {
-                    negativePenalty += 0.25;
-                }
-            });
+        Object.keys(userAnswers).forEach((qId) => {
+          const q = masterQuestions.find((item) => item.id.toString() === qId);
+          if (q && userAnswers[qId] === q.ans) {
+            correctCount++;
+          } else if (q) {
+            negativePenalty += 0.25;
+          }
+        });
 
-            const finalScore = (correctCount - negativePenalty).toFixed(2);
-            statsScore.innerText = `${correctCount} সঠিক (প্রাপ্ত স্কোর: ${finalScore}) / ${totalAnswered} উত্তরকৃত`;
-        }
+        const finalScore = (correctCount - negativePenalty).toFixed(2);
+        statsScore.innerText = `${correctCount} সঠিক (প্রাপ্ত স্কোর: ${finalScore}) / ${totalAnswered} উত্তরকৃত`;
+      }
     </script>
-</body>
+  </body>
 </html>
