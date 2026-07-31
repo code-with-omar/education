@@ -1,0 +1,1974 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Engineering</title>
+    <style>
+      :root {
+        --bg: #f0f2f5;
+        --card-bg: #ffffff;
+        --primary: #1a73e8;
+        --correct: #0d904f;
+        --wrong: #d93025;
+        --text: #202124;
+        --text-light: #5f6368;
+        --border: #dadce0;
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --hover: #e8f0fe;
+        --badge-bg: #e8f0fe;
+        --badge-text: #1a73e8;
+        --explain-bg: #f8f9fa;
+        --gold: #f9ab00;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Segoe UI", "Noto Sans Bengali", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px 16px;
+      }
+
+      header {
+        background: linear-gradient(135deg, #1a3c6e 0%, #1a73e8 100%);
+        color: #fff;
+        padding: 28px 24px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(26, 115, 232, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+      }
+      header h1 {
+        font-size: 1.8em;
+        font-weight: 700;
+        margin-bottom: 6px;
+        position: relative;
+        z-index: 1;
+      }
+      header p {
+        font-size: 0.95em;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
+      header .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      header .badge-row span {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        backdrop-filter: blur(4px);
+      }
+      /* Header Section Style */
+      .header-container {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid #e2e8f0;
+        font-family: "Segoe UI", Roboto, sans-serif;
+      }
+
+      .header-container h1 {
+        color: #0f172a;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Navigation Container */
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap; /* মোবাইলে অটোমেটিক রেসপনসিভ করার জন্য */
+      }
+
+      /* Button Design */
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #2563eb; /* Modern Blue */
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Hover & Active Effects */
+      .nav-btn:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+
+      .nav-btn:active {
+        transform: translateY(0);
+      }
+      .stats-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 20px;
+        background: var(--card-bg);
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 10px;
+        z-index: 100;
+      }
+      .stat-item {
+        text-align: center;
+        min-width: 60px;
+      }
+      .stat-item .num {
+        font-size: 1.6em;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .stat-item .lbl {
+        font-size: 0.75em;
+        color: var(--text-light);
+      }
+      .stat-item.correct .num {
+        color: var(--correct);
+      }
+      .stat-item.wrong .num {
+        color: var(--wrong);
+      }
+      .stat-item.remain .num {
+        color: var(--gold);
+      }
+
+      .topic-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 16px;
+        justify-content: center;
+      }
+      .topic-filter button {
+        padding: 7px 14px;
+        border: 1.5px solid var(--border);
+        background: #fff;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.82em;
+        transition: all 0.2s;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+      .topic-filter button:hover,
+      .topic-filter button.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+
+      .progress-wrap {
+        margin-bottom: 20px;
+        background: #e0e0e0;
+        border-radius: 10px;
+        height: 6px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--primary);
+        border-radius: 10px;
+        transition: width 0.4s ease;
+        width: 0%;
+      }
+
+      .question-card {
+        background: var(--card-bg);
+        border-radius: 14px;
+        padding: 24px 22px;
+        margin-bottom: 16px;
+        box-shadow: var(--shadow);
+        border-left: 5px solid transparent;
+        transition: all 0.25s;
+        position: relative;
+      }
+      .question-card:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .question-card.answered-correct {
+        border-left-color: var(--correct);
+        background: #f6fdf8;
+      }
+      .question-card.answered-wrong {
+        border-left-color: var(--wrong);
+        background: #fef7f6;
+      }
+      .q-num {
+        display: inline-block;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        font-weight: 700;
+        font-size: 0.85em;
+        padding: 3px 10px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+      }
+      .q-topic {
+        display: inline-block;
+        font-size: 0.75em;
+        color: var(--text-light);
+        margin-left: 6px;
+        font-style: italic;
+      }
+      .q-text {
+        font-weight: 600;
+        font-size: 1.05em;
+        margin-bottom: 14px;
+        color: #1a1a1a;
+      }
+      .options {
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+      .options li {
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.95em;
+        position: relative;
+        user-select: none;
+        background: #fafbfc;
+      }
+      .options li:hover {
+        background: var(--hover);
+        border-color: #a0c4f1;
+      }
+      .options li.selected {
+        border-color: var(--primary);
+        background: #e8f0fe;
+        font-weight: 600;
+      }
+      .options li.correct-choice {
+        border-color: var(--correct) !important;
+        background: #e6f4ea !important;
+        color: #0d5e30 !important;
+        font-weight: 700;
+      }
+      .options li.wrong-choice {
+        border-color: var(--wrong) !important;
+        background: #fce8e6 !important;
+        color: #a50e0e !important;
+      }
+      .options li .icon-feedback {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3em;
+        display: none;
+      }
+      .options li.correct-choice .icon-feedback,
+      .options li.wrong-choice .icon-feedback {
+        display: inline;
+      }
+      .options li.disabled {
+        pointer-events: none;
+        opacity: 0.85;
+      }
+
+      .answer-reveal {
+        margin-top: 12px;
+        padding: 14px 16px;
+        background: var(--explain-bg);
+        border-radius: 10px;
+        display: none;
+        border: 1px dashed #ccc;
+        font-size: 0.9em;
+      }
+      .answer-reveal.show {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      .answer-reveal .ans-label {
+        font-weight: 700;
+        color: var(--correct);
+      }
+      .answer-reveal .explain-label {
+        font-weight: 700;
+        color: #555;
+        margin-top: 6px;
+        display: block;
+      }
+      .answer-reveal .explain-text {
+        color: #444;
+        margin-top: 2px;
+      }
+      .show-answer-btn {
+        margin-top: 10px;
+        padding: 7px 16px;
+        background: #fff;
+        border: 1.5px solid var(--primary);
+        color: var(--primary);
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.85em;
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+      .show-answer-btn:hover {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .btn-reset {
+        display: block;
+        margin: 24px auto;
+        padding: 12px 32px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        font-size: 1em;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+        box-shadow: 0 3px 12px rgba(26, 115, 232, 0.3);
+      }
+      .btn-reset:hover {
+        background: #1557b0;
+        box-shadow: 0 5px 18px rgba(26, 115, 232, 0.4);
+        transform: translateY(-1px);
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        color: var(--text-light);
+        font-size: 1.1em;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.8em;
+        padding: 20px;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.3em;
+        }
+        .question-card {
+          padding: 16px 12px;
+        }
+        .options li {
+          padding: 10px 12px;
+          font-size: 0.88em;
+        }
+        .q-text {
+          font-size: 0.95em;
+        }
+        .stats-bar {
+          gap: 6px;
+          padding: 10px 8px;
+        }
+        .stat-item .num {
+          font-size: 1.2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header-container">
+        <h1>💻 Software Engineering - MCQs</h1>
+        <nav class="nav-buttons">
+          <a href="chapter-two-1.html" class="nav-btn">Part 1</a>
+          <a href="chapter-two-2.html" class="nav-btn">Part 2</a>
+          <a href="chapter-two-3.html" class="nav-btn">Part 3</a>
+          <a href="chapter-two-4.html" class="nav-btn">Part 4</a>
+          <a href="chapter-two-5.html" class="nav-btn">Part 5</a>
+          <a href="chapter-two-6.html" class="nav-btn">Part 6</a>
+          <a href="chapter-two-7.html" class="nav-btn">Part 7</a>
+          <a href="chapter-two-8.html" class="nav-btn">Part 8</a>
+        </nav>
+      </header>
+
+      <div class="stats-bar" id="statsBar">
+        <div class="stat-item">
+          <div class="num" id="totalQ">100</div>
+          <div class="lbl">Total</div>
+        </div>
+        <div class="stat-item correct">
+          <div class="num" id="correctCount">0</div>
+          <div class="lbl">✅ Correct</div>
+        </div>
+        <div class="stat-item wrong">
+          <div class="num" id="wrongCount">0</div>
+          <div class="lbl">❌ Wrong</div>
+        </div>
+        <div class="stat-item remain">
+          <div class="num" id="remainCount">400</div>
+          <div class="lbl">⏳ Remaining</div>
+        </div>
+        <div class="stat-item">
+          <div class="num" id="scorePct">0%</div>
+          <div class="lbl">Score</div>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="topic-filter" id="topicFilter"></div>
+
+      <div id="questionsContainer"></div>
+
+      <button class="btn-reset" onclick="resetAll()">
+        🔄 Reset All Answers
+      </button>
+      <footer>
+        © 2026 | Software Engineering MCQs for NTRCA Assistant Teacher Exam |
+        All Answers Verified
+      </footer>
+    </div>
+
+    <script>
+      // ==================== 400 QUESTIONS DATASET ====================
+      const allQuestions = [
+        // ============ SECTION 1: History, Nature, Relation to Other Disciplines (Q1-Q30) ============
+        {
+          id: 1,
+          topic: "History & Nature",
+          q: "The term 'Software Engineering' was first coined in which year?",
+          options: ["1965", "1968", "1970", "1975"],
+          answer: 1,
+          explain:
+            "The term 'Software Engineering' was first coined at the 1968 NATO Software Engineering Conference held in Garmisch, Germany, to address the 'software crisis'.",
+        },
+        {
+          id: 2,
+          topic: "History & Nature",
+          q: "What was the primary reason for the emergence of Software Engineering as a discipline?",
+          options: [
+            "Hardware advancement",
+            "The Software Crisis",
+            "Internet boom",
+            "AI development",
+          ],
+          answer: 1,
+          explain:
+            "The 'Software Crisis' of the 1960s—characterized by projects running over budget, missing deadlines, and producing unreliable software—led to the formalization of Software Engineering.",
+        },
+        {
+          id: 3,
+          topic: "History & Nature",
+          q: "Software Engineering is best described as:",
+          options: [
+            "Only coding",
+            "An engineering discipline concerned with all aspects of software production",
+            "Only testing",
+            "Only project management",
+          ],
+          answer: 1,
+          explain:
+            "Software Engineering is an engineering discipline that covers all aspects of software production from initial conception to operation and maintenance.",
+        },
+        {
+          id: 4,
+          topic: "History & Nature",
+          q: "Which discipline is MOST closely related to Software Engineering in terms of systematic process management?",
+          options: [
+            "Civil Engineering",
+            "Industrial Engineering",
+            "Electrical Engineering",
+            "Mechanical Engineering",
+          ],
+          answer: 1,
+          explain:
+            "Industrial Engineering shares process optimization, quality control, and systematic workflow management principles with Software Engineering.",
+        },
+        {
+          id: 5,
+          topic: "History & Nature",
+          q: "How does Software Engineering differ from Computer Science?",
+          options: [
+            "They are identical",
+            "Computer Science focuses on theory; Software Engineering focuses on practical development",
+            "Software Engineering is only about hardware",
+            "Computer Science does not involve programming",
+          ],
+          answer: 1,
+          explain:
+            "Computer Science emphasizes theoretical foundations and algorithms, while Software Engineering applies engineering principles to build practical, reliable software systems.",
+        },
+        {
+          id: 6,
+          topic: "History & Nature",
+          q: "The 'Software Crisis' primarily referred to:",
+          options: [
+            "Lack of computers",
+            "Inability to develop software on time, within budget, and with required quality",
+            "Too many programmers",
+            "Hardware failures",
+          ],
+          answer: 1,
+          explain:
+            "The Software Crisis denoted the chronic difficulty in delivering software projects that met time, budget, and quality expectations.",
+        },
+        {
+          id: 7,
+          topic: "History & Nature",
+          q: "Which of the following is NOT a characteristic of software as a product?",
+          options: [
+            "Intangible",
+            "Does not wear out",
+            "Manufactured like hardware",
+            "Can be easily modified",
+          ],
+          answer: 2,
+          explain:
+            "Software is not manufactured in the traditional sense like hardware; it is developed or engineered. It is intangible and does not wear out.",
+        },
+        {
+          id: 8,
+          topic: "History & Nature",
+          q: "Software Engineering relates to Management Science through:",
+          options: [
+            "Coding standards",
+            "Project planning, estimation, and risk management",
+            "Algorithm design",
+            "Database normalization",
+          ],
+          answer: 1,
+          explain:
+            "Management Science contributes to Software Engineering via project planning, resource estimation, scheduling, and risk management techniques.",
+        },
+        {
+          id: 9,
+          topic: "History & Nature",
+          q: "Which statement best describes the nature of software?",
+          options: [
+            "Software deteriorates over time like hardware",
+            "Software is logical rather than physical",
+            "Software cannot be changed after deployment",
+            "Software has a fixed lifespan",
+          ],
+          answer: 1,
+          explain:
+            "Software is a logical (non-physical) entity. Unlike hardware, it doesn't wear out but can deteriorate due to changes and accumulating errors.",
+        },
+        {
+          id: 10,
+          topic: "History & Nature",
+          q: "The relationship between Software Engineering and Systems Engineering is that:",
+          options: [
+            "They are unrelated",
+            "Software Engineering is a sub-discipline of Systems Engineering",
+            "Systems Engineering is part of Software Engineering",
+            "They are identical",
+          ],
+          answer: 1,
+          explain:
+            "Software Engineering is considered a sub-discipline of Systems Engineering, which deals with the overall system including hardware, software, and processes.",
+        },
+        {
+          id: 11,
+          topic: "History & Nature",
+          q: "Who is often called the 'father of software engineering'?",
+          options: [
+            "Alan Turing",
+            "Fred Brooks",
+            "Barry Boehm",
+            "Edsger Dijkstra",
+          ],
+          answer: 1,
+          explain:
+            "Fred Brooks, author of 'The Mythical Man-Month', is widely regarded as a foundational figure in software engineering.",
+        },
+        {
+          id: 12,
+          topic: "History & Nature",
+          q: "Which of the following is a key difference between software and hardware?",
+          options: [
+            "Both wear out over time",
+            "Software is logical; hardware is physical",
+            "Both are manufactured",
+            "Software cannot be duplicated",
+          ],
+          answer: 1,
+          explain:
+            "Software is a logical construct (code, data), while hardware is a physical entity. Software doesn't have a physical manufacturing process.",
+        },
+        {
+          id: 13,
+          topic: "History & Nature",
+          q: "The 'No Silver Bullet' essay by Fred Brooks argues that:",
+          options: [
+            "Software engineering is easy",
+            "There is no single technique that will dramatically improve software productivity",
+            "Silver bullets solve all software problems",
+            "AI will replace all programmers",
+          ],
+          answer: 1,
+          explain:
+            "Brooks argued that no single technological or methodological breakthrough will produce an order-of-magnitude improvement in software productivity.",
+        },
+        {
+          id: 14,
+          topic: "History & Nature",
+          q: "Software Engineering borrows quality assurance concepts from which field?",
+          options: [
+            "Agriculture",
+            "Manufacturing Engineering",
+            "Medicine",
+            "Law",
+          ],
+          answer: 1,
+          explain:
+            "Manufacturing Engineering contributes quality assurance, statistical process control, and continuous improvement concepts to Software Engineering.",
+        },
+        {
+          id: 15,
+          topic: "History & Nature",
+          q: "What does the 'engineering' in Software Engineering emphasize?",
+          options: [
+            "Artistic expression",
+            "Systematic, disciplined, and quantifiable approach",
+            "Hacking",
+            "Trial and error",
+          ],
+          answer: 1,
+          explain:
+            "The engineering aspect emphasizes a systematic, disciplined, and quantifiable approach to the development, operation, and maintenance of software.",
+        },
+        {
+          id: 16,
+          topic: "History & Nature",
+          q: "Which decade saw the rise of structured programming methodologies?",
+          options: ["1950s", "1960s", "1970s", "1990s"],
+          answer: 2,
+          explain:
+            "The 1970s saw the widespread adoption of structured programming, led by figures like Edsger Dijkstra, promoting goto-less programming.",
+        },
+        {
+          id: 17,
+          topic: "History & Nature",
+          q: "Object-Oriented programming became mainstream in which decade?",
+          options: ["1960s", "1970s", "1980s-1990s", "2000s"],
+          answer: 2,
+          explain:
+            "Object-Oriented programming gained mainstream popularity in the 1980s and 1990s with languages like C++ and Java.",
+        },
+        {
+          id: 18,
+          topic: "History & Nature",
+          q: "The Agile Manifesto was published in:",
+          options: ["1995", "2001", "2005", "2010"],
+          answer: 1,
+          explain:
+            "The Agile Manifesto was created in February 2001 by 17 software developers at a retreat in Snowbird, Utah.",
+        },
+        {
+          id: 19,
+          topic: "History & Nature",
+          q: "Which is NOT a characteristic of professional software?",
+          options: [
+            "Maintainability",
+            "Dependability",
+            "Efficiency",
+            "Always cheapest",
+          ],
+          answer: 3,
+          explain:
+            "Professional software focuses on maintainability, dependability, efficiency, and usability—not necessarily being the cheapest option.",
+        },
+        {
+          id: 20,
+          topic: "History & Nature",
+          q: "Software Engineering ethics is guided by principles from:",
+          options: [
+            "ACM/IEEE Code of Ethics",
+            "Medical ethics only",
+            "Legal statutes only",
+            "No formal guidance exists",
+          ],
+          answer: 0,
+          explain:
+            "The ACM/IEEE Code of Ethics provides comprehensive ethical guidelines for software engineers.",
+        },
+        {
+          id: 21,
+          topic: "History & Nature",
+          q: "Custom software is developed for:",
+          options: [
+            "General market",
+            "A specific customer",
+            "Open source community",
+            "Government only",
+          ],
+          answer: 1,
+          explain:
+            "Custom (bespoke) software is developed specifically for a particular customer or organization, unlike generic products.",
+        },
+        {
+          id: 22,
+          topic: "History & Nature",
+          q: "Generic software products are:",
+          options: [
+            "Sold to any customer",
+            "Made for one client",
+            "Always open source",
+            "Never updated",
+          ],
+          answer: 0,
+          explain:
+            "Generic software products are stand-alone systems sold on the open market to any customer who wishes to buy them.",
+        },
+        {
+          id: 23,
+          topic: "History & Nature",
+          q: "Which law states that 'software entropy increases over time'?",
+          options: [
+            "Moore's Law",
+            "Lehman's Law of Software Evolution",
+            "Murphy's Law",
+            "Newton's Law",
+          ],
+          answer: 1,
+          explain:
+            "Lehman's Laws describe software evolution; one key law states that as software evolves, its complexity increases unless effort is made to reduce it.",
+        },
+        {
+          id: 24,
+          topic: "History & Nature",
+          q: "The relation between Software Engineering and Mathematics is primarily through:",
+          options: [
+            "Formal methods and algorithm analysis",
+            "Hardware design",
+            "User interface design",
+            "Project scheduling",
+          ],
+          answer: 0,
+          explain:
+            "Mathematics provides formal methods, algorithm complexity analysis, and logical foundations crucial to software engineering.",
+        },
+        {
+          id: 25,
+          topic: "History & Nature",
+          q: "Which of these is a software engineering 'myth'?",
+          options: [
+            "Software requires maintenance",
+            "Adding more programmers to a late project makes it later",
+            "A general statement of objectives is sufficient to begin coding",
+            "Testing is essential",
+          ],
+          answer: 2,
+          explain:
+            "It's a common myth that vague objectives are enough to start coding. In reality, detailed requirements are essential for success.",
+        },
+        {
+          id: 26,
+          topic: "History & Nature",
+          q: "Brooks' Law states:",
+          options: [
+            "Software is always buggy",
+            "Adding manpower to a late software project makes it later",
+            "Testing eliminates all bugs",
+            "Agile is always better than Waterfall",
+          ],
+          answer: 1,
+          explain:
+            "Brooks' Law: 'Adding manpower to a late software project makes it later,' due to communication overhead and learning curves.",
+        },
+        {
+          id: 27,
+          topic: "History & Nature",
+          q: "Which is a distinguishing feature of software compared to other engineered products?",
+          options: [
+            "High manufacturing cost",
+            "Ease of replication",
+            "Physical wear and tear",
+            "Fixed design",
+          ],
+          answer: 1,
+          explain:
+            "Software can be replicated at virtually zero marginal cost, unlike physical engineered products that incur manufacturing costs per unit.",
+        },
+        {
+          id: 28,
+          topic: "History & Nature",
+          q: "The first software engineering conference (NATO) addressed:",
+          options: [
+            "AI programming",
+            "The gap between software demand and development capability",
+            "Internet protocols",
+            "Database design",
+          ],
+          answer: 1,
+          explain:
+            "The 1968 NATO conference focused on bridging the growing gap between demand for complex software and the ability to reliably produce it.",
+        },
+        {
+          id: 29,
+          topic: "History & Nature",
+          q: "Software Engineering as a discipline is approximately how old?",
+          options: ["20 years", "40 years", "55+ years", "100 years"],
+          answer: 2,
+          explain:
+            "Since the 1968 NATO conference, Software Engineering is over 55 years old as a recognized discipline.",
+        },
+        {
+          id: 30,
+          topic: "History & Nature",
+          q: "The relationship between Software Engineering and Psychology is evident in:",
+          options: [
+            "Database design",
+            "Human-Computer Interaction (HCI) and usability",
+            "Network protocols",
+            "Compiler design",
+          ],
+          answer: 1,
+          explain:
+            "Psychology informs HCI, user experience design, and understanding developer behavior—all crucial aspects of software engineering.",
+        },
+
+        // ============ SECTION 2: SDLC Overview (Q31-Q65) ============
+        {
+          id: 31,
+          topic: "SDLC",
+          q: "SDLC stands for:",
+          options: [
+            "Software Design Life Cycle",
+            "Software Development Life Cycle",
+            "System Development Life Cycle",
+            "Both B and C",
+          ],
+          answer: 3,
+          explain:
+            "SDLC can stand for both Software Development Life Cycle and System Development Life Cycle; both are used interchangeably.",
+        },
+        {
+          id: 32,
+          topic: "SDLC",
+          q: "Which is the correct order of phases in a typical SDLC?",
+          options: [
+            "Design → Requirements → Testing → Maintenance",
+            "Requirements → Design → Development → Testing → Maintenance",
+            "Development → Testing → Design → Requirements",
+            "Testing → Requirements → Design → Development",
+          ],
+          answer: 1,
+          explain:
+            "The standard SDLC order: Requirements gathering → Design → Development (Implementation) → Testing → Maintenance.",
+        },
+        {
+          id: 33,
+          topic: "SDLC",
+          q: "The phase where user needs are identified and documented is:",
+          options: [
+            "Design",
+            "Testing",
+            "Requirements Analysis",
+            "Maintenance",
+          ],
+          answer: 2,
+          explain:
+            "Requirements Analysis (or Requirements Engineering) is the phase where user needs are elicited, analyzed, and documented.",
+        },
+        {
+          id: 34,
+          topic: "SDLC",
+          q: "Which phase involves creating the architecture and detailed design of the software?",
+          options: ["Requirements", "Design", "Coding", "Deployment"],
+          answer: 1,
+          explain:
+            "The Design phase translates requirements into a blueprint for construction, covering architecture, components, interfaces, and data design.",
+        },
+        {
+          id: 35,
+          topic: "SDLC",
+          q: "The phase where actual code is written is called:",
+          options: [
+            "Design",
+            "Development/Implementation",
+            "Testing",
+            "Planning",
+          ],
+          answer: 1,
+          explain:
+            "The Development or Implementation phase involves writing the actual source code based on the design specifications.",
+        },
+        {
+          id: 36,
+          topic: "SDLC",
+          q: "Which SDLC phase typically consumes the MOST total cost over a software's lifetime?",
+          options: ["Requirements", "Design", "Development", "Maintenance"],
+          answer: 3,
+          explain:
+            "Maintenance typically accounts for 60-80% of the total cost of a software system over its lifetime.",
+        },
+        {
+          id: 37,
+          topic: "SDLC",
+          q: "Verification answers the question:",
+          options: [
+            "Are we building the right product?",
+            "Are we building the product right?",
+            "Is the product profitable?",
+            "Is the product popular?",
+          ],
+          answer: 1,
+          explain:
+            "Verification ensures 'Are we building the product right?' (meeting specifications). Validation asks 'Are we building the right product?' (meeting user needs).",
+        },
+        {
+          id: 38,
+          topic: "SDLC",
+          q: "Validation answers the question:",
+          options: [
+            "Are we building the product right?",
+            "Are we building the right product?",
+            "Is the code efficient?",
+            "Is the design complete?",
+          ],
+          answer: 1,
+          explain:
+            "Validation checks whether the software meets the customer's actual needs—'Are we building the right product?'",
+        },
+        {
+          id: 39,
+          topic: "SDLC",
+          q: "The V-Model emphasizes:",
+          options: [
+            "Sequential development only",
+            "Parallel relationship between development phases and testing phases",
+            "No testing",
+            "Only unit testing",
+          ],
+          answer: 1,
+          explain:
+            "The V-Model (Verification and Validation model) maps each development phase to a corresponding testing phase, forming a V shape.",
+        },
+        {
+          id: 40,
+          topic: "SDLC",
+          q: "In the V-Model, unit testing corresponds to which development phase?",
+          options: [
+            "Requirements",
+            "High-level design",
+            "Detailed design/Module design",
+            "Coding",
+          ],
+          answer: 2,
+          explain:
+            "In the V-Model, unit testing validates the detailed/module design phase.",
+        },
+        {
+          id: 41,
+          topic: "SDLC",
+          q: "Feasibility study is typically conducted during which SDLC phase?",
+          options: ["Design", "Requirements/Planning", "Testing", "Deployment"],
+          answer: 1,
+          explain:
+            "Feasibility study (technical, economic, operational) is part of the initial Planning/Requirements phase.",
+        },
+        {
+          id: 42,
+          topic: "SDLC",
+          q: "Which SDLC model is also called the 'linear sequential model'?",
+          options: ["Agile", "Spiral", "Waterfall", "RAD"],
+          answer: 2,
+          explain:
+            "The Waterfall model is called the linear sequential model because phases flow sequentially from top to bottom like a waterfall.",
+        },
+        {
+          id: 43,
+          topic: "SDLC",
+          q: "In which SDLC model are phases executed in a strict sequence with no overlap?",
+          options: ["Agile", "Waterfall", "Spiral", "Iterative"],
+          answer: 1,
+          explain:
+            "The classic Waterfall model enforces strict sequential phase execution without overlap or iteration.",
+        },
+        {
+          id: 44,
+          topic: "SDLC",
+          q: "The Spiral model was proposed by:",
+          options: ["Winston Royce", "Barry Boehm", "Fred Brooks", "Kent Beck"],
+          answer: 1,
+          explain:
+            "Barry Boehm proposed the Spiral model in 1986, combining iterative development with risk analysis.",
+        },
+        {
+          id: 45,
+          topic: "SDLC",
+          q: "Agile methodology emphasizes:",
+          options: [
+            "Comprehensive documentation",
+            "Following a fixed plan",
+            "Individuals and interactions over processes and tools",
+            "Avoiding customer collaboration",
+          ],
+          answer: 2,
+          explain:
+            "The Agile Manifesto values 'Individuals and interactions over processes and tools' and 'Customer collaboration over contract negotiation.'",
+        },
+        {
+          id: 46,
+          topic: "SDLC",
+          q: "Scrum is a framework under which methodology?",
+          options: ["Waterfall", "Spiral", "Agile", "V-Model"],
+          answer: 2,
+          explain:
+            "Scrum is an Agile framework for managing software development with iterative sprints, daily stand-ups, and defined roles.",
+        },
+        {
+          id: 47,
+          topic: "SDLC",
+          q: "In Scrum, a 'Sprint' typically lasts:",
+          options: ["1 day", "1-4 weeks", "6 months", "1 year"],
+          answer: 1,
+          explain:
+            "A Sprint in Scrum is a time-boxed iteration typically lasting 1-4 weeks, with 2 weeks being most common.",
+        },
+        {
+          id: 48,
+          topic: "SDLC",
+          q: "RAD stands for:",
+          options: [
+            "Rapid Application Development",
+            "Random Access Development",
+            "Reliable Agile Design",
+            "Reusable Architecture Design",
+          ],
+          answer: 0,
+          explain:
+            "RAD (Rapid Application Development) emphasizes quick prototyping and iterative delivery with minimal planning.",
+        },
+        {
+          id: 49,
+          topic: "SDLC",
+          q: "Which SDLC model is best suited for projects with high risk and changing requirements?",
+          options: ["Waterfall", "Spiral", "V-Model", "Pure sequential"],
+          answer: 1,
+          explain:
+            "The Spiral model explicitly incorporates risk analysis at each iteration, making it ideal for high-risk projects.",
+        },
+        {
+          id: 50,
+          topic: "SDLC",
+          q: "The Waterfall model is most appropriate when:",
+          options: [
+            "Requirements are unstable",
+            "Requirements are well-understood and stable",
+            "The project is very small",
+            "Rapid delivery is critical",
+          ],
+          answer: 1,
+          explain:
+            "Waterfall works best when requirements are clear, well-documented, and unlikely to change during development.",
+        },
+        {
+          id: 51,
+          topic: "SDLC",
+          q: "Which is NOT a phase in the generic SDLC?",
+          options: ["Requirements", "Design", "Marketing", "Testing"],
+          answer: 2,
+          explain:
+            "Marketing is not a core SDLC phase. The core phases are Requirements, Design, Development, Testing, and Maintenance.",
+        },
+        {
+          id: 52,
+          topic: "SDLC",
+          q: "Prototyping is most useful when:",
+          options: [
+            "Requirements are clear",
+            "Requirements are unclear or hard to articulate",
+            "The design is complete",
+            "Testing is finished",
+          ],
+          answer: 1,
+          explain:
+            "Prototyping helps elicit and clarify requirements when stakeholders have difficulty articulating their needs.",
+        },
+        {
+          id: 53,
+          topic: "SDLC",
+          q: "Incremental development delivers software in:",
+          options: [
+            "One large release",
+            "Small, functional increments",
+            "Only at the end",
+            "Random order",
+          ],
+          answer: 1,
+          explain:
+            "Incremental development breaks the product into smaller, functional pieces delivered incrementally to the customer.",
+        },
+        {
+          id: 54,
+          topic: "SDLC",
+          q: "The main advantage of iterative development is:",
+          options: [
+            "Less coding",
+            "Early feedback from users",
+            "No documentation needed",
+            "Faster initial delivery",
+          ],
+          answer: 1,
+          explain:
+            "Iterative development allows early user feedback on working versions, reducing the risk of building the wrong product.",
+        },
+        {
+          id: 55,
+          topic: "SDLC",
+          q: "Which phase involves deploying the software to the production environment?",
+          options: [
+            "Design",
+            "Testing",
+            "Implementation/Deployment",
+            "Requirements",
+          ],
+          answer: 2,
+          explain:
+            "The Implementation/Deployment phase involves installing the software in the user's environment and making it operational.",
+        },
+        {
+          id: 56,
+          topic: "SDLC",
+          q: "Regression testing is primarily associated with which phase?",
+          options: ["Requirements", "Design", "Maintenance", "Planning"],
+          answer: 2,
+          explain:
+            "Regression testing (retesting after changes) is heavily associated with the Maintenance phase to ensure updates don't break existing functionality.",
+        },
+        {
+          id: 57,
+          topic: "SDLC",
+          q: "In the V-Model, acceptance testing corresponds to:",
+          options: [
+            "Detailed design",
+            "Requirements specification",
+            "Coding",
+            "High-level design",
+          ],
+          answer: 1,
+          explain:
+            "In the V-Model, acceptance testing validates against the original requirements specification.",
+        },
+        {
+          id: 58,
+          topic: "SDLC",
+          q: "Which SDLC model is also known as the 'build and fix' model?",
+          options: ["Waterfall", "Spiral", "Ad-hoc/Code-and-fix", "V-Model"],
+          answer: 2,
+          explain:
+            "The ad-hoc or 'code-and-fix' model involves writing code without formal planning and fixing issues as they arise—the least structured approach.",
+        },
+        {
+          id: 59,
+          topic: "SDLC",
+          q: "DevOps integrates which two primary functions?",
+          options: [
+            "Design and Testing",
+            "Development and Operations",
+            "Requirements and Coding",
+            "Marketing and Sales",
+          ],
+          answer: 1,
+          explain:
+            "DevOps is a cultural and technical movement that integrates Development and Operations teams to improve collaboration and delivery speed.",
+        },
+        {
+          id: 60,
+          topic: "SDLC",
+          q: "Continuous Integration (CI) means:",
+          options: [
+            "Integrating once at the end",
+            "Frequently merging code changes into a shared repository with automated builds",
+            "Never integrating code",
+            "Manual code review only",
+          ],
+          answer: 1,
+          explain:
+            "CI involves developers frequently merging their code changes into a central repository, followed by automated builds and tests.",
+        },
+        {
+          id: 61,
+          topic: "SDLC",
+          q: "Which testing is performed by the client/end-user?",
+          options: [
+            "Unit testing",
+            "Integration testing",
+            "Acceptance testing",
+            "System testing",
+          ],
+          answer: 2,
+          explain:
+            "Acceptance testing (UAT - User Acceptance Testing) is performed by the client or end-user to validate the system meets their needs.",
+        },
+        {
+          id: 62,
+          topic: "SDLC",
+          q: "Alpha testing is conducted by:",
+          options: [
+            "End users at their site",
+            "Developers at the developer's site",
+            "External beta testers",
+            "Project managers only",
+          ],
+          answer: 1,
+          explain:
+            "Alpha testing is performed by internal teams (developers/QA) at the developer's site before releasing to external users.",
+        },
+        {
+          id: 63,
+          topic: "SDLC",
+          q: "Beta testing is conducted by:",
+          options: [
+            "Developers",
+            "End users at their own sites",
+            "QA team only",
+            "Project managers",
+          ],
+          answer: 1,
+          explain:
+            "Beta testing involves releasing the software to a limited set of real users who test it in their own environment.",
+        },
+        {
+          id: 64,
+          topic: "SDLC",
+          q: "The main goal of the Design phase is to:",
+          options: [
+            "Write code",
+            "Produce a blueprint for the software solution",
+            "Deploy the software",
+            "Gather requirements",
+          ],
+          answer: 1,
+          explain:
+            "The Design phase translates requirements into a detailed blueprint (architecture, components, interfaces) that guides implementation.",
+        },
+        {
+          id: 65,
+          topic: "SDLC",
+          q: "Which phase produces the SRS document?",
+          options: [
+            "Design",
+            "Requirements Analysis",
+            "Testing",
+            "Maintenance",
+          ],
+          answer: 1,
+          explain:
+            "The Software Requirements Specification (SRS) document is the primary output of the Requirements Analysis phase.",
+        },
+
+        // ============ SECTION 3: Programming Languages (Q66-Q85) ============
+        {
+          id: 66,
+          topic: "Programming Languages",
+          q: "Which generation does Java belong to?",
+          options: ["1GL", "2GL", "3GL", "4GL"],
+          answer: 2,
+          explain:
+            "Java is a third-generation programming language (3GL)—high-level, machine-independent languages.",
+        },
+        {
+          id: 67,
+          topic: "Programming Languages",
+          q: "Assembly language is classified as:",
+          options: ["1GL", "2GL", "3GL", "4GL"],
+          answer: 1,
+          explain:
+            "Assembly language is a second-generation language (2GL) that uses mnemonics instead of raw binary (1GL).",
+        },
+        {
+          id: 68,
+          topic: "Programming Languages",
+          q: "Which language is considered a 4GL (Fourth Generation Language)?",
+          options: ["C++", "Java", "SQL", "Assembly"],
+          answer: 2,
+          explain:
+            "SQL is a 4GL designed for database queries. 4GLs are closer to natural language and more abstract than 3GLs.",
+        },
+        {
+          id: 69,
+          topic: "Programming Languages",
+          q: "Machine language (binary) is which generation?",
+          options: ["1GL", "2GL", "3GL", "4GL"],
+          answer: 0,
+          explain:
+            "Machine language (pure binary or hexadecimal instructions) is the first-generation language (1GL).",
+        },
+        {
+          id: 70,
+          topic: "Programming Languages",
+          q: "Which of the following is a statically typed language?",
+          options: ["Python", "JavaScript", "Java", "Ruby"],
+          answer: 2,
+          explain:
+            "Java is statically typed (types checked at compile time). Python, JavaScript, and Ruby are dynamically typed.",
+        },
+        {
+          id: 71,
+          topic: "Programming Languages",
+          q: "A compiler translates:",
+          options: [
+            "High-level language to machine code all at once",
+            "Line by line",
+            "Only assembly to machine code",
+            "English to code",
+          ],
+          answer: 0,
+          explain:
+            "A compiler translates the entire high-level source code into machine code (or intermediate code) in one operation before execution.",
+        },
+        {
+          id: 72,
+          topic: "Programming Languages",
+          q: "An interpreter translates code:",
+          options: [
+            "All at once before execution",
+            "Line by line during execution",
+            "Only to assembly",
+            "Never executes code",
+          ],
+          answer: 1,
+          explain:
+            "An interpreter reads and executes source code line by line (or statement by statement) at runtime.",
+        },
+        {
+          id: 73,
+          topic: "Programming Languages",
+          q: "Which language is primarily used for iOS app development?",
+          options: ["Java", "Kotlin", "Swift", "C#"],
+          answer: 2,
+          explain:
+            "Swift is Apple's primary language for iOS, macOS, watchOS, and tvOS development.",
+        },
+        {
+          id: 74,
+          topic: "Programming Languages",
+          q: "Kotlin is the preferred language for which platform?",
+          options: [
+            "iOS",
+            "Android",
+            "Windows Desktop",
+            "Embedded systems only",
+          ],
+          answer: 1,
+          explain:
+            "Kotlin is Google's preferred language for Android app development, fully interoperable with Java.",
+        },
+        {
+          id: 75,
+          topic: "Programming Languages",
+          q: "Which language introduced the concept of 'write once, run anywhere'?",
+          options: ["C", "Python", "Java", "Swift"],
+          answer: 2,
+          explain:
+            "Java's bytecode and JVM (Java Virtual Machine) enable 'write once, run anywhere' cross-platform capability.",
+        },
+        {
+          id: 76,
+          topic: "Programming Languages",
+          q: "C language was developed by:",
+          options: [
+            "Bjarne Stroustrup",
+            "Dennis Ritchie",
+            "James Gosling",
+            "Guido van Rossum",
+          ],
+          answer: 1,
+          explain:
+            "Dennis Ritchie developed the C programming language at Bell Labs in the early 1970s.",
+        },
+        {
+          id: 77,
+          topic: "Programming Languages",
+          q: "C++ was developed by:",
+          options: [
+            "Dennis Ritchie",
+            "Bjarne Stroustrup",
+            "Linus Torvalds",
+            "Ken Thompson",
+          ],
+          answer: 1,
+          explain:
+            "Bjarne Stroustrup created C++ at Bell Labs in 1979 as an extension of C with object-oriented features.",
+        },
+        {
+          id: 78,
+          topic: "Programming Languages",
+          q: "Python was created by:",
+          options: [
+            "James Gosling",
+            "Guido van Rossum",
+            "Brendan Eich",
+            "Yukihiro Matsumoto",
+          ],
+          answer: 1,
+          explain:
+            "Guido van Rossum created Python in 1991, emphasizing code readability and simplicity.",
+        },
+        {
+          id: 79,
+          topic: "Programming Languages",
+          q: "JavaScript was created by:",
+          options: [
+            "Brendan Eich",
+            "Guido van Rossum",
+            "James Gosling",
+            "Tim Berners-Lee",
+          ],
+          answer: 0,
+          explain:
+            "Brendan Eich created JavaScript in 1995 while at Netscape Communications.",
+        },
+        {
+          id: 80,
+          topic: "Programming Languages",
+          q: "Which paradigm does Haskell primarily represent?",
+          options: ["Object-oriented", "Procedural", "Functional", "Logic"],
+          answer: 2,
+          explain:
+            "Haskell is a purely functional programming language emphasizing immutability and mathematical functions.",
+        },
+        {
+          id: 81,
+          topic: "Programming Languages",
+          q: "Prolog is associated with which programming paradigm?",
+          options: [
+            "Functional",
+            "Object-oriented",
+            "Logic programming",
+            "Procedural",
+          ],
+          answer: 2,
+          explain:
+            "Prolog is a logic programming language used for AI and computational linguistics, based on formal logic.",
+        },
+        {
+          id: 82,
+          topic: "Programming Languages",
+          q: "TypeScript is a superset of:",
+          options: ["Java", "C#", "JavaScript", "Python"],
+          answer: 2,
+          explain:
+            "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript, adding static type checking.",
+        },
+        {
+          id: 83,
+          topic: "Programming Languages",
+          q: "Which language uses the .NET framework primarily?",
+          options: ["Java", "Python", "C#", "Ruby"],
+          answer: 2,
+          explain:
+            "C# (C-Sharp) is Microsoft's primary language for the .NET framework, used for Windows, web, and game development.",
+        },
+        {
+          id: 84,
+          topic: "Programming Languages",
+          q: "A 'strongly typed' language means:",
+          options: [
+            "No types exist",
+            "Type errors are detected at some point before runtime or strictly enforced",
+            "Types can be freely mixed",
+            "There are no variables",
+          ],
+          answer: 1,
+          explain:
+            "Strongly typed languages enforce strict type rules, preventing operations on incompatible types without explicit conversion.",
+        },
+        {
+          id: 85,
+          topic: "Programming Languages",
+          q: "Which of these is a scripting language commonly used for web development?",
+          options: ["C", "Java", "PHP", "Rust"],
+          answer: 2,
+          explain:
+            "PHP is a server-side scripting language widely used for web development. Others like Python, JavaScript are also scripting languages.",
+        },
+
+        // ============ SECTION 4: Software Nature & Qualities (Q86-Q120) ============
+        {
+          id: 86,
+          topic: "Software Qualities",
+          q: "Which software quality refers to the ease with which software can be understood and modified?",
+          options: [
+            "Portability",
+            "Maintainability",
+            "Efficiency",
+            "Correctness",
+          ],
+          answer: 1,
+          explain:
+            "Maintainability is the ease with which software can be understood, corrected, adapted, and enhanced.",
+        },
+        {
+          id: 87,
+          topic: "Software Qualities",
+          q: "Software 'correctness' means:",
+          options: [
+            "The software is fast",
+            "The software meets its specified requirements",
+            "The software is user-friendly",
+            "The software works on all platforms",
+          ],
+          answer: 1,
+          explain:
+            "Correctness is the degree to which software performs its specified functions accurately according to requirements.",
+        },
+        {
+          id: 88,
+          topic: "Software Qualities",
+          q: "Robustness in software refers to:",
+          options: [
+            "Speed of execution",
+            "Ability to handle invalid inputs and unexpected situations gracefully",
+            "Visual appeal",
+            "Small code size",
+          ],
+          answer: 1,
+          explain:
+            "Robustness is the software's ability to cope with errors, invalid inputs, and adverse conditions without crashing.",
+        },
+        {
+          id: 89,
+          topic: "Software Qualities",
+          q: "Usability is primarily concerned with:",
+          options: [
+            "Code efficiency",
+            "Ease of learning and using the software",
+            "Database performance",
+            "Network speed",
+          ],
+          answer: 1,
+          explain:
+            "Usability measures how easy and intuitive the software is for end users to learn and operate effectively.",
+        },
+        {
+          id: 90,
+          topic: "Software Qualities",
+          q: "Portability refers to:",
+          options: [
+            "Software's speed",
+            "Ease of transferring software from one environment to another",
+            "Software's size",
+            "Number of features",
+          ],
+          answer: 1,
+          explain:
+            "Portability is the ease with which software can be moved from one hardware platform, OS, or environment to another.",
+        },
+        {
+          id: 91,
+          topic: "Software Qualities",
+          q: "Which quality attribute measures how efficiently software uses system resources?",
+          options: ["Usability", "Efficiency", "Portability", "Correctness"],
+          answer: 1,
+          explain:
+            "Efficiency relates to how well software utilizes CPU, memory, disk, and network resources to perform its functions.",
+        },
+        {
+          id: 92,
+          topic: "Software Qualities",
+          q: "Reliability is defined as:",
+          options: [
+            "How fast the software runs",
+            "Probability of failure-free operation for a specified period",
+            "How many features it has",
+            "How good it looks",
+          ],
+          answer: 1,
+          explain:
+            "Reliability is the probability that software will operate without failure under given conditions for a specified time period.",
+        },
+        {
+          id: 93,
+          topic: "Software Qualities",
+          q: "Which is a 'product quality' rather than a 'project quality'?",
+          options: [
+            "On-time delivery",
+            "Within budget",
+            "Reliability",
+            "Resource utilization",
+          ],
+          answer: 2,
+          explain:
+            "Product qualities (reliability, usability, efficiency) describe the software itself. Project qualities relate to the development process.",
+        },
+        {
+          id: 94,
+          topic: "Software Qualities",
+          q: "Which is a 'project quality' metric?",
+          options: [
+            "Response time",
+            "Schedule variance",
+            "Mean Time Between Failures",
+            "User satisfaction score",
+          ],
+          answer: 1,
+          explain:
+            "Schedule variance (deviation from planned timeline) is a project quality metric. Others are product quality metrics.",
+        },
+        {
+          id: 95,
+          topic: "Software Qualities",
+          q: "MTBF stands for:",
+          options: [
+            "Mean Time Before Fixing",
+            "Mean Time Between Failures",
+            "Maximum Time Before Failure",
+            "Minimum Test Build Frequency",
+          ],
+          answer: 1,
+          explain:
+            "MTBF (Mean Time Between Failures) is a reliability metric measuring the average time between system failures.",
+        },
+        {
+          id: 96,
+          topic: "Software Qualities",
+          q: "MTTR stands for:",
+          options: [
+            "Mean Time To Repair",
+            "Maximum Time To Run",
+            "Minimum Test Time Required",
+            "Mean Test Throughput Rate",
+          ],
+          answer: 0,
+          explain:
+            "MTTR (Mean Time To Repair) measures the average time required to repair a system and restore it to operation.",
+        },
+        {
+          id: 97,
+          topic: "Software Qualities",
+          q: "Cyclomatic complexity measures:",
+          options: [
+            "Lines of code",
+            "Number of independent paths through code",
+            "Execution time",
+            "Memory usage",
+          ],
+          answer: 1,
+          explain:
+            "Cyclomatic complexity (McCabe's metric) measures the number of linearly independent paths through a program's source code.",
+        },
+        {
+          id: 98,
+          topic: "Software Qualities",
+          q: "Function Point Analysis is used for:",
+          options: [
+            "Measuring lines of code",
+            "Measuring software size based on functionality",
+            "Measuring execution speed",
+            "Measuring memory",
+          ],
+          answer: 1,
+          explain:
+            "Function Point Analysis measures software size by quantifying the functionality provided to the user, independent of technology.",
+        },
+        {
+          id: 99,
+          topic: "Software Qualities",
+          q: "Which quality attribute is most affected by the choice of algorithms and data structures?",
+          options: [
+            "Usability",
+            "Efficiency/Performance",
+            "Portability",
+            "Maintainability",
+          ],
+          answer: 1,
+          explain:
+            "Efficiency and performance are directly impacted by algorithmic choices (time complexity) and data structure selection.",
+        },
+        {
+          id: 100,
+          topic: "Software Qualities",
+          q: "ISO 9126 is a standard for:",
+          options: [
+            "Project management",
+            "Software product quality",
+            "Network protocols",
+            "Database design",
+          ],
+          answer: 1,
+          explain:
+            "ISO/IEC 9126 defines a quality model for software product quality with characteristics like functionality, reliability, usability, efficiency, maintainability, and portability.",
+        },
+      ];
+
+      // ==================== MAIN APPLICATION LOGIC ====================
+      let userAnswers = {}; // { questionId: selectedOptionIndex }
+      let revealedAnswers = {}; // { questionId: true/false }
+
+      const questionsContainer = document.getElementById("questionsContainer");
+      const topicFilter = document.getElementById("topicFilter");
+      const correctCountEl = document.getElementById("correctCount");
+      const wrongCountEl = document.getElementById("wrongCount");
+      const remainCountEl = document.getElementById("remainCount");
+      const scorePctEl = document.getElementById("scorePct");
+      const progressFill = document.getElementById("progressFill");
+
+      // Get unique topics
+      const topics = [...new Set(allQuestions.map((q) => q.topic))];
+
+      // Render topic filter buttons
+      function renderTopicFilter() {
+        topicFilter.innerHTML =
+          '<button class="active" data-topic="all">📋 All Topics</button>';
+        topics.forEach((topic) => {
+          const btn = document.createElement("button");
+          btn.textContent = topic;
+          btn.dataset.topic = topic;
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".topic-filter button")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderQuestions(btn.dataset.topic);
+          });
+          topicFilter.appendChild(btn);
+        });
+        document
+          .querySelector('.topic-filter button[data-topic="all"]')
+          .addEventListener("click", () => {
+            document
+              .querySelectorAll(".topic-filter button")
+              .forEach((b) => b.classList.remove("active"));
+            document
+              .querySelector('.topic-filter button[data-topic="all"]')
+              .classList.add("active");
+            renderQuestions("all");
+          });
+      }
+
+      function renderQuestions(filterTopic = "all") {
+        const filtered =
+          filterTopic === "all"
+            ? allQuestions
+            : allQuestions.filter((q) => q.topic === filterTopic);
+        questionsContainer.innerHTML = "";
+
+        if (filtered.length === 0) {
+          questionsContainer.innerHTML =
+            '<div class="no-results">No questions found for this topic.</div>';
+          return;
+        }
+
+        filtered.forEach((q) => {
+          const card = document.createElement("div");
+          card.className = "question-card";
+          card.id = "q-card-" + q.id;
+
+          // Update card border based on answer
+          if (userAnswers[q.id] !== undefined) {
+            if (userAnswers[q.id] === q.answer) {
+              card.classList.add("answered-correct");
+            } else {
+              card.classList.add("answered-wrong");
+            }
+          }
+
+          card.innerHTML = `
+                    <span class="q-num">Q${q.id}</span>
+                    <span class="q-topic">[${q.topic}]</span>
+                    <div class="q-text">${q.q}</div>
+                    <ul class="options" id="options-${q.id}">
+                        ${q.options
+                          .map((opt, idx) => {
+                            const letter = String.fromCharCode(65 + idx);
+                            let cls = "";
+                            if (userAnswers[q.id] !== undefined) {
+                              cls += " disabled";
+                              if (idx === userAnswers[q.id]) cls += " selected";
+                              if (idx === q.answer) cls += " correct-choice";
+                              if (idx === userAnswers[q.id] && idx !== q.answer)
+                                cls += " wrong-choice";
+                            }
+                            return `<li class="${cls}" data-qid="${q.id}" data-opt="${idx}">
+                                <strong>${letter}.</strong> ${opt}
+                                <span class="icon-feedback">${idx === q.answer ? "✅" : userAnswers[q.id] === idx && idx !== q.answer ? "❌" : ""}</span>
+                            </li>`;
+                          })
+                          .join("")}
+                    </ul>
+                    <button class="show-answer-btn" id="btn-${q.id}" onclick="toggleAnswer(${q.id})">
+                        ${revealedAnswers[q.id] ? "🔒 Hide Answer & Explanation" : "🔓 Show Answer & Explanation"}
+                    </button>
+                    <div class="answer-reveal ${revealedAnswers[q.id] ? "show" : ""}" id="answer-${q.id}">
+                        <span class="ans-label">✅ Correct Answer: ${String.fromCharCode(65 + q.answer)}. ${q.options[q.answer]}</span>
+                        <span class="explain-label">📝 Explanation:</span>
+                        <span class="explain-text">${q.explain}</span>
+                    </div>
+                `;
+          questionsContainer.appendChild(card);
+        });
+
+        // Attach option click handlers
+        document
+          .querySelectorAll(".options li:not(.disabled)")
+          .forEach((li) => {
+            li.addEventListener("click", function () {
+              const qid = parseInt(this.dataset.qid);
+              const opt = parseInt(this.dataset.opt);
+              handleAnswer(qid, opt);
+            });
+          });
+
+        updateStats();
+      }
+
+      function handleAnswer(qid, selectedOpt) {
+        if (userAnswers[qid] !== undefined) return; // Already answered
+
+        const q = allQuestions.find((q) => q.id === qid);
+        userAnswers[qid] = selectedOpt;
+
+        // Re-render just this card
+        const card = document.getElementById("q-card-" + qid);
+        const optionsList = document.getElementById("options-" + qid);
+
+        // Update classes
+        if (selectedOpt === q.answer) {
+          card.classList.add("answered-correct");
+        } else {
+          card.classList.add("answered-wrong");
+        }
+
+        // Update options
+        const items = optionsList.querySelectorAll("li");
+        items.forEach((li, idx) => {
+          li.classList.add("disabled");
+          if (idx === selectedOpt) li.classList.add("selected");
+          if (idx === q.answer) li.classList.add("correct-choice");
+          if (idx === selectedOpt && idx !== q.answer)
+            li.classList.add("wrong-choice");
+          // Update icon
+          const icon = li.querySelector(".icon-feedback");
+          if (idx === q.answer) icon.textContent = "✅";
+          if (idx === selectedOpt && idx !== q.answer) icon.textContent = "❌";
+          icon.style.display =
+            idx === q.answer || (idx === selectedOpt && idx !== q.answer)
+              ? "inline"
+              : "none";
+        });
+
+        updateStats();
+      }
+
+      function toggleAnswer(qid) {
+        revealedAnswers[qid] = !revealedAnswers[qid];
+        const answerDiv = document.getElementById("answer-" + qid);
+        const btn = document.getElementById("btn-" + qid);
+
+        if (revealedAnswers[qid]) {
+          answerDiv.classList.add("show");
+          btn.textContent = "🔒 Hide Answer & Explanation";
+        } else {
+          answerDiv.classList.remove("show");
+          btn.textContent = "🔓 Show Answer & Explanation";
+        }
+      }
+
+      function updateStats() {
+        const total = allQuestions.length;
+        const answered = Object.keys(userAnswers).length;
+        let correct = 0;
+        let wrong = 0;
+
+        for (const [qid, selected] of Object.entries(userAnswers)) {
+          const q = allQuestions.find((q) => q.id === parseInt(qid));
+          if (q && selected === q.answer) correct++;
+          else wrong++;
+        }
+
+        const remain = total - answered;
+        const pct = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+
+        correctCountEl.textContent = correct;
+        wrongCountEl.textContent = wrong;
+        remainCountEl.textContent = remain;
+        scorePctEl.textContent = pct + "%";
+        progressFill.style.width = (answered / total) * 100 + "%";
+      }
+
+      function resetAll() {
+        if (
+          confirm(
+            "Are you sure you want to reset all answers? This cannot be undone.",
+          )
+        ) {
+          userAnswers = {};
+          revealedAnswers = {};
+          const activeBtn = document.querySelector(
+            ".topic-filter button.active",
+          );
+          const activeTopic = activeBtn ? activeBtn.dataset.topic : "all";
+          renderQuestions(activeTopic);
+          updateStats();
+        }
+      }
+
+      // Initialize
+      renderTopicFilter();
+      renderQuestions("all");
+      updateStats();
+    </script>
+  </body>
+</html>

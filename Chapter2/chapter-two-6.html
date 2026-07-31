@@ -1,0 +1,2073 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Engineering</title>
+    <style>
+      :root {
+        --bg: #f0f2f5;
+        --card-bg: #ffffff;
+        --primary: #1a73e8;
+        --correct: #0d904f;
+        --wrong: #d93025;
+        --text: #202124;
+        --text-light: #5f6368;
+        --border: #dadce0;
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --hover: #e8f0fe;
+        --badge-bg: #e8f0fe;
+        --badge-text: #1a73e8;
+        --explain-bg: #f8f9fa;
+        --gold: #f9ab00;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Segoe UI", "Noto Sans Bengali", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px 16px;
+      }
+
+      header {
+        background: linear-gradient(135deg, #1a3c6e 0%, #1a73e8 100%);
+        color: #fff;
+        padding: 28px 24px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(26, 115, 232, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+      }
+      header h1 {
+        font-size: 1.8em;
+        font-weight: 700;
+        margin-bottom: 6px;
+        position: relative;
+        z-index: 1;
+      }
+      header p {
+        font-size: 0.95em;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
+      header .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      header .badge-row span {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        backdrop-filter: blur(4px);
+      }
+      /* Header Section Style */
+      .header-container {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid #e2e8f0;
+        font-family: "Segoe UI", Roboto, sans-serif;
+      }
+
+      .header-container h1 {
+        color: #0f172a;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Navigation Container */
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap; /* মোবাইলে অটোমেটিক রেসপনসিভ করার জন্য */
+      }
+
+      /* Button Design */
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #2563eb; /* Modern Blue */
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Hover & Active Effects */
+      .nav-btn:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+
+      .nav-btn:active {
+        transform: translateY(0);
+      }
+      .stats-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 20px;
+        background: var(--card-bg);
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 10px;
+        z-index: 100;
+      }
+      .stat-item {
+        text-align: center;
+        min-width: 60px;
+      }
+      .stat-item .num {
+        font-size: 1.6em;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .stat-item .lbl {
+        font-size: 0.75em;
+        color: var(--text-light);
+      }
+      .stat-item.correct .num {
+        color: var(--correct);
+      }
+      .stat-item.wrong .num {
+        color: var(--wrong);
+      }
+      .stat-item.remain .num {
+        color: var(--gold);
+      }
+
+      .topic-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 16px;
+        justify-content: center;
+      }
+      .topic-filter button {
+        padding: 7px 14px;
+        border: 1.5px solid var(--border);
+        background: #fff;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.82em;
+        transition: all 0.2s;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+      .topic-filter button:hover,
+      .topic-filter button.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+
+      .progress-wrap {
+        margin-bottom: 20px;
+        background: #e0e0e0;
+        border-radius: 10px;
+        height: 6px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--primary);
+        border-radius: 10px;
+        transition: width 0.4s ease;
+        width: 0%;
+      }
+
+      .question-card {
+        background: var(--card-bg);
+        border-radius: 14px;
+        padding: 24px 22px;
+        margin-bottom: 16px;
+        box-shadow: var(--shadow);
+        border-left: 5px solid transparent;
+        transition: all 0.25s;
+        position: relative;
+      }
+      .question-card:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .question-card.answered-correct {
+        border-left-color: var(--correct);
+        background: #f6fdf8;
+      }
+      .question-card.answered-wrong {
+        border-left-color: var(--wrong);
+        background: #fef7f6;
+      }
+      .q-num {
+        display: inline-block;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        font-weight: 700;
+        font-size: 0.85em;
+        padding: 3px 10px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+      }
+      .q-topic {
+        display: inline-block;
+        font-size: 0.75em;
+        color: var(--text-light);
+        margin-left: 6px;
+        font-style: italic;
+      }
+      .q-text {
+        font-weight: 600;
+        font-size: 1.05em;
+        margin-bottom: 14px;
+        color: #1a1a1a;
+      }
+      .options {
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+      .options li {
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.95em;
+        position: relative;
+        user-select: none;
+        background: #fafbfc;
+      }
+      .options li:hover {
+        background: var(--hover);
+        border-color: #a0c4f1;
+      }
+      .options li.selected {
+        border-color: var(--primary);
+        background: #e8f0fe;
+        font-weight: 600;
+      }
+      .options li.correct-choice {
+        border-color: var(--correct) !important;
+        background: #e6f4ea !important;
+        color: #0d5e30 !important;
+        font-weight: 700;
+      }
+      .options li.wrong-choice {
+        border-color: var(--wrong) !important;
+        background: #fce8e6 !important;
+        color: #a50e0e !important;
+      }
+      .options li .icon-feedback {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3em;
+        display: none;
+      }
+      .options li.correct-choice .icon-feedback,
+      .options li.wrong-choice .icon-feedback {
+        display: inline;
+      }
+      .options li.disabled {
+        pointer-events: none;
+        opacity: 0.85;
+      }
+
+      .answer-reveal {
+        margin-top: 12px;
+        padding: 14px 16px;
+        background: var(--explain-bg);
+        border-radius: 10px;
+        display: none;
+        border: 1px dashed #ccc;
+        font-size: 0.9em;
+      }
+      .answer-reveal.show {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      .answer-reveal .ans-label {
+        font-weight: 700;
+        color: var(--correct);
+      }
+      .answer-reveal .explain-label {
+        font-weight: 700;
+        color: #555;
+        margin-top: 6px;
+        display: block;
+      }
+      .answer-reveal .explain-text {
+        color: #444;
+        margin-top: 2px;
+      }
+      .show-answer-btn {
+        margin-top: 10px;
+        padding: 7px 16px;
+        background: #fff;
+        border: 1.5px solid var(--primary);
+        color: var(--primary);
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.85em;
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+      .show-answer-btn:hover {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .btn-reset {
+        display: block;
+        margin: 24px auto;
+        padding: 12px 32px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        font-size: 1em;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+        box-shadow: 0 3px 12px rgba(26, 115, 232, 0.3);
+      }
+      .btn-reset:hover {
+        background: #1557b0;
+        box-shadow: 0 5px 18px rgba(26, 115, 232, 0.4);
+        transform: translateY(-1px);
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        color: var(--text-light);
+        font-size: 1.1em;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.8em;
+        padding: 20px;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.3em;
+        }
+        .question-card {
+          padding: 16px 12px;
+        }
+        .options li {
+          padding: 10px 12px;
+          font-size: 0.88em;
+        }
+        .q-text {
+          font-size: 0.95em;
+        }
+        .stats-bar {
+          gap: 6px;
+          padding: 10px 8px;
+        }
+        .stat-item .num {
+          font-size: 1.2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header-container">
+        <h1>💻 Software Engineering - MCQs</h1>
+        <nav class="nav-buttons">
+          <a href="chapter-two-1.html" class="nav-btn">Part 1</a>
+          <a href="chapter-two-2.html" class="nav-btn">Part 2</a>
+          <a href="chapter-two-3.html" class="nav-btn">Part 3</a>
+          <a href="chapter-two-4.html" class="nav-btn">Part 4</a>
+          <a href="chapter-two-5.html" class="nav-btn">Part 5</a>
+          <a href="chapter-two-6.html" class="nav-btn">Part 6</a>
+          <a href="chapter-two-7.html" class="nav-btn">Part 7</a>
+          <a href="chapter-two-8.html" class="nav-btn">Part 8</a>
+        </nav>
+      </header>
+
+      <div class="stats-bar" id="statsBar">
+        <div class="stat-item">
+          <div class="num" id="totalQ">100</div>
+          <div class="lbl">Total</div>
+        </div>
+        <div class="stat-item correct">
+          <div class="num" id="correctCount">0</div>
+          <div class="lbl">✅ Correct</div>
+        </div>
+        <div class="stat-item wrong">
+          <div class="num" id="wrongCount">0</div>
+          <div class="lbl">❌ Wrong</div>
+        </div>
+        <div class="stat-item remain">
+          <div class="num" id="remainCount">400</div>
+          <div class="lbl">⏳ Remaining</div>
+        </div>
+        <div class="stat-item">
+          <div class="num" id="scorePct">0%</div>
+          <div class="lbl">Score</div>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="topic-filter" id="topicFilter"></div>
+
+      <div id="questionsContainer"></div>
+
+      <button class="btn-reset" onclick="resetAll()">
+        🔄 Reset All Answers
+      </button>
+      <footer>
+        © 2026 | Software Engineering MCQs for NTRCA Assistant Teacher Exam |
+        All Answers Verified
+      </footer>
+    </div>
+
+    <script>
+      // ==================== 400 QUESTIONS DATASET ====================
+      const allQuestions = [
+        // ============ SECTION 1: History, Nature, Relation to Other Disciplines (Q1-Q30) ============
+
+        {
+          id: 101,
+          topic: "Software Qualities",
+          q: "Which quality means the software can be easily tested?",
+          options: ["Portability", "Testability", "Usability", "Efficiency"],
+          answer: 1,
+          explain:
+            "Testability refers to the ease with which software can be tested to ensure it meets requirements and to find defects.",
+        },
+        {
+          id: 102,
+          topic: "Software Qualities",
+          q: "Reusability refers to:",
+          options: [
+            "Running software multiple times",
+            "Using existing software components in new projects",
+            "Restarting the application",
+            "Multiple user access",
+          ],
+          answer: 1,
+          explain:
+            "Reusability is the degree to which software components can be used in different applications or contexts beyond their original purpose.",
+        },
+        {
+          id: 103,
+          topic: "Software Qualities",
+          q: "Interoperability is the ability of software to:",
+          options: [
+            "Run on any device",
+            "Exchange and use information with other systems",
+            "Execute quickly",
+            "Be easy to learn",
+          ],
+          answer: 1,
+          explain:
+            "Interoperability is the capability of software systems to communicate, exchange data, and use the exchanged information.",
+        },
+        {
+          id: 104,
+          topic: "Software Qualities",
+          q: "Scalability refers to a system's ability to:",
+          options: [
+            "Be small",
+            "Handle growing amounts of work by adding resources",
+            "Be user-friendly",
+            "Run on mobile devices",
+          ],
+          answer: 1,
+          explain:
+            "Scalability is the capability of a system to handle increased load by adding resources without performance degradation.",
+        },
+        {
+          id: 105,
+          topic: "Software Qualities",
+          q: "Security as a quality attribute includes:",
+          options: [
+            "Speed only",
+            "Confidentiality, Integrity, and Availability (CIA)",
+            "User interface design",
+            "Code size",
+          ],
+          answer: 1,
+          explain:
+            "Security encompasses the CIA triad: Confidentiality (authorized access), Integrity (data accuracy), and Availability (accessible when needed).",
+        },
+        {
+          id: 106,
+          topic: "Software Qualities",
+          q: "Cohesion in software design refers to:",
+          options: [
+            "How modules depend on each other",
+            "How closely related the responsibilities within a module are",
+            "The number of modules",
+            "The size of the code",
+          ],
+          answer: 1,
+          explain:
+            "Cohesion measures how strongly related and focused the responsibilities within a single module are. High cohesion is desirable.",
+        },
+        {
+          id: 107,
+          topic: "Software Qualities",
+          q: "Coupling refers to:",
+          options: [
+            "Internal module strength",
+            "Degree of interdependence between modules",
+            "Number of lines",
+            "Execution speed",
+          ],
+          answer: 1,
+          explain:
+            "Coupling measures the degree of interdependence between software modules. Low coupling is generally preferred.",
+        },
+        {
+          id: 108,
+          topic: "Software Qualities",
+          q: "In software design, we aim for:",
+          options: [
+            "High coupling, low cohesion",
+            "Low coupling, high cohesion",
+            "High coupling, high cohesion",
+            "Low coupling, low cohesion",
+          ],
+          answer: 1,
+          explain:
+            "Good design principles dictate low coupling (modules are independent) and high cohesion (modules have focused responsibilities).",
+        },
+        {
+          id: 109,
+          topic: "Software Qualities",
+          q: "Technical debt refers to:",
+          options: [
+            "Financial loans for software",
+            "Implied cost of additional rework caused by choosing an easy solution now",
+            "Hardware costs",
+            "Licensing fees",
+          ],
+          answer: 1,
+          explain:
+            "Technical debt is the accumulated cost of shortcuts and suboptimal decisions that require future rework to maintain quality.",
+        },
+        {
+          id: 110,
+          topic: "Software Qualities",
+          q: "Code smell refers to:",
+          options: [
+            "Bad odor from hardware",
+            "Surface indication in code that may indicate a deeper problem",
+            "Compilation errors",
+            "Runtime exceptions",
+          ],
+          answer: 1,
+          explain:
+            "A code smell is a surface symptom in source code that often indicates a deeper design or architectural problem.",
+        },
+        {
+          id: 111,
+          topic: "Software Qualities",
+          q: "The DRY principle stands for:",
+          options: [
+            "Do Repeat Yourself",
+            "Don't Repeat Yourself",
+            "Design Robust Yields",
+            "Document Requirements Yearly",
+          ],
+          answer: 1,
+          explain:
+            "DRY (Don't Repeat Yourself) advocates for reducing code duplication by abstracting common functionality.",
+        },
+        {
+          id: 112,
+          topic: "Software Qualities",
+          q: "KISS in software engineering means:",
+          options: [
+            "Keep It Sophisticated and Smart",
+            "Keep It Simple, Stupid",
+            "Key Integration Software System",
+            "Kernel Input/output SubSystem",
+          ],
+          answer: 1,
+          explain:
+            "KISS (Keep It Simple, Stupid) advocates simplicity in design, avoiding unnecessary complexity.",
+        },
+        {
+          id: 113,
+          topic: "Software Qualities",
+          q: "YAGNI stands for:",
+          options: [
+            "You Always Get New Ideas",
+            "You Ain't Gonna Need It",
+            "Yet Another General Network Interface",
+            "Your Application Generates New Interfaces",
+          ],
+          answer: 1,
+          explain:
+            "YAGNI (You Ain't Gonna Need It) advises against adding functionality until it is actually needed.",
+        },
+        {
+          id: 114,
+          topic: "Software Qualities",
+          q: "Which metric measures the number of defects per thousand lines of code?",
+          options: [
+            "Function points",
+            "Defect density",
+            "Cyclomatic complexity",
+            "Code coverage",
+          ],
+          answer: 1,
+          explain:
+            "Defect density is typically measured as the number of defects per KLOC (thousand lines of code) or per function point.",
+        },
+        {
+          id: 115,
+          topic: "Software Qualities",
+          q: "Code coverage measures:",
+          options: [
+            "How many lines of code exist",
+            "Percentage of code exercised by tests",
+            "The number of developers",
+            "Project budget utilization",
+          ],
+          answer: 1,
+          explain:
+            "Code coverage quantifies the percentage of source code that is executed during testing.",
+        },
+        {
+          id: 116,
+          topic: "Software Qualities",
+          q: "Availability of a system is calculated as:",
+          options: [
+            "MTBF / (MTBF + MTTR)",
+            "MTTR / MTBF",
+            "MTBF × MTTR",
+            "1 / MTTR",
+          ],
+          answer: 0,
+          explain:
+            "Availability = MTBF / (MTBF + MTTR), representing the proportion of time a system is operational.",
+        },
+        {
+          id: 117,
+          topic: "Software Qualities",
+          q: "Which is an external quality attribute?",
+          options: [
+            "Modularity",
+            "Code readability",
+            "Usability",
+            "Testability",
+          ],
+          answer: 2,
+          explain:
+            "External quality attributes (usability, reliability, performance) are visible to end users. Internal attributes (modularity, readability) are developer-facing.",
+        },
+        {
+          id: 118,
+          topic: "Software Qualities",
+          q: "What does 'fault tolerance' mean?",
+          options: [
+            "No faults exist",
+            "System continues operating properly in the event of component failures",
+            "Faults are ignored",
+            "System shuts down on any error",
+          ],
+          answer: 1,
+          explain:
+            "Fault tolerance is the ability of a system to continue correct operation despite the failure of some components.",
+        },
+        {
+          id: 119,
+          topic: "Software Qualities",
+          q: "The ISO 25010 standard replaced:",
+          options: ["ISO 9001", "ISO 9126", "ISO 27001", "ISO 14001"],
+          answer: 1,
+          explain:
+            "ISO/IEC 25010 (SQuaRE) replaced ISO/IEC 9126, providing an updated software product quality model.",
+        },
+        {
+          id: 120,
+          topic: "Software Qualities",
+          q: "Which quality is also called 'flexibility'?",
+          options: ["Efficiency", "Adaptability", "Security", "Correctness"],
+          answer: 1,
+          explain:
+            "Adaptability (or flexibility) is the capability of software to be adapted for different environments without modification.",
+        },
+
+        // ============ SECTION 5: SDLC Phases in Detail (Q121-Q165) ============
+        {
+          id: 121,
+          topic: "SDLC Phases",
+          q: "The SRS document should be:",
+          options: [
+            "Vague and open-ended",
+            "Clear, complete, consistent, and unambiguous",
+            "As short as possible",
+            "Written only by developers",
+          ],
+          answer: 1,
+          explain:
+            "A good SRS is clear, complete, consistent, unambiguous, verifiable, modifiable, and traceable.",
+        },
+        {
+          id: 122,
+          topic: "SDLC Phases",
+          q: "Functional requirements describe:",
+          options: [
+            "System performance",
+            "What the system should do",
+            "Hardware specifications",
+            "Development timeline",
+          ],
+          answer: 1,
+          explain:
+            "Functional requirements specify the behaviors, functions, and features the system must provide.",
+        },
+        {
+          id: 123,
+          topic: "SDLC Phases",
+          q: "Non-functional requirements include:",
+          options: [
+            "User login",
+            "Data entry",
+            "Performance, security, and reliability",
+            "Report generation",
+          ],
+          answer: 2,
+          explain:
+            "Non-functional requirements describe quality attributes like performance, security, reliability, scalability, and usability.",
+        },
+        {
+          id: 124,
+          topic: "SDLC Phases",
+          q: "Elicitation in requirements engineering means:",
+          options: [
+            "Writing code",
+            "Gathering requirements from stakeholders",
+            "Testing the system",
+            "Deploying software",
+          ],
+          answer: 1,
+          explain:
+            "Requirements elicitation is the process of gathering requirements from stakeholders through interviews, workshops, observation, etc.",
+        },
+        {
+          id: 125,
+          topic: "SDLC Phases",
+          q: "A use case diagram is used during which phase?",
+          options: [
+            "Testing",
+            "Requirements analysis",
+            "Deployment",
+            "Maintenance",
+          ],
+          answer: 1,
+          explain:
+            "Use case diagrams are created during requirements analysis to model system interactions with external actors.",
+        },
+        {
+          id: 126,
+          topic: "SDLC Phases",
+          q: "Which diagram shows the flow of data through a system?",
+          options: [
+            "Class diagram",
+            "Data Flow Diagram (DFD)",
+            "Use case diagram",
+            "Sequence diagram",
+          ],
+          answer: 1,
+          explain:
+            "DFDs illustrate how data flows through a system, showing processes, data stores, external entities, and data flows.",
+        },
+        {
+          id: 127,
+          topic: "SDLC Phases",
+          q: "An Entity-Relationship Diagram (ERD) is used for:",
+          options: [
+            "UI design",
+            "Database/data modeling",
+            "Control flow",
+            "Network design",
+          ],
+          answer: 1,
+          explain:
+            "ERDs model the data structure, showing entities, attributes, and relationships—primarily for database design.",
+        },
+        {
+          id: 128,
+          topic: "SDLC Phases",
+          q: "In the Design phase, 'architectural design' deals with:",
+          options: [
+            "Individual algorithms",
+            "Overall system structure and major components",
+            "Database queries",
+            "User interface colors",
+          ],
+          answer: 1,
+          explain:
+            "Architectural design defines the high-level structure, major components, their relationships, and distribution.",
+        },
+        {
+          id: 129,
+          topic: "SDLC Phases",
+          q: "Detailed design focuses on:",
+          options: [
+            "Business strategy",
+            "Individual modules, algorithms, and data structures",
+            "Project budget",
+            "Team formation",
+          ],
+          answer: 1,
+          explain:
+            "Detailed (low-level) design specifies the internal logic, algorithms, and data structures of individual modules.",
+        },
+        {
+          id: 130,
+          topic: "SDLC Phases",
+          q: "Which is a key principle of UI design?",
+          options: [
+            "Maximize complexity",
+            "Consistency and user familiarity",
+            "Ignore user feedback",
+            "Use as many colors as possible",
+          ],
+          answer: 1,
+          explain:
+            "UI design principles include consistency, user familiarity, minimal surprise, recoverability, and user guidance.",
+        },
+        {
+          id: 131,
+          topic: "SDLC Phases",
+          q: "Unit testing typically tests:",
+          options: [
+            "The entire system",
+            "Individual functions or methods",
+            "The database only",
+            "Network connectivity",
+          ],
+          answer: 1,
+          explain:
+            "Unit testing focuses on verifying the smallest testable parts (functions, methods, classes) in isolation.",
+        },
+        {
+          id: 132,
+          topic: "SDLC Phases",
+          q: "Integration testing verifies:",
+          options: [
+            "Individual units",
+            "Interactions between integrated modules",
+            "User acceptance",
+            "Only the UI",
+          ],
+          answer: 1,
+          explain:
+            "Integration testing checks that combined modules work together correctly after being integrated.",
+        },
+        {
+          id: 133,
+          topic: "SDLC Phases",
+          q: "System testing tests:",
+          options: [
+            "Only one module",
+            "The complete, integrated system as a whole",
+            "Only the database",
+            "Only the UI",
+          ],
+          answer: 1,
+          explain:
+            "System testing evaluates the complete, integrated software system to verify it meets specified requirements.",
+        },
+        {
+          id: 134,
+          topic: "SDLC Phases",
+          q: "Black-box testing focuses on:",
+          options: [
+            "Internal code structure",
+            "Input/output behavior without knowing internal code",
+            "Database schema",
+            "Developer knowledge",
+          ],
+          answer: 1,
+          explain:
+            "Black-box testing examines functionality without knowledge of internal code structure—testing against specifications.",
+        },
+        {
+          id: 135,
+          topic: "SDLC Phases",
+          q: "White-box testing involves:",
+          options: [
+            "Testing without code knowledge",
+            "Testing with knowledge of internal code structure",
+            "User acceptance testing",
+            "Performance testing only",
+          ],
+          answer: 1,
+          explain:
+            "White-box (clear-box) testing examines internal code structure, logic paths, and implementation details.",
+        },
+        {
+          id: 136,
+          topic: "SDLC Phases",
+          q: "Which testing verifies that fixes haven't broken existing functionality?",
+          options: [
+            "Unit testing",
+            "Regression testing",
+            "Smoke testing",
+            "Alpha testing",
+          ],
+          answer: 1,
+          explain:
+            "Regression testing ensures that recent code changes have not adversely affected existing features.",
+        },
+        {
+          id: 137,
+          topic: "SDLC Phases",
+          q: "Smoke testing is:",
+          options: [
+            "Full system test",
+            "A quick, shallow test to check basic functionality",
+            "Performance testing",
+            "Security testing",
+          ],
+          answer: 1,
+          explain:
+            "Smoke testing is a preliminary test to ensure the basic critical functionalities work before deeper testing.",
+        },
+        {
+          id: 138,
+          topic: "SDLC Phases",
+          q: "The primary goal of debugging is:",
+          options: [
+            "Writing new code",
+            "Finding and fixing the root cause of defects",
+            "Improving performance",
+            "Adding features",
+          ],
+          answer: 1,
+          explain:
+            "Debugging is the systematic process of identifying, locating, and correcting the root cause of software defects.",
+        },
+        {
+          id: 139,
+          topic: "SDLC Phases",
+          q: "Corrective maintenance involves:",
+          options: [
+            "Adding new features",
+            "Fixing discovered bugs and defects",
+            "Improving performance",
+            "Migrating to new platforms",
+          ],
+          answer: 1,
+          explain:
+            "Corrective maintenance addresses errors, faults, and defects found in the software after deployment.",
+        },
+        {
+          id: 140,
+          topic: "SDLC Phases",
+          q: "Adaptive maintenance is performed to:",
+          options: [
+            "Fix bugs",
+            "Adapt software to changes in the environment (OS, hardware, etc.)",
+            "Improve maintainability",
+            "Add new features",
+          ],
+          answer: 1,
+          explain:
+            "Adaptive maintenance modifies software to accommodate changes in its external environment (new OS, hardware, regulations).",
+        },
+        {
+          id: 141,
+          topic: "SDLC Phases",
+          q: "Perfective maintenance aims to:",
+          options: [
+            "Fix critical bugs",
+            "Improve performance, maintainability, or add enhancements",
+            "Adapt to new OS",
+            "Recover from disaster",
+          ],
+          answer: 1,
+          explain:
+            "Perfective maintenance enhances software by improving performance, maintainability, or adding new features requested by users.",
+        },
+        {
+          id: 142,
+          topic: "SDLC Phases",
+          q: "Preventive maintenance involves:",
+          options: [
+            "Fixing reported bugs",
+            "Making changes to prevent future problems",
+            "Adapting to new hardware",
+            "Adding user-requested features",
+          ],
+          answer: 1,
+          explain:
+            "Preventive maintenance proactively modifies software to prevent potential future issues and improve long-term reliability.",
+        },
+        {
+          id: 143,
+          topic: "SDLC Phases",
+          q: "A 'bug' in software is:",
+          options: [
+            "A feature request",
+            "An error, flaw, or fault causing incorrect results",
+            "A type of documentation",
+            "A hardware component",
+          ],
+          answer: 1,
+          explain:
+            "A bug is an error, flaw, failure, or fault in software that causes it to produce incorrect or unexpected results.",
+        },
+        {
+          id: 144,
+          topic: "SDLC Phases",
+          q: "The 'requirements traceability matrix' maps:",
+          options: [
+            "Code to database",
+            "Requirements to test cases and design elements",
+            "Budget to timeline",
+            "Team members to tasks",
+          ],
+          answer: 1,
+          explain:
+            "A traceability matrix links requirements to their corresponding design elements, code modules, and test cases.",
+        },
+        {
+          id: 145,
+          topic: "SDLC Phases",
+          q: "A prototype in requirements engineering is used to:",
+          options: [
+            "Replace the final product",
+            "Clarify and validate requirements with stakeholders",
+            "Write final code",
+            "Conduct performance testing",
+          ],
+          answer: 1,
+          explain:
+            "Prototyping helps stakeholders visualize and validate requirements early, reducing misunderstandings.",
+        },
+        {
+          id: 146,
+          topic: "SDLC Phases",
+          q: "The 'MoSCoW' method is used for:",
+          options: [
+            "Testing",
+            "Requirements prioritization",
+            "Code review",
+            "Deployment",
+          ],
+          answer: 1,
+          explain:
+            "MoSCoW (Must have, Should have, Could have, Won't have) is a prioritization technique for requirements.",
+        },
+        {
+          id: 147,
+          topic: "SDLC Phases",
+          q: "During deployment, 'rollback' refers to:",
+          options: [
+            "Going forward with a release",
+            "Reverting to a previous stable version if deployment fails",
+            "Installing new features",
+            "Testing in production",
+          ],
+          answer: 1,
+          explain:
+            "Rollback is the process of reverting a system to a previous stable state when a deployment causes issues.",
+        },
+        {
+          id: 148,
+          topic: "SDLC Phases",
+          q: "A 'staging environment' is:",
+          options: [
+            "The production server",
+            "A replica of production used for final testing before release",
+            "The developer's laptop",
+            "The code repository",
+          ],
+          answer: 1,
+          explain:
+            "A staging environment mirrors production and is used for final validation before deploying to live users.",
+        },
+        {
+          id: 149,
+          topic: "SDLC Phases",
+          q: "What is the purpose of a code review?",
+          options: [
+            "To punish developers",
+            "To find defects, improve code quality, and share knowledge",
+            "To delay the project",
+            "To replace testing",
+          ],
+          answer: 1,
+          explain:
+            "Code reviews help identify defects, enforce coding standards, share knowledge among team members, and improve overall quality.",
+        },
+        {
+          id: 150,
+          topic: "SDLC Phases",
+          q: "Pair programming is a practice where:",
+          options: [
+            "Two developers work separately",
+            "Two developers work together at one workstation",
+            "One developer does all work",
+            "Programming is done in pairs of days",
+          ],
+          answer: 1,
+          explain:
+            "Pair programming involves two developers working together at a single computer—one writes code (driver) while the other reviews (navigator).",
+        },
+        {
+          id: 151,
+          topic: "SDLC Phases",
+          q: "Which testing level comes first in the V-Model?",
+          options: [
+            "System testing",
+            "Acceptance testing",
+            "Unit testing",
+            "Integration testing",
+          ],
+          answer: 2,
+          explain:
+            "In the V-Model, unit testing is the first testing level, corresponding to the detailed design phase at the bottom of the V.",
+        },
+        {
+          id: 152,
+          topic: "SDLC Phases",
+          q: "A 'test case' includes:",
+          options: [
+            "Only the expected result",
+            "Input, execution conditions, and expected output",
+            "Only the input",
+            "Only the test name",
+          ],
+          answer: 1,
+          explain:
+            "A complete test case specifies inputs, preconditions, execution steps, and expected outputs/pass-fail criteria.",
+        },
+        {
+          id: 153,
+          topic: "SDLC Phases",
+          q: "Boundary value analysis tests:",
+          options: [
+            "Random values",
+            "Values at the edges of input ranges",
+            "Only middle values",
+            "Only negative numbers",
+          ],
+          answer: 1,
+          explain:
+            "Boundary value analysis focuses on testing values at the boundaries (min, max, just inside/outside) where defects often occur.",
+        },
+        {
+          id: 154,
+          topic: "SDLC Phases",
+          q: "Equivalence partitioning divides input data into:",
+          options: [
+            "Random groups",
+            "Groups that are expected to be processed similarly",
+            "Alphabetical order",
+            "Numerical order only",
+          ],
+          answer: 1,
+          explain:
+            "Equivalence partitioning groups inputs that should be treated the same way, reducing the number of test cases needed.",
+        },
+        {
+          id: 155,
+          topic: "SDLC Phases",
+          q: "A 'defect' becomes a 'failure' when:",
+          options: [
+            "It is found by a developer",
+            "It is executed and produces incorrect behavior",
+            "It is documented",
+            "It is ignored",
+          ],
+          answer: 1,
+          explain:
+            "A defect (bug in code) becomes a failure when the faulty code is executed, causing the system to behave incorrectly.",
+        },
+        {
+          id: 156,
+          topic: "SDLC Phases",
+          q: "In requirements engineering, 'stakeholders' include:",
+          options: [
+            "Only developers",
+            "Anyone affected by or having interest in the software",
+            "Only project managers",
+            "Only customers",
+          ],
+          answer: 1,
+          explain:
+            "Stakeholders encompass customers, users, developers, managers, regulators, and anyone with an interest in the software.",
+        },
+        {
+          id: 157,
+          topic: "SDLC Phases",
+          q: "The output of the Design phase is typically the:",
+          options: [
+            "SRS document",
+            "Design Document/SDD (Software Design Document)",
+            "Test report",
+            "Deployment guide",
+          ],
+          answer: 1,
+          explain:
+            "The Software Design Document (SDD) details the architecture, components, interfaces, and data design—the output of the Design phase.",
+        },
+        {
+          id: 158,
+          topic: "SDLC Phases",
+          q: "A 'walkthrough' in software engineering is:",
+          options: [
+            "Casual conversation",
+            "A formal or informal review where the author presents work to peers",
+            "A testing technique",
+            "A deployment step",
+          ],
+          answer: 1,
+          explain:
+            "A walkthrough is a review meeting where the author presents their work (code, design, document) to peers for feedback.",
+        },
+        {
+          id: 159,
+          topic: "SDLC Phases",
+          q: "An 'inspection' is:",
+          options: [
+            "Casual review",
+            "A rigorous, formal review with defined roles and checklists",
+            "Quick glance at code",
+            "Automated testing",
+          ],
+          answer: 1,
+          explain:
+            "Inspections are formal, structured reviews with trained participants following defined procedures to find defects.",
+        },
+        {
+          id: 160,
+          topic: "SDLC Phases",
+          q: "Configuration Management is most critical during which phases?",
+          options: [
+            "Only requirements",
+            "Throughout the entire SDLC, especially development and maintenance",
+            "Only at deployment",
+            "Only during testing",
+          ],
+          answer: 1,
+          explain:
+            "Configuration management tracks and controls changes throughout the SDLC, but is especially critical during development and maintenance.",
+        },
+        {
+          id: 161,
+          topic: "SDLC Phases",
+          q: "Version control systems (like Git) are used for:",
+          options: [
+            "Writing requirements",
+            "Managing changes to source code over time",
+            "Designing UI",
+            "Performance testing",
+          ],
+          answer: 1,
+          explain:
+            "Version control systems track and manage changes to code, enabling collaboration, history tracking, and rollback.",
+        },
+        {
+          id: 162,
+          topic: "SDLC Phases",
+          q: "A 'baseline' in configuration management is:",
+          options: [
+            "The first line of code",
+            "A formally approved version of a work product",
+            "The project budget",
+            "The team structure",
+          ],
+          answer: 1,
+          explain:
+            "A baseline is a formally reviewed and agreed-upon version of a deliverable that serves as a reference point for further development.",
+        },
+        {
+          id: 163,
+          topic: "SDLC Phases",
+          q: "Retirement is the phase where:",
+          options: [
+            "New features are added",
+            "Software is withdrawn from active use",
+            "Testing begins",
+            "Requirements are gathered",
+          ],
+          answer: 1,
+          explain:
+            "Retirement (or decommissioning) is the final phase where software is removed from service, often with data migration to replacement systems.",
+        },
+        {
+          id: 164,
+          topic: "SDLC Phases",
+          q: "Impact analysis is performed during maintenance to:",
+          options: [
+            "Estimate project cost",
+            "Assess the consequences of a proposed change",
+            "Write new code",
+            "Deploy to production",
+          ],
+          answer: 1,
+          explain:
+            "Impact analysis evaluates the ripple effects of a proposed change on the existing system before implementing it.",
+        },
+        {
+          id: 165,
+          topic: "SDLC Phases",
+          q: "The main deliverable of the Requirements phase is:",
+          options: [
+            "The code",
+            "The SRS (Software Requirements Specification)",
+            "The test plan",
+            "The user manual",
+          ],
+          answer: 1,
+          explain:
+            "The SRS document is the primary deliverable of the Requirements phase, detailing functional and non-functional requirements.",
+        },
+
+        // ============ SECTION 6: Software Development Models (Q166-Q210) ============
+        {
+          id: 166,
+          topic: "Development Models",
+          q: "The Waterfall model was first formally described by:",
+          options: ["Barry Boehm", "Winston Royce", "Fred Brooks", "Kent Beck"],
+          answer: 1,
+          explain:
+            "Winston W. Royce first formally described the Waterfall model in a 1970 paper, though he advocated for iterative approaches.",
+        },
+        {
+          id: 167,
+          topic: "Development Models",
+          q: "The biggest disadvantage of the Waterfall model is:",
+          options: [
+            "Too much documentation",
+            "Difficulty accommodating changes after a phase is complete",
+            "Too fast",
+            "Too many iterations",
+          ],
+          answer: 1,
+          explain:
+            "Waterfall's rigid sequential nature makes it very difficult and costly to accommodate changes once a phase has been completed.",
+        },
+        {
+          id: 168,
+          topic: "Development Models",
+          q: "The Agile Manifesto values:",
+          options: [
+            "Process over people",
+            "Working software over comprehensive documentation",
+            "Contract negotiation over collaboration",
+            "Following a plan over responding to change",
+          ],
+          answer: 1,
+          explain:
+            "The Agile Manifesto values 'Working software over comprehensive documentation' among its four core values.",
+        },
+        {
+          id: 169,
+          topic: "Development Models",
+          q: "Which is NOT an Agile methodology?",
+          options: ["Scrum", "Kanban", "Waterfall", "Extreme Programming (XP)"],
+          answer: 2,
+          explain:
+            "Waterfall is a traditional sequential model, not an Agile methodology. Scrum, Kanban, and XP are all Agile frameworks.",
+        },
+        {
+          id: 170,
+          topic: "Development Models",
+          q: "In Scrum, the Product Owner is responsible for:",
+          options: [
+            "Writing code",
+            "Managing the product backlog and maximizing product value",
+            "Facilitating meetings",
+            "Testing",
+          ],
+          answer: 1,
+          explain:
+            "The Product Owner manages the product backlog, prioritizes features, and ensures the team delivers maximum value.",
+        },
+        {
+          id: 171,
+          topic: "Development Models",
+          q: "The Scrum Master serves as:",
+          options: [
+            "The boss of the team",
+            "A facilitator and coach who removes impediments",
+            "The product owner",
+            "The lead developer",
+          ],
+          answer: 1,
+          explain:
+            "The Scrum Master is a servant-leader who facilitates Scrum processes, removes obstacles, and coaches the team.",
+        },
+        {
+          id: 172,
+          topic: "Development Models",
+          q: "Daily stand-up meetings in Scrum are typically limited to:",
+          options: ["1 hour", "15 minutes", "30 minutes", "5 minutes"],
+          answer: 1,
+          explain:
+            "Daily Scrum (stand-up) meetings are time-boxed to 15 minutes to keep them focused and efficient.",
+        },
+        {
+          id: 173,
+          topic: "Development Models",
+          q: "The Spiral model combines which two approaches?",
+          options: [
+            "Waterfall and V-Model",
+            "Iterative development and risk analysis",
+            "Agile and Waterfall",
+            "RAD and V-Model",
+          ],
+          answer: 1,
+          explain:
+            "The Spiral model combines iterative development (repeating cycles) with systematic risk analysis at each iteration.",
+        },
+        {
+          id: 174,
+          topic: "Development Models",
+          q: "Each loop of the Spiral model represents:",
+          options: [
+            "A day of work",
+            "A phase of the software process with risk assessment",
+            "A single test",
+            "A deployment",
+          ],
+          answer: 1,
+          explain:
+            "Each spiral loop represents a development phase (concept, requirements, design, etc.) with built-in risk analysis.",
+        },
+        {
+          id: 175,
+          topic: "Development Models",
+          q: "RAD (Rapid Application Development) emphasizes:",
+          options: [
+            "Extensive documentation",
+            "Quick prototyping and iterative delivery with minimal planning",
+            "Strict sequential phases",
+            "Risk analysis",
+          ],
+          answer: 1,
+          explain:
+            "RAD prioritizes rapid prototyping and quick feedback over extensive upfront planning.",
+        },
+        {
+          id: 176,
+          topic: "Development Models",
+          q: "The V-Model is an extension of which model?",
+          options: ["Agile", "Spiral", "Waterfall", "RAD"],
+          answer: 2,
+          explain:
+            "The V-Model extends the Waterfall model by associating each development phase with a corresponding testing phase.",
+        },
+        {
+          id: 177,
+          topic: "Development Models",
+          q: "In Extreme Programming (XP), which practice involves writing tests before code?",
+          options: [
+            "Pair programming",
+            "Test-Driven Development (TDD)",
+            "Continuous integration",
+            "Refactoring",
+          ],
+          answer: 1,
+          explain:
+            "TDD (Test-Driven Development) in XP requires writing automated unit tests before writing the actual code.",
+        },
+        {
+          id: 178,
+          topic: "Development Models",
+          q: "Refactoring in XP means:",
+          options: [
+            "Rewriting from scratch",
+            "Improving code structure without changing external behavior",
+            "Adding new features",
+            "Deleting code",
+          ],
+          answer: 1,
+          explain:
+            "Refactoring restructures existing code to improve readability and maintainability without altering its external functionality.",
+        },
+        {
+          id: 179,
+          topic: "Development Models",
+          q: "Kanban focuses on:",
+          options: [
+            "Fixed iterations",
+            "Visualizing workflow and limiting work in progress",
+            "Daily stand-ups",
+            "Sprint planning",
+          ],
+          answer: 1,
+          explain:
+            "Kanban uses a visual board to manage workflow, emphasizing continuous delivery and limiting WIP (Work In Progress).",
+        },
+        {
+          id: 180,
+          topic: "Development Models",
+          q: "Which model is best for projects with rapidly changing requirements?",
+          options: ["Waterfall", "Agile", "V-Model", "Pure sequential"],
+          answer: 1,
+          explain:
+            "Agile methodologies are designed to embrace and adapt to changing requirements through iterative delivery and continuous feedback.",
+        },
+        {
+          id: 181,
+          topic: "Development Models",
+          q: "The Incremental model delivers the product in:",
+          options: [
+            "One final release",
+            "Successive builds with increasing functionality",
+            "Random order",
+            "Only design documents",
+          ],
+          answer: 1,
+          explain:
+            "The Incremental model builds and delivers the product in increments, each adding more functionality.",
+        },
+        {
+          id: 182,
+          topic: "Development Models",
+          q: "A 'spike' in Agile terminology is:",
+          options: [
+            "A type of bug",
+            "A time-boxed investigation or research activity",
+            "A meeting",
+            "A deployment",
+          ],
+          answer: 1,
+          explain:
+            "A spike is a time-boxed exploration or research task to gather information or reduce uncertainty.",
+        },
+        {
+          id: 183,
+          topic: "Development Models",
+          q: "Velocity in Agile/Scrum measures:",
+          options: [
+            "Code execution speed",
+            "Amount of work a team completes per sprint",
+            "Network speed",
+            "Deployment frequency",
+          ],
+          answer: 1,
+          explain:
+            "Velocity is the measure of work (usually in story points) a Scrum team completes during a sprint, used for planning.",
+        },
+        {
+          id: 184,
+          topic: "Development Models",
+          q: "A 'user story' in Agile represents:",
+          options: [
+            "A bug report",
+            "A brief description of a feature from the end-user perspective",
+            "A technical specification",
+            "A database schema",
+          ],
+          answer: 1,
+          explain:
+            "A user story is a short, simple description of a feature told from the perspective of the end user.",
+        },
+        {
+          id: 185,
+          topic: "Development Models",
+          q: "The retrospective meeting in Scrum is held:",
+          options: [
+            "Daily",
+            "At the end of each sprint to reflect and improve",
+            "Only at project end",
+            "Monthly",
+          ],
+          answer: 1,
+          explain:
+            "The sprint retrospective occurs at the end of each sprint, allowing the team to inspect and adapt their processes.",
+        },
+        {
+          id: 186,
+          topic: "Development Models",
+          q: "Which model explicitly includes 'risk analysis' as a key phase in each iteration?",
+          options: ["Waterfall", "V-Model", "Spiral", "RAD"],
+          answer: 2,
+          explain:
+            "The Spiral model uniquely makes risk analysis a mandatory, explicit step in each iteration of the spiral.",
+        },
+        {
+          id: 187,
+          topic: "Development Models",
+          q: "The 'cone of uncertainty' in software estimation relates to:",
+          options: [
+            "Coding errors",
+            "The range of possible estimates narrowing as the project progresses",
+            "Database size",
+            "Team size",
+          ],
+          answer: 1,
+          explain:
+            "The cone of uncertainty shows that early project estimates have high variability, which decreases as more is learned.",
+        },
+        {
+          id: 188,
+          topic: "Development Models",
+          q: "Lean software development is inspired by:",
+          options: [
+            "Construction industry",
+            "Toyota Production System (Lean Manufacturing)",
+            "Agriculture",
+            "Healthcare",
+          ],
+          answer: 1,
+          explain:
+            "Lean software development adapts principles from the Toyota Production System, focusing on eliminating waste and maximizing value.",
+        },
+        {
+          id: 189,
+          topic: "Development Models",
+          q: "Which Agile ceremony involves the team demonstrating completed work?",
+          options: [
+            "Daily stand-up",
+            "Sprint Review",
+            "Retrospective",
+            "Backlog refinement",
+          ],
+          answer: 1,
+          explain:
+            "The Sprint Review (or demo) is where the team demonstrates completed work to stakeholders for feedback.",
+        },
+        {
+          id: 190,
+          topic: "Development Models",
+          q: "The Waterfall model is also called:",
+          options: [
+            "Iterative model",
+            "Classic life cycle model",
+            "Agile model",
+            "Evolutionary model",
+          ],
+          answer: 1,
+          explain:
+            "The Waterfall model is often referred to as the classic or traditional software development life cycle model.",
+        },
+        {
+          id: 191,
+          topic: "Development Models",
+          q: "Prototyping model is most appropriate when:",
+          options: [
+            "Requirements are perfectly clear",
+            "Requirements are ambiguous or rapidly changing",
+            "The team is very large",
+            "The project is low-risk",
+          ],
+          answer: 1,
+          explain:
+            "Prototyping helps clarify ambiguous requirements by creating working models for stakeholder feedback.",
+        },
+        {
+          id: 192,
+          topic: "Development Models",
+          q: "The 'Big Bang' model is characterized by:",
+          options: [
+            "Structured planning",
+            "Minimal or no planning with all effort focused on coding",
+            "Iterative delivery",
+            "Risk analysis",
+          ],
+          answer: 1,
+          explain:
+            "The Big Bang model involves throwing resources at a problem with little to no formal planning or structured process.",
+        },
+        {
+          id: 193,
+          topic: "Development Models",
+          q: "In Feature-Driven Development (FDD), features are:",
+          options: [
+            "Bugs",
+            "Small, client-valued functions developed in short iterations",
+            "Database tables",
+            "UI elements only",
+          ],
+          answer: 1,
+          explain:
+            "FDD organizes development around designing and building small, client-valued features in short, focused iterations.",
+        },
+        {
+          id: 194,
+          topic: "Development Models",
+          q: "Crystal methods in Agile emphasize:",
+          options: [
+            "Heavy documentation",
+            "People, interaction, and adapting to project-specific characteristics",
+            "Fixed processes",
+            "No communication",
+          ],
+          answer: 1,
+          explain:
+            "Crystal methods focus on people and their interactions, adapting practices to the specific project's size and criticality.",
+        },
+        {
+          id: 195,
+          topic: "Development Models",
+          q: "DSDM (Dynamic Systems Development Method) is:",
+          options: [
+            "A type of database",
+            "An Agile project delivery framework",
+            "A programming language",
+            "A testing tool",
+          ],
+          answer: 1,
+          explain:
+            "DSDM is an Agile framework that emphasizes full project lifecycle, user involvement, and iterative delivery.",
+        },
+        {
+          id: 196,
+          topic: "Development Models",
+          q: "Which model uses the concept of 'time-boxing' most prominently?",
+          options: [
+            "Waterfall",
+            "RAD and Agile models",
+            "Spiral",
+            "Code-and-fix",
+          ],
+          answer: 1,
+          explain:
+            "RAD and Agile models use time-boxing—fixed time periods for delivering specific features or completing iterations.",
+        },
+        {
+          id: 197,
+          topic: "Development Models",
+          q: "A disadvantage of the RAD model is:",
+          options: [
+            "Too slow",
+            "Requires highly skilled developers and strong user involvement",
+            "No prototyping",
+            "Excessive documentation",
+          ],
+          answer: 1,
+          explain:
+            "RAD demands highly competent developers and continuous, intensive user involvement, which may not always be feasible.",
+        },
+        {
+          id: 198,
+          topic: "Development Models",
+          q: "The Spiral model is particularly suited for:",
+          options: [
+            "Small, low-risk projects",
+            "Large, complex, high-risk projects",
+            "Projects with fixed requirements",
+            "One-person projects",
+          ],
+          answer: 1,
+          explain:
+            "The Spiral model's emphasis on iterative risk analysis makes it ideal for large, complex projects with significant risks.",
+        },
+        {
+          id: 199,
+          topic: "Development Models",
+          q: "In the Evolutionary model, the system:",
+          options: [
+            "Is built once",
+            "Evolves through multiple versions with increasing functionality",
+            "Has no changes",
+            "Is never completed",
+          ],
+          answer: 1,
+          explain:
+            "The Evolutionary model develops software through successive versions, each adding more features based on user feedback.",
+        },
+        {
+          id: 200,
+          topic: "Development Models",
+          q: "Which is a key principle of the Agile Manifesto?",
+          options: [
+            "Rigid planning",
+            "Responding to change over following a plan",
+            "Avoiding customer contact",
+            "Maximizing documentation",
+          ],
+          answer: 1,
+          explain:
+            "The Agile Manifesto states: 'Responding to change over following a plan.'",
+        },
+      ];
+
+      // ==================== MAIN APPLICATION LOGIC ====================
+      let userAnswers = {}; // { questionId: selectedOptionIndex }
+      let revealedAnswers = {}; // { questionId: true/false }
+
+      const questionsContainer = document.getElementById("questionsContainer");
+      const topicFilter = document.getElementById("topicFilter");
+      const correctCountEl = document.getElementById("correctCount");
+      const wrongCountEl = document.getElementById("wrongCount");
+      const remainCountEl = document.getElementById("remainCount");
+      const scorePctEl = document.getElementById("scorePct");
+      const progressFill = document.getElementById("progressFill");
+
+      // Get unique topics
+      const topics = [...new Set(allQuestions.map((q) => q.topic))];
+
+      // Render topic filter buttons
+      function renderTopicFilter() {
+        topicFilter.innerHTML =
+          '<button class="active" data-topic="all">📋 All Topics</button>';
+        topics.forEach((topic) => {
+          const btn = document.createElement("button");
+          btn.textContent = topic;
+          btn.dataset.topic = topic;
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".topic-filter button")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderQuestions(btn.dataset.topic);
+          });
+          topicFilter.appendChild(btn);
+        });
+        document
+          .querySelector('.topic-filter button[data-topic="all"]')
+          .addEventListener("click", () => {
+            document
+              .querySelectorAll(".topic-filter button")
+              .forEach((b) => b.classList.remove("active"));
+            document
+              .querySelector('.topic-filter button[data-topic="all"]')
+              .classList.add("active");
+            renderQuestions("all");
+          });
+      }
+
+      function renderQuestions(filterTopic = "all") {
+        const filtered =
+          filterTopic === "all"
+            ? allQuestions
+            : allQuestions.filter((q) => q.topic === filterTopic);
+        questionsContainer.innerHTML = "";
+
+        if (filtered.length === 0) {
+          questionsContainer.innerHTML =
+            '<div class="no-results">No questions found for this topic.</div>';
+          return;
+        }
+
+        filtered.forEach((q) => {
+          const card = document.createElement("div");
+          card.className = "question-card";
+          card.id = "q-card-" + q.id;
+
+          // Update card border based on answer
+          if (userAnswers[q.id] !== undefined) {
+            if (userAnswers[q.id] === q.answer) {
+              card.classList.add("answered-correct");
+            } else {
+              card.classList.add("answered-wrong");
+            }
+          }
+
+          card.innerHTML = `
+                    <span class="q-num">Q${q.id}</span>
+                    <span class="q-topic">[${q.topic}]</span>
+                    <div class="q-text">${q.q}</div>
+                    <ul class="options" id="options-${q.id}">
+                        ${q.options
+                          .map((opt, idx) => {
+                            const letter = String.fromCharCode(65 + idx);
+                            let cls = "";
+                            if (userAnswers[q.id] !== undefined) {
+                              cls += " disabled";
+                              if (idx === userAnswers[q.id]) cls += " selected";
+                              if (idx === q.answer) cls += " correct-choice";
+                              if (idx === userAnswers[q.id] && idx !== q.answer)
+                                cls += " wrong-choice";
+                            }
+                            return `<li class="${cls}" data-qid="${q.id}" data-opt="${idx}">
+                                <strong>${letter}.</strong> ${opt}
+                                <span class="icon-feedback">${idx === q.answer ? "✅" : userAnswers[q.id] === idx && idx !== q.answer ? "❌" : ""}</span>
+                            </li>`;
+                          })
+                          .join("")}
+                    </ul>
+                    <button class="show-answer-btn" id="btn-${q.id}" onclick="toggleAnswer(${q.id})">
+                        ${revealedAnswers[q.id] ? "🔒 Hide Answer & Explanation" : "🔓 Show Answer & Explanation"}
+                    </button>
+                    <div class="answer-reveal ${revealedAnswers[q.id] ? "show" : ""}" id="answer-${q.id}">
+                        <span class="ans-label">✅ Correct Answer: ${String.fromCharCode(65 + q.answer)}. ${q.options[q.answer]}</span>
+                        <span class="explain-label">📝 Explanation:</span>
+                        <span class="explain-text">${q.explain}</span>
+                    </div>
+                `;
+          questionsContainer.appendChild(card);
+        });
+
+        // Attach option click handlers
+        document
+          .querySelectorAll(".options li:not(.disabled)")
+          .forEach((li) => {
+            li.addEventListener("click", function () {
+              const qid = parseInt(this.dataset.qid);
+              const opt = parseInt(this.dataset.opt);
+              handleAnswer(qid, opt);
+            });
+          });
+
+        updateStats();
+      }
+
+      function handleAnswer(qid, selectedOpt) {
+        if (userAnswers[qid] !== undefined) return; // Already answered
+
+        const q = allQuestions.find((q) => q.id === qid);
+        userAnswers[qid] = selectedOpt;
+
+        // Re-render just this card
+        const card = document.getElementById("q-card-" + qid);
+        const optionsList = document.getElementById("options-" + qid);
+
+        // Update classes
+        if (selectedOpt === q.answer) {
+          card.classList.add("answered-correct");
+        } else {
+          card.classList.add("answered-wrong");
+        }
+
+        // Update options
+        const items = optionsList.querySelectorAll("li");
+        items.forEach((li, idx) => {
+          li.classList.add("disabled");
+          if (idx === selectedOpt) li.classList.add("selected");
+          if (idx === q.answer) li.classList.add("correct-choice");
+          if (idx === selectedOpt && idx !== q.answer)
+            li.classList.add("wrong-choice");
+          // Update icon
+          const icon = li.querySelector(".icon-feedback");
+          if (idx === q.answer) icon.textContent = "✅";
+          if (idx === selectedOpt && idx !== q.answer) icon.textContent = "❌";
+          icon.style.display =
+            idx === q.answer || (idx === selectedOpt && idx !== q.answer)
+              ? "inline"
+              : "none";
+        });
+
+        updateStats();
+      }
+
+      function toggleAnswer(qid) {
+        revealedAnswers[qid] = !revealedAnswers[qid];
+        const answerDiv = document.getElementById("answer-" + qid);
+        const btn = document.getElementById("btn-" + qid);
+
+        if (revealedAnswers[qid]) {
+          answerDiv.classList.add("show");
+          btn.textContent = "🔒 Hide Answer & Explanation";
+        } else {
+          answerDiv.classList.remove("show");
+          btn.textContent = "🔓 Show Answer & Explanation";
+        }
+      }
+
+      function updateStats() {
+        const total = allQuestions.length;
+        const answered = Object.keys(userAnswers).length;
+        let correct = 0;
+        let wrong = 0;
+
+        for (const [qid, selected] of Object.entries(userAnswers)) {
+          const q = allQuestions.find((q) => q.id === parseInt(qid));
+          if (q && selected === q.answer) correct++;
+          else wrong++;
+        }
+
+        const remain = total - answered;
+        const pct = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+
+        correctCountEl.textContent = correct;
+        wrongCountEl.textContent = wrong;
+        remainCountEl.textContent = remain;
+        scorePctEl.textContent = pct + "%";
+        progressFill.style.width = (answered / total) * 100 + "%";
+      }
+
+      function resetAll() {
+        if (
+          confirm(
+            "Are you sure you want to reset all answers? This cannot be undone.",
+          )
+        ) {
+          userAnswers = {};
+          revealedAnswers = {};
+          const activeBtn = document.querySelector(
+            ".topic-filter button.active",
+          );
+          const activeTopic = activeBtn ? activeBtn.dataset.topic : "all";
+          renderQuestions(activeTopic);
+          updateStats();
+        }
+      }
+
+      // Initialize
+      renderTopicFilter();
+      renderQuestions("all");
+      updateStats();
+    </script>
+  </body>
+</html>

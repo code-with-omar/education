@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NTRCA Software Engineering 100 Quiz</title>
+    <style>
+      body {
+        font-family:
+          "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, "SolaimanLipi";
+        background-color: #f4f7f6;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+        font-size: 24px;
+      }
+
+      /* Header Section Style */
+      .header-container {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid #e2e8f0;
+        font-family: "Segoe UI", Roboto, sans-serif;
+      }
+
+      .header-container h1 {
+        color: #0f172a;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Navigation Container */
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap; /* মোবাইলে অটোমেটিক রেসপনসিভ করার জন্য */
+      }
+
+      /* Button Design */
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #2563eb; /* Modern Blue */
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Hover & Active Effects */
+      .nav-btn:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+
+      .nav-btn:active {
+        transform: translateY(0);
+      }
+
+      .quiz-item {
+        background: #fafafa;
+        border-left: 4px solid #3498db;
+        padding: 15px 20px;
+        margin-bottom: 25px;
+        border-radius: 0 6px 6px 0;
+        transition: all 0.3s ease;
+      }
+      .quiz-item:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        background: #fdfdfd;
+      }
+      .question {
+        font-weight: 600;
+        font-size: 16px;
+        color: #2c3e50;
+        margin-bottom: 12px;
+      }
+      .options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      .option {
+        padding: 8px 12px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .actions {
+        margin-top: 10px;
+      }
+      .btn-toggle {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 6px 14px;
+        font-size: 13px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+      .btn-toggle:hover {
+        background-color: #2980b9;
+      }
+      .answer-box {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #e8f8f5;
+        border: 1px dashed #2ecc71;
+        color: #27ae60;
+        font-weight: bold;
+        border-radius: 4px;
+        font-size: 14px;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        color: #7f8c8d;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header-container">
+        <h1>💻 Software Engineering - MCQs</h1>
+        <nav class="nav-buttons">
+          <a href="chapter-two-1.html" class="nav-btn">Part 1</a>
+          <a href="chapter-two-2.html" class="nav-btn">Part 2</a>
+          <a href="chapter-two-3.html" class="nav-btn">Part 3</a>
+          <a href="chapter-two-4.html" class="nav-btn">Part 4</a>
+          <a href="chapter-two-5.html" class="nav-btn">Part 5</a>
+          <a href="chapter-two-6.html" class="nav-btn">Part 6</a>
+          <a href="chapter-two-7.html" class="nav-btn">Part 7</a>
+          <a href="chapter-two-8.html" class="nav-btn">Part 8</a>
+        </nav>
+      </header>
+
+      <div id="quiz-container"></div>
+    </div>
+
+    <footer>&copy; 2026 NTRCA Software Engineering Quiz Portal</footer>
+
+    <script>
+      const quizData = [
+        {
+          q: "১. কোন মডেলটিকে Linear Sequential Model বলা হয়?",
+          a: "A) Waterfall Model",
+          b: "B) Spiral Model",
+          c: "C) Agile Model",
+          d: "D) RAD Model",
+          ans: "A",
+        },
+        {
+          q: "২. Waterfall Model এর প্রথম ধাপ কোনটি?",
+          a: "A) Design",
+          b: "B) Requirements Analysis",
+          c: "C) Implementation",
+          d: "D) Testing",
+          ans: "B",
+        },
+        {
+          q: "৩. নিচের কোন মডেলে এক ধাপ শেষ না করে অন্য ধাপে যাওয়া যায় না?",
+          a: "A) Agile",
+          b: "B) Spiral",
+          c: "C) Waterfall",
+          d: "D) Prototyping",
+          ans: "C",
+        },
+        {
+          q: "৪. কোন ধরনের প্রজেক্টের জন্য Waterfall Model সবচেয়ে উপযোগী?",
+          a: "A) যাবতীয় রিকোয়ারমেন্ট আগে থেকে নির্দিষ্ট থাকলে",
+          b: "B) রিকোয়ারমেন্ট ঘন ঘন পরিবর্তন হলে",
+          c: "C) খুবই জটিল এবং ঝুঁকিপূর্ণ প্রজেক্টে",
+          d: "D) ছোট এবং স্বল্প বাজেটের প্রজেক্টে",
+          ans: "A",
+        },
+        {
+          q: "৫. Waterfall Model এর মূল অসুবিধা কোনটি?",
+          a: "A) সহজ কাঠামো",
+          b: "B) ডকুমেন্টেশন কম",
+          c: "C) রিকোয়ারমেন্ট পরিবর্তন করা কঠিন",
+          d: "D) ধাপগুলো নির্দিষ্ট",
+          ans: "C",
+        },
+        {
+          q: "৬. Waterfall মডেলে টেস্টিং ধাপটি কখন আসে?",
+          a: "A) কোডিং বা ইমপ্লিমেন্টেশনের পর",
+          b: "B) রিকোয়ারমেন্ট অ্যানালিসিসের আগে",
+          c: "C) ডিজাইনের ঠিক আগে",
+          d: "D) প্রজেক্টের শুরুতে",
+          ans: "A",
+        },
+        {
+          q: "৭. Classic Life Cycle নিচের কোন মডেলের অপর নাম?",
+          a: "A) V-Model",
+          b: "B) Waterfall Model",
+          c: "C) Iterative Model",
+          d: "D) Rad Model",
+          ans: "B",
+        },
+        {
+          q: "৮. Waterfall মডেলে ক্লায়েন্ট কখন চূড়ান্ত সফটওয়্যার দেখতে পান?",
+          a: "A) প্রজেক্টের শুরুতে",
+          b: "B) ডিজাইন ধাপে",
+          c: "C) কোডিং ধাপে",
+          d: "D) প্রজেক্টের একেবারে শেষে",
+          ans: "D",
+        },
+        {
+          q: "৯. কোন মডেলটিতে 'Feedback Loops' সাধারণত থাকে না বা থাকলেও খুব সীমিত?",
+          a: "A) Spiral",
+          b: "B) Agile",
+          c: "C) Traditional Waterfall",
+          d: "D) Scrum",
+          ans: "C",
+        },
+        {
+          q: "১০. সফটওয়্যার আর্কিটেকচার তৈরি করা হয় Waterfall মডেলের কোন ধাপে?",
+          a: "A) System Design",
+          b: "B) Coding",
+          c: "C) Maintenance",
+          d: "D) Feasibility Study",
+          ans: "A",
+        },
+        {
+          q: "১১. Waterfall মডেলে রিকোয়ারমেন্ট ফিজিবিলিটি স্টাডির মূল উদ্দেশ্য কী?",
+          a: "A) কোড লেখা",
+          b: "B) প্রজেক্টটি করা সম্ভব কি না তা যাচাই করা",
+          c: "C) টেস্ট কেস তৈরি করা",
+          d: "D) ডাটাবেজ ডিজাইন করা",
+          ans: "B",
+        },
+        {
+          q: "১২. নিচের কোনটি Waterfall মডেলের একটি ধাপ নয়?",
+          a: "A) Risk Analysis",
+          b: "B) Coding",
+          c: "C) Testing",
+          d: "D) Maintenance",
+          ans: "A",
+        },
+        {
+          q: "১৩. Waterfall মডেলে কোনো ভুল প্রজেক্টের শেষের দিকে ধরা পড়লে কী ঘটে?",
+          a: "A) সহজেই সংশোধন করা যায়",
+          b: "B) সংশোধন করতে প্রচুর খরচ ও সময় লাগে",
+          c: "C) কোনো প্রভাব পড়ে না",
+          d: "D) সফটওয়্যার নিজে নিজেই ঠিক করে নেয়",
+          ans: "B",
+        },
+        {
+          q: "১৪. সফটওয়্যার মেইনটেন্যান্স (Maintenance) ধাপের কাজ কী?",
+          a: "A) নতুন রিকোয়ারমেন্ট অ্যানালিসিস",
+          b: "B) বাগ ফিক্সিং ও সিস্টেম আপডেট",
+          c: "C) কোড অপটিমাইজেশন বন্ধ করা",
+          d: "D) সফটওয়‍্যার মুছে ফেলা",
+          ans: "B",
+        },
+        {
+          q: "১৫. রিকোয়ারমেন্ট ফ্রিজিং (Requirement Freezing) কোন মডেলের বৈশিষ্ট্য?",
+          a: "A) Agile",
+          b: "B) Waterfall",
+          c: "C) Spiral",
+          d: "D) Evolutionary",
+          ans: "B",
+        },
+        {
+          q: "১৬. Agile মেথডোলজির মূল ভিত্তি কী?",
+          a: "A) কঠোর ডকুমেন্টেশন",
+          b: "B) ইনক্রিমেন্টাল এবং ইটারেティブ ডেভেলপমেন্ট",
+          c: "C) ফিক্সড প্ল্যানিং",
+          d: "D) সিকুয়েন্সিয়াল প্রসেস",
+          ans: "B",
+        },
+        {
+          q: "১৭. Agile Manifesto অনুযায়ী নিচের কোনটিকে বেশি প্রধান্য দেওয়া হয়?",
+          a: "A) Processes and tools",
+          b: "B) Comprehensive documentation",
+          c: "C) Contract negotiation",
+          d: "D) Individuals and interactions",
+          ans: "D",
+        },
+        {
+          q: "১৮. Scrum এ একটি ফিক্সড টাইম-বক্সড ইটারেশনকে কী বলা হয়?",
+          a: "A) Sprint",
+          b: "B) Epic",
+          c: "C) Story",
+          d: "D) Daily Standup",
+          ans: "A",
+        },
+        {
+          q: "১৯. Scrum টিমে প্রোডাক্ট ব্যাকলগ (Product Backlog) ম্যানেজ করার দায়িত্ব কার?",
+          a: "A) Scrum Master",
+          b: "B) Product Owner",
+          c: "C) Developer",
+          d: "D) Project Manager",
+          ans: "B",
+        },
+        {
+          q: "২০. Daily Scrum বা Daily Standup সাধারণত কত সময়ের জন্য হয়?",
+          a: "A) ৩০ মিনিট",
+          b: "B) ১ ঘণ্টা",
+          c: "C) ১৫ মিনিট",
+          d: "D) ৫ মিনিট",
+          ans: "C",
+        },
+        {
+          q: "২১. নিচের কোনটি Agile এর একটি জনপ্রিয় ফ্রেমওয়ার্ক?",
+          a: "A) Scrum",
+          b: "B) COCOMO",
+          c: "C) CMMI",
+          d: "D) PERT",
+          ans: "A",
+        },
+        {
+          q: "২২. Sprint এর সময়কাল সাধারণত কতটুকু হয়ে থাকে?",
+          a: "A) ১ দিন",
+          b: "B) ১ থেকে ৪ সপ্তাহ",
+          c: "C) ৬ মাস",
+          d: "D) ১ বছর",
+          ans: "B",
+        },
+        {
+          q: "২৩. নিচের কোনটি Scrum টিমের অংশ নয়?",
+          a: "A) Product Owner",
+          b: "B) Scrum Master",
+          c: "C) Development Team",
+          d: "D) Project Sponsor",
+          ans: "D",
+        },
+        {
+          q: "২৪. স্প্রিন্টের শেষে যে মিটিংয়ে কাজের রিভিউ এবং ডেমো দেখানো হয় তাকে কী বলে?",
+          a: "A) Sprint Planning",
+          b: "B) Sprint Review",
+          c: "C) Sprint Retrospective",
+          d: "D) Daily Scrum",
+          ans: "B",
+        },
+        {
+          q: "২৫. আগের স্প্রিন্টের ভুলত্রুটি এবং পরবর্তী স্প্রিন্টের উন্নতির জন্য কোন মিটিং করা হয়?",
+          a: "A) Sprint Retrospective",
+          b: "B) Sprint Review",
+          c: "C) Daily Standup",
+          d: "D) Product Grooming",
+          ans: "A",
+        },
+        {
+          q: "২৬. Agile এ রিকোয়ারমেন্টগুলোকে ইউজারদের দৃষ্টিকোণ থেকে যেভাবে লেখা হয় তাকে কী বলে?",
+          a: "A) Use Case",
+          b: "B) User Story",
+          c: "C) Task List",
+          d: "D) SRS Document",
+          ans: "B",
+        },
+        {
+          q: "২৭. Scrum এ প্রসেস ঠিকঠাক চলছে কি না এবং বাধাগুলো দূর করার দায়িত্ব কার?",
+          a: "A) Product Owner",
+          b: "B) Scrum Master",
+          c: "C) Tech Lead",
+          d: "D) QA Manager",
+          ans: "B",
+        },
+        {
+          q: "২৮. চরম পরিবর্তনশীল রিকোয়ারমেন্টের জন্য কোন মডেল সবচেয়ে উপযোগী?",
+          a: "A) Waterfall",
+          b: "B) V-Model",
+          c: "C) Agile",
+          d: "D) RAD",
+          ans: "C",
+        },
+        {
+          q: "২৯. নিচের কোনটি Agile ডেভেলপমেন্টের একটি নীতি?",
+          a: "A) কাজের শেষে টেস্টিং করা",
+          b: "B) গ্রাহকের সন্তুষ্টি ও প্রতিনিয়ত সফটওয়্যার ডেলিভারি",
+          c: "C) পরিবর্তনকে বর্জন করা",
+          d: "D) ডকুমেন্টেশনে সর্বোচ্চ সময় দেওয়া",
+          ans: "B",
+        },
+        {
+          q: "৩০. Extreme Programming (XP) কোন মডেলের অন্তর্ভুক্ত?",
+          a: "A) Waterfall",
+          b: "B) Agile",
+          c: "C) Spiral",
+          d: "D) Structured",
+          ans: "B",
+        },
+        {
+          q: "৩১. রিকোয়ারমেন্ট ঘন ঘন পরিবর্তন হলে কোন মডেলটি সবচেয়ে কম ঝুঁকিপূর্ণ?",
+          a: "A) Waterfall",
+          b: "B) Agile",
+          c: "C) V-Model",
+          d: "D) Big Bang",
+          ans: "B",
+        },
+        {
+          q: "৩২. Scrum এ 'Burndown Chart' কী নির্দেশ করে?",
+          a: "A) বাজেটের খরচ",
+          b: "B) টিমের পারফরম্যান্স রেটিং",
+          c: "C) স্প্রিন্টে বাকি থাকা কাজের পরিমাণ",
+          d: "D) কোডের লাইনের সংখ্যা",
+          ans: "C",
+        },
+        {
+          q: "৩৩. Agile মডেলের একটি মূল বৈশিষ্ট্য হলো-",
+          a: "A) Customer Collaboration",
+          b: "B) No Testing",
+          c: "C) Strict Hierarchy",
+          d: "D) Monolithic Architecture",
+          ans: "A",
+        },
+        {
+          q: "৩৪. Scrum টিমে সাধারণত কতজন সদস্য থাকে?",
+          a: "A) ৫০-১০০ জন",
+          b: "B) ৩ থেকে ৯ বা ১০ জন",
+          c: "C) ১ জন",
+          d: "D) সদস্য সংখ্যা নির্দিষ্ট নয়",
+          ans: "B",
+        },
+        {
+          q: "৩৫. নিচের কোনটি Agile মেথডোলজির একটি অসুবিধা হতে পারে?",
+          a: "A) কাজের স্বাধীনতা কম",
+          b: "B) ভুলত্রুটি দ্রুত ধরা পড়ে",
+          c: "C) সঠিক ডকুমেন্টেশনের অভাবে প্রজেক্টের ট্র্যাক হারানো",
+          d: "D) গ্রাহকের ফিডব্যাক পাওয়া যায় না",
+          ans: "C",
+        },
+        {
+          q: "৩৬. Spiral Model এর মূল ফোকাস বা প্রধান বৈশিষ্ট্য কোনটি?",
+          a: "A) Cost Estimation",
+          b: "B) Risk Analysis",
+          c: "C) Documentation",
+          d: "D) Rapid Prototyping",
+          ans: "B",
+        },
+        {
+          q: "৩৭. Spiral Model কে কে প্রস্তাব করেছিলেন?",
+          a: "A) Barry Boehm",
+          b: "B) Ian Sommerville",
+          c: "C) Roger Pressman",
+          d: "D) Winston Royce",
+          ans: "A",
+        },
+        {
+          q: "৩৮. Spiral মডেলের প্রতিটি লুপ বা ইটারেশনে কয়টি প্রধান সেক্টর বা ফেজ থাকে?",
+          a: "A) ২টি",
+          b: "B) ৩টি",
+          c: "C) ৪টি",
+          d: "D) ৫টি",
+          ans: "C",
+        },
+        {
+          q: "৩৯. খুব বড়, জটিল এবং উচ্চ ঝুঁকিসম্পন্ন (High-Risk) প্রজেক্টের জন্য কোন মডেল সেরা?",
+          a: "A) Waterfall",
+          b: "B) RAD",
+          c: "C) Spiral",
+          d: "D) V-Model",
+          ans: "C",
+        },
+        {
+          q: "৪০. Spiral মডেলের প্রথম সেক্টরের কাজ কী?",
+          a: "A) ঝুঁকি মূল্যায়ন",
+          b: "B) কোডিং করা",
+          c: "C) উদ্দেশ্য, বিকল্প ও সীমাবদ্ধতা নির্ধারণ",
+          d: "D) টেস্টিং প্ল্যান",
+          ans: "C",
+        },
+        {
+          q: "৪১. কোন মডেলটিকে Evolutionary Model ও বলা হয়ে থাকে?",
+          a: "A) Spiral Model",
+          b: "B) Waterfall Model",
+          c: "C) Linear Model",
+          d: "D) V-Model",
+          ans: "A",
+        },
+        {
+          q: "৪২. Spiral মডেলের অসুবিধা কোনটি?",
+          a: "A) ঝুঁকি ব্যবস্থাপনা নেই",
+          b: "B) এটি বেশ ব্যয়বহুল এবং অভিজ্ঞ বিশেষজ্ঞ প্রয়োজন",
+          c: "C) ছোট প্রজেক্টের জন্য সেরা",
+          d: "D) সহজ ও সরল মডেল",
+          ans: "B",
+        },
+        {
+          q: "৪৩. Spiral মডেলে 'Prototype' তৈরি করার মূল কারণ কী?",
+          a: "A) কোডিং শেষ করা",
+          b: "B) ঝুঁকি চিহ্নিত করা ও ডিজাইন যাচাই করা",
+          c: "C) গ্রাহককে বিল পাঠানো",
+          d: "D) সিস্টেম বন্ধ করা",
+          ans: "B",
+        },
+        {
+          q: "৪৪. Spiral মডেলে কখন প্রজেক্ট বন্ধ করার সিদ্ধান্ত নেওয়া হতে পারে?",
+          a: "A) যেকোনো ইটারেশনের পর যদি ঝুঁকি অত্যন্ত বেশি প্রমাণিত হয়",
+          b: "B) কোডিং শুরু করার পর",
+          c: "C) প্রথম দিনেই",
+          d: "D) কখনোই বন্ধ করা যায় না",
+          ans: "A",
+        },
+        {
+          q: "৪৫. নিচের কোন মডেলটি Iterative এবং Waterfall মডেলের সংমিশ্রণ?",
+          a: "A) RAD",
+          b: "B) Spiral",
+          c: "C) Agile",
+          d: "D) V-Model",
+          ans: "B",
+        },
+        {
+          q: "৪৬. V-Model এ 'V' অক্ষরটি কী নির্দেশ করে?",
+          a: "A) Verification and Validation",
+          b: "B) Velocity and Volume",
+          c: "C) Visual Design",
+          d: "D) Variable Execution",
+          ans: "A",
+        },
+        {
+          q: "৪৭. V-Model মূলত কোন মডেলের একটি বর্ধিত রূপ (Extension)?",
+          a: "A) Spiral Model",
+          b: "B) Waterfall Model",
+          c: "C) Agile Model",
+          d: "D) RAD Model",
+          ans: "B",
+        },
+        {
+          q: "৪৮. V-Model এ ডেভেলপমেন্ট এবং টেস্টিং কীভাবে চলে?",
+          a: "A) সিরিয়ালি একের পর এক",
+          b: "B) সমান্তরালভাবে (Parallelly) পরিকল্পনা করা হয়",
+          c: "C) শুধু কোডিংয়ের পর টেস্টিং হয়",
+          d: "D) টেস্টিং প্রথমে হয়",
+          ans: "B",
+        },
+        {
+          q: "৪৯. V-Model এর বাম পাশ (Left Side) কী নির্দেশ করে?",
+          a: "A) Testing Phases",
+          b: "B) Verification/SDLC Phases",
+          c: "C) Maintenance",
+          d: "D) Deployment",
+          ans: "B",
+        },
+        {
+          q: "৫০. V-Model এর ডান পাশ (Right Side) কী নির্দেশ করে?",
+          a: "A) Validation/Testing Phases",
+          b: "B) Requirements gathering",
+          c: "C) Design Phases",
+          d: "D) Coding",
+          ans: "A",
+        },
+        {
+          q: "৫১. V-Model অনুযায়ী 'User Requirements' এর বিপরীতে কোন টেস্টিং করা হয়?",
+          a: "A) Unit Testing",
+          b: "B) Integration Testing",
+          c: "C) Acceptance Testing",
+          d: "D) System Testing",
+          ans: "C",
+        },
+        {
+          q: "৫২. V-Model এ 'High-Level Design' এর সাথে সম্পর্কিত টেস্টিং কোনটি?",
+          a: "A) Unit Testing",
+          b: "B) System Testing",
+          c: "C) Integration Testing",
+          d: "D) Component Testing",
+          ans: "B",
+        },
+        {
+          q: "৫৩. V-Model এ 'Low-Level (Detailed) Design' এর সাথে যুক্ত টেস্টিং কোনটি?",
+          a: "A) Unit Testing",
+          b: "B) Acceptance Testing",
+          c: "C) System Testing",
+          d: "D) Beta Testing",
+          ans: "A",
+        },
+        {
+          q: "৫৪. কোন ধরনের প্রজেক্টে V-Model ব্যবহার করা উচিত?",
+          a: "A) রিকোয়ারমেন্ট অস্পষ্ট থাকলে",
+          b: "B) যেখানে ত্রুটিহীনতা অত্যন্ত গুরুত্বপূর্ণ এবং রিকোয়ারমেন্ট ফিক্সড",
+          c: "C) খুব দ্রুত ডেলিভারি দিতে হলে",
+          d: "D) বাজেট কম থাকলে",
+          ans: "B",
+        },
+        {
+          q: "৫৫. V-Model এর প্রধান সুবিধা কী?",
+          a: "A) প্রচণ্ড ফ্লেক্সিবল",
+          b: "B) শুরু থেকেই টেস্টিংয়ের পরিকল্পনা থাকায় ত্রুটি দ্রুত ধরা পড়ে",
+          c: "C) ডকুমেন্টেশন লাগে না",
+          d: "D) ছোট প্রজেক্টের খরচ কমায়",
+          ans: "B",
+        },
+        {
+          q: "৫৬. RAD এর পূর্ণরূপ কী?",
+          a: "A) Rapid Application Development",
+          b: "B) Random Application Design",
+          c: "C) Ready Application Deployment",
+          d: "D) Real-time Agile Development",
+          ans: "A",
+        },
+        {
+          q: "৫৭. RAD Model এর প্রধান লক্ষ্য কী?",
+          a: "A) উচ্চ মানের ডকুমেন্টেশন",
+          b: "B) কম সময়ে ও দ্রুত সফটওয়্যার তৈরি (High-speed adaptation)",
+          c: "C) ঝুঁকি কমানো",
+          d: "D) সবচেয়ে কম কোড লেখা",
+          ans: "B",
+        },
+        {
+          q: "৫৮. RAD মডেলে প্রজেক্টকে দ্রুত শেষ করার জন্য কী ব্যবহার করা হয়?",
+          a: "A) Component-based construction & CASE tools",
+          b: "B) Manual Testing only",
+          c: "C) Linear Progress",
+          d: "D) Strict Waterfall structure",
+          ans: "A",
+        },
+        {
+          q: "৫৯. RAD মডেলের একটি সাধারণ টাইম-বক্স (Time-box) কত দিনের হয়?",
+          a: "A) ১০-২০ দিন",
+          b: "B) ৬০-৯০ দিন",
+          c: "C) ১-২ বছর",
+          d: "D) ৫-৬ মাস",
+          ans: "B",
+        },
+        {
+          q: "৬০. নিচের কোন পরিস্থিতিতে RAD Model ব্যবহার করা যাবে না?",
+          a: "A) সিস্টেমকে মডুলার করা সম্ভব হলে",
+          b: "B) গ্রাহকের ফিডব্যাক সহজে পাওয়া গেলে",
+          c: "C) প্রজেক্টের টেকনিক্যাল রিস্ক অনেক বেশি হলে এবং দক্ষ লোক না থাকলে",
+          d: "D) দ্রুত ডেলিভারি প্রয়োজন হলে",
+          ans: "C",
+        },
+        {
+          q: "৬১. RAD মডেলের একটি অন্যতম ধাপ কোনটি?",
+          a: "A) Business Modeling",
+          b: "B) Risk Management",
+          c: "C) Mathematical Verification",
+          d: "D) Sprint Retrospective",
+          ans: "A",
+        },
+        {
+          q: "৬২. RAD মডেলে তৈরি সিস্টেমের পারফরম্যান্স কেন মাঝে মাঝে কম হতে পারে?",
+          a: "A) ডকুমেন্টেশন বেশি বলে",
+          b: "B) দ্রুত প্রোটোটাইপ ও মডিউলের জোড়াতালি দেওয়ার কারণে",
+          c: "C) টেস্টিং বেশি হয় বলে",
+          d: "D) সবগুলো ভুল",
+          ans: "B",
+        },
+        {
+          q: "৬৩. RAD মডেলে গ্রাহকের সম্পৃক্ততা (Customer Involvement) কেমন থাকে?",
+          a: "A) খুবই কম",
+          b: "B) একেবারেই থাকে না",
+          c: "C) অত্যধিক বা খুব বেশি",
+          d: "D) শুধু শুরুতে থাকে",
+          ans: "C",
+        },
+        {
+          q: "৬৪. নিচের কোন ধাপে RAD মডেলে ডেটা এবং ইনফরমেশন ফ্লো ডিজাইন করা হয়?",
+          a: "A) Data Modeling",
+          b: "B) Process Modeling",
+          c: "C) Application Generation",
+          d: "D) Testing",
+          ans: "A",
+        },
+        {
+          q: "৬৫. RAD মডেলের সফলতার জন্য টিমের সদস্যদের কেমন হওয়া প্রয়োজন?",
+          a: "A) নতুন ও অনভিজ্ঞ",
+          b: "B) অত্যন্ত দক্ষ এবং সংকল্পবদ্ধ (Highly skilled & committed)",
+          c: "C) শুধু ডিজাইনার",
+          d: "D) আউটসোর্সড টিম",
+          ans: "B",
+        },
+        {
+          q: "৬৬. CMM এর পূর্ণরূপ কী?",
+          a: "A) Capability Maturity Model",
+          b: "B) Computer Management Method",
+          c: "C) Core Maturity Metric",
+          d: "D) Control Management Model",
+          ans: "A",
+        },
+        {
+          q: "৬৭. CMM মডেলটি কোন প্রতিষ্ঠান তৈরি করেছে?",
+          a: "A) IEEE",
+          b: "B) ISO",
+          c: "C) SEI (Software Engineering Institute)",
+          d: "D) Microsoft",
+          ans: "C",
+        },
+        {
+          q: "৬৮. CMM মডেলে মোট কয়টি ম্যাচুরিটি লেভেল (Maturity Level) আছে?",
+          a: "A) ৩টি",
+          b: "B) ৪টি",
+          c: "C) ৫টি",
+          d: "D) ৬টি",
+          ans: "C",
+        },
+        {
+          q: "৬৯. CMM Level 1 কে কী বলা হয়?",
+          a: "A) Defined",
+          b: "B) Initial",
+          c: "C) Managed",
+          d: "D) Optimizing",
+          ans: "B",
+        },
+        {
+          q: "৭০. কোন ম্যাচুরিটি লেভেলে প্রসেসগুলো স্ট্যান্ডার্ড এবং ডকুমেন্টেড থাকে (Organization-wide)?",
+          a: "A) Level 2 (Repeatable)",
+          b: "B) Level 3 (Defined)",
+          c: "C) Level 4 (Managed)",
+          d: "D) Level 5",
+          ans: "B",
+        },
+        {
+          q: "৭১. CMM Level 5 এর নাম কী?",
+          a: "A) Initial",
+          b: "B) Defined",
+          c: "C) Quantitatively Managed",
+          d: "D) Optimizing",
+          ans: "D",
+        },
+        {
+          q: "৭২. সিএমএমআই (CMMI) এর সর্বোচ্চ স্তরে (Level 5) মূল ফোকাস কী থাকে?",
+          a: "A) প্রজেক্ট প্ল্যানিং",
+          b: "B) টুলস কেনা",
+          c: "C) প্রতিনিয়ত প্রসেসের উন্নতি বা Continuous Process Improvement",
+          d: "D) নতুন কর্মী নিয়োগ",
+          ans: "C",
+        },
+        {
+          q: "৭৩. যে লেভেলে প্রসেসের পারফরম্যান্স কোয়ান্টিটেটিভলি (সংখ্যাগতভাবে) পরিমাপ ও নিয়ন্ত্রণ করা হয়-",
+          a: "A) Level 2",
+          b: "B) Level 3",
+          c: "C) Level 4",
+          d: "D) Level 1",
+          ans: "C",
+        },
+        {
+          q: "৭৪. CMM মডেলের মূল উদ্দেশ্য কী?",
+          a: "A) কোডিং স্পীড বাড়ানো",
+          b: "B) সফটওয়্যার ডেভেলপমেন্ট প্রসেসের পরিপক্কতা বা ম্যাচুরিটি উন্নত করা",
+          c: "C) ডাটাবেজ সিকিউরিটি দেওয়া",
+          d: "D) হার্ডওয়্যার টেস্ট করা",
+          ans: "B",
+        },
+        {
+          q: "৭৫. CMM Level 2 এর প্রধান বৈশিষ্ট্য কোনটি?",
+          a: "A) প্রসেস সম্পূর্ণ বিশৃঙ্খল",
+          b: "B) বেসিক প্রজেক্ট ম্যানেজমেন্ট এবং প্রসেস পুনরাবৃত্তিযোগ্য (Repeatable)",
+          c: "C) অটোমেটেড কোড জেনারেশন",
+          d: "D) সবগুলো",
+          ans: "B",
+        },
+        {
+          q: "৭৬. সফটওয়্যার প্রজেক্ট কস্ট ও সাইজ এস্টিকেশনের জন্য বিখ্যাত মডেল কোনটি?",
+          a: "A) COCOMO Model",
+          b: "B) Spiral Model",
+          c: "C) Waterfall Model",
+          d: "D) CMM Model",
+          ans: "A",
+        },
+        {
+          q: "৭৭. COCOMO এর পূর্ণরূপ কী?",
+          a: "A) Constructive Cost Model",
+          b: "B) Common Component Model",
+          c: "C) Computer Cost Model",
+          d: "D) Component Cost Mode",
+          ans: "A",
+        },
+        {
+          q: "৭৮. বেসিক COCOMO মডেলে সফটওয়্যার প্রজেক্টকে কয়টি ক্যাটাগরিতে ভাগ করা হয়েছে?",
+          a: "A) ২টি",
+          b: "B) ৩টি",
+          c: "C) ৪টি",
+          d: "D) ৫টি",
+          ans: "B",
+        },
+        {
+          q: "৭৯. ছোট ও পরিচিত পরিবেশে তৈরি সফটওয়্যার প্রজেক্টকে COCOMO অনুযায়ী কী বলা হয়?",
+          a: "A) Organic",
+          b: "B) Semidetached",
+          c: "C) Embedded",
+          d: "D) Complex",
+          ans: "A",
+        },
+        {
+          q: "৮০. অত্যন্ত জটিল এবং কঠোর সীমাবদ্ধতাযুক্ত প্রজেক্টকে (যেমন- এভিয়েশন সিস্টেম) COCOMO তে কী বলে?",
+          a: "A) Organic",
+          b: "B) Semidetached",
+          c: "C) Embedded",
+          d: "D) Hybrid",
+          ans: "C",
+        },
+        {
+          q: "৮১. প্রজেক্টের সময়সূচী বা শিডিউল ভিজ্যুয়ালি দেখানোর জন্য কোনটি বহুল ব্যবহৃত হয়?",
+          a: "A) Gantt Chart",
+          b: "B) DFD",
+          c: "C) ERD",
+          d: "D) Use Case Diagram",
+          ans: "A",
+        },
+        {
+          q: "৮২. PERT এর পূর্ণরূপ কী?",
+          a: "A) Project Evaluation and Review Technique",
+          b: "B) Process Estimation and Running Time",
+          c: "C) Product Efficiency Report Tool",
+          d: "D) Project Executive Resource Task",
+          ans: "A",
+        },
+        {
+          q: "৮৩. CPM (Critical Path Method) এ 'Critical Path' বলতে কী বোঝায়?",
+          a: "A) সবচেয়ে সহজ পথ",
+          b: "B) সবচেয়ে দীর্ঘতম পথ যা প্রজেক্টের সর্বনিম্ন সময় নির্ধারণ করে",
+          c: "C) সবচেয়ে সস্তা পথ",
+          d: "D) লুপ সংবলিত পথ",
+          ans: "B",
+        },
+        {
+          q: "৮৪. সফটওয়্যার প্রজেক্ট ম্যানেজমেন্টে 'Risk Management' এর প্রথম ধাপ কোনটি?",
+          a: "A) Risk Assessment",
+          b: "B) Risk Identification",
+          c: "C) Risk Mitigation",
+          d: "D) Risk Monitoring",
+          ans: "B",
+        },
+        {
+          q: "৮৫. সফটওয়্যার সাইজ পরিমাপের একক কোনটি?",
+          a: "A) KLOC (Thousand Lines of Code)",
+          b: "B) Bytes",
+          c: "C) Gantt",
+          d: "D) CMM",
+          ans: "A",
+        },
+        {
+          q: "৮৬. LOC বা KLOC ছাড়াও সফটওয়্যারের সাইজ ও ফাংশনালিটি মাপার আধুনিক একক কোনটি?",
+          a: "A) Function Point (FP)",
+          b: "B) Milestone",
+          c: "C) Sprint Point",
+          d: "D) Risk Factor",
+          ans: "A",
+        },
+        {
+          q: "৮৭. প্রজেক্টের নির্দিষ্ট কোনো গুরুত্বপূর্ণ অর্জন বা ঘটনাকে শিডিউলে কী বলা হয়?",
+          a: "A) Task",
+          b: "B) Milestone",
+          c: "C) Activity",
+          d: "D) Slack",
+          ans: "B",
+        },
+        {
+          q: "৮৮. সফটওয়্যার প্রজেক্ট ব্যর্থ হওয়ার প্রধান কারণ সাধারণত কোনটি?",
+          a: "A) দুর্বল কোডিং ল্যাঙ্গুয়েজ",
+          b: "B) খারাপ হার্ডওয়‍্যার",
+          c: "C) অস্পষ্ট ও পরিবর্তনশীল রিকোয়ারমেন্ট এবং দুর্বল প্রজেক্ট ম্যানেজমেন্ট",
+          d: "D) মনিটরের সাইজ ছোট হওয়া",
+          ans: "C",
+        },
+        {
+          q: "৮৯. COCOMO মডেল কে তৈরি করেছিলেন?",
+          a: "A) Barry Boehm",
+          b: "B) Bill Gates",
+          c: "C) Linus Torvalds",
+          d: "D) Dennis Ritchie",
+          ans: "A",
+        },
+        {
+          q: "৯০. প্রজেক্ট প্ল্যানিংয়ের সময় 'Slack Time' কী?",
+          a: "A) কাজের গতি বাড়ানোর সময়",
+          b: "B) একটি টাস্ক প্রজেক্টের ক্ষতি না করে যতটুকু দেরি করা যেতে পারে",
+          c: "C) ছুটির দিন",
+          d: "D) কোডিং করার সময়",
+          ans: "B",
+        },
+        {
+          q: "৯১. MIS এর পূর্ণরূপ কী?",
+          a: "A) Management Information System",
+          b: "B) Managerial Information Source",
+          c: "C) Main Information System",
+          d: "D) Meta Information Structure",
+          ans: "A",
+        },
+        {
+          q: "৯২. দৈনন্দিন লেনদেন ও ডেটা প্রসেস করার জন্য কোন সিস্টেম ব্যবহৃত হয়?",
+          a: "A) DSS",
+          b: "B) MIS",
+          c: "C) TPS (Transaction Processing System)",
+          d: "D) EIS",
+          ans: "C",
+        },
+        {
+          q: "৯৩. মধ্যম স্তরের ম্যানেজারদের সিদ্ধান্ত গ্রহণে এবং সামারি রিপোর্ট তৈরিতে সাহায্য করে কোনটি?",
+          a: "A) TPS",
+          b: "B) MIS",
+          c: "C) OAS",
+          d: "D) ERP",
+          ans: "B",
+        },
+        {
+          q: "৯৪. DSS এর পূর্ণরূপ কী?",
+          a: "A) Decision Support System",
+          b: "B) Data Security System",
+          c: "C) Digital Storage System",
+          d: "D) Detailed Source System",
+          ans: "A",
+        },
+        {
+          q: "৯৫. আনস্ট্রাকচার্ড বা সেমি-স্ট্রাকচার্ড জটিল সিদ্ধান্ত গ্রহণে শীর্ষ কর্মকর্তাদের সাহায্য করে কোনটি?",
+          a: "A) TPS",
+          b: "B) OAS",
+          c: "C) DSS",
+          d: "D) Automation",
+          ans: "C",
+        },
+        {
+          q: "৯৬. একটি প্রতিষ্ঠানের সব বিভাগের ডেটা ও প্রসেসকে একটি একক সিস্টেমে নিয়ে আসাকে কী বলে?",
+          a: "A) MIS",
+          b: "B) ERP (Enterprise Resource Planning)",
+          c: "C) DSS",
+          d: "D) TPS",
+          ans: "B",
+        },
+        {
+          q: "৯৭. নিচের কোনটি অফিস অটোমেশন সিস্টেম (OAS) এর উদাহরণ?",
+          a: "A) ইমেইল ও ওয়ার্ড প্রসেসিং সফটওয়্যার",
+          b: "B) ব্যাংকের এটিএম লেনদেন",
+          c: "C) দীর্ঘমেয়াদী স্ট্র্যাটেজিক প্ল্যানিং টুল",
+          d: "D) ফ্যাক্টরি রোবট কন্ট্রোল",
+          ans: "A",
+        },
+        {
+          q: "৯৮. এক্সিকিউティブ সাপোর্ট সিস্টেম (ESS) মূলত কাদের জন্য তৈরি?",
+          a: "A) অপারেশনাল স্টাফ",
+          b: "B) শীর্ষ পর্যায়ের নির্বাহী বা ডেটা অ্যানালিস্ট",
+          c: "C) গ্রাহক",
+          d: "D) সফটওয়্যার ডেভেলপার",
+          ans: "B",
+        },
+        {
+          q: "৯৯. ইনফরমেশন সিস্টেমের মূল উপাদান কয়টি?",
+          a: "A) ৩টি",
+          b: "B) ৫টি",
+          c: "C) ৫ বা ৬টি (Hardware, Software, Data, Procedures, People, Network)",
+          d: "D) C",
+          ans: "C",
+        },
+        {
+          q: "১০০. SDLC এর পূর্ণরূপ কী?",
+          a: "A) System Development Life Cycle",
+          b: "B) Software Design Logic Center",
+          c: "C) System Data Logical Cycle",
+          d: "D) Sequential Development Life Core",
+          ans: "A",
+        },
+      ];
+
+      const container = document.getElementById("quiz-container");
+
+      quizData.forEach((item, index) => {
+        const quizItem = document.createElement("div");
+        quizItem.className = "quiz-item";
+
+        const questionDiv = document.createElement("div");
+        questionDiv.className = "question";
+        questionDiv.innerText = item.q;
+        quizItem.appendChild(questionDiv);
+
+        const optionsDiv = document.createElement("div");
+        optionsDiv.className = "options";
+
+        [item.a, item.b, item.c, item.d].forEach((opt) => {
+          const optDiv = document.createElement("div");
+          optDiv.className = "option";
+          optDiv.innerText = opt;
+          optionsDiv.appendChild(optDiv);
+        });
+        quizItem.appendChild(optionsDiv);
+
+        const actionsDiv = document.createElement("div");
+        actionsDiv.className = "actions";
+
+        const btn = document.createElement("button");
+        btn.className = "btn-toggle";
+        btn.innerText = "Show Answer";
+
+        const ansBox = document.createElement("div");
+        ansBox.className = "answer-box";
+        ansBox.innerText = `সঠিক উত্তর: ${item.ans}`;
+
+        btn.onclick = function () {
+          if (ansBox.style.display === "block") {
+            ansBox.style.display = "none";
+            btn.innerText = "Show Answer";
+            btn.style.backgroundColor = "#3498db";
+          } else {
+            ansBox.style.display = "block";
+            btn.innerText = "Hide Answer";
+            btn.style.backgroundColor = "#e74c3c";
+          }
+        };
+
+        actionsDiv.appendChild(btn);
+        actionsDiv.appendChild(ansBox);
+        quizItem.appendChild(actionsDiv);
+
+        container.appendChild(quizItem);
+      });
+    </script>
+  </body>
+</html>

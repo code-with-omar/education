@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ntra Education - Learning Portal</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* CSS Reset & Variables */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      :root {
+        --primary-color: #2563eb;
+        --primary-dark: #1d4ed8;
+        --secondary-color: #f8fafc;
+        --text-color: #1e293b;
+        --text-light: #64748b;
+        --card-bg: #ffffff;
+        --shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      body {
+        background-color: #f1f5f9;
+        color: var(--text-color);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header */
+      header {
+        background-color: var(--card-bg);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+
+      .search-box {
+        position: relative;
+        width: 300px;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 0.6rem 1rem 0.6rem 2.5rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 20px;
+        outline: none;
+        transition: all 0.3s;
+      }
+
+      .search-box input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      }
+
+      .search-box i {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+      }
+
+      /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        flex: 1;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+      }
+
+      /* Chapters Grid */
+      .chapters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .chapter-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .chapter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary-color);
+      }
+
+      .card-icon {
+        width: 50px;
+        height: 50px;
+        background-color: #dbeafe;
+        color: var(--primary-color);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .card-number {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.3rem;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        font-weight: 500;
+        margin-top: 1rem;
+        padding-top: 0.8rem;
+        border-top: 1px solid #f1f5f9;
+      }
+
+      /* Detail Page (Only for chapters without explicit link) */
+      .detail-page {
+        display: none;
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: #f1f5f9;
+        color: var(--text-color);
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        border: none;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 2rem;
+        transition: all 0.2s;
+      }
+
+      .back-btn:hover {
+        background-color: #e2e8f0;
+        color: var(--primary-color);
+      }
+
+      .detail-header h2 {
+        font-size: 2rem;
+        color: #0f172a;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--card-bg);
+        text-align: center;
+        padding: 1.5rem;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-top: auto;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .search-box {
+          width: 100%;
+        }
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header / Navbar -->
+    <header>
+      <div class="navbar">
+        <div class="logo" onclick="showHome()">
+          <i class="fa-solid fa-graduation-cap"></i> Ntra Education
+        </div>
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search chapters..."
+            onkeyup="filterChapters()"
+          />
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="container">
+      <!-- HOME VIEW: Chapter Cards -->
+      <div id="homeView">
+        <div class="hero">
+          <h1>Welcome to Computer Science Portal</h1>
+          <p>Select a chapter below to start reading.</p>
+        </div>
+
+        <div class="chapters-grid" id="chaptersGrid">
+          <!-- Chapters will be rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- DETAIL VIEW (If chapter has no direct link) -->
+      <div id="detailView" class="detail-page">
+        <button class="back-btn" onclick="showHome()">
+          <i class="fa-solid fa-arrow-left"></i> Back to Chapters
+        </button>
+        <div class="detail-header">
+          <span class="card-number" id="detailChapterNumber">CHAPTER 1</span>
+          <h2 id="detailChapterTitle">Chapter Title</h2>
+        </div>
+        <p style="color: var(--text-light); margin-top: 1rem">
+          Content for this chapter will be updated soon.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Ntra Education. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+      // 8 Chapters Data (Without topics)
+      const chaptersData = [
+        {
+          id: 1,
+          title: "Structured and Object Oriented Programming (OOP) Concept",
+          icon: "fa-code",
+          link: "./Chapter1/chapter-one-1.html", // আপনার চ্যাপ্টার ১ এর লিংক
+        },
+        {
+          id: 2,
+          title: "Introduction to Software Engineering",
+          icon: "fa-diagram-project",
+          link: "./Chapter2/chapter-two-1.html",
+        },
+        {
+          id: 3,
+          title: "Data Structure and Algorithm & Combinatorial Optimization",
+          icon: "fa-network-wired",
+          link: "./Chapter3/chapter-three-1.html",
+        },
+        {
+          id: 4,
+          title: "Web Technology",
+          icon: "fa-globe",
+          link: "",
+        },
+        {
+          id: 5,
+          title: "Operating System",
+          icon: "fa-desktop",
+          link: "",
+        },
+        {
+          id: 6,
+          title: "Database Management System",
+          icon: "fa-database",
+          link: "",
+        },
+        {
+          id: 7,
+          title: "Data Communications and Networking",
+          icon: "fa-wifi",
+          link: "",
+        },
+        {
+          id: 8,
+          title: "Digital System & Automation",
+          icon: "fa-microchip",
+          link: "",
+        },
+      ];
+
+      // Render Cards to Home Grid
+      function renderChapters(data) {
+        const grid = document.getElementById("chaptersGrid");
+        grid.innerHTML = "";
+
+        if (data.length === 0) {
+          grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-light);">No chapters found.</p>`;
+          return;
+        }
+
+        data.forEach((chap) => {
+          const card = document.createElement("div");
+          card.className = "chapter-card";
+
+          // Click Handler
+          card.onclick = () => openChapter(chap);
+
+          card.innerHTML = `
+            <div>
+                <div class="card-icon">
+                    <i class="fa-solid ${chap.icon}"></i>
+                </div>
+                <div class="card-number">Chapter ${chap.id}</div>
+                <div class="card-title">${chap.title}</div>
+            </div>
+            <div class="card-footer">
+                <span>Read Chapter</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      // Open Chapter Logic
+      function openChapter(chap) {
+        // Direct link থাকলে পেজে চলে যাবে
+        if (chap.link && chap.link.trim() !== "") {
+          window.location.href = chap.link;
+        } else {
+          // লিংক না থাকলে এই পেজেই ডিটেইল ভিউ দেখাবে
+          document.getElementById("detailChapterNumber").innerText =
+            `CHAPTER ${chap.id}`;
+          document.getElementById("detailChapterTitle").innerText = chap.title;
+
+          document.getElementById("homeView").style.display = "none";
+          document.getElementById("detailView").style.display = "block";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      // Return to Home Grid
+      function showHome() {
+        document.getElementById("detailView").style.display = "none";
+        document.getElementById("homeView").style.display = "block";
+        document.getElementById("searchInput").value = "";
+        renderChapters(chaptersData);
+      }
+
+      // Search Filter
+      function filterChapters() {
+        const query = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const filtered = chaptersData.filter(
+          (chap) =>
+            chap.title.toLowerCase().includes(query) ||
+            chap.id.toString().includes(query),
+        );
+        renderChapters(filtered);
+      }
+
+      // Initial Initialization
+      window.onload = () => {
+        renderChapters(chaptersData);
+      };
+    </script>
+  </body>
+</html>

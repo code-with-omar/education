@@ -1,0 +1,1604 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Structures Master Quiz - 100 MCQs</title>
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-hover: #4338ca;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --correct: #10b981;
+        --correct-bg: #ecfdf5;
+        --wrong: #ef4444;
+        --wrong-bg: #fef2f2;
+        --border: #e2e8f0;
+        --accent: #06b6d4;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        padding-bottom: 60px;
+      }
+
+      header {
+        background: linear-gradient(135deg, #1e293b, #0f172a);
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: #f8fafc;
+      }
+
+      .dashboard {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.75rem;
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+      }
+
+      .stat-box {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .stat-value {
+        color: var(--accent);
+        font-size: 1.1rem;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .controls {
+        background: var(--card-bg);
+        padding: 1.25rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        align-items: center;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      input[type="text"]:focus,
+      select:focus {
+        border-color: var(--primary);
+      }
+
+      .btn {
+        padding: 0.75rem 1.25rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .btn-reset {
+        background-color: var(--wrong);
+        color: white;
+      }
+
+      .btn-reset:hover {
+        background-color: #dc2626;
+      }
+
+      .quiz-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .q-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--border);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .q-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        gap: 1rem;
+      }
+
+      .q-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 20px;
+        background: #e0e7ff;
+        color: var(--primary);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .options {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .options {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .opt-btn {
+        background: #f8fafc;
+        border: 1px solid var(--border);
+        padding: 0.85rem 1rem;
+        border-radius: 8px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 0.95rem;
+        color: var(--text);
+        transition: all 0.2s;
+      }
+
+      .opt-btn:hover:not(:disabled) {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+      }
+
+      .opt-btn.correct-ans {
+        background: var(--correct-bg) !important;
+        border-color: var(--correct) !important;
+        color: #065f46 !important;
+        font-weight: 600;
+      }
+
+      .opt-btn.wrong-ans {
+        background: var(--wrong-bg) !important;
+        border-color: var(--wrong) !important;
+        color: #991b1b !important;
+        font-weight: 600;
+      }
+
+      .explanation {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        background: #f0f9ff;
+        border-left: 4px solid var(--accent);
+        font-size: 0.9rem;
+        color: #0c4a6e;
+        display: none;
+      }
+
+      .explanation.visible {
+        display: block;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 3rem;
+        color: var(--text-muted);
+        background: white;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Header with Navigation -->
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <!-- Website Logo / Title -->
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              DSA কুইজ পোর্টাল
+            </h1>
+            <p class="text-xs text-slate-400">
+              Data Structures & Algorithms Prep
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Links for All 7 Pages -->
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="chapter-three-1.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 1</a
+          >
+          <a
+            href="chapter-three-2.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 2</a
+          >
+          <a
+            href="chapter-three-3.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 3</a
+          >
+          <a
+            href="chapter-three-4.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 4</a
+          >
+          <a
+            href="chapter-three-5.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 5</a
+          >
+          <a
+            href="chapter-three-6.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 6</a
+          >
+          <a
+            href="chapter-three-7.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 7</a
+          >
+        </nav>
+      </div>
+    </header>
+    <header>
+      <h1>Data Structures Master Quiz</h1>
+      <p style="font-size: 0.9rem; color: #cbd5e1">
+        IT Job Preparation - 100 High-Yield MCQs
+      </p>
+      <div class="dashboard">
+        <div class="stat-box">
+          ⏱️ সময়: <span id="timer" class="stat-value">00:00:00</span>
+        </div>
+        <div class="stat-box">
+          ✅ সঠিক: <span id="correct-count" class="stat-value">0</span>
+        </div>
+        <div class="stat-box">
+          ❌ ভুল: <span id="wrong-count" class="stat-value">0</span>
+        </div>
+        <div class="stat-box">
+          📊 মোট উত্তর:
+          <span id="answered-count" class="stat-value">0/100</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Controls & Filters -->
+      <div class="controls">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="🔍 প্রশ্ন খুঁজুন..."
+          oninput="filterQuestions()"
+        />
+
+        <select id="topic-filter" onchange="filterQuestions()">
+          <option value="all">সব Topic</option>
+          <option value="Expression">Prefix, Infix, Postfix</option>
+          <option value="Hashing">Hashing & Collisions</option>
+          <option value="Tree Concepts">Tree Basics & Binary Trees</option>
+          <option value="BST & Heap">BST, Heap & Heap Sort</option>
+          <option value="Advanced Trees">AVL, B-Tree, B+ Tree & Huffman</option>
+        </select>
+
+        <select id="status-filter" onchange="filterQuestions()">
+          <option value="all">সব প্রশ্ন (All)</option>
+          <option value="correct">শুধু সঠিক (Correct)</option>
+          <option value="wrong">শুধু ভুল (Wrong)</option>
+          <option value="unanswered">উত্তর না দেওয়া (Unanswered)</option>
+        </select>
+
+        <button class="btn btn-reset" onclick="resetQuiz()">
+          🔄 রিসেট পরীক্ষা
+        </button>
+      </div>
+
+      <!-- Question List Container -->
+      <div id="quiz-container" class="quiz-list"></div>
+    </div>
+
+    <script>
+      // --- 100 UNIQUE QUESTIONS DATASET ---
+      const rawQuestions = [
+        // Expression (1-15)
+        {
+          id: 1,
+          topic: "Expression",
+          q: "Infix expression (A + B) * C এর Postfix রূপ কোনটি?",
+          options: ["AB+C*", "ABC*+", "+ABC*", "ABC+*"],
+          ans: 0,
+          exp: "Infix to Postfix এ আগে বন্ধনীর কাজ হবে (AB+), তারপর গুণ অপারেটরটি শেষে যাবে: AB+C*",
+        },
+        {
+          id: 2,
+          topic: "Expression",
+          q: "Infix expression A + B * C এর Prefix রূপ কোনটি?",
+          options: ["+A*BC", "*+ABC", "+*ABC", "A*BC+"],
+          ans: 0,
+          exp: "Precedence অনুযায়ী B*C আগে হবে (*BC)। তারপর A + (*BC) হবে +A*BC।",
+        },
+        {
+          id: 3,
+          topic: "Expression",
+          q: "Postfix Expression ইভালুয়েট (Evaluate) করার জন্য কোন Data Structure ব্যবহার করা হয়?",
+          options: ["Queue", "Stack", "Tree", "Array"],
+          ans: 1,
+          exp: "Postfix ইভালুয়েশনে Operand গুলোকে Stack-এ Push করা হয় এবং Operator পেলে Pop করে হিসাব করা হয়।",
+        },
+        {
+          id: 4,
+          topic: "Expression",
+          q: "Postfix notation কে অন্য কী নামে ডাকা হয়?",
+          options: [
+            "Polish Notation",
+            "Reverse Polish Notation",
+            "Infix Notation",
+            "Prefix Notation",
+          ],
+          ans: 1,
+          exp: "Postfix notation-কে Reverse Polish Notation (RPN) বলা হয়।",
+        },
+        {
+          id: 5,
+          topic: "Expression",
+          q: "Prefix notation কে অন্য কী নামে ডাকা হয়?",
+          options: [
+            "Reverse Polish Notation",
+            "Polish Notation",
+            "Infix Notation",
+            "Extended Notation",
+          ],
+          ans: 1,
+          exp: "Prefix notation-কে Polish Notation বলা হয়।",
+        },
+        {
+          id: 6,
+          topic: "Expression",
+          q: "Infix to Postfix রূপান্তরের সময় Stack-এ মূলত কী জমা রাখা হয়?",
+          options: ["Operands", "Operators", "Variables", "Numbers"],
+          ans: 1,
+          exp: "Infix to Postfix অ্যালগরিদমে Operators এবং Parentheses Stack-এ রাখা হয়, Operands সরাসরি Output-এ যায়।",
+        },
+        {
+          id: 7,
+          topic: "Expression",
+          q: "Postfix expression: 5 3 2 * + এর মান কত?",
+          options: ["16", "11", "25", "13"],
+          ans: 1,
+          exp: "আগে 3 * 2 = 6, তারপর 5 + 6 = 11।",
+        },
+        {
+          id: 8,
+          topic: "Expression",
+          q: "Postfix expression: 8 2 / 3 + এর মান কত?",
+          options: ["7", "4", "5", "8"],
+          ans: 0,
+          exp: "8 / 2 = 4, তারপর 4 + 3 = 7।",
+        },
+        {
+          id: 9,
+          topic: "Expression",
+          q: "অপারেটর Precedence অনুযায়ী নিচের কোনটির ক্ষমতা সবচেয়ে বেশি?",
+          options: ["+", "*", "^ (Exponentiation)", "-"],
+          ans: 2,
+          exp: "গাণিতিক এক্সপ্রেশনে Power/Exponentiation (^) এর Precedence সবচেয়ে বেশি।",
+        },
+        {
+          id: 10,
+          topic: "Expression",
+          q: "Prefix expression: + * 2 3 4 এর মান কত?",
+          options: ["10", "14", "20", "24"],
+          ans: 0,
+          exp: "Prefix-এ ডান থেকে বামে বা Operator অনুযায়ী কাজ হয়: (2 * 3) = 6, তারপর + 6 4 = 10।",
+        },
+        {
+          id: 11,
+          topic: "Expression",
+          q: "Infix expression A + B কে Prefix রূপ দিলে কী হবে?",
+          options: ["AB+", "+AB", "A+B", "BA+"],
+          ans: 1,
+          exp: "Prefix-এ অপারেটর আগে আসে: +AB।",
+        },
+        {
+          id: 12,
+          topic: "Expression",
+          q: "Stack-এ অরিজিনাল ইনফিক্স Expression ট্রাভার্স করার সময় ')' পেলে কী করতে হয়?",
+          options: [
+            "Stack-এ Push করতে হয়",
+            "'(' না পাওয়া পর্যন্ত Pop করে Output-এ পাঠাতে হয়",
+            "সব ক্লিয়ার করতে হয়",
+            "কিছুই করতে হয় না",
+          ],
+          ans: 1,
+          exp: 'Right bracket ")" পেলে Matching "(" না পাওয়া পর্যন্ত Operator Pop হতে থাকে।',
+        },
+        {
+          id: 13,
+          topic: "Expression",
+          q: "Postfix রূপান্তরের সময় সমক্ষমতার (Same Precedence) অপারেটর এলে কী নিয়ম মানা হয়?",
+          options: [
+            "Right to Left Associativity",
+            "Left to Right Associativity",
+            "Random Order",
+            "Top to Bottom",
+          ],
+          ans: 1,
+          exp: "সাধারণত +, -, *, / এর জন্য Left to Right Associativity প্রযোজ্য।",
+        },
+        {
+          id: 14,
+          topic: "Expression",
+          q: "Postfix Expression: 6 5 2 3 + 8 * + 3 + * এর মূল্যায়ন করতে Stack-এর সর্বোচ্চ আকার কত হবে?",
+          options: ["3", "4", "5", "6"],
+          ans: 1,
+          exp: "পর পর Operands (6, 5, 2, 3) Push হওয়ার কারণে Stack-এ সর্বোচ্চ 4টি Element জমা হবে।",
+        },
+        {
+          id: 15,
+          topic: "Expression",
+          q: "Infix notation A ^ B ^ C এর সঠিক Postfix কোনটি? (^ is Right-Associative)",
+          options: ["AB^C^", "ABC^^", "^^ABC", "A^BC^"],
+          ans: 1,
+          exp: "^ হল Right-Associative, তাই A ^ (B ^ C) -> A ^ (BC^) -> ABC^^।",
+        },
+
+        // Hashing (16-35)
+        {
+          id: 16,
+          topic: "Hashing",
+          q: "Hash Table-এ কোনো Element খোঁজার গড় (Average Time Complexity) সময় কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+          ans: 0,
+          exp: "হ্যাশিং এর মূল সুবিধা হলো Average Case-এ O(1) সময়ে Data Search বা Insert করা যায়।",
+        },
+        {
+          id: 17,
+          topic: "Hashing",
+          q: "দুটি ভিন্ন Key এর জন্য Hash Function যদি একই Index আউটপুট দেয়, তাকে কী বলে?",
+          options: ["Hash Overlap", "Collision", "Hash Crash", "Rehash"],
+          ans: 1,
+          exp: "একাধিক Key একই স্লটে ম্যাপিং করাকে Collision বলে।",
+        },
+        {
+          id: 18,
+          topic: "Hashing",
+          q: "Collision সমাধানের 'Separate Chaining' কৌশলে সাধারণত কোন Data Structure ব্যবহৃত হয়?",
+          options: ["Array", "Linked List", "Stack", "Queue"],
+          ans: 1,
+          exp: "Separate Chaining-এ প্রতিটি Hash Bucket-এ একটি Linked List মেইনটেইন করা হয়।",
+        },
+        {
+          id: 19,
+          topic: "Hashing",
+          q: "Open Addressing এর একটি জনপ্রিয় Collision Resolving কৌশল কোনটি?",
+          options: [
+            "Separate Chaining",
+            "Linear Probing",
+            "Binary Search",
+            "AVL Tree",
+          ],
+          ans: 1,
+          exp: "Linear Probing, Quadratic Probing, Double Hashing হলো Open Addressing এর উদাহরণ।",
+        },
+        {
+          id: 20,
+          topic: "Hashing",
+          q: "Linear Probing এর প্রধান অসুবিধা কোনটি?",
+          options: [
+            "Primary Clustering",
+            "Secondary Clustering",
+            "Memory Leak",
+            "Infinite Loop",
+          ],
+          ans: 0,
+          exp: "Linear Probing-এ পাশাপাশি স্লট পূর্ণ হয়ে বড় ব্লক তৈরি হয়, যাকে Primary Clustering বলে।",
+        },
+        {
+          id: 21,
+          topic: "Hashing",
+          q: "Load Factor (λ) কী নির্দেশ করে? (n = elements, m = table size)",
+          options: ["n * m", "n / m", "m / n", "n + m"],
+          ans: 1,
+          exp: "Load Factor λ = (মোট উপাদানের সংখ্যা n) / (হ্যাশ টেবিলের আকার m)।",
+        },
+        {
+          id: 22,
+          topic: "Hashing",
+          q: "Quadratic Probing কোন সমস্যা সমাধান করতে সাহায্য করে?",
+          options: [
+            "Primary Clustering",
+            "Secondary Clustering",
+            "Cache Miss",
+            "Overflow",
+          ],
+          ans: 0,
+          exp: "Linear Probing এর Primary Clustering সমস্যা দূর করতে Quadratic Probing ব্যবহার করা হয়।",
+        },
+        {
+          id: 23,
+          topic: "Hashing",
+          q: "Dynamic Hashing এর জনপ্রিয় একটি রূপ কোনটি?",
+          options: [
+            "Extendible Hashing",
+            "Static Array",
+            "Linear Probing",
+            "Modulo Division",
+          ],
+          ans: 0,
+          exp: "ডাটা বাড়ার সাথে সাথে টেবিল সাইজ ডায়নামিকালি বাড়াতে Extendible Hashing ব্যবহৃত হয়।",
+        },
+        {
+          id: 24,
+          topic: "Hashing",
+          q: "Hash Function: h(k) = k mod 10 হলে, Key = 25 এর Index কত হবে?",
+          options: ["2", "5", "0", "2.5"],
+          ans: 1,
+          exp: "25 mod 10 = 5।",
+        },
+        {
+          id: 25,
+          topic: "Hashing",
+          q: "Hash Table-এর Worst Case Search Time Complexity কত হতে পারে?",
+          options: ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+          ans: 2,
+          exp: "সব Key যদি একই স্লটে Collision করে (যেমন Single Linked List), তবে Worst Case Time Complexity O(n) হয়।",
+        },
+        {
+          id: 26,
+          topic: "Hashing",
+          q: "Double Hashing-এ ২য় Hash Function এর মান কখনো কী হতে পারবে না?",
+          options: ["1", "0", "Prime Number", "Negative"],
+          ans: 1,
+          exp: "২য় হ্যাশ ফাংশনের মান 0 হলে Probe Offset 0 হয়ে যাবে এবং অসীম লুপ তৈরি হবে।",
+        },
+        {
+          id: 27,
+          topic: "Hashing",
+          q: "একটি আদর্শ Hash Function এর বৈশিষ্ট্য কোনটি?",
+          options: [
+            "সব Key কে একই ঘরে পাঠানো",
+            "Uniform Distribution প্রদান করা",
+            "খুবই জটিল হিসাব করা",
+            "ধীরে কাজ করা",
+          ],
+          ans: 1,
+          exp: "একটি ভালো Hash Function ডাটাগুলোকে টেবিলে সমানভাবে ছড়িয়ে দেয় (Uniform Distribution)।",
+        },
+        {
+          id: 28,
+          topic: "Hashing",
+          q: "Hash Indexing মূলত কোথায় বেশি ব্যবহৃত হয়?",
+          options: [
+            "Database Indexing",
+            "Sorting Array",
+            "Graph Traversal",
+            "Recursion",
+          ],
+          ans: 0,
+          exp: "ডাটাবেসে দ্রুত রেকর্ড খুঁজে পেতে Hash Indexing ব্যবহৃত হয়।",
+        },
+        {
+          id: 29,
+          topic: "Hashing",
+          q: "Rehashing কখন করা হয়?",
+          options: [
+            "টেবিল ফাঁকা থাকলে",
+            "Load Factor নির্দিষ্ট সীমা অতিক্রম করলে",
+            "প্রতিটি ইনসার্ট করার পর",
+            "কখনোই নয়",
+          ],
+          ans: 1,
+          exp: "Load Factor বেশি হয়ে গেলে Performance বজায় রাখতে Table Size ডাবল করে Rehashing করা হয়।",
+        },
+        {
+          id: 30,
+          topic: "Hashing",
+          q: "Static Hashing এর সীমাবদ্ধতা কী?",
+          options: [
+            "টেবিলের আকার নির্দিষ্ট থাকে",
+            "মেমোরি বেশি লাগে",
+            "ধীরগতি",
+            "Collision হয় না",
+          ],
+          ans: 0,
+          exp: "Static Hashing-এ ডাটাবেসের সাইজ বাড়লেও টেবিল ফিক্সড থাকে, ফলে ওভারফ্লো হয়।",
+        },
+        {
+          id: 31,
+          topic: "Hashing",
+          q: "Division Method এ Hash Table Size সাধারণত কী নেওয়া ভালো?",
+          options: ["Even Number", "Prime Number", "Power of 2", "Power of 10"],
+          ans: 1,
+          exp: "Prime Number নিলে Collision কম হওয়ার সম্ভাবনা থাকে।",
+        },
+        {
+          id: 32,
+          topic: "Hashing",
+          q: "Mid-Square Method-এ কী করা হয়?",
+          options: [
+            "Key কে স্কয়ার করে মাঝের অংশ নেওয়া হয়",
+            "Key কে ১০ দিয়ে ভাগ করা হয়",
+            "Key এর প্রথম ডিজিট নেওয়া হয়",
+            "Key কে ২ গুণ করা হয়",
+          ],
+          ans: 0,
+          exp: "Key-এর বর্গ করে তার মাঝখান থেকে প্রয়োজনীয় সংখ্যক ডিজিট Index হিসেবে নেওয়া হয়।",
+        },
+        {
+          id: 33,
+          topic: "Hashing",
+          q: "Secondary Clustering সমস্যাটি মূলত কোন Probing এ দেখা যায়?",
+          options: [
+            "Linear Probing",
+            "Quadratic Probing",
+            "Separate Chaining",
+            "Extendible Hashing",
+          ],
+          ans: 1,
+          exp: "Quadratic Probing-এ যদি দুটি Key এর Initial Hash এক হয়, তবে তাদের Probe Path একই হয় (Secondary Clustering)।",
+        },
+        {
+          id: 34,
+          topic: "Hashing",
+          q: "Chaining collision technique এর প্রধান সুবিধা কী?",
+          options: [
+            "কখনো টেবিল সম্পূর্ণ ফুল/ওভারফ্লো হয় না",
+            "মেমোরি ফিক্সড থাকে",
+            "O(1) worst case",
+            "Cache locality ভালো",
+          ],
+          ans: 0,
+          exp: "Dynamic Linked List ব্যবহার করার কারণে Chaining-এ মেমোরি থাকা পর্যন্ত Element যোগ করা যায়।",
+        },
+        {
+          id: 35,
+          topic: "Hashing",
+          q: "Open Addressing এর সুবিধা কী?",
+          options: [
+            "অতিরিক্ত Pointer এর জন্য মেমোরি লাগে না",
+            "Worst case সবসময় O(1)",
+            "Linked list লাগে",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "Open Addressing-এ টেবিলের ভেতরেই ফাঁকা জায়গা খোঁজা হয়, তাই Pointer লাগে না।",
+        },
+
+        // Tree Concepts (36-50)
+        {
+          id: 36,
+          topic: "Tree Concepts",
+          q: "N সংখ্যক Node বিশিষ্ট একটি Tree তে কয়টি Edge থাকে?",
+          options: ["N", "N - 1", "N + 1", "2N"],
+          ans: 1,
+          exp: "যে কোনো Tree-তে Edge সংখ্যা সবসময় (Node সংখ্যা - 1) হয়।",
+        },
+        {
+          id: 37,
+          topic: "Tree Concepts",
+          q: "Binary Tree এর প্রতিটি Node এর সর্বোচ্চ কয়টি Child থাকতে পারে?",
+          options: ["1", "2", "3", "অনির্দিষ্ট"],
+          ans: 1,
+          exp: "Binary Tree-তে একটি নোডের সর্বোচ্চ ২টি (0, 1, অথবা 2) Child থাকে।",
+        },
+        {
+          id: 38,
+          topic: "Tree Concepts",
+          q: "Height H বিশিষ্ট Full Binary Tree তে সর্বোচ্চ Node সংখ্যা কত?",
+          options: ["2^H - 1", "2^(H+1) - 1", "2^H", "2H"],
+          ans: 1,
+          exp: "Height H হলে (Root height 0 ধরলে) Maximum nodes = 2^(H+1) - 1।",
+        },
+        {
+          id: 39,
+          topic: "Tree Concepts",
+          q: "In-order Traversal এর সঠিক ক্রম কোনটি?",
+          options: [
+            "Root -> Left -> Right",
+            "Left -> Root -> Right",
+            "Left -> Right -> Root",
+            "Right -> Root -> Left",
+          ],
+          ans: 1,
+          exp: "In-order = Left Child, Root, Right Child।",
+        },
+        {
+          id: 40,
+          topic: "Tree Concepts",
+          q: "Pre-order Traversal এর সঠিক ক্রম কোনটি?",
+          options: [
+            "Root -> Left -> Right",
+            "Left -> Root -> Right",
+            "Left -> Right -> Root",
+            "Right -> Root -> Left",
+          ],
+          ans: 0,
+          exp: "Pre-order = Root, Left Child, Right Child।",
+        },
+        {
+          id: 41,
+          topic: "Tree Concepts",
+          q: "Post-order Traversal এর সঠিক ক্রম কোনটি?",
+          options: [
+            "Root -> Left -> Right",
+            "Left -> Root -> Right",
+            "Left -> Right -> Root",
+            "Right -> Left -> Root",
+          ],
+          ans: 2,
+          exp: "Post-order = Left Child, Right Child, Root।",
+        },
+        {
+          id: 42,
+          topic: "Tree Concepts",
+          q: "যে Binary Tree এর সব লেভেল সম্পূর্ণ পূর্ণ থাকে (শেষ লেভেল ছাড়া, যা বাম থেকে ডানে পূর্ণ হয়) তাকে কী বলে?",
+          options: [
+            "Full Binary Tree",
+            "Complete Binary Tree",
+            "Perfect Binary Tree",
+            "Degenerate Tree",
+          ],
+          ans: 1,
+          exp: "এটি Complete Binary Tree এর সংজ্ঞা।",
+        },
+        {
+          id: 43,
+          topic: "Tree Concepts",
+          q: "Tree Traversal মূলত কোন কৌশলের অন্তর্গত?",
+          options: [
+            "Depth First Search (DFS)",
+            "Breadth First Search (BFS)",
+            "Greedy",
+            "Dynamic Programming",
+          ],
+          ans: 0,
+          exp: "In-order, Pre-order, Post-order মূলত DFS এর বৈচিত্র।",
+        },
+        {
+          id: 44,
+          topic: "Tree Concepts",
+          q: "Level Order Traversal 구현 করতে কোন Data Structure ব্যবহৃত হয়?",
+          options: ["Stack", "Queue", "Priority Queue", "Hash Table"],
+          ans: 1,
+          exp: "Level order traversal মূলত BFS, যা বাস্তবায়ন করতে Queue প্রয়োজন।",
+        },
+        {
+          id: 45,
+          topic: "Tree Concepts",
+          q: "যে Node এর কোনো Child নেই তাকে কী বলে?",
+          options: [
+            "Root Node",
+            "Parent Node",
+            "Leaf Node / Terminal Node",
+            "Internal Node",
+          ],
+          ans: 2,
+          exp: "Child-হীন নোডকে Leaf Node বলে।",
+        },
+        {
+          id: 46,
+          topic: "Tree Concepts",
+          q: "Strictly / Full Binary Tree বলতে কী বোঝায়?",
+          options: [
+            "প্রতিটি നോডের 0 বা 2 টি child থাকবে",
+            "সবসময় 1টি child থাকবে",
+            "সব নোডের 2টি child থাকতেই হবে",
+            "কোনো নিয়ম নেই",
+          ],
+          ans: 0,
+          exp: "Full/Strict Binary Tree-তে কোনো നോডের ১টি Child থাকতে পারবে না (হয় ০টি, না হয় ২টো)।",
+        },
+        {
+          id: 47,
+          topic: "Tree Concepts",
+          q: "Root Node এর Depth কত?",
+          options: ["0", "1", "-1", "ইনফিনিটি"],
+          ans: 0,
+          exp: "Root নোডের Depth সবসময় 0 হয়।",
+        },
+        {
+          id: 48,
+          topic: "Tree Concepts",
+          q: "Binary Tree কে Array তে রিপ্রেজেন্ট করলে Index i এর Left Child এর Index কত হবে? (1-based Indexing)",
+          options: ["2i", "2i + 1", "i / 2", "i + 1"],
+          ans: 0,
+          exp: "1-based indexing এ Node i এর Left child = 2i এবং Right child = 2i + 1।",
+        },
+        {
+          id: 49,
+          topic: "Tree Concepts",
+          q: "Binary Tree কে Array তে রিপ্রেজেন্ট করলে Index i এর Parent Node এর Index কত? (1-based)",
+          options: ["2i", "floor(i / 2)", "i - 1", "2i + 1"],
+          ans: 1,
+          exp: "Parent node এর Index হয় floor(i / 2)।",
+        },
+        {
+          id: 50,
+          topic: "Tree Concepts",
+          q: "Skewed Binary Tree এর Height কত হতে পারে (N = Node)?",
+          options: ["O(log N)", "O(N)", "O(N log N)", "O(1)"],
+          ans: 1,
+          exp: "Skewed Tree দেখতে Linked List এর মতো হয়, যার Height O(N)।",
+        },
+
+        // BST & Heap (51-75)
+        {
+          id: 51,
+          topic: "BST & Heap",
+          q: "Binary Search Tree (BST) এর মূল শর্ত কী?",
+          options: [
+            "Left < Root < Right",
+            "Right < Root < Left",
+            "Left = Root = Right",
+            "Root < Left < Right",
+          ],
+          ans: 0,
+          exp: "BST-তে বাম সাবট্রি Root থেকে ছোট এবং ডান সাবট্রি Root থেকে বড় হয়।",
+        },
+        {
+          id: 52,
+          topic: "BST & Heap",
+          q: "BST এর In-order Traversal করলে ডাটাগুলো কীভাবে পাওয়া যায়?",
+          options: [
+            "Unsorted",
+            "Sorted Order (Ascending)",
+            "Descending Order",
+            "Random Order",
+          ],
+          ans: 1,
+          exp: "BST এর In-order traversal সবসময় সর্টেড (Ascending) ডাটা দেয়।",
+        },
+        {
+          id: 53,
+          topic: "BST & Heap",
+          q: "Balanced BST-তে Searching এর টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(N)", "O(log N)", "O(N log N)", "O(1)"],
+          ans: 1,
+          exp: "Balanced BST-তে সার্চিং এর সময় O(log N)।",
+        },
+        {
+          id: 54,
+          topic: "BST & Heap",
+          q: "Unbalanced / Skewed BST-তে Searching এর Worst Case সময় কত?",
+          options: ["O(log N)", "O(N)", "O(1)", "O(N^2)"],
+          ans: 1,
+          exp: "Skewed BST লিঙ্কড লিস্টের মতো কাজ করায় সার্চ টাইম O(N) হয়।",
+        },
+        {
+          id: 55,
+          topic: "BST & Heap",
+          q: "Max Heap এর প্রধান বৈশিষ্ট্য কোনটি?",
+          options: [
+            "Parent >= Children",
+            "Parent <= Children",
+            "Left < Right",
+            "Right < Left",
+          ],
+          ans: 0,
+          exp: "Max Heap-এ Root বা Parent Node এর মান সবসময় তার Child গুলোর চেয়ে বড় বা সমান হয়।",
+        },
+        {
+          id: 56,
+          topic: "BST & Heap",
+          q: "Min Heap এর Root-এ সবসময় কোন মানটি থাকে?",
+          options: ["সর্বোচ্চ মান", "সর্বনিম্ন মান", "গড় মান", "যেকোনো মান"],
+          ans: 1,
+          exp: "Min Heap-এর Root Node-এ পুরো ট্রি এর সবচেয়ে ছোট উপাদানটি থাকে।",
+        },
+        {
+          id: 57,
+          topic: "BST & Heap",
+          q: "Heap Sort এর Time Complexity কত?",
+          options: ["O(N^2)", "O(N log N)", "O(N)", "O(log N)"],
+          ans: 1,
+          exp: "Heap Sort এর Best, Average, Worst সর্বাবস্থায় Time Complexity O(N log N)।",
+        },
+        {
+          id: 58,
+          topic: "BST & Heap",
+          q: "Heap Data Structure মূলত কিসের ওপর ভিত্তি করে তৈরি?",
+          options: [
+            "Complete Binary Tree",
+            "Full Binary Tree",
+            "Skewed Tree",
+            "B-Tree",
+          ],
+          ans: 0,
+          exp: "Heap হলো একটি Complete Binary Tree, যা অ্যারেই দিয়ে সহজে প্রকাশ করা যায়।",
+        },
+        {
+          id: 59,
+          topic: "BST & Heap",
+          q: "Priority Queue তৈরি করতে নিচের কোনটি সবচেয়ে উপযোগী?",
+          options: ["Array", "Linked List", "Heap", "Stack"],
+          ans: 2,
+          exp: "Heap ব্যবহার করে Priority Queue সফলভাবে ও দ্রুত (O(log N)) বাস্তবায়ন করা যায়।",
+        },
+        {
+          id: 60,
+          topic: "BST & Heap",
+          q: "Heapify প্রসেসের Time Complexity কত?",
+          options: ["O(N)", "O(log N)", "O(N log N)", "O(1)"],
+          ans: 1,
+          exp: "একটি নির্দিষ্ট নোডকে সঠিক স্থানে নেওয়ার (Heapify) সময় O(log N)।",
+        },
+        {
+          id: 61,
+          topic: "BST & Heap",
+          q: "N সংখ্যক উপাদানের একটি Unsorted Array থেকে সম্পূর্ণ Heap তৈরি (Build Heap) করতে কত সময় লাগে?",
+          options: ["O(N log N)", "O(N)", "O(N^2)", "O(log N)"],
+          ans: 1,
+          exp: "Bottom-up পদ্ধতিতে Build Heap করতে ও অপটিমাইজড টাইম O(N) লাগে।",
+        },
+        {
+          id: 62,
+          topic: "BST & Heap",
+          q: "Heap Sort কী ধরনের অ্যালগরিদম?",
+          options: [
+            "In-place but Not Stable",
+            "Stable and In-place",
+            "Not In-place",
+            "External Sorting",
+          ],
+          ans: 0,
+          exp: "Heap Sort অতিরিক্ত মেমোরি নেয় না (In-place), তবে এটি Stable Sort নয়।",
+        },
+        {
+          id: 63,
+          topic: "BST & Heap",
+          q: "BST থেকে 2টি Child আছে এমন একটি Node Delete করলে তার স্থলাভিষিক্ত কে হয়?",
+          options: [
+            "In-order Successor বা Predecessor",
+            "Root Node",
+            "Leaf Node",
+            "Right Child Only",
+          ],
+          ans: 0,
+          exp: "২টি Child থাকলে ইন-অর্ডার সাকসেসর (ডান সাবট্রির সর্বনিম্ন) বা প্রেডিসেসর দিয়ে রিপ্লেস করা হয়।",
+        },
+        {
+          id: 64,
+          topic: "BST & Heap",
+          q: "BST এর সর্বনিম্ন মানটি কোথায় পাওয়া যায়?",
+          options: [
+            "Root এ",
+            "একদম বামের Leaf Node এ",
+            "একদম ডানের Leaf Node এ",
+            "যে কোনো স্থানে",
+          ],
+          ans: 1,
+          exp: "BST এর নিয়ম অনুযায়ী বামদিকের সর্বনিম্ন নোডটিতে সবচেয়ে ছোট মান থাকে।",
+        },
+        {
+          id: 65,
+          topic: "BST & Heap",
+          q: "BST-তে Insert করার Time Complexity কত (Average)?",
+          options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"],
+          ans: 1,
+          exp: "Average case এ Insert time O(log N)।",
+        },
+        {
+          id: 66,
+          topic: "BST & Heap",
+          q: "Max Heap থেকে সর্বোচ্চ Element সরাতে (Extract-Max) কত সময় লাগে?",
+          options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"],
+          ans: 1,
+          exp: "Root বাদ দেওয়ার পর Heapify করতে O(log N) সময় লাগে।",
+        },
+        {
+          id: 67,
+          topic: "BST & Heap",
+          q: "Max Heap এ সর্বোচ্চ Element দেখা (Find-Max) কত সময়ের ব্যাপার?",
+          options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"],
+          ans: 0,
+          exp: "Root এ সর্বোচ্চ মান থাকে, তাই দেখতে O(1) সময় লাগে।",
+        },
+        {
+          id: 68,
+          topic: "BST & Heap",
+          q: "Binary Search Tree তে duplicate মান রাখা কি সাধারণ নিয়মে অনুমোদিত?",
+          options: [
+            "হ্যাঁ",
+            "সাধারণত না (অথবা নির্দিষ্ট নিয়মে একপাশে রাখা হয়)",
+            "সবসময় রাখা বাধ্যতামূলক",
+            "কোনোটিই নয়",
+          ],
+          ans: 1,
+          exp: "স্ট্যান্ডার্ড BST-তে ইউনিক মান রাখা হয়। তবে রাখলে নির্দিষ্ট বাম/ডান সাবট্রিতে রাখার নিয়ম করা হয়।",
+        },
+        {
+          id: 69,
+          topic: "BST & Heap",
+          q: "BST Construct করতে Worst Case Time Complexity কখন হয়?",
+          options: [
+            "ডাটা এলোমেলো থাকলে",
+            "ডাটা অলরেডি Sorted থাকলে",
+            "ডাটা সমান হলে",
+            "সবগুলো",
+          ],
+          ans: 1,
+          exp: "Sorted ডাটা দিলে BST টি Skewed Tree তে পরিণত হয়, ফলে তৈরি করতে O(N^2) সময় লাগে।",
+        },
+        {
+          id: 70,
+          topic: "BST & Heap",
+          q: "Heap কি একটি Full Binary Tree?",
+          options: [
+            "হ্যাঁ সবসময়",
+            "না, এটি Complete Binary Tree",
+            "এটি Skewed Tree",
+            "কোনোটিই নয়",
+          ],
+          ans: 1,
+          exp: "Heap সবসময় Complete Binary Tree নীতি অনুসরণ করে।",
+        },
+        {
+          id: 71,
+          topic: "BST & Heap",
+          q: "Min-Max Heap এ কত প্রকার নোড অপারেশন একসাথে করা যায়?",
+          options: [
+            "Min ও Max উভয়ই O(1) এ খুজে পাওয়া যায়",
+            "শুধু Min",
+            "শুধু Max",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "Min-Max Heap এর বিশেষ গঠনে Min ও Max সহজে খোঁজা যায়।",
+        },
+        {
+          id: 72,
+          topic: "BST & Heap",
+          q: "Binary Heap 구현 এ সাধারণত কোন Data Structure ব্যবহার সুবিধাজনক?",
+          options: ["Pointer-based Node", "Array", "Graph", "Matrix"],
+          ans: 1,
+          exp: "Complete Binary Tree হওয়ায় Array দিয়ে Parent-Child সম্পর্ক (2i, 2i+1) বজায় রাখা সহজ।",
+        },
+        {
+          id: 73,
+          topic: "BST & Heap",
+          q: "BST এর Height যদি h হয়, তবে Search operations এর সময়কাল কত?",
+          options: ["O(h)", "O(2^h)", "O(h^2)", "O(1)"],
+          ans: 0,
+          exp: "BST এর যেকোনো অপারেশন তার Height (h) এর ওপর সরাসরি নির্ভরশীল, O(h)।",
+        },
+        {
+          id: 74,
+          topic: "BST & Heap",
+          q: "Heap Sort অ্যালগরিদম কোন স্ট্র্যাটেজি অনুসরণ করে?",
+          options: [
+            "Divide and Conquer",
+            "Greedy / Selection ভিত্তিক",
+            "Dynamic Programming",
+            "Backtracking",
+          ],
+          ans: 1,
+          exp: "Heap Sort বারবার Maximum/Minimum উপাদান সিলেক্ট করে সর্ট করে।",
+        },
+        {
+          id: 75,
+          topic: "BST & Heap",
+          q: "কয়টি সংকেত নিয়ে একটি Binary Heap গঠিত হতে পারে?",
+          options: [
+            "যে কোনো সংখ্যা",
+            "শুধু ২টি",
+            "কখনোই ৩টি না",
+            "নির্দিষ্ট নয়",
+          ],
+          ans: 0,
+          exp: "যেকোনো সংখ্যক উপাদান নিয়ে Heap গঠিত হতে পারে।",
+        },
+
+        // Advanced Trees (76-100)
+        {
+          id: 76,
+          topic: "Advanced Trees",
+          q: "AVL Tree মূলত কী ধরণের Tree?",
+          options: [
+            "Self-Balancing Binary Search Tree",
+            "Complete Binary Tree",
+            "Heap Tree",
+            "B-Tree",
+          ],
+          ans: 0,
+          exp: "AVL Tree হলো একটি Self-Balancing BST।",
+        },
+        {
+          id: 77,
+          topic: "Advanced Trees",
+          q: "AVL Tree তে Balance Factor (BF) এর গ্রহণযোগ্য মান কত?",
+          options: ["-1, 0, 1", "-2, 0, 2", "0, 1, 2", "শুধুমাত্র 0"],
+          ans: 0,
+          exp: "Balance Factor = (Height of Left Subtree - Height of Right Subtree)। গ্রহণযোগ্য মান -1, 0, 1।",
+        },
+        {
+          id: 78,
+          topic: "Advanced Trees",
+          q: "AVL Tree unbalanced হলে ব্যালেন্স করার জন্য কী ব্যবহৃত হয়?",
+          options: [
+            "Re-hashing",
+            "Rotations (LL, RR, LR, RL)",
+            "Heapify",
+            "Splitting",
+          ],
+          ans: 1,
+          exp: "AVL Tree ব্যালেন্স করতে ৪ ধরণের Rotation (LL, RR, LR, RL) ব্যবহার করা হয়।",
+        },
+        {
+          id: 79,
+          topic: "Advanced Trees",
+          q: "Huffman Encoding কোন উদ্দেশ্যে ব্যবহৃত হয়?",
+          options: [
+            "Data Compression",
+            "Data Encryption",
+            "Data Searching",
+            "Sorting",
+          ],
+          ans: 0,
+          exp: "Huffman Coding হলো একটি লসলেস ডাটা কম্প্রেশন টেকনিক।",
+        },
+        {
+          id: 80,
+          topic: "Advanced Trees",
+          q: "Huffman Encoding কোন অ্যালগরিদম কৌশল মেনে চলে?",
+          options: [
+            "Dynamic Programming",
+            "Greedy Algorithm",
+            "Divide and Conquer",
+            "Backtracking",
+          ],
+          ans: 1,
+          exp: "কম ফ্রিকোয়েন্সির চরিত্রগুলোকে নিচে রেখে গাছ তৈরিতে Greedy মেথড ব্যবহার করা হয়।",
+        },
+        {
+          id: 81,
+          topic: "Advanced Trees",
+          q: "Huffman Tree তে সবচেয়ে বেশি ব্যবহৃত ক্যারেক্টারটির Prefix Code কেমন হয়?",
+          options: [
+            "সবচেয়ে বড় (Longest)",
+            "সবচেয়ে ছোট (Shortest)",
+            "ফিক্সড ৮ বিট",
+            "কোনোটিই নয়",
+          ],
+          ans: 1,
+          exp: "যে ক্যারেক্টার বেশি আসে তার কোড দৈর্ঘ্য সবচেয়ে ছোট করা হয় মেমোরি বাঁচানোর জন্য।",
+        },
+        {
+          id: 82,
+          topic: "Advanced Trees",
+          q: "B-Tree প্রধানত কোথায় ব্যবহৃত হয়?",
+          options: [
+            "RAM এ",
+            "Database Indexing এবং File System এ (Secondary Memory)",
+            "Compiler Design এ",
+            "Graphics এ",
+          ],
+          ans: 1,
+          exp: "ডিস্ক রিড কমানোর জন্য B-Tree ডাটাবেস ও ফাইল সিস্টেমে ইনডেক্সিংয়ে ব্যবহৃত হয়।",
+        },
+        {
+          id: 83,
+          topic: "Advanced Trees",
+          q: "B+ Tree এর মূল ডাটা (Actual Records/Data Pointers) কোথায় থাকে?",
+          options: [
+            "Root Node এ",
+            "Internal Node এ",
+            "শুধুমাত্র Leaf Node এ",
+            "সব Node এ",
+          ],
+          ans: 2,
+          exp: "B+ Tree-এর সব ডাটা কেবল Leaf Node-এ থাকে, আর Internal Node-এ কেবল Key থাকে।",
+        },
+        {
+          id: 84,
+          topic: "Advanced Trees",
+          q: "B+ Tree এর Leaf Node গুলো নিজেদের মধ্যে কীভাবে যুক্ত থাকে?",
+          options: [
+            "Linked List (Singly/Doubly)",
+            "Stack",
+            "Queue",
+            "যুক্ত থাকে না",
+          ],
+          ans: 0,
+          exp: "Range Query সহজ করতে B+ Tree এর Leaf Node গুলো Linked List দিয়ে যুক্ত থাকে।",
+        },
+        {
+          id: 85,
+          topic: "Advanced Trees",
+          q: "Order M বিশিষ্ট B-Tree এর একটি Internal Node এর সর্বোচ্চ Child সংখ্যা কত?",
+          options: ["M - 1", "M", "M / 2", "2M"],
+          ans: 1,
+          exp: "Order M B-Tree এর একটি নোডের সর্বোচ্চ M টি Child থাকতে পারে।",
+        },
+        {
+          id: 86,
+          topic: "Advanced Trees",
+          q: "Order M বিশিষ্ট B-Tree এর একটি Node এ সর্বোচ্চ Key সংখ্যা কত?",
+          options: ["M", "M - 1", "M / 2", "M + 1"],
+          ans: 1,
+          exp: "সর্বোচ্চ Key সংখ্যা হয় (M - 1)।",
+        },
+        {
+          id: 87,
+          topic: "Advanced Trees",
+          q: "AVL Tree তে Search, Insertion, Deletion এর Worst Case Time কত?",
+          options: ["O(N)", "O(log N)", "O(N log N)", "O(1)"],
+          ans: 1,
+          exp: "সবসময় কঠোরভাবে Balanced থাকায় AVL Tree তে কাজগুলো O(log N) সময়ে হয়।",
+        },
+        {
+          id: 88,
+          topic: "Advanced Trees",
+          q: "B-Tree এবং B+ Tree এর মধ্যে কোনটি Range Queries এর জন্য বেশি দক্ষ?",
+          options: ["B-Tree", "B+ Tree", "উভয়ই সমান", "কোনোটিই নয়"],
+          ans: 1,
+          exp: "Leaf node গুলো Linked list দিয়ে সংযুক্ত থাকায় B+ tree তে Range Search দ্রুত হয়।",
+        },
+        {
+          id: 89,
+          topic: "Advanced Trees",
+          q: "Huffman Encoding এ ব্যবহৃত Prefix Property এর অর্থ কী?",
+          options: [
+            "একটি কোড অন্যটির শুরুতে মিলবে না",
+            "সব কোড একই দৈর্ঘ্যের",
+            "কোড প্রফিটেবল হতে হবে",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "কোনো ক্যারেক্টারের বিট কোড যেন অন্য কোনো কোডের Prefix না হয়, যাতে সহজে Decode করা যায়।",
+        },
+        {
+          id: 90,
+          topic: "Advanced Trees",
+          q: "m-way Search Tree এর বর্ধিত এবং স্ব-ভারসাম্যপূর্ণ রূপ কোনটি?",
+          options: ["AVL Tree", "B-Tree", "Binary Heap", "Expression Tree"],
+          ans: 1,
+          exp: "B-Tree হলো একটি Self-balancing M-way Search Tree।",
+        },
+        {
+          id: 91,
+          topic: "Advanced Trees",
+          q: "AVL Tree তে LR Rotation কখন প্রয়োজন হয়?",
+          options: [
+            "Left child এর Right subtree তে insert করলে",
+            "Right child এর Left subtree তে insert করলে",
+            "Left child এর Left subtree তে insert করলে",
+            "Right child এর Right subtree তে insert করলে",
+          ],
+          ans: 0,
+          exp: "Left-Right (LR) ইমব্যালেন্স হলে LR রোটেশন লাগে।",
+        },
+        {
+          id: 92,
+          topic: "Advanced Trees",
+          q: "Huffman Coding এ গঠিত ট্রির Leaf Node সংখ্যা যদি L হয়, তবে মোট ক্যারেক্টার সংখ্যা কত?",
+          options: ["L", "2L", "L - 1", "L / 2"],
+          ans: 0,
+          exp: "Huffman Tree এর প্রতিটি Leaf Node একটি করে ইউনিক ক্যারেক্টার প্রকাশ করে।",
+        },
+        {
+          id: 93,
+          topic: "Advanced Trees",
+          q: "Red-Black Tree এর তুলনায় AVL Tree এর সুবিধা কী?",
+          options: [
+            "Search দ্রুততর কারণ এটি বেশি rigid balanced",
+            "Insertion দ্রুততর",
+            "Deletion সহজ",
+            "কম মেমোরি লাগে",
+          ],
+          ans: 0,
+          exp: "AVL Tree খুব কড়াভাবে ব্যালেন্সড থাকায় এতে Search operation Red-Black tree এর চেয়ে দ্রুত।",
+        },
+        {
+          id: 94,
+          topic: "Advanced Trees",
+          q: "Red-Black Tree তে Root Node এর রঙ কী হওয়া বাধ্যতামূলক?",
+          options: ["Red", "Black", "Green", "White"],
+          ans: 1,
+          exp: "Red-Black Tree-এর অন্যতম প্রধান নিয়ম হলো Root Node সবসময় Black হবে।",
+        },
+        {
+          id: 95,
+          topic: "Advanced Trees",
+          q: "B-Tree তে নোড সপ্লিটিং (Node Splitting) কখন ঘটে?",
+          options: [
+            "Node ফাঁকা হলে",
+            "Node ওভারফ্লো (Key সংখ্যা > M-1) হলে",
+            "Search করার সময়",
+            "Delete করার সময়",
+          ],
+          ans: 1,
+          exp: "নোডে জায়গা না থাকলে এটি দুটি ভাগে বিভক্ত হয়ে মাঝের Key উপরে উঠে যায়।",
+        },
+        {
+          id: 96,
+          topic: "Advanced Trees",
+          q: "B-Tree তে সব Leaf Node কোন লেভেলে অবস্থান করে?",
+          options: [
+            "বিভিন্ন লেভেলে",
+            "একই (Same) লেভেলে",
+            "শুধুমাত্র ২য় লেভেলে",
+            "কোনো নির্দিষ্টতা নেই",
+          ],
+          ans: 1,
+          exp: "B-Tree সবসময় নিখুঁতভাবে Balanced থাকে, তাই সব Leaf একই লেভেলে থাকে।",
+        },
+        {
+          id: 97,
+          topic: "Advanced Trees",
+          q: "Huffman Tree তে Internal Node গুলোর মান কী নির্দেশ করে?",
+          options: [
+            "ক্যারেক্টারের নাম",
+            "ফ্রিকোয়েন্সির যোগফল (Sum of Frequencies)",
+            "ASCII Value",
+            "Random ID",
+          ],
+          ans: 1,
+          exp: "চাইল্ড নোড দুটির ফ্রিকোয়েন্সির যোগফল ইন্টারনাল নোডে বসে।",
+        },
+        {
+          id: 98,
+          topic: "Advanced Trees",
+          q: "AVL Tree আবিষ্কারকদের নাম কী?",
+          options: [
+            "Adelson-Velsky and Landis",
+            "Aho, Hopcroft, Ullman",
+            "Cormen, Leiserson",
+            "Knuth, Morris, Pratt",
+          ],
+          ans: 0,
+          exp: "১৯৬২ সালে GM Adelson-Velsky এবং EM Landis এটি আবিষ্কার করেন।",
+        },
+        {
+          id: 99,
+          topic: "Advanced Trees",
+          q: "2-3 Tree মূলত কত Order এর B-Tree?",
+          options: ["Order 2", "Order 3", "Order 4", "Order 5"],
+          ans: 1,
+          exp: "2-3 Tree হলো Order 3 বিশিষ্ট B-Tree।",
+        },
+        {
+          id: 100,
+          topic: "Advanced Trees",
+          q: "Splay Tree এর প্রধান বৈশিষ্ট্য কোনটি?",
+          options: [
+            "সাম্প্রতিক ব্যবহৃত Element কে Root এ নিয়ে আসা (Splaying)",
+            "সবসময় ওভাল শেপ হওয়া",
+            "Static থাকা",
+            "কম্প্রেশন করা",
+          ],
+          ans: 0,
+          exp: "Splay Tree স্বয়ংক্রিয়ভাবে সম্প্রতি এক্সেস করা নোডকে Root-এ নিয়ে আসে।",
+        },
+      ];
+
+      // --- APP STATE & LOCAL STORAGE ---
+      const STORAGE_KEY = "ds_quiz_user_answers_v1";
+      const TIME_KEY = "ds_quiz_timer_v1";
+
+      let userAnswers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      let secondsElapsed = parseInt(localStorage.getItem(TIME_KEY)) || 0;
+      let timerInterval = null;
+
+      // --- TIMER ---
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          secondsElapsed++;
+          localStorage.setItem(TIME_KEY, secondsElapsed);
+          updateTimerDisplay();
+        }, 1000);
+      }
+
+      function updateTimerDisplay() {
+        const hrs = String(Math.floor(secondsElapsed / 3600)).padStart(2, "0");
+        const mins = String(Math.floor((secondsElapsed % 3600) / 60)).padStart(
+          2,
+          "0",
+        );
+        const secs = String(secondsElapsed % 60).padStart(2, "0");
+        document.getElementById("timer").innerText = `${hrs}:${mins}:${secs}`;
+      }
+
+      // --- RENDER & STATS ---
+      function renderQuiz() {
+        const container = document.getElementById("quiz-container");
+        container.innerHTML = "";
+
+        const searchVal = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        const topicVal = document.getElementById("topic-filter").value;
+        const statusVal = document.getElementById("status-filter").value;
+
+        let filtered = rawQuestions.filter((q) => {
+          // Topic Filter
+          if (topicVal !== "all" && q.topic !== topicVal) return false;
+
+          // Search Filter
+          if (searchVal && !q.q.toLowerCase().includes(searchVal)) return false;
+
+          // Status Filter
+          const answeredOpt = userAnswers[q.id];
+          if (
+            statusVal === "correct" &&
+            (answeredOpt === undefined || answeredOpt !== q.ans)
+          )
+            return false;
+          if (
+            statusVal === "wrong" &&
+            (answeredOpt === undefined || answeredOpt === q.ans)
+          )
+            return false;
+          if (statusVal === "unanswered" && answeredOpt !== undefined)
+            return false;
+
+          return true;
+        });
+
+        if (filtered.length === 0) {
+          container.innerHTML =
+            '<div class="no-results">কোনো প্রশ্ন পাওয়া যায়নি! Filter পরিবর্তন করে চেষ্টা করুন।</div>';
+          updateStats();
+          return;
+        }
+
+        filtered.forEach((q) => {
+          const qCard = document.createElement("div");
+          qCard.className = "q-card";
+          qCard.id = `q-${q.id}`;
+
+          const userSel = userAnswers[q.id];
+          const isAnswered = userSel !== undefined;
+
+          let optionsHTML = "";
+          q.options.forEach((opt, idx) => {
+            let btnClass = "opt-btn";
+            if (isAnswered) {
+              if (idx === q.ans) btnClass += " correct-ans";
+              else if (idx === userSel) btnClass += " wrong-ans";
+            }
+
+            optionsHTML += `
+                        <button class="${btnClass}" 
+                                ${isAnswered ? "disabled" : ""} 
+                                onclick="selectAnswer(${q.id}, ${idx})">
+                            ${String.fromCharCode(65 + idx)}. ${opt}
+                        </button>
+                    `;
+          });
+
+          qCard.innerHTML = `
+                    <div class="q-header">
+                        <div class="q-title">${q.id}. ${q.q}</div>
+                        <span class="badge">${q.topic}</span>
+                    </div>
+                    <div class="options">${optionsHTML}</div>
+                    <div class="explanation ${isAnswered ? "visible" : ""}">
+                        💡 <strong>ব্যাখ্যা:</strong> ${q.exp}
+                    </div>
+                `;
+
+          container.appendChild(qCard);
+        });
+
+        updateStats();
+      }
+
+      function selectAnswer(qId, optIdx) {
+        if (userAnswers[qId] !== undefined) return;
+
+        userAnswers[qId] = optIdx;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userAnswers));
+
+        // Re-render specifically or whole view
+        renderQuiz();
+      }
+
+      function updateStats() {
+        let correct = 0;
+        let wrong = 0;
+        let totalAnswered = Object.keys(userAnswers).length;
+
+        rawQuestions.forEach((q) => {
+          const ans = userAnswers[q.id];
+          if (ans !== undefined) {
+            if (ans === q.ans) correct++;
+            else wrong++;
+          }
+        });
+
+        document.getElementById("correct-count").innerText = correct;
+        document.getElementById("wrong-count").innerText = wrong;
+        document.getElementById("answered-count").innerText =
+          `${totalAnswered}/100`;
+      }
+
+      function filterQuestions() {
+        renderQuiz();
+      }
+
+      function resetQuiz() {
+        if (confirm("আপনি কি নিশ্চিত যে উত্তর এবং সময় রিসেট করতে চান?")) {
+          localStorage.removeItem(STORAGE_KEY);
+          localStorage.removeItem(TIME_KEY);
+          userAnswers = {};
+          secondsElapsed = 0;
+          updateTimerDisplay();
+          renderQuiz();
+        }
+      }
+
+      // --- INIT ---
+      window.onload = () => {
+        startTimer();
+        renderQuiz();
+      };
+    </script>
+  </body>
+</html>

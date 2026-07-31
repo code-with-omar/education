@@ -1,0 +1,2016 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithms Master Quiz - Greedy & Divide Conquer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --bg-gradient: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e1b4b 50%,
+          #0f172a 100%
+        );
+        --card-bg: #ffffff;
+        --card-border: rgba(255, 255, 255, 0.15);
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --text-light: #f8fafc;
+
+        --correct: #10b981;
+        --correct-bg: #ecfdf5;
+        --correct-border: #059669;
+
+        --wrong: #ef4444;
+        --wrong-bg: #fef2f2;
+        --wrong-border: #dc2626;
+
+        --radius: 16px;
+        --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Hind Siliguri", "Outfit", sans-serif;
+      }
+
+      body {
+        background: var(--bg-gradient);
+        background-attachment: fixed;
+        color: var(--text-main);
+        line-height: 1.7;
+        padding: 30px 15px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 950px;
+        margin: 0 auto;
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.95),
+          rgba(168, 85, 247, 0.95)
+        );
+        backdrop-filter: blur(10px);
+        color: var(--text-light);
+        padding: 35px 25px;
+        border-radius: var(--radius);
+        box-shadow: 0 20px 30px -10px rgba(79, 70, 229, 0.4);
+        margin-bottom: 25px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+      }
+
+      header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+        font-weight: 500;
+      }
+
+      .control-panel {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--card-border);
+        padding: 22px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 12px;
+        text-align: center;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 12px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .stat-card .val {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #38bdf8;
+        font-family: "Outfit", sans-serif;
+      }
+
+      .stat-card .lbl {
+        font-size: 0.85rem;
+        color: #cbd5e1;
+      }
+
+      .filter-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .search-box {
+        flex: 1 1 220px;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 11px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        font-size: 0.98rem;
+        outline: none;
+        background: rgba(15, 23, 42, 0.6);
+        color: var(--text-light);
+        transition: all 0.3s;
+      }
+
+      .search-box input::placeholder {
+        color: #94a3b8;
+      }
+
+      .search-box input:focus {
+        border-color: #818cf8;
+        box-shadow: 0 0 10px rgba(129, 140, 248, 0.4);
+      }
+
+      select,
+      button {
+        padding: 11px 16px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(15, 23, 42, 0.6);
+        color: var(--text-light);
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.2s;
+      }
+
+      select option {
+        background: #1e293b;
+        color: #f8fafc;
+      }
+
+      .btn-reset {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+        border: none;
+        font-weight: 600;
+        margin-left: auto;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+      }
+
+      .btn-reset:hover {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        transform: translateY(-1px);
+      }
+
+      .quiz-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .q-card {
+        background: var(--card-bg);
+        padding: 24px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border-left: 6px solid var(--primary);
+        transition: all 0.2s ease-in-out;
+      }
+
+      .q-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+        gap: 10px;
+      }
+
+      .badge {
+        font-size: 0.8rem;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        background: #e0e7ff;
+        color: var(--primary-dark);
+      }
+
+      .badge-status {
+        background: #f1f5f9;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      .badge-status.correct {
+        background: var(--correct-bg);
+        color: var(--correct-border);
+      }
+
+      .badge-status.wrong {
+        background: var(--wrong-bg);
+        color: var(--wrong-border);
+      }
+
+      .q-text {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #0f172a;
+        line-height: 1.6;
+        margin-bottom: 18px;
+      }
+
+      .options-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      @media (min-width: 640px) {
+        .options-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .option-btn {
+        text-align: left;
+        padding: 12px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        background: #ffffff;
+        font-size: 0.98rem;
+        color: #334155;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+
+      .option-btn strong {
+        color: var(--primary-dark);
+      }
+
+      .option-btn:hover:not(:disabled) {
+        border-color: #a5b4fc;
+        background: #f8fafc;
+        transform: translateX(3px);
+      }
+
+      .option-btn.selected-correct {
+        background: var(--correct-bg) !important;
+        border-color: var(--correct-border) !important;
+        color: #065f46 !important;
+        font-weight: 600;
+      }
+
+      .option-btn.selected-wrong {
+        background: var(--wrong-bg) !important;
+        border-color: var(--wrong-border) !important;
+        color: #991b1b !important;
+        font-weight: 600;
+      }
+
+      .option-btn.show-correct {
+        background: var(--correct-bg) !important;
+        border-color: var(--correct-border) !important;
+        color: #065f46 !important;
+      }
+
+      .explanation-box {
+        margin-top: 16px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-left: 4px solid var(--primary);
+        font-size: 0.95rem;
+        color: #334155;
+        display: none;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-4px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .explanation-box.active {
+        display: block;
+      }
+
+      .explanation-box strong {
+        color: var(--primary-dark);
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--radius);
+        color: #475569;
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Main Header with Navigation -->
+      <header
+        class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+      >
+        <div
+          class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <!-- Website Logo / Title -->
+          <div class="flex items-center gap-3">
+            <div
+              class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+            >
+              <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+            </div>
+            <div>
+              <h1
+                class="text-lg md:text-xl font-bold tracking-tight text-white"
+              >
+                DSA কুইজ পোর্টাল
+              </h1>
+              <p class="text-xs text-slate-400">
+                Data Structures & Algorithms Prep
+              </p>
+            </div>
+          </div>
+
+          <!-- Navigation Links for All 7 Pages -->
+          <nav
+            class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+          >
+            <a
+              href="chapter-three-1.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 1</a
+            >
+            <a
+              href="chapter-three-2.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 2</a
+            >
+            <a
+              href="chapter-three-3.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 3</a
+            >
+            <a
+              href="chapter-three-4.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 4</a
+            >
+            <a
+              href="chapter-three-5.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 5</a
+            >
+            <a
+              href="chapter-three-6.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 6</a
+            >
+            <a
+              href="chapter-three-7.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 7</a
+            >
+          </nav>
+        </div>
+      </header>
+      <header>
+        <h1>Algorithm Special Job Quiz Bank</h1>
+        <p>Greedy Algorithms & Divide and Conquer (120 High Quality MCQs)</p>
+      </header>
+
+      <div class="control-panel">
+        <div class="stats-bar">
+          <div class="stat-card">
+            <div class="val" id="time-display">00:00:00</div>
+            <div class="lbl">সময় Elapsed</div>
+          </div>
+          <div class="stat-card">
+            <div class="val" id="score-display">0/120</div>
+            <div class="lbl">স্কোর (সঠিক)</div>
+          </div>
+          <div class="stat-card">
+            <div class="val" id="answered-display">0</div>
+            <div class="lbl">উত্তর দেওয়া হয়েছে</div>
+          </div>
+          <div class="stat-card">
+            <div class="val" id="accuracy-display">0%</div>
+            <div class="lbl">একুরেসি</div>
+          </div>
+        </div>
+
+        <div class="filter-controls">
+          <div class="search-box">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="🔍 প্রশ্ন বা টপিক সার্চ করুন..."
+            />
+          </div>
+
+          <select id="topic-filter">
+            <option value="all">সকল টপিক</option>
+            <option value="Intro to Greedy">
+              Intro to Greedy & Greedy Choice
+            </option>
+            <option value="Greedy vs DP">Greedy vs Dynamic Programming</option>
+            <option value="Fractional Knapsack">
+              Fractional Knapsack Problem
+            </option>
+            <option value="Activity Selection">
+              Activity Selection Problem
+            </option>
+            <option value="Huffman Encoding">Huffman Encoding</option>
+            <option value="Task Scheduling">Task Scheduling Problem</option>
+            <option value="Coin Changing">Coin Changing Problem</option>
+            <option value="MST Algorithms">Kruskal's & Prim's MST</option>
+            <option value="Divide & Conquer Intro">
+              Intro to Divide & Conquer
+            </option>
+            <option value="Quick Sort">Quick Sort & Analysis</option>
+            <option value="Merge Sort">Merge Sort & Analysis</option>
+            <option value="Proof & Analysis">
+              Proof of Correctness & Run Time
+            </option>
+          </select>
+
+          <select id="status-filter">
+            <option value="all">সকল উত্তর</option>
+            <option value="unanswered">উত্তর না দেওয়া</option>
+            <option value="correct">সঠিক উত্তর</option>
+            <option value="wrong">ভুল উত্তর</option>
+          </select>
+
+          <button class="btn-reset" onclick="resetQuiz()">🔄 রিসেট কুইজ</button>
+        </div>
+      </div>
+
+      <div id="quiz-container" class="quiz-container"></div>
+    </div>
+
+    <script>
+      // -------------------------------------------------------------
+      // QUESTION DATA BANK (100 Unique Non-Repeating Job Level MCQs)
+      // -------------------------------------------------------------
+      const rawQuestions = [
+        // Intro to Greedy & Greedy Choice Property (10)
+        {
+          topic: "Intro to Greedy",
+          q: "Greedy Algorithm এর মূল কর্মপদ্ধতি কোনটি?",
+          options: [
+            "ভবিষ্যতের সকল ফলাফলের সম্ভাবনা হিসাব করা",
+            "প্রতিটি ধাপে তাৎক্ষণিক স্থানীয়ভাবে সেরা (Locally Optimal) সিদ্ধান্ত গ্রহণ করা",
+            "সকল সাব-প্রবলেম মেমোরাইজ করে রাখা",
+            "র্যান্ডম অপশন বাছাই করা",
+          ],
+          ans: 1,
+          exp: "গ্রিডি অ্যালগরিদম দূরদর্শী না হয়ে প্রতিটি ধাপে লোকাল অপটিমাল চয়েস গ্রহণ করে গ্লোবাল অপটিমাল সলিউশনে পৌঁছানোর চেষ্টা করে।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "Greedy Choice Property বলতে কী বোঝায়?",
+          options: [
+            "স্থানীয় সেরা সিদ্ধান্ত গ্লোবাল সেরা সমাধানের দিকে নিয়ে যায়",
+            "সমস্যার সাব-প্রবলেমগুলো বারবার ওভারল্যাপ করে",
+            "সব সিদ্ধান্ত পরে পরিবর্তন করা যায়",
+            "কেবল ইনপুট সর্টিং নির্ভর সিদ্ধান্ত",
+          ],
+          ans: 0,
+          exp: "যে সমস্যায় প্রতি ধাপে লোকাল অপটিমাল চয়েস বেছে নিলে সার্বিক (Global) অপটিমাল উত্তর পাওয়া যায়, তাকে Greedy Choice Property বলে।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "Greedy Algorithm এর প্রধান সীমাবদ্ধতা (Limitation) কোনটি?",
+          options: [
+            "এটি বাস্তবায়ন করা কঠিন",
+            "এটি অনেক বেশি মেমরি ব্যবহার করে",
+            "এটি সকল সমস্যার জন্য গ্লোবালি অপটিমাল সলিউশন দিতে পারে না",
+            "এর রানটাইম সবসময় O(2^n) হয়",
+          ],
+          ans: 2,
+          exp: "অনেক সমস্যায় স্থানীয় সেরা সিদ্ধান্ত সামগ্রিক সেরা সিদ্ধান্ত নাও হতে পারে (যেমন: 0/1 Knapsack)।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "একটি সমস্যার Optimal Substructure বলতে কী বোঝায়?",
+          options: [
+            "সমস্যার সার্বিক অপটিমাল সমাধানের ভেতরে এর উপ-সমস্যাগুলোরও অপটিমাল সমাধান বিদ্যমান থাকে",
+            "কোডটি অবশ্যই রিকার্সিভ হতে হবে",
+            "ইনপুট সাইজ দ্বিগুণ করা",
+            "মেমরি স্পেস কমানো",
+          ],
+          ans: 0,
+          exp: "Optimal Substructure থাকলে বড় সমস্যার সমাধান তৈরি করতে ছোট সাব-প্রবলেমের অপটিমাল উত্তর ব্যবহার করা যায়।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "Greedy Strategy-তে নেয়া সিদ্ধান্ত পরবর্তীতে পরিবর্তন করা যায় কি?",
+          options: [
+            "হ্যাঁ, ব্যাকট্র্যাকিং এর মাধ্যমে",
+            "না, একবার গৃহীত সিদ্ধান্ত চূড়ান্ত",
+            "যদি ইনপুট বড় হয় তবে যায়",
+            "মেমরি খালি থাকলে যায়",
+          ],
+          ans: 1,
+          exp: "গ্রিডি অ্যালগরিদমে একবার কোনো অপশন বাছাই করার পর তা পরিবর্তন বা Backtrack করা যায় না (Irrevocable choice)।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "Greedy Algorithm সাধারণত কোন উদ্দেশ্যে ব্যবহার করা হয়?",
+          options: [
+            "Optimization Problems (সর্বোচ্চ বা সর্বনিম্ন মান নির্ণয়)",
+            "String Pattern Searching",
+            "Database Normalization",
+            "Compiler Parsing",
+          ],
+          ans: 0,
+          exp: "সর্বোচ্চ লাভ (Maximize) বা সর্বনিম্ন খরচ/সময় (Minimize) নির্ণয়ের জন্য Optimization সমস্যায় এটি ব্যবহৃত হয়।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "Greedy Algorithm এর গাণিতিক সঠিকতা প্রমাণের সাধারণ পদ্ধতি কোনটি?",
+          options: [
+            "Exchange Argument বা Mathematical Induction",
+            "Master Theorem",
+            "Amortized Analysis",
+            "Loop Invariant only",
+          ],
+          ans: 0,
+          exp: "গ্রিডি সঠিক সমাধান দেয় প্রমাণের জন্য সাধারণত Exchange Argument (অন্য যেকোনো সমাধান থেকে গ্রিডি সমাধান অন্তত সমান বা ভালো) ব্যবহার করা হয়।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "নিচের কোনটি Greedy Algorithm এর বৈশিষ্ট্য নয়?",
+          options: [
+            "Top-down approach",
+            "Feasible and Locally optimal choice",
+            "Backtracking support",
+            "Irrevocable decisions",
+          ],
+          ans: 2,
+          exp: "গ্রিডি অ্যালগরিদমে Backtracking ব্যাকঅফ বা রিভার্স করার সুযোগ থাকে না।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "Greedy Algorithm-এর সময় জটিলতা সাধারণত কম হওয়ার মূল কারণ কী?",
+          options: [
+            "এটি মেমোরাইজেশন করে",
+            "এটি সার্চ ট্রির শাখাগুলো সার্চ না করে প্রতিটি ধাপে ১টি সেরা পথ বেছে নেয়",
+            "এটি ডিভাইড অ্যান্ড কনকার ব্যবহার করে",
+            "এটি সবসময় প্যারালাল প্রসেসিং করে",
+          ],
+          ans: 1,
+          exp: "গ্রিডি কৌশল বিকল্প সব পথ এক্সপ্লোর না করে শুধু একটি নির্দিষ্ট সেরা পথে এগিয়ে যায়।",
+        },
+        {
+          topic: "Intro to Greedy",
+          q: "কোন ধরণের ডেটা স্ট্রাকচার সাধারণত গ্রিডি চয়েস দ্রুত সিলেক্ট করতে সাহায্য করে?",
+          options: [
+            "Stack",
+            "Queue",
+            "Priority Queue (Min/Max Heap)",
+            "Hash Table",
+          ],
+          ans: 2,
+          exp: "Priority Queue ব্যবহার করে প্রতি ধাপে দ্রুততম সময়ে (O(log n)) সর্বনিম্ন বা সর্বোচ্চ মানটি বের করা যায়।",
+        },
+
+        // Greedy vs Dynamic Programming (10)
+        {
+          topic: "Greedy vs DP",
+          q: "Greedy এবং Dynamic Programming এর মধ্যে মূল পার্থক্য কী?",
+          options: [
+            "Greedy ব্যাকট্র্যাক করে, DP করে না",
+            "Greedy প্রতি ধাপে ১টি সেরা সিদ্ধান্ত নেয়, DP সকল সাব-প্রবলেম মেমোরিতে রেখে সেরাটি বাছাই করে",
+            "DP কেবল সর্টেড ডেটায় চলে",
+            "Greedy মেমরি বেশি নেয়",
+          ],
+          ans: 1,
+          exp: "Greedy আগের সাব-প্রবলেম রি-ইভালুয়েট না করে এগিয়ে যায়; কিন্তু DP ওভারল্যাপিং সাব-প্রবলেমগুলো টেবিল আকারে সেভ রেখে সমাধান নিশ্চিত করে।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "0/1 Knapsack এবং Fractional Knapsack সমস্যার প্রধান পার্থক্য কোনটি?",
+          options: [
+            "0/1 Knapsack এ বস্তু আংশিক ভাঙা যায়",
+            "Fractional Knapsack গ্রিডি দিয়ে হয়, কিন্তু 0/1 Knapsack এর জন্য DP লাগে",
+            "উভয়ই গ্রিডি দিয়ে হয়",
+            "0/1 Knapsack এ ওয়েট থাকে না",
+          ],
+          ans: 1,
+          exp: "Fractional-এ বস্তু ভাঙা যায় তাই গ্রিডি কাজ করে। 0/1-এ বস্তু হয় নিতে হবে নয় বাদ দিতে হবে, ফলে গ্রিডি ফেল করে এবং DP দরকার হয়।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "কোন শর্তটি Greedy এবং Dynamic Programming উভয়ের জন্যই প্রযোজ্য?",
+          options: [
+            "Overlapping Subproblems",
+            "Greedy Choice Property",
+            "Optimal Substructure",
+            "Topological Order",
+          ],
+          ans: 2,
+          exp: "উভয় টেকনিকেরই মৌলিক ভিত্তি হলো Optimal Substructure (ছোট অপটিমাল সমাধান থেকে বড় অপটিমাল সমাধান তৈরি)।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "Overlapping Subproblems বৈশিষ্ট্যটি নিচের কোনটির জন্য আবশ্যক?",
+          options: [
+            "Greedy Algorithm",
+            "Dynamic Programming",
+            "Divide and Conquer",
+            "Linear Search",
+          ],
+          ans: 1,
+          exp: "একই সাব-প্রবলেম বারবার আসার প্রবণতা (Overlapping) DP-এর জন্য আবশ্যক, যেখানে Greedy প্রতি ধাপে ১টি মাত্র সাবপ্রবলেমে প্রবেশ করে।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "Greedy Algorithm সাধারণত DP-এর চেয়ে দ্রুততর হওয়ার কারণ কী?",
+          options: [
+            "Greedy সাব-প্রবলেমগুলোর একাধিক বিকল্প এক্সপ্লোর করে না",
+            "Greedy কোড ছোট হয়",
+            "DP তে রিকার্সন থাকে না",
+            "Greedy তে মেমরি বেশি থাকে",
+          ],
+          ans: 0,
+          exp: "Greedy একমুখী সিদ্ধান্ত নেয়, ফলে ব্যাকট্র্যাকিং বা সকল সাবপ্রবলেমের টেবিল হিসাব করার প্রয়োজন পড়ে না।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "নিচের কোনটি Dynamic Programming দ্বারা এবং Greedy দ্বারা উভয়ভাবেই সমাধান সম্ভব নয়?",
+          options: [
+            "Fractional Knapsack",
+            "0/1 Knapsack",
+            "NP-Hard Problems in Polynomial Time",
+            "Shortest Path in DAG",
+          ],
+          ans: 2,
+          exp: "NP-Hard সমস্যাগুলো পলিনমিয়াল সময়ে নিখুঁতভাবে সলভ করা Greedy বা DP কারো দ্বারাই সম্ভব নয়।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "Dijkstra's Algorithm এবং Bellman-Ford-এর মধ্যে অ্যালগরিদম ক্যাটাগরি কেমন?",
+          options: [
+            "উভয়ই Greedy",
+            "Dijkstra হলো Greedy, Bellman-Ford হলো Dynamic Programming",
+            "উভয়ই DP",
+            "Dijkstra হলো Divide & Conquer",
+          ],
+          ans: 1,
+          exp: "Dijkstra লোকাল শর্টেস্ট পাথ বেছে নেয় (Greedy); আর Bellman-Ford সকল এজ রিল্যাক্স করে DP স্টাইলে কাজ করে।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "Coin Change Problem-এ গ্রিডি পদ্ধতি কখন ব্যর্থ হতে পারে?",
+          options: [
+            "যখন ১ টাকার কয়েন থাকে",
+            "যদি কয়েনের মানের ডিনোমিনেশন ক্যানোনিক্যাল (Standard) না হয়",
+            "কয়েন সংখ্যা সীমাহীন হলে",
+            "যদি সব কয়েন জোড় সংখ্যার হয়",
+          ],
+          ans: 1,
+          exp: "যেমন কয়েন {1, 3, 4} হলে 6 টাকার জন্য গ্রিডি দেবে 4+1+1 (3টি কয়েন), কিন্তু অপটিমাল হলো 3+3 (2টি কয়েন)।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "0/1 Knapsack-এ Greedy Choice কেন ব্যর্থ হয়?",
+          options: [
+            "কারণ বস্তুর ওজন ও মূল্যের অনুপাত স্থির থাকে না",
+            "কারণ বস্তুর আংশিক অংশ না নেওয়ায় খালি জায়গায় অন্য ভালো কম্বিনেশন থেকে যেতে পারে",
+            "কারণ এর সাইজ ইনফিনিট",
+            "কারণ সর্টিং সম্ভব নয়",
+          ],
+          ans: 1,
+          exp: "আইটেম না ভাঙতে পারায় উচ্চ মূল্যের আইটেম নেওয়ার পর ব্যাগ কিছুটা খালি থাকতে পারে, যেখানে অন্য একাধিক বস্তু নিলে মোট প্রফিট বেশি হতো।",
+        },
+        {
+          topic: "Greedy vs DP",
+          q: "কোন ডিজাইনে Top-Down ও Bottom-Up উভয় পদ্ধতি প্রয়োগ করা যায়?",
+          options: [
+            "Greedy Strategy",
+            "Dynamic Programming",
+            "Divide and Conquer",
+            "Brute Force",
+          ],
+          ans: 1,
+          exp: "DP-তে Memoization (Top-down) এবং Tabulation (Bottom-up) দুটি অ্যাপ্রোচই জনপ্রিয়।",
+        },
+
+        // Fractional Knapsack Problem (10)
+        {
+          topic: "Fractional Knapsack",
+          q: "Fractional Knapsack সমস্যায় আইটেমগুলোকে কিসের ভিত্তিতে সর্ট করা হয়?",
+          options: [
+            "একক ওজন (Weight)",
+            "একক মূল্য (Value)",
+            "মূল্য এবং ওজনের অনুপাত (Value/Weight Ratio)",
+            "আকার (Size)",
+          ],
+          ans: 2,
+          exp: "প্রতি ইউনিটের মান বা প্রফিট ডেনসিটি (Value/Weight) হিসাব করে যার মান বেশি তাকে আগে নেওয়ার জন্য অনুপাতের ঊর্ধ্বক্রমে সর্ট করা হয়।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "N-সংখ্যক আইটেমের জন্য Fractional Knapsack সমস্যার সময় জটিলতা কত?",
+          options: ["O(N log N)", "O(2^N)", "O(N^2)", "O(W)"],
+          ans: 0,
+          exp: "আইটেমগুলোকে (Value/Weight) অনুপাত অনুযায়ী সর্ট করতেই O(N log N) সময় লাগে, যা প্রধান সময় নির্দেশ করে।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "আইটেমগুলো যদি আগেই সর্ট করা থাকে, তবে Fractional Knapsack এর সময় জটিলতা কত?",
+          options: ["O(N log N)", "O(N)", "O(1)", "O(W)"],
+          ans: 1,
+          exp: "সর্টেড থাকলে ব্যাগে একে একে আইটেম ভরতে একবার লুপ চালানোই যথেষ্ট, যার সময় জটিলতা O(N)।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "যদি Knapsack Capacity W হয় এবং সম্পূর্ণ ভর্তি করার পর খালি জায়গা না থাকে, তবে শেষ আইটেমের কতটুকু নেওয়া হয়?",
+          options: [
+            "সম্পূর্ণ আইটেম",
+            "অবশিষ্ট খালি জায়গা / ওই আইটেমের ওজন",
+            "শূন্য",
+            "অর্ধেক",
+          ],
+          ans: 1,
+          exp: "শেষ আইটেমের ভগ্নাংশ (Remaining Capacity / Item Weight) গুণ করে ব্যাগ পূর্ণ করা হয়।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "Fractional Knapsack-এ কি সবসময় ব্যাগের পুরো Capacity ব্যবহার করা হয়?",
+          options: [
+            "হ্যাঁ, যদি মোট আইটেমের মোট ওজন ব্যাগের চেয়ে বেশি বা সমান হয়",
+            "না, কখনোই না",
+            "কেবল ১টি আইটেম নেওয়া হলে",
+            "ওজন শূন্য হলে",
+          ],
+          ans: 0,
+          exp: "যেহেতু আইটেমকে ইচ্ছেমতো ভেঙে নেওয়া যায়, তাই পর্যাপ্ত বস্তুর সরবরাহ থাকলে ব্যাগ পুরো ভর্তি করা সম্ভব।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "Value = [60, 100, 120] এবং Weight = [10, 20, 30], ব্যাগের ক্ষমতা W = 50 হলে সর্বোচ্চ কত Value পাওয়া সম্ভব?",
+          options: ["220", "240", "180", "160"],
+          ans: 1,
+          exp: "Ratio: A=6, B=5, C=4। A (W=10, V=60) পুরো নেওয়া হলো। B (W=20, V=100) পুরো নেওয়া হলো। বাকি W=20 এর জন্য C থেকে 20/30 অংশ নেওয়া হলো (Value 120 * 2/3 = 80)। মোট = 60 + 100 + 80 = 240।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "Fractional Knapsack সমস্যাটিতে সর্টিং এর জন্য কোন অ্যালগরিদম ব্যবহার করলে সবচেয়ে ভালো পারফরম্যান্স পাওয়া যায়?",
+          options: [
+            "Bubble Sort",
+            "Merge Sort / Quick Sort",
+            "Insertion Sort",
+            "Selection Sort",
+          ],
+          ans: 1,
+          exp: "O(N log N) জটিলতার দক্ষ সর্টিং অ্যালগরিদম যেমন Merge Sort বা Quick Sort ব্যবহার করা হয়।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "Fractional Knapsack সমস্যাটির জন্য ব্যবহৃত মেমরি স্পেস জটিলতা (Space Complexity) কত?",
+          options: ["O(N)", "O(W)", "O(2^N)", "O(N^2)"],
+          ans: 0,
+          exp: "N-সংখ্যক বস্তুর অনুপাত এবং ডেটা রাখার জন্য O(N) অতিরিক্ত মেমরি স্পেসের প্রয়োজন হয়।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "যদি সকল বস্তুর Value/Weight অনুপাত সমান হয়, তবে ফলাফল কী হবে?",
+          options: [
+            "যেকোনো বস্তু যেকোনো ক্রমানুসারে নেওয়া যাবে, প্রফিট একই থাকবে",
+            "সমাধান পাওয়া যাবে না",
+            "সবচেয়ে ভারী বস্তু আগে নিতে হবে",
+            "সবচেয়ে হালকা বস্তু আগে নিতে হবে",
+          ],
+          ans: 0,
+          exp: "অনুপাত সমান হলে প্রতিটি বস্তুর একক মান সমান, তাই যেকোনো বস্তু ভরলেই মোট ক্যাপাসিটি অনুযায়ী সমান ভ্যালু মিলবে।",
+        },
+        {
+          topic: "Fractional Knapsack",
+          q: "Fractional Knapsack সমস্যার প্রধান প্রয়োগ ক্ষেত্র কোনটি?",
+          options: [
+            "Resource Allocation in Networks / Material Cutting",
+            "Shortest Path Finding",
+            "Compilers Parsing",
+            "Sudoku Solving",
+          ],
+          ans: 0,
+          exp: "নির্দিষ্ট বাজেটে বা ক্যাপাসিটিতে তরল, শস্য বা ধাতু জাতীয় জিনিস বিভাজন করে সর্বোচ্চ লাভের রিসোর্স বরাদ্দে এটি ব্যবহৃত হয়।",
+        },
+
+        // Activity Selection Problem (10)
+        {
+          topic: "Activity Selection",
+          q: "Activity Selection Problem-এ কার্যক্রমগুলো কিসের ভিত্তিতে সর্ট করা হয়?",
+          options: [
+            "শুরুর সময় (Start Time)",
+            "শেষের সময় (Finish Time)",
+            "মোট সময় (Duration)",
+            "আইডি নম্বর",
+          ],
+          ans: 1,
+          exp: "Finish Time অনুযায়ী ঊর্ধ্বক্রমে সর্ট করলে যেটি আগে শেষ হয় তা বেছে নেওয়া যায়, ফলে অন্য কাজের জন্য সর্বাধিক সময় খালি থাকে।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "Activity Selection প্রবলেমের গ্রিডি সলিউশনের সময় জটিলতা কত (যদি আনসর্টেড থাকে)?",
+          options: ["O(N)", "O(N log N)", "O(N^2)", "O(2^N)"],
+          ans: 1,
+          exp: "কার্যক্রমগুলোর Finish Time সর্ট করতে O(N log N) সময় লাগে এবং পরবর্তীতে একবার স্ক্যান করতে O(N) সময় লাগে।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "যদি অ্যাক্টিভিটিগুলো আগে থেকেই Finish Time অনুযায়ী সর্ট করা থাকে, তবে সময় জটিলতা কত?",
+          options: ["O(N log N)", "O(N)", "O(1)", "O(N^2)"],
+          ans: 1,
+          exp: "সর্টেড থাকলে সিঙ্গেল লুপ চালিয়ে O(N) সময়েই সব নন-ওভারল্যাপিং অ্যাক্টিভিটি সিলেক্ট করা যায়।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "দুটি অ্যাক্টিভিটি i এবং j পরস্পরের সাথে সামঞ্জস্যপূর্ণ (Compatible) হবে যদি-",
+          options: [
+            "Start(i) >= Finish(j) অথবা Start(j) >= Finish(i)",
+            "Start(i) == Start(j)",
+            "Finish(i) == Finish(j)",
+            "Duration(i) == Duration(j)",
+          ],
+          ans: 0,
+          exp: "একটি কাজের কাজ শুরু হওয়ার সময় যদি অপর কাজের শেষের সময় বা তার পরে হয়, তবে তারা ওভারল্যাপ করে না।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "Activity Selection প্রবলেমে যদি আমরা Finish Time-এর বদলে Start Time অনুযায়ী সর্ট করি তবে কী ঘটবে?",
+          options: [
+            "সর্বদা সঠিক উত্তর পাওয়া যাবে",
+            "এটি গ্রিডি নীতি ভঙ্গ করতে পারে এবং সঠিক উত্তর নাও দিতে পারে",
+            "সময় O(1) হয়ে যাবে",
+            "সব কাজ একসাথে করা যাবে",
+          ],
+          ans: 1,
+          exp: "আগে শুরু হওয়া কাজ দীর্ঘসময় ধরে চললে পরবর্তী অনেক ছোট কাজ মিস হয়ে যেতে পারে, তাই এটি সর্বদা অপটিমাল সলিউশন দেয় না।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "স্টার্ট সময় S=[1, 3, 0, 5, 8, 5] এবং ফিনিশ সময় F=[2, 4, 6, 7, 9, 9] হলে সর্বোচ্চ কতটি কাজ করা সম্ভব?",
+          options: ["2টি", "3টি", "4টি", "5টি"],
+          ans: 2,
+          exp: "সর্টেড ফিনিশ টাইম অনুযায়ী নির্বাচিত কাজ: (1,2) -> (3,4) -> (5,7) -> (8,9)। মোট ৪টি কাজ সামঞ্জস্যপূর্ণ।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "Activity Selection প্রবলেমের ক্ষেত্রে ব্যবহৃত অতিরিক্ত মেমরি জটিলতা কত?",
+          options: [
+            "O(1) বা O(N) নির্বাচিত তালিকা রাখার জন্য",
+            "O(N^2)",
+            "O(2^N)",
+            "O(log N)",
+          ],
+          ans: 0,
+          exp: "মূল অ্যারে ইন-প্লেস সর্ট করলে O(1) এবং আলাদা আউটপুট অ্যারে সংরক্ষণ করলে O(N) স্পেস লাগে।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "Interval Scheduling প্রবলেম নিচের কোন সমস্যাটির সমতুল্য?",
+          options: [
+            "Fractional Knapsack",
+            "Activity Selection Problem",
+            "Huffman Coding",
+            "Matrix Chain Multiplication",
+          ],
+          ans: 1,
+          exp: "Interval Scheduling প্রবলেমে ওভারল্যাপিং ছাড়া সর্বোচ্চ কতগুলো ইন্টারভাল সিলেক্ট করা যায় তা নির্ধারণ করা হয়, যা Activity Selection এর অনুরূপ।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "Activity Selection এ প্রথম আইটেম হিসেবে কোনটি সর্বদা নির্বাচিত হয়?",
+          options: [
+            "সর্বনিম্ন Start Time যুক্ত কাজ",
+            "সর্টেড তালিকার প্রথম কাজ (Earliest Finish Time)",
+            "সর্বোচ্চ Duration যুক্ত কাজ",
+            "র্যান্ডম কাজ",
+          ],
+          ans: 1,
+          exp: "Finish Time অনুযায়ী সর্ট করার পর তালিকার প্রথম কাজটিই সবচেয়ে আগে শেষ হয়, তাই এটি সর্বদা নির্বাচিত হয়।",
+        },
+        {
+          topic: "Activity Selection",
+          q: "একই হলে রিঅ্যাক্টিভিটি নির্বাচনে টাই ব্র্যাকিং (Tie breaking) কীভাবে করা যায়?",
+          options: [
+            "যেকোনো একটি বেছে নিলেই হবে, ফলাফলে পার্থক্য হবে না",
+            "কোড চালানো যাবে না",
+            "সব বাদ দিতে হবে",
+            "প্রথম ও শেষ কাজ বেছে নিতে হবে",
+          ],
+          ans: 0,
+          exp: "একাধিক অ্যাক্টিভিটির ফিনিশ টাইম একই হলে যেকোনো একটি বেছে নিলে অপটিমাল কাজের সংখ্যা অপরিবর্তিত থাকে।",
+        },
+
+        // Huffman Encoding (10)
+        {
+          topic: "Huffman Encoding",
+          q: "Huffman Coding কোন উদ্দেশ্যে ব্যবহৃত হয়?",
+          options: [
+            "Lossless Data Compression (ডেটা সং সংকোচন)",
+            "Shortest Path Detection",
+            "Sorting Large Arrays",
+            "Encryption only",
+          ],
+          ans: 0,
+          exp: "হাফম্যান কোডিং একটি জনপ্রিয় লসলেস ডেটা কম্প্রেশন পদ্ধতি যা অক্ষরের ফ্রিকোয়েন্সির ওপর ভিত্তি করে কোড তৈরি করে।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "Huffman Encoding-এ কোন নীতিটি অনুসৃত হয়?",
+          options: [
+            "বেশি ব্যবহৃত ক্যারেক্টারকে ছোট বিট এবং কম ব্যবহৃত ক্যারেক্টারকে বড় বিট দেওয়া",
+            "সব ক্যারেক্টারকে সমান ৮ বিট দেওয়া",
+            "কম ব্যবহৃতকে ছোট বিট দেওয়া",
+            "র্যান্ডম বিট অ্যাসাইন করা",
+          ],
+          ans: 0,
+          exp: "frequent character = shorter code, rare character = longer code। এতে সামগ্রিক ফাইলের আকার কমে যায়।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "Huffman Tree তৈরির জন্য কোন ডেটা স্ট্রাকচারটি সবচেয়ে বেশি ব্যবহৃত হয়?",
+          options: [
+            "Min-Heap / Priority Queue",
+            "Max-Heap",
+            "Simple Stack",
+            "Queue",
+          ],
+          ans: 0,
+          exp: "সর্বনিম্ন ফ্রিকোয়েন্সির দুটি নোড বারবার সহজে বের করার জন্য Min-Heap ব্যবহৃত হয়।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "N-সংখ্যক অনন্য অক্ষরের জন্য Huffman Tree তৈরি করার সময় জটিলতা কত?",
+          options: ["O(N^2)", "O(N log N)", "O(2^N)", "O(N)"],
+          ans: 1,
+          exp: "Min-Heap-এ N-1 বার দুটি নোড বের ও নতুন নোড ইনসার্ট করার প্রতিটির সময় O(log N)। ফলে মোট সময় O(N log N)।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "Huffman Code-কে Prefix Code বা Prefix-free Code বলা হয় কেন?",
+          options: [
+            "কাজের শুরুতে যোগ করা হয় বলে",
+            "কোনো ক্যারেক্টারের বাইনারি কোড অন্য কোনো ক্যারেক্টারের কোডের প্রথমাংশ (Prefix) হতে পারে না",
+            "সব কোড ১ দিয়ে শুরু হয়",
+            "কোডের দৈর্ঘ্য নির্দিষ্ট",
+          ],
+          ans: 1,
+          exp: "Prefix-free হওয়ার কারণে আম্বিগুয়িটি (Ambiguity) ছাড়াই ডেটা সহজে ডিকোড করা সম্ভব হয়।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "Huffman Tree-এর লিফ নোডগুলো (Leaf Nodes) কী নির্দেশ করে?",
+          options: [
+            "অভ্যন্তরীণ যোগফল",
+            "মূল ক্যারেক্টার বা চিহ্নসমূহ (Actual Characters)",
+            "রুট নোড",
+            "ফ্রিকোয়েন্সির অনুপাত",
+          ],
+          ans: 1,
+          exp: "হাফম্যান ট্রির প্রতিটি লিফ নোড মূল ক্যারেক্টার ধারণ করে, আর ইন্টারনাল নোডগুলো ফ্রিকোয়েন্সির যোগফল নির্দেশ করে।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "যদি কোনো ফাইলেই ৬টি ক্যারেক্টারের ফ্রিকোয়েন্সি সমান হয়, তবে Huffman Tree-এর গঠন কেমন হবে?",
+          options: [
+            "একটি ফুল ব্যালেন্সড বাইনারি ট্রি (Full Balanced Binary Tree)",
+            "একটি একমুখী লিংকড লিস্ট",
+            "একটি মাত্র রুট থাকবে",
+            "ট্রি তৈরি সম্ভব নয়",
+          ],
+          ans: 0,
+          exp: "ফ্রিকোয়েন্সি সমান হলে নোডগুলোর গভীরতা সমান থাকে এবং ট্রিটি পুরোপুরি সুষম বা ব্যালেন্সড বাইনারি ট্রির রূপ নেয়।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "Huffman Code ডিকোড (Decode) করার সময় ট্রি কীভাবে ট্রাভার্স করতে হয়?",
+          options: [
+            "বিট 0 হলে বামে এবং 1 হলে ডানে গিয়ে লিফ নোডে পৌঁছানো",
+            "লিফ থেকে রুটের দিকে",
+            "পোস্টঅর্ডার ট্রাভার্সাল",
+            "র্যান্ডম জাম্প",
+          ],
+          ans: 0,
+          exp: "এনকোডেড স্ট্রিং-এর প্রতিটি বিটের জন্য রুটিং শুরু করে লিফ নোড পাওয়া পর্যন্ত বাঁয়ে (0) বা ডানে (1) যাওয়া হয়।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "Fixed-length coding (যেমন ASCII) এর তুলনায় Huffman Coding কত শতাংশ জায়গা সাশ্রয় করতে পারে?",
+          options: [
+            "০%",
+            "সাধারণত ২০% থেকে ৬০% পর্যন্ত (ফ্রিকোয়েন্সির উপর ভিত্তি করে)",
+            "সবসময় ঠিক ১০০%",
+            "১০% এর কম",
+          ],
+          ans: 1,
+          exp: "ফ্রিকোয়েন্সির বৈচিত্র্য যত বেশি হবে, হাফম্যান কম্প্রেশন তত বেশি কার্যকর হবে।",
+        },
+        {
+          topic: "Huffman Encoding",
+          q: "চারটি অক্ষর A, B, C, D এর ফ্রিকোয়েন্সি যথাক্রমে 5, 9, 12, 13। A এবং B এর মার্জ করা নোডের ফ্রিকোয়েন্সি কত হবে?",
+          options: ["14", "21", "25", "17"],
+          ans: 0,
+          exp: "Min-Heap অনুযায়ী সর্বনিম্ন দুটি হলো A(5) এবং B(9)। এদের যোগফল = 5 + 9 = 14।",
+        },
+
+        // Task Scheduling Problem (10)
+        {
+          topic: "Task Scheduling",
+          q: "Job Sequencing with Deadlines সমস্যায় মূল লক্ষ্য কী?",
+          options: [
+            "সব কাজ শেষ করা",
+            "নির্দিষ্ট ডেডলাইনের মধ্যে সর্বোচ্চ প্রফিট বা লাভ অর্জন করা",
+            "সর্বনিম্ন মেমরি ব্যবহার করা",
+            "কাজের সময় দ্বিগুণ করা",
+          ],
+          ans: 1,
+          exp: "প্রতিটি কাজের নির্দিষ্ট প্রফিট ও ডেডলাইন থাকে। লক্ষ্য হলো সময়সীমার মধ্যে সর্বাধিক প্রফিট অর্জনের ক্রম খুঁজে বের করা।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "Job Sequencing প্রবলেমে কাজগুলোকে প্রথমে কীভাবে সর্ট করা হয়?",
+          options: [
+            "ডেডলাইনের ঊর্ধ্বক্রমে",
+            "প্রফিটের নিম্নক্রমে (Profit in Descending Order)",
+            "কাজের দৈর্ঘ্যের ঊর্ধ্বক্রমে",
+            "র্যান্ডমলি",
+          ],
+          ans: 1,
+          exp: "সর্বোচ্চ প্রফিট পাওয়া কাজগুলোকে আগে জায়গা দেওয়ার জন্য প্রফিটের বিয়োগাত্মক বা ডিসেন্ডিং অর্ডারে সর্ট করা হয়।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "একটি কাজের ডেডলাইন d হলে সেটিকে কোন স্লটে বসানো গ্রিডি কৌশলে সবচেয়ে উত্তম?",
+          options: [
+            "প্রথম স্লটে (Slot 1)",
+            "d-তম স্লটে বা তার ঠিক আগের প্রাপ্ত শেষ খালি স্লটে",
+            "সবসময় শেষ স্লটে",
+            "যেকোনো স্লটে",
+          ],
+          ans: 1,
+          exp: "কাজটি ডেডলাইনের শেষ মুহূর্তে সম্পন্ন করলে আগের ফাঁকা স্লটগুলো অন্য জরুরি কাজের জন্য উন্মুক্ত থাকে।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "N-সংখ্যক কাজের জন্য সাধারণ গ্রিডি Job Sequencing অ্যালগরিদমের সময় জটিলতা কত?",
+          options: ["O(N^2)", "O(N log N)", "O(N^3)", "O(2^N)"],
+          ans: 0,
+          exp: "সর্টিং-এ O(N log N) এবং প্রতিটি কাজের স্লট খুঁজতে O(N) করে মোট O(N^2) সময় লাগে (DSU দিয়ে O(N log N) করা যায়)।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "Disjoint Set Union (DSU) ব্যবহার করে Job Sequencing সলভ করলে সময় জটিলতা কত কমানো যায়?",
+          options: ["O(N log N)", "O(N)", "O(N^2)", "O(1)"],
+          ans: 0,
+          exp: "DSU (Find-Set/Union) ব্যবহার করে খালি স্লট মুহূর্তেই খুঁজে নেওয়া যায়, ফলে মোট সময় দাঁড়ায় O(N log N)।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "চারটি কাজ J1(P:70, D:2), J2(P:12, D:1), J3(P:15, D:2), J4(P:20, D:1)। সর্বোচ্চ প্রফিট কত?",
+          options: ["90", "85", "102", "70"],
+          ans: 0,
+          exp: "প্রফিট সর্ট: J1(70, D2), J4(20, D1), J3(15, D2), J2(12, D1)। Slot 2: J1 (P=70)। Slot 1: J4 (P=20)। মোট প্রফিট = 70 + 20 = 90।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "কাজের সংখ্যা N এবং সর্বোচ্চ ডেডলাইন D হলে স্লট অ্যারের সাইজ কত হতে হবে?",
+          options: ["N", "D", "N + D", "N * D"],
+          ans: 1,
+          exp: "টাইম স্লটগুলো ১ থেকে D পর্যন্ত বিস্তৃত থাকে, তাই সাইজ D এর সমান নির্ধারণ করতে হয়।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "Task Scheduling সমস্যায় যদি সব কাজের ডেডলাইন ১ হয়, তবে কয়টি কাজ সম্পূর্ণ করা সম্ভব?",
+          options: [
+            "সকল কাজ",
+            "কেবল ১টি কাজ (সর্বোচ্চ প্রফিটের কাজটি)",
+            "D সংখ্যক কাজ",
+            "শূন্যটি",
+          ],
+          ans: 1,
+          exp: "যেহেতু মোট সময়সীমা মাত্র ১ ইউনিট, তাই কেবল সর্বোচ্চ প্রফিট দেওয়া একমাত্র কাজটিই করা সম্ভব।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "Job Sequencing-এ যদি কোনো কাজের উপযোগী স্লট খালি না পাওয়া যায় তবে কী করা হয়?",
+          options: [
+            "অন্য কাজ মুছে ফেলা হয়",
+            "ওই কাজটি বাদ দেওয়া হয় (Rejected)",
+            "ডেডলাইন বাড়ানো হয়",
+            "সিস্টেম রিস্টার্ট হয়",
+          ],
+          ans: 1,
+          exp: "ডেডলাইনের মধ্যে খালি স্লট না থাকলে ওই কাজ দ্বারা প্রফিট অর্জন সম্ভব নয় বলে তা স্কিপ করা হয়।",
+        },
+        {
+          topic: "Task Scheduling",
+          q: "Task Scheduling-এর ক্ষেত্রে 'Lateness Minimization' সমস্যায় কোন নীতি মেনে সর্ট করা হয়?",
+          options: [
+            "Earliest Due Date (EDD)",
+            "Shortest Processing Time",
+            "Maximum Profit",
+            "Random",
+          ],
+          ans: 0,
+          exp: "জেরক্স বা ডেলিভারি দেরির পরিমাণ কমানোর জন্য 'Earliest Due Date' আগে সম্পন্ন করার গ্রিডি নিয়ম মানা হয়।",
+        },
+
+        // Coin Changing Problem (10)
+        {
+          topic: "Coin Changing",
+          q: "Coin Changing Problem-এর মূল উদ্দেশ্য কী?",
+          options: [
+            "নির্দিষ্ট পরিমাণ টাকা দিতে সর্বনিম্ন সংখ্যক মুদ্রা (Coins) ব্যবহার করা",
+            "সব মুদ্রার তালিকা তৈরি",
+            "টাকা দ্বিগুণ করা",
+            "সর্বোচ্চ মুদ্রা ব্যবহার করা",
+          ],
+          ans: 0,
+          exp: "গ্রিডি কয়েন চেঞ্জ সমস্যার লক্ষ্য হলো কম সংখ্যক কয়েন দিয়ে কাঙ্ক্ষিত টাকা দেওয়া।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "স্ট্যান্ডার্ড কারেন্সি সিস্টেমে (যেমন: 1, 2, 5, 10, 20, 50, 100) Coin Change-এ গ্রিডি কীভাবে কাজ করে?",
+          options: [
+            "সবসময় বড় মানের মুদ্রা আগে নেওয়া",
+            "সবসময় ছোট মানের মুদ্রা আগে নেওয়া",
+            "র্যান্ডম কয়েন নেওয়া",
+            "সব কয়েন সমান নেওয়া",
+          ],
+          ans: 0,
+          exp: "অবশিষ্ট টাকার চেয়ে ছোট বা সমান সর্ববৃহৎ মানের মুদ্রাটি (Largest Denomination) গ্রিডি চয়েস হিসেবে বেছে নেওয়া হয়।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "কয়েন সেট C = {1, 3, 4} এবং টার্গেট V = 6 হলে, Greedy Algorithm কয়টি কয়েন দেবে?",
+          options: ["2টি (3+3)", "3টি (4+1+1)", "4টি (1+1+1+1+1+1)", "1টি"],
+          ans: 1,
+          exp: "Greedy বেছে নেবে 4, বাকি থাকে 2। তারপর 1, 1 (মোট ৩টি: 4,1,1)। কিন্তু Optimal সলিউশন হলো ২টি (3+3)।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "যেকোনো ইচ্ছেমত ডিনোমিনেশনের ক্ষেত্রে সঠিক সমাধান পাওয়ার জন্য Coin Changing-এ কোনটি ব্যবহার করা বাধ্যতামূলক?",
+          options: [
+            "Greedy Algorithm",
+            "Dynamic Programming",
+            "Binary Search",
+            "Divide & Conquer",
+          ],
+          ans: 1,
+          exp: "নন-ক্যানোনিক্যাল বা সাধারণ যেকোনো কয়েন সেটের জন্য গ্রিডি ব্যর্থ হতে পারে, তাই DP ব্যবহার করা হয়।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "US Currency (1, 5, 10, 25) কি ধরনের সিস্টেম যেখানে Greedy সর্বদা কাজ করে?",
+          options: [
+            "Canonical Coin System",
+            "Non-canonical System",
+            "Exponential System",
+            "Fibonacci System",
+          ],
+          ans: 0,
+          exp: "যেসব মুদ্রা ব্যবস্থায় গ্রিডি অ্যালগরিদম সর্বদা সর্বনিম্ন কয়েনের সঠিক উত্তর দেয় সেগুলোকে Canonical Coin Systems বলে।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "Greedy Coin Change-এ N-সংখ্যক সর্টেড কয়েন থাকলে সময় জটিলতা কত?",
+          options: ["O(N)", "O(V)", "O(N log N)", "O(2^N)"],
+          ans: 0,
+          exp: "কয়েনগুলো বড় থেকে ছোট সর্ট করা থাকলে একবার লুপ চালিয়ে মান বিয়োগ করতেই O(N) সময় লাগে।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "কয়েন সেট {1, 5, 10, 20} দিয়ে 28 টাকা দিতে হলে Greedy অনুযায়ী কয়েন কম্বিনেশন কী হবে?",
+          options: [
+            "20, 5, 1, 1, 1 (5টি)",
+            "10, 10, 5, 1, 1, 1 (6টি)",
+            "20, 5, 2, 1",
+            "20, 8",
+          ],
+          ans: 0,
+          exp: "28 থেকে প্রথমে 20 (বাকি 8), তারপর 5 (বাকি 3), তারপর ৩টি 1 টাকার কয়েন (মোট ৫টি কয়েন)।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "Coin Change সমস্যায় যদি ১ টাকার মুদ্রা বিদ্যমান থাকে, তবে কি সবসময় টাকা মেলানো সম্ভব?",
+          options: [
+            "হ্যাঁ, যেকোনো পূর্ণসংখ্যার জন্য উত্তর পাওয়া যাবে",
+            "না, সম্ভব নয়",
+            "কেবল জোড় সংখ্যার জন্য সম্ভব",
+            "কেবল বিজোড় সংখ্যার জন্য সম্ভব",
+          ],
+          ans: 0,
+          exp: "১ টাকার কয়েন থাকলে যেকোনো ধনাত্মক মান অবশ্যই তৈরি করা সম্ভব (Base Case)।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "Greedy Coin Change-এ মুদ্রার সংখ্যা অসীম (Infinite Supply) ধরে নেওয়া হয় কি?",
+          options: [
+            "হ্যাঁ, প্রতিটি মানের পর্যাপ্ত মুদ্রা আছে ধরা হয়",
+            "না, প্রতিটি মাত্র ১টি থাকে",
+            "সর্বোচ্চ ২টি থাকে",
+            "ইনপুটের উপর নির্ভর করে",
+          ],
+          ans: 0,
+          exp: "স্ট্যান্ডার্ড কয়েন চেঞ্জ প্রবলেমে প্রতিটি মানের কয়েন যত খুশি ব্যবহার করার সুযোগ থাকে।",
+        },
+        {
+          topic: "Coin Changing",
+          q: "Dynamic Programming দিয়ে Coin Change এর সময় জটিলতা কত (V = Target, N = Coins)?",
+          options: ["O(N * V)", "O(N log N)", "O(2^V)", "O(V^2)"],
+          ans: 0,
+          exp: "DP টেবিল সাইজ N x V পূরণ করতে ওনার রানটাইম দাঁড়ায় O(N * V)।",
+        },
+
+        // Kruskal’s and Prim’s Minimum Spanning Tree (MST) (10)
+        {
+          topic: "MST Algorithms",
+          q: "Minimum Spanning Tree (MST)-এ V সংখ্যক ভার্টেক্স থাকলে এজ (Edge) সংখ্যা কতটি হবে?",
+          options: ["V", "V - 1", "V + 1", "E / 2"],
+          ans: 1,
+          exp: "যেহেতু MST একটি সাইকেলহীন কানেক্টেড ট্রি, তাই V সংখ্যক ভার্টেক্স জুড়তে ঠিক (V - 1) টি এজ লাগে।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "Kruskal's Algorithm প্রধানত কোন নীতির ওপর ভিত্তি করে কাজ করে?",
+          options: [
+            "ভার্টেক্স বাড়াতে থাকা",
+            "এজগুলোকে ওয়েট অনুযায়ী সর্ট করে কম ওয়েটের এজ যুক্ত করা (Edge-based)",
+            "র্যান্ডম সিলেক্ট করা",
+            "DFS ব্যবহার করা",
+          ],
+          ans: 1,
+          exp: "ক্রুশকাল অ্যালগরিদম সকল এজকে ওয়েট অনুযায়ী সর্ট করে ছোট ওয়েটের এজ যোগ করে এবং সাইকেল এড়িয়ে চলে।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "Prim's Algorithm প্রধানত কীভাবে কাজ করে?",
+          options: [
+            "একটি প্রারম্ভিক ভার্টেক্স থেকে শুরু করে নিকটবর্তী সর্বনিম্ন ওয়েটের এজ যুক্ত করে ট্রি বাড়ানো (Vertex-based)",
+            "সব এজ সর্ট করা",
+            "সাইকেল তৈরি করা",
+            "ম্যাট্রিক্স গুণ করা",
+          ],
+          ans: 0,
+          exp: "প্রাইম অ্যালগরিদম একটি নোড থেকে শুরু করে বর্তমান ট্রির সাথে যুক্ত সর্বনিম্ন ওয়েটের এজ ধরে বিস্তৃত হয়।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "Kruskal's Algorithm-এ সাইকেল (Cycle) সনাক্ত করার জন্য কোন ডেটা স্ট্রাকচার ব্যবহৃত হয়?",
+          options: [
+            "Stack",
+            "Disjoint Set Union (DSU / Find-Union)",
+            "Queue",
+            "Binary Search Tree",
+          ],
+          ans: 1,
+          exp: "DSU (Find-Set/Union) ব্যবহার করে এজ যোগ করার সময় দুটি নোড একই সেটে আছে কিনা তা O(α(N)) সময়ে চেক করে সাইকেল এড়ানো হয়।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "Dense Graph-এর ক্ষেত্রে (যেখানে E ≈ V^2) কোন MST অ্যালগরিদমটি বেশি কার্যকরী?",
+          options: [
+            "Kruskal's Algorithm",
+            "Prim's Algorithm (Adjacency Matrix দিয়ে)",
+            "Bellman-Ford",
+            "Floyd-Warshall",
+          ],
+          ans: 1,
+          exp: "Dense Graph-এ এজ সংখ্যা অনেক বেশি থাকায় Prim-এর অ্যালগরিদম (O(V^2)) ক্রুশকালের (O(E log E)) চেয়ে দ্রুত কাজ করে।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "Sparse Graph-এর ক্ষেত্রে (যেখানে E ≈ V) কোন MST অ্যালগরিদমটি ভালো পারফর্ম করে?",
+          options: [
+            "Kruskal's Algorithm",
+            "Floyd Warshall",
+            "Naive Prim's",
+            "Brute Force",
+          ],
+          ans: 0,
+          exp: "Sparse Graph-এ এজ কম থাকায় ক্রুশকালের O(E log V) সময় খুব কম হয়।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "Min-Heap / Priority Queue ব্যবহার করে Prim's Algorithm-এর সময় জটিলতা কত?",
+          options: ["O(V^2)", "O(E log V)", "O(V * E)", "O(V + E)"],
+          ans: 1,
+          exp: "Priority Queue ব্যবহার করলে প্রতিটি এজ প্রসেস ও আপডেট করতে সময় লাগে O(E log V)।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "একটি গ্রাফের সকল এজের ওয়েট ভিন্ন (Distinct) হলে কতটি অনন্য MST পাওয়া যাবে?",
+          options: [
+            "ঠিক ১টি (Unique MST)",
+            "V-1 টি",
+            "একাধিক হতে পারে",
+            "০ টি",
+          ],
+          ans: 0,
+          exp: "সকল এজের ওয়েট ইউনিক বা আলাদা হলে গ্রাফটির জন্য কেবল একটিই অনন্য MST গঠন করা সম্ভব।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "Kruskal ও Prim উভয় অ্যালগরিদমই কোন অ্যালগরিদম ক্যাটাগরির অন্তর্ভুক্ত?",
+          options: [
+            "Dynamic Programming",
+            "Greedy Paradigm",
+            "Divide and Conquer",
+            "Backtracking",
+          ],
+          ans: 1,
+          exp: "উভয় অ্যালগরিদমই প্রতি ধাপে সর্বনিম্ন ওয়েটের এজ বেছে নেয়, যা গ্রিডি অ্যাপ্রোচ।",
+        },
+        {
+          topic: "MST Algorithms",
+          q: "MST কি কোনো ডিসকানেক্টেড (Disconnected) গ্রাফের জন্য তৈরি করা সম্ভব?",
+          options: [
+            "হ্যাঁ",
+            "না, কারণ স্প্যানিং ট্রি অবশ্যই কানেক্টেড হতে হয় (সেক্ষেত্রে Spanning Forest হয়)",
+            "কেবল ২ নোড থাকলে সম্ভব",
+            "ওয়েট শূন্য হলে সম্ভব",
+          ],
+          ans: 1,
+          exp: "গ্রাফ কানেক্টেড না হলে একক Spanning Tree পাওয়া যায় না; সেক্ষেত্রে প্রতিটি উপ-অংশের জন্য Spanning Forest পাওয়া যায়।",
+        },
+
+        // Intro to Divide & Conquer Technique (10)
+        {
+          topic: "Divide & Conquer Intro",
+          q: "Divide and Conquer কৌশলের মূল ৩টি ধাপ কী কী?",
+          options: [
+            "Start, Process, End",
+            "Divide, Conquer, Combine",
+            "Input, Sort, Output",
+            "Break, Loop, Return",
+          ],
+          ans: 1,
+          exp: "১. Divide (সমস্যাকে ছোট সাব-প্রবলেমে ভাগ), ২. Conquer (রিকার্সিভলি সমাধান), ৩. Combine (উপ-সমাধানগুলো একত্র করা)।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "Divide and Conquer স্ট্র্যাটেজিতে সাব-প্রবলেমগুলো কেমন হয়?",
+          options: [
+            "ওভারল্যাপিং (Overlapping)",
+            "স্বাধীন ও ছোট সাইজের একই ধরনের সমজাতীয় সমস্যা (Independent Subproblems)",
+            "পরস্পর বিরোধী",
+            "ইনফিনিট সাইজের",
+          ],
+          ans: 1,
+          exp: "ডিভাইড অ্যান্ড কনকারে মূল সমস্যার ছোট সংস্করণ তৈরি হয় যা একে অপরের থেকে স্বাধীন (Non-overlapping)।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "নিচের কোন সমস্যাটি Divide and Conquer কৌশল ব্যবহার করে সমাধান করা হয়?",
+          options: [
+            "Binary Search",
+            "Merge Sort",
+            "Strassen's Matrix Multiplication",
+            "উপরের সবগুলো",
+          ],
+          ans: 3,
+          exp: "বাইনারি সার্চ, মার্জ সর্ট এবং স্ট্র্যাসেন্স ম্যাট্রিক্স গুণন - সবই ডিভাইড অ্যান্ড কনকারের প্রখ্যাত উদাহরণ।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "Divide and Conquer অ্যালগরিদমের সময় জটিলতা প্রকাশের জন্য প্রধানত কী ব্যবহৃত হয়?",
+          options: [
+            "Recurrence Relation (যেমন: T(n) = 2T(n/2) + f(n))",
+            "Truth Table",
+            "Control Flow Graph",
+            "State Diagram",
+          ],
+          ans: 0,
+          exp: "রিকার্সিভ ভাগ ও মার্জ করার ধাপগুলো Recurrence Relation দিয়ে প্রকাশ করে সমাধান করা হয়।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "Recurrence Relation সমাধানের জন্য বহুল ব্যবহৃত গাণিতিক থিওরেম কোনটি?",
+          options: [
+            "Euler's Theorem",
+            "Master Theorem",
+            "Pythagoras Theorem",
+            "Bayes Theorem",
+          ],
+          ans: 1,
+          exp: "T(n) = aT(n/b) + f(n) আকারের সমীকরণ এক পলকে সমাধান করতে Master Theorem ব্যবহার করা হয়।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "Divide and Conquer-এর তুলনায় Dynamic Programming কখন বেশি উপযোগী?",
+          options: [
+            "যখন সাব-প্রবলেমগুলো স্বাধীন হয়",
+            "যখন সাব-প্রবলেমগুলো ওভারল্যাপ করে (Repeated Subproblems)",
+            "যখন ইনপুট ছোট হয়",
+            "যখন সর্টিং লাগে না",
+          ],
+          ans: 1,
+          exp: "ওভারল্যাপিং থাকলে ডিভাইড অ্যান্ড কনকার একই কাজ বারবার করে ধীর হয়ে যায়, যেখানে DP রেজাল্ট সেভ করে দ্রুত কাজ করে।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "Divide and Conquer-এ 'Base Case' এর ভূমিকা কী?",
+          options: [
+            "রিকার্সন থামানো এবং ছোটতম সমস্যার সরাসরি উত্তর দেওয়া",
+            "লুপ চালু করা",
+            "মেমরি খালি করা",
+            "ইনপুট দ্বিগুণ করা",
+          ],
+          ans: 0,
+          exp: "Base case না থাকলে রিকার্সিভ কল অনির্দিষ্টকাল ধরে চলতে থাকবে এবং Stack Overflow ঘটবে।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "Binary Search এ প্রতি ধাপে সমস্যা সাইজ কতখানি কমে?",
+          options: [
+            "১ কমে (n-1)",
+            "অর্ধেক হয়ে যায় (n/2)",
+            "তিনভাগের একভাগ হয়",
+            "স্থির থাকে",
+          ],
+          ans: 1,
+          exp: "বাইনারি সার্চ মিডল এলিমেন্টের সাথে তুলনা করে প্রতি ধাপে সার্চ স্পেস অর্ধেক (n/2) বানিয়ে দেয়।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "Divide and Conquer পদ্ধতি বাস্তবায়নে ইন্টারনালি কম্পিউটার সিস্টেমের কোনটি ব্যবহৃত হয়?",
+          options: [
+            "Call Stack (Recursion)",
+            "Queue",
+            "Hash Map",
+            "Disk Buffer",
+          ],
+          ans: 0,
+          exp: "রিকার্সিভ ফাংশন কলের কাজ সম্পন্ন করতে সিস্টেম মেমরির Call Stack ব্যবহৃত হয়।",
+        },
+        {
+          topic: "Divide & Conquer Intro",
+          q: "সাধারণ ম্যাট্রিক্স গুণনের O(n^3) সময় জটিলতা কমিয়ে Strassen's Algorithm কততে এনেছে?",
+          options: ["O(n^2.81)", "O(n log n)", "O(n^2)", "O(n)"],
+          ans: 0,
+          exp: "Strassen ডিভাইড অ্যান্ড কনকার প্রয়োগ করে ৮টির জায়গায় ৭টি গুণন সম্পন্ন করে O(n^2.81) জটিলতা অর্জন করে।",
+        },
+
+        // Quick Sort & Analysis (10)
+        {
+          topic: "Quick Sort",
+          q: "Quick Sort অ্যালগরিদমের মূল ভিত্তি কোনটি?",
+          options: [
+            "Merge step",
+            "Partitioning around a Pivot",
+            "Heapify step",
+            "Counting frequency",
+          ],
+          ans: 1,
+          exp: "পাইভোট (Pivot) উপাদান বাছাই করে তার চেয়ে ছোটগুলোকে বামে এবং বড়গুলোকে ডানে সাজানোর (Partitioning) ওপর এটি নির্ভরশীল।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "Quick Sort-এর Best Case এবং Average Case সময় জটিলতা কত?",
+          options: ["O(n log n)", "O(n^2)", "O(n)", "O(log n)"],
+          ans: 0,
+          exp: "যদি পাইভোট প্রতিবার অ্যারেকে প্রায় সমান দুভাগে ভাগ করে, তবে সময় জটিলতা হয় O(n log n)।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "Quick Sort-এর Worst Case সময় জটিলতা কখন ঘটে এবং তা কত?",
+          options: [
+            "O(n log n), সর্টেড থাকলে",
+            "O(n^2), যখন অ্যারে সর্টেড থাকে এবং প্রথম/শেষের উপাদানকে পাইভোট ধরা হয়",
+            "O(n), র্যান্ডম থাকলে",
+            "O(n^3), সব সমান হলে",
+          ],
+          ans: 1,
+          exp: "অ্যারে আগে থেকে সর্টেড থাকলে এবং চরমতম উপাদানকে Pivot নিলে পার্টিশন আনব্যালেন্সড (0 এবং n-1) হয়, রানটাইম দাঁড়ায় O(n^2)।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "Quick Sort কি একটি In-place Sorting Algorithm?",
+          options: [
+            "হ্যাঁ, অতিরিক্ত বাহ্যিক অ্যারে লাগে না (O(log n) স্ট্যাক স্পেস ছাড়া)",
+            "না, O(n) অ্যারে লাগে",
+            "কেবল ছোট ইনপুটে ইন-প্লেস",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "কুইক সর্ট মূল অ্যারের ভেতরেই সোয়াপ করে কাজ করে বলে এটি In-place সর্টিং অ্যালগরিদম।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "Lomuto Partitioning এবং Hoare's Partitioning এর মধ্যে কোনটি কম সোয়াপ (Swap) করে?",
+          options: [
+            "Lomuto",
+            "Hoare's Partition Scheme",
+            "উভয়ই সমান",
+            "কোনোটিই সোয়াপ করে না",
+          ],
+          ans: 1,
+          exp: "Hoare's স্কিম গড়ে Lomuto-র চেয়ে ৩ গুণ কম সোয়াপ করে এবং দ্রুত কাজ করে।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "Quick Sort-এর Worst-case এড়ানোর জন্য কোন কৌশল অবলম্বন করা হয়?",
+          options: [
+            "Randomized Quick Sort (Random Pivot Selection)",
+            "Bubble Sort ব্যবহার",
+            "সব উপাদান ০ করা",
+            "সর্টিং না করা",
+          ],
+          ans: 0,
+          exp: "র্যান্ডমলি Pivot সিলেক্ট করলে কোনো নির্দিষ্ট ইনপুট প্যাটার্নের জন্য ওনার Worst-case O(n^2) হওয়ার সম্ভাবনা প্রায় শূন্য হয়ে যায়।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "Quick Sort কি একটি Stable Sorting Algorithm?",
+          options: [
+            "হ্যাঁ",
+            "না, সমমানের উপাদানের আপেক্ষিক ক্রম পরিবর্তিত হতে পারে",
+            "কেবল সর্টেড ডেটায় স্ট্যাবল",
+            "ইনপুট সাইজ জোড় হলে স্ট্যাবল",
+          ],
+          ans: 1,
+          exp: "দূরের উপাদানগুলোর সাথে সোয়াপ করার কারণে কুইক সর্টে সমান মানের উপাদানের আসল অর্ডার বজায় থাকে না (Unstable)।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "Quick Sort-এ Partition অ্যালগরিদমের সময় জটিলতা কত?",
+          options: ["O(n)", "O(log n)", "O(n^2)", "O(1)"],
+          ans: 0,
+          exp: "পাইভোটের সাপেক্ষে এলিমেন্ট কম্পেয়ার ও সোয়াপ করতে পুরো সাব-অ্যারে একবার স্ক্যান করতে O(n) সময় লাগে।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "Quick Sort এর Auxiliary Space Complexity (Stack-এর জন্য) কত?",
+          options: [
+            "O(1) থেকে O(log n) Average, O(n) Worst case",
+            "O(n) সবসময়",
+            "O(n^2)",
+            "O(1) সবসময়",
+          ],
+          ans: 0,
+          exp: "রিকার্সন কলের জন্য ব্যাকগ্রাউন্ড স্ট্যাকে Average Case-এ O(log n) এবং Worst Case-এ O(n) স্পেস লাগে।",
+        },
+        {
+          topic: "Quick Sort",
+          q: "বাস্তব জগতে C++ `std::sort` বা সর্টিং লাইব্রেরিতে কুইক সর্টের পরিবর্তিত কোন ভার্সন ব্যবহৃত হয়?",
+          options: [
+            "Introsort (Quick Sort + Heap Sort + Insertion Sort)",
+            "Pure Quick Sort",
+            "Bubble Quick",
+            "Merge-Quick",
+          ],
+          ans: 0,
+          exp: "Introsort কুইক সর্ট দিয়ে শুরু হয়, রিকার্সন বেশি গভীর হলে Heap Sort এ সুইচ করে Worst case ওয়ান O(n log n) নিশ্চিত করে।",
+        },
+
+        // Merge Sort & Analysis (10)
+        {
+          topic: "Merge Sort",
+          q: "Merge Sort অ্যালগরিদমের Best, Average এবং Worst Case সময় জটিলতা কত?",
+          options: [
+            "O(n log n) সকল ক্ষেত্রে",
+            "Best: O(n), Worst: O(n^2)",
+            "O(n^2) সকল ক্ষেত্রে",
+            "O(n) সকল ক্ষেত্রে",
+          ],
+          ans: 0,
+          exp: "মার্জ সর্ট ইনপুট যাই হোক না কেন সবসময় অ্যারেকে সমান দুই ভাগে ভাগ করে এবং মার্জ করে, তাই এটি সর্বদা O(n log n)।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "Merge Sort অ্যালগরিদমের Auxiliary Space Complexity কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+          ans: 1,
+          exp: "দুটি ভাগ করা সর্টেড অ্যারে একত্র (Merge) করার সময় অতিরিক্ত ও সমপরিমাণ O(n) মেমরি স্পেসের প্রয়োজন হয়।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "Merge Sort কি একটি Stable Sorting Algorithm?",
+          options: [
+            "হ্যাঁ, সমমানের উপাদানের পূর্বের আপেক্ষিক ক্রম অক্ষুণ্ণ থাকে",
+            "না, এটি Unstable",
+            "কেবল রিভার্স ডেটায় স্ট্যাবল",
+            "কোনোটিই নয়",
+          ],
+          ans: 0,
+          exp: "মার্জ করার সময় `<=` শর্ত ব্যবহার করার কারণে সমান উপাদানের বামেরটি আগে বসে, তাই এটি Stable।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "Linked List সর্ট করার জন্য নিচের কোনটি সবচেয়ে আদর্শ ও দক্ষ সর্টিং অ্যালগরিদম?",
+          options: ["Quick Sort", "Merge Sort", "Heap Sort", "Bubble Sort"],
+          ans: 1,
+          exp: "লিংকড লিস্টে র‍্যান্ডম এক্সেস O(1) নয়, কিন্তু পয়েন্টার চেঞ্জ করে সহজেই O(1) এক্সট্রা স্পেসে Merge করা সম্ভব।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "Merge Step (দুটি সর্টেড অ্যারে একত্র করা)-এর সময় জটিলতা কত?",
+          options: [
+            "O(n1 + n2) যা O(n) এর সমান",
+            "O(n log n)",
+            "O(n^2)",
+            "O(1)",
+          ],
+          ans: 0,
+          exp: "দুটি সর্টেড অ্যারে (সাইজ n1 ও n2) সিঙ্গেল পাস মিলিয়ে একটি সর্টেড অ্যারে বানাতে O(n1 + n2) বা O(n) সময় লাগে।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "Merge Sort-এর রিকারেন্স রিলেশন (Recurrence Relation) সমীকরণ কোনটি?",
+          options: [
+            "T(n) = 2T(n/2) + O(n)",
+            "T(n) = T(n-1) + O(n)",
+            "T(n) = 2T(n/2) + O(1)",
+            "T(n) = T(n/2) + O(n)",
+          ],
+          ans: 0,
+          exp: "অ্যারে ২ ভাগে ভাগ করতে ২T(n/2) এবং মার্জ করতে O(n) সময় লাগে। Master Theorem দিয়ে এর মান O(n log n)।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "Merge Sort কি একটি In-place Sorting Algorithm?",
+          options: [
+            "হ্যাঁ",
+            "না, কারণ এর O(n) অতিরিক্ত অ্যারে স্পেস লাগে",
+            "ছোট অ্যারের জন্য ইন-প্লেস",
+            "পাইভোট থাকলে ইন-প্লেস",
+          ],
+          ans: 1,
+          exp: "স্ট্যান্ডার্ড মার্জ সর্টিং-এ অতিরিক্ত Temp Array লাগে বিধায় এটি ইন-প্লেস নয়।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "External Sorting (বড় সাইজের ফাইল যা RAM এ ধরে না) এর ক্ষেত্রে কোনটি ব্যবহৃত হয়?",
+          options: [
+            "External Merge Sort",
+            "Quick Sort",
+            "Insertion Sort",
+            "Selection Sort",
+          ],
+          ans: 0,
+          exp: "ডিস্ক বা হার্ডড্রাইভের বড় ডেটা খণ্ড খণ্ড করে সর্ট করে মেলানোর জন্য External Merge Sort ব্যবহার করা হয়।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "Merge Sort-এ ডিভাইড (Divide) ধাপটির সময় জটিলতা কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+          ans: 0,
+          exp: "মধ্যবিন্দু `mid = (low + high)/2` বের করে ভাগ করা মাত্র O(1) বা ধ্রুবক সময়ের কাজ।",
+        },
+        {
+          topic: "Merge Sort",
+          q: "32টি উপাদানের একটি অ্যারে সম্পূর্ণ এককের উপ-অ্যারেতে ভাঙতে Merge Sort-এ রিকার্সন ট্রির গভীরতা (Depth) কত হবে?",
+          options: ["5", "32", "16", "64"],
+          ans: 0,
+          exp: "Depth = log2(32) = 5। পাঁচ ধাপে কেটে এটি একক উপাদানে রূপ নেয়।",
+        },
+
+        // Proof of Correctness & Run Time Analysis (10)
+        {
+          topic: "Proof & Analysis",
+          q: "Loop Invariant প্রমাণের তিনটি আবশ্যকীয় ধাপ কী কী?",
+          options: [
+            "Start, Run, Stop",
+            "Initialization, Maintenance, Termination",
+            "Base, Hypo, Step",
+            "Input, Process, Output",
+          ],
+          ans: 1,
+          exp: "১. Initialization (লুপ শুরুর আগে সত্য), ২. Maintenance (প্রতি ইটারেশনে সত্য), ৩. Termination (লুপ শেষে সঠিক ফলাফল প্রমাণ)।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "Master Theorem অনুযায়ী T(n) = aT(n/b) + f(n) সমীকরণে a এবং b এর শর্ত কী?",
+          options: [
+            "a >= 1 এবং b > 1",
+            "a < 1 এবং b < 1",
+            "a = 0 এবং b = 0",
+            "a ও b যেকোনো ঋণাত্মক সংখ্যা",
+          ],
+          ans: 0,
+          exp: "সাব-প্রবলেমের সংখ্যা a অন্তত ১ হতে হবে এবং সাব-প্রবলেম সাইজ কমানোর অনুপাত b সর্বদা ১ এর চেয়ে বড় হতে হবে।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "T(n) = 2T(n/2) + n সমীকরণটির সময় জটিলতা Master Theorem দিয়ে কত হবে?",
+          options: ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"],
+          ans: 1,
+          exp: "এখানে a=2, b=2, log_b(a) = log_2(2) = 1। f(n) = n^1 = n। এটি Master Theorem Case 2, ফলে উত্তর O(n log n)।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "Asymptotic Notation 'Big-O' (O) কিসের ধারণা দেয়?",
+          options: [
+            "Lower Bound (Best Case)",
+            "Upper Bound (Worst Case)",
+            "Tight Bound (Exact Case)",
+            "Average Case strictly",
+          ],
+          ans: 1,
+          exp: "Big-O নোটেশন অ্যালগরিদমের সর্বোচ্চ সম্ভাব্য সময় বা Upper Bound প্রকাশ করে।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "Asymptotic Notation 'Big-Omega' (Ω) কিসের সীমা নির্দেশ করে?",
+          options: [
+            "Upper Bound",
+            "Lower Bound (Best Case)",
+            "Tight Bound",
+            "প্রোগ্রাম সাইজ",
+          ],
+          ans: 1,
+          exp: "Big-Omega (Ω) অ্যালগরিদমের সর্বনিম্ন সময় বা Lower Bound নির্দেশ করে।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "Big-Theta (Θ) নোটেশন কখন ব্যবহৃত হয়?",
+          options: [
+            "যখন Upper Bound এবং Lower Bound সমান হয় (Tight Bound)",
+            "শুধুমাত্র Worst case এ",
+            "যখন অ্যালগরিদম ব্যর্থ হয়",
+            "ইনপুট ০ হলে",
+          ],
+          ans: 0,
+          exp: "Big-Theta নির্দেশ করে f(n) এর বৃদ্ধি নির্দিষ্ট দুটি ধ্রুবকের সীমার ভেতরে অর্থাৎ Tight Bound এ থাকে।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "T(n) = T(n-1) + O(1) এবং Base Case T(1) = 1 হলে সমীকরণটির মান কত?",
+          options: ["O(n)", "O(n^2)", "O(log n)", "O(2^n)"],
+          ans: 0,
+          exp: "এটি ১ করে হ্রাস পাওয়া রিকার্সন। n ধাপে সমাধান শেষ হবে, তাই রানটাইম O(n)।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "T(n) = T(n-1) + n সমীকরণের সময় জটিলতা কত?",
+          options: ["O(n)", "O(n^2)", "O(n log n)", "O(2^n)"],
+          ans: 1,
+          exp: "১ থেকে n পর্যন্ত স্বাভাবিক সংখ্যার যোগফল = n(n+1)/2, যার Asymptotic রূপ O(n^2)।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "Substitution Method কিসের জন্য ব্যবহৃত হয়?",
+          options: [
+            "রিকার্সিভ সমীকরণ সমাধান ও তার সময় জটিলতার অনুমান প্রমাণের জন্য",
+            "সর্টিং করতে",
+            "গ্রাফ আঁকতে",
+            "মেমরি মাপতে",
+          ],
+          ans: 0,
+          exp: "Substitution Method-এ প্রথমে উত্তরের একটি সীমানা অনুমান করা হয় এবং Induction দিয়ে তা প্রমাণ করা হয়।",
+        },
+        {
+          topic: "Proof & Analysis",
+          q: "নিচের কোন গ্রোথ রেটটি (Growth Rate) সবচেয়ে ধীরগতিতে বাড়ে (সবচেয়ে দ্রুত কার্যকর)?",
+          options: ["O(n log n)", "O(n^2)", "O(log n)", "O(2^n)"],
+          ans: 2,
+          exp: "জটিলতার ক্রম: O(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(2^n)। তাই O(log n) সবচেয়ে দ্রুত।",
+        },
+      ];
+
+      // -------------------------------------------------------------
+      // STATE MANAGEMENT & LOCAL STORAGE
+      // -------------------------------------------------------------
+      let userAnswers = {};
+      let startTime = Date.now();
+      let timerInterval = null;
+
+      function loadState() {
+        const savedAnswers = localStorage.getItem("algo_quiz_job_answers");
+        const savedTime = localStorage.getItem("algo_quiz_job_time");
+
+        if (savedAnswers) {
+          userAnswers = JSON.parse(savedAnswers);
+        }
+        if (savedTime) {
+          startTime = Date.now() - parseInt(savedTime, 10);
+        } else {
+          startTime = Date.now();
+        }
+      }
+
+      function saveState() {
+        localStorage.setItem(
+          "algo_quiz_job_answers",
+          JSON.stringify(userAnswers),
+        );
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        localStorage.setItem("algo_quiz_job_time", elapsed.toString());
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          const totalSeconds = Math.floor((Date.now() - startTime) / 1000);
+          const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+          const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(
+            2,
+            "0",
+          );
+          const secs = String(totalSeconds % 60).padStart(2, "0");
+
+          document.getElementById("time-display").innerText =
+            `${hrs}:${mins}:${secs}`;
+          saveState();
+        }, 1000);
+      }
+
+      // -------------------------------------------------------------
+      // RENDER & FILTER LOGIC
+      // -------------------------------------------------------------
+      function renderQuiz() {
+        const container = document.getElementById("quiz-container");
+        const searchVal = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        const topicVal = document.getElementById("topic-filter").value;
+        const statusVal = document.getElementById("status-filter").value;
+
+        container.innerHTML = "";
+
+        let correctCount = 0;
+        let answeredCount = Object.keys(userAnswers).length;
+
+        rawQuestions.forEach((q, idx) => {
+          if (userAnswers[idx] !== undefined && userAnswers[idx] === q.ans) {
+            correctCount++;
+          }
+        });
+
+        document.getElementById("score-display").innerText =
+          `${correctCount}/120`;
+        document.getElementById("answered-display").innerText = answeredCount;
+        const accuracy =
+          answeredCount > 0
+            ? Math.round((correctCount / answeredCount) * 100)
+            : 0;
+        document.getElementById("accuracy-display").innerText = `${accuracy}%`;
+
+        let visibleCount = 0;
+
+        rawQuestions.forEach((q, idx) => {
+          const isAnswered = userAnswers[idx] !== undefined;
+          const isCorrect = isAnswered && userAnswers[idx] === q.ans;
+          const isWrong = isAnswered && userAnswers[idx] !== q.ans;
+
+          if (statusVal === "unanswered" && isAnswered) return;
+          if (statusVal === "correct" && !isCorrect) return;
+          if (statusVal === "wrong" && !isWrong) return;
+
+          if (topicVal !== "all" && q.topic !== topicVal) return;
+
+          const textToSearch = (
+            q.q +
+            " " +
+            q.options.join(" ") +
+            " " +
+            q.topic
+          ).toLowerCase();
+          if (searchVal && !textToSearch.includes(searchVal)) return;
+
+          visibleCount++;
+
+          const card = document.createElement("div");
+          card.className = "q-card";
+
+          let statusBadge = `<span class="badge badge-status">উত্তর দেওয়া হয়নি</span>`;
+          if (isCorrect)
+            statusBadge = `<span class="badge badge-status correct">✓ সঠিক</span>`;
+          if (isWrong)
+            statusBadge = `<span class="badge badge-status wrong">✕ ভুল</span>`;
+
+          let optionsHtml = "";
+          q.options.forEach((opt, optIdx) => {
+            let btnClass = "option-btn";
+
+            if (isAnswered) {
+              if (optIdx === q.ans) {
+                btnClass += " show-correct";
+              }
+              if (userAnswers[idx] === optIdx) {
+                btnClass +=
+                  optIdx === q.ans ? " selected-correct" : " selected-wrong";
+              }
+            }
+
+            optionsHtml += `
+        <button class="${btnClass}" 
+                onclick="handleAnswer(${idx}, ${optIdx})" 
+                ${isAnswered ? "disabled" : ""}>
+          <strong>${String.fromCharCode(65 + optIdx)}.</strong> ${opt}
+        </button>
+      `;
+          });
+
+          card.innerHTML = `
+      <div class="q-header">
+        <div class="q-meta">
+          <span class="badge">প্রশ্ন ${idx + 1}</span>
+          <span class="badge" style="background:#f3e8ff; color:#6b21a8;">${q.topic}</span>
+        </div>
+        ${statusBadge}
+      </div>
+      <div class="q-text">${q.q}</div>
+      <div class="options-grid">${optionsHtml}</div>
+      <div class="explanation-box ${isAnswered ? "active" : ""}">
+        <strong>💡 ব্যাখ্যা:</strong> ${q.exp}
+      </div>
+    `;
+
+          container.appendChild(card);
+        });
+
+        if (visibleCount === 0) {
+          container.innerHTML = `<div class="no-results">কোনো প্রশ্ন পাওয়া যায়নি! ফিল্টার বা সার্চ শব্দ পরিবর্তন করুন।</div>`;
+        }
+      }
+
+      function handleAnswer(qIndex, optionIndex) {
+        if (userAnswers[qIndex] !== undefined) return;
+        userAnswers[qIndex] = optionIndex;
+        saveState();
+        renderQuiz();
+      }
+
+      function resetQuiz() {
+        if (
+          confirm(
+            "আপনি কি নিশ্চিত যে সমস্ত উত্তর এবং টাইম হিস্টোরি রিসেট করতে চান?",
+          )
+        ) {
+          localStorage.removeItem("algo_quiz_job_answers");
+          localStorage.removeItem("algo_quiz_job_time");
+          userAnswers = {};
+          startTime = Date.now();
+          renderQuiz();
+        }
+      }
+
+      document
+        .getElementById("search-input")
+        .addEventListener("input", renderQuiz);
+      document
+        .getElementById("topic-filter")
+        .addEventListener("change", renderQuiz);
+      document
+        .getElementById("status-filter")
+        .addEventListener("change", renderQuiz);
+
+      window.onload = () => {
+        loadState();
+        startTimer();
+        renderQuiz();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1735 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DSA Premium Job Prep Quiz - Set 2 (Corrected)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Inter & Hind Siliguri Fonts -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800 antialiased min-h-screen flex flex-col">
+    <!-- Main Header with Navigation -->
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <!-- Website Logo / Title -->
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              DSA কুইজ পোর্টাল
+            </h1>
+            <p class="text-xs text-slate-400">
+              Data Structures & Algorithms Prep
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Links for All 7 Pages -->
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="chapter-three-1.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 1</a
+          >
+          <a
+            href="chapter-three-2.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 2</a
+          >
+          <a
+            href="chapter-three-3.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 3</a
+          >
+          <a
+            href="chapter-three-4.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 4</a
+          >
+          <a
+            href="chapter-three-5.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 5</a
+          >
+          <a
+            href="chapter-three-6.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 6</a
+          >
+          <a
+            href="chapter-three-7.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 7</a
+          >
+        </nav>
+      </div>
+    </header>
+    <header
+      class="bg-gradient-to-r from-emerald-800 via-teal-900 to-slate-900 text-white shadow-lg sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2.5 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20"
+          >
+            <i class="fa-solid fa-code text-2xl text-teal-300"></i>
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+              DSA জব প্রিপারেশন কুইজ
+              <span class="text-amber-300"
+                >(সেট - ২: ১০০% নির্ভুল সংস্করণ)</span
+              >
+            </h1>
+            <p class="text-xs text-teal-200">
+              সিলেবাস: Complexity, Tradeoff, Searching & Sorting (১০০টি সঠিক
+              উত্তরসহ MCQs)
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 items-center">
+          <span
+            class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+          >
+            <i class="fa-solid fa-award mr-1"></i> Correct: +1.0
+          </span>
+          <span
+            class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+          >
+            <i class="fa-solid fa-circle-minus mr-1"></i> Incorrect: -0.25
+          </span>
+          <button
+            onclick="showResetModal()"
+            class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 cursor-pointer"
+          >
+            <i class="fa-solid fa-rotate-left"></i> রিস্টার্ট করুন
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6"
+    >
+      <aside class="w-full lg:w-80 flex flex-col gap-6 lg:shrink-0">
+        <!-- Dynamic Scorecard Card -->
+        <div
+          class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sticky lg:top-24"
+        >
+          <h2
+            class="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center justify-between"
+          >
+            <span>লাইভ পারফরম্যান্স</span>
+            <i class="fa-solid fa-square-poll-horizontal text-emerald-600"></i>
+          </h2>
+
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                অ্যাক্টিভ মার্কস
+              </div>
+              <div
+                id="score-display"
+                class="text-2xl font-bold text-emerald-600"
+              >
+                0.00
+              </div>
+            </div>
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                মোট উত্তর
+              </div>
+              <div
+                id="attempted-display"
+                class="text-2xl font-bold text-slate-700"
+              >
+                0/100
+              </div>
+            </div>
+            <div
+              class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-center"
+            >
+              <div class="text-xs text-emerald-600 font-semibold mb-1">
+                সঠিক উত্তর
+              </div>
+              <div
+                id="correct-display"
+                class="text-xl font-bold text-emerald-600"
+              >
+                0
+              </div>
+            </div>
+            <div
+              class="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-center"
+            >
+              <div class="text-xs text-rose-500 font-semibold mb-1">
+                ভুল উত্তর
+              </div>
+              <div id="wrong-display" class="text-xl font-bold text-rose-600">
+                0
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="mb-5">
+            <div
+              class="flex justify-between text-xs font-semibold text-slate-500 mb-1"
+            >
+              <span>সম্পন্ন হয়েছে</span>
+              <span id="progress-percent">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2">
+              <div
+                id="progress-bar"
+                class="bg-emerald-600 h-2 rounded-full transition-all duration-300"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Filter Segment -->
+          <div class="mb-5">
+            <label
+              class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+              >টপিক ফিল্টার করুন</label
+            >
+            <select
+              id="topic-filter"
+              onchange="filterQuestions()"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-700"
+            >
+              <option value="all">সব প্রশ্ন একসাথে (১০০টি)</option>
+              <option value="complexity">Complexity & Intro (১-২৫)</option>
+              <option value="tradeoff">Time-Space Tradeoff (২৬-৫০)</option>
+              <option value="searching">Searching Techniques (৫১-৭৫)</option>
+              <option value="sorting">Sorting & Recursion (৭৬-১০০)</option>
+            </select>
+          </div>
+
+          <!-- Jump-to Grid -->
+          <div class="mb-2 flex items-center justify-between">
+            <label
+              class="text-xs font-bold text-slate-500 uppercase tracking-wider"
+              >দ্রুত প্রশ্নে যান (১ - ১০০)</label
+            >
+            <span
+              class="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold"
+              >গ্রিড</span
+            >
+          </div>
+
+          <div
+            id="question-grid"
+            class="grid grid-cols-10 gap-1.5 max-h-48 overflow-y-auto custom-scrollbar p-1 bg-slate-50 border border-slate-200 rounded-xl"
+          >
+            <!-- Grid items injected by JS -->
+          </div>
+        </div>
+      </aside>
+
+      <section class="flex-grow flex flex-col gap-5">
+        <div
+          class="bg-teal-50 border border-teal-200 rounded-2xl p-4 flex gap-3 items-start"
+        >
+          <i
+            class="fa-solid fa-circle-check text-teal-700 text-lg mt-0.5 shrink-0"
+          ></i>
+          <div class="text-xs md:text-sm text-teal-950 leading-relaxed">
+            <strong>সংশোধিত কুইজ সেট (Set-2):</strong> উত্তরগুলোর সমস্ত ভুল
+            সংশোধন করা হয়েছে। এখন আপনি ১০০টি প্রশ্নের নির্ভুল এবং সঠিক উত্তরের
+            সাপেক্ষে অনুশীলন করতে পারবেন।
+          </div>
+        </div>
+
+        <!-- Quiz Target Div -->
+        <div id="questions-list" class="flex flex-col gap-6">
+          <!-- Question Cards dynamically loaded -->
+        </div>
+
+        <div class="text-center py-6 border-t border-slate-200 mt-4">
+          <p class="text-sm text-slate-500">
+            সেট-২ এর সমস্ত ১০০টি সংশোধিত প্রশ্ন সার্থকভাবে লোড করা হয়েছে।
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Custom Animated Modal for Confirmation -->
+    <div
+      id="reset-modal"
+      class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300 mx-4"
+      >
+        <div class="flex items-center gap-3 text-amber-600 mb-3">
+          <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
+          <h3 class="text-lg font-bold text-slate-900">
+            কুইজ রিসেট নিশ্চিতকরণ
+          </h3>
+        </div>
+        <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+          আপনি কি নিশ্চিতভাবে এই কুইজ সেটটি নতুন করে শুরু করতে চান?
+        </p>
+        <div class="flex gap-3 justify-end">
+          <button
+            onclick="closeResetModal()"
+            class="px-4 py-2 border border-slate-200 text-slate-600 rounded-xl text-sm font-bold hover:bg-slate-50 transition-all cursor-pointer"
+          >
+            না
+          </button>
+          <button
+            onclick="confirmReset()"
+            class="px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-sm font-bold transition-all shadow-md cursor-pointer"
+          >
+            হ্যাঁ, রিসেট করুন
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Footer -->
+    <footer
+      class="bg-slate-950 text-slate-400 py-6 text-center border-t border-slate-800/60 text-xs mt-12 pb-16 lg:pb-6"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p class="mb-2">© ২০২৬ ডাটা স্ট্রাকচার ও অ্যালগরিদম কুইজ পোর্টাল।</p>
+      </div>
+    </footer>
+
+    <script>
+      // Corrected Database Mapping
+      const quizDatabase = [
+        // --- TOPIC 1: COMPLEXITY (1-25) ---
+        {
+          q: "অ্যালগরিদমের স্পেস জটিলতা (Space Complexity) মূলত কোন দুটি মেমোরি প্রয়োজনের সমন্বয়ে গঠিত হয়?",
+          options: [
+            "ফিক্সড স্পেস এবং ভ্যারিয়েবল স্পেসের সমষ্টি",
+            "শুধুমাত্র ইউজার ডেটা ও গ্লোবাল রেজিস্টার মেমোরি",
+            "সিপিইউ ক্যাশ এবং র‍্যাম স্পেস",
+            "ইনপুট ভেক্টরের ডেটা সাইজ এবং বাইনারি কোড সাইজ",
+          ],
+          correct: 0,
+          topic: "complexity",
+          explanation:
+            "স্পেস কমপ্লেক্সিটি প্রধানত ফিক্সড পার্ট এবং ভ্যারিয়েবল পার্ট এর যোগফল।",
+        },
+        {
+          q: "একটি লুপের ভেতরে ভ্যারিয়েবল 'i' এর মান প্রতি ধাপে দ্বিগুণ করা হলে (যেমন: for i = 1 to N; i = i * 2) তার জটিলতা কত হবে?",
+          options: ["O(N)", "O(log N)", "O(N²)", "O(1)"],
+          correct: 1,
+          topic: "complexity",
+          explanation:
+            "লুপ ভ্যারিয়েবল প্রতি ধাপে ২ গুণ বাড়ায় সময় জটিলতা O(log N)।",
+        },
+        {
+          q: "রিকার্সিভ ফিবোনাচি অ্যালগরিদম (কোনো মেমোইজেশন বা অপটিমাইজেশন ছাড়া) রান করতে স্পেস জটিলতা কত লাগবে?",
+          options: ["O(1)", "O(2^N)", "O(N)", "O(N log N)"],
+          correct: 2,
+          topic: "complexity",
+          explanation:
+            "রিকার্সিভ কল স্ট্যাকের সর্বোচ্চ গভীরতা N হওয়ায় স্পেস জটিলতা O(N)। (সময় জটিলতা O(2^N))",
+        },
+        {
+          q: "নিচের কোন টাইম কমপ্লেক্সিটি ক্লাসের বৃদ্ধির হার (Growth Rate) সবচেয়ে দ্রুত বা তীব্র গতিশীল?",
+          options: ["O(N²)", "O(N log N)", "O(2^N)", "O(N!)"],
+          correct: 3,
+          topic: "complexity",
+          explanation:
+            "ফ্যাক্টোরিয়াল O(N!) বৃদ্ধির হার এক্সপোনেনশিয়াল থেকেও দ্রুত।",
+        },
+        {
+          q: "কোনো অ্যালগরিদমের অ্যাসিম্পটোটিক অ্যানালাইসিসে 'বিগ-ও' (Big-O) চিহ্নটি প্রধানত কোন সীমাটিকে প্রকাশ করে?",
+          options: [
+            "অ্যালগরিদমের সর্বোচ্চ সম্ভাব্য সময় বা আপার বাউন্ড (Upper Bound)",
+            "অ্যালগরিদমের সর্বনিম্ন সময় বা লোয়ার বাউন্ড (Lower Bound)",
+            "গড়পড়তা প্রয়োজনীয় সময় বা টাইট বাউন্ড (Tight Bound)",
+            "মেমোরির সর্বোচ্চ বাইনারি অ্যালোকেশন লিমিট",
+          ],
+          correct: 0,
+          topic: "complexity",
+          explanation: "Big-O মূলত ওরস্ট কেস বা আপার বাউন্ড নির্দেশ করে।",
+        },
+        {
+          q: "নিচের কোনটি ধ্রুবক বা কনস্ট্যান্ট স্পেস জটিলতা (Constant Space Complexity) নির্দেশ করে?",
+          options: [
+            "ইনপুট আকারের ওপর সম্পর্কহীন স্থির O(1) মেমোরি ব্যবহার",
+            "ইনপুট আকারের সাথে সমান অনুপাতে O(N) মেমোরি ব্যবহার",
+            "অর্ধেক মেমোরি ব্যবহার O(log N)",
+            "দ্বিগুণ মেমোরি ব্যবহার O(N²)",
+          ],
+          correct: 0,
+          topic: "complexity",
+          explanation:
+            "ইনপুট যাই হোক, মেমোরি স্থির থাকলে তা O(1) কনস্ট্যান্ট স্পেস।",
+        },
+        {
+          q: "যদি একটি অ্যালগরিদমে ৩টি ইন্ডিপেনডেন্ট নেস্টেড লুপ থাকে (যেখানে প্রতিটির সীমা N বার), তবে এর সামগ্রিক টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(3N)", "O(N + N + N)", "O(N³)", "O(3^N)"],
+          correct: 2,
+          topic: "complexity",
+          explanation: "৩টি নেস্টেড লুপের জন্য N * N * N = O(N³)।",
+        },
+        {
+          q: "ইন-প্লেস হিপ সর্ট (In-place Heap Sort) অ্যালগরিদমের ক্ষেত্রে অতিরিক্ত মেমোরি বা অক্সিলিয়ারি স্পেস জটিলতা কত?",
+          options: ["O(N)", "O(log N)", "O(N log N)", "O(1)"],
+          correct: 3,
+          topic: "complexity",
+          explanation:
+            "ইন-প্লেস হিপ সর্টে অতিরিক্ত কোনো অ্যারের প্রয়োজন হয় না, তাই স্পেস O(1)।",
+        },
+        {
+          q: "দুইটি NxN আকারের ম্যাট্রিক্সের স্ট্যান্ডার্ড ম্যাট্রিক্স মাল্টিপ্লিকেশন পদ্ধতির টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(N³)", "O(N log N)", "O(N²)", "O(2^N)"],
+          correct: 0,
+          topic: "complexity",
+          explanation:
+            "সাধারণ ম্যাট্রিক্স গুনে ৩টি লুপের ব্যবহারে O(N³) সময় লাগে।",
+        },
+        {
+          q: "লিটল-ও (Little-o) নোডেশন মূলত গাণিতিকভাবে অ্যালগরিদমের কোন সম্পর্কটিকে প্রদর্শন করে?",
+          options: [
+            "একটি লুজ আপার বাউন্ড (Strictly Loose Upper Bound)",
+            "একটি টাইট আপার বাউন্ড (Strictly Tight Bound)",
+            "লোয়ার বাউন্ড যা কখনো পরিবর্তন হয় না",
+            "অ্যাসিম্পটোটিক এভারেজ বাউন্ড",
+          ],
+          correct: 0,
+          topic: "complexity",
+          explanation:
+            "Little-o কড়াভাবে লুজ আপার বাউন্ড (f(n) < c * g(n)) প্রকাশ করে।",
+        },
+        {
+          q: "মাস্টার থিওরেমের (Master Theorem) T(n) = 4T(n/2) + n রিলেশনে রিকারেন্স সল্যুশনের চূড়ান্ত জটিলতা কত?",
+          options: ["O(N log N)", "O(N)", "O(N²)", "O(N³)"],
+          correct: 2,
+          topic: "complexity",
+          explanation:
+            "n^(log_b a) = n^(log_2 4) = n²। মাস্টার থিওরেমের ১ম কেস অনুসারে O(N²)।",
+        },
+        {
+          q: "নিচের কোন অ্যালগরিদমের এভারেজ কেস টাইম কমপ্লেক্সিটি O(log log N) এর সমান হতে পারে?",
+          options: [
+            "বাইনারি সার্চ অ্যালগরিদম",
+            "লিনিয়ার সার্চ অ্যালগরিদম",
+            "বাবল সর্ট অ্যালগরিদম",
+            "ইন্টারপোলেশন সার্চ অ্যালগরিদম",
+          ],
+          correct: 3,
+          topic: "complexity",
+          explanation:
+            "সুষম ডাটা ডিস্ট্রিবিউশনে ইন্টারপোলেশন সার্চ O(log log N) সময় নেয়।",
+        },
+        {
+          q: "ডাইনামিক প্রোগ্রামিংয়ে গ্রিড মেমরি ব্যবহারের ফলে মেমোরি কমপ্লেক্সিটি O(N * M) হলে তা নিচের কোনটির উদাহরণ?",
+          options: [
+            "মেমোরি ব্যবহারের মাধ্যমে রানিং টাইম কমানো (Time-Space Tradeoff)",
+            "ভ্যারিয়েবল কোড লাইনের আকার কমানো",
+            "র্যাম ও ডিস্ক বাস স্পিড বৃদ্ধি",
+            "কনস্ট্যান্ট টাইম নিশ্চিতকরণ",
+          ],
+          correct: 0,
+          topic: "complexity",
+          explanation:
+            "অতিরিক্ত মেমোরি দিয়ে সাবপ্রবলেম সেভ করে সময় সেভ করাকে স্পেস-টাইম ট্রেডঅফ বলে।",
+        },
+        {
+          q: "যদি একটি কোড ব্লকে i এর মান প্রতি ধাপে ১ করে বাড়ে কিন্তু শর্তটি হয় i*i <= N, তবে লুপটির টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(N)", "O(√N)", "O(log N)", "O(N²)"],
+          correct: 1,
+          topic: "complexity",
+          explanation:
+            "i^2 <= N হওয়া মানে i এর মান √N পর্যন্ত চলবে, তাই O(√N)।",
+        },
+        {
+          q: "অ্যাসিম্পটোটিক ওমেগা নোডেশন (Ω) দ্বারা অ্যালগরিদমের কোন আচরণটি সুনির্দিষ্ট করা হয়?",
+          options: [
+            "অ্যালগরিদমের লোয়ার বাউন্ড বা সর্বনিম্ন সময় (Lower Bound)",
+            "অ্যালগরিদমের এভারেজ কেস পরিমাপ",
+            "সর্বোচ্চ প্রয়োজনীয় মেমোরির পরিমাণ",
+            "ইনপুট বাফারের ফিক্সড সাইজ",
+          ],
+          correct: 0,
+          topic: "complexity",
+          explanation: "ওমেগা নোডেশন (Ω) গাণিতিকভাবে লোয়ার বাউন্ড নির্দেশ করে।",
+        },
+        {
+          q: "যদি f(n) = O(g(n)) এবং g(n) = O(f(n)) হয়, তবে আমরা নিচের কোন থিওরেমটি চূড়ান্ত সিদ্ধান্ত হিসেবে নিতে পারি?",
+          options: [
+            "f(n) = o(g(n))",
+            "f(n) = Ω(g(n))",
+            "f(n) = ω(g(n))",
+            "f(n) = θ(g(n))",
+          ],
+          correct: 3,
+          topic: "complexity",
+          explanation:
+            "উভয়মুখী আপার বাউন্ড হলে এটি Tight Bound বা θ(g(n)) গঠন করে।",
+        },
+        {
+          q: "ডাইনামিক অ্যারেতে (যেমন C++ Vector বা Java ArrayList) এলিমেন্ট পুশ ব্যাক করার Amortized Time Complexity কত?",
+          options: ["O(1)", "O(N)", "O(log N)", "O(N²)"],
+          correct: 0,
+          topic: "complexity",
+          explanation: "কখনো কখনো রিসাইজ O(N) হলেও গড়ে Amortized Cost O(1) হয়।",
+        },
+        {
+          q: "নিচের কোন ডাটা স্ট্রাকচারটি নন-লিনিয়ার (Non-linear) ডাটা স্ট্রাকচারের অন্তর্ভুক্ত?",
+          options: [
+            "স্ট্যাক (Stack)",
+            "গ্রাফ (Graph)",
+            "অ্যারে (Array)",
+            "লিঙ্কড লিস্ট (Linked List)",
+          ],
+          correct: 1,
+          topic: "complexity",
+          explanation: "গ্রাফ ও ট্রি হলো নন-লিনিয়ার ডাটা স্ট্রাকচার।",
+        },
+        {
+          q: "একটি সিঙ্গলি লিঙ্কড লিস্টের মাঝের কোনো নোড (যেমন N/2 তম নোড) সরাসরি অ্যাক্সেস করার টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"],
+          correct: 2,
+          topic: "complexity",
+          explanation:
+            "লিঙ্কড লিস্টে সরাসরি ইনডেক্স অ্যাক্সেস নেই, ট্রাভার্স করতে O(N) সময় লাগে।",
+        },
+        {
+          q: "অ্যাডজেসেন্সি লিস্ট (Adjacency List) ব্যবহার করে V নোড এবং E এজ বিশিষ্ট গ্রাফ রিপ্রেজেন্টেশনে স্পেস জটিলতা কত হয়?",
+          options: ["O(V * E)", "O(V²)", "O(E²)", "O(V + E)"],
+          correct: 3,
+          topic: "complexity",
+          explanation: "অ্যাডজেসেন্সি লিস্টের মেমোরি প্রয়োজন O(V + E)।",
+        },
+        {
+          q: "ইনসারশন সর্ট সচল করার সময় যদি সম্পূর্ণ অ্যারেটি আগে থেকেই সর্টেড থাকে, তবে কোডটির রানিং টাইম কেমন হবে?",
+          options: ["O(N)", "O(N log N)", "O(N²)", "O(1)"],
+          correct: 0,
+          topic: "complexity",
+          explanation:
+            "সর্টেড অ্যারেতে ইনসারশন সর্ট শুধু একটি তুলনা করে, তাই বেস্ট কেস O(N)।",
+        },
+        {
+          q: "O(2^N) এবং O(3^N) এর মধ্যে অ্যাসিম্পটোটিক বৃদ্ধির হারের সম্পর্ক কোনটি সঠিক?",
+          options: [
+            "O(2^N) এর গ্রোথ রেট O(3^N) এর চেয়ে কম",
+            "O(2^N) এবং O(3^N) সমান",
+            "O(3^N) এর গ্রোথ রেট কম",
+            "উভয়ই ধ্রুবক জটিলতার প্রতীক",
+          ],
+          correct: 0,
+          topic: "complexity",
+          explanation: "3^N সবসময় 2^N অপেক্ষা অনেক দ্রুত বৃদ্ধি পায়।",
+        },
+        {
+          q: "অ্যাকারম্যান ফাংশন (Ackermann Function) এর গ্রোথ রেট নিচের কোনটির সমতুল্য?",
+          options: [
+            "লিনিয়ার গ্রোথ",
+            "লগারিদমিক গ্রোথ",
+            "অত্যন্ত দ্রুত এবং নন-প্রিমিটিভ রিকার্সিভ গ্রোথ",
+            "দ্বিঘাত জটিলতা গ্রোথ",
+          ],
+          correct: 2,
+          topic: "complexity",
+          explanation:
+            "অ্যাকারম্যান ফাংশন অতি দ্রুত বর্ধনশীল নন-প্রিমিটিভ ফনকশন।",
+        },
+        {
+          q: "টেইল রিকার্সিভ ফাংশনের স্পেস জটিলতা কম্পাইলার লেভেলে অপটিমাইজেশন (Tail Call Optimization) চালু থাকলে কত হতে পারে?",
+          options: ["O(N)", "O(N log N)", "O(log N)", "O(1)"],
+          correct: 3,
+          topic: "complexity",
+          explanation:
+            "TCO মেমোরি স্ট্যাক পুনঃব্যবহার করে স্পেস O(1) নামিয়ে আনে।",
+        },
+        {
+          q: "বিগ-ও নোডেশন প্রকাশের ক্ষেত্রে ধ্রুবক সংখ্যা (যেমন O(2N) বা O(N+50)) এড়ানো বা বাদ দেওয়ার কারণ কী?",
+          options: [
+            "ইনপুট সাইজ অসীমের কাছাকাছি গেলে ধ্রুবক সংখ্যার প্রভাব নগণ্য হয়ে যায়",
+            "ধ্রুবক সংখ্যা কোডের সাইজ কমায়",
+            "ধ্রুবক সংখ্যা যোগ করলে কোড ভুল হয়",
+            "মেমোরিতে কোনো ধ্রুবক অ্যাসাইন করা যায় না",
+          ],
+          correct: 0,
+          topic: "complexity",
+          explanation:
+            "ইনপুট অসীম ($N \to \infty$) হলে ছোট ধ্রুবকগুলোর প্রভাব থাকে না।",
+        },
+
+        // --- TOPIC 2: TRADEOFF (26-50) ---
+        {
+          q: "ডাইনামিক অ্যারেতে সাইজ ওভারফ্লো এড়াতে রিলোকেশনের সময় মেমোরি দ্বিগুণ বা ২ গুণ হারে বরাদ্দ দেওয়ার প্রধান উদ্দেশ্য কী?",
+          options: [
+            "রিসাইজিং এর গড় সময় সাশ্রয় করে O(1) Amortized Time নিশ্চিত করা",
+            "অ্যারের মোট মেমোরি ব্যবহার কমানো",
+            "র্যাম বাস স্পিড অপটিমাইজেশন করা",
+            "সিপিইউ থ্রেড সংখ্যা বৃদ্ধি করা",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "বারবার রিসাইজিং এড়াতে মেমোরি দ্বিগুণ বাড়িয়ে গড় পুশ সময় O(1) করা হয়।",
+        },
+        {
+          q: "মেমোইজেশন (Memoization) টেকনিক প্রয়োগের ক্ষেত্রে মেমোরি ও টাইমের সম্পর্ক কোনটি সঠিক?",
+          options: [
+            "মেমোরি বাড়িয়ে সময় সাশ্রয় করা (Space-Time Tradeoff)",
+            "মেমোরি ও রানিং টাইম উভয়ই হ্রাস করা",
+            "মেমোরি বৃদ্ধি করে রানিং টাইম আরও বাড়িয়ে দেওয়া",
+            "স্টোরেজ ডিস্কের স্থায়ী মেমোরি কমানো",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "মেমোইজেশন অতিরিক্ত স্পেস ব্যবহার করে পুনরাবৃত্তি হিসেব দূর করে সময় বাঁচায়।",
+        },
+        {
+          q: "রান লেন্থ এনকোডিং (RLE) কম্প্রেশনের মাধ্যমে মেমোরি বাঁচানোর ক্ষেত্রে রানটাইমে কী প্রভাব পড়ে?",
+          options: [
+            "কম্প্রেসড ডাটা প্রসেস করতে বাড়তি সিপিইউ সাইকেল ও প্রসেসিং সময় প্রয়োজন হয়",
+            "রানিং টাইম শূন্য হয়ে যায়",
+            "মেমোরি সেভ হলেও ডাটার গতি বাড়ে",
+            "কোনো প্রভাব পড়ে না",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "ডি-কম্প্রেশন ও এনকোডিং প্রসেসিংয়ের জন্য কিছুটা বাড়তি প্রসেসিং টাইম লাগে।",
+        },
+        {
+          q: "ডেটাবেজ টেবিলের কলামগুলোর ওপর ইনডেক্সিং (Indexing) করার ক্ষেত্রে নিচের কোন ট্রেডঅফটি ঘটে?",
+          options: [
+            "ইনসার্ট/আপডেট অপারেশনের গতি ধীর হয় কিন্তু রিড কোয়েরির স্পিড বহুগুণ বৃদ্ধি পায়",
+            "স্টোরেজ মেমোরি হ্রাস পায় এবং ডাটাবেজ ব্যাকআপ স্পিড বাড়ে",
+            "উভয় অপারেশনই ধীরগতির হয়ে পড়ে",
+            "র‍্যামের কার্যকারিতা বন্ধ হয়ে যায়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "ইনডেক্সিং টেবিল রিড ফাস্ট করে, কিন্তু রাইটের সময় ইনডেক্স আপডেট করায় রাইট ধীর হয়।",
+        },
+        {
+          q: "গেম ডেভেলপমেন্টে জটিল ত্রিকোণমিতিক মান বা গাণিতিক সমীকরণগুলোর জন্য 'লুক-আপ টেবিল' ব্যবহারের সুফল কী?",
+          options: [
+            "রিয়েল-টাইমে মেমোরি থেকে সরাসরি রিড করা যায় যা জটিল জ্যামিতিক ক্যালকুলেশনের সময় বাঁচায়",
+            "গেমের গ্রাফিক্সের ছবির রেজোলিউশন বাড়ে",
+            "গেমের ফাইল সাইজ শূন্যে নেমে আসে",
+            "অতিরিক্ত সিপিইউ কোর ডাইনামিকালি বাড়ে",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation: "আগে থেকে অ্যারেতে মান সেভ রাখলে সরাসরি O(1) এ পড়া যায়।",
+        },
+        {
+          q: "ব্লুম ফিল্টার (Bloom Filter) ডেটা স্ট্রাকচারের ক্ষেত্রে স্পেস বনাম কার্যকারিতার সঠিক দিকটি কোনটি?",
+          options: [
+            "এটি অত্যন্ত কম মেমোরিতে কাজ করে তবে কিছু ক্ষেত্রে ফলস পজিটিভ (False Positive) ফলাফল দিতে পারে",
+            "এটি নিখুঁত ১০০% নিশ্চিত ফলাফল দেয় তবে অনেক বেশি র‍্যাম ব্যবহার করে",
+            "এটি একটি নন-হ্যাশ সিকিউর ফাইল",
+            "এটি রান হতে দ্বিগুণ সময় নেয়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "ব্লুম ফিল্টার অত্যন্ত কম স্পেস নেয় কিন্তু ফলস পজিটিভ রেট থাকতে পারে।",
+        },
+        {
+          q: "রিকার্সন বাদ দিয়ে ইটারেটিভ লুপ ব্যবহারের ক্ষেত্রে প্রধান সুবিধা কোনটি?",
+          options: [
+            "রিকার্সন কল স্ট্যাকের ওভারহেড দূর করে মেমোরি ও রানটাইম বাঁচানো",
+            "কোড লাইনের সংখ্যা কমিয়ে ফেলা",
+            "গ্লোবাল ভ্যারিয়েবল ডিক্লেয়ারেশন সহজ করা",
+            "কম্পাইলার স্পিড শূন্যে আনা",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation: "ইটারেটিভ লুপ সিস্টেমের কল স্ট্যাক ব্যবহার করে না।",
+        },
+        {
+          q: "মেমোরি ও টাইম অপটিমাইজেশনের ক্ষেত্রে স্পেস-টাইম ট্রেডঅফের মূল অর্থ কী?",
+          options: [
+            "মেমোরি বাড়িয়ে সময় কমানো অথবা সময় ব্যয় করে মেমোরি বাঁচানো",
+            "মেমোরি ও সময় উভয়কেই একই সাথে সম্পূর্ণরূপে জিরো করা",
+            "সিপিইউ হার্ডওয়্যার পরিবর্তন করা",
+            "কোড রিফ্যাক্টরিং করে ফাইল মুছে ফেলা",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "একটি পারফরম্যান্স ভালো করতে হলে অপরটিকে কিছুটা স্যাক্রিফাইস করতে হয়।",
+        },
+        {
+          q: "১ থেকে ১০,০০০ পর্যন্ত মৌলিক সংখ্যা খোঁজার জন্য ইরাটোস্থেনিসের ছাঁকুনি (Sieve of Eratosthenes) ব্যবহারের সুবিধা কী?",
+          options: [
+            "এটি মেমোরি বেশি নিলেও বারবার লুপ চালানোর চেয়ে দ্রুত মৌলিক সংখ্যা বের করে",
+            "এটি স্টোরেজ মেমোরি সম্পূর্ণ খালি করে দেয়",
+            "এটি শুধুমাত্র জোড় সংখ্যার ক্ষেত্রে কাজ করে",
+            "এটি ক্যালকুলেশন টাইম দ্বিগুণ করে",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation: "Sieve বুলিয়ান অ্যারে মেমোরিতে রেখে সময় বহুগুণ সেভ করে।",
+        },
+        {
+          q: "হ্যাশ টেবিল ব্যবহারের ক্ষেত্রে রানিং টাইম O(1) এ নামানোর প্রধান রহস্যটি কী?",
+          options: [
+            "মেমোরি স্পেস ব্যবহার করে বড় হ্যাশ বাকেট তৈরি করা যাতে কোলিশন কম হয়",
+            "অ্যারেকে প্রতি সেকেন্ডে র্যান্ডমাইজ করা",
+            "রিকার্সিভ কল বৃদ্ধি করা",
+            "কোনোটিই নয়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "বড় সাইজের হ্যাশ টেবিল ব্যবহারে সংঘর্ষ কম হয় এবং দ্রুত উপাদান পাওয়া যায়।",
+        },
+        {
+          q: "ছবির ফরম্যাট হিসেবে JPEG (সংকুচিত) ব্যবহার করার মূল অসুবিধা কোনটি?",
+          options: [
+            "ছবির কোয়ালিটি কিছুটা হ্রাস পায় এবং ডিকম্প্রেশনের সময় প্রসেসিং লোড বাড়ে",
+            "ছবির মেমোরি সাইজ ইন্টারনেটে অনেক বেড়ে যায়",
+            "ছবিটি ব্ল্যাক অ্যান্ড হোয়াইট হয়ে যায়",
+            "ছবিটি লোড হতে চিরকাল অপেক্ষা করতে হয়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "মেমোরি সেভ হলেও এটি ডিকম্প্রেস করতে সিপিইউ সাইকেল লাগে।",
+        },
+        {
+          q: "লুপ আনরোলিং (Loop Unrolling) করার মাধ্যমে টাইম-স্পেস ট্রেডঅফে কোডের কী রূপান্তর ঘটে?",
+          options: [
+            "কন্ডিশন চেক কমিয়ে সময় বাঁচালেও ইন্সট্রাকশন বা বাইনারি কোডের সাইজ বাড়িয়ে দেয়",
+            "কোড ফাইলের সাইজ অনেক ছোট হয়ে যায়",
+            "লুপটি চিরকাল চলতে থাকে",
+            "মেমোরি লিক সমস্যা দূর হয়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "লুপ আনরোলিং জাম্প চেকিং দূর করে প্রসেসিং দ্রুত করে, তবে কোড সাইজ বাড়ায়।",
+        },
+        {
+          q: "ফ্যাক্টোরিয়াল ক্যালকুলেশনে প্রি-কম্পিউটেশন (Pre-computation) ব্যবহারের সঠিক নীতি কোনটি?",
+          options: [
+            "ফ্যাক্টোরিয়ালের মান আগে থেকেই অ্যারেতে সেভ রেখে রানটাইমে O(1) এ ভ্যালু রিড করা",
+            "রানটাইমে বারবার রিকার্সিভ ফাংশন চালানো",
+            "ডিস্ক মেমোরি খালি করা",
+            "কোনো মেমোরি স্টোর না করা",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "প্রাক-হিসাবকৃত ফলাফল অ্যারেতে সেভ রেখে টাইম ও(১) করা যায়।",
+        },
+        {
+          q: "ডাইনামিক প্রোগ্রামিং বনাম মেমোরিহীন সাধারণ রিকার্সন অ্যাপ্লিকেশনের মূল পার্থক্য কী?",
+          options: [
+            "ডিপিতে সাবপ্রবলেমের হিসেব স্টোর রাখার জন্য অতিরিক্ত মেমোরি লাগে কিন্তু এটি টাইম সেভ করে",
+            "রিকার্সন সবসময় ডাইনামিক প্রোগ্রামিংয়ের চেয়ে ফাস্টার",
+            "রিকার্সনে র্যামের প্রয়োজন হয় না",
+            "কোনো পার্থক্য নেই",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "DP মেমোরি টেবিল ব্যবহার করে এক্সপোনেনশিয়াল সময়কে পলিনোমিয়াল সময়ে নামায়।",
+        },
+        {
+          q: "গ্যাবেজ কালেকশন (Garbage Collection) সিস্টেম সচল থাকার ফলে সিস্টেমে কোন ড্রব্যাকটি সৃষ্টি হতে পারে?",
+          options: [
+            "রানিং অ্যাপ্লিকেশনে প্রসেসিং সাময়িকভাবে থমকে যেতে পারে এবং সিপিইউ ওভারহেড বৃদ্ধি পায়",
+            "র‍্যামের সম্পূর্ণ মেমোরি ডিলিট হয়ে যায়",
+            "সিস্টেম ক্র্যাশ করে সব প্রোগ্রাম বন্ধ করে দেয়",
+            "সফটওয়্যারের কোড লাইন ডিলিট হয়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "অটো মেমোরি ক্লিয়ারের সময় রানিং থ্রেডে সামান্য পজ (Pause) বা সিপিইউ ওভারহেড হয়।",
+        },
+        {
+          q: "বাইনারি সার্চ ট্রির (BST) চেয়ে ট্রাই (Trie) ডেটা স্ট্রাকচার ব্যবহারের স্পেস-টাইম রিলেশন কেমন?",
+          options: [
+            "ট্রাই পয়েন্টারের জন্য বেশি মেমোরি নিলেও স্ট্রিং সার্চিং স্পিড O(L) নিশ্চিত করে",
+            "ট্রাই ব্যবহারের ফলে মেমোরি অনেক বেঁচে যায় এবং স্পিড ধীর হয়",
+            "উভয়ের স্পেস ও টাইম সমান",
+            "ট্রাই ব্যবহারে জিপিইউ মেমোরি ডিলিট হয়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "Trie বেশি নোড পয়েন্টার ধারণ করলেও স্ট্রিং দৈর্ঘ্য L এর সমান O(L) সময়ে খোঁজে।",
+        },
+        {
+          q: "মেমোরিতে ডেটা স্ট্রাকচার সাজানোর সময় ক্যাশ লোকালিটি (Cache Locality) কেন গুরুত্বপূর্ণ?",
+          options: [
+            "পাশাপাশি মেমোরির ডেটা সিপিইউ ক্যাশে দ্রুত লোড হওয়ায় রানটাইম অনেক কমে",
+            "এটি মেমোরির আকার ফিজিক্যালি বৃদ্ধি করে",
+            "এটি রম বা ডিস্ক স্পিড কাস্টমাইজ করে",
+            "কোনো মেমোরি ট্র্যাক দরকার পড়ে না",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "অ্যারের মতো মেমোরিতে পাশাপাশি থাকা ডাটা সিপিইউ ক্যাশ হিট বাড়িয়ে সময় কমায়।",
+        },
+        {
+          q: "ডাটাবেজে বি-ট্রি (B-Tree) এর ব্লক বা পেজ সাইজ বড় রাখার প্রধান উদ্দেশ্য কী?",
+          options: [
+            "এক সাথে বেশি পয়েন্টার লোড করে ডিস্ক I/O কমায় ও সার্চ দ্রুত করে",
+            "হার্ডডিস্কের স্থায়ী স্টোরেজ সেভ করা",
+            "টেবিলের মেটাডেটা পুরোপুরি ডিলিট করা",
+            "ডাটাবেজ রাইট স্পিড শূন্য করা",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "ধীরগতির ডিস্ক রিড কমানোর জন্য বড় ব্লক সাইজ ব্যবহার করা হয়।",
+        },
+        {
+          q: "স্পার্স ম্যাট্রিক্স (Sparse Matrix) কম্প্রেশন পদ্ধতিতে মেমোরি বাঁচানোর পর নিচের কোনটি চ্যালেঞ্জের মুখে পড়ে?",
+          options: [
+            "সরাসরি ইনডেক্সিং হারিয়ে নির্দিষ্ট স্থান অ্যাক্সেস বা ট্রাভার্সাল সময় বৃদ্ধি পায়",
+            "ম্যাট্রিক্সের সব ডেটা শূন্য হয়ে যায়",
+            "অ্যালগরিদম আর সর্ট করা যায় না",
+            "স্পেস অনেক বেশি লাগতে শুরু করে",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "অ-শূন্য মান সংকুচিত করে মেমোরি বাঁচানো গেলেও সরাসরি ইনডেক্স অ্যাক্সেস ধীর হয়।",
+        },
+        {
+          q: "জাভায় স্ট্রিং পুলিং (String Pooling) ব্যবহারের টাইম-স্পেস সুবিধা কোনটি সঠিক?",
+          options: [
+            "একই স্ট্রিং বারবার না বানিয়ে একই মেমোরি রেফারেন্স শেয়ার করে র‍্যাম বাঁচায়",
+            "স্ট্রিংয়ের কনক্যাটিনেশন রানিং টাইম দ্বিগুণ করে",
+            "এটি সম্পূর্ণভাবে মেমোরি স্ট্যাক ডিলিট করে দেয়",
+            "স্ট্রিংয়ের সাইজ আনলিমিটেড করে দেয়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "String Pool অভিন্ন স্ট্রিংয়ের জন্য নতুন অবজেক্ট তৈরি না করে মেমোরি সাশ্রয় করে।",
+        },
+        {
+          q: "অবজেক্ট পুলিং (Object Pooling) ডিজাইনে কোন ধরণের প্রসেস ট্রেডঅফ হিসেবে কাজ করে?",
+          options: [
+            "পূর্বে তৈরি অবজেক্ট মেমোরিতে ধরে রেখে রানটাইমে এলোকেশন ওভারহেড কমানো",
+            "নতুন ডাইনামিক অবজেক্ট তৈরিতে সাহায্য করা",
+            "মেমোরির সর্বোচ্চ ব্যবহার কমানো",
+            "সিস্টেমের মেমোরি স্থায়ীভাবে লক করা",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "অবজেক্ট আগে থেকে তৈরি করে রেখে মেমোরি ক্রিয়েশন/ডেস্ট্রাকশন টাইম কমানো হয়।",
+        },
+        {
+          q: "ডিজিটাল সিগন্যাল প্রসেসিংয়ে ফাস্ট ফুরিয়ার ট্রান্সফর্ম (FFT) ব্যবহারের ফলে নিচের কোন সুবিধাটি পাওয়া যায়?",
+          options: [
+            "O(N²) জটিলতার ক্যালকুলেশনকে O(N log N) এ নামিয়ে দ্রুত প্রসেস নিশ্চিত করা",
+            "সিগন্যালের সাইজ সম্পূর্ণরূপে শূন্য করা",
+            "এনালগ সিগন্যালকে সরাসরি মেমোরিতে ডিলিট করা",
+            "কোনো মেমোরি রিড না লাগা",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "FFT অ্যালগরিদম সময় জটিলতা O(N²) থেকে কমিয়ে O(N log N) করে।",
+        },
+        {
+          q: "দাবার ইঞ্জিনে (Chess Engine) সম্ভাব্য সমস্ত চাল ট্র্যাকিংয়ের জন্য 'ট্রান্সপোজিশন টেবিল' কেন রাখা হয়?",
+          options: [
+            "আগে হিসাব করা চালের মান র‍্যামে সেভ রেখে পুনরায় সার্চ করার সময় বাঁচানো",
+            "দাবার কোড সাইজ ছোট করার জন্য",
+            "কম্পিউটারের গ্রাফিক্স কোয়ালিটি ইমপ্রুভ করতে",
+            "আইটি সিকিউরিটি উন্নত করতে",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "ট্রান্সপোজিশন টেবিল দাবার পূর্বের পজিশন সেভ রেখে সার্চ সময় বাঁচায়।",
+        },
+        {
+          q: "বিট ম্যানিপুলেশন বা ফ্ল্যাগ ব্যবহারের মাধ্যমে অনেকগুলো ট্রু/ফলস তথ্য সেভ রাখা কোন ট্রেডঅফ নির্দেশ করে?",
+          options: [
+            "সামান্য অতিরিক্ত বিটওয়াইজ প্রসেসিং সময় ব্যবহার করে বিপুল মেমোরি অপটিমাইজ করা",
+            "মেমোরি ও প্রসেসিং উভয়ই একই সাথে অপ্টিমাইজ করা",
+            "সিপিইউ প্রসেসিং সম্পূর্ণরূপে বন্ধ করা",
+            "কোনোটিই নয়",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "বিট প্রসেসিং অতিরিক্ত কোড ও সময় নিলেও মেমোরির অপচয় অনেকাংশে রোধ করে।",
+        },
+        {
+          q: "স্ট্রিং অনুসন্ধানে রবিন-কার্প (Rabin-Karp) অ্যালগরিদমে হ্যাশ ভ্যালু ব্যবহারের মূল ভূমিকা কী?",
+          options: [
+            "ক্যারেক্টার বাই ক্যারেক্টার তুলনা কমিয়ে রানিং টাইম সাশ্রয় করা",
+            "মেমোরি সম্পূর্ণ ফাঁকা করে দেওয়া",
+            "স্ট্রিংয়ের ক্যারেক্টার সংখ্যা বাড়িয়ে দেওয়া",
+            "রিকার্সন সম্পূর্ণ বন্ধ করা",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "হ্যাশ ভ্যালু মিলে গেলেই কেবল ক্যারেক্টার ধরে মেলানো হয়, ফলে অপ্রয়োজনীয় তুলনা কমে।",
+        },
+        {
+          q: "ওয়েব অ্যাপ্লিকেশনে লেজি লোডিং (Lazy Loading) এর সুবিধা কোনটি?",
+          options: [
+            "প্রাথমিক লোডিং টাইম ও ব্যান্ডউইথ সাশ্রয় করা",
+            "ইগার লোডিং সবসময় কম মেমোরি নেয়",
+            "লেজি লোডিং সম্পূর্ণ ইন্টারনেট সংযোগ বিচ্ছিন্ন করে দেয়",
+            "কোনো পার্থক্য নেই",
+          ],
+          correct: 0,
+          topic: "tradeoff",
+          explanation:
+            "লেজি লোডিং প্রয়োজন না হওয়া পর্যন্ত ফাইল লোড করে না, যা ইনিশিয়াল লোড স্পিড বাড়ায়।",
+        },
+
+        // --- TOPIC 3: SEARCHING (51-75) ---
+        {
+          q: "লিনিয়ার সার্চ অ্যালগরিদমে যদি আমরা কাঙ্ক্ষিত উপাদানটি খুঁজে না পাই, তবে অ্যালগরিদমটির ওরস্ট কেস সময় জটিলতা কত হবে?",
+          options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"],
+          correct: 2,
+          topic: "searching",
+          explanation:
+            "পুরো অ্যারে খুঁজে না পেলে N বার চেক করতে হয়, ফলে জটিলতা O(N)।",
+        },
+        {
+          q: "বাইনারি সার্চ অ্যালগরিদম প্রয়োগের ক্ষেত্রে নিচের কোন শর্তটি পূরণ করা বাধ্যতামূলক?",
+          options: [
+            "ইনপুট অ্যারেটি অবশ্যই সম্পূর্ণ সাজানো বা সর্টেড (Sorted) হতে হবে",
+            "অ্যারেতে শুধুমাত্র ধনাত্মক পূর্ণসংখ্যা থাকতে হবে",
+            "অ্যারের সাইজ অবশ্যই জোড় হতে হবে",
+            "ডাটা লিঙ্কড লিস্টে স্টোর করা থাকতে হবে",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "বাইনারি সার্চ ব্যবহারের পূর্বশর্ত হলো ডাটা আগে থেকেই সর্টেড থাকতে হবে।",
+        },
+        {
+          q: "বাইনারি সার্চের সময় ইন্টিজার ওভারফ্লো (Integer Overflow) এড়াতে মাঝের ইনডেক্স বা Mid কীভাবে নির্ধারণ করা নিরাপদ?",
+          options: [
+            "mid = low + (high - low) / 2",
+            "mid = (low + high) / 2",
+            "mid = (low * high) / 2",
+            "mid = high - low / 2",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "low + high অতি বড় হলে ওভারফ্লো এড়াতে `low + (high - low)/2` ব্যবহৃত হয়।",
+        },
+        {
+          q: "২০৪৮ (2048)টি উপাদান বিশিষ্ট একটি সর্টেড অ্যারেতে বাইনারি সার্চ করলে সর্বোচ্চ কতবার তুলনায় ফলাফল নিশ্চিত হওয়া সম্ভব?",
+          options: [
+            "সর্বোচ্চ ১০ বার",
+            "সর্বোচ্চ ১১ বার",
+            "সর্বোচ্চ ২০ বার",
+            "সর্বোচ্চ ২০৪৮ বার",
+          ],
+          correct: 1,
+          topic: "searching",
+          explanation:
+            "2^11 = 2048, তাই সর্বোচ্চ log2(2048) = 11 বার তুলনা করতে হবে।",
+        },
+        {
+          q: "বাইনারি সার্চের ক্ষেত্রে বেস্ট কেস (Best Case) সময় জটিলতা কখন ঘটে?",
+          options: [
+            "প্রথমবারেই যখন মিডল এলিমেন্টটি আমাদের খোঁজা টার্গেটের সাথে মিলে যায়",
+            "যখন উপাদানটি অ্যারের একদম শেষ ইনডেক্সে থাকে",
+            "যখন উপাদানটি অ্যারেতেই থাকে না",
+            "যখন অ্যারের সাইজ ১ হয়",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation: "প্রথম চেষ্টাতেই মাঝের মান মিলে গেলে সময় লাগে O(1)।",
+        },
+        {
+          q: "একটি লিঙ্কড লিস্ট সর্টেড থাকা সত্ত্বেও সেখানে বাইনারি সার্চ কেন লিনিয়ার সার্চের মতোই ধীর কাজ করে?",
+          options: [
+            "লিঙ্কড লিস্টে সরাসরি O(1) ইনডেক্স অ্যাক্সেস না থাকায় মিড নোড ট্রাভার্স করতেই O(N) সময় লাগে",
+            "লিঙ্কড লিস্ট মেমোরি খালি করে দেয়",
+            "ডাবল লিঙ্কড লিস্ট শুধুমাত্র উল্টো দিকে সার্চ করতে পারে",
+            "লিঙ্কড লিস্টে কোনো পয়েন্টার থাকে না",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "র্যান্ডম ইনডেক্স অ্যাক্সেস না থাকায় মিড নোডে পৌঁছাতে O(N) লাগে।",
+        },
+        {
+          q: "জাম্প সার্চ (Jump Search) অ্যালগরিদমে সর্বোত্তম বা অপটিমাল ব্লক সাইজ (Block Size) কত নির্ধারণ করা উচিত?",
+          options: ["m = √N", "m = log N", "m = N / 2", "m = N²"],
+          correct: 0,
+          topic: "searching",
+          explanation: "গাণিতিকভাবে জাম্প সার্চের সেরা ব্লক সাইজ হলো m = √N।",
+        },
+        {
+          q: "ইন্টারপোলেশন সার্চ (Interpolation Search) অ্যালগরিদমটি ইনডেক্স অনুমানের জন্য নিচের কোন সূত্র বা ধারণার ওপর কাজ করে?",
+          options: [
+            "সরলরেখার ঢাল বা লিনিয়ার ইন্টারপোলেশন সূত্র (Linear Interpolation Formula)",
+            "শুধুমাত্র বাইনারি সার্চের এভারেজ মিড সূত্র",
+            "রিকার্সন ট্রি সমীকরণ",
+            "ফিবোনাচি সংখ্যার অনুপাত",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "ইন্টারপোলেশন সার্চ সমবন্টিত ডেটার ঢাল ধরে পজিশন প্রেডিক্ট করে।",
+        },
+        {
+          q: "টার্নারি সার্চ (Ternary Search) অ্যালগরিদম সর্টেড অ্যারেকে প্রতি ধাপে কয়টি সমান অংশে বিভক্ত করে?",
+          options: ["২টি অংশে", "৩টি অংশে", "৪টি অংশে", "কোনো বিভক্ত করে না"],
+          correct: 1,
+          topic: "searching",
+          explanation:
+            "টার্নারি সার্চ ২টি মিড পয়েন্টের সাহায্যে স্পেসকে ৩ ভাগে ভাগ করে।",
+        },
+        {
+          q: "হ্যাশ টেবিলে কোলাইড করা উপাদানগুলো লিনিয়ার প্রোবিংয়ের (Linear Probing) মাধ্যমে সার্চ করার ওরস্ট কেস জটিলতা কত?",
+          options: ["O(1)", "O(log N)", "O(N log N)", "O(N)"],
+          correct: 3,
+          topic: "searching",
+          explanation:
+            "সব উপাদান এক জায়গায় কোলিশন করলে তা লিনিয়ার সার্চের মতো O(N) হয়ে যায়।",
+        },
+        {
+          q: "ফিবোনাচি সার্চ (Fibonacci Search) অ্যালগরিদমে অ্যারেকে বিভক্ত করার জন্য নিচের কোন মেমোরি সিকোয়েন্সটি ব্যবহৃত হয়?",
+          options: [
+            "ফিবোনাচি সংখ্যামালা (Fibonacci Numbers)",
+            "২ এর ঘাতসমূহ (Powers of 2)",
+            "প্রাইম নাম্বার লিস্ট",
+            "বিজোড় সংখ্যার সেট",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "ফিবোনাচি সার্চ ফিবোনাচি নম্বর অনুপাত অনুযায়ী অ্যারে স্প্লিট করে।",
+        },
+        {
+          q: "এক্সপোনেনশিয়াল সার্চ (Exponential Search) অ্যালগরিদমটি সাধারণত কোন ধরণের অ্যারে সার্চিংয়ে অত্যন্ত কার্যকরী?",
+          options: [
+            "অসীম আকারের বা বিশাল সাইজের সর্টেড অ্যারে (Unbounded or Infinite Sorted Arrays)",
+            "সম্পূর্ণ এলোমেলো আনসর্টেড অ্যারে",
+            "খুব ছোট ২-৩ সাইজের অ্যারে",
+            "দ্বিমাত্রিক ক্যারেক্টার গ্রিড",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "সাইজ অজানা বা অসীম সর্টেড অ্যারেতে ২ এর পাওয়ারে রেঞ্জ খুঁজে পাওয়ার জন্য এটি উপযোগী।",
+        },
+        {
+          q: "একটি দ্বিমাত্রিক সর্টেড ম্যাট্রিক্সের (যেখানে রো এবং কলাম উভয়ই সর্টেড) সার্চ করার অপটিমাল অ্যালগরিদমের ওরস্ট কেস জটিলতা কত?",
+          options: ["O(N²)", "O(N log N)", "O(N + M)", "O(1)"],
+          correct: 2,
+          topic: "searching",
+          explanation:
+            "কোণা থেকে ট্রাভার্স শুরু করলে সর্বোচ্চ O(N + M) স্টেপ লাগে।",
+        },
+        {
+          q: "একটি সর্টেড অ্যারে যাকে নির্দিষ্ট কিছু পয়েন্টে রোটেট করা হয়েছে (Rotated Sorted Array), সেখানে সার্চ করতে নিচের কোনটি সেরা?",
+          options: [
+            "সরাসরি লিনিয়ার সার্চ",
+            "সর্টিং করে পুনরায় বাইনারি সার্চ",
+            "কোনো সার্চ করা সম্ভব নয়",
+            "কাস্টমাইজড মডিফাইড বাইনারি সার্চ (Modified Binary Search)",
+          ],
+          correct: 3,
+          topic: "searching",
+          explanation:
+            "মডিফাইড বাইনারি সার্চ প্রয়োগ করে O(log N) এ সার্চ করা যায়।",
+        },
+        {
+          q: "রিয়েল-টাইম ডাটা স্ট্রিম (Data Stream) থেকে প্রতিনিয়ত মিডিয়ান (Median) বের করার সেরা ডাটা স্ট্রাকচার কোনটি?",
+          options: [
+            "দুটি হিপ বা মিন-ম্যাক্স হিপের সমন্বয় (Min-Heap and Max-Heap combination)",
+            "প্রতিবার বাবল সর্ট চালানো",
+            "ডাটাবেজ ইনডেক্সিং বাতিল করা",
+            "লিনিয়ার সার্চ কোড রান করা",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "Min-Heap এবং Max-Heap একসাথে ব্যবহার করে O(1) এ মিডিয়ান পাওয়া যায়।",
+        },
+        {
+          q: "লিনিয়ার সার্চের পারফরম্যান্স কিছুটা উন্নত করতে সেন্টিনেল লিনিয়ার সার্চ (Sentinel Linear Search) কীভাবে কাজ করে?",
+          options: [
+            "অ্যারের শেষে টার্গেট এলিমেন্টটি সেট করে লুপের বাউন্ডারি চেকের সংখ্যা কমানো",
+            "অ্যারেকে র্যান্ডমলি দুই ভাগ করে ফেলা",
+            "রিকার্সন ব্যবহার করে স্ট্যাক খালি করা",
+            "কোনোটিই নয়",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "শেষে সেন্টিনেল ভ্যালু রেখে লুপে `i < N` এর কন্ডিশনাল চেক কমানো হয়।",
+        },
+        {
+          q: "বাইনারি সার্চের ভেতরের লুপটি সচল রাখার সময় লুপ শেষ হওয়ার নম্বর কন্ডিশন (Termination Condition) কোনটি?",
+          options: [
+            "যখন low এর মান high এর চেয়ে বেশি হয়ে যায় (low > high)",
+            "যখন mid এর মান ০ হয়",
+            "যখন high এর মান ১০০ হয়",
+            "যখন এলিমেন্ট ডুপ্লিকেট হয়",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "low > high হয়ে গেলে নিশ্চিত হওয়া যায় যে উপাদানটি অ্যারেতে নেই।",
+        },
+        {
+          q: "ইন্টারপোলেশন সার্চের ওরস্ট কেস (Worst Case) পারফরম্যান্স কত হতে পারে?",
+          options: ["O(log N)", "O(N log N)", "O(1)", "O(N)"],
+          correct: 3,
+          topic: "searching",
+          explanation:
+            "ডেটা অসমান বা এক্সপোনেনশিয়াল ডিস্ট্রিবিউশনে হলে ওরস্ট কেস O(N) হয়।",
+        },
+        {
+          q: "সার্চ করার সময় লিনিয়ার সার্চ উইথ সেন্টিনেল ব্যবহারের ক্ষেত্রে অ্যারের সাইজ কেমন হতে পারে?",
+          options: [
+            "অন্তত N+1 মেমোরি স্পেস স্থান বরাদ্দ থাকতে হবে",
+            "সর্বোচ্চ ৩টি নোড লাগবে",
+            "অ্যারের সাইজ সর্বদা প্রাইম হতে হবে",
+            "কোনো নির্দিষ্ট সাইজ লাগবে না",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "অ্যারের একদম শেষে ১টি বাড়তি ঘর (N+1) লাগে সেন্টিনেল রাখার জন্য।",
+        },
+        {
+          q: "সেলফ-অর্গানাইজিং লিস্টের ক্ষেত্রে 'Move to Front' পলিসির মূল কাজ কী?",
+          options: [
+            "খুঁজে পাওয়া উপাদানটিকে সরাসরি তালিকার একদম শুরুতে নিয়ে আসা",
+            "উপাদানটিকে সম্পূর্ণ ডিলিট করা",
+            "উপাদানটিকে অ্যারের শেষে পাঠানো",
+            "লিস্টের মেমোরি রিভার্স করা",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "যাতে পরবর্তীতে পুনরায় সার্চ করলে O(1) এ পাওয়া যায়, তাই উপাদানটিকে শুরুতে আনা হয়।",
+        },
+        {
+          q: "বাইনারি সার্চের প্রতি ধাপে সার্চ স্পেস বা খোঁজার ক্ষেত্র কতটুকু করে হ্রাস পায়?",
+          options: [
+            "ঠিক অর্ধেক বা ৫০% পরিমাণ কমে যায়",
+            "এক-তৃতীয়াংশ হ্রাস পায়",
+            "এক-চতুর্থাংশ হ্রাস পায়",
+            "একটুও কমে না",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "প্রতি পদক্ষেপে মাঝের এলিমেন্টের তুলনা করে ৫০% স্পেস বাদ দেওয়া হয়।",
+        },
+        {
+          q: "মেটা বাইনারি সার্চ (Meta Binary Search) এর মূল আইডিয়া কোনটি?",
+          options: [
+            "বিট ম্যানিপুলেশন ও পাওয়ার অব ২ ট্রাভার্সাল ব্যবহার করে সার্চ ইনডেক্স নির্ধারণ করা",
+            "অ্যারেকে চিরকাল ৪ ভাগ করা",
+            "রিকার্সিভ কল দ্বিগুণ করা",
+            "কোনোটিই নয়",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "এটি বিট-লেভেলে ২ এর পাওয়ার অনুযায়ী ইনডেক্স জাম্প করে উপাদান খোঁজে।",
+        },
+        {
+          q: "সাবলিস্ট সার্চ (Sublist Search) অ্যালগরিদমের মাধ্যমে আমরা মূলত কী অনুসন্ধান করি?",
+          options: [
+            "একটি সম্পূর্ণ লিঙ্কড লিস্ট অন্য কোনো বড় লিঙ্কড লিস্টের অংশ কিনা তা খোঁজা",
+            "অ্যারের বৃহত্তম উপাদান খুঁজে বের করা",
+            "একটি বাইনারি ট্রির রুট নোড খোঁজা",
+            "মেমোরির বাফার এড্রেস ট্র্যাক করা",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "একটি ছোট লিঙ্কড লিস্ট অন্য লিস্টের ভেতর বিদ্যমান কি না তা খোঁজা।",
+        },
+        {
+          q: "বাইনারি সার্চে সফল ও ব্যর্থ অনুসন্ধানের গড় তুলনার পরিমাণ কেমন হয়?",
+          options: [
+            "উভয় ক্ষেত্রেই গড় তুলনার সংখ্যা O(log N) এর কাছাকাছি থাকে",
+            "আনসাকসেসফুল সার্চে ও(N) তুলনা লাগে",
+            "সাকসেসফুল সার্চে ও(১) তুলনা লাগে",
+            "উভয়ের মধ্যে কোনো তুলনা হয় না",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation: "উভয় ক্ষেত্রে অ্যাসিম্পটোটিক জটিলতা O(log N)।",
+        },
+        {
+          q: "একটি সর্টেড অ্যারেতে ডুপ্লিকেট এলিমেন্টের ১ম ইনডেক্স পাওয়ার উপায় কী?",
+          options: [
+            "ম্যাচ পাওয়ার পরেও বাম দিকের অংশে বাইনারি সার্চ চালিয়ে যাওয়া (high = mid - 1)",
+            "সাধারণ লিনিয়ার সার্চ কোড চিরকাল চালানো",
+            "অ্যারেকে প্রতি ধাপে র্যান্ডমাইজ করা",
+            "সরাসরি রাইট পয়েন্ট ব্যবহার করা",
+          ],
+          correct: 0,
+          topic: "searching",
+          explanation:
+            "প্রথম উপস্থিতি নিশ্চিত করতে ম্যাচ পাওয়ার পরও বামে সার্চ রেঞ্জ রাখা হয়।",
+        },
+
+        // --- TOPIC 4: SORTING & RECURSION (76-100) ---
+        {
+          q: "বাবল সর্ট (Bubble Sort) অ্যালগরিদমটি কি একটি স্টেবল (Stable) সর্টিং অ্যালগরিদম?",
+          options: [
+            "হ্যাঁ, এটি স্টেবল কারণ এটি সমমানের উপাদানের আপেক্ষিক ক্রম বজায় রাখে",
+            "না, এটি কখনই স্টেবল সর্ট নয়",
+            "এটি শুধুমাত্র লিঙ্কড লিস্টের ক্ষেত্রে স্টেবল",
+            "এটি র্যান্ডম ডেটার ক্ষেত্রে আনস্টেবল",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "সমান ভ্যালুর ক্ষেত্রে বাবল সর্ট সোয়াপ করে না, ফলে এটি একটি স্টেবল সর্টিং।",
+        },
+        {
+          q: "সিলেকশন সর্ট (Selection Sort) এর ক্ষেত্রে সোয়াপ বা অদলবদল (Swaps) সংখ্যার ওরস্ট কেস জটিলতা কত?",
+          options: ["O(N)", "O(log N)", "O(N²)", "O(N log N)"],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "সিলেকশন সর্ট প্রতি পাসে সর্বোচ্চ ১টি সোয়াপ করে, তাই মোট সোয়াপ ও(N)।",
+        },
+        {
+          q: "ইনসারশন সর্ট (Insertion Sort) নিচের কোন ধরণের ইনপুট ডাটা প্যাটার্নের ক্ষেত্রে দ্রুত কাজ করে?",
+          options: [
+            "অলমোস্ট সর্টেড বা আংশিক সাজানো ডেটা সেট (Almost Sorted Arrays)",
+            "সম্পূর্ণ রিভার্স বা উল্টো সর্টেড ডেটা সেট",
+            "সম্পূর্ণ এলোমেলো র্যান্ডম ডেটা সেট",
+            "ডুপ্লিকেট শূন্য সর্টেড ডেটা সেট",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "আংশিক সাজানো ডাটায় ইনসারশন সর্টের উপাদান সরানোর দরকার পড়ে না, সময় লাগে O(N)।",
+        },
+        {
+          q: "কুইক সর্ট (Quick Sort) এর ওরস্ট কেস O(N²) জটিলতা এড়াতে পিভট (Pivot) সিলেকশনের সেরা পদ্ধতি কোনটি?",
+          options: [
+            "মিডিয়ান অফ থ্রি (Median-of-Three) বা র্যান্ডমাইজড পিভট নির্বাচন করা",
+            "সর্বদা প্রথম উপাদানটিকে পিভট ধরা",
+            "সর্বদা শেষ উপাদানটিকে পিভট ধরা",
+            "সবচেয়ে ছোট উপাদানটিকে পিভট ধরা",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "Median-of-three বা র্যান্ডম পিভটে অ্যারের অসম বিভাজন এড়ানো যায়।",
+        },
+        {
+          q: "মার্জ সর্ট (Merge Sort) অ্যালগরিদমে সাব-অ্যারেগুলোকে একত্র করার জন্য অতিরিক্ত অক্সিলিয়ারি মেমোরি কত লাগে?",
+          options: [
+            "O(N) অতিরিক্ত মেমোরি লাগে",
+            "O(1) অতিরিক্ত মেমোরি লাগে",
+            "O(log N) অতিরিক্ত মেমোরি লাগে",
+            "O(N²) অতিরিক্ত মেমোরি লাগে",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "মার্জ করার জন্য মূল অ্যারের সমান ও(N) বাড়তি মেমোরি অ্যারে তৈরি করতে হয়।",
+        },
+        {
+          q: "রেডিক্স সর্ট (Radix Sort) অ্যালগরিদমে ভেতরের ডিজিটগুলোকে সর্ট করতে কোন ধরণের সর্টিং অ্যালগরিদম ব্যবহার করা বাধ্যতামূলক?",
+          options: [
+            "যেকোনো একটি স্টেবল সর্টিং অ্যালগরিদম যেমন কাউন্টিং সর্ট (Counting Sort)",
+            "সিলেকশন সর্ট",
+            "কুইক সর্ট",
+            "হিপ সর্ট",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "পূর্ববর্তী পজিশনের সর্ট অর্ডারিং ঠিক রাখতে সাবরুটিন সর্টিং অবশ্যই স্টেবল হতে হবে।",
+        },
+        {
+          q: "টেইল রিকার্সন (Tail Recursion) ব্যবহারের মাধ্যমে মেমোরি সাশ্রয়ের মূল মেকানিজম কোনটি?",
+          options: [
+            "টেইল কল অপটিমাইজেশন (TCO) রিকার্সনকে অভ্যন্তরীণ লুপে রূপান্তর করে নতুন কল স্ট্যাক গঠন বন্ধ করে",
+            "কোডের স্পেস দ্বিগুণ করা",
+            "ফাংশনের রিটার্ন টাইপ পরিবর্তন করা",
+            "রিকার্সন বন্ধ করে এরর দেওয়া",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "TCO প্রযুক্তিতে বর্তমান স্ট্যাক ফ্রেমকেই রিসাইকেল করা হয়।",
+        },
+        {
+          q: "রিকার্সিভ অ্যালগরিদমে 'বেস কেস' (Base Case) না দিলে কী ঘটে?",
+          options: [
+            "ফাংশন অনবরত কল হতে থাকবে এবং স্ট্যাক ওভারফ্লো (Stack Overflow) ঘটে প্রোগ্রাম ক্র্যাশ করবে",
+            "প্রোগ্রামটি অত্যন্ত দ্রুত রান করবে",
+            "মেমোরি সম্পূর্ণ ফাঁকা হয়ে যাবে",
+            "ভুল আউটপুট দিয়ে প্রোগ্রামটি সফলভাবে শেষ হবে",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "বেস কেস না থাকলে অসীম রিকার্সিভ কলের কারণে Stack Overflow ঘটবে।",
+        },
+        {
+          q: "নিচের কোন সর্টিং অ্যালগরিদমটি ইন-প্লেস (In-place) সর্টিং ক্যাটাগরির অন্তর্ভুক্ত নয়?",
+          options: [
+            "মার্জ সর্ট (Merge Sort)",
+            "বাবল সর্ট (Bubble Sort)",
+            "ইনসারশন সর্ট (Insertion Sort)",
+            "কুইক সর্ট (Quick Sort)",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "মার্জ সর্টের জন্য O(N) অতিরিক্ত মেমোরি লাগে, তাই এটি ইন-প্লেস নয়।",
+        },
+        {
+          q: "বাবল সর্টের সবচেয়ে খারাপ বা ওরস্ট কেস (Worst Case) এ মোট তুলনা সংখ্যা কত হয়?",
+          options: [
+            "N(N-1)/2 বার তুলনা করতে হয়",
+            "O(N log N) তুলনা লাগে",
+            "O(log N) তুলনা লাগে",
+            "O(1) তুলনা লাগে",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation: "ওরস্ট কেসে মোট কম্পারিসন $N(N-1)/2 = O(N^2)$।",
+        },
+        {
+          q: "শেল সর্ট (Shell Sort) মূলত নিচের কোন সর্টিং অ্যালগরিদমের একটি দূরবর্তী উন্নয়ন?",
+          options: [
+            "ইনসারশন সর্ট (Insertion Sort)",
+            "বাবল সর্ট",
+            "সিলেকশন সর্ট",
+            "রেডিক্স সর্ট",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "শেল সর্ট ইনসারশন সর্টের একটি দূরত্বভিত্তিক অপটিমাইজড ভার্সন।",
+        },
+        {
+          q: "নিচের কোন সর্টিং অ্যালগরিদম দুটি 'ডিভাইড অ্যান্ড কনকার' (Divide and Conquer) কৌশলে চলে?",
+          options: [
+            "মার্জ সর্ট ও কুইক সর্ট (Merge Sort & Quick Sort)",
+            "বাবল সর্ট ও সিলেকশন সর্ট",
+            "কাউন্টিং সর্ট ও রেডিক্স সর্ট",
+            "ইনসারশন সর্ট ও বাবল সর্ট",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "Merge Sort এবং Quick Sort হলো ডিভাইড অ্যান্ড কনকার পদ্ধতির বাস্তবায়ন।",
+        },
+        {
+          q: "কাউন্টিং সর্ট (Counting Sort) অ্যালগরিদম ব্যবহারের প্রধান সীমাবদ্ধতা কোনটি?",
+          options: [
+            "ইনপুট ডাটা অবশ্যই নির্দিষ্ট এবং ছোট রেঞ্জের অ-নেতিবাচক পূর্ণসংখ্যা হতে হবে",
+            "এটি ভাসমান দশমিক সংখ্যার জন্য সেরা কাজ করে",
+            "এটি মেমোরি ব্যবহার করে না",
+            "এর রানিং টাইম সর্বদা O(N²)",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "ডাটা রেঞ্জ অনেক বড় হলে বা ঋণাত্মক সংখ্যা থাকলে কাউন্টিং সর্ট মেমোরি ক্র্যাশ করে।",
+        },
+        {
+          q: "একটি সর্টিং অ্যালগরিদমের স্থায়িত্ব বা স্টেবিলিটি (Stability) বলতে কী বোঝায়?",
+          options: [
+            "সমমানের ডেটার সর্টিংয়ের আগের আপেক্ষিক অবস্থান অপরিবর্তিত রাখা",
+            "সিস্টেম রানিং মেমোরি স্থির রাখা",
+            "প্রোগ্রাম ক্র্যাশ না করার গ্যারান্টি দেওয়া",
+            "সবচেয়ে কম সময়ে সর্ট করা",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "ইনপুটে সমান মানের উপাদানগুলোর আপেক্ষিক অর্ডার ঠিক রাখাই স্টেবিলিটি।",
+        },
+        {
+          q: "রেডিক্স সর্ট (Radix Sort) এর সময় জটিলতা কত? (d = ডিজিট সংখ্যা, k = বেস)",
+          options: ["O(d * (N + k))", "O(N log N)", "O(N²)", "O(d * N²)"],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "d টি ডিজিটের জন্য কাউন্টিং সর্ট O(N+k) রান করায় মোট সময় O(d * (N + k))।",
+        },
+        {
+          q: "মার্জ সর্টে অ্যারেকে দুই ভাগে ভাগ বা স্প্লিটিং (Splitting) করার জন্য সময় জটিলতা কত?",
+          options: [
+            "O(1) কারণ এটি শুধু ইনডেক্স মিড পয়েন্ট হিসাব করে",
+            "O(N) সময় লাগে",
+            "O(log N) সময় লাগে",
+            "O(N log N) সময় লাগে",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "ইনডেক্স `mid = (low + high)/2` হিসেব করতে কনস্ট্যান্ট O(1) সময় লাগে।",
+        },
+        {
+          q: "কুইক সর্ট অ্যালগরিদমের ওরস্ট কেস (Worst Case) সময় জটিলতা কত?",
+          options: ["O(N²)", "O(N log N)", "O(N)", "O(2^N)"],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "খারাপ পিভট চয়েসে (যেমন অলরেডি সর্টেড অ্যারে) কুইক সর্টের জটিলতা O(N²)।",
+        },
+        {
+          q: "ইনডাইরেক্ট রিকার্সন (Indirect Recursion) কোনটি?",
+          options: [
+            "ফাংশন A যদি ফাংশন B কে ডাকে এবং B যদি পুনরায় A কে কল করে",
+            "ফাংশনটি সরাসরি নিজেকে কল করলে",
+            "ফাংশনের ভেতর লুপ ব্যবহার করলে",
+            "রিকার্সন কল চিরকাল বন্ধ থাকলে",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "একাধিক ফাংশন চক্রাকারে একে অপরকে কল করাকে ইনডাইরেক্ট রিকার্সন বলে।",
+        },
+        {
+          q: "রিকার্সন ট্রি মেথড (Recursion Tree Method) দিয়ে কী করা হয়?",
+          options: [
+            "রিকারেন্স রিলেশনের সময় জটিলতা বা কস্ট হিসাব করা হয়",
+            "বাইনারি ট্রি সর্ট করতে",
+            "স্ট্যাকের সর্বোচ্চ ডেপথ বের করতে",
+            "গ্রাফ ট্রাভার্সাল করতে",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "রিকার্সিভ অ্যালগরিদমের সময় জটিলতা গাণিতিকভাবে পরিমাপ করতে এটি লাগে।",
+        },
+        {
+          q: "টাওয়ার অব হ্যানয় (Tower of Hanoi) সমস্যায় ৪টি ডিস্ক সরাতে ন্যূনতম কতটি মুভ লাগবে?",
+          options: [
+            "১৫টি মুভ লাগবে",
+            "১৬টি মুভ লাগবে",
+            "৭টি মুভ লাগবে",
+            "৩১টি মুভ লাগবে",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "সূত্র: $2^N - 1 \implies 2^4 - 1 = 16 - 1 = 15$ টি মুভ।",
+        },
+        {
+          q: "কুইক সর্টের বেস্ট কেস (Best Case) সময় জটিলতা কত?",
+          options: ["O(N log N)", "O(N)", "O(N²)", "O(log N)"],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "পিভট প্রতিবার একদম সমান দুই ভাগে ভাগ করলে বেস্ট কেস O(N log N)।",
+        },
+        {
+          q: "এক্সটারনাল সর্টিং (External Sorting) কখন ব্যবহার করতে হয়?",
+          options: [
+            "যখন প্রসেস করার মতো বিশাল ডাটা র‍্যামে একসাথে সংকুলান হয় না",
+            "কোড ফাইলের সাইজ ছোট করতে",
+            "ডাটাবেজের গতি বাড়াতে",
+            "শুধুমাত্র লিঙ্কড লিস্ট সর্ট করতে",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "ডাটাবেজের আকার র‍্যামের চেয়ে বড় হলে ডিস্ক মেমোরি ব্যবহার করে এক্সটারনাল সর্ট করতে হয়।",
+        },
+        {
+          q: "বাবল সর্টে Swapped Flag ভ্যারিয়েবল ব্যবহারের সুবিধা কী?",
+          options: [
+            "অ্যারে আগেই সর্টেড থাকলে অপ্রয়োজনীয় লুপ বন্ধ করে বেস্ট কেস O(N) নিশ্চিত করা",
+            "সোয়াপ সংখ্যা দ্বিগুণ করা",
+            "মেমোরির স্পেস ও(১) থেকে ও(N) করা",
+            "কোনোটিই নয়",
+          ],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "কোনো সোয়াপ না হলে ফ্ল্যাগ চেক করে লুপ থামিয়ে দেওয়া যায়।",
+        },
+        {
+          q: "সিলেকশন সর্ট (Selection Sort) এর বেস্ট কেস (Best Case) সময় জটিলতা কত?",
+          options: ["O(N²)", "O(N log N)", "O(N)", "O(1)"],
+          correct: 0,
+          topic: "sorting",
+          explanation:
+            "অ্যারে সর্টেড থাকলেও সিলেকশন সর্টের ইনার লুপ সব চেক করে, তাই বেস্ট কেস O(N²)।",
+        },
+      ];
+
+      // Global Application States
+      let userAnswers = {};
+      let currentFilter = "all";
+
+      window.onload = function () {
+        renderDashboard();
+        renderQuestionGrid();
+        renderQuestions();
+      };
+
+      function renderQuestionGrid() {
+        const gridContainer = document.getElementById("question-grid");
+        gridContainer.innerHTML = "";
+
+        quizDatabase.forEach((q, idx) => {
+          let btnClass = "bg-slate-200 text-slate-700 hover:bg-slate-300";
+          if (userAnswers[idx] !== undefined) {
+            const isCorrect = userAnswers[idx] === quizDatabase[idx].correct;
+            btnClass = isCorrect
+              ? "bg-emerald-600 text-white font-bold"
+              : "bg-rose-600 text-white font-bold";
+          }
+
+          const btn = document.createElement("button");
+          btn.className = `w-8 h-8 rounded-lg text-xs transition-all duration-200 flex items-center justify-center cursor-pointer ${btnClass}`;
+          btn.innerText = idx + 1;
+          btn.onclick = () => {
+            const element = document.getElementById(`q-card-${idx}`);
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          };
+          gridContainer.appendChild(btn);
+        });
+      }
+
+      function renderQuestions() {
+        const listContainer = document.getElementById("questions-list");
+        listContainer.innerHTML = "";
+
+        quizDatabase.forEach((item, idx) => {
+          if (currentFilter !== "all" && item.topic !== currentFilter) {
+            return;
+          }
+
+          const card = document.createElement("div");
+          card.id = `q-card-${idx}`;
+          card.className =
+            "question-card bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-6 transition-all duration-300 hover:shadow-md";
+
+          const topicLabels = {
+            complexity: "Complexity & Intro",
+            tradeoff: "Time-Space Tradeoff",
+            searching: "Searching Techniques",
+            sorting: "Sorting & Recursion",
+          };
+          const topicColors = {
+            complexity: "bg-purple-100 text-purple-700 border-purple-200",
+            tradeoff: "bg-amber-100 text-amber-700 border-amber-200",
+            searching: "bg-blue-100 text-blue-700 border-blue-200",
+            sorting: "bg-emerald-100 text-emerald-700 border-emerald-200",
+          };
+
+          const isAnswered = userAnswers[idx] !== undefined;
+          let optionsHTML = "";
+          const optionPrefix = ["A", "B", "C", "D"];
+
+          item.options.forEach((opt, optIdx) => {
+            let optionClass =
+              "border-slate-200 hover:border-emerald-200 hover:bg-slate-50/60";
+            let iconHTML = "";
+
+            if (isAnswered) {
+              const selectedOpt = userAnswers[idx];
+              const correctOpt = item.correct;
+
+              if (optIdx === correctOpt) {
+                optionClass =
+                  "border-emerald-500 bg-emerald-50/60 text-emerald-900 font-semibold";
+                iconHTML =
+                  '<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>';
+              } else if (optIdx === selectedOpt) {
+                optionClass =
+                  "border-rose-400 bg-rose-50/60 text-rose-900 font-semibold";
+                iconHTML =
+                  '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>';
+              } else {
+                optionClass =
+                  "border-slate-100 bg-slate-50/20 text-slate-400 cursor-not-allowed";
+              }
+            }
+
+            optionsHTML += `
+                        <button 
+                            onclick="selectOption(${idx}, ${optIdx})" 
+                            ${isAnswered ? "disabled" : ""} 
+                            class="option w-full text-left flex items-center justify-between p-3.5 border rounded-xl text-sm md:text-base transition-all duration-200 group ${optionClass} cursor-pointer"
+                        >
+                            <span class="flex items-center gap-3">
+                                <span class="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-bold text-xs ${isAnswered ? "bg-slate-200 text-slate-600" : "bg-slate-100 text-slate-500 group-hover:bg-emerald-100 group-hover:text-emerald-600"} transition-all">
+                                    ${optionPrefix[optIdx]}
+                                </span>
+                                <span>${opt}</span>
+                            </span>
+                            ${iconHTML}
+                        </button>
+                    `;
+          });
+
+          let explanationHTML = "";
+          if (isAnswered) {
+            const isCorrect = userAnswers[idx] === item.correct;
+            explanationHTML = `
+                        <div class="mt-4 p-4 rounded-xl border ${isCorrect ? "bg-emerald-50/40 border-emerald-100 text-emerald-900" : "bg-slate-50 border-slate-200 text-slate-700"} text-xs md:text-sm transition-all animate-fadeIn">
+                            <div class="flex items-center gap-1.5 font-bold mb-1">
+                                <i class="${isCorrect ? "fa-solid fa-square-check text-emerald-600" : "fa-solid fa-circle-exclamation text-amber-600"}"></i>
+                                <span>${isCorrect ? "অভিনন্দন! সঠিক উত্তর।" : "ভুল উত্তর! সঠিক উত্তর: " + optionPrefix[item.correct]}</span>
+                            </div>
+                            <p class="leading-relaxed font-medium">${item.explanation}</p>
+                        </div>
+                    `;
+          }
+
+          card.innerHTML = `
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3.5">
+                        <span class="text-xs md:text-sm font-bold text-slate-400">প্রশ্ন ${idx + 1}/100</span>
+                        <span class="text-[11px] font-semibold px-2.5 py-1 border rounded-full self-start md:self-auto ${topicColors[item.topic]}">
+                            ${topicLabels[item.topic]}
+                        </span>
+                    </div>
+                    <p class="font-semibold text-base md:text-lg text-slate-900 mb-4 leading-relaxed">${item.q}</p>
+                    <div class="flex flex-col gap-2.5">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                `;
+          listContainer.appendChild(card);
+        });
+      }
+
+      function selectOption(questionIndex, selectedOptionIndex) {
+        if (userAnswers[questionIndex] !== undefined) return;
+
+        userAnswers[questionIndex] = selectedOptionIndex;
+
+        renderQuestions();
+        renderQuestionGrid();
+        renderDashboard();
+      }
+
+      function renderDashboard() {
+        let correctCount = 0;
+        let wrongCount = 0;
+        const attempted = Object.keys(userAnswers).length;
+
+        quizDatabase.forEach((q, idx) => {
+          if (userAnswers[idx] !== undefined) {
+            if (userAnswers[idx] === q.correct) {
+              correctCount++;
+            } else {
+              wrongCount++;
+            }
+          }
+        });
+
+        const finalScore = correctCount * 1.0 - wrongCount * 0.25;
+        const scoreFormatted = finalScore.toFixed(2);
+        const progressPercent = Math.round(
+          (attempted / quizDatabase.length) * 100,
+        );
+
+        document.getElementById("score-display").innerText = scoreFormatted;
+        document.getElementById("attempted-display").innerText =
+          `${attempted}/100`;
+        document.getElementById("correct-display").innerText = correctCount;
+        document.getElementById("wrong-display").innerText = wrongCount;
+        document.getElementById("progress-percent").innerText =
+          `${progressPercent}%`;
+        document.getElementById("progress-bar").style.width =
+          `${progressPercent}%`;
+      }
+
+      function filterQuestions() {
+        currentFilter = document.getElementById("topic-filter").value;
+        renderQuestions();
+      }
+
+      function showResetModal() {
+        const modal = document.getElementById("reset-modal");
+        modal.classList.remove("hidden");
+        setTimeout(() => modal.classList.remove("opacity-0"), 10);
+      }
+
+      function closeResetModal() {
+        const modal = document.getElementById("reset-modal");
+        modal.classList.add("opacity-0");
+        setTimeout(() => modal.classList.add("hidden"), 300);
+      }
+
+      function confirmReset() {
+        userAnswers = {};
+        currentFilter = "all";
+        document.getElementById("topic-filter").value = "all";
+        renderDashboard();
+        renderQuestionGrid();
+        renderQuestions();
+        closeResetModal();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

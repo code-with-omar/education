@@ -1,0 +1,2087 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Engineering</title>
+    <style>
+      :root {
+        --bg: #f0f2f5;
+        --card-bg: #ffffff;
+        --primary: #1a73e8;
+        --correct: #0d904f;
+        --wrong: #d93025;
+        --text: #202124;
+        --text-light: #5f6368;
+        --border: #dadce0;
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --hover: #e8f0fe;
+        --badge-bg: #e8f0fe;
+        --badge-text: #1a73e8;
+        --explain-bg: #f8f9fa;
+        --gold: #f9ab00;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Segoe UI", "Noto Sans Bengali", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px 16px;
+      }
+
+      header {
+        background: linear-gradient(135deg, #1a3c6e 0%, #1a73e8 100%);
+        color: #fff;
+        padding: 28px 24px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(26, 115, 232, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+      }
+      header h1 {
+        font-size: 1.8em;
+        font-weight: 700;
+        margin-bottom: 6px;
+        position: relative;
+        z-index: 1;
+      }
+      header p {
+        font-size: 0.95em;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
+      header .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      header .badge-row span {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        backdrop-filter: blur(4px);
+      }
+      /* Header Section Style */
+      .header-container {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid #e2e8f0;
+        font-family: "Segoe UI", Roboto, sans-serif;
+      }
+
+      .header-container h1 {
+        color: #0f172a;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Navigation Container */
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap; /* মোবাইলে অটোমেটিক রেসপনসিভ করার জন্য */
+      }
+
+      /* Button Design */
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #2563eb; /* Modern Blue */
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Hover & Active Effects */
+      .nav-btn:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+
+      .nav-btn:active {
+        transform: translateY(0);
+      }
+      .stats-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 20px;
+        background: var(--card-bg);
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 10px;
+        z-index: 100;
+      }
+      .stat-item {
+        text-align: center;
+        min-width: 60px;
+      }
+      .stat-item .num {
+        font-size: 1.6em;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .stat-item .lbl {
+        font-size: 0.75em;
+        color: var(--text-light);
+      }
+      .stat-item.correct .num {
+        color: var(--correct);
+      }
+      .stat-item.wrong .num {
+        color: var(--wrong);
+      }
+      .stat-item.remain .num {
+        color: var(--gold);
+      }
+
+      .topic-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 16px;
+        justify-content: center;
+      }
+      .topic-filter button {
+        padding: 7px 14px;
+        border: 1.5px solid var(--border);
+        background: #fff;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.82em;
+        transition: all 0.2s;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+      .topic-filter button:hover,
+      .topic-filter button.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+
+      .progress-wrap {
+        margin-bottom: 20px;
+        background: #e0e0e0;
+        border-radius: 10px;
+        height: 6px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--primary);
+        border-radius: 10px;
+        transition: width 0.4s ease;
+        width: 0%;
+      }
+
+      .question-card {
+        background: var(--card-bg);
+        border-radius: 14px;
+        padding: 24px 22px;
+        margin-bottom: 16px;
+        box-shadow: var(--shadow);
+        border-left: 5px solid transparent;
+        transition: all 0.25s;
+        position: relative;
+      }
+      .question-card:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .question-card.answered-correct {
+        border-left-color: var(--correct);
+        background: #f6fdf8;
+      }
+      .question-card.answered-wrong {
+        border-left-color: var(--wrong);
+        background: #fef7f6;
+      }
+      .q-num {
+        display: inline-block;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        font-weight: 700;
+        font-size: 0.85em;
+        padding: 3px 10px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+      }
+      .q-topic {
+        display: inline-block;
+        font-size: 0.75em;
+        color: var(--text-light);
+        margin-left: 6px;
+        font-style: italic;
+      }
+      .q-text {
+        font-weight: 600;
+        font-size: 1.05em;
+        margin-bottom: 14px;
+        color: #1a1a1a;
+      }
+      .options {
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+      .options li {
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.95em;
+        position: relative;
+        user-select: none;
+        background: #fafbfc;
+      }
+      .options li:hover {
+        background: var(--hover);
+        border-color: #a0c4f1;
+      }
+      .options li.selected {
+        border-color: var(--primary);
+        background: #e8f0fe;
+        font-weight: 600;
+      }
+      .options li.correct-choice {
+        border-color: var(--correct) !important;
+        background: #e6f4ea !important;
+        color: #0d5e30 !important;
+        font-weight: 700;
+      }
+      .options li.wrong-choice {
+        border-color: var(--wrong) !important;
+        background: #fce8e6 !important;
+        color: #a50e0e !important;
+      }
+      .options li .icon-feedback {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3em;
+        display: none;
+      }
+      .options li.correct-choice .icon-feedback,
+      .options li.wrong-choice .icon-feedback {
+        display: inline;
+      }
+      .options li.disabled {
+        pointer-events: none;
+        opacity: 0.85;
+      }
+
+      .answer-reveal {
+        margin-top: 12px;
+        padding: 14px 16px;
+        background: var(--explain-bg);
+        border-radius: 10px;
+        display: none;
+        border: 1px dashed #ccc;
+        font-size: 0.9em;
+      }
+      .answer-reveal.show {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      .answer-reveal .ans-label {
+        font-weight: 700;
+        color: var(--correct);
+      }
+      .answer-reveal .explain-label {
+        font-weight: 700;
+        color: #555;
+        margin-top: 6px;
+        display: block;
+      }
+      .answer-reveal .explain-text {
+        color: #444;
+        margin-top: 2px;
+      }
+      .show-answer-btn {
+        margin-top: 10px;
+        padding: 7px 16px;
+        background: #fff;
+        border: 1.5px solid var(--primary);
+        color: var(--primary);
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.85em;
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+      .show-answer-btn:hover {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .btn-reset {
+        display: block;
+        margin: 24px auto;
+        padding: 12px 32px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        font-size: 1em;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+        box-shadow: 0 3px 12px rgba(26, 115, 232, 0.3);
+      }
+      .btn-reset:hover {
+        background: #1557b0;
+        box-shadow: 0 5px 18px rgba(26, 115, 232, 0.4);
+        transform: translateY(-1px);
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        color: var(--text-light);
+        font-size: 1.1em;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.8em;
+        padding: 20px;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.3em;
+        }
+        .question-card {
+          padding: 16px 12px;
+        }
+        .options li {
+          padding: 10px 12px;
+          font-size: 0.88em;
+        }
+        .q-text {
+          font-size: 0.95em;
+        }
+        .stats-bar {
+          gap: 6px;
+          padding: 10px 8px;
+        }
+        .stat-item .num {
+          font-size: 1.2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header-container">
+        <h1>💻 Software Engineering - MCQs</h1>
+        <nav class="nav-buttons">
+          <a href="chapter-two-1.html" class="nav-btn">Part 1</a>
+          <a href="chapter-two-2.html" class="nav-btn">Part 2</a>
+          <a href="chapter-two-3.html" class="nav-btn">Part 3</a>
+          <a href="chapter-two-4.html" class="nav-btn">Part 4</a>
+          <a href="chapter-two-5.html" class="nav-btn">Part 5</a>
+          <a href="chapter-two-6.html" class="nav-btn">Part 6</a>
+          <a href="chapter-two-7.html" class="nav-btn">Part 7</a>
+          <a href="chapter-two-8.html" class="nav-btn">Part 8</a>
+        </nav>
+      </header>
+
+      <div class="stats-bar" id="statsBar">
+        <div class="stat-item">
+          <div class="num" id="totalQ">100</div>
+          <div class="lbl">Total</div>
+        </div>
+        <div class="stat-item correct">
+          <div class="num" id="correctCount">0</div>
+          <div class="lbl">✅ Correct</div>
+        </div>
+        <div class="stat-item wrong">
+          <div class="num" id="wrongCount">0</div>
+          <div class="lbl">❌ Wrong</div>
+        </div>
+        <div class="stat-item remain">
+          <div class="num" id="remainCount">400</div>
+          <div class="lbl">⏳ Remaining</div>
+        </div>
+        <div class="stat-item">
+          <div class="num" id="scorePct">0%</div>
+          <div class="lbl">Score</div>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="topic-filter" id="topicFilter"></div>
+
+      <div id="questionsContainer"></div>
+
+      <button class="btn-reset" onclick="resetAll()">
+        🔄 Reset All Answers
+      </button>
+      <footer>
+        © 2026 | Software Engineering MCQs for NTRCA Assistant Teacher Exam |
+        All Answers Verified
+      </footer>
+    </div>
+
+    <script>
+      // ==================== 400 QUESTIONS DATASET ====================
+      const allQuestions = [
+        // ============ SECTION 1: History, Nature, Relation to Other Disciplines (Q1-Q30) ============
+        {
+          id: 301,
+          topic: "Specification & Verification",
+          q: "Traceability in requirements means:",
+          options: [
+            "Tracking bugs",
+            "Ability to trace requirements through design, code, and tests",
+            "Following developers",
+            "Monitoring servers",
+          ],
+          answer: 1,
+          explain:
+            "Requirements traceability ensures each requirement can be traced forward to implementation and tests, and backward to its origin.",
+        },
+        {
+          id: 302,
+          topic: "Specification & Verification",
+          q: "A 'use case' describes:",
+          options: [
+            "A database schema",
+            "A sequence of interactions between an actor and the system",
+            "Code structure",
+            "Hardware configuration",
+          ],
+          answer: 1,
+          explain:
+            "A use case captures a sequence of steps (interactions) between an actor (user/external system) and the system to achieve a goal.",
+        },
+        {
+          id: 303,
+          topic: "Specification & Verification",
+          q: "User stories typically follow the format:",
+          options: [
+            "As a [role], I want [feature] so that [benefit]",
+            "If-else statements",
+            "Database queries",
+            "Mathematical formulas",
+          ],
+          answer: 0,
+          explain:
+            "The standard user story format: 'As a [type of user], I want [some goal] so that [some reason/benefit].'",
+        },
+        {
+          id: 304,
+          topic: "Specification & Verification",
+          q: "Acceptance criteria define:",
+          options: [
+            "Coding standards",
+            "Conditions that must be met for a user story to be accepted",
+            "Database limits",
+            "Server requirements",
+          ],
+          answer: 1,
+          explain:
+            "Acceptance criteria specify the conditions of satisfaction—what must work for a user story to be considered complete.",
+        },
+        {
+          id: 305,
+          topic: "Specification & Verification",
+          q: "Behavior-Driven Development (BDD) uses:",
+          options: [
+            "Only code",
+            "Natural language specifications (Given-When-Then) to define behavior",
+            "Only diagrams",
+            "No specifications",
+          ],
+          answer: 1,
+          explain:
+            "BDD uses 'Given-When-Then' scenarios written in natural language to specify expected behavior collaboratively.",
+        },
+        {
+          id: 306,
+          topic: "Specification & Verification",
+          q: "In BDD, 'Given' specifies:",
+          options: [
+            "The expected outcome",
+            "The initial context or preconditions",
+            "The action/event",
+            "The test result",
+          ],
+          answer: 1,
+          explain:
+            "In Given-When-Then: 'Given' sets the initial context/preconditions, 'When' describes the action, 'Then' specifies expected outcome.",
+        },
+        {
+          id: 307,
+          topic: "Specification & Verification",
+          q: "A 'mock' object in testing is used to:",
+          options: [
+            "Replace the real application",
+            "Simulate and verify interactions with dependent objects",
+            "Store data",
+            "Generate reports",
+          ],
+          answer: 1,
+          explain:
+            "Mock objects simulate the behavior of real objects and can verify that specific interactions occurred during testing.",
+        },
+        {
+          id: 308,
+          topic: "Specification & Verification",
+          q: "Code linting is a form of:",
+          options: [
+            "Dynamic analysis",
+            "Static analysis",
+            "Performance testing",
+            "Security testing",
+          ],
+          answer: 1,
+          explain:
+            "Linting performs static analysis on source code to flag programming errors, bugs, stylistic issues, and suspicious constructs.",
+        },
+        {
+          id: 309,
+          topic: "Specification & Verification",
+          q: "The goal of 'verification' in software is to ensure:",
+          options: [
+            "Customer satisfaction",
+            "The product conforms to its specifications",
+            "Profitability",
+            "Market success",
+          ],
+          answer: 1,
+          explain:
+            "Verification confirms that the software correctly implements its specified requirements (building the product right).",
+        },
+        {
+          id: 310,
+          topic: "Specification & Verification",
+          q: "The goal of 'validation' is to ensure:",
+          options: [
+            "Code efficiency",
+            "The software meets the customer's actual needs",
+            "Low cost",
+            "Fast delivery",
+          ],
+          answer: 1,
+          explain:
+            "Validation ensures the right product is built—one that satisfies the user's real-world needs and expectations.",
+        },
+
+        // ============ SECTION 9: Modeling & Design / UI (Q311-Q345) ============
+        {
+          id: 311,
+          topic: "Modeling & Design",
+          q: "UML stands for:",
+          options: [
+            "Universal Markup Language",
+            "Unified Modeling Language",
+            "User Management Language",
+            "Unified Markup Logic",
+          ],
+          answer: 1,
+          explain:
+            "UML (Unified Modeling Language) is a standardized modeling language for visualizing, specifying, and documenting software systems.",
+        },
+        {
+          id: 312,
+          topic: "Modeling & Design",
+          q: "Which UML diagram shows the static structure of classes?",
+          options: [
+            "Sequence diagram",
+            "Class diagram",
+            "Activity diagram",
+            "Use case diagram",
+          ],
+          answer: 1,
+          explain:
+            "Class diagrams represent the static structure of a system, showing classes, attributes, methods, and relationships.",
+        },
+        {
+          id: 313,
+          topic: "Modeling & Design",
+          q: "Sequence diagrams are used to model:",
+          options: [
+            "Class hierarchies",
+            "Object interactions over time (message sequence)",
+            "Database schemas",
+            "Deployment",
+          ],
+          answer: 1,
+          explain:
+            "Sequence diagrams show how objects interact in a particular scenario, emphasizing the chronological order of messages.",
+        },
+        {
+          id: 314,
+          topic: "Modeling & Design",
+          q: "Activity diagrams are similar to:",
+          options: [
+            "Class diagrams",
+            "Flowcharts",
+            "Database diagrams",
+            "Deployment diagrams",
+          ],
+          answer: 1,
+          explain:
+            "Activity diagrams model workflow and business processes, similar to flowcharts but with UML notation.",
+        },
+        {
+          id: 315,
+          topic: "Modeling & Design",
+          q: "Use case diagrams show:",
+          options: [
+            "Code structure",
+            "System functionality and external actors",
+            "Database tables",
+            "Network topology",
+          ],
+          answer: 1,
+          explain:
+            "Use case diagrams depict the functional requirements, showing actors and the use cases they interact with.",
+        },
+        {
+          id: 316,
+          topic: "Modeling & Design",
+          q: "Statechart (State Machine) diagrams model:",
+          options: [
+            "Static class structure",
+            "Object behavior across different states and transitions",
+            "Data flow",
+            "Deployment",
+          ],
+          answer: 1,
+          explain:
+            "State diagrams model the dynamic behavior of objects as they transition through various states in response to events.",
+        },
+        {
+          id: 317,
+          topic: "Modeling & Design",
+          q: "Component diagrams show:",
+          options: [
+            "User interfaces",
+            "Physical software components and their dependencies",
+            "Database records",
+            "Test cases",
+          ],
+          answer: 1,
+          explain:
+            "Component diagrams illustrate the organization and dependencies among software components (modules, libraries, executables).",
+        },
+        {
+          id: 318,
+          topic: "Modeling & Design",
+          q: "Deployment diagrams model:",
+          options: [
+            "Algorithms",
+            "Physical deployment of software on hardware nodes",
+            "User stories",
+            "Database queries",
+          ],
+          answer: 1,
+          explain:
+            "Deployment diagrams show the physical architecture, mapping software artifacts to hardware nodes and connections.",
+        },
+        {
+          id: 319,
+          topic: "Modeling & Design",
+          q: "Which diagram is best for modeling parallel and concurrent activities?",
+          options: [
+            "Class diagram",
+            "Activity diagram with forks and joins",
+            "Use case diagram",
+            "Deployment diagram",
+          ],
+          answer: 1,
+          explain:
+            "Activity diagrams with fork/join nodes effectively model parallel, concurrent, and synchronized activities.",
+        },
+        {
+          id: 320,
+          topic: "Modeling & Design",
+          q: "In a class diagram, aggregation represents:",
+          options: [
+            "Inheritance",
+            "A 'whole-part' relationship where parts can exist independently",
+            "Direct association",
+            "No relationship",
+          ],
+          answer: 1,
+          explain:
+            "Aggregation is a 'has-a' relationship where the whole contains parts, but parts can exist independently of the whole.",
+        },
+        {
+          id: 321,
+          topic: "Modeling & Design",
+          q: "Composition in UML represents:",
+          options: [
+            "Loose association",
+            "A strong 'whole-part' relationship where parts cannot exist without the whole",
+            "Inheritance",
+            "Interface implementation",
+          ],
+          answer: 1,
+          explain:
+            "Composition is a stronger form of aggregation where the lifecycle of parts is tied to the whole (parts are destroyed with the whole).",
+        },
+        {
+          id: 322,
+          topic: "Modeling & Design",
+          q: "In UI design, 'affordance' refers to:",
+          options: [
+            "The cost of the UI",
+            "Visual cues that suggest how an element should be used",
+            "The color scheme",
+            "The font size",
+          ],
+          answer: 1,
+          explain:
+            "Affordance is a design property that intuitively indicates how an object should be interacted with (e.g., a button looks clickable).",
+        },
+        {
+          id: 323,
+          topic: "Modeling & Design",
+          q: "Fitts's Law in UI design relates to:",
+          options: [
+            "Color theory",
+            "The time required to move to a target based on distance and size",
+            "Font selection",
+            "Layout grids",
+          ],
+          answer: 1,
+          explain:
+            "Fitts's Law predicts that the time to acquire a target is a function of the distance to and size of the target.",
+        },
+        {
+          id: 324,
+          topic: "Modeling & Design",
+          q: "Responsive web design ensures:",
+          options: [
+            "Fast loading only",
+            "Websites adapt layout to different screen sizes and devices",
+            "Only desktop compatibility",
+            "No images",
+          ],
+          answer: 1,
+          explain:
+            "Responsive design uses flexible grids and CSS media queries to adapt layouts across desktops, tablets, and smartphones.",
+        },
+        {
+          id: 325,
+          topic: "Modeling & Design",
+          q: "Wireframes in UI design are:",
+          options: [
+            "Final designs",
+            "Low-fidelity layouts showing structure without detailed styling",
+            "Database schemas",
+            "Test plans",
+          ],
+          answer: 1,
+          explain:
+            "Wireframes are simple, skeletal layouts that outline the structure and placement of UI elements without visual design details.",
+        },
+        {
+          id: 326,
+          topic: "Modeling & Design",
+          q: "A 'mockup' is more detailed than a wireframe and includes:",
+          options: [
+            "Only text",
+            "Visual design elements like colors, typography, and images",
+            "Only code",
+            "Database connections",
+          ],
+          answer: 1,
+          explain:
+            "Mockups are high-fidelity static designs showing colors, fonts, images, and exact spacing—closer to the final look.",
+        },
+        {
+          id: 327,
+          topic: "Modeling & Design",
+          q: "A prototype in UI design is:",
+          options: [
+            "A static image",
+            "An interactive model simulating user interactions",
+            "A database",
+            "A code library",
+          ],
+          answer: 1,
+          explain:
+            "Prototypes are interactive simulations of the UI that allow stakeholders to experience and test the flow before development.",
+        },
+        {
+          id: 328,
+          topic: "Modeling & Design",
+          q: "Jakob Nielsen's heuristics include:",
+          options: [
+            "Only one principle",
+            "Visibility of system status, user control, consistency, and error prevention",
+            "Only color guidelines",
+            "Only font rules",
+          ],
+          answer: 1,
+          explain:
+            "Nielsen's 10 usability heuristics include visibility of system status, match between system and real world, user control, consistency, error prevention, recognition rather than recall, flexibility, aesthetic design, error recovery, and help.",
+        },
+        {
+          id: 329,
+          topic: "Modeling & Design",
+          q: "A/B testing in UI design compares:",
+          options: [
+            "Two databases",
+            "Two versions of a design to see which performs better",
+            "Two programming languages",
+            "Two servers",
+          ],
+          answer: 1,
+          explain:
+            "A/B testing presents different UI versions to users and measures which one achieves better engagement or conversion.",
+        },
+        {
+          id: 330,
+          topic: "Modeling & Design",
+          q: "Accessibility in UI design ensures:",
+          options: [
+            "Fast loading",
+            "Software is usable by people with disabilities",
+            "Beautiful colors",
+            "Complex animations",
+          ],
+          answer: 1,
+          explain:
+            "Accessibility (a11y) ensures software can be used by people with visual, auditory, motor, or cognitive disabilities.",
+        },
+        {
+          id: 331,
+          topic: "Modeling & Design",
+          q: "The 'golden ratio' in design is approximately:",
+          options: ["1:1", "1:1.618", "1:2", "1:3"],
+          answer: 1,
+          explain:
+            "The golden ratio (~1.618) is often used in visual design for aesthetically pleasing proportions and layouts.",
+        },
+        {
+          id: 332,
+          topic: "Modeling & Design",
+          q: "CRAP principles in visual design stand for:",
+          options: [
+            "Bad design",
+            "Contrast, Repetition, Alignment, Proximity",
+            "Color, Rhythm, Art, Pattern",
+            "Code, Review, Analyze, Plan",
+          ],
+          answer: 1,
+          explain:
+            "CRAP (Contrast, Repetition, Alignment, Proximity) are fundamental principles for effective visual design.",
+        },
+        {
+          id: 333,
+          topic: "Modeling & Design",
+          q: "In DFDs, a 'data store' represents:",
+          options: [
+            "A process",
+            "A repository where data is stored for later use",
+            "An external entity",
+            "A data flow",
+          ],
+          answer: 1,
+          explain:
+            "A data store in a DFD represents a location where data is held (database, file, buffer) between processes.",
+        },
+        {
+          id: 334,
+          topic: "Modeling & Design",
+          q: "An 'external entity' in a DFD is:",
+          options: [
+            "A process inside the system",
+            "An entity outside the system that interacts with it",
+            "A data store",
+            "A data flow",
+          ],
+          answer: 1,
+          explain:
+            "External entities (actors, other systems) are outside the system boundary but provide input or receive output.",
+        },
+        {
+          id: 335,
+          topic: "Modeling & Design",
+          q: "ER diagrams use 'cardinality' to express:",
+          options: [
+            "Color of entities",
+            "The numerical relationship between entities (1:1, 1:N, M:N)",
+            "Speed of queries",
+            "Size of database",
+          ],
+          answer: 1,
+          explain:
+            "Cardinality defines how many instances of one entity relate to instances of another (one-to-one, one-to-many, many-to-many).",
+        },
+        {
+          id: 336,
+          topic: "Modeling & Design",
+          q: "Normalization in database design aims to:",
+          options: [
+            "Increase redundancy",
+            "Reduce data redundancy and improve integrity",
+            "Add more tables randomly",
+            "Ignore relationships",
+          ],
+          answer: 1,
+          explain:
+            "Normalization systematically organizes data to minimize redundancy and avoid update anomalies.",
+        },
+        {
+          id: 337,
+          topic: "Modeling & Design",
+          q: "A 'pivot table' is a:",
+          options: [
+            "Database schema",
+            "Data summarization tool",
+            "Programming language",
+            "UI element",
+          ],
+          answer: 1,
+          explain:
+            "Pivot tables summarize and reorganize selected columns and rows of data to obtain a desired report.",
+        },
+        {
+          id: 338,
+          topic: "Modeling & Design",
+          q: "In UI design, 'progressive disclosure' means:",
+          options: [
+            "Showing everything at once",
+            "Revealing information gradually to reduce complexity",
+            "Hiding all features",
+            "Using only text",
+          ],
+          answer: 1,
+          explain:
+            "Progressive disclosure presents only the necessary information upfront and reveals more as needed, reducing cognitive load.",
+        },
+        {
+          id: 339,
+          topic: "Modeling & Design",
+          q: "A 'breadcrumb' in UI navigation:",
+          options: [
+            "Is a food item",
+            "Shows the user's path/location within a website hierarchy",
+            "Is a type of button",
+            "Deletes navigation",
+          ],
+          answer: 1,
+          explain:
+            "Breadcrumbs display the navigational path, helping users understand their location and easily navigate back.",
+        },
+        {
+          id: 340,
+          topic: "Modeling & Design",
+          q: "The 'Hick-Hyman Law' in UI design states:",
+          options: [
+            "More choices always better",
+            "Decision time increases with the number and complexity of choices",
+            "Color doesn't matter",
+            "Buttons should be large",
+          ],
+          answer: 1,
+          explain:
+            "Hick's Law: The time it takes to make a decision increases logarithmically with the number of choices.",
+        },
+        {
+          id: 341,
+          topic: "Modeling & Design",
+          q: "A 'modal' in UI design is:",
+          options: [
+            "A type of database",
+            "A dialog that requires user interaction before returning to the main window",
+            "A permanent element",
+            "A hidden feature",
+          ],
+          answer: 1,
+          explain:
+            "A modal window/dialog forces the user to interact with it before they can return to the parent application.",
+        },
+        {
+          id: 342,
+          topic: "Modeling & Design",
+          q: "The '8 golden rules' of interface design were proposed by:",
+          options: [
+            "Alan Turing",
+            "Ben Shneiderman",
+            "Donald Norman",
+            "Jakob Nielsen",
+          ],
+          answer: 1,
+          explain:
+            "Ben Shneiderman proposed the 'Eight Golden Rules of Interface Design' including consistency, shortcuts, feedback, and error handling.",
+        },
+        {
+          id: 343,
+          topic: "Modeling & Design",
+          q: "A 'persona' in UX design is:",
+          options: [
+            "A real person",
+            "A fictional character representing a user type",
+            "A developer",
+            "A project manager",
+          ],
+          answer: 1,
+          explain:
+            "Personas are archetypal users created to represent different user types, helping designers understand user needs and goals.",
+        },
+        {
+          id: 344,
+          topic: "Modeling & Design",
+          q: "The 'gestalt principles' in design relate to:",
+          options: [
+            "Coding standards",
+            "How humans perceive visual elements as organized patterns",
+            "Database normalization",
+            "Network protocols",
+          ],
+          answer: 1,
+          explain:
+            "Gestalt principles (proximity, similarity, closure, continuity) describe how the human brain organizes visual information.",
+        },
+        {
+          id: 345,
+          topic: "Modeling & Design",
+          q: "In UML, an 'interface' is represented by:",
+          options: [
+            "A solid line",
+            "A circle or a stereotyped class with «interface»",
+            "A dashed arrow",
+            "A rectangle only",
+          ],
+          answer: 1,
+          explain:
+            "In UML, an interface can be shown as a circle (lollipop notation) or as a class rectangle with the «interface» stereotype.",
+        },
+
+        // ============ SECTION 10: Software Project Management (Q346-Q400) ============
+        {
+          id: 346,
+          topic: "Project Management",
+          q: "The triple constraint in project management includes:",
+          options: [
+            "Scope, Time, Cost",
+            "Design, Code, Test",
+            "People, Process, Product",
+            "Hardware, Software, Network",
+          ],
+          answer: 0,
+          explain:
+            "The triple constraint (Iron Triangle) consists of Scope, Time, and Cost—changing one affects the others.",
+        },
+        {
+          id: 347,
+          topic: "Project Management",
+          q: "Which is NOT a core knowledge area in PMBOK?",
+          options: [
+            "Scope Management",
+            "Risk Management",
+            "Marketing Management",
+            "Quality Management",
+          ],
+          answer: 2,
+          explain:
+            "Marketing Management is not a PMBOK knowledge area. PMBOK covers Scope, Time, Cost, Quality, Risk, HR, Communication, Procurement, Stakeholder, and Integration.",
+        },
+        {
+          id: 348,
+          topic: "Project Management",
+          q: "A 'milestone' in a project represents:",
+          options: [
+            "A daily task",
+            "A significant event or achievement with zero duration",
+            "A team member",
+            "A budget item",
+          ],
+          answer: 1,
+          explain:
+            "A milestone marks a significant point or event in the project timeline, typically with zero duration.",
+        },
+        {
+          id: 349,
+          topic: "Project Management",
+          q: "The Critical Path Method (CPM) identifies:",
+          options: [
+            "The easiest tasks",
+            "The longest sequence of dependent tasks determining the minimum project duration",
+            "All tasks equally",
+            "Only non-critical tasks",
+          ],
+          answer: 1,
+          explain:
+            "CPM identifies the critical path—the longest chain of dependent activities—which determines the shortest possible project duration.",
+        },
+        {
+          id: 350,
+          topic: "Project Management",
+          q: "PERT stands for:",
+          options: [
+            "Project Evaluation and Review Technique",
+            "Program Execution and Runtime Tracking",
+            "Product Engineering and Reliability Testing",
+            "Process Evaluation and Resource Tracking",
+          ],
+          answer: 0,
+          explain:
+            "PERT (Program Evaluation and Review Technique) is a statistical tool for project scheduling that handles uncertainty.",
+        },
+        {
+          id: 351,
+          topic: "Project Management",
+          q: "Gantt charts are used for:",
+          options: [
+            "Database design",
+            "Visualizing project schedule and task dependencies over time",
+            "Code review",
+            "Testing",
+          ],
+          answer: 1,
+          explain:
+            "Gantt charts display tasks as horizontal bars along a timeline, showing start/end dates, durations, and dependencies.",
+        },
+        {
+          id: 352,
+          topic: "Project Management",
+          q: "A Work Breakdown Structure (WBS) is:",
+          options: [
+            "A team list",
+            "A hierarchical decomposition of project deliverables into smaller work packages",
+            "A budget spreadsheet",
+            "A risk register",
+          ],
+          answer: 1,
+          explain:
+            "WBS breaks down the project scope into manageable, hierarchical work packages for planning and tracking.",
+        },
+        {
+          id: 353,
+          topic: "Project Management",
+          q: "COCOMO (Constructive Cost Model) is used for:",
+          options: [
+            "Testing",
+            "Software cost and effort estimation",
+            "UI design",
+            "Database normalization",
+          ],
+          answer: 1,
+          explain:
+            "COCOMO, developed by Barry Boehm, estimates software development effort, cost, and schedule based on project size.",
+        },
+        {
+          id: 354,
+          topic: "Project Management",
+          q: "Function Point (FP) estimation measures:",
+          options: [
+            "Lines of code",
+            "Software size based on functionality delivered to the user",
+            "Team size",
+            "Project duration",
+          ],
+          answer: 1,
+          explain:
+            "Function Points quantify software size by measuring the functionality provided, independent of implementation technology.",
+        },
+        {
+          id: 355,
+          topic: "Project Management",
+          q: "LOC stands for:",
+          options: [
+            "Level of Complexity",
+            "Lines of Code",
+            "Length of Contract",
+            "List of Changes",
+          ],
+          answer: 1,
+          explain:
+            "LOC (Lines of Code) is a traditional but simplistic measure of software size used in estimation.",
+        },
+        {
+          id: 356,
+          topic: "Project Management",
+          q: "Risk management involves:",
+          options: [
+            "Ignoring risks",
+            "Identifying, analyzing, and responding to project risks",
+            "Only accepting all risks",
+            "Avoiding all projects",
+          ],
+          answer: 1,
+          explain:
+            "Risk management systematically identifies, assesses, prioritizes, and mitigates risks throughout the project lifecycle.",
+        },
+        {
+          id: 357,
+          topic: "Project Management",
+          q: "Risk mitigation means:",
+          options: [
+            "Accepting the risk",
+            "Taking actions to reduce the probability or impact of a risk",
+            "Ignoring the risk",
+            "Transferring risk to someone else",
+          ],
+          answer: 1,
+          explain:
+            "Risk mitigation involves proactive steps to lower the likelihood of occurrence or minimize the negative impact of identified risks.",
+        },
+        {
+          id: 358,
+          topic: "Project Management",
+          q: "A 'risk register' is:",
+          options: [
+            "A financial document",
+            "A document listing identified risks, their analysis, and response plans",
+            "A team roster",
+            "A schedule",
+          ],
+          answer: 1,
+          explain:
+            "The risk register (risk log) catalogs all identified risks, their probability, impact, priority, and planned responses.",
+        },
+        {
+          id: 359,
+          topic: "Project Management",
+          q: "Earned Value Management (EVM) integrates:",
+          options: [
+            "Only cost",
+            "Scope, schedule, and cost to assess project performance",
+            "Only schedule",
+            "Only quality",
+          ],
+          answer: 1,
+          explain:
+            "EVM combines scope, schedule, and cost metrics to provide objective measures of project performance and progress.",
+        },
+        {
+          id: 360,
+          topic: "Project Management",
+          q: "SPI (Schedule Performance Index) > 1 indicates:",
+          options: [
+            "Project is behind schedule",
+            "Project is ahead of schedule",
+            "Project is on budget",
+            "Project is over budget",
+          ],
+          answer: 1,
+          explain:
+            "SPI = Earned Value / Planned Value. SPI > 1 means more work was completed than planned—ahead of schedule.",
+        },
+        {
+          id: 361,
+          topic: "Project Management",
+          q: "CPI (Cost Performance Index) < 1 indicates:",
+          options: [
+            "Under budget",
+            "Over budget",
+            "On budget",
+            "Ahead of schedule",
+          ],
+          answer: 1,
+          explain:
+            "CPI = Earned Value / Actual Cost. CPI < 1 means costs exceed the value of work performed—over budget.",
+        },
+        {
+          id: 362,
+          topic: "Project Management",
+          q: "The 'cone of uncertainty' shows that estimation accuracy:",
+          options: [
+            "Is constant throughout",
+            "Improves as the project progresses",
+            "Gets worse over time",
+            "Is irrelevant",
+          ],
+          answer: 1,
+          explain:
+            "The cone of uncertainty illustrates that initial estimates have wide variance, which narrows as the project proceeds and more is learned.",
+        },
+        {
+          id: 363,
+          topic: "Project Management",
+          q: "Which estimation technique uses expert judgment?",
+          options: [
+            "COCOMO",
+            "Function Points",
+            "Delphi technique",
+            "LOC-based",
+          ],
+          answer: 2,
+          explain:
+            "The Delphi technique gathers estimates from experts anonymously over multiple rounds, converging toward a consensus.",
+        },
+        {
+          id: 364,
+          topic: "Project Management",
+          q: "A 'project baseline' is:",
+          options: [
+            "The project name",
+            "An approved version of the project plan used for comparison",
+            "A team member",
+            "A risk",
+          ],
+          answer: 1,
+          explain:
+            "A baseline is the original approved plan (scope, schedule, cost) against which actual performance is measured.",
+        },
+        {
+          id: 365,
+          topic: "Project Management",
+          q: "Scope creep refers to:",
+          options: [
+            "Fast development",
+            "Uncontrolled expansion of project scope without adjusting time/cost",
+            "Risk reduction",
+            "Team growth",
+          ],
+          answer: 1,
+          explain:
+            "Scope creep is the gradual, uncontrolled addition of features and requirements beyond the original agreed scope.",
+        },
+        {
+          id: 366,
+          topic: "Project Management",
+          q: "Gold plating in project management means:",
+          options: [
+            "Using gold materials",
+            "Adding unnecessary features beyond requirements",
+            "Reducing scope",
+            "Cutting costs",
+          ],
+          answer: 1,
+          explain:
+            "Gold plating is adding extra features or embellishments not in the requirements, which increases risk without adding value.",
+        },
+        {
+          id: 367,
+          topic: "Project Management",
+          q: "The 'parkinson's law' states:",
+          options: [
+            "Work contracts to fit the time",
+            "Work expands to fill the time available for its completion",
+            "Costs always decrease",
+            "Teams always succeed",
+          ],
+          answer: 1,
+          explain:
+            "Parkinson's Law: 'Work expands so as to fill the time available for its completion.'",
+        },
+        {
+          id: 368,
+          topic: "Project Management",
+          q: "A RACI matrix defines:",
+          options: [
+            "Code structure",
+            "Roles: Responsible, Accountable, Consulted, Informed",
+            "Risk levels",
+            "Budget allocations",
+          ],
+          answer: 1,
+          explain:
+            "RACI charts clarify roles and responsibilities: Responsible (does), Accountable (approves), Consulted (advises), Informed (kept updated).",
+        },
+        {
+          id: 369,
+          topic: "Project Management",
+          q: "The primary goal of project quality management is:",
+          options: [
+            "Finish fastest",
+            "Ensure the project satisfies the needs for which it was undertaken",
+            "Minimize cost only",
+            "Maximize team size",
+          ],
+          answer: 1,
+          explain:
+            "Quality management ensures the project deliverables meet stakeholder requirements and are fit for purpose.",
+        },
+        {
+          id: 370,
+          topic: "Project Management",
+          q: "Change control board (CCB) is responsible for:",
+          options: [
+            "Writing code",
+            "Reviewing and approving/rejecting change requests",
+            "Hiring team members",
+            "Marketing",
+          ],
+          answer: 1,
+          explain:
+            "The CCB reviews change requests and decides whether to approve, reject, or defer proposed changes to the project.",
+        },
+        {
+          id: 371,
+          topic: "Project Management",
+          q: "Which metric is used to track project schedule?",
+          options: [
+            "Defect density",
+            "Schedule Variance (SV)",
+            "Code coverage",
+            "MTBF",
+          ],
+          answer: 1,
+          explain:
+            "Schedule Variance (SV = Earned Value - Planned Value) measures how far ahead or behind schedule a project is.",
+        },
+        {
+          id: 372,
+          topic: "Project Management",
+          q: "Cost Variance (CV) is calculated as:",
+          options: ["EV - AC", "EV - PV", "AC - EV", "PV - EV"],
+          answer: 0,
+          explain:
+            "Cost Variance = Earned Value (EV) - Actual Cost (AC). Positive CV indicates under budget; negative indicates over budget.",
+        },
+        {
+          id: 373,
+          topic: "Project Management",
+          q: "Which risk response strategy involves purchasing insurance?",
+          options: ["Mitigation", "Avoidance", "Transfer", "Acceptance"],
+          answer: 2,
+          explain:
+            "Risk transfer shifts the impact of a risk to a third party (e.g., insurance, outsourcing, warranties).",
+        },
+        {
+          id: 374,
+          topic: "Project Management",
+          q: "Risk avoidance means:",
+          options: [
+            "Ignoring the risk",
+            "Changing the project plan to eliminate the risk entirely",
+            "Insuring against risk",
+            "Accepting consequences",
+          ],
+          answer: 1,
+          explain:
+            "Risk avoidance alters the project approach to completely remove the threat posed by a particular risk.",
+        },
+        {
+          id: 375,
+          topic: "Project Management",
+          q: "A 'stakeholder' in project management is:",
+          options: [
+            "Only the project manager",
+            "Any individual or group affected by or affecting the project",
+            "Only the customer",
+            "Only the development team",
+          ],
+          answer: 1,
+          explain:
+            "Stakeholders include anyone who can influence, be affected by, or perceive themselves affected by the project.",
+        },
+        {
+          id: 376,
+          topic: "Project Management",
+          q: "The 'communication channels' formula for N team members is:",
+          options: ["N", "N(N-1)/2", "N²", "2N"],
+          answer: 1,
+          explain:
+            "The number of communication channels = N(N-1)/2, where N is the number of team members.",
+        },
+        {
+          id: 377,
+          topic: "Project Management",
+          q: "Which is NOT a type of project organizational structure?",
+          options: ["Functional", "Matrix", "Projectized", "Circular"],
+          answer: 3,
+          explain:
+            "Common organizational structures include Functional, Projectized, and Matrix (weak, balanced, strong). 'Circular' is not a standard structure.",
+        },
+        {
+          id: 378,
+          topic: "Project Management",
+          q: "In a 'functional organization', the project manager has:",
+          options: [
+            "Full authority",
+            "Little to no authority",
+            "Shared authority",
+            "Complete control",
+          ],
+          answer: 1,
+          explain:
+            "In functional organizations, functional managers hold most authority; the project manager has limited formal power.",
+        },
+        {
+          id: 379,
+          topic: "Project Management",
+          q: "In a 'projectized organization', the project manager has:",
+          options: [
+            "No authority",
+            "Full authority over the project",
+            "Only advisory role",
+            "Shared with functional manager",
+          ],
+          answer: 1,
+          explain:
+            "In projectized structures, the project manager has complete authority, and team members report directly to them.",
+        },
+        {
+          id: 380,
+          topic: "Project Management",
+          q: "The 'Tuckman model' describes team development stages as:",
+          options: [
+            "Plan-Do-Check-Act",
+            "Forming, Storming, Norming, Performing, Adjourning",
+            "Design-Code-Test-Deploy",
+            "Start-Continue-End",
+          ],
+          answer: 1,
+          explain:
+            "Tuckman's stages: Forming (getting together), Storming (conflict), Norming (cohesion), Performing (high productivity), Adjourning (disbanding).",
+        },
+        {
+          id: 381,
+          topic: "Project Management",
+          q: "The 'cone of uncertainty' in software estimation was introduced by:",
+          options: [
+            "Fred Brooks",
+            "Barry Boehm",
+            "Steve McConnell",
+            "Kent Beck",
+          ],
+          answer: 2,
+          explain:
+            "Steve McConnell popularized the 'cone of uncertainty' concept in software estimation literature.",
+        },
+        {
+          id: 382,
+          topic: "Project Management",
+          q: "Which is a top-down estimation technique?",
+          options: [
+            "Bottom-up estimating",
+            "Analogous estimating",
+            "Parametric estimating",
+            "Three-point estimating",
+          ],
+          answer: 1,
+          explain:
+            "Analogous (top-down) estimating uses historical data from similar projects to estimate the current project.",
+        },
+        {
+          id: 383,
+          topic: "Project Management",
+          q: "Three-point estimation uses:",
+          options: [
+            "One value",
+            "Optimistic, Pessimistic, and Most Likely estimates",
+            "Only the average",
+            "Only the maximum",
+          ],
+          answer: 1,
+          explain:
+            "Three-point (PERT) estimation combines Optimistic (O), Pessimistic (P), and Most Likely (M) estimates: (O+4M+P)/6.",
+        },
+        {
+          id: 384,
+          topic: "Project Management",
+          q: "The 'bus factor' in a project refers to:",
+          options: [
+            "Transportation cost",
+            "The number of team members that can be lost before the project stalls",
+            "Office location",
+            "Vehicle availability",
+          ],
+          answer: 1,
+          explain:
+            "The bus factor (or truck factor) is the minimum number of team members whose sudden absence would jeopardize the project.",
+        },
+        {
+          id: 385,
+          topic: "Project Management",
+          q: "Sprint planning in Scrum involves:",
+          options: [
+            "Only the Scrum Master",
+            "The entire Scrum team selecting work for the upcoming sprint",
+            "Only the Product Owner",
+            "Stakeholders only",
+          ],
+          answer: 1,
+          explain:
+            "Sprint planning is a collaborative event where the whole Scrum team agrees on the sprint goal and selects backlog items.",
+        },
+        {
+          id: 386,
+          topic: "Project Management",
+          q: "A 'retrospective' is focused on:",
+          options: [
+            "Demonstrating features",
+            "Inspecting and adapting the team's process",
+            "Planning next sprint",
+            "Reviewing budget",
+          ],
+          answer: 1,
+          explain:
+            "The retrospective examines how the team worked and identifies actionable improvements for future sprints.",
+        },
+        {
+          id: 387,
+          topic: "Project Management",
+          q: "Velocity in Scrum is expressed in:",
+          options: [
+            "Hours",
+            "Story points per sprint",
+            "Lines of code",
+            "Number of bugs",
+          ],
+          answer: 1,
+          explain:
+            "Velocity measures the average amount of work (story points) a team completes per sprint, used for forecasting.",
+        },
+        {
+          id: 388,
+          topic: "Project Management",
+          q: "The 'Definition of Ready' ensures:",
+          options: [
+            "The project is deployed",
+            "A user story is sufficiently detailed to be worked on",
+            "The sprint is over",
+            "The budget is approved",
+          ],
+          answer: 1,
+          explain:
+            "Definition of Ready (DoR) specifies criteria a user story must meet before the team can start working on it.",
+        },
+        {
+          id: 389,
+          topic: "Project Management",
+          q: "A 'burnup chart' shows:",
+          options: [
+            "Only remaining work",
+            "Work completed versus total scope, highlighting scope changes",
+            "Only budget",
+            "Only risks",
+          ],
+          answer: 1,
+          explain:
+            "A burnup chart displays completed work against the total scope, making scope changes visible.",
+        },
+        {
+          id: 390,
+          topic: "Project Management",
+          q: "Which Agile metric tracks how long it takes from idea to production?",
+          options: ["Velocity", "Lead time", "Story points", "Defect rate"],
+          answer: 1,
+          explain:
+            "Lead time measures the total time from when a request is made until it is delivered to production.",
+        },
+        {
+          id: 391,
+          topic: "Project Management",
+          q: "Cycle time in Agile measures:",
+          options: [
+            "Total project duration",
+            "Time from when work begins on an item until it is completed",
+            "Meeting duration",
+            "Testing time only",
+          ],
+          answer: 1,
+          explain:
+            "Cycle time starts when work actually begins on a task and ends when it is delivered.",
+        },
+        {
+          id: 392,
+          topic: "Project Management",
+          q: "WIP limits in Kanban help to:",
+          options: [
+            "Increase multitasking",
+            "Reduce bottlenecks and improve flow",
+            "Add more tasks",
+            "Ignore constraints",
+          ],
+          answer: 1,
+          explain:
+            "Work-In-Progress (WIP) limits prevent teams from taking on too many tasks simultaneously, improving throughput and reducing context switching.",
+        },
+        {
+          id: 393,
+          topic: "Project Management",
+          q: "A 'project charter' formally:",
+          options: [
+            "Closes the project",
+            "Authorizes the project and gives the project manager authority",
+            "Is written at project end",
+            "Is optional",
+          ],
+          answer: 1,
+          explain:
+            "The project charter officially initiates the project, names the project manager, and grants authority to use organizational resources.",
+        },
+        {
+          id: 394,
+          topic: "Project Management",
+          q: "The 'iron triangle' of project management constraints includes:",
+          options: [
+            "Quality, Risk, Stakeholders",
+            "Scope, Schedule, Cost",
+            "Design, Code, Test",
+            "People, Process, Technology",
+          ],
+          answer: 1,
+          explain:
+            "The iron triangle (triple constraint) represents the interdependent constraints of Scope, Schedule (Time), and Cost.",
+        },
+        {
+          id: 395,
+          topic: "Project Management",
+          q: "Which is a qualitative risk analysis technique?",
+          options: [
+            "Monte Carlo simulation",
+            "Probability and Impact Matrix",
+            "Decision tree analysis",
+            "Expected Monetary Value",
+          ],
+          answer: 1,
+          explain:
+            "The Probability and Impact Matrix is a qualitative technique that ranks risks based on likelihood and consequence.",
+        },
+        {
+          id: 396,
+          topic: "Project Management",
+          q: "Monte Carlo simulation is used for:",
+          options: [
+            "Qualitative risk analysis",
+            "Quantitative risk analysis through repeated random sampling",
+            "Team building",
+            "UI design",
+          ],
+          answer: 1,
+          explain:
+            "Monte Carlo simulation performs quantitative risk analysis by running thousands of scenarios to model possible outcomes.",
+        },
+        {
+          id: 397,
+          topic: "Project Management",
+          q: "The 'mythical man-month' concept highlights:",
+          options: [
+            "Adding people always speeds up projects",
+            "Adding people to late projects often makes them later due to communication overhead",
+            "One person can do everything",
+            "Projects never fail",
+          ],
+          answer: 1,
+          explain:
+            "Fred Brooks' 'Mythical Man-Month' explains that adding manpower to a late project increases communication complexity, often delaying it further.",
+        },
+        {
+          id: 398,
+          topic: "Project Management",
+          q: "Which document defines how the project will be executed, monitored, and closed?",
+          options: [
+            "SRS",
+            "Project Management Plan",
+            "Test Plan",
+            "Design Document",
+          ],
+          answer: 1,
+          explain:
+            "The Project Management Plan integrates all subsidiary plans and defines how the project will be managed across all knowledge areas.",
+        },
+        {
+          id: 399,
+          topic: "Project Management",
+          q: "The 'standish group CHAOS report' studies:",
+          options: [
+            "Hardware failures",
+            "Software project success and failure rates",
+            "Network security",
+            "Database performance",
+          ],
+          answer: 1,
+          explain:
+            "The CHAOS report by the Standish Group analyzes software project outcomes, categorizing projects as successful, challenged, or failed.",
+        },
+        {
+          id: 400,
+          topic: "Project Management",
+          q: "A 'lessons learned' document is created:",
+          options: [
+            "At project start only",
+            "Throughout the project and finalized at closure",
+            "Never",
+            "Only if the project fails",
+          ],
+          answer: 1,
+          explain:
+            "Lessons learned capture knowledge gained during the project, compiled throughout and finalized at project closure for future reference.",
+        },
+      ];
+
+      // ==================== MAIN APPLICATION LOGIC ====================
+      let userAnswers = {}; // { questionId: selectedOptionIndex }
+      let revealedAnswers = {}; // { questionId: true/false }
+
+      const questionsContainer = document.getElementById("questionsContainer");
+      const topicFilter = document.getElementById("topicFilter");
+      const correctCountEl = document.getElementById("correctCount");
+      const wrongCountEl = document.getElementById("wrongCount");
+      const remainCountEl = document.getElementById("remainCount");
+      const scorePctEl = document.getElementById("scorePct");
+      const progressFill = document.getElementById("progressFill");
+
+      // Get unique topics
+      const topics = [...new Set(allQuestions.map((q) => q.topic))];
+
+      // Render topic filter buttons
+      function renderTopicFilter() {
+        topicFilter.innerHTML =
+          '<button class="active" data-topic="all">📋 All Topics</button>';
+        topics.forEach((topic) => {
+          const btn = document.createElement("button");
+          btn.textContent = topic;
+          btn.dataset.topic = topic;
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".topic-filter button")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderQuestions(btn.dataset.topic);
+          });
+          topicFilter.appendChild(btn);
+        });
+        document
+          .querySelector('.topic-filter button[data-topic="all"]')
+          .addEventListener("click", () => {
+            document
+              .querySelectorAll(".topic-filter button")
+              .forEach((b) => b.classList.remove("active"));
+            document
+              .querySelector('.topic-filter button[data-topic="all"]')
+              .classList.add("active");
+            renderQuestions("all");
+          });
+      }
+
+      function renderQuestions(filterTopic = "all") {
+        const filtered =
+          filterTopic === "all"
+            ? allQuestions
+            : allQuestions.filter((q) => q.topic === filterTopic);
+        questionsContainer.innerHTML = "";
+
+        if (filtered.length === 0) {
+          questionsContainer.innerHTML =
+            '<div class="no-results">No questions found for this topic.</div>';
+          return;
+        }
+
+        filtered.forEach((q) => {
+          const card = document.createElement("div");
+          card.className = "question-card";
+          card.id = "q-card-" + q.id;
+
+          // Update card border based on answer
+          if (userAnswers[q.id] !== undefined) {
+            if (userAnswers[q.id] === q.answer) {
+              card.classList.add("answered-correct");
+            } else {
+              card.classList.add("answered-wrong");
+            }
+          }
+
+          card.innerHTML = `
+                    <span class="q-num">Q${q.id}</span>
+                    <span class="q-topic">[${q.topic}]</span>
+                    <div class="q-text">${q.q}</div>
+                    <ul class="options" id="options-${q.id}">
+                        ${q.options
+                          .map((opt, idx) => {
+                            const letter = String.fromCharCode(65 + idx);
+                            let cls = "";
+                            if (userAnswers[q.id] !== undefined) {
+                              cls += " disabled";
+                              if (idx === userAnswers[q.id]) cls += " selected";
+                              if (idx === q.answer) cls += " correct-choice";
+                              if (idx === userAnswers[q.id] && idx !== q.answer)
+                                cls += " wrong-choice";
+                            }
+                            return `<li class="${cls}" data-qid="${q.id}" data-opt="${idx}">
+                                <strong>${letter}.</strong> ${opt}
+                                <span class="icon-feedback">${idx === q.answer ? "✅" : userAnswers[q.id] === idx && idx !== q.answer ? "❌" : ""}</span>
+                            </li>`;
+                          })
+                          .join("")}
+                    </ul>
+                    <button class="show-answer-btn" id="btn-${q.id}" onclick="toggleAnswer(${q.id})">
+                        ${revealedAnswers[q.id] ? "🔒 Hide Answer & Explanation" : "🔓 Show Answer & Explanation"}
+                    </button>
+                    <div class="answer-reveal ${revealedAnswers[q.id] ? "show" : ""}" id="answer-${q.id}">
+                        <span class="ans-label">✅ Correct Answer: ${String.fromCharCode(65 + q.answer)}. ${q.options[q.answer]}</span>
+                        <span class="explain-label">📝 Explanation:</span>
+                        <span class="explain-text">${q.explain}</span>
+                    </div>
+                `;
+          questionsContainer.appendChild(card);
+        });
+
+        // Attach option click handlers
+        document
+          .querySelectorAll(".options li:not(.disabled)")
+          .forEach((li) => {
+            li.addEventListener("click", function () {
+              const qid = parseInt(this.dataset.qid);
+              const opt = parseInt(this.dataset.opt);
+              handleAnswer(qid, opt);
+            });
+          });
+
+        updateStats();
+      }
+
+      function handleAnswer(qid, selectedOpt) {
+        if (userAnswers[qid] !== undefined) return; // Already answered
+
+        const q = allQuestions.find((q) => q.id === qid);
+        userAnswers[qid] = selectedOpt;
+
+        // Re-render just this card
+        const card = document.getElementById("q-card-" + qid);
+        const optionsList = document.getElementById("options-" + qid);
+
+        // Update classes
+        if (selectedOpt === q.answer) {
+          card.classList.add("answered-correct");
+        } else {
+          card.classList.add("answered-wrong");
+        }
+
+        // Update options
+        const items = optionsList.querySelectorAll("li");
+        items.forEach((li, idx) => {
+          li.classList.add("disabled");
+          if (idx === selectedOpt) li.classList.add("selected");
+          if (idx === q.answer) li.classList.add("correct-choice");
+          if (idx === selectedOpt && idx !== q.answer)
+            li.classList.add("wrong-choice");
+          // Update icon
+          const icon = li.querySelector(".icon-feedback");
+          if (idx === q.answer) icon.textContent = "✅";
+          if (idx === selectedOpt && idx !== q.answer) icon.textContent = "❌";
+          icon.style.display =
+            idx === q.answer || (idx === selectedOpt && idx !== q.answer)
+              ? "inline"
+              : "none";
+        });
+
+        updateStats();
+      }
+
+      function toggleAnswer(qid) {
+        revealedAnswers[qid] = !revealedAnswers[qid];
+        const answerDiv = document.getElementById("answer-" + qid);
+        const btn = document.getElementById("btn-" + qid);
+
+        if (revealedAnswers[qid]) {
+          answerDiv.classList.add("show");
+          btn.textContent = "🔒 Hide Answer & Explanation";
+        } else {
+          answerDiv.classList.remove("show");
+          btn.textContent = "🔓 Show Answer & Explanation";
+        }
+      }
+
+      function updateStats() {
+        const total = allQuestions.length;
+        const answered = Object.keys(userAnswers).length;
+        let correct = 0;
+        let wrong = 0;
+
+        for (const [qid, selected] of Object.entries(userAnswers)) {
+          const q = allQuestions.find((q) => q.id === parseInt(qid));
+          if (q && selected === q.answer) correct++;
+          else wrong++;
+        }
+
+        const remain = total - answered;
+        const pct = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+
+        correctCountEl.textContent = correct;
+        wrongCountEl.textContent = wrong;
+        remainCountEl.textContent = remain;
+        scorePctEl.textContent = pct + "%";
+        progressFill.style.width = (answered / total) * 100 + "%";
+      }
+
+      function resetAll() {
+        if (
+          confirm(
+            "Are you sure you want to reset all answers? This cannot be undone.",
+          )
+        ) {
+          userAnswers = {};
+          revealedAnswers = {};
+          const activeBtn = document.querySelector(
+            ".topic-filter button.active",
+          );
+          const activeTopic = activeBtn ? activeBtn.dataset.topic : "all";
+          renderQuestions(activeTopic);
+          updateStats();
+        }
+      }
+
+      // Initialize
+      renderTopicFilter();
+      renderQuestions("all");
+      updateStats();
+    </script>
+  </body>
+</html>

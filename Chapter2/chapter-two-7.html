@@ -1,0 +1,2083 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Engineering</title>
+    <style>
+      :root {
+        --bg: #f0f2f5;
+        --card-bg: #ffffff;
+        --primary: #1a73e8;
+        --correct: #0d904f;
+        --wrong: #d93025;
+        --text: #202124;
+        --text-light: #5f6368;
+        --border: #dadce0;
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --hover: #e8f0fe;
+        --badge-bg: #e8f0fe;
+        --badge-text: #1a73e8;
+        --explain-bg: #f8f9fa;
+        --gold: #f9ab00;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Segoe UI", "Noto Sans Bengali", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px 16px;
+      }
+
+      header {
+        background: linear-gradient(135deg, #1a3c6e 0%, #1a73e8 100%);
+        color: #fff;
+        padding: 28px 24px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(26, 115, 232, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+      }
+      header h1 {
+        font-size: 1.8em;
+        font-weight: 700;
+        margin-bottom: 6px;
+        position: relative;
+        z-index: 1;
+      }
+      header p {
+        font-size: 0.95em;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
+      header .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      header .badge-row span {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        backdrop-filter: blur(4px);
+      }
+      /* Header Section Style */
+      .header-container {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid #e2e8f0;
+        font-family: "Segoe UI", Roboto, sans-serif;
+      }
+
+      .header-container h1 {
+        color: #0f172a;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Navigation Container */
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap; /* মোবাইলে অটোমেটিক রেসপনসিভ করার জন্য */
+      }
+
+      /* Button Design */
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #2563eb; /* Modern Blue */
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Hover & Active Effects */
+      .nav-btn:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+
+      .nav-btn:active {
+        transform: translateY(0);
+      }
+      .stats-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 20px;
+        background: var(--card-bg);
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 10px;
+        z-index: 100;
+      }
+      .stat-item {
+        text-align: center;
+        min-width: 60px;
+      }
+      .stat-item .num {
+        font-size: 1.6em;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .stat-item .lbl {
+        font-size: 0.75em;
+        color: var(--text-light);
+      }
+      .stat-item.correct .num {
+        color: var(--correct);
+      }
+      .stat-item.wrong .num {
+        color: var(--wrong);
+      }
+      .stat-item.remain .num {
+        color: var(--gold);
+      }
+
+      .topic-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 16px;
+        justify-content: center;
+      }
+      .topic-filter button {
+        padding: 7px 14px;
+        border: 1.5px solid var(--border);
+        background: #fff;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.82em;
+        transition: all 0.2s;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+      .topic-filter button:hover,
+      .topic-filter button.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+
+      .progress-wrap {
+        margin-bottom: 20px;
+        background: #e0e0e0;
+        border-radius: 10px;
+        height: 6px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--primary);
+        border-radius: 10px;
+        transition: width 0.4s ease;
+        width: 0%;
+      }
+
+      .question-card {
+        background: var(--card-bg);
+        border-radius: 14px;
+        padding: 24px 22px;
+        margin-bottom: 16px;
+        box-shadow: var(--shadow);
+        border-left: 5px solid transparent;
+        transition: all 0.25s;
+        position: relative;
+      }
+      .question-card:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .question-card.answered-correct {
+        border-left-color: var(--correct);
+        background: #f6fdf8;
+      }
+      .question-card.answered-wrong {
+        border-left-color: var(--wrong);
+        background: #fef7f6;
+      }
+      .q-num {
+        display: inline-block;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        font-weight: 700;
+        font-size: 0.85em;
+        padding: 3px 10px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+      }
+      .q-topic {
+        display: inline-block;
+        font-size: 0.75em;
+        color: var(--text-light);
+        margin-left: 6px;
+        font-style: italic;
+      }
+      .q-text {
+        font-weight: 600;
+        font-size: 1.05em;
+        margin-bottom: 14px;
+        color: #1a1a1a;
+      }
+      .options {
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+      .options li {
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.95em;
+        position: relative;
+        user-select: none;
+        background: #fafbfc;
+      }
+      .options li:hover {
+        background: var(--hover);
+        border-color: #a0c4f1;
+      }
+      .options li.selected {
+        border-color: var(--primary);
+        background: #e8f0fe;
+        font-weight: 600;
+      }
+      .options li.correct-choice {
+        border-color: var(--correct) !important;
+        background: #e6f4ea !important;
+        color: #0d5e30 !important;
+        font-weight: 700;
+      }
+      .options li.wrong-choice {
+        border-color: var(--wrong) !important;
+        background: #fce8e6 !important;
+        color: #a50e0e !important;
+      }
+      .options li .icon-feedback {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3em;
+        display: none;
+      }
+      .options li.correct-choice .icon-feedback,
+      .options li.wrong-choice .icon-feedback {
+        display: inline;
+      }
+      .options li.disabled {
+        pointer-events: none;
+        opacity: 0.85;
+      }
+
+      .answer-reveal {
+        margin-top: 12px;
+        padding: 14px 16px;
+        background: var(--explain-bg);
+        border-radius: 10px;
+        display: none;
+        border: 1px dashed #ccc;
+        font-size: 0.9em;
+      }
+      .answer-reveal.show {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      .answer-reveal .ans-label {
+        font-weight: 700;
+        color: var(--correct);
+      }
+      .answer-reveal .explain-label {
+        font-weight: 700;
+        color: #555;
+        margin-top: 6px;
+        display: block;
+      }
+      .answer-reveal .explain-text {
+        color: #444;
+        margin-top: 2px;
+      }
+      .show-answer-btn {
+        margin-top: 10px;
+        padding: 7px 16px;
+        background: #fff;
+        border: 1.5px solid var(--primary);
+        color: var(--primary);
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.85em;
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+      .show-answer-btn:hover {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .btn-reset {
+        display: block;
+        margin: 24px auto;
+        padding: 12px 32px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        font-size: 1em;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+        box-shadow: 0 3px 12px rgba(26, 115, 232, 0.3);
+      }
+      .btn-reset:hover {
+        background: #1557b0;
+        box-shadow: 0 5px 18px rgba(26, 115, 232, 0.4);
+        transform: translateY(-1px);
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        color: var(--text-light);
+        font-size: 1.1em;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.8em;
+        padding: 20px;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.3em;
+        }
+        .question-card {
+          padding: 16px 12px;
+        }
+        .options li {
+          padding: 10px 12px;
+          font-size: 0.88em;
+        }
+        .q-text {
+          font-size: 0.95em;
+        }
+        .stats-bar {
+          gap: 6px;
+          padding: 10px 8px;
+        }
+        .stat-item .num {
+          font-size: 1.2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header-container">
+        <h1>💻 Software Engineering - MCQs</h1>
+        <nav class="nav-buttons">
+          <a href="chapter-two-1.html" class="nav-btn">Part 1</a>
+          <a href="chapter-two-2.html" class="nav-btn">Part 2</a>
+          <a href="chapter-two-3.html" class="nav-btn">Part 3</a>
+          <a href="chapter-two-4.html" class="nav-btn">Part 4</a>
+          <a href="chapter-two-5.html" class="nav-btn">Part 5</a>
+          <a href="chapter-two-6.html" class="nav-btn">Part 6</a>
+          <a href="chapter-two-7.html" class="nav-btn">Part 7</a>
+          <a href="chapter-two-8.html" class="nav-btn">Part 8</a>
+        </nav>
+      </header>
+
+      <div class="stats-bar" id="statsBar">
+        <div class="stat-item">
+          <div class="num" id="totalQ">100</div>
+          <div class="lbl">Total</div>
+        </div>
+        <div class="stat-item correct">
+          <div class="num" id="correctCount">0</div>
+          <div class="lbl">✅ Correct</div>
+        </div>
+        <div class="stat-item wrong">
+          <div class="num" id="wrongCount">0</div>
+          <div class="lbl">❌ Wrong</div>
+        </div>
+        <div class="stat-item remain">
+          <div class="num" id="remainCount">400</div>
+          <div class="lbl">⏳ Remaining</div>
+        </div>
+        <div class="stat-item">
+          <div class="num" id="scorePct">0%</div>
+          <div class="lbl">Score</div>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="topic-filter" id="topicFilter"></div>
+
+      <div id="questionsContainer"></div>
+
+      <button class="btn-reset" onclick="resetAll()">
+        🔄 Reset All Answers
+      </button>
+      <footer>
+        © 2026 | Software Engineering MCQs for NTRCA Assistant Teacher Exam |
+        All Answers Verified
+      </footer>
+    </div>
+
+    <script>
+      // ==================== 400 QUESTIONS DATASET ====================
+      const allQuestions = [
+        // ============ SECTION 1: History, Nature, Relation to Other Disciplines (Q1-Q30) ============
+
+        {
+          id: 201,
+          topic: "Development Models",
+          q: "The term 'Scrum' is borrowed from:",
+          options: ["Baseball", "Rugby", "Soccer", "Cricket"],
+          answer: 1,
+          explain:
+            "The term 'Scrum' comes from rugby, where it refers to a tight formation of players working together to gain possession.",
+        },
+        {
+          id: 202,
+          topic: "Development Models",
+          q: "In the Waterfall model, when is testing typically performed?",
+          options: [
+            "Throughout all phases",
+            "After the implementation phase",
+            "Before requirements",
+            "During design",
+          ],
+          answer: 1,
+          explain:
+            "In the classic Waterfall model, testing is a distinct phase that occurs after implementation (coding) is complete.",
+        },
+        {
+          id: 203,
+          topic: "Development Models",
+          q: "Which Agile practice involves continuously integrating code into a shared repository?",
+          options: [
+            "Pair programming",
+            "Continuous Integration (CI)",
+            "Retrospective",
+            "Sprint planning",
+          ],
+          answer: 1,
+          explain:
+            "Continuous Integration involves frequently merging all developer working copies into a shared mainline, with automated builds.",
+        },
+        {
+          id: 204,
+          topic: "Development Models",
+          q: "A 'burndown chart' in Scrum shows:",
+          options: [
+            "Budget spent",
+            "Work remaining versus time in a sprint",
+            "Number of developers",
+            "Lines of code written",
+          ],
+          answer: 1,
+          explain:
+            "A burndown chart visually displays the amount of work remaining in a sprint against the time remaining.",
+        },
+        {
+          id: 205,
+          topic: "Development Models",
+          q: "The primary role of a 'stakeholder' in Agile is to:",
+          options: [
+            "Write code",
+            "Provide feedback and clarify requirements throughout development",
+            "Manage the server",
+            "Conduct testing",
+          ],
+          answer: 1,
+          explain:
+            "Stakeholders in Agile actively participate by providing continuous feedback and clarifying requirements during development.",
+        },
+        {
+          id: 206,
+          topic: "Development Models",
+          q: "Which model integrates risk management as its fundamental concept?",
+          options: ["Waterfall", "RAD", "Spiral", "Agile"],
+          answer: 2,
+          explain:
+            "The Spiral model is fundamentally built around iterative risk analysis and management.",
+        },
+        {
+          id: 207,
+          topic: "Development Models",
+          q: "In XP (Extreme Programming), the 'customer' is:",
+          options: [
+            "An external buyer only",
+            "An on-site representative who continuously clarifies requirements",
+            "The project manager",
+            "A remote user",
+          ],
+          answer: 1,
+          explain:
+            "XP advocates for an on-site customer who works with the team daily to clarify requirements and provide immediate feedback.",
+        },
+        {
+          id: 208,
+          topic: "Development Models",
+          q: "The Agile principle of 'sustainable pace' means:",
+          options: [
+            "Working overtime constantly",
+            "Maintaining a consistent, reasonable work pace indefinitely",
+            "Rushing to meet deadlines",
+            "Working only when motivated",
+          ],
+          answer: 1,
+          explain:
+            "Sustainable pace encourages teams to work at a rate they can maintain indefinitely, avoiding burnout.",
+        },
+        {
+          id: 209,
+          topic: "Development Models",
+          q: "Which is a key difference between Agile and Waterfall?",
+          options: [
+            "Agile has no testing",
+            "Agile embraces change; Waterfall resists change",
+            "Waterfall is always better",
+            "Agile requires more documentation",
+          ],
+          answer: 1,
+          explain:
+            "Agile methodologies welcome changing requirements, while Waterfall treats changes as exceptions requiring formal approval.",
+        },
+        {
+          id: 210,
+          topic: "Development Models",
+          q: "The 'definition of done' in Scrum defines:",
+          options: [
+            "When the project is cancelled",
+            "The criteria that must be met for a product increment to be considered complete",
+            "When the team can go home",
+            "The project deadline",
+          ],
+          answer: 1,
+          explain:
+            "The 'Definition of Done' is a shared understanding of what it means for work to be complete, ensuring quality and transparency.",
+        },
+
+        // ============ SECTION 7: Software Engineering Principles (Q211-Q260) ============
+        {
+          id: 211,
+          topic: "SE Principles",
+          q: "Modularity in software design means:",
+          options: [
+            "Combining everything into one module",
+            "Dividing software into separate, independent modules",
+            "Using only one language",
+            "Avoiding functions",
+          ],
+          answer: 1,
+          explain:
+            "Modularity involves decomposing a system into smaller, manageable, and independent modules that can be developed separately.",
+        },
+        {
+          id: 212,
+          topic: "SE Principles",
+          q: "Abstraction in software engineering means:",
+          options: [
+            "Adding more detail",
+            "Hiding complex implementation details and exposing only essential features",
+            "Writing longer code",
+            "Removing all documentation",
+          ],
+          answer: 1,
+          explain:
+            "Abstraction simplifies complexity by hiding implementation details and exposing only the necessary interface or behavior.",
+        },
+        {
+          id: 213,
+          topic: "SE Principles",
+          q: "Which is the highest level of abstraction?",
+          options: [
+            "Machine code",
+            "Assembly language",
+            "High-level requirements",
+            "Detailed design",
+          ],
+          answer: 2,
+          explain:
+            "Requirements represent the highest level of abstraction, focusing on 'what' not 'how.' Lower levels add increasing detail.",
+        },
+        {
+          id: 214,
+          topic: "SE Principles",
+          q: "Generality in software design refers to:",
+          options: [
+            "Being specific to one case",
+            "Designing solutions that can solve a broader class of problems",
+            "Using only one language",
+            "Avoiding reuse",
+          ],
+          answer: 1,
+          explain:
+            "Generality means designing components to be applicable across multiple contexts rather than being overly specific.",
+        },
+        {
+          id: 215,
+          topic: "SE Principles",
+          q: "The Object-Oriented principle of 'encapsulation' means:",
+          options: [
+            "Making all data public",
+            "Bundling data and methods together and restricting direct access",
+            "Inheriting all classes",
+            "Using only objects",
+          ],
+          answer: 1,
+          explain:
+            "Encapsulation bundles data (attributes) and methods (behaviors) into a single unit (class) and controls access through interfaces.",
+        },
+        {
+          id: 216,
+          topic: "SE Principles",
+          q: "Inheritance in OOP allows:",
+          options: [
+            "Deleting parent classes",
+            "A class to derive properties and behaviors from a parent class",
+            "Ignoring code reuse",
+            "Creating only one class",
+          ],
+          answer: 1,
+          explain:
+            "Inheritance enables a child class to acquire (inherit) attributes and methods from a parent class, promoting code reuse.",
+        },
+        {
+          id: 217,
+          topic: "SE Principles",
+          q: "Polymorphism allows objects to:",
+          options: [
+            "Have only one form",
+            "Take multiple forms and respond differently to the same message",
+            "Be deleted",
+            "Never change",
+          ],
+          answer: 1,
+          explain:
+            "Polymorphism enables objects of different classes to respond to the same method call in their own appropriate way.",
+        },
+        {
+          id: 218,
+          topic: "SE Principles",
+          q: "Component-oriented development focuses on:",
+          options: [
+            "Monolithic code",
+            "Building software from reusable, independent components",
+            "Avoiding interfaces",
+            "Using only one component",
+          ],
+          answer: 1,
+          explain:
+            "Component-oriented development assembles systems from pre-built, reusable, and independently deployable components.",
+        },
+        {
+          id: 219,
+          topic: "SE Principles",
+          q: "Structured programming avoids the use of:",
+          options: ["Functions", "Loops", "Goto statements", "Conditionals"],
+          answer: 2,
+          explain:
+            "Structured programming emphasizes control structures like loops and conditionals while discouraging or eliminating goto statements.",
+        },
+        {
+          id: 220,
+          topic: "SE Principles",
+          q: "The principle of 'separation of concerns' means:",
+          options: [
+            "Combining all code",
+            "Dividing a program into distinct sections, each addressing a separate concern",
+            "Mixing UI and business logic",
+            "Using only one file",
+          ],
+          answer: 1,
+          explain:
+            "Separation of concerns divides a system into distinct features or sections with minimal overlap, improving modularity.",
+        },
+        {
+          id: 221,
+          topic: "SE Principles",
+          q: "Information hiding is closely related to:",
+          options: [
+            "Making everything public",
+            "Encapsulation and abstraction",
+            "Writing spaghetti code",
+            "Removing comments",
+          ],
+          answer: 1,
+          explain:
+            "Information hiding conceals internal design decisions and data structures, exposing only what is necessary—core to encapsulation.",
+        },
+        {
+          id: 222,
+          topic: "SE Principles",
+          q: "The SOLID principles apply to:",
+          options: [
+            "Database design only",
+            "Object-oriented design",
+            "Network configuration",
+            "Hardware assembly",
+          ],
+          answer: 1,
+          explain:
+            "SOLID is a set of five design principles (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) for OOP.",
+        },
+        {
+          id: 223,
+          topic: "SE Principles",
+          q: "Single Responsibility Principle (SRP) states that a class should:",
+          options: [
+            "Do everything",
+            "Have only one reason to change",
+            "Be as large as possible",
+            "Ignore design",
+          ],
+          answer: 1,
+          explain:
+            "SRP dictates that each class or module should have one, and only one, responsibility or reason to change.",
+        },
+        {
+          id: 224,
+          topic: "SE Principles",
+          q: "The Open-Closed Principle (OCP) states that software entities should be:",
+          options: [
+            "Open for modification, closed for extension",
+            "Open for extension, closed for modification",
+            "Always open",
+            "Always closed",
+          ],
+          answer: 1,
+          explain:
+            "OCP: Entities should be open for extension (adding new behavior) but closed for modification (existing code shouldn't change).",
+        },
+        {
+          id: 225,
+          topic: "SE Principles",
+          q: "Liskov Substitution Principle (LSP) ensures that:",
+          options: [
+            "Subclasses can replace parent classes without breaking the program",
+            "All classes are final",
+            "No inheritance is used",
+            "Classes are unrelated",
+          ],
+          answer: 0,
+          explain:
+            "LSP: Objects of a superclass should be replaceable with objects of subclasses without affecting correctness.",
+        },
+        {
+          id: 226,
+          topic: "SE Principles",
+          q: "Interface Segregation Principle (ISP) advocates:",
+          options: [
+            "One large interface",
+            "Many small, specific interfaces rather than one general-purpose interface",
+            "No interfaces at all",
+            "Only abstract classes",
+          ],
+          answer: 1,
+          explain:
+            "ISP: Clients should not be forced to depend on interfaces they don't use. Prefer many specific interfaces over one large one.",
+        },
+        {
+          id: 227,
+          topic: "SE Principles",
+          q: "Dependency Inversion Principle (DIP) states:",
+          options: [
+            "Depend on concrete classes",
+            "High-level modules should not depend on low-level modules; both should depend on abstractions",
+            "Avoid all dependencies",
+            "Depend on implementation details",
+          ],
+          answer: 1,
+          explain:
+            "DIP: High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces).",
+        },
+        {
+          id: 228,
+          topic: "SE Principles",
+          q: "GRASP stands for:",
+          options: [
+            "General Responsibility Assignment Software Patterns",
+            "Graphical Rendering And System Programming",
+            "Global Resource Allocation Standard Protocol",
+            "Generic Runtime Application Support Platform",
+          ],
+          answer: 0,
+          explain:
+            "GRASP (General Responsibility Assignment Software Patterns) provides guidelines for assigning responsibilities in OO design.",
+        },
+        {
+          id: 229,
+          topic: "SE Principles",
+          q: "Which is a GRASP pattern?",
+          options: [
+            "Singleton",
+            "Observer",
+            "Information Expert",
+            "Factory Method",
+          ],
+          answer: 2,
+          explain:
+            "Information Expert is a GRASP pattern that assigns a responsibility to the class with the necessary information to fulfill it.",
+        },
+        {
+          id: 230,
+          topic: "SE Principles",
+          q: "Design patterns were popularized by the 'Gang of Four' (GoF) in which book?",
+          options: [
+            "The Mythical Man-Month",
+            "Design Patterns: Elements of Reusable Object-Oriented Software",
+            "Clean Code",
+            "The Pragmatic Programmer",
+          ],
+          answer: 1,
+          explain:
+            "The GoF (Gamma, Helm, Johnson, Vlissides) wrote the seminal 1994 book on 23 classic design patterns.",
+        },
+        {
+          id: 231,
+          topic: "SE Principles",
+          q: "The Singleton pattern ensures:",
+          options: [
+            "Multiple instances of a class",
+            "Exactly one instance of a class exists",
+            "No instances",
+            "Only abstract classes",
+          ],
+          answer: 1,
+          explain:
+            "Singleton restricts a class to a single instance and provides a global access point to that instance.",
+        },
+        {
+          id: 232,
+          topic: "SE Principles",
+          q: "The Factory Method pattern is a:",
+          options: [
+            "Structural pattern",
+            "Creational pattern",
+            "Behavioral pattern",
+            "Architectural pattern",
+          ],
+          answer: 1,
+          explain:
+            "Factory Method is a creational design pattern that defines an interface for creating objects but lets subclasses decide which class to instantiate.",
+        },
+        {
+          id: 233,
+          topic: "SE Principles",
+          q: "The Observer pattern is classified as:",
+          options: ["Creational", "Structural", "Behavioral", "Architectural"],
+          answer: 2,
+          explain:
+            "Observer is a behavioral pattern where a subject notifies its dependents (observers) of state changes automatically.",
+        },
+        {
+          id: 234,
+          topic: "SE Principles",
+          q: "MVC (Model-View-Controller) is an example of:",
+          options: [
+            "Design pattern",
+            "Architectural pattern",
+            "Creational pattern",
+            "Testing technique",
+          ],
+          answer: 1,
+          explain:
+            "MVC is an architectural pattern that separates an application into Model (data), View (UI), and Controller (logic).",
+        },
+        {
+          id: 235,
+          topic: "SE Principles",
+          q: "Layered architecture organizes code into:",
+          options: [
+            "A single layer",
+            "Hierarchical layers with specific responsibilities",
+            "Random files",
+            "One large function",
+          ],
+          answer: 1,
+          explain:
+            "Layered architecture separates concerns into horizontal layers (presentation, business logic, data access), each with a specific role.",
+        },
+        {
+          id: 236,
+          topic: "SE Principles",
+          q: "Microservices architecture decomposes an application into:",
+          options: [
+            "One large service",
+            "Small, independent services communicating via APIs",
+            "A single database",
+            "One deployment unit",
+          ],
+          answer: 1,
+          explain:
+            "Microservices architecture breaks an application into small, loosely coupled services that can be developed and deployed independently.",
+        },
+        {
+          id: 237,
+          topic: "SE Principles",
+          q: "In structured design, a 'module' should have:",
+          options: [
+            "High coupling",
+            "High cohesion and low coupling",
+            "Maximum dependencies",
+            "No defined interface",
+          ],
+          answer: 1,
+          explain:
+            "Structured design advocates for modules with high internal cohesion and low external coupling for maintainability.",
+        },
+        {
+          id: 238,
+          topic: "SE Principles",
+          q: "Top-down design starts with:",
+          options: [
+            "Low-level details",
+            "High-level overview and progressively breaks it down",
+            "Database only",
+            "UI only",
+          ],
+          answer: 1,
+          explain:
+            "Top-down design begins with the highest-level system view and progressively decomposes it into more detailed sub-systems.",
+        },
+        {
+          id: 239,
+          topic: "SE Principles",
+          q: "Bottom-up design starts with:",
+          options: [
+            "High-level architecture",
+            "Low-level components and builds up to higher-level systems",
+            "User interface",
+            "Project planning",
+          ],
+          answer: 1,
+          explain:
+            "Bottom-up design constructs low-level, reusable components first and then assembles them into larger systems.",
+        },
+        {
+          id: 240,
+          topic: "SE Principles",
+          q: "The DRY principle is most directly related to:",
+          options: [
+            "Code duplication avoidance",
+            "Performance optimization",
+            "UI design",
+            "Database normalization",
+          ],
+          answer: 0,
+          explain:
+            "DRY (Don't Repeat Yourself) directly targets reducing code duplication through abstraction and modularization.",
+        },
+        {
+          id: 241,
+          topic: "SE Principles",
+          q: "Which principle states 'a function should do one thing only'?",
+          options: [
+            "Open-Closed Principle",
+            "Single Responsibility Principle (applied to functions)",
+            "Interface Segregation",
+            "Dependency Inversion",
+          ],
+          answer: 1,
+          explain:
+            "At the function level, SRP means each function should perform exactly one task or have a single, well-defined purpose.",
+        },
+        {
+          id: 242,
+          topic: "SE Principles",
+          q: "Conway's Law states that:",
+          options: [
+            "Software always has bugs",
+            "Organizations design systems that mirror their communication structure",
+            "Code should be simple",
+            "Testing finds all defects",
+          ],
+          answer: 1,
+          explain:
+            "Conway's Law: 'Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations.'",
+        },
+        {
+          id: 243,
+          topic: "SE Principles",
+          q: "The Law of Demeter (LoD) promotes:",
+          options: [
+            "Tight coupling",
+            "Loose coupling by limiting object interactions",
+            "Maximum dependencies",
+            "Global variables",
+          ],
+          answer: 1,
+          explain:
+            "The Law of Demeter ('principle of least knowledge') limits an object's interactions to its immediate friends, reducing coupling.",
+        },
+        {
+          id: 244,
+          topic: "SE Principles",
+          q: "Composition over inheritance means:",
+          options: [
+            "Always use inheritance",
+            "Prefer assembling objects from other objects rather than deep inheritance hierarchies",
+            "Never use objects",
+            "Only use abstract classes",
+          ],
+          answer: 1,
+          explain:
+            "Favoring composition (has-a relationships) over inheritance (is-a) provides greater flexibility and reduces tight coupling.",
+        },
+        {
+          id: 245,
+          topic: "SE Principles",
+          q: "A 'god class' or 'god object' violates which principle?",
+          options: [
+            "Single Responsibility Principle",
+            "Open-Closed Principle",
+            "Liskov Substitution",
+            "Interface Segregation",
+          ],
+          answer: 0,
+          explain:
+            "A god class/object that knows or does too much violates the Single Responsibility Principle by having multiple reasons to change.",
+        },
+        {
+          id: 246,
+          topic: "SE Principles",
+          q: "Cohesion is a measure of:",
+          options: [
+            "Module interdependence",
+            "How closely related the elements within a module are",
+            "Code size",
+            "Execution speed",
+          ],
+          answer: 1,
+          explain:
+            "Cohesion measures the degree to which elements within a module belong together. High cohesion is a desirable quality.",
+        },
+        {
+          id: 247,
+          topic: "SE Principles",
+          q: "Which type of cohesion is considered the best?",
+          options: [
+            "Coincidental cohesion",
+            "Logical cohesion",
+            "Functional cohesion",
+            "Temporal cohesion",
+          ],
+          answer: 2,
+          explain:
+            "Functional cohesion (all elements contribute to a single, well-defined task) is the highest and most desirable type.",
+        },
+        {
+          id: 248,
+          topic: "SE Principles",
+          q: "Which type of coupling is the most desirable?",
+          options: [
+            "Content coupling",
+            "Common coupling",
+            "Data coupling",
+            "Control coupling",
+          ],
+          answer: 2,
+          explain:
+            "Data coupling (modules share data through parameters) is the loosest and most desirable form of coupling.",
+        },
+        {
+          id: 249,
+          topic: "SE Principles",
+          q: "Content coupling (one module modifying another's internal data) is:",
+          options: [
+            "The best type",
+            "The worst type of coupling",
+            "Acceptable",
+            "Ideal",
+          ],
+          answer: 1,
+          explain:
+            "Content coupling is the strongest/worst type, where one module directly accesses or modifies another module's internal data.",
+        },
+        {
+          id: 250,
+          topic: "SE Principles",
+          q: "A 'façade' pattern provides:",
+          options: [
+            "Complex interface",
+            "A simplified, unified interface to a complex subsystem",
+            "No interface",
+            "Direct database access",
+          ],
+          answer: 1,
+          explain:
+            "The Façade pattern provides a simplified interface to a complex set of subsystems, making them easier to use.",
+        },
+        {
+          id: 251,
+          topic: "SE Principles",
+          q: "The Adapter pattern allows:",
+          options: [
+            "Incompatible interfaces to work together",
+            "Only one interface",
+            "Deleting interfaces",
+            "Ignoring compatibility",
+          ],
+          answer: 0,
+          explain:
+            "The Adapter pattern bridges incompatible interfaces, allowing classes with different interfaces to collaborate.",
+        },
+        {
+          id: 252,
+          topic: "SE Principles",
+          q: "In structured analysis, a 'process' in a DFD represents:",
+          options: [
+            "A data store",
+            "A transformation of input data into output data",
+            "An external entity",
+            "A data flow",
+          ],
+          answer: 1,
+          explain:
+            "A process (bubble) in a DFD represents a function that transforms inputs into outputs.",
+        },
+        {
+          id: 253,
+          topic: "SE Principles",
+          q: "The principle of 'least astonishment' in UI design means:",
+          options: [
+            "Surprising users",
+            "Interfaces should behave in ways users expect",
+            "Being unpredictable",
+            "Hiding all features",
+          ],
+          answer: 1,
+          explain:
+            "The principle of least astonishment (or surprise) states that systems should behave in ways that are consistent with user expectations.",
+        },
+        {
+          id: 254,
+          topic: "SE Principles",
+          q: "Which is NOT a characteristic of a well-designed module?",
+          options: [
+            "High cohesion",
+            "Low coupling",
+            "Well-defined interface",
+            "High coupling",
+          ],
+          answer: 3,
+          explain:
+            "High coupling is undesirable. Well-designed modules exhibit high cohesion, low coupling, and clear interfaces.",
+        },
+        {
+          id: 255,
+          topic: "SE Principles",
+          q: "Decomposition in software design refers to:",
+          options: [
+            "Combining modules",
+            "Breaking a complex problem into smaller, manageable parts",
+            "Adding complexity",
+            "Merging all code",
+          ],
+          answer: 1,
+          explain:
+            "Decomposition is the process of breaking down a complex system into smaller, simpler, and more manageable sub-systems.",
+        },
+        {
+          id: 256,
+          topic: "SE Principles",
+          q: "The 'Hollywood Principle' in software is:",
+          options: [
+            "Always act",
+            "Don't call us, we'll call you (inversion of control)",
+            "Write more code",
+            "Ignore frameworks",
+          ],
+          answer: 1,
+          explain:
+            "The Hollywood Principle ('Don't call us, we'll call you') describes inversion of control where the framework calls the application code.",
+        },
+        {
+          id: 257,
+          topic: "SE Principles",
+          q: "Which OOP feature supports 'code reuse' most directly?",
+          options: [
+            "Encapsulation",
+            "Inheritance",
+            "Polymorphism",
+            "Abstraction",
+          ],
+          answer: 1,
+          explain:
+            "Inheritance allows new classes to reuse, extend, and modify behavior defined in existing (parent) classes.",
+        },
+        {
+          id: 258,
+          topic: "SE Principles",
+          q: "Abstract classes differ from interfaces in that abstract classes:",
+          options: [
+            "Cannot have any implementation",
+            "Can have both implemented methods and abstract methods",
+            "Are the same as interfaces",
+            "Cannot be extended",
+          ],
+          answer: 1,
+          explain:
+            "Abstract classes can contain both concrete (implemented) methods and abstract (unimplemented) method signatures, while interfaces traditionally only declare signatures.",
+        },
+        {
+          id: 259,
+          topic: "SE Principles",
+          q: "The principle of 'You Ain't Gonna Need It' (YAGNI) advises against:",
+          options: [
+            "Writing any code",
+            "Adding functionality until it is actually necessary",
+            "Testing",
+            "Documenting",
+          ],
+          answer: 1,
+          explain:
+            "YAGNI cautions developers against implementing features based on speculation about future needs that may never materialize.",
+        },
+        {
+          id: 260,
+          topic: "SE Principles",
+          q: "Cross-cutting concerns in software (like logging, security) are best handled by:",
+          options: [
+            "Scattering code everywhere",
+            "Aspect-Oriented Programming (AOP)",
+            "Ignoring them",
+            "Putting everything in one class",
+          ],
+          answer: 1,
+          explain:
+            "AOP modularizes cross-cutting concerns (logging, security, transactions) that cut across multiple modules, keeping them separate from business logic.",
+        },
+
+        // ============ SECTION 8: Specification & Verification (Q261-Q310) ============
+        {
+          id: 261,
+          topic: "Specification & Verification",
+          q: "A formal specification uses:",
+          options: [
+            "Natural language only",
+            "Mathematically rigorous notations to describe system behavior",
+            "Diagrams only",
+            "Verbal descriptions",
+          ],
+          answer: 1,
+          explain:
+            "Formal specifications employ mathematical notations (like Z, VDM, B) to precisely and unambiguously define system requirements.",
+        },
+        {
+          id: 262,
+          topic: "Specification & Verification",
+          q: "Descriptive specification describes:",
+          options: [
+            "What the system should do",
+            "How the system is actually implemented",
+            "The test plan",
+            "The budget",
+          ],
+          answer: 0,
+          explain:
+            "Descriptive specification focuses on describing desired system behavior (what), not implementation details (how).",
+        },
+        {
+          id: 263,
+          topic: "Specification & Verification",
+          q: "Operational specification describes:",
+          options: [
+            "Only the UI",
+            "The desired behavior by providing an executable model",
+            "Only the database",
+            "Only errors",
+          ],
+          answer: 1,
+          explain:
+            "Operational specification defines system behavior through executable models or prototypes that demonstrate the desired functionality.",
+        },
+        {
+          id: 264,
+          topic: "Specification & Verification",
+          q: "Pre-conditions in a specification define:",
+          options: [
+            "What happens after execution",
+            "Conditions that must be true before a function executes",
+            "Error conditions",
+            "Test results",
+          ],
+          answer: 1,
+          explain:
+            "Pre-conditions state what must be true before a function or operation can execute correctly.",
+        },
+        {
+          id: 265,
+          topic: "Specification & Verification",
+          q: "Post-conditions define:",
+          options: [
+            "Input requirements",
+            "What must be true after a function executes successfully",
+            "Compiler settings",
+            "Hardware requirements",
+          ],
+          answer: 1,
+          explain:
+            "Post-conditions specify the state of the system after a function or operation has completed successfully.",
+        },
+        {
+          id: 266,
+          topic: "Specification & Verification",
+          q: "Invariants in specification are:",
+          options: [
+            "Things that always change",
+            "Conditions that must always hold true throughout the system's lifetime",
+            "Temporary states",
+            "Optional conditions",
+          ],
+          answer: 1,
+          explain:
+            "Invariants are conditions or properties that remain true for the entire lifetime of a system, object, or data structure.",
+        },
+        {
+          id: 267,
+          topic: "Specification & Verification",
+          q: "Model checking is a technique for:",
+          options: [
+            "Checking code style",
+            "Automatically verifying finite-state systems against specifications",
+            "Manual code review",
+            "Performance testing",
+          ],
+          answer: 1,
+          explain:
+            "Model checking systematically verifies whether a model of a system satisfies its specification by exploring all possible states.",
+        },
+        {
+          id: 268,
+          topic: "Specification & Verification",
+          q: "Static analysis examines code:",
+          options: [
+            "During execution",
+            "Without executing the program",
+            "Only after deployment",
+            "Only during testing",
+          ],
+          answer: 1,
+          explain:
+            "Static analysis inspects source code, bytecode, or binaries for defects without actually running the program.",
+        },
+        {
+          id: 269,
+          topic: "Specification & Verification",
+          q: "Dynamic analysis involves:",
+          options: [
+            "Reading code",
+            "Analyzing software during execution",
+            "Static code review",
+            "Documentation review",
+          ],
+          answer: 1,
+          explain:
+            "Dynamic analysis examines software behavior during actual execution, often using instrumentation, profiling, or monitoring tools.",
+        },
+        {
+          id: 270,
+          topic: "Specification & Verification",
+          q: "Formal verification aims to:",
+          options: [
+            "Find all bugs through testing",
+            "Mathematically prove the correctness of software",
+            "Estimate project cost",
+            "Design the UI",
+          ],
+          answer: 1,
+          explain:
+            "Formal verification uses mathematical proof techniques to establish that a program meets its formal specification.",
+        },
+        {
+          id: 271,
+          topic: "Specification & Verification",
+          q: "A 'test oracle' is:",
+          options: [
+            "A person who predicts the future",
+            "A mechanism to determine whether a test has passed or failed",
+            "A type of database",
+            "A testing tool only",
+          ],
+          answer: 1,
+          explain:
+            "A test oracle provides the expected correct output for given inputs, enabling the determination of test pass/fail status.",
+        },
+        {
+          id: 272,
+          topic: "Specification & Verification",
+          q: "Mutation testing evaluates:",
+          options: [
+            "User satisfaction",
+            "The quality of test cases by introducing small code changes",
+            "Performance",
+            "Security",
+          ],
+          answer: 1,
+          explain:
+            "Mutation testing modifies (mutates) source code in small ways and checks if existing tests detect and fail on the mutations.",
+        },
+        {
+          id: 273,
+          topic: "Specification & Verification",
+          q: "Fuzz testing (fuzzing) involves:",
+          options: [
+            "Testing with valid data only",
+            "Providing random, invalid, or unexpected inputs to find vulnerabilities",
+            "Only manual testing",
+            "Testing only the UI",
+          ],
+          answer: 1,
+          explain:
+            "Fuzz testing feeds random, malformed, or unexpected data to a program to uncover crashes, memory leaks, and security flaws.",
+        },
+        {
+          id: 274,
+          topic: "Specification & Verification",
+          q: "Symbolic execution analyzes programs by:",
+          options: [
+            "Running with concrete values",
+            "Treating inputs as symbolic variables and exploring all paths",
+            "Only reading code",
+            "Ignoring branches",
+          ],
+          answer: 1,
+          explain:
+            "Symbolic execution uses symbolic values instead of concrete inputs, exploring multiple execution paths simultaneously.",
+        },
+        {
+          id: 275,
+          topic: "Specification & Verification",
+          q: "A 'debugger' is a tool used to:",
+          options: [
+            "Write code",
+            "Step through code execution to find and fix defects",
+            "Compile code",
+            "Design UI",
+          ],
+          answer: 1,
+          explain:
+            "A debugger allows developers to execute code step by step, inspect variables, and identify the root cause of defects.",
+        },
+        {
+          id: 276,
+          topic: "Specification & Verification",
+          q: "Breakpoints in debugging are used to:",
+          options: [
+            "Break the code permanently",
+            "Pause program execution at a specific line",
+            "Delete code",
+            "Speed up execution",
+          ],
+          answer: 1,
+          explain:
+            "Breakpoints instruct the debugger to pause execution at a specified line, allowing inspection of program state.",
+        },
+        {
+          id: 277,
+          topic: "Specification & Verification",
+          q: "Assertions in programming are:",
+          options: [
+            "Comments",
+            "Boolean expressions that should always be true at a point in code",
+            "Variable declarations",
+            "Loops",
+          ],
+          answer: 1,
+          explain:
+            "Assertions are checkpoints that verify assumptions about program state; they halt execution if the condition is false.",
+        },
+        {
+          id: 278,
+          topic: "Specification & Verification",
+          q: "Coverage-based testing aims to:",
+          options: [
+            "Cover all documentation",
+            "Exercise specific parts of code (statements, branches, paths)",
+            "Cover only the UI",
+            "Ignore code coverage",
+          ],
+          answer: 1,
+          explain:
+            "Coverage-based testing uses metrics like statement, branch, and path coverage to ensure thorough testing.",
+        },
+        {
+          id: 279,
+          topic: "Specification & Verification",
+          q: "Decision table testing is useful for:",
+          options: [
+            "Simple programs only",
+            "Complex business rules with multiple conditions",
+            "Database design",
+            "Network testing",
+          ],
+          answer: 1,
+          explain:
+            "Decision tables systematically test combinations of inputs and conditions, ideal for complex business logic.",
+        },
+        {
+          id: 280,
+          topic: "Specification & Verification",
+          q: "State transition testing models:",
+          options: [
+            "Only static states",
+            "How a system transitions between states based on events",
+            "Database tables",
+            "Code comments",
+          ],
+          answer: 1,
+          explain:
+            "State transition testing verifies system behavior as it moves through different states in response to events.",
+        },
+        {
+          id: 281,
+          topic: "Specification & Verification",
+          q: "The Z notation is used for:",
+          options: [
+            "UI design",
+            "Formal specification of software systems",
+            "Database queries",
+            "Network configuration",
+          ],
+          answer: 1,
+          explain:
+            "Z (pronounced 'zed') is a formal specification language based on set theory and predicate logic for describing software systems.",
+        },
+        {
+          id: 282,
+          topic: "Specification & Verification",
+          q: "VDM (Vienna Development Method) is:",
+          options: [
+            "A programming language",
+            "A formal method for software specification and development",
+            "A testing tool",
+            "A database system",
+          ],
+          answer: 1,
+          explain:
+            "VDM is a formal method that includes a specification language (VDM-SL) and rules for stepwise refinement to code.",
+        },
+        {
+          id: 283,
+          topic: "Specification & Verification",
+          q: "The B-Method is a formal method that:",
+          options: [
+            "Only tests code",
+            "Covers specification, design, and implementation through refinement",
+            "Only designs UI",
+            "Manages projects",
+          ],
+          answer: 1,
+          explain:
+            "The B-Method uses abstract machines and stepwise refinement to derive correct implementations from formal specifications.",
+        },
+        {
+          id: 284,
+          topic: "Specification & Verification",
+          q: "Alloy is a:",
+          options: [
+            "Programming language",
+            "Formal specification language based on relational logic",
+            "Testing framework",
+            "Database",
+          ],
+          answer: 1,
+          explain:
+            "Alloy is a lightweight formal specification language using relational logic, with an analyzer that can find counterexamples.",
+        },
+        {
+          id: 285,
+          topic: "Specification & Verification",
+          q: "In testing, a 'stub' is:",
+          options: [
+            "A complete module",
+            "A simplified replacement for a called module during testing",
+            "The main program",
+            "A database",
+          ],
+          answer: 1,
+          explain:
+            "A stub is a minimal implementation that simulates the behavior of a dependent module not yet available for integration.",
+        },
+        {
+          id: 286,
+          topic: "Specification & Verification",
+          q: "A 'driver' in testing is used to:",
+          options: [
+            "Replace low-level modules",
+            "Simulate a calling module to test lower-level modules",
+            "Drive the deployment",
+            "Manage the database",
+          ],
+          answer: 1,
+          explain:
+            "A test driver is a temporary module that calls and supplies inputs to the module under test when its caller isn't available.",
+        },
+        {
+          id: 287,
+          topic: "Specification & Verification",
+          q: "Top-down integration testing uses:",
+          options: ["Drivers", "Stubs", "Both equally", "Neither"],
+          answer: 1,
+          explain:
+            "Top-down integration starts with high-level modules and uses stubs to simulate lower-level modules not yet integrated.",
+        },
+        {
+          id: 288,
+          topic: "Specification & Verification",
+          q: "Bottom-up integration testing requires:",
+          options: ["Stubs", "Drivers", "Both", "Neither"],
+          answer: 1,
+          explain:
+            "Bottom-up integration starts with low-level modules and uses drivers to simulate higher-level calling modules.",
+        },
+        {
+          id: 289,
+          topic: "Specification & Verification",
+          q: "Sanity testing is:",
+          options: [
+            "Full regression testing",
+            "A narrow, focused test to verify a specific fix or functionality",
+            "Performance testing",
+            "Security audit",
+          ],
+          answer: 1,
+          explain:
+            "Sanity testing is a quick, focused test to verify that a particular function or bug fix works as expected.",
+        },
+        {
+          id: 290,
+          topic: "Specification & Verification",
+          q: "End-to-end testing verifies:",
+          options: [
+            "Only the UI",
+            "The entire application flow from start to finish",
+            "Only the database",
+            "Only the API",
+          ],
+          answer: 1,
+          explain:
+            "End-to-end (E2E) testing validates the complete software flow, including all integrated components and external interfaces.",
+        },
+        {
+          id: 291,
+          topic: "Specification & Verification",
+          q: "A 'bug report' should include:",
+          options: [
+            "Only the bug title",
+            "Steps to reproduce, expected vs actual results, environment details",
+            "Only a screenshot",
+            "Only the developer's opinion",
+          ],
+          answer: 1,
+          explain:
+            "A good bug report includes clear reproduction steps, expected behavior, actual behavior, environment info, and severity.",
+        },
+        {
+          id: 292,
+          topic: "Specification & Verification",
+          q: "Severity of a bug indicates:",
+          options: [
+            "How quickly it should be fixed",
+            "The impact of the bug on system functionality",
+            "Who found it",
+            "When it was found",
+          ],
+          answer: 1,
+          explain:
+            "Severity measures the technical impact (critical, major, minor). Priority indicates urgency of fixing.",
+        },
+        {
+          id: 293,
+          topic: "Specification & Verification",
+          q: "Priority of a bug indicates:",
+          options: [
+            "Technical impact",
+            "The order in which a bug should be fixed",
+            "Who reported it",
+            "The module affected",
+          ],
+          answer: 1,
+          explain:
+            "Priority determines the sequence of fixing bugs (high, medium, low), considering business impact and urgency.",
+        },
+        {
+          id: 294,
+          topic: "Specification & Verification",
+          q: "Exploratory testing is:",
+          options: [
+            "Following a strict script",
+            "Simultaneously learning, designing, and executing tests",
+            "Only automated testing",
+            "Ignoring the application",
+          ],
+          answer: 1,
+          explain:
+            "Exploratory testing involves unscripted, investigative testing where the tester actively explores the application to find defects.",
+        },
+        {
+          id: 295,
+          topic: "Specification & Verification",
+          q: "A 'test harness' is:",
+          options: [
+            "A physical device",
+            "A collection of software and test data to execute tests systematically",
+            "A type of bug",
+            "A user manual",
+          ],
+          answer: 1,
+          explain:
+            "A test harness provides the framework to execute tests, supply inputs, capture outputs, and compare against expected results.",
+        },
+        {
+          id: 296,
+          topic: "Specification & Verification",
+          q: "Which testing technique uses knowledge of code to design test cases?",
+          options: ["Black-box", "White-box", "Acceptance", "Alpha"],
+          answer: 1,
+          explain:
+            "White-box testing (structural testing) designs test cases based on internal code structure and logic.",
+        },
+        {
+          id: 297,
+          topic: "Specification & Verification",
+          q: "Equivalence class testing divides inputs into:",
+          options: [
+            "Random sets",
+            "Valid and invalid classes that are processed similarly",
+            "Only numbers",
+            "Only strings",
+          ],
+          answer: 1,
+          explain:
+            "Equivalence partitioning groups inputs into classes where the system is expected to behave similarly, reducing redundant tests.",
+        },
+        {
+          id: 298,
+          topic: "Specification & Verification",
+          q: "In debugging, 'rubber duck debugging' refers to:",
+          options: [
+            "Using a toy",
+            "Explaining code line-by-line to someone/something to find the bug",
+            "A specific tool",
+            "Ignoring the problem",
+          ],
+          answer: 1,
+          explain:
+            "Rubber duck debugging involves explaining code aloud (to a rubber duck or colleague), which often leads to self-discovering the bug.",
+        },
+        {
+          id: 299,
+          topic: "Specification & Verification",
+          q: "A 'heisenbug' is a bug that:",
+          options: [
+            "Is always present",
+            "Changes or disappears when you try to observe or debug it",
+            "Is very large",
+            "Affects only hardware",
+          ],
+          answer: 1,
+          explain:
+            "A heisenbug alters its behavior or disappears when investigated, often due to timing, concurrency, or instrumentation effects.",
+        },
+        {
+          id: 300,
+          topic: "Specification & Verification",
+          q: "The main purpose of requirements specification is to:",
+          options: [
+            "Guide coding only",
+            "Provide a clear, agreed-upon description of what the system must do",
+            "Estimate cost only",
+            "Schedule the project",
+          ],
+          answer: 1,
+          explain:
+            "Requirements specification establishes a formal, agreed-upon document defining system behavior, serving as a contract between stakeholders.",
+        },
+      ];
+
+      // ==================== MAIN APPLICATION LOGIC ====================
+      let userAnswers = {}; // { questionId: selectedOptionIndex }
+      let revealedAnswers = {}; // { questionId: true/false }
+
+      const questionsContainer = document.getElementById("questionsContainer");
+      const topicFilter = document.getElementById("topicFilter");
+      const correctCountEl = document.getElementById("correctCount");
+      const wrongCountEl = document.getElementById("wrongCount");
+      const remainCountEl = document.getElementById("remainCount");
+      const scorePctEl = document.getElementById("scorePct");
+      const progressFill = document.getElementById("progressFill");
+
+      // Get unique topics
+      const topics = [...new Set(allQuestions.map((q) => q.topic))];
+
+      // Render topic filter buttons
+      function renderTopicFilter() {
+        topicFilter.innerHTML =
+          '<button class="active" data-topic="all">📋 All Topics</button>';
+        topics.forEach((topic) => {
+          const btn = document.createElement("button");
+          btn.textContent = topic;
+          btn.dataset.topic = topic;
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".topic-filter button")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderQuestions(btn.dataset.topic);
+          });
+          topicFilter.appendChild(btn);
+        });
+        document
+          .querySelector('.topic-filter button[data-topic="all"]')
+          .addEventListener("click", () => {
+            document
+              .querySelectorAll(".topic-filter button")
+              .forEach((b) => b.classList.remove("active"));
+            document
+              .querySelector('.topic-filter button[data-topic="all"]')
+              .classList.add("active");
+            renderQuestions("all");
+          });
+      }
+
+      function renderQuestions(filterTopic = "all") {
+        const filtered =
+          filterTopic === "all"
+            ? allQuestions
+            : allQuestions.filter((q) => q.topic === filterTopic);
+        questionsContainer.innerHTML = "";
+
+        if (filtered.length === 0) {
+          questionsContainer.innerHTML =
+            '<div class="no-results">No questions found for this topic.</div>';
+          return;
+        }
+
+        filtered.forEach((q) => {
+          const card = document.createElement("div");
+          card.className = "question-card";
+          card.id = "q-card-" + q.id;
+
+          // Update card border based on answer
+          if (userAnswers[q.id] !== undefined) {
+            if (userAnswers[q.id] === q.answer) {
+              card.classList.add("answered-correct");
+            } else {
+              card.classList.add("answered-wrong");
+            }
+          }
+
+          card.innerHTML = `
+                    <span class="q-num">Q${q.id}</span>
+                    <span class="q-topic">[${q.topic}]</span>
+                    <div class="q-text">${q.q}</div>
+                    <ul class="options" id="options-${q.id}">
+                        ${q.options
+                          .map((opt, idx) => {
+                            const letter = String.fromCharCode(65 + idx);
+                            let cls = "";
+                            if (userAnswers[q.id] !== undefined) {
+                              cls += " disabled";
+                              if (idx === userAnswers[q.id]) cls += " selected";
+                              if (idx === q.answer) cls += " correct-choice";
+                              if (idx === userAnswers[q.id] && idx !== q.answer)
+                                cls += " wrong-choice";
+                            }
+                            return `<li class="${cls}" data-qid="${q.id}" data-opt="${idx}">
+                                <strong>${letter}.</strong> ${opt}
+                                <span class="icon-feedback">${idx === q.answer ? "✅" : userAnswers[q.id] === idx && idx !== q.answer ? "❌" : ""}</span>
+                            </li>`;
+                          })
+                          .join("")}
+                    </ul>
+                    <button class="show-answer-btn" id="btn-${q.id}" onclick="toggleAnswer(${q.id})">
+                        ${revealedAnswers[q.id] ? "🔒 Hide Answer & Explanation" : "🔓 Show Answer & Explanation"}
+                    </button>
+                    <div class="answer-reveal ${revealedAnswers[q.id] ? "show" : ""}" id="answer-${q.id}">
+                        <span class="ans-label">✅ Correct Answer: ${String.fromCharCode(65 + q.answer)}. ${q.options[q.answer]}</span>
+                        <span class="explain-label">📝 Explanation:</span>
+                        <span class="explain-text">${q.explain}</span>
+                    </div>
+                `;
+          questionsContainer.appendChild(card);
+        });
+
+        // Attach option click handlers
+        document
+          .querySelectorAll(".options li:not(.disabled)")
+          .forEach((li) => {
+            li.addEventListener("click", function () {
+              const qid = parseInt(this.dataset.qid);
+              const opt = parseInt(this.dataset.opt);
+              handleAnswer(qid, opt);
+            });
+          });
+
+        updateStats();
+      }
+
+      function handleAnswer(qid, selectedOpt) {
+        if (userAnswers[qid] !== undefined) return; // Already answered
+
+        const q = allQuestions.find((q) => q.id === qid);
+        userAnswers[qid] = selectedOpt;
+
+        // Re-render just this card
+        const card = document.getElementById("q-card-" + qid);
+        const optionsList = document.getElementById("options-" + qid);
+
+        // Update classes
+        if (selectedOpt === q.answer) {
+          card.classList.add("answered-correct");
+        } else {
+          card.classList.add("answered-wrong");
+        }
+
+        // Update options
+        const items = optionsList.querySelectorAll("li");
+        items.forEach((li, idx) => {
+          li.classList.add("disabled");
+          if (idx === selectedOpt) li.classList.add("selected");
+          if (idx === q.answer) li.classList.add("correct-choice");
+          if (idx === selectedOpt && idx !== q.answer)
+            li.classList.add("wrong-choice");
+          // Update icon
+          const icon = li.querySelector(".icon-feedback");
+          if (idx === q.answer) icon.textContent = "✅";
+          if (idx === selectedOpt && idx !== q.answer) icon.textContent = "❌";
+          icon.style.display =
+            idx === q.answer || (idx === selectedOpt && idx !== q.answer)
+              ? "inline"
+              : "none";
+        });
+
+        updateStats();
+      }
+
+      function toggleAnswer(qid) {
+        revealedAnswers[qid] = !revealedAnswers[qid];
+        const answerDiv = document.getElementById("answer-" + qid);
+        const btn = document.getElementById("btn-" + qid);
+
+        if (revealedAnswers[qid]) {
+          answerDiv.classList.add("show");
+          btn.textContent = "🔒 Hide Answer & Explanation";
+        } else {
+          answerDiv.classList.remove("show");
+          btn.textContent = "🔓 Show Answer & Explanation";
+        }
+      }
+
+      function updateStats() {
+        const total = allQuestions.length;
+        const answered = Object.keys(userAnswers).length;
+        let correct = 0;
+        let wrong = 0;
+
+        for (const [qid, selected] of Object.entries(userAnswers)) {
+          const q = allQuestions.find((q) => q.id === parseInt(qid));
+          if (q && selected === q.answer) correct++;
+          else wrong++;
+        }
+
+        const remain = total - answered;
+        const pct = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+
+        correctCountEl.textContent = correct;
+        wrongCountEl.textContent = wrong;
+        remainCountEl.textContent = remain;
+        scorePctEl.textContent = pct + "%";
+        progressFill.style.width = (answered / total) * 100 + "%";
+      }
+
+      function resetAll() {
+        if (
+          confirm(
+            "Are you sure you want to reset all answers? This cannot be undone.",
+          )
+        ) {
+          userAnswers = {};
+          revealedAnswers = {};
+          const activeBtn = document.querySelector(
+            ".topic-filter button.active",
+          );
+          const activeTopic = activeBtn ? activeBtn.dataset.topic : "all";
+          renderQuestions(activeTopic);
+          updateStats();
+        }
+      }
+
+      // Initialize
+      renderTopicFilter();
+      renderQuestions("all");
+      updateStats();
+    </script>
+  </body>
+</html>

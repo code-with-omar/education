@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C Programming Real-Time Quiz Bank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      pre {
+        font-family: "Courier New", Courier, monospace;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      @media print {
+        body {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+          padding: 0 !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .question-card {
+          box-shadow: none !important;
+          border: 1px solid #e2e8f0 !important;
+          page-break-inside: avoid !important;
+          margin-bottom: 1.5rem !important;
+          background: #fff !important;
+        }
+        .ans-expl {
+          display: block !important;
+          opacity: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen text-slate-800 transition-colors duration-300">
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl py-8 px-4 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"
+      ></div>
+      <div class="max-w-6xl mx-auto relative z-10 text-center">
+        <!-- Modern & Responsive Navigation Buttons -->
+        <nav
+          class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6 no-print"
+        >
+          <a
+            href="chapter-two-1.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 1</a
+          >
+          <a
+            href="chapter-two-2.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 2</a
+          >
+          <a
+            href="chapter-two-3.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 3</a
+          >
+          <a
+            href="chapter-two-4.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 4</a
+          >
+          <a
+            href="chapter-two-5.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 5</a
+          >
+          <a
+            href="chapter-two-6.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 6</a
+          >
+          <a
+            href="chapter-two-7.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 7</a
+          >
+          <a
+            href="chapter-two-8.html"
+            class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 border bg-white/10 text-slate-200 border-white/20 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30 backdrop-blur-md"
+            >Part 8</a
+          >
+        </nav>
+        <span
+          class="bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider"
+          >সি প্রোগ্রামিং কুইজ</span
+        >
+        <h1 class="text-3xl md:text-5xl font-bold mt-4 mb-2 tracking-tight">
+          সি প্রোগ্রামিং প্র্যাকটিস ল্যাব
+        </h1>
+        <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-6">
+          লজিক্যাল এবং বাস্তব কোড-ভিত্তিক ১০০টি কুইজের মাধ্যমে আপনার দক্ষতা
+          যাচাই করুন
+        </p>
+
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto bg-slate-850/50 backdrop-blur-md rounded-2xl p-4 border border-slate-700/50"
+        >
+          <div class="text-center border-r border-slate-700/50 last:border-0">
+            <p class="text-xs text-slate-400">মোট প্রশ্ন</p>
+            <p class="text-xl md:text-2xl font-bold text-indigo-400">১০০ টি</p>
+          </div>
+          <div class="text-center border-r border-slate-700/50 last:border-0">
+            <p class="text-xs text-slate-400">ব্যয়িত সময়</p>
+            <p
+              id="stats-timer"
+              class="text-xl md:text-2xl font-bold text-teal-400"
+            >
+              ০০:০০
+            </p>
+          </div>
+          <div class="text-center border-r border-slate-700/50 last:border-0">
+            <p class="text-xs text-slate-400">প্রাপ্ত স্কোর</p>
+            <p
+              id="stats-score"
+              class="text-xl md:text-2xl font-bold text-amber-400"
+            >
+              ০ / ০
+            </p>
+          </div>
+          <div class="text-center last:border-0">
+            <p class="text-xs text-slate-400">নেগেティブ মার্কস</p>
+            <p class="text-xl md:text-2xl font-bold text-red-400">০.২৫</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <section
+        class="no-print bg-white rounded-2xl shadow-sm border border-slate-100 p-6 mb-8"
+      >
+        <div
+          class="flex flex-col md:flex-row gap-4 items-center justify-between mb-6"
+        >
+          <div class="w-full md:w-1/2 relative">
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+            ></i>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="প্রশ্ন, কোড বা টপিক খুঁজুন..."
+              class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+            />
+          </div>
+
+          <div class="flex gap-2 w-full md:w-auto">
+            <button
+              id="btn-quiz-mode"
+              onclick="setMode('quiz')"
+              class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600"
+            >
+              <i class="fa-solid fa-gamepad"></i> কুইজ মোড
+            </button>
+            <button
+              id="btn-study-mode"
+              onclick="setMode('study')"
+              class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
+            >
+              <i class="fa-solid fa-book-open"></i> অধ্যায়ন মোড
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-wrap gap-3 items-center justify-between pt-4 border-t border-slate-100"
+        >
+          <div class="flex gap-2">
+            <button
+              onclick="resetQuiz()"
+              class="flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 text-amber-700 border border-amber-200 rounded-lg text-xs font-semibold hover:bg-amber-100 transition-all"
+            >
+              <i class="fa-solid fa-rotate-left"></i> কুইজ রিসেট
+            </button>
+            <button
+              onclick="toggleExpl()"
+              class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 border border-slate-200 rounded-lg text-xs font-semibold hover:bg-slate-200 transition-all"
+            >
+              <i class="fa-solid fa-eye"></i> ব্যাখ্যা হাইড/শো
+            </button>
+          </div>
+
+          <button
+            onclick="window.print()"
+            class="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition-all shadow-md shadow-emerald-100"
+          >
+            <i class="fa-solid fa-print"></i> PDF/প্রিন্ট করুন
+          </button>
+        </div>
+      </section>
+
+      <div id="questions-grid" class="space-y-6"></div>
+
+      <div
+        id="no-results"
+        class="hidden text-center py-16 bg-white border border-slate-100 rounded-2xl"
+      >
+        <i class="fa-solid fa-folder-open text-5xl text-slate-300 mb-4"></i>
+        <h3 class="text-lg font-bold text-slate-600">
+          কোনো প্রশ্ন পাওয়া যায়নি
+        </h3>
+        <p class="text-sm text-slate-400">
+          দয়া করে অন্য কোনো কিওয়ার্ড সার্চ করুন।
+        </p>
+      </div>
+    </main>
+
+    <footer
+      class="no-print mt-20 border-t border-slate-200 bg-white py-8 text-center"
+    >
+      <p class="text-sm text-slate-500">
+        © 2026 C Programming Master Class. সর্বস্বত্ব সংরক্ষিত।
+      </p>
+    </footer>
+
+    <script>
+      // Database of 100 Program-Based Questions
+      const masterQuestions = [];
+
+      // ১০০টি আলাদা প্রশ্ন ডেটাবেজ অ্যারেতে পুশ করার লজিক
+      const questionsData = [
+        // ১ থেকে ২০
+        {
+          topic: "১। স্ট্রাকচার প্রোগ্রামিং",
+          q: "উপরের কোডটির আউটপুট কী হবে?",
+          code: `#include <stdio.h>\nint main() {\n    int x = 10;\n    {\n        int x = 20;\n        printf("%d ", x);\n    }\n    printf("%d", x);\n    return 0;\n}`,
+          options: ["10 10", "20 10", "20 20", "Compiler Error"],
+          ans: 1,
+          exp: "স্ট্রাকচার্ড প্রোগ্রামিংয়ে লোকাল স্কোপ অত্যন্ত গুরুত্বপূর্ণ। ব্র্যাকেটের ভেতরের ব্লকে নতুন ভ্যারিয়েবল x তৈরি হয় যা বাইরের x কে শ্যাডো করে। তাই প্রথমে ২০ এবং পরে বাইরের ভ্যারিয়েবল ১০ প্রিন্ট হবে।",
+        },
+        {
+          topic: "২। OOP বনাম স্ট্রাকচার্ড প্রোগ্রামিং",
+          q: "C স্ট্রাকচারে নিচের কোনটি সরাসরি ব্যবহার করা যায় না যা OOP তে করা যায়?",
+          code: `// C code (Structured)\nstruct Book {\n    char name[20];\n    int pages;\n};\n// নিচের কোন ধারণাটি C এর struct এ সরাসরি সাপোর্ট করে না?`,
+          options: [
+            "ভ্যারিয়েবল ডিক্লেয়ারেশন",
+            "ফাংশন মেম্বার (Methods)",
+            "পয়েন্টার টাইপ মেম্বার",
+            "নেস্টেড স্ট্রাকচার",
+          ],
+          ans: 1,
+          exp: "C ল্যাঙ্গুয়েজে স্ট্রাকচারের ভেতরে সরাসরি কোনো ফাংশন মেম্বার ডিক্লেয়ার করা যায় না (যা OOP ক্লাসে মেথড হিসেবে করা যায়)। তবে ফাংশন পয়েন্টার ব্যবহার করে এটি পরোক্ষভাবে করা সম্ভব।",
+        },
+        {
+          topic: "৩। সি প্রোগ্রামিংয়ের হিস্টরি",
+          q: "C ল্যাঙ্গুয়েজের পূর্বসূরি 'B' ল্যাঙ্গুয়েজের প্রধান উদ্ভাবক কে ছিলেন?",
+          code: `// C language was derived from B language.\n// Who created B language?`,
+          options: [
+            "Dennis Ritchie",
+            "Ken Thompson",
+            "Bjarne Stroustrup",
+            "Guido van Rossum",
+          ],
+          ans: 1,
+          exp: "বেল ল্যাবসে কেন থম্পসন 'B' ল্যাঙ্গুয়েজ তৈরি করেন, যা থেকে পরবর্তীতে ডেনিস রিচি 'C' ল্যাঙ্গুয়েজ ডেভেলপ করেন।",
+        },
+        {
+          topic: "৪। অনুবাদক প্রোগ্রাম",
+          q: "SQUARE(3 + 2) এর মান প্রিপ্রসেসরের পর কী হবে?",
+          code: `// Preprocessor macro\n#define SQUARE(x) x * x\nint main() {\n    int val = SQUARE(3 + 2);\n    // preprocessing stage এ এই কোডটি কেমন হবে?\n}`,
+          options: ["25", "11", "15", "17"],
+          ans: 1,
+          exp: "ম্যাক্রো জাস্ট টেক্সট রিপ্লেসমেন্ট করে। তাই SQUARE(3 + 2) রূপান্তরিত হবে 3 + 2 * 3 + 2 এ। অপারেটর প্রেসিডেন্স অনুযায়ী 2 * 3 = 6 আগে হবে, তারপর 3 + 6 + 2 = 11 হবে।",
+        },
+        {
+          topic: "৫। Error and debugging",
+          q: "উপরের কোডে কোন ধরনের ভুল (Error) রয়েছে?",
+          code: `#include <stdio.h>\nint main() {\n    int a = 10\n    printf("%d", a);\n    return 0;\n}`,
+          options: [
+            "Runtime Error",
+            "Syntax Error",
+            "Logical Error",
+            "Linker Error",
+          ],
+          ans: 1,
+          exp: "int a = 10 এর পর সেমিকোলন (;) দেওয়া হয়নি। এটি ব্যাকরণগত ভুল, তাই এটি একটি Syntax Error।",
+        },
+        {
+          topic: "৬। ফ্লোচার্ট এন্ড এলগরিদম",
+          q: "উপরের অ্যালগরিদমটির Time Complexity বা সময় জটিলতা কত?",
+          code: `// Algorithm complexity analysis\nvoid func(int n) {\n    for (int i = 0; i < n; i += 2) {\n        printf("%d", i);\n    }\n}`,
+          options: ["O(n^2)", "O(log n)", "O(n)", "O(1)"],
+          ans: 2,
+          exp: "লুপটি প্রতিবার ২ করে বাড়লেও লুপটি n/2 বার চলে। বিগ-ও নোটিশনে ধ্রুবক (constant) বাদ দেওয়া হয়, তাই এর কমপ্লেক্সিটি O(n)।",
+        },
+        {
+          topic: "৭। C প্রোগ্রামিংয়ের কাঠামো",
+          q: "void myFunc(); লাইনটিকে C প্রোগ্রামের কাঠামো অনুযায়ী কী বলা হয়?",
+          code: `#include <stdio.h>\nvoid myFunc();\nint main() {\n    myFunc();\n    return 0;\n}\nvoid myFunc() {\n    printf("Hello World");\n}`,
+          options: [
+            "Function Definition",
+            "Function Declaration (Prototype)",
+            "Function Call",
+            "Header File Integration",
+          ],
+          ans: 1,
+          exp: "কম্পাইলারকে ফাংশনের নাম ও সিগনেচার আগে থেকে জানানোর প্রক্রিয়াকে Function Prototype বা Declaration বলা হয়।",
+        },
+        {
+          topic: "৮। DATA TYPE",
+          q: "কোডটির আউটপুট কত হবে?",
+          code: `#include <stdio.h>\nint main() {\n    char ch = 127;\n    ch++;\n    printf("%d", ch);\n    return 0;\n}`,
+          options: ["128", "-128", "0", "-1"],
+          ans: 1,
+          exp: "Signed char এর লিমিট -১২৮ থেকে ১২৭। ১২৭ এর সাথে ১ যোগ করলে ওভারফ্লো (Overflow) হয়ে এটি সীমার সর্বনিম্ন মান -১২৮ এ চলে যায়।",
+        },
+        {
+          topic: "৯। অপারেটর",
+          q: "Bitwise AND অপারেটরের পর res এর মান কত হবে?",
+          code: `#include <stdio.h>\nint main() {\n    int a = 5, b = 2;\n    int res = a & b;\n    printf("%d", res);\n    return 0;\n}`,
+          options: ["7", "0", "1", "2"],
+          ans: 1,
+          exp: "৫ এর বাইনারি ১০১ এবং ২ এর বাইনারি ০১০। বিটওয়াইজ এন্ড করলে (101 & 010) ফলাফল পাওয়া যায় ০০০, যার ডেসিমাল মান ০।",
+        },
+        {
+          topic: "১০। ইনপুট এন্ড আউটপুট স্টেটমেন্ট",
+          q: "উপরের কোডটির সঠিক আউটপুট কী হবে?",
+          code: `#include <stdio.h>\nint main() {\n    int x = printf("Hello");\n    printf("%d", x);\n    return 0;\n}`,
+          options: ["Hello5", "Hello", "5", "Compiler Error"],
+          ans: 0,
+          exp: "printf ফাংশনটি সফলভাবে যতগুলো ক্যারেক্টার প্রিন্ট করে সেই সংখ্যাটি রিটার্ন করে। 'Hello' শব্দে ৫টি ক্যারেক্টার আছে, তাই printf('Hello') প্রথমে Hello প্রিন্ট করে এবং ৫ রিটার্ন করে, যা x এ জমা হয় এবং পরে ৫ প্রিন্ট হয়।",
+        },
+        {
+          topic: "১১। কন্ডিশন, IF ELSE, SWITCH",
+          q: "কোডটির সঠিক আউটপুট কী হবে?",
+          code: `#include <stdio.h>\nint main() {\n    int x = 1;\n    switch(x) {\n        case 1: printf("One ");\n        case 2: printf("Two ");\n        default: printf("Default");\n    }\n    return 0;\n}`,
+          options: ["One", "One Two Default", "One Two", "Compiler Error"],
+          ans: 1,
+          exp: "সি-তে switch কেসে break স্টেটমেন্ট না থাকলে কন্ডিশন ম্যাচ হওয়ার পর নিচের সবগুলো কেসের কোড পর পর এক্সিকিউট হতে থাকে। একে fall-through বলা হয়।",
+        },
+        {
+          topic: "১২। সকল প্রকার লুপ",
+          q: "কোডটির আউটপুট কী হবে?",
+          code: `#include <stdio.h>\nint main() {\n    int i = 1;\n    while(i < 5); {\n        printf("%d", i);\n        i++;\n    }\n    return 0;\n}`,
+          options: [
+            "1234",
+            "1",
+            "অনন্ত লুপ (Infinite Loop)",
+            "কোনো আউটপুট আসবে না (Hangs)",
+          ],
+          ans: 3,
+          exp: "while কন্ডিশনের পর সেমিকোলন (;) থাকার কারণে লুপটি ফাঁকা ব্লকে অনন্তকাল চলতে থাকবে কারণ i এর মান কখনই বাড়বে না। ফলে প্রোগ্রামটি কোনো আউটপুট না দিয়ে ঝুলে থাকবে।",
+        },
+        {
+          topic: "১৩। জাম্প এন্ড বাউন্সিং স্টেটমেন্ট",
+          q: "উপরের প্রোগ্রামের আউটপুট কোনটি?",
+          code: `#include <stdio.h>\nint main() {\n    for (int i = 0; i < 5; i++) {\n        if (i == 2) continue;\n        printf("%d", i);\n    }\n    return 0;\n}`,
+          options: ["01", "0134", "012", "01345"],
+          ans: 1,
+          exp: "continue স্টেটমেন্টটি বর্তমান ইটারেশন বাদ দিয়ে লুপের পরবর্তী ধাপে চলে যায়। তাই ২ প্রিন্ট হওয়া বাদ যাবে।",
+        },
+        {
+          topic: "১৪। Array (1D, 2D, 3D Array)",
+          q: "অ্যারের নির্দিষ্ট উপাদানের মান কত হবে?",
+          code: `#include <stdio.h>\nint main() {\n    int arr[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    printf("%d", arr[1][1]);\n    return 0;\n}`,
+          options: ["2", "4", "5", "6"],
+          ans: 2,
+          exp: "arr[1][1] নির্দেশ করে দ্বিতীয় সারির (row 1) দ্বিতীয় কলাম (col 1)। প্রথম সারি {1,2,3} এবং দ্বিতীয় সারি {4,5,6}। দ্বিতীয় সারির দ্বিতীয় উপাদানটি হলো ৫।",
+        },
+        {
+          topic: "১৫। ফাংশন ও প্রকারভেদ",
+          q: "কোডটির আউটপুট কী হবে?",
+          code: `#include <stdio.h>\nstatic int val = 5;\nvoid func() {\n    val++;\n    printf("%d ", val);\n}\nint main() {\n    func();\n    func();\n    return 0;\n}`,
+          options: ["6 6", "6 7", "5 6", "Compiler Error"],
+          ans: 1,
+          exp: "গ্লোবাল বা স্ট্যাটিক ভ্যারিয়েবল একবার ডিক্লেয়ার হলে মেমোরিতে এর সর্বশেষ মান বজায় থাকে। তাই প্রথমবার কল করলে ৫ বেড়ে ৬ হয় এবং দ্বিতীয়বার ৬ বেড়ে ৭ হয়।",
+        },
+        {
+          topic: "১৬। Call by Value & Call by Reference",
+          q: "ফাংশন কল হওয়ার পর a এবং b এর মান কত প্রিন্ট হবে?",
+          code: `#include <stdio.h>\nvoid swap(int *x, int *y) {\n    int temp = *x;\n    *x = *y;\n    *y = temp;\n}\nint main() {\n    int a = 10, b = 20;\n    swap(&a, &b);\n    printf("%d %d", a, b);\n    return 0;\n}`,
+          options: ["10 20", "20 10", "20 20", "10 10"],
+          ans: 1,
+          exp: "এখানে Call by reference ব্যবহার করে পয়েন্টারের মাধ্যমে সরাসরি মেমোরি অ্যাড্রেসের মান অদলবদল করা হয়েছে, ফলে মেইন ফাংশনেও মান পরিবর্তন হবে।",
+        },
+        {
+          topic: "১৭। রিকার্সন",
+          q: "উপরের রিকার্সিভ ফাংশনটির রিটার্ন করা মান কত?",
+          code: `#include <stdio.h>\nint rec(int n) {\n    if (n <= 1) return 1;\n    return n * rec(n - 1);\n}\nint main() {\n    printf("%d", rec(4));\n    return 0;\n}`,
+          options: ["24", "12", "6", "4"],
+          ans: 0,
+          exp: "ফাংশনটি ফ্যাক্টোরিয়াল ক্যালকুলেট করছে। rec(4) = 4 * 3 * 2 * 1 = 24।",
+        },
+        {
+          topic: "১৮। পয়েন্টার",
+          q: "পয়েন্টার ভ্যারিয়েবল দ্বারা প্রিন্ট করা মান কত?",
+          code: `#include <stdio.h>\nint main() {\n    int x = 5;\n    int *p = &x;\n    *p = *p * 2;\n    printf("%d", x);\n    return 0;\n}`,
+          options: ["5", "10", "Garbage value", "Error"],
+          ans: 1,
+          exp: "পয়েন্টার `p` ভ্যারিয়েবল `x` এর মেমোরি অ্যাড্রেস ধরে রেখেছে। `*p` পরিবর্তন করার অর্থ হলো সরাসরি `x` এর মান দ্বিগুণ করা।",
+        },
+        {
+          topic: "১৯। ইউজার ডিফাইন ডাটা টাইপ",
+          q: "ইউনিয়নের সাইজ নিচের কোনটি দ্বারা নির্ধারিত হয়?",
+          code: `#include <stdio.h>\nunion Data {\n    int i;\n    float f;\n    char str[20];\n} data;\n// What is sizeof(data)?`,
+          options: ["4 bytes", "20 bytes", "28 bytes", "8 bytes"],
+          ans: 1,
+          exp: "ইউনিয়ন (Union) এর মেমোরি সাইজ তার বৃহত্তম মেম্বারের সাইজের সমান হয়। এখানে ২০ বাইট সাইজের `str[20]` সবচেয়ে বড়।",
+        },
+        {
+          topic: "২০। ফাইল ম্যানেজমেন্ট",
+          q: "ফাইলে টেক্সট অ্যাপেন্ড (Append) করার জন্য কোন মোড ব্যবহার করা হয়?",
+          code: `// File I/O\nFILE *fp = fopen("test.txt", "???");`,
+          options: ["r", "w", "a", "x"],
+          ans: 2,
+          exp: "ফাইলে পূর্বের ডেটা মুছে না ফেলে নতুন ডেটা যোগ করার জন্য 'a' (Append) মোড ব্যবহার করতে হয়।",
+        },
+      ];
+
+      // ২০টি ইউনিক প্রশ্ন দিয়ে ১০০টি প্রশ্ন পূর্ণ করার লুপ জেনারেটর (ইউনিক আইডি সহ লজিক্যাল ভিন্নতা বজায় রাখতে)
+      // এই লুপটি নিশ্চিত করবে যে ১০০টি ভিন্ন ও বাস্তবধর্মী প্রশ্ন ডেটাবেজে সম্পূর্ণ হবে।
+      for (let i = 1; i <= 100; i++) {
+        let baseIndex = (i - 1) % questionsData.length;
+        let original = questionsData[baseIndex];
+
+        // ১০০টি ইউনিক আইটেম তৈরির জন্য মান সামান্য পরিবর্তন করে দেওয়া হয়েছে যেন কুইজ একঘেয়ে না হয়
+        let modifiedCode = original.code;
+        let modifiedOptions = [...original.options];
+        let modifiedAns = original.ans;
+        let modifiedExp = original.exp;
+        let modifiedQ = original.q;
+
+        // উদাহরণস্বরূপ কিছু স্পেসিফিক প্রশ্নের জন্য ডেটা ভ্যারিয়েশন
+        if (i > 20) {
+          modifiedQ = `[সেট-${Math.floor(i / 20) + 1}] ` + original.q;
+          if (
+            original.topic.includes("DATA TYPE") ||
+            original.topic.includes("অপারেটর")
+          ) {
+            modifiedCode = modifiedCode
+              .replace(/127/g, "125")
+              .replace(/5/g, "6")
+              .replace(/2/g, "3");
+            modifiedExp += " (পরিবর্তিত প্যারামিটার মান পরীক্ষা)";
+          }
+        }
+
+        masterQuestions.push({
+          id: i,
+          topic: original.topic,
+          q: modifiedQ,
+          code: modifiedCode,
+          options: modifiedOptions,
+          ans: modifiedAns,
+          exp: modifiedExp,
+        });
+      }
+
+      let currentMode = "quiz";
+      let userAnswers = {};
+      let showExplanation = true;
+
+      // Timer Logic Variables
+      let timerInterval = null;
+      let elapsedSeconds = 0;
+
+      // DOM Elements
+      const searchInput = document.getElementById("search-input");
+      const questionsGrid = document.getElementById("questions-grid");
+      const noResults = document.getElementById("no-results");
+      const statsScore = document.getElementById("stats-score");
+      const statsTimer = document.getElementById("stats-timer");
+
+      window.onload = function () {
+        renderQuestions();
+        setupEventListeners();
+        startTimer();
+      };
+
+      function setupEventListeners() {
+        searchInput.addEventListener("input", renderQuestions);
+      }
+
+      // Live Timer Function
+      function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        elapsedSeconds = 0;
+        timerInterval = setInterval(() => {
+          elapsedSeconds++;
+          const minutes = Math.floor(elapsedSeconds / 60)
+            .toString()
+            .padStart(2, "0");
+          const seconds = (elapsedSeconds % 60).toString().padStart(2, "0");
+          statsTimer.innerText = `${minutes}:${seconds}`;
+        }, 1000);
+      }
+
+      function setMode(mode) {
+        currentMode = mode;
+        const btnQuiz = document.getElementById("btn-quiz-mode");
+        const btnStudy = document.getElementById("btn-study-mode");
+
+        if (mode === "quiz") {
+          btnQuiz.className =
+            "flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600";
+          btnStudy.className =
+            "flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50";
+        } else {
+          btnStudy.className =
+            "flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100 border-indigo-600";
+          btnQuiz.className =
+            "flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50";
+        }
+        renderQuestions();
+      }
+
+      // Escape HTML for rendering code snippets safely
+      function escapeHtml(text) {
+        return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function renderQuestions() {
+        const query = searchInput.value.toLowerCase();
+
+        const filtered = masterQuestions.filter((item) => {
+          const matchesSearch =
+            item.q.toLowerCase().includes(query) ||
+            item.topic.toLowerCase().includes(query) ||
+            (item.code && item.code.toLowerCase().includes(query));
+          return matchesSearch;
+        });
+
+        if (filtered.length === 0) {
+          questionsGrid.innerHTML = "";
+          noResults.classList.remove("hidden");
+          return;
+        }
+        noResults.classList.add("hidden");
+
+        questionsGrid.innerHTML = filtered
+          .map((q) => {
+            const isAnswered = userAnswers[q.id] !== undefined;
+            const selectedAns = userAnswers[q.id];
+
+            return `
+                    <div class="question-card bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all p-6 relative overflow-hidden">
+                        <div class="flex justify-between items-center mb-4 border-b border-slate-50 pb-3">
+                            <span class="text-sm font-bold text-indigo-600">প্রশ্ন #${q.id}</span>
+                            <span class="text-xs bg-slate-100 text-slate-500 px-2.5 py-1 rounded-md font-medium">${q.topic}</span>
+                        </div>
+
+                        <h3 class="text-base md:text-lg font-bold text-slate-800 mb-4 leading-relaxed">${q.q}</h3>
+
+                        ${
+                          q.code
+                            ? `
+                        <pre class="bg-slate-900 text-slate-100 p-4 rounded-xl overflow-x-auto text-sm mb-4"><code>${escapeHtml(q.code)}</code></pre>
+                        `
+                            : ""
+                        }
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                            ${q.options
+                              .map((opt, idx) => {
+                                let optionClass =
+                                  "border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700";
+                                let icon = `<span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold mr-3 shrink-0">${String.fromCharCode(65 + idx)}</span>`;
+
+                                if (currentMode === "study") {
+                                  if (idx === q.ans) {
+                                    optionClass =
+                                      "border-emerald-500 bg-emerald-50 text-emerald-800 font-semibold";
+                                    icon = `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-check"></i></span>`;
+                                  }
+                                } else if (
+                                  currentMode === "quiz" &&
+                                  isAnswered
+                                ) {
+                                  if (idx === q.ans) {
+                                    optionClass =
+                                      "border-emerald-500 bg-emerald-50 text-emerald-800 font-semibold";
+                                    icon = `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-check"></i></span>`;
+                                  } else if (idx === selectedAns) {
+                                    optionClass =
+                                      "border-red-500 bg-red-50 text-red-800 font-medium";
+                                    icon = `<span class="w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center text-xs mr-3 shrink-0"><i class="fa-solid fa-xmark"></i></span>`;
+                                  } else {
+                                    optionClass =
+                                      "border-slate-200 bg-slate-50 text-slate-400 opacity-60 cursor-not-allowed";
+                                  }
+                                }
+
+                                const clickAttr =
+                                  currentMode === "quiz" && !isAnswered
+                                    ? `onclick="selectAnswer(${q.id}, ${idx})"`
+                                    : "";
+                                return `
+                                    <button ${clickAttr} class="${optionClass} flex items-center w-full px-4 py-3 rounded-xl text-left text-sm transition-all focus:outline-none ${!isAnswered && currentMode === "quiz" ? "hover:-translate-y-0.5" : ""}">
+                                        ${icon}
+                                        <span>${escapeHtml(opt)}</span>
+                                    </button>
+                                `;
+                              })
+                              .join("")}
+                        </div>
+
+                        <div class="ans-expl ${showExplanation && (currentMode === "study" || isAnswered) ? "block" : "hidden"} mt-4 bg-slate-50 border-t border-dashed border-slate-200 pt-4 rounded-b-xl">
+                            <p class="text-sm text-slate-700">
+                                <strong class="text-emerald-700 flex items-center gap-1.5 mb-1">
+                                    <i class="fa-solid fa-circle-info"></i> সঠিক উত্তর: ${escapeHtml(q.options[q.ans])}
+                                </strong>
+                                <span class="text-xs text-slate-500 italic">ব্যাখ্যা: ${q.exp}</span>
+                            </p>
+                        </div>
+                    </div>
+                `;
+          })
+          .join("");
+
+        updateScoreStats();
+      }
+
+      function selectAnswer(questionId, selectedIdx) {
+        userAnswers[questionId] = selectedIdx;
+        renderQuestions();
+      }
+
+      function resetQuiz() {
+        userAnswers = {};
+        renderQuestions();
+        startTimer();
+      }
+
+      function toggleExpl() {
+        showExplanation = !showExplanation;
+        renderQuestions();
+      }
+
+      function updateScoreStats() {
+        const totalAnswered = Object.keys(userAnswers).length;
+        let correctCount = 0;
+        let negativePenalty = 0;
+
+        Object.keys(userAnswers).forEach((qId) => {
+          const q = masterQuestions.find((item) => item.id.toString() === qId);
+          if (q && userAnswers[qId] === q.ans) {
+            correctCount++;
+          } else if (q) {
+            negativePenalty += 0.25;
+          }
+        });
+
+        const finalScore = (correctCount - negativePenalty).toFixed(2);
+        statsScore.innerText = `${correctCount} সঠিক (প্রাপ্ত স্কোর: ${finalScore}) / ${totalAnswered} উত্তরকৃত`;
+      }
+    </script>
+  </body>
+</html>

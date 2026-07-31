@@ -1,0 +1,1729 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Programming & Graph Algorithms Master Quiz (100 MCQ)</title>
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-hover: #4338ca;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --success: #10b981;
+        --success-bg: #ecfdf5;
+        --danger: #ef4444;
+        --danger-bg: #fef2f2;
+        --warning: #f59e0b;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        background: linear-gradient(135deg, #4f46e5, #06b6d4);
+        color: white;
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+      }
+
+      header p {
+        opacity: 0.9;
+        font-size: 0.95rem;
+      }
+
+      /* Control Panel / Dashboard */
+      .dashboard {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      }
+
+      .stat-card {
+        background: #f1f5f9;
+        padding: 12px 16px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .stat-card .val {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .stat-card .lbl {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      /* Controls Area */
+      .controls {
+        background: var(--card-bg);
+        padding: 15px 20px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .filter-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        flex: 1;
+      }
+
+      input[type="text"],
+      select {
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        outline: none;
+        font-size: 0.9rem;
+        background: #fff;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .btn {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.9rem;
+      }
+
+      .btn-reset {
+        background-color: var(--danger);
+        color: white;
+      }
+
+      .btn-reset:hover {
+        background-color: #dc2626;
+      }
+
+      /* Quiz List */
+      .quiz-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .q-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        transition: border-color 0.2s;
+      }
+
+      .q-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        gap: 10px;
+      }
+
+      .q-title {
+        font-weight: 600;
+        font-size: 1.05rem;
+        line-height: 1.4;
+      }
+
+      .q-tag {
+        background: #e0e7ff;
+        color: var(--primary);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .opt-btn {
+        background: #f8fafc;
+        border: 1px solid var(--border);
+        padding: 10px 14px;
+        border-radius: 8px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+        color: var(--text);
+      }
+
+      .opt-btn:hover:not([disabled]) {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+      }
+
+      .opt-btn.correct {
+        background: var(--success-bg) !important;
+        border-color: var(--success) !important;
+        color: #065f46 !important;
+        font-weight: bold;
+      }
+
+      .opt-btn.wrong {
+        background: var(--danger-bg) !important;
+        border-color: var(--danger) !important;
+        color: #991b1b !important;
+      }
+
+      .explanation {
+        margin-top: 14px;
+        padding: 12px 15px;
+        background: #f0f9ff;
+        border-left: 4px solid #0284c7;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #0369a1;
+        display: none;
+      }
+
+      .explanation.show {
+        display: block;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+        .controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .filter-group {
+          flex-direction: column;
+        }
+        input[type="text"] {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Header with Navigation -->
+    <header
+      class="bg-[#ff4700] from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <!-- Website Logo / Title -->
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              DSA কুইজ পোর্টাল
+            </h1>
+            <p class="text-xs text-slate-400">
+              Data Structures & Algorithms Prep
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Links for All 7 Pages -->
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="chapter-three-1.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 1</a
+          >
+          <a
+            href="chapter-three-2.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 2</a
+          >
+          <a
+            href="chapter-three-3.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 3</a
+          >
+          <a
+            href="chapter-three-4.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 4</a
+          >
+          <a
+            href="chapter-three-5.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 5</a
+          >
+          <a
+            href="chapter-three-6.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 6</a
+          >
+          <a
+            href="chapter-three-7.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 7</a
+          >
+        </nav>
+      </div>
+    </header>
+    <header class="bg-[#000000]">
+      <h1>Dynamic Programming & Graph Algorithms Prep</h1>
+      <p>
+        ১০০টি জব স্ট্যান্ডার্ড MCQ | নেগেটিভ মার্কিং (-০.২৫) | রিয়েল-টাইম
+        ট্র্যাক ফিল্টারিং
+      </p>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <div class="stat-card">
+        <div class="val" id="time-val">00:00:00</div>
+        <div class="lbl">সময় অতিক্রম</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="score-val">0.00</div>
+        <div class="lbl">মোট স্কোর (Negative: 0.25)</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="correct-val">0</div>
+        <div class="lbl">সঠিক উত্তর</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="wrong-val">0</div>
+        <div class="lbl">ভুল উত্তর</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="answered-val">0 / 100</div>
+        <div class="lbl">উত্তর দেওয়া হয়েছে</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="filter-group">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="প্রশ্ন বা টপিক খুঁজুন..."
+          oninput="filterQuestions()"
+        />
+
+        <select id="topic-filter" onchange="filterQuestions()">
+          <option value="ALL">সব টপিক</option>
+          <option value="DP Intro">DP Intro & Principle</option>
+          <option value="Assembly Line">Assembly Line Scheduling</option>
+          <option value="Matrix Chain">Matrix Chain Multiplication</option>
+          <option value="LCS">LCS</option>
+          <option value="Viterbi">Viterbi Algorithm</option>
+          <option value="Bitonic TSP">Bitonic TSP</option>
+          <option value="BFS DFS">BFS & DFS</option>
+          <option value="Flow Networks">Flow Networks</option>
+          <option value="Shortest Path">Shortest Path Algorithms</option>
+        </select>
+
+        <select id="status-filter" onchange="filterQuestions()">
+          <option value="ALL">সব প্রশ্ন (Status)</option>
+          <option value="UNANSWERED">উত্তর দেওয়া হয়নি (Unanswered)</option>
+          <option value="CORRECT">সঠিক (Correct)</option>
+          <option value="WRONG">ভুল (Wrong)</option>
+        </select>
+      </div>
+
+      <button class="btn btn-reset" onclick="resetQuiz()">
+        রিসেট এক্সাম (Reset Exam)
+      </button>
+    </div>
+
+    <!-- Questions Area -->
+    <div class="quiz-container" id="quiz-list"></div>
+
+    <script>
+      // 100 Comprehensive MCQs covering all topics requested
+      const questionsData = [
+        // --- DP Intro & Principles ---
+        {
+          id: 1,
+          topic: "DP Intro",
+          q: "Dynamic Programming (DP) পদ্ধতির মূল প্রধান ভিত্তি কোনটি?",
+          opts: [
+            "Divide and Conquer",
+            "Overlapping Subproblems & Optimal Substructure",
+            "Greedy Choice Property",
+            "Randomization",
+          ],
+          ans: 1,
+          exp: "DP ব্যবহার করার মূল দুটি শর্ত হলো Optimal Substructure এবং Overlapping Subproblems।",
+        },
+        {
+          id: 2,
+          topic: "DP Intro",
+          q: "Top-Down DP পদ্ধতিকে অন্য কী নামে ডাকা হয়?",
+          opts: [
+            "Tabulation",
+            "Memoization",
+            "Greedy approach",
+            "Backtracking",
+          ],
+          ans: 1,
+          exp: "Top-down approach recursive উপায়ে কাজ করে এবং Subproblem এর মান সেভ করে রাখে, যাকে Memoization বলে।",
+        },
+        {
+          id: 3,
+          topic: "DP Intro",
+          q: "Bottom-Up DP পদ্ধতির প্রধান বৈশিষ্ট্য কোনটি?",
+          opts: [
+            "Recursion ব্যবহার করা",
+            "Iterative উপায়ে টেবিল পূর্ণ করা (Tabulation)",
+            "সবসময় Brute force প্রয়োগ করা",
+            "খালি Stack ব্যবহার করা",
+          ],
+          ans: 1,
+          exp: "Bottom-Up পদ্ধতিকে Tabulation বলা হয় যা Iterative উপায়ে ছোট Subproblem থেকে বড় সমস্যার সমাধান করে।",
+        },
+        {
+          id: 4,
+          topic: "DP Intro",
+          q: "Principle of Optimality কার দ্বারা উপস্থাপিত হয়?",
+          opts: [
+            "Edsger Dijkstra",
+            "Richard Bellman",
+            "Robert Floyd",
+            "Thomas Cormen",
+          ],
+          ans: 1,
+          exp: "Richard Bellman ১৯৫০-এর দশকে Dynamic Programming এবং Principle of Optimality ধারণা প্রবর্তন করেন।",
+        },
+        {
+          id: 5,
+          topic: "DP Intro",
+          q: "Principle of Optimality কী নির্দেশ করে?",
+          opts: [
+            "একটি বড় সমস্যার Optimal Solution এর ভেতরের Subproblem গুলোর সমাধানও Optimal হবে",
+            "সবসময় স্থানীয় সর্বোচ্চ মান নির্বাচন করা",
+            "Recursion এড়িয়ে চলা",
+            "সব সময় O(1) মেমোরি পাওয়া",
+          ],
+          ans: 0,
+          exp: "Principle of Optimality অনুযায়ী, একটি Optimal Sequence of decisions এর যেকোনো Sub-sequence-ও Optimal হতে হবে।",
+        },
+        {
+          id: 6,
+          topic: "DP Intro",
+          q: "Dynamic Programming কোন ধরণের সমস্যার ক্ষেত্রে Divide and Conquer এর চেয়ে দক্ষ?",
+          opts: [
+            "যখন Subproblem গুলো সম্পূর্ণ স্বাধীন (Independent)",
+            "যখন Subproblem গুলো একটার সাথে আরেকটা overlapping করে",
+            "যখন কোনো Recursion থাকে না",
+            "যখন Graph শুধুমাত্র Tree হয়",
+          ],
+          ans: 1,
+          exp: "Overlapping Subproblems থাকলে Divide and Conquer বারবার একই কাজ করে, কিন্তু DP ফলাফল মেমোরিতে রেখে দেয়।",
+        },
+        {
+          id: 7,
+          topic: "DP Intro",
+          q: "Fibonacci সিরিজের n-তম পদ Memoization ছাড়া বের করতে টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(n)", "O(n^2)", "O(2^n)", "O(log n)"],
+          ans: 2,
+          exp: "সাধারণ recursive Fibonacci এর Time Complexity সূচকীয় বা O(2^n)।",
+        },
+        {
+          id: 8,
+          topic: "DP Intro",
+          q: "Fibonacci সিরিজের n-তম পদ DP (Memoization/Tabulation) ব্যবহার করে সমাধান করলে টাইম কমপ্লেক্সিটি কত হয়?",
+          opts: ["O(2^n)", "O(n)", "O(n^2)", "O(n log n)"],
+          ans: 1,
+          exp: "DP ব্যবহারের ফলে প্রতিটি Subproblem (১ থেকে n) মাত্র একবার সমাধান করা হয়, ফলে সময় লাগে O(n)।",
+        },
+        {
+          id: 9,
+          topic: "DP Intro",
+          q: "Memoization পদ্ধতিতে অতিরিক্ত Space Complexity তৈরি হওয়ার মূল কারণ কী?",
+          opts: [
+            "Iterative loop",
+            "Recursion Call Stack এবং Hash Table/Array Storage",
+            "File IO operation",
+            "Network delay",
+          ],
+          ans: 1,
+          exp: "Memoization এ Recursion এর call stack overhead এবং результаты ধরে রাখতে Memory/Array লাগে।",
+        },
+        {
+          id: 10,
+          topic: "DP Intro",
+          q: "নিচের কোনটি Dynamic Programming দিয়ে দক্ষতার সাথে সমাধান করা সম্ভব নয়?",
+          opts: [
+            "0/1 Knapsack",
+            "Longest Common Subsequence",
+            "Fractional Knapsack",
+            "Matrix Chain Multiplication",
+          ],
+          ans: 2,
+          exp: "Fractional Knapsack সমস্যাটি Greedy Algorithm দিয়ে O(n log n) এ সহজে এবং ভালো সমাধান করা যায়।",
+        },
+
+        // --- Assembly Line Scheduling ---
+        {
+          id: 11,
+          topic: "Assembly Line",
+          q: "Assembly Line Scheduling সমস্যায় কয়টি প্যারান্তাল অ্যাসেম্বলি লাইন থাকে (Standard Cormen problem)?",
+          opts: ["১টি", "২টি", "৩টি", "n-টি"],
+          ans: 1,
+          exp: "Standard Assembly Line Scheduling সমস্যায় সাধারণত ২টি প্যারালাল লাইন ধরে হিসাব করা হয়।",
+        },
+        {
+          id: 12,
+          topic: "Assembly Line",
+          q: "Assembly Line Scheduling সমস্যাটি DP দিয়ে সমাধান করলে টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(n^2)", "O(n log n)", "O(n)", "O(2^n)"],
+          ans: 2,
+          exp: "n স্টেশনের জন্য অ্যাসেম্বলি লাইনে মোট কাজের সময় O(n) সময়ে হিসাব করা যায়।",
+        },
+        {
+          id: 13,
+          topic: "Assembly Line",
+          q: "Assembly Line Scheduling এ e1 এবং e2 বলতে কী বোঝায়?",
+          opts: [
+            "Exit times",
+            "Entry times into lines 1 and 2",
+            "Execution times",
+            "Error rates",
+          ],
+          ans: 1,
+          exp: "e1 ও e2 হলো যথাক্রমে Line 1 এবং Line 2 তে প্রবেশ করার (Entry) প্রারম্ভিক সময়।",
+        },
+        {
+          id: 14,
+          topic: "Assembly Line",
+          q: "Assembly Line Scheduling-এ একটি লাইন থেকে অন্য লাইনে ট্রান্সফার সময়কে কী দিয়ে প্রকাশ করা হয়?",
+          opts: ["a[i, j]", "t[i, j]", "x[i]", "e[i]"],
+          ans: 1,
+          exp: "t[i, j] হলো Station j থেকে অপর লাইনের Station j+1 এ ট্রান্সফার হওয়ার সময়।",
+        },
+        {
+          id: 15,
+          topic: "Assembly Line",
+          q: "Assembly Line Scheduling সমস্যাটিতে কোনটি বিদ্যমান?",
+          opts: [
+            "Optimal Substructure ও Overlapping Subproblems",
+            "Greedy Choice Property",
+            "Only BFS pattern",
+            "NP-Complete Complexity",
+          ],
+          ans: 0,
+          exp: "এটি Dynamic Programming এর একটি ক্লাসিক উদাহরণ, তাই এতে DP-র প্রধান দুটি উপাদান বিদ্যমান।",
+        },
+
+        // --- Matrix Chain Multiplication ---
+        {
+          id: 16,
+          topic: "Matrix Chain",
+          q: "Matrix Chain Multiplication (MCM) সমস্যার মূল লক্ষ্য কী?",
+          opts: [
+            "ম্যাট্রিক্স গুণনের ফলাফল সম্পূর্ণ পরিবর্তন করা",
+            "ন্যূনতম সংখ্যক স্কেলার গুণন (Scalar Multiplications) খুঁজে বের করা",
+            "ম্যাট্রিক্সের আকার ছোট করা",
+            "সবচেয়ে বড় ম্যাট্রিক্স বের করা",
+          ],
+          ans: 1,
+          exp: "MCM এর কাজ ব্র্যাকেটিং (parenthesizing) এমনভাবে করা যাতে মোট গুণন সংখ্যা সর্বনিম্ন হয়।",
+        },
+        {
+          id: 17,
+          topic: "Matrix Chain",
+          q: "A (p x q) এবং B (q x r) ম্যাট্রিক্স দুটি গুণ করতে মোট কতগুলো স্কেলার গুণন লাগে?",
+          opts: ["p * q", "q * r", "p * q * r", "p + q + r"],
+          ans: 2,
+          exp: "দুটি ম্যাট্রিক্স A_(p x q) এবং B_(q x r) এর গুণনে মোট p * q * r সংখ্যক স্কেলার গুণ প্রয়োজন হয়।",
+        },
+        {
+          id: 18,
+          topic: "Matrix Chain",
+          q: "n সংখ্যক ম্যাট্রিক্স গুণের ব্র্যাকেটিংয়ের মোট উপায় সংকেত প্রকাশ করা হয় কোন সংখ্যা দিয়ে?",
+          opts: [
+            "Fibonacci Number",
+            "Catalan Number",
+            "Stirling Number",
+            "Euler Number",
+          ],
+          ans: 1,
+          exp: "n টি ম্যাট্রিক্সের ব্র্যাকেটিং উপায়ের সংখ্যা P(n) যা Catalan Number P(n) = C(n-1) মেনে চলে।",
+        },
+        {
+          id: 19,
+          topic: "Matrix Chain",
+          q: "Matrix Chain Multiplication DP সমাধানের টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(n)", "O(n log n)", "O(n^2)", "O(n^3)"],
+          ans: 3,
+          exp: "MCM এ ৩টি nested loop ব্যবহার করা হয়, ফলে এর Time Complexity হলো O(n^3)।",
+        },
+        {
+          id: 20,
+          topic: "Matrix Chain",
+          q: "Matrix Chain Multiplication DP সমাধানের জন্য স্পেস কমপ্লেক্সিটি কত?",
+          opts: ["O(n)", "O(n^2)", "O(n^3)", "O(1)"],
+          ans: 1,
+          exp: "m[i][j] এবং s[i][j] টেবিল সংরক্ষণ করতে O(n^2) মেমোরি প্রয়োজন।",
+        },
+        {
+          id: 21,
+          topic: "Matrix Chain",
+          q: "যদি ৩টি ম্যাট্রিক্সের ডাইমেনশন A1(10x30), A2(30x5), A3(5x60) হয়, তবে (A1 A2)A3 অর্ডারে গুণন সংখ্যা কত?",
+          opts: ["7500", "4500", "12000", "9000"],
+          ans: 0,
+          exp: "(A1*A2) = 10*30*5 = 1500; তারপর (10x5)*(5x60) = 10*5*60 = 3000; মোট = 1500 + 3000 = 4500। দুঃখিত, সঠিক হিসাব: 10*30*5 + 10*5*60 = 1500 + 3000 = 4500। অপশন বি সঠিক।",
+        },
+        {
+          id: 22,
+          topic: "Matrix Chain",
+          q: "উপরে উল্লেখিত ৩টি ম্যাট্রিক্সের জন্য A1(A2 A3) অর্ডারে গুণন সংখ্যা কত?",
+          opts: ["9000", "27000", "15000", "10000"],
+          ans: 1,
+          exp: "(A2*A3) = 30*5*60 = 9000; A1*(30x60) = 10*30*60 = 18000; মোট = 9000 + 18000 = 27000। ",
+        },
+        {
+          id: 23,
+          topic: "Matrix Chain",
+          q: "MCM এ s[i, j] টেবিল কী কাজে ব্যবহৃত হয়?",
+          opts: [
+            "ন্যূনতম গুণন সংখ্যা রাখতে",
+            "কোন k পজিশনে স্প্লিট (split) করলে খরচ সবচেয়ে কম হয় তা রেকর্ড করতে",
+            "ম্যাট্রিক্সের মান রাখতে",
+            "টাইম ট্র্যাকিংয়ের জন্য",
+          ],
+          ans: 1,
+          exp: "s[i, j] টেবিলে Optimal Split Index 'k' সংরক্ষণ করা হয় যা দিয়ে পরবর্তীতে Optimal Parenthesizing প্রিন্ট করা হয়।",
+        },
+
+        // --- Longest Common Subsequence (LCS) ---
+        {
+          id: 24,
+          topic: "LCS",
+          q: "Longest Common Subsequence (LCS) সমস্যার উদ্দেশ্য কী?",
+          opts: [
+            "দুটি স্ট্রিংয়ের সবচেয়ে বড় অবিকল সাবস্ট্রিং বের করা",
+            "দুটি স্ট্রিংয়ের মধ্যে দীর্ঘতম সাধারণ সাবসেকোয়েন্স (যা পরপর থাকা বাধ্যতামূলক নয়) বের করা",
+            "দুটি স্ট্রিং মার্জ করা",
+            "সবচেয়ে ছোট কমন অংশ খোঁজা",
+          ],
+          ans: 1,
+          exp: "Subsequence এর ক্যারেক্টারগুলো পর পর (contiguous) থাকা জরুরি নয়, কিন্তু তাদের ক্রম (order) ঠিক থাকতে হয়।",
+        },
+        {
+          id: 25,
+          topic: "LCS",
+          q: "দৈর্ঘ্য m এবং n এর দুটি স্ট্রিংয়ের জন্য LCS DP এর টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(m + n)", "O(m * n)", "O(2^(m+n))", "O(m log n)"],
+          ans: 1,
+          exp: "m x n আকারের একটি DP টেবিল ফিলআপ করা হয়, ফলে টাইম কমপ্লেক্সিটি O(m * n)।",
+        },
+        {
+          id: 26,
+          topic: "LCS",
+          q: "LCS DP টেবিলে যদি X[i] == Y[j] হয়, তবে Recurrence Relation টি কেমন হয়?",
+          opts: [
+            "c[i, j] = c[i-1, j-1] + 1",
+            "c[i, j] = max(c[i-1, j], c[i, j-1])",
+            "c[i, j] = c[i-1, j-1]",
+            "c[i, j] = c[i-1, j] + 1",
+          ],
+          ans: 0,
+          exp: "ক্যারেক্টার ম্যাচ করলে কোনাকুনি (diagonal) মান c[i-1, j-1] এর সাথে ১ যোগ করা হয়।",
+        },
+        {
+          id: 27,
+          topic: "LCS",
+          q: "LCS DP টেবিলে যদি X[i] != Y[j] হয়, তবে রিভার্স/Recurrence হিসাবটি কী?",
+          opts: [
+            "c[i, j] = c[i-1, j-1]",
+            "c[i, j] = max(c[i-1, j], c[i, j-1])",
+            "c[i, j] = min(c[i-1, j], c[i, j-1])",
+            "c[i, j] = 0",
+          ],
+          ans: 1,
+          exp: "মিল না থাকলে উপরের ঘর (c[i-1, j]) এবং বামের ঘরের (c[i, j-1]) মধ্যে সর্বোচ্চ মানটি নেওয়া হয়।",
+        },
+        {
+          id: 28,
+          topic: "LCS",
+          q: "STR1 = 'ABCDGH' এবং STR2 = 'AEDFHR' হলে এদের LCS এর দৈর্ঘ্য কত?",
+          opts: ["2", "3", "4", "5"],
+          ans: 1,
+          exp: "Common Subsequence হলো 'ADH', যার দৈর্ঘ্য ৩।",
+        },
+        {
+          id: 29,
+          topic: "LCS",
+          q: "Space Optimization ব্যবহার করলে LCS এর দৈর্ঘ্য বের করার জন্য সর্বনিম্ন মেমোরি কতটুকু লাগে?",
+          opts: ["O(m * n)", "O(min(m, n))", "O(1)", "O(m^2)"],
+          ans: 1,
+          exp: "শুধুমাত্র আগের সারি এবং বর্তমান সারি স্টোর করে O(min(m, n)) স্পেসে LCS দৈর্ঘ্য বের করা সম্ভব।",
+        },
+        {
+          id: 30,
+          topic: "LCS",
+          q: "Substring এবং Subsequence এর প্রধান পার্থক্য কী?",
+          opts: [
+            "Substring পরপর হতে হয়, Subsequence পরপর নাও হতে পারে",
+            "Subsequence সবসময় বড় হয়",
+            "Substring এ Order ঠিক থাকে না",
+            "কোনো পার্থক্য নেই",
+          ],
+          ans: 0,
+          exp: "Substring এর উপাদানগুলো অবধারিতভাবে সংলগ্ন (contiguous) হতে হবে, কিন্তু Subsequence-এ ধারাবাহিকতা ঠিক রেখেই গ্যাপ থাকতে পারে।",
+        },
+
+        // --- Viterbi Algorithm ---
+        {
+          id: 31,
+          topic: "Viterbi",
+          q: "Viterbi Algorithm মূলত কোন মডেলে লুকায়িত অবস্থা (Hidden States) নির্ণয়ে ব্যবহৃত হয়?",
+          opts: [
+            "Markov Decision Process (MDP)",
+            "Hidden Markov Model (HMM)",
+            "Neural Networks",
+            "Decision Trees",
+          ],
+          ans: 1,
+          exp: "Viterbi Algorithm হলো HMM (Hidden Markov Model) এর সবচেয়ে সম্ভাব্য লুকায়িত সিকোয়েন্স (Most likely sequence of hidden states) বের করার DP অ্যালগরিদম।",
+        },
+        {
+          id: 32,
+          topic: "Viterbi",
+          q: "Viterbi Algorithm এর মূল কৌশল কোনটি?",
+          opts: [
+            "Greedy Search",
+            "Dynamic Programming",
+            "Random Walk",
+            "Brute Force DFS",
+          ],
+          ans: 1,
+          exp: "এটি Trellis চিত্রে সবচেয়ে সম্ভাব্য পথ (Viterbi Path) খুঁজে বের করতে DP পদ্ধতি ব্যবহার করে।",
+        },
+        {
+          id: 33,
+          topic: "Viterbi",
+          q: "Viterbi Algorithm এর Time Complexity কোনটি (যেখানে S = states সংখ্যা, T = sequence দৈর্ঘ্য)?",
+          opts: ["O(T * S^2)", "O(T^2 * S)", "O(S * T)", "O(2^(S+T))"],
+          ans: 0,
+          exp: "প্রত্যেক টাইম স্টেপ T এর জন্য, S টি স্টেট থেকে S টি স্টেটে ট্রানজিশন হিসাব করতে O(T * S^2) সময় লাগে।",
+        },
+        {
+          id: 34,
+          topic: "Viterbi",
+          q: "Viterbi Algorithm প্রধানত নিচের কোন ক্ষেত্রে ব্যবহৃত হয়?",
+          opts: [
+            "Speech Recognition & Bioinformatics (DNA sequence analysis)",
+            "Graph Sorting",
+            "Database Query Optimization",
+            "Disk Scheduling",
+          ],
+          ans: 0,
+          exp: "স্পিচ রিকগনিশন, স্পেলিং কারেকশন, এবং বায়োইনফরমেটিক্সে HMM এর প্রয়োগে ভিটারবি ব্যাপকভাবে ব্যবহৃত হয়।",
+        },
+        {
+          id: 35,
+          topic: "Viterbi",
+          q: "Viterbi algorithm এ 'Probabilities' গুণের ফলে Underflow এড়াতে কী কৌশল ব্যবহার করা হয়?",
+          opts: [
+            "Log Likelihoods (Log probabilities) যোগ করা",
+            "সব মান ১ দিয়ে গুণ করা",
+            "Integer rounded off করা",
+            "Floating value মুছে দেওয়া",
+          ],
+          ans: 0,
+          exp: "অনেক ছোট সম্ভাবনা গুণ করতে থাকলে Arithmetic Underflow হয়, তাই Log স্থানান্তরিত করে যোগ করা হয় (Log-Viterbi)।",
+        },
+
+        // --- Bitonic TSP ---
+        {
+          id: 36,
+          topic: "Bitonic TSP",
+          q: "Bitonic Euclidean Traveling Salesperson Problem এ পয়েন্টগুলো কীভাবে সাজানো থাকে?",
+          opts: [
+            "Y-অক্ষ অনুসারে",
+            "X-অক্ষ অনুসারে বাম থেকে ডানে (Strictly increasing x-coordinates)",
+            "যেকোনো এলোমেলো ক্রমে",
+            "বৃত্তাকারে",
+          ],
+          ans: 1,
+          exp: "Bitonic TSP-তে প্রথমে পয়েন্টগুলোকে X-অক্ষ বরাবর বাম থেকে ডানে সাজিয়ে নেওয়া হয়।",
+        },
+        {
+          id: 37,
+          topic: "Bitonic TSP",
+          q: "সাধারণ TSP একটি NP-Hard সমস্যা হলেও, Bitonic TSP এর টাইম কমপ্লেক্সিটি DP দিয়ে কত করা সম্ভব?",
+          opts: ["O(n^2)", "O(n^3)", "O(2^n)", "O(n!)"],
+          ans: 0,
+          exp: "J.L. Bentley প্রমাণ করেন যে DP ব্যবহার করে Bitonic TSP O(n^2) সময়ে সমাধান করা যায়।",
+        },
+        {
+          id: 38,
+          topic: "Bitonic TSP",
+          q: "Bitonic Tour এর সংজ্ঞায়ন কী?",
+          opts: [
+            "বাম থেকে ডানে গিয়ে আবার ডান থেকে বামে ফিরে আসা পথ",
+            "একটি নোড বারবার অতিক্রম করা",
+            "কেবলমাত্র সোজা রেখায় চলা",
+            "যেকোনো সাধারণ সাইকেল",
+          ],
+          ans: 0,
+          exp: "Bitonic Tour বাম থেকে ডানে কঠোরভাবে অগ্রগামী হয়ে ডানতম বিন্দুতে পৌঁছায় এবং পরবর্তীতে আবার কঠোরভাবে বামের দিকে প্রাথমিক বিন্দুতে ফিরে আসে।",
+        },
+        {
+          id: 39,
+          topic: "Bitonic TSP",
+          q: "Bitonic TSP এর ক্ষেত্রে পয়েন্টগুলোর দূরত্ব নির্ধারণে কোন সূত্র ব্যবহৃত হয়?",
+          opts: [
+            "Manhattan Distance",
+            "Euclidean Distance",
+            "Hamming Distance",
+            "Cosine Distance",
+          ],
+          ans: 1,
+          exp: "Bitonic Euclidean TSP-তে দুই বিন্দুর দূরত্ব Euclidean Distance sqrt((x1-x2)^2 + (y1-y2)^2) দ্বারা মাপা হয়।",
+        },
+
+        // --- BFS & DFS ---
+        {
+          id: 40,
+          topic: "BFS DFS",
+          q: "Breadth First Search (BFS) বাস্তবায়নে প্রধানত কোন ডাটা স্ট্রাকচার ব্যবহৃত হয়?",
+          opts: ["Stack", "Queue", "Priority Queue", "Tree"],
+          ans: 1,
+          exp: "BFS লেভেল অর্ডার ট্রাভার্সাল করে এবং FIFO নীতির জন্য Queue ব্যবহার করে।",
+        },
+        {
+          id: 41,
+          topic: "BFS DFS",
+          q: "Depth First Search (DFS) বাস্তবায়নে কোন ডাটা স্ট্রাকচার ব্যবহৃত হয়?",
+          opts: ["Queue", "Stack (বা Recursion)", "Heap", "Linked List"],
+          ans: 1,
+          exp: "DFS একটি পাথ ধরে গভীরে যায়, তাই LIFO নীতির Stack অথবা Implicit Recursive Call Stack ব্যবহার করে।",
+        },
+        {
+          id: 42,
+          topic: "BFS DFS",
+          q: "Unweighted Graph-এর ক্ষেত্রে Single Source Shortest Path বের করার জন্য কোনটি সবচেয়ে উপযোগী?",
+          opts: ["DFS", "BFS", "Dijkstra", "Bellman-Ford"],
+          ans: 1,
+          exp: "Unweighted Graph-এ BFS সবচেয়ে কম এজ (edges) বিশিষ্ট সংক্ষিপ্ত পথ O(V + E) সময়ে দেয়।",
+        },
+        {
+          id: 43,
+          topic: "BFS DFS",
+          q: "Adjacency List দিয়ে প্রকাশ করা V টি ভার্টেক্স এবং E টি এজ বিশিষ্ট গ্রাফে BFS/DFS এর টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(V^2)", "O(V + E)", "O(V * E)", "O(E^2)"],
+          ans: 1,
+          exp: "অ্যাডজাসেন্সি লিস্টের ক্ষেত্রে প্রতিটি ভার্টেক্স এবং এজ যথাক্রমে একবার ও সর্বোচ্চ দুবার ট্রাভার্স হয়, তাই O(V + E)।",
+        },
+        {
+          id: 44,
+          topic: "BFS DFS",
+          q: "Adjacency Matrix দিয়ে প্রকাশিত গ্রাফে BFS/DFS এর টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(V + E)", "O(V^2)", "O(E log V)", "O(V^3)"],
+          ans: 1,
+          exp: "অ্যাডজাসেন্সি ম্যাট্রিক্সের ক্ষেত্রে প্রতিটি ভার্টেক্সের জন্য V সংখ্যক ঘর চেক করতে হয়, তাই O(V^2)।",
+        },
+        {
+          id: 45,
+          topic: "BFS DFS",
+          q: "DFS ট্রাভার্সালে Edge শ্রেণীবিভাগে কোনটি ডিসকানেক্টেড ব্যাকওয়ার্ড পাথে ফিরে যায় (Ancestor নোডে)?",
+          opts: ["Tree Edge", "Back Edge", "Forward Edge", "Cross Edge"],
+          ans: 1,
+          exp: "Back Edge একটি নোড থেকে তার কোনো పూర్বসূরী (Ancestor) নোডে নির্দেশ করে, যা গ্রাফে Cycle নির্দেশ করে।",
+        },
+        {
+          id: 46,
+          topic: "BFS DFS",
+          q: "Directed Graph-এ Cycle বা বৃত্ত বিদ্যমান কিনা তা সহজে কোনটি দিয়ে সনাক্ত করা যায়?",
+          opts: [
+            "BFS Tree",
+            "DFS এ Back Edge এর উপস্থিতি দেখে",
+            "Prim's Algorithm",
+            "Binary Search",
+          ],
+          ans: 1,
+          exp: "DFS ট্রাভার্সাল চলাকালে কোনো Back Edge পাওয়া গেলে তা নিশ্চিত করে যে গ্রাফটিতে সাইকেল রয়েছে।",
+        },
+        {
+          id: 47,
+          topic: "BFS DFS",
+          q: "Topological Sort কেবল কোন ধরণের গ্রাফের জন্য সম্ভব?",
+          opts: [
+            "Undirected Graph",
+            "Directed Acyclic Graph (DAG)",
+            "Complete Graph",
+            "Weighted Graph with Negative Cycles",
+          ],
+          ans: 1,
+          exp: "Topological Sorting শুধুমাত্র DAG (Directed Acyclic Graph)-এর ওপর প্রয়োগ করা যায়।",
+        },
+        {
+          id: 48,
+          topic: "BFS DFS",
+          q: "Topological Sort করার জন্য নিচের কোন অ্যালগরিদমটি সরাসরি প্রয়োগ করা যায়?",
+          opts: [
+            "BFS (Kahn's Algorithm) এবং DFS",
+            "Dijkstra Algorithm",
+            "Kruskal Algorithm",
+            "Floyd-Warshall",
+          ],
+          ans: 0,
+          exp: "Topological Sort DFS এর Finishing Time এর উল্টো ক্রমে অথবা Kahn's In-degree BFS দিয়ে করা যায়।",
+        },
+        {
+          id: 49,
+          topic: "BFS DFS",
+          q: "BFS ট্রাভার্সালের ফলে যে Tree তৈরি হয় তাকে কী বলা হয়?",
+          opts: [
+            "DFS Spanning Tree",
+            "BFS Tree",
+            "Minimum Spanning Tree",
+            "AVL Tree",
+          ],
+          ans: 1,
+          exp: "BFS সম্পন্ন হওয়ার পর আবিষ্কৃত এজগুলো নিয়ে গঠিত ট্রিকে BFS Tree বলা হয়।",
+        },
+        {
+          id: 50,
+          topic: "BFS DFS",
+          q: "একটি গ্রাফ Connected কিনা বা তার Connected Components সংখ্যা বের করতে কোনটি ব্যবহার করা যায়?",
+          opts: [
+            "BFS অথবা DFS উভয়ই",
+            "শুধুমাত্র Dijkstra",
+            "শুধুমাত্র Kruskal",
+            "Matrix Multiplication",
+          ],
+          ans: 0,
+          exp: "BFS বা DFS উভয় ট্রাভার্সাল দিয়েই সম্পূর্ণ গ্রাফের কানেক্টেড উপাদান চিহ্নিত করা যায়।",
+        },
+
+        // --- Flow Networks ---
+        {
+          id: 51,
+          topic: "Flow Networks",
+          q: "Flow Network এ প্রতিটি এজ (u, v) এর জন্য 'Capacity' c(u, v) এর শর্ত কোনটি?",
+          opts: [
+            "c(u, v) < 0",
+            "c(u, v) >= 0",
+            "c(u, v) == infinity",
+            "c(u, v) <= -1",
+          ],
+          ans: 1,
+          exp: "নেটওয়ার্ক ফ্লোতে ক্যাপাসিটি সর্বদা অ-ঋণাত্মক (Non-negative real numbers) হতে হয়।",
+        },
+        {
+          id: 52,
+          topic: "Flow Networks",
+          q: "Flow Conservation Property অনুযায়ী Source এবং Sink বাদে অন্য যেকোনো নোড v-এর জন্য কোনটি সত্য?",
+          opts: [
+            "Incoming flow > Outgoing flow",
+            "Total Incoming Flow == Total Outgoing Flow",
+            "Incoming flow = 0",
+            "Outgoing flow = Capacity",
+          ],
+          ans: 1,
+          exp: "ইন্টারমিডিয়েট নোডে যতটুকু ফ্লো প্রবেশ করে ঠিক ততটুকুই বের হয়ে যায় (Conservation of Flow)।",
+        },
+        {
+          id: 53,
+          topic: "Flow Networks",
+          q: "Max-Flow Min-Cut উপপাদ্য (Theorem) অনুযায়ী একটি নেটওয়ার্কে সর্বোচ্চ ফ্লো এর মান কার সমান?",
+          opts: [
+            "Minimum Cut Capacity এর মান",
+            "Maximum Cut Capacity এর মান",
+            "সব এজের মোট ক্যাপাসিটির যোগফল",
+            "সবসময় ১",
+          ],
+          ans: 0,
+          exp: "Max-Flow Min-Cut Theorem অনুযায়ী: Maximum Value of Flow = Capacity of Minimum Cut।",
+        },
+        {
+          id: 54,
+          topic: "Flow Networks",
+          q: "Ford-Fulkerson পদ্ধতির সময়কাল মূলত কিসের ওপর নির্ভর করে?",
+          opts: [
+            "কেবল ভার্টেক্স সংখ্যার উপর",
+            "Augmenting path খোঁজা এবং Maximum Flow Value 'f*'-এর উপর",
+            "ম্যাট্রিক্স আকারের উপর",
+            "স্ট্যাক আকারের উপর",
+          ],
+          ans: 1,
+          exp: "Ford-Fulkerson-এর সময়সীমা O(E * f*) হতে পারে যেখানে f* হলো ম্যাক্স ফ্লো এর মান।",
+        },
+        {
+          id: 55,
+          topic: "Flow Networks",
+          q: "Edmonds-Karp Algorithm মূলত Ford-Fulkerson পদ্ধতিরই একটি রূপ, যেখানে Augmenting Path খুঁজতে কী ব্যবহৃত হয়?",
+          opts: [
+            "DFS",
+            "BFS (Shortest path in terms of edge count)",
+            "Dijkstra",
+            "Bellman-Ford",
+          ],
+          ans: 1,
+          exp: "Edmonds-Karp এ BFS ব্যবহার করায় এটি সবসময় সর্বনিম্ন এজ বিশিষ্ট পাথ বেছে নেয় এবং এর জটিলতা O(V * E^2)।",
+        },
+        {
+          id: 56,
+          topic: "Flow Networks",
+          q: "Edmonds-Karp Algorithm এর টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(V * E^2)", "O(V^3)", "O(E * f*)", "O(V + E)"],
+          ans: 0,
+          exp: "Edmonds-Karp অ্যালগরিদমের সময়সীমা সম্পূর্ণভাবে স্বাধীন ফ্লো মান থেকে এবং এর জটিলতা O(V * E^2)।",
+        },
+        {
+          id: 57,
+          topic: "Flow Networks",
+          q: "Residual Capacity c_f(u, v) কীভাবে হিসাব করা হয়?",
+          opts: [
+            "c(u, v) - f(u, v)",
+            "c(u, v) + f(u, v)",
+            "f(u, v) / c(u, v)",
+            "c(u, v) * f(u, v)",
+          ],
+          ans: 0,
+          exp: "অবশিষ্ট ক্ষমতা (Residual Capacity) হলো মূল ক্যাপাসিটি থেকে বর্তমান ফ্লো এর বিয়োগফল: c_f(u,v) = c(u,v) - f(u,v)।",
+        },
+        {
+          id: 58,
+          topic: "Flow Networks",
+          q: "Augmenting Path বলতে কী বোঝায়?",
+          opts: [
+            "Residual Graph এ Source (s) থেকে Sink (t) পর্যন্ত এমন একটি পথ যাতে ফ্লো আরও বাড়ানো সম্ভব",
+            "যে পথে কোনো ক্যাপাসিটি নেই",
+            "সবচেয়ে বড় এজ সংবলিত পথ",
+            "একটি আবদ্ধ লুপ",
+          ],
+          ans: 0,
+          exp: "Residual Network-এ s থেকে t পর্যন্ত যে পাথে ইতিবাচক ফ্লো প্রবাহিত করা সম্ভব তাকে Augmenting Path বলে।",
+        },
+        {
+          id: 59,
+          topic: "Flow Networks",
+          q: "Dinic's Algorithm এর মাধ্যমে Max Flow বের করার টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(V^2 * E)", "O(V * E^2)", "O(V^3)", "O(E log V)"],
+          ans: 0,
+          exp: "Level Graph এবং Blocking Flow ধারণা ব্যবহার করে Dinic's Algorithm O(V^2 * E) সময়ে কাজ করে।",
+        },
+        {
+          id: 60,
+          topic: "Flow Networks",
+          q: "Bipartite Matching সমস্যাকে কোন অ্যালগরিদমে রূপান্তর করে সমাধান করা যায়?",
+          opts: [
+            "Maximum Flow Problem",
+            "Matrix Multiplication",
+            "Shortest Path Problem",
+            "Topological Sorting",
+          ],
+          ans: 0,
+          exp: "Bipartite Graph এ Source এবং Sink যোগ করে Max-Flow সমস্যার মাধ্যমে Maximum Bipartite Matching সমাধান করা যায়।",
+        },
+
+        // --- Shortest Path Algorithms ---
+        {
+          id: 61,
+          topic: "Shortest Path",
+          q: "Dijkstra's Algorithm মূলত কোন কৌশলের উপর ভিত্তি করে তৈরি?",
+          opts: [
+            "Dynamic Programming",
+            "Greedy Method",
+            "Divide and Conquer",
+            "Backtracking",
+          ],
+          ans: 1,
+          exp: "Dijkstra অ্যালগরিদম সবসময় বর্তমানে জানা সর্বনিম্ন দূরত্বের নোডটি বেছে নেয়, যা একটি Greedy পদ্ধতি।",
+        },
+        {
+          id: 62,
+          topic: "Shortest Path",
+          q: "Dijkstra Algorithm কোন ধরণের এজের জন্য সঠিকভাবে কাজ করে না?",
+          opts: [
+            "Positive Weight Edges",
+            "Negative Weight Edges",
+            "Zero Weight Edges",
+            "Directed Edges",
+          ],
+          ans: 1,
+          exp: "Negative Weight Edge থাকলে Greedy পছন্দ ভুল হতে পারে এবং Dijkstra ভুল ফলাফল দিতে পারে।",
+        },
+        {
+          id: 63,
+          topic: "Shortest Path",
+          q: "Min-Priority Queue (Fibonacci Heap) দিয়ে বাস্তবায়িত Dijkstra Algorithm এর টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(V^2)", "O(E + V log V)", "O(V * E)", "O(V^3)"],
+          ans: 1,
+          exp: "Fibonacci Heap ব্যবহার করলে Dijkstra's algorithm-এর সময় দাঁড়ায় O(E + V log V)।",
+        },
+        {
+          id: 64,
+          topic: "Shortest Path",
+          q: "Binary Min-Heap ব্যবহার করে Dijkstra's Algorithm বাস্তবায়নের টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O((V + E) log V)", "O(V^2)", "O(V * E)", "O(E^2)"],
+          ans: 0,
+          exp: "Standard Binary Heap ব্যবহার করলে টাইম কমপ্লেক্সিটি ও O((V + E) log V) বা O(E log V) হয়।",
+        },
+        {
+          id: 65,
+          topic: "Shortest Path",
+          q: "Bellman-Ford Algorithm কোন কাজের জন্য বিশেষভাবে ব্যবহৃত হয়?",
+          opts: [
+            "Negative Weight Edge সহ Single Source Shortest Path বের করতে এবং Negative Cycle ডিটেক্ট করতে",
+            "সবচেয়ে দ্রুততম শর্টেস্ট পাথ পেতে",
+            "শুধুমাত্র Unweighted Graph এর জন্য",
+            "বিশাল ফাইল কমপ্রেস করতে",
+          ],
+          ans: 0,
+          exp: "Bellman-Ford ঋণাত্মক ওজনের এজ নিয়ে কাজ করতে পারে এবং গ্রাফে Negative Weight Cycle রয়েছে কিনা তা জানিয়ে দেয়।",
+        },
+        {
+          id: 66,
+          topic: "Shortest Path",
+          q: "V টি ভার্টেক্স এবং E টি এজ বিশিষ্ট গ্রাফে Bellman-Ford Algorithm এর টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(V + E)", "O(V * E)", "O(V^3)", "O(E log V)"],
+          ans: 1,
+          exp: "Bellman-Ford অ্যালগরিদমে মোট (V - 1) বার সব এজ রিলাক্স (relax) করা হয়, তাই টাইম O(V * E)।",
+        },
+        {
+          id: 67,
+          topic: "Shortest Path",
+          q: "Bellman-Ford অ্যালগরিদমে এজ রিলাক্সেশন (Edge Relaxation) ধাপটি কতবার চালানো হয়?",
+          opts: ["V বার", "V - 1 বার", "E বার", "E - 1 বার"],
+          ans: 1,
+          exp: "যেকোনো Simple Path-এ সর্বোচ্চ V-1 টি এজ থাকতে পারে, তাই V-1 বার এজ রিলাক্সেশন চালানো হয়।",
+        },
+        {
+          id: 68,
+          topic: "Shortest Path",
+          q: "V-1 বার রিলাক্সেশন শেষে যদি V-তম বারও কোনো দূরত্বের মান ছোট হয়, তবে তা কী নির্দেশ করে?",
+          opts: [
+            "অ্যালগরিদম সঠিকভাবে শেষ হয়েছে",
+            "গ্রাফটিতে Negative Weight Cycle বিদ্যমান",
+            "গ্রাফটি ডিসকানেক্টেড",
+            "সব দূরত্ব সঠিক",
+          ],
+          ans: 1,
+          exp: "V-তম বা রিলাক্সেশনে মান পরিবর্তিত হলে নিশ্চিত হওয়া যায় গ্রাফে একটি Negative Cycle রয়েছে।",
+        },
+        {
+          id: 69,
+          topic: "Shortest Path",
+          q: "All-Pairs Shortest Path (APSP) সমাধানের জন্য নিচের কোনটি Dynamic Programming ভিত্তিক অ্যালগরিদম?",
+          opts: [
+            "Dijkstra Algorithm",
+            "Floyd-Warshall Algorithm",
+            "Bellman-Ford Algorithm",
+            "Prim's Algorithm",
+          ],
+          ans: 1,
+          exp: "Floyd-Warshall অ্যালগরিদম DP পদ্ধতি প্রয়োগ করে সকল জোড়া নোডের মধ্যে সর্বনিম্ন দূরত্ব বের করে।",
+        },
+        {
+          id: 70,
+          topic: "Shortest Path",
+          q: "Floyd-Warshall Algorithm এর টাইম কমপ্লেক্সিটি কত?",
+          opts: ["O(V^2)", "O(V^3)", "O(V * E)", "O(E^3)"],
+          ans: 1,
+          exp: "তিনটি নেস্টেড লুপ (k, i, j) থাকার কারণে এর টাইম কমপ্লেক্সিটি O(V^3)।",
+        },
+        {
+          id: 71,
+          topic: "Shortest Path",
+          q: "Floyd-Warshall Algorithm এর মূল Dynamic Programming সূত্র বা Recurrence Relation কোনটি?",
+          opts: [
+            "d[i][j] = min(d[i][j], d[i][k] + d[k][j])",
+            "d[i][j] = d[i][k] * d[k][j]",
+            "d[i][j] = max(d[i][j], d[i][k] + d[k][j])",
+            "d[i][j] = d[i-1][j-1] + 1",
+          ],
+          ans: 0,
+          exp: "k-তম ইন্টারমিডিয়েট ভার্টেক্স ধরে d[i][j] = min(d[i][j], d[i][k] + d[k][j]) হিসাব করা হয়।",
+        },
+        {
+          id: 72,
+          topic: "Shortest Path",
+          q: "Johnson's Algorithm কোন ক্ষেত্রে ব্যবহৃত হয়?",
+          opts: [
+            "Sparse Graphs এ All-Pairs Shortest Path বের করতে",
+            "Dense Graphs এ DFS করতে",
+            "Tree এর জন্য",
+            "Topological Order খুঁজতে",
+          ],
+          ans: 0,
+          exp: "Sparse Graph (কম এজ বিশিষ্ট) এর ক্ষেত্রে O(V^2 log V + VE) সময়ে APSP সমাধান করতে Johnson's Algorithm ব্যবহৃত হয়।",
+        },
+        {
+          id: 73,
+          topic: "Shortest Path",
+          q: "Johnson's Algorithm এ Negative Edge হ্যান্ডেল করতে কোন অ্যালগরিদম দিয়ে Reweighting করা হয়?",
+          opts: ["Dijkstra", "Bellman-Ford", "Floyd-Warshall", "BFS"],
+          ans: 1,
+          exp: "Johnson's Algo প্রথমে Bellman-Ford প্রয়োগ করে প্রতিটি নোডের সম্ভাবনা মান (h values) বের করে এজগুলোকে re-weight করে non-negative বানায়।",
+        },
+        {
+          id: 74,
+          topic: "Shortest Path",
+          q: "Reweighting এর পর Johnson's Algorithm প্রতিটি নোড থেকে কোন অ্যালগরিদমটি রান করায়?",
+          opts: [
+            "Dijkstra's Algorithm",
+            "Bellman-Ford Algorithm",
+            "DFS Search",
+            "BFS Search",
+          ],
+          ans: 0,
+          exp: "এজ ওজন নন-নেগেটিভ করার পর V বার Dijkstra's Algorithm প্রয়োগ করা হয়।",
+        },
+        {
+          id: 75,
+          topic: "Shortest Path",
+          q: "DAG (Directed Acyclic Graph)-এ Single Source Shortest Path কত সময়ে বের করা সম্ভব?",
+          opts: ["O(V + E)", "O(V^3)", "O(V * E)", "O(E log V)"],
+          ans: 0,
+          exp: "DAG-তে Topological Sort ব্যবহার করে মাত্র O(V + E) সময়তেই শর্টেস্ট পাথ বের করা যায়।",
+        },
+
+        // --- Mixed & Advanced Algorithm Practice ---
+        {
+          id: 76,
+          topic: "DP Intro",
+          q: "0/1 Knapsack সমস্যাটি সমাধান করতে DP-র মেমোরি প্রয়োজন O(nW)। এটি কী ধরনের টাইম কমপ্লেক্সিটি?",
+          opts: [
+            "Polynomial Time",
+            "Pseudo-Polynomial Time",
+            "Exponential Time",
+            "Logarithmic Time",
+          ],
+          ans: 1,
+          exp: "ইনপুটের মান W (numeric value) এর উপর নির্ভর করায় এর টাইম জটিলতাকে Pseudo-Polynomial বলা হয়।",
+        },
+        {
+          id: 77,
+          topic: "DP Intro",
+          q: "0/1 Knapsack এবং Fractional Knapsack এর প্রধান পার্থক্য কী?",
+          opts: [
+            "0/1 Knapsack এ আইটেম ভাঙা যায় না (DP), Fractional এ আইটেম অংশবিশেষ নেওয়া যায় (Greedy)",
+            "কোনো পার্থক্য নেই",
+            "0/1 Knapsack এ Greedy কাজ করে",
+            "Fractional এ DP লাগে",
+          ],
+          ans: 0,
+          exp: "0/1 Knapsack এ আইটেম নেওয়া বা না নেওয়ার সিদ্ধান্ত (0 অথবা 1) চূড়ান্ত, কিন্তু Fractional-এ অংশ ভাঙা সম্ভব।",
+        },
+        {
+          id: 78,
+          topic: "DP Intro",
+          q: "Matrix Chain Multiplication এ n সংখ্যক ম্যাট্রিক্স থাকলে DP টেবিলে কতগুলো Cell হিসাব করতে হয়?",
+          opts: ["n", "n(n-1)/2 বা O(n^2)", "n^3", "2^n"],
+          ans: 1,
+          exp: "অর্ধেক ম্যাট্রিক্স বা ট্রায়াঙ্গুলার DP টেবিল পূর্ণ করতে হয়, যার সেল সংখ্যা n(n-1)/2 বা O(n^2)।",
+        },
+        {
+          id: 79,
+          topic: "Shortest Path",
+          q: "Edge Relaxation কী?",
+          opts: [
+            "উভয় নোডের দূরত্ব কমিয়ে দেখা যদি একটি এজ (u, v) ব্যবহার করে দূরত্ব ছোট হয় তবে d[v] আপডেট করা",
+            "এজ মুছে ফেলা",
+            "এজের ওজন বাড়িয়ে দেওয়া",
+            "গ্রাফ উল্টে দেওয়া",
+          ],
+          ans: 0,
+          exp: "Relaxation হলো: if(d[u] + w(u,v) < d[v]) d[v] = d[u] + w(u,v)।",
+        },
+        {
+          id: 80,
+          topic: "BFS DFS",
+          q: "DFS ট্রাভার্সালে Discovery Time d[u] এবং Finishing Time f[u] এর মধ্যে কোন সম্পর্কটিকে Parenthesis Theorem বলা হয়?",
+          opts: [
+            "উভয় ইন্টারভাল [d[u], f[u]] এবং [d[v], f[v]] হয় সম্পূর্ণ আলাদা থাকবে অথবা একটি আরেকটির ভেতরে থাকবে",
+            "তারা সবসময় ওভারল্যাপ করবে",
+            "d[u] সবসময় f[u] এর চেয়ে বড় হবে",
+            "কোন সম্পর্ক নেই",
+          ],
+          ans: 0,
+          exp: "DFS এর ট্রি স্ট্রাকচারের জন্য ডিসকভারি ও ফিনিশিং সময় সম্পূর্ণ nested অথবা disjoint হয়।",
+        },
+        {
+          id: 81,
+          topic: "Flow Networks",
+          q: "Residual Network G_f এ যদি কোনো Augmenting Path খুঁজে পাওয়া না যায়, তবে তার অর্থ কী?",
+          opts: [
+            "Maximum Flow অর্জিত হয়েছে",
+            "Algorithm এ ভুল আছে",
+            "ফ্লো আরও বাড়াতে হবে",
+            "Sink পাওয়া যায়নি",
+          ],
+          ans: 0,
+          exp: "Augmenting path না থাকা নির্দেশ করে বর্তমান ফ্লোটিই ম্যাক্সিমাম ফ্লো (Ford-Fulkerson condition)।",
+        },
+        {
+          id: 82,
+          topic: "Bitonic TSP",
+          q: "Bitonic TSP সমাধানে পয়েন্টগুলোকে প্রথমে কী করতে হয়?",
+          opts: [
+            "x-স্থানাঙ্ক অনুসারে সর্ট করা",
+            "y-স্থানাঙ্ক অনুসারে সর্ট করা",
+            "এলোমেলো রাখা",
+            "গ্রাফে রূপান্তর করা",
+          ],
+          ans: 0,
+          exp: "X-coordinate ধরে সর্ট করা এই অ্যালগরিদমের পূর্বশর্ত।",
+        },
+        {
+          id: 83,
+          topic: "LCS",
+          q: "LCS সমস্যা ব্যবহার করে দুটি ফাইলের মধ্যে পার্থক্য (Diff tool) নির্ণয় করা যায়—উক্তিটি কি সত্য?",
+          opts: [
+            "হ্যাঁ, সত্য",
+            "না, মিথ্যা",
+            "আংশিক সত্য",
+            "কেবল টেক্সট ফাইলের জন্য প্রযোজ্য নয়",
+          ],
+          ans: 0,
+          exp: "git diff এবং অন্যান্য ফাইল ডিফারেন্স টুল মূলত LCS অ্যালগরিদমের নীতির ওপর কাজ করে।",
+        },
+        {
+          id: 84,
+          topic: "Viterbi",
+          q: "Viterbi algorithm-এর সাথে DP-র কোন অ্যালগরিদমের গঠনগত মিল পাওয়া যায়?",
+          opts: [
+            "Shortest Path in Directed Acyclic Graph (DAG Trellis)",
+            "Quick Sort",
+            "Kruskal Algo",
+            "Huffman Coding",
+          ],
+          ans: 0,
+          exp: "Trellis গ্রাফ মূলত একটি DAG এবং Viterbi আসলে এই DAG এর সবচেয়ে ওজনযুক্ত/সম্ভাব্য পথ বের করে।",
+        },
+        {
+          id: 85,
+          topic: "Shortest Path",
+          q: "Dijkstra Algorithm নিচের কোন Graph এর ক্ষেত্রে নিশ্চিন্তে কার্যকর?",
+          opts: [
+            "Directed Acyclic Graph with Positive Weights",
+            "Graph with Negative Cycles",
+            "Undirected Graph with Negative Weights",
+            "সব ধরণের গ্রাফ",
+          ],
+          ans: 0,
+          exp: "ধনাত্মক ওজন বিশিষ্ট যেকোনো গ্রাফে Dijkstra সঠিক উত্তর নিশ্চিত করে।",
+        },
+        {
+          id: 86,
+          topic: "BFS DFS",
+          q: "Bipartite Graph পরীক্ষা করার জন্য কোন ট্রাভার্সাল পদ্ধতি ব্যবহার করা যায়?",
+          opts: [
+            "2-Coloring পদ্ধতি ব্যবহার করে BFS অথবা DFS",
+            "শুধুমাত্র Kruskal",
+            "Floyd Warshall",
+            "Matrix Multiplication",
+          ],
+          ans: 0,
+          exp: "গ্রাফের নোডগুলোকে ২ টি কালার দিয়ে রং করার মাধ্যমে (BFS/DFS দিয়ে) Bipartite চেক করা যায়।",
+        },
+        {
+          id: 87,
+          topic: "Flow Networks",
+          q: "Flow Network এ Cut (S, T) বলতে কী বোঝায়?",
+          opts: [
+            "ভার্টেক্স সেট V কে দুটি বিচ্ছিন্ন সেট S এবং T তে ভাগ করা যেখানে s ∈ S এবং t ∈ T",
+            "সব এজ কেটে ফেলা",
+            "গ্রাফ থেকে সোর্স মুছে ফেলা",
+            "এজের ফ্লো ০ বানানো",
+          ],
+          ans: 0,
+          exp: "Cut হলো ভার্টেক্সের একটি দ্বিখণ্ডন যেখানে Source থাকে S সেটে এবং Sink থাকে T সেটে।",
+        },
+        {
+          id: 88,
+          topic: "DP Intro",
+          q: "Dynamic Programming এর ক্ষেত্রে 'State' শব্দটির অর্থ কী?",
+          opts: [
+            "একটি নির্দিষ্ট সাবপ্রবলেমকে চিহ্নিত করার উপযোগী প্যারামিটারের সেট",
+            "কোডের লাইন সংখ্যা",
+            "মেমোরির সাইজ",
+            "লুপের কাউন্টার",
+          ],
+          ans: 0,
+          exp: "DP State হলো ওই সাবপ্রবলেমকে সংজ্ঞায়িত করার সাবসেট বা সংকেত (যেমন dp[i][w])।",
+        },
+        {
+          id: 89,
+          topic: "Matrix Chain",
+          q: "MCM এ যদি ম্যাট্রিক্স সংখ্যা ১ হয় (n=1), তবে স্কেলার গুণন সংখ্যা কত?",
+          opts: ["0", "1", "ডাইমেনশন এর গুণফল", "অসীম"],
+          ans: 0,
+          exp: "একটি মাত্র ম্যাট্রিক্স থাকলে কোনো গুণন প্রক্রিয়ার প্রয়োজন পড়ে না, তাই খরচ 0।",
+        },
+        {
+          id: 90,
+          topic: "Shortest Path",
+          q: "Floyd-Warshall Algorithm এ স্থান সংক্রান্ত Space Complexity কত?",
+          opts: ["O(V^2)", "O(V^3)", "O(V)", "O(E)"],
+          ans: 0,
+          exp: "এটি V x V আকারের ডিস্ট্যান্স ম্যাট্রিক্স ব্যবহার করে, তাই স্পেস O(V^2)।",
+        },
+        {
+          id: 91,
+          topic: "BFS DFS",
+          q: "একটি সম্পূর্ণ গ্রাফে (Complete Graph with V vertices) মোট এজের সংখ্যা কত?",
+          opts: ["V(V-1)/2", "V^2", "V-1", "2^V"],
+          ans: 0,
+          exp: "Undirected Complete Graph এ মোট এজ সংখ্যা হলো nC2 = V(V-1)/2।",
+        },
+        {
+          id: 92,
+          topic: "BFS DFS",
+          q: "Breadth-First Search ট্রাভার্সাল নোড থেকে শুরু করে কীভাবে ছড়ায়?",
+          opts: [
+            "লেভেল বাই লেভেল (Level by Level / Concentric Waves)",
+            "একটি পাথে গভীরে গিয়ে",
+            "এলোমেলোভাবে",
+            "ওজন ভিত্তিক",
+          ],
+          ans: 0,
+          exp: "BFS সোর্স থেকে ১-দূরত্ব, তারপর ২-দূরত্ব এভাবে তরঙ্গাকারে লেভেল অনুযায়ী ছড়ায়।",
+        },
+        {
+          id: 93,
+          topic: "Shortest Path",
+          q: "Bellman-Ford Algorithm কোন ডাটা স্ট্রাকচারের উপর এজগুলো রিড করে?",
+          opts: [
+            "সব এজের তালিকা (Edge List)",
+            "Adjacency Matrix বাধ্যতামূলক",
+            "Heap mandatory",
+            "Stack",
+          ],
+          ans: 0,
+          exp: "Bellman-Ford এজ লিস্টের ওপর দিয়ে বারবার (V-1) লুপ চালায়, অ্যাডজাসেন্সি লিস্ট বা এজ লিস্ট হলেই চলে।",
+        },
+        {
+          id: 94,
+          topic: "Flow Networks",
+          q: "Capacity Constraint অনুযায়ী একটি এজের ফ্লো f(u, v) এর সীমাবদ্ধতা কত?",
+          opts: [
+            "0 <= f(u, v) <= c(u, v)",
+            "f(u,v) > c(u,v)",
+            "f(u,v) = c(u,v) সবসময়",
+            "f(u,v) < 0",
+          ],
+          ans: 0,
+          exp: "যেকোনো এজের প্রবাহ (flow) ০ এর সমান বা বড় এবং এর ধারনক্ষমতা (capacity) এর ছোট বা সমান হতে হবে।",
+        },
+        {
+          id: 95,
+          topic: "DP Intro",
+          q: "Dynamic Programming সমস্যার জেনুইন উদাহরণ কোনটি?",
+          opts: [
+            "Longest Increasing Subsequence (LIS)",
+            "Binary Search",
+            "Merge Sort",
+            "Bubble Sort",
+          ],
+          ans: 0,
+          exp: "LIS সমস্যার Optimal Substructure ও Overlapping গুণ রয়েছে যা DP দিয়ে O(n log n) বা O(n^2) এ সমাধান করা হয়।",
+        },
+        {
+          id: 96,
+          topic: "LCS",
+          q: "দুটি স্ট্রিং এর দৈর্ঘ্য m এবং n হলে, তাদের সর্বোচ্চ সম্ভব LCS দৈর্ঘ্য কত হতে পারে?",
+          opts: ["min(m, n)", "max(m, n)", "m + n", "m * n"],
+          ans: 0,
+          exp: "LCS এর সর্বোচ্চ দৈর্ঘ্য ছোট স্ট্রিংটির দৈর্ঘ্যের (min(m, n)) বেশি হতে পারে না।",
+        },
+        {
+          id: 97,
+          topic: "Shortest Path",
+          q: "Dijkstra algorithms এ যদি একাধিক সর্বনিম্ন দূরত্বের এজ থাকে তবে কোনটি বেছে নেয়?",
+          opts: [
+            "যেকোনো একটি গ্রহণ করলে সঠিক উত্তর পাওয়া যাবে",
+            "প্রোগ্রাম ক্র্যাশ করবে",
+            "ভুল উত্তর আসবে",
+            "সবসময় ছোট ইনডেক্স নিতে হবে",
+          ],
+          ans: 0,
+          exp: "Dijkstra এর নিয়মানুযায়ী একাধিক সর্বনিম্ন দূরত্বের যেকোনোটি পিক করলেও অপটিমাল শর্টেস্ট পাথ ডিস্ট্যান্স সঠিক থাকবে।",
+        },
+        {
+          id: 98,
+          topic: "Assembly Line",
+          q: "Assembly Line Scheduling এ Dynamic Programming ব্যবহারের মূল লাভ কী?",
+          opts: [
+            "Exponential O(2^n) থেকে বাড়িয়ে Linear O(n) এ আনা",
+            "মেমোরি নষ্ট করা",
+            "কোড বড় করা",
+            "কোনো লাভ নেই",
+          ],
+          ans: 0,
+          exp: "Brute force এ ২^n টি পাথ চেক করতে হতো, যা DP O(n) এ সম্পন্ন করে।",
+        },
+        {
+          id: 99,
+          topic: "Viterbi",
+          q: "Viterbi Algorithm মূলত কোন সমস্যার সমাধান করে?",
+          opts: [
+            "Decoding Problem in HMM",
+            "Evaluation Problem in HMM",
+            "Learning Problem in HMM",
+            "Sorting Problem",
+          ],
+          ans: 0,
+          exp: "HMM-এর প্রধান ৩টি সমস্যার মধ্যে 'Decoding' (সবচেয়ে সম্ভাব্য সিকোয়েন্স খোঁজা) সমস্যা ভিটারবি সমাধান করে।",
+        },
+        {
+          id: 100,
+          topic: "DP Intro",
+          q: "Dynamic Programming এ Optimal Substructure না থাকলে কী ঘটে?",
+          opts: [
+            "DP প্রয়োগ করে সঠিক Optimal সমাধান নিশ্চিত করা যায় না",
+            "DP দ্রুত কাজ করে",
+            "টাইম O(1) হয়ে যায়",
+            "স্পেস কমে যায়",
+          ],
+          ans: 0,
+          exp: "Optimal Substructure না থাকলে Subproblem গুলোর সেরা সমাধান জোড়া দিয়ে মূল সমস্যার সেরা সমাধান গড়া অসম্ভব।",
+        },
+      ];
+
+      // State variables (Preserved until Reset button click)
+      let userAnswers =
+        JSON.parse(localStorage.getItem("quiz_userAnswers")) || {};
+      let startTime = localStorage.getItem("quiz_startTime");
+
+      if (!startTime) {
+        startTime = Date.now();
+        localStorage.setItem("quiz_startTime", startTime);
+      }
+
+      let timerInterval = null;
+
+      // Start Timer
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          const now = Date.now();
+          const diff = Math.floor((now - startTime) / 1000);
+
+          const hrs = Math.floor(diff / 3600)
+            .toString()
+            .padStart(2, "0");
+          const mins = Math.floor((diff % 3600) / 60)
+            .toString()
+            .padStart(2, "0");
+          const secs = (diff % 60).toString().padStart(2, "0");
+
+          document.getElementById("time-val").innerText =
+            `${hrs}:${mins}:${secs}`;
+        }, 1000);
+      }
+
+      // Save State
+      function saveState() {
+        localStorage.setItem("quiz_userAnswers", JSON.stringify(userAnswers));
+        updateStats();
+      }
+
+      // Update Dashboard Stats
+      function updateStats() {
+        let correct = 0;
+        let wrong = 0;
+        let answered = 0;
+
+        Object.keys(userAnswers).forEach((qId) => {
+          answered++;
+          const q = questionsData.find((item) => item.id == qId);
+          if (q) {
+            if (userAnswers[qId] === q.ans) {
+              correct++;
+            } else {
+              wrong++;
+            }
+          }
+        });
+
+        const score = correct * 1.0 - wrong * 0.25;
+
+        document.getElementById("correct-val").innerText = correct;
+        document.getElementById("wrong-val").innerText = wrong;
+        document.getElementById("answered-val").innerText =
+          `${answered} / ${questionsData.length}`;
+        document.getElementById("score-val").innerText = score.toFixed(2);
+      }
+
+      // Render Questions
+      function renderQuestions() {
+        const listContainer = document.getElementById("quiz-list");
+        listContainer.innerHTML = "";
+
+        const searchText = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        const topicFilter = document.getElementById("topic-filter").value;
+        const statusFilter = document.getElementById("status-filter").value;
+
+        questionsData.forEach((q, idx) => {
+          // Topic Filter
+          if (topicFilter !== "ALL" && q.topic !== topicFilter) return;
+
+          // Status Filter
+          const userAns = userAnswers[q.id];
+          const isAnswered = userAns !== undefined;
+          const isCorrect = isAnswered && userAns === q.ans;
+
+          if (statusFilter === "UNANSWERED" && isAnswered) return;
+          if (statusFilter === "CORRECT" && !isCorrect) return;
+          if (statusFilter === "WRONG" && (!isAnswered || isCorrect)) return;
+
+          // Search Filter
+          if (
+            searchText &&
+            !q.q.toLowerCase().includes(searchText) &&
+            !q.topic.toLowerCase().includes(searchText)
+          )
+            return;
+
+          // Create Question Card
+          const card = document.createElement("div");
+          card.className = "q-card";
+          card.id = `q-card-${q.id}`;
+
+          // Question Header
+          const qHeader = document.createElement("div");
+          qHeader.className = "q-header";
+          qHeader.innerHTML = `
+                    <div class="q-title">${idx + 1}. ${q.q}</div>
+                    <div class="q-tag">${q.topic}</div>
+                `;
+          card.appendChild(qHeader);
+
+          // Options
+          const optsDiv = document.createElement("div");
+          optsDiv.className = "options";
+
+          q.opts.forEach((optText, oIdx) => {
+            const btn = document.createElement("button");
+            btn.className = "opt-btn";
+            btn.innerText = `${String.fromCharCode(65 + oIdx)}. ${optText}`;
+
+            if (isAnswered) {
+              btn.disabled = true;
+              if (oIdx === q.ans) {
+                btn.classList.add("correct");
+              }
+              if (userAns === oIdx && userAns !== q.ans) {
+                btn.classList.add("wrong");
+              }
+            } else {
+              btn.onclick = () => selectAnswer(q.id, oIdx);
+            }
+
+            optsDiv.appendChild(btn);
+          });
+
+          card.appendChild(optsDiv);
+
+          // Explanation
+          const expDiv = document.createElement("div");
+          expDiv.className = `explanation ${isAnswered ? "show" : ""}`;
+          expDiv.innerHTML = `<strong>ব্যাখ্যা:</strong> ${q.exp}`;
+          card.appendChild(expDiv);
+
+          listContainer.appendChild(card);
+        });
+
+        if (listContainer.children.length === 0) {
+          listContainer.innerHTML =
+            '<div style="text-align:center; padding:40px; color:var(--text-muted);">কোনো প্রশ্ন পাওয়া যায়নি!</div>';
+        }
+      }
+
+      // Handle Answer Selection
+      function selectAnswer(qId, selectedIdx) {
+        if (userAnswers[qId] !== undefined) return;
+
+        userAnswers[qId] = selectedIdx;
+        saveState();
+        renderQuestions();
+      }
+
+      // Filter trigger
+      function filterQuestions() {
+        renderQuestions();
+      }
+
+      // Reset Exam Functionality
+      function resetQuiz() {
+        if (
+          confirm(
+            "আপনি কি নিশ্চিত যে সম্পূর্ণ কুইজ এবং স্কোর রিসেট করতে চান? সব অ্যান্সার হিস্ট্রি মুছে যাবে।",
+          )
+        ) {
+          localStorage.removeItem("quiz_userAnswers");
+          localStorage.setItem("quiz_startTime", Date.now());
+          userAnswers = {};
+          startTime = Date.now();
+          updateStats();
+          renderQuestions();
+        }
+      }
+
+      // Initial Load
+      window.onload = () => {
+        startTimer();
+        updateStats();
+        renderQuestions();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2468 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>C Programming MCQ Bank</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Kalpurush', 'SolaimanLipi';
+            background-color: #fafafa;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h1 {
+            text-align: center;
+            color: #1a5f7a;
+            border-bottom: 3px solid #1a5f7a;
+            padding-bottom: 15px;
+        }
+        .topic-header {
+            background-color: #eef2f5;
+            color: #1a5f7a;
+            padding: 12px 20px;
+            margin-top: 40px;
+            border-left: 5px solid #1a5f7a;
+            font-weight: bold;
+            font-size: 1.2em;
+            border-radius: 0 4px 4px 0;
+        }
+        .mcq-card {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .question {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        .options {
+            display: block;
+            margin-left: 15px;
+        }
+        .option {
+            margin: 6px 0;
+            padding: 6px 12px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            border: 1px solid #eef0f2;
+        }
+        .btn-show {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            font-size: 0.9em;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .btn-show:hover {
+            background-color: #219653;
+        }
+        .answer-box {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #e8f8f5;
+            border-left: 4px solid #2ecc71;
+            border-radius: 0 4px 4px 0;
+        }
+        .ans-label {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .exp-label {
+            margin-top: 5px;
+            font-style: italic;
+            color: #555;
+        }
+        pre {
+            background: #f4f6f8;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #e1e4e6;
+            font-family: 'Consolas', monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C Programming (সি প্রোগ্রামিং) MCQ ব্যাংক</h1>
+        <p style="text-align: center; color: #666;">টপিক ভিত্তিক ১০০ + ৪০টি সমাধান ও ব্যাখ্যাসহ এমসিকিউ</p>
+<div class="topic-header">১। ফাংশন, লাইব্রেরি ফাংশন, ইউজার ডেফিনেড ফাংশন</div>
+        <div class="mcq-card">
+            <div class="question">1. C প্রোগ্রামে কোনো নির্দিষ্ট কাজ সম্পন্ন করার জন্য তৈরি করা কোডের ব্লককে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">ক) ভেরিয়েবল</div>
+                <div class="option">খ) ফাংশন</div>
+                <div class="option">গ) অ্যারে</div>
+                <div class="option">ঘ) পয়েন্টার</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(1)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-1">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাংশন হলো একটি নির্দিষ্ট কাজ সম্পাদনকারী পুনঃব্যবহারযোগ্য কোড ব্লক।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">2. নিচের কোনটি একটি লাইব্রেরি ফাংশন (Library Function) এর উদাহরণ?</div>
+            <div class="options">
+                <div class="option">ক) printf()</div>
+                <div class="option">খ) main()</div>
+                <div class="option">গ) sum()</div>
+                <div class="option">ঘ) calculate()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(2)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-2">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> printf() হলো stdio.h হেডার ফাইলে পূর্ব থেকে তৈরি করা একটি লাইব্রেরি ফাংশন।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">3. ব্যবহারকারী নিজে নিজের প্রয়োজন অনুযায়ী যে ফাংশন তৈরি করে তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) লাইব্রেরি ফাংশন</div>
+                <div class="option">খ) সিস্টেম ফাংশন</div>
+                <div class="option">গ) ইউজার ডেফিনেড ফাংশন</div>
+                <div class="option">ঘ) গ্লোবাল ফাংশন</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(3)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-3">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ব্যবহারকারী নিজে যে ফাংশন লেখেন বা ডিফাইন করেন তাকে User-defined function বলে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">4. একটি ফাংশনের প্রধান উপাদান বা অংশ কয়টি?</div>
+            <div class="options">
+                <div class="option">ক) ২টি</div>
+                <div class="option">খ) ৩টি</div>
+                <div class="option">গ) ৪টি</div>
+                <div class="option">ঘ) ৫টি</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(4)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-4">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাংশনের প্রধান ৩টি অংশ হলো: Function Declaration (প্রোটোটাইপ), Function Definition এবং Function Call।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">5. ফাংশনের নামের শুরুতে যে ডাটা টাইপ উল্লেখ করা হয় তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) আর্গুমেন্ট টাইপ</div>
+                <div class="option">খ) রিটার্ন টাইপ</div>
+                <div class="option">গ) প্যারামিটার</div>
+                <div class="option">ঘ) লোকাল টাইপ</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(5)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-5">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাংশন কাজ শেষে কী ধরনের মান রিটার্ন করবে তা রিটার্ন টাইপ (যেমন- int, float, void) দিয়ে নির্দিষ্ট করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">6. কোনো ফাংশন যদি কোনো মান রিটার্ন না করে, তবে তার রিটার্ন টাইপ কী হবে?</div>
+            <div class="options">
+                <div class="option">ক) int</div>
+                <div class="option">খ) float</div>
+                <div class="option">গ) void</div>
+                <div class="option">ঘ) null</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(6)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-6">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> void রিটার্ন টাইপ নির্দেশ করে যে ফাংশনটি কোনো মান রিটার্ন করবে না।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">7. ফাংশন ডেফিনিশনের সময় প্রথম লাইনে প্রথম বন্ধনীর () ভেতরে থাকা ভেরিয়েবলগুলোকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) Actual Parameters</div>
+                <div class="option">খ) Formal Parameters</div>
+                <div class="option">গ) Local Variables</div>
+                <div class="option">ঘ) Global Parameters</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(7)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-7">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাংশন ডেফিনিশনের প্যারামিটারগুলোকে Formal Parameters বলা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">8. C প্রোগ্রামের এক্সিকিউশন বা রান হওয়া কোন ফাংশন থেকে শুরু হয়?</div>
+            <div class="options">
+                <div class="option">ক) printf()</div>
+                <div class="option">খ) scanf()</div>
+                <div class="option">গ) main()</div>
+                <div class="option">ঘ) start()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(8)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-8">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> যেকোনো C প্রোগ্রামের এক্সিকিউশন আবশ্যিকভাবে main() ফাংশন থেকে শুরু হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">9. নিচের কোনটি স্ট্রিংয়ের দৈর্ঘ্য (length) বের করার লাইব্রেরি ফাংশন?</div>
+            <div class="options">
+                <div class="option">ক) strcat()</div>
+                <div class="option">খ) strcpy()</div>
+                <div class="option">গ) strlen()</div>
+                <div class="option">ঘ) strcmp()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(9)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-9">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> strlen() ফাংশন string.h হেডার ফাইলের অধীনে কোনো স্ট্রিংয়ের দৈর্ঘ্য গণনা করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">10. একটি ফাংশন সর্বোচ্চ কয়টি মান রিটার্ন করতে পারে?</div>
+            <div class="options">
+                <div class="option">ক) ১টি</div>
+                <div class="option">খ) ২টি</div>
+                <div class="option">গ) ইচ্ছামত</div>
+                <div class="option">ঘ) কোনোটিই নয়</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(10)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-10">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C ভাষায় একটি ফাংশন return স্টেটমেন্টের মাধ্যমে সর্বোচ্চ একটি মাত্র মান রিটার্ন করতে পারে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">11. ফাংশন প্রোটোটাইপ (Declaration) এর শেষে কোন চিহ্নটি ব্যবহার করা বাধ্যতামূলক?</div>
+            <div class="options">
+                <div class="option">ক) কমা (,)</div>
+                <div class="option">খ) কোলন (:)</div>
+                <div class="option">গ) সেমিকোলন (;)</div>
+                <div class="option">ঘ) ডট (.)</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(11)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-11">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাংশন ডিক্লেয়ারেশনের শেষে স্টেটমেন্ট টার্মিনেটর বা সেমিকোলন (;) দিতে হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">12. pow(x, y) লাইব্রেরি ফাংশনটি গণিতের কোন কাজের জন্য ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">ক) যোগফল</div>
+                <div class="option">খ) বর্গমূল</div>
+                <div class="option">গ) ঘাত বা পাওয়ার (x^y)</div>
+                <div class="option">ঘ) পরম মান</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(12)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-12">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> pow(x, y) ফাংশনটি x এর ওপর y ঘাত বা পাওয়ার হিসাব করার জন্য ব্যবহৃত হয়, যা math.h এ থাকে।</div>
+            </div>
+        </div>
+    <div class="topic-header">২। হেডার ফাংশন, কলিং ফাংশন এর প্রকারভেদ</div>
+        <div class="mcq-card">
+            <div class="question">13. যে ফাংশন অন্য কোনো ফাংশনকে ডেকে বা কল করে কাজ সম্পাদন করে, তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) Called Function</div>
+                <div class="option">খ) Calling Function</div>
+                <div class="option">গ) Main Function</div>
+                <div class="option">ঘ) Inline Function</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(13)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-13">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> যে ফাংশনটি অন্য ফাংশনকে কল করে তাকে Calling Function বলে (যেমন main ফাংশন)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">14. প্যারামিটার পাস করার পদ্ধতির ওপর ভিত্তি করে ফাংশন কল কত প্রকার?</div>
+            <div class="options">
+                <div class="option">ক) ২ প্রকার</div>
+                <div class="option">খ) ৩ প্রকার</div>
+                <div class="option">গ) ৪ প্রকার</div>
+                <div class="option">ঘ) ৫ প্রকার</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(14)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-14">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাংশন কল ২ প্রকার: Call by Value এবং Call by Reference।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">15. Call by Value পদ্ধতিতে ফাংশনে কী পাস করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) ভেরিয়েবলের মেমোরি অ্যাড্রেস</div>
+                <div class="option">খ) ভেরিয়েবলের মানের কপি (Value)</div>
+                <div class="option">গ) পয়েন্টার</div>
+                <div class="option">ঘ) সম্পূর্ণ অ্যারে</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(15)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-15">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Call by Value পদ্ধতিতে মূল ভেরিয়েবলের মানের একটি অনুলিপি বা কপি ফাংশনে পাঠানো হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">16. Call by Reference পদ্ধতিতে ফাংশনে প্যারামিটার হিসেবে কী পাঠানো হয়?</div>
+            <div class="options">
+                <div class="option">ক) ভেরিয়েবলের মান</div>
+                <div class="option">খ) ভেরিয়েবলের মেমোরি অ্যাড্রেস</div>
+                <div class="option">গ) কোনোটিই নয়</div>
+                <div class="option">ঘ) শুধুমাত্র ধ্রুবক</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(16)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-16">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Call by Reference পদ্ধতিতে ভেরিয়েবলের অ্যাড্রেস (&) বা পয়েন্টার পাস করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">17. Call by Value পদ্ধতিতে Called ফাংশনে প্যারামিটারের মান পরিবর্তন করলে মূল (Actual) ভেরিয়েবলের কী পরিবর্তন হয়?</div>
+            <div class="options">
+                <div class="option">ক) মূল মান পরিবর্তন হয়</div>
+                <div class="option">খ) মূল মান অপরিবর্তিত থাকে</div>
+                <div class="option">গ) প্রোগ্রাম এরর দেখায়</div>
+                <div class="option">ঘ) মান শূন্য হয়ে যায়</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(17)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-17">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Call by Value-তে শুধুমাত্র কপির ওপর কাজ হওয়ায় মূল ভেরিয়েবলের মান অপরিবর্তিত থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">18. Call by Reference পদ্ধতিতে Called ফাংশনে মানের পরিবর্তন করলে মূল ভেরিয়েবলের কী ঘটে?</div>
+            <div class="options">
+                <div class="option">ক) মূল মানও পরিবর্তিত হয়</div>
+                <div class="option">খ) মূল মান অপরিবর্তিত থাকে</div>
+                <div class="option">গ) মান মুছে যায়</div>
+                <div class="option">ঘ) কম্পাইল এরর হয়</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(18)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-18">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> যেহেতু সরাসরি অ্যাড্রেস নিয়ে কাজ করা হয়, তাই রেফারেন্সে পরিবর্তন করলে মূল ভেরিয়েবলের মানও বদলে যায়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">19. নিচের কোনটি Call by Reference এর সঠিক উদাহরণ?</div>
+            <div class="options">
+                <div class="option">ক) swap(a, b);</div>
+                <div class="option">খ) swap(&a, &b);</div>
+                <div class="option">গ) swap(int a, int b);</div>
+                <div class="option">ঘ) swap(*a, *b);</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(19)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-19">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ভেরিয়েবলের পূর্বে & (অ্যাড্রেস অব) অপারেটর ব্যবহার করে রেফারেন্স পাস করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">20. ফাংশন কলের সময় যে প্যারামিটারগুলো পাঠানো হয় (যেমন `sum(x, y)` এ x ও y) সেগুলোকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) Formal Parameters</div>
+                <div class="option">খ) Actual Parameters</div>
+                <div class="option">গ) Dummy Parameters</div>
+                <div class="option">ঘ) Local Parameters</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(20)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-20">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাংশন কল করার সময় ব্যবহৃত বাস্তব মান বা ভেরিয়েবলগুলোকে Actual Parameters বলে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">21. হেডার ফাইলের মধ্যে যে ফাংশনগুলোর প্রোটোটাইপ ঘোষণা করা থাকে, সেগুলোকে সাধারণভাবে কী বলা যায়?</div>
+            <div class="options">
+                <div class="option">ক) হেডার ফাংশন বা বিল্ট-ইন ফাংশন</div>
+                <div class="option">খ) ইউজার ডিফাইনড</div>
+                <div class="option">গ) ম্যাক্রো ফাংশন</div>
+                <div class="option">ঘ) লোকাল ফাংশন</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(21)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-21">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> হেডার ফাইলে যে ফাংশনগুলো থাকে সেগুলোকে বিল্ট-ইন বা লাইব্রেরি ফাংশন বলা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">22. নিচের কোন ফাংশনটি ইনপুট নেওয়ার জন্য কল করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) printf()</div>
+                <div class="option">খ) scanf()</div>
+                <div class="option">গ) puts()</div>
+                <div class="option">ঘ) exit()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(22)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-22">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> scanf() হলো একটি স্ট্যান্ডার্ড ইনপুট লাইব্রেরি ফাংশন যা ব্যবহারকারীর কাছ থেকে ইনপুট নেয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">23. math.h হেডার ফাইলের sqrt() ফাংশনটি কল করলে কী রিটার্ন করে?</div>
+            <div class="options">
+                <div class="option">ক) ঘাত</div>
+                <div class="option">খ) বর্গমূল (Square Root)</div>
+                <div class="option">গ) পরম মান</div>
+                <div class="option">ঘ) লগারিদম</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(23)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-23">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> sqrt() ফাংশনটি কোনো সংখ্যার বর্গমূল বা স্কয়ার রুট রিটার্ন করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">24. C ভাষায় কোনো ফাংশন নিজে নিজেকে কল করলে তাকে কী ধরনের কল বলা হয়?</div>
+            <div class="options">
+                <div class="option">ক) ডাইরেক্ট কল</div>
+                <div class="option">খ) ইনডাইরেক্ট কল</div>
+                <div class="option">গ) রিকার্সিভ কল</div>
+                <div class="option">ঘ) মেমোরি কল</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(24)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-24">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> একটি ফাংশন তার নিজের বডির ভেতর থেকে নিজেকে কল করলে তাকে রিকার্সিভ কল বলে।</div>
+            </div>
+        </div>
+    <div class="topic-header">৩। রিকার্সিভ ফাংশন</div>
+        <div class="mcq-card">
+            <div class="question">25. যে ফাংশন নিজেই নিজেকে পুনারাবৃত্তিকভাবে কল করে তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) রিকার্সিভ ফাংশন (Recursive Function)</div>
+                <div class="option">খ) ইনফিনিট ফাংশন</div>
+                <div class="option">গ) নেস্টেড ফাংশন</div>
+                <div class="option">ঘ) লুপ ফাংশন</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(25)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-25">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> রিকার্সন প্রক্রিয়ায় একটি ফাংশন সরাসরি বা পরোক্ষভাবে নিজেকে কল করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">26. রিকার্সিভ ফাংশন থামানোর জন্য যে শর্ত বা কন্ডিশন ব্যবহার করা হয় তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) স্টপ কেস</div>
+                <div class="option">খ) বেস কেস (Base Case)</div>
+                <div class="option">গ) রিকার্সিভ কেস</div>
+                <div class="option">ঘ) ব্রেক স্টেটমেন্ট</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(26)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-26">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Base Case হলো এমন একটি শর্ত যা সত্য হলে রিকার্সন থেমে যায় এবং ফাংশনটি আর নিজেকে কল করে না।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">27. রিকার্সিভ ফাংশনে যদি কোনো 'বেস কেস' (Base Case) না থাকে তবে কী ঘটবে?</div>
+            <div class="options">
+                <div class="option">ক) ফাংশনটি একবারই চলবে</div>
+                <div class="option">খ) প্রোগ্রামটি অনন্তকাল ধরে চলতে থাকবে (Infinite Loop/Recursion)</div>
+                <div class="option">গ) সঙ্গে সঙ্গে কম্পাইল এরর হবে</div>
+                <div class="option">ঘ) মেমোরি খালি হয়ে যাবে</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(27)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-27">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> বেস কেস না থাকলে রিকার্সন চলতেই থাকবে এবং একপর্যায়ে Stack Overflow হয়ে প্রোগ্রাম ক্র্যাশ করবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">28. রিকার্সন প্রক্রিয়া মেমোরির কোন অংশে ডেটা বা ফাংশন কল ট্র্যাক করে রাখে?</div>
+            <div class="options">
+                <div class="option">ক) Heap</div>
+                <div class="option">খ) Stack</div>
+                <div class="option">গ) Data Segment</div>
+                <div class="option">ঘ) Code Segment</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(28)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-28">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> রিকার্সনে প্রতিটি ফাংশন কলের স্টেট এবং লোকাল ভেরিয়েবল Stack মেমোরিতে জমা থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">29. নিচের কোন গাণিতিক সমস্যাটি রিকার্সন দিয়ে সবচেয়ে সহজে ও সুন্দরভাবে সমাধান করা যায়?</div>
+            <div class="options">
+                <div class="option">ক) লিনিয়ার সার্চ</div>
+                <div class="option">খ) ফ্যাক্টরিয়াল (Factorial) নির্ণয়</div>
+                <div class="option">গ) ম্যাট্রিক্স যোগ</div>
+                <div class="option">ঘ) স্ট্রিং প্রিন্ট</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(29)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-29">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফ্যাক্টরিয়াল, ফিবোনাচ্চি সিরিজ, টাওয়ার অব হ্যানয় ইত্যাদি রিকার্সনের আদর্শ উদাহরণ।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">30. রিকার্সন ব্যবহারের প্রধান সুবিধা কোনটি?</div>
+            <div class="options">
+                <div class="option">ক) মেমোরি কম লাগে</div>
+                <div class="option">খ) কোডের দৈর্ঘ্য কমে এবং কোড দেখতে সহজ হয়</div>
+                <div class="option">গ) প্রোগ্রাম দ্রুত চলে</div>
+                <div class="option">ঘ) কোনো সুবিধা নেই</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(30)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-30">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> রিকার্সন জটিল অ্যালগরিদমকে সংক্ষিপ্ত ও পঠনযোগ্য কোডে রূপান্তর করতে সাহায্য করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">31. লুপ (Iteration) এর তুলনায় রিকার্সন এর প্রধান অসুবিধা কী?</div>
+            <div class="options">
+                <div class="option">ক) এটি বেশি মেমোরি (Stack space) এবং সময় অপচয় করতে পারে</div>
+                <div class="option">খ) এটি দিয়ে লুপের কাজ করা যায় না</div>
+                <div class="option">গ) এটি C ভাষায় সমর্থন করে না</div>
+                <div class="option">ঘ) এটি কোড বড় করে</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(31)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-31">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> বারবার ফাংশন কলের কারণে স্ট্যাক মেমোরি বেশি লাগে এবং ওভারহেড বাড়ে, ফলে পারফরম্যান্স কিছুটা ধীর হতে পারে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">32. রিকার্সন মূলত কত প্রকার হতে পারে?</div>
+            <div class="options">
+                <div class="option">ক) ১ প্রকার</div>
+                <div class="option">খ) প্রধানত ২ প্রকার (Direct ও Indirect)</div>
+                <div class="option">গ) ৫ প্রকার</div>
+                <div class="option">ঘ) কোনো প্রকারভেদ নেই</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(32)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-32">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> রিকার্সন মূলত দুই প্রকার: ডাইরেক্ট (সরাসরি নিজেকে কল) এবং ইনডাইরেক্ট (একের মাধ্যমে অন্যকে কল)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">33. যদি কোনো ফাংশনের একেবারে শেষ স্টেটমেন্টটি রিকার্সিভ কল হয়, তবে তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) হেড রিকার্সন</div>
+                <div class="option">খ) টেইল রিকার্সন (Tail Recursion)</div>
+                <div class="option">গ) লিনিয়ার রিকার্সন</div>
+                <div class="option">ঘ) ট্রি রিকার্সন</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(33)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-33">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাংশনের শেষে রিকার্সিভ কল থাকলে এবং এরপর কোনো কাজ না থাকলে তাকে Tail Recursion বলে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">34. ফ্যাক্টরিয়াল n এর রিকার্সিভ সম্পর্ক বা সূত্রটি কেমন হয়?</div>
+            <div class="options">
+                <div class="option">ক) f(n) = n * f(n-1)</div>
+                <div class="option">খ) f(n) = f(n) + f(n-1)</div>
+                <div class="option">গ) f(n) = n + f(n)</div>
+                <div class="option">ঘ) f(n) = f(n-2)</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(34)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-34">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> n! = n * (n-1)!, যা রিকার্সিভ কোডে return n * fact(n-1); আকারে লেখা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">35. অতিরিক্ত রিকার্সনের ফলে স্ট্যাক মেমোরি পূর্ণ হয়ে গেলে কোন এররটি ঘটে?</div>
+            <div class="options">
+                <div class="option">ক) Memory leak</div>
+                <div class="option">খ) Stack Overflow</div>
+                <div class="option">গ) Segmentation fault</div>
+                <div class="option">ঘ) Null pointer exception</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(35)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-35">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> স্ট্যাক মেমোরির সীমা অতিক্রম করলে তাকে Stack Overflow এরর বলা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">36. নিচের কোন সিরিজে রিকার্সন বহুল ব্যবহৃত হয় যেখানে পরবর্তী সংখ্যাটি পূর্ববর্তী দুটি সংখ্যার যোগফল?</div>
+            <div class="options">
+                <div class="option">ক) মৌলিক সংখ্যা সিরিজ</div>
+                <div class="option">খ) ফিবোনাচ্চি সিরিজ (Fibonacci Series)</div>
+                <div class="option">গ) সমান্তর ধারা</div>
+                <div class="option">ঘ) গুণোত্তর ধারা</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(36)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-36">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফিবোনাচ্চি সিরিজে F(n) = F(n-1) + F(n-2) সম্পর্কটি রিকার্সন দিয়ে সহজে প্রকাশ করা হয়।</div>
+            </div>
+        </div>
+    <div class="topic-header">৪। হেডার ফাইল এবং তার ব্যবহার</div>
+        <div class="mcq-card">
+            <div class="question">37. C ভাষার হেডার ফাইলের এক্সটেনশন (Extension) কী হয়?</div>
+            <div class="options">
+                <div class="option">ক) .c</div>
+                <div class="option">খ) .h</div>
+                <div class="option">গ) .obj</div>
+                <div class="option">ঘ) .exe</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(37)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-37">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> হেডার ফাইলের এক্সটেনশন হলো ডট এইচ (.h)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">38. স্ট্যান্ডার্ড ইনপুট এবং আউটপুট ফাংশন যেমন printf() এবং scanf() এর জন্য কোন হেডার ফাইল ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) conio.h</div>
+                <div class="option">খ) math.h</div>
+                <div class="option">গ) stdio.h</div>
+                <div class="option">ঘ) string.h</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(38)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-38">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> stdio.h এর পূর্ণরূপ Standard Input Output Header ফাইল।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">39. প্রিপ্রসেসর ডাইরেক্টিভ (Preprocessor Directive) কোন চিহ্ন দিয়ে শুরু হয়?</div>
+            <div class="options">
+                <div class="option">ক) $</div>
+                <div class="option">খ) #</div>
+                <div class="option">গ) &</div>
+                <div class="option">ঘ) @</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(39)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-39">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C প্রোগ্রামে প্রিপ্রসেসর নির্দেশনাসমূহ হ্যাশ (#) চিহ্ন দিয়ে শুরু হয়, যেমন #include।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">40. কোনো বিল্ট-ইন বা স্ট্যান্ডার্ড হেডার ফাইল যুক্ত করার সঠিক নিয়ম কোনটি?</div>
+            <div class="options">
+                <div class="option">ক) #include <stdio.h></div>
+                <div class="option">খ) include stdio.h</div>
+                <div class="option">গ) #import <stdio.h></div>
+                <div class="option">ঘ) #include {stdio.h}</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(40)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-40">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> স্ট্যান্ডার্ড লাইব্রেরি ফাইলের জন্য কোণাকার বন্ধনী বা Angle brackets (< >) ব্যবহার করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">41. ব্যবহারকারীর নিজস্ব তৈরি হেডার ফাইল (User-defined header file) যুক্ত করার সঠিক উপায় কোনটি?</div>
+            <div class="options">
+                <div class="option">ক) #include <myfile.h></div>
+                <div class="option">খ) #include "myfile.h"</div>
+                <div class="option">গ) #include [myfile.h]</div>
+                <div class="option">ঘ) @include myfile.h</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(41)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-41">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ব্যবহারকারীর নিজস্ব বা লোকাল হেডার ফাইল যুক্ত করতে ডাবল কোটেশন (" ") ব্যবহার করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">42. tolower() এবং toupper() এর মতো ক্যারেক্টার হ্যান্ডলিং ফাংশনগুলো কোন হেডার ফাইলে থাকে?</div>
+            <div class="options">
+                <div class="option">ক) string.h</div>
+                <div class="option">খ) ctype.h</div>
+                <div class="option">গ) stdlib.h</div>
+                <div class="option">ঘ) math.h</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(42)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-42">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ctype.h (Character Type) ফাইলে ক্যারেক্টার যাচাই ও রূপান্তরের ফাংশন থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">43. malloc(), calloc() এবং free() এর মতো ডায়নামিক মেমোরি অ্যালোকোশন ফাংশনগুলো কোন হেডার ফাইলে থাকে?</div>
+            <div class="options">
+                <div class="option">ক) stdio.h</div>
+                <div class="option">খ) stdlib.h</div>
+                <div class="option">গ) memory.h</div>
+                <div class="option">ঘ) alloc.h</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(43)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-43">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> stdlib.h (Standard Library) ফাইলে মেমোরি ম্যানেজমেন্ট ও ইউটিলিটি ফাংশন থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">44. exit() ফাংশনটি ব্যবহারের জন্য কোন হেডার ফাইল অন্তর্ভুক্ত করতে হয়?</div>
+            <div class="options">
+                <div class="option">ক) process.h</div>
+                <div class="option">খ) stdio.h</div>
+                <div class="option">গ) stdlib.h</div>
+                <div class="option">ঘ) conio.h</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(44)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-44">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> exit() ফাংশনটি stdlib.h হেডার ফাইলে সংজ্ঞায়িত থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">45. strcmp() এবং strcpy() ফাংশন ব্যবহার করতে হলে কোন হেডার ফাইলটি প্রয়োজন?</div>
+            <div class="options">
+                <div class="option">ক) string.h</div>
+                <div class="option">খ) ctype.h</div>
+                <div class="option">গ) math.h</div>
+                <div class="option">ঘ) stdio.h</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(45)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-45">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> স্ট্রিং অপারেশন সংক্রান্ত সকল স্ট্যান্ডার্ড ফাংশন string.h ফাইলে থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">46. abs() ফাংশনটি (যা পূর্ণসংখ্যার পরম মান বের করে) কোন হেডার ফাইলে থাকে?</div>
+            <div class="options">
+                <div class="option">ক) math.h</div>
+                <div class="option">খ) stdlib.h</div>
+                <div class="option">গ) stdio.h</div>
+                <div class="option">ঘ) float.h</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(46)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-46">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> মনে রাখতে হবে, abs() থাকে stdlib.h এ এবং বাস্তব সংখ্যার পরম মান fabs() থাকে math.h এ।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">47. টাইম ও ডেট সংক্রান্ত ফাংশন (যেমন time()) ব্যবহার করতে কোন হেডার ফাইল লাগে?</div>
+            <div class="options">
+                <div class="option">ক) date.h</div>
+                <div class="option">খ) time.h</div>
+                <div class="option">গ) sys.h</div>
+                <div class="option">ঘ) clock.h</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(47)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-47">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> সময় ও তারিখ সংক্রান্ত কার্যাবলীর জন্য time.h ফাইল ব্যবহার করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">48. হেডার ফাইলের মূল কাজ কী?</div>
+            <div class="options">
+                <div class="option">ক) প্রোগ্রামের সাইজ বড় করা</div>
+                <div class="option">খ) বিভিন্ন লাইব্রেরি ফাংশনের প্রোটোটাইপ এবং ম্যাক্রো ধারণ করা</div>
+                <div class="option">গ) লুপ চালানো</div>
+                <div class="option">ঘ) সরাসরি কোড এক্সিকিউট করা</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(48)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-48">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> হেডার ফাইল ফাংশনের ঘোষণা ও ধ্রুবকসমূহ ধারণ করে যা কম্পাইলারকে ফাংশনের গঠন বুঝতে সাহায্য করে।</div>
+            </div>
+        </div>
+    <div class="topic-header">৫। টোকেন, টোকেনের প্রকারভেদ</div>
+        <div class="mcq-card">
+            <div class="question">49. C প্রোগ্রামের ক্ষুদ্রতম অর্থপূর্ণ একককে (Smallest individual unit) কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">ক) স্টেটমেন্ট</div>
+                <div class="option">খ) টোকেন (Token)</div>
+                <div class="option">গ) ক্যারেক্টার</div>
+                <div class="option">ঘ) ব্লক</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(49)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-49">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> একটি সি প্রোগ্রামের সবচেয়ে ছোট একক বা শব্দকে টোকেন বলা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">50. C ভাষায় টোকেনকে প্রধানত কয়টি ভাগে ভাগ করা যায়?</div>
+            <div class="options">
+                <div class="option">ক) ৪টি</div>
+                <div class="option">খ) ৫টি</div>
+                <div class="option">গ) ৬টি</div>
+                <div class="option">ঘ) ৮টি</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(50)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-50">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C টোকেন ৬ প্রকার: Keywords, Identifiers, Constants, Strings, Special Characters, এবং Operators।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">51. C ভাষায় সংরক্ষিত নির্দিষ্ট অর্থবহ শব্দগুলোকে কী বলা হয়, যা ভেরিয়েবলের নাম হিসেবে ব্যবহার করা যায় না?</div>
+            <div class="options">
+                <div class="option">ক) আইডেন্টিফায়ার</div>
+                <div class="option">খ) কিওয়ার্ড (Keyword)</div>
+                <div class="option">গ) কনস্ট্যান্ট</div>
+                <div class="option">ঘ) লিটারেল</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(51)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-51">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Keywords বা সংরক্ষিত শব্দগুলোর বিশেষ অর্থ কম্পাইলারের কাছে আগে থেকেই নির্দিষ্ট করা থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">52. ANSI C স্ট্যান্ডার্ড অনুযায়ী C ভাষায় মোট কয়টি কিওয়ার্ড (Keyword) আছে?</div>
+            <div class="options">
+                <div class="option">ক) ৩২টি</div>
+                <div class="option">খ) ৪টি</div>
+                <div class="option">গ) ৫০টি</div>
+                <div class="option">ঘ) ৬০টি</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(52)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-52">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ANSI C স্ট্যান্ডার্ডে মোট ৩২টি সংরক্ষিত কিওয়ার্ড রয়েছে (যেমন int, return, if, else ইত্যাদি)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">53. নিচের কোনটি C ভাষার বৈধ কিওয়ার্ড নয়?</div>
+            <div class="options">
+                <div class="option">ক) switch</div>
+                <div class="option">খ) default</div>
+                <div class="option">গ) function</div>
+                <div class="option">ঘ) volatile</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(53)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-53">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C ভাষায় function নামের কোনো কিওয়ার্ড নেই। switch, default, volatile কিওয়ার্ড।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">54. প্রোগ্রাম চলাকালীন যে সমস্ত উপাদানের মান পরিবর্তিত হয় না বা স্থির থাকে তাদের কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) ভেরিয়েবল</div>
+                <div class="option">খ) কনস্ট্যান্ট (Constant)</div>
+                <div class="option">গ) অপারেটর</div>
+                <div class="option">ঘ) ম্যাক্রো</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(54)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-54">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> স্থির মানসম্পন্ন টোকেনগুলোকে Constant বা ধ্রুবক বলা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">55. ডাবল কোটেশনের মধ্যে লেখা ক্যারেক্টার সমষ্টিকে (যেমন "Hello") সি টোকেনের ভাষায় কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) ক্যারেক্টার কনস্ট্যান্ট</div>
+                <div class="option">খ) স্ট্রিং (String)</div>
+                <div class="option">গ) কিওয়ার্ড</div>
+                <div class="option">ঘ) আইডেন্টিফায়ার</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(55)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-55">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ডাবল কোটেশন দ্বারা বেষ্টিত ক্যারেক্টার সমাহারকে String লিটারেল বা টোকেন বলে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">56. নিচের কোন টোকেনটি গাণিতিক বা যৌক্তিক কাজ সম্পাদনের সংকেত হিসেবে ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">ক) অপারেটর (Operator)</div>
+                <div class="option">খ) আইডেন্টিফায়ার</div>
+                <div class="option">গ) কিওয়ার্ড</div>
+                <div class="option">ঘ) পাংচুয়েটর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(56)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-56">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> অপারেটর (যেমন +, -, *, &&) হলো বিশেষ চিহ্ন যা নির্দিষ্ট অপারেশন নির্দেশ করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">57. নিচের কোন জোড়াটি স্পেশাল ক্যারেক্টার বা পাংচুয়েটর টোকেনের উদাহরণ?</div>
+            <div class="options">
+                <div class="option">ক) +, -</div>
+                <div class="option">খ) [ ], { }</div>
+                <div class="option">গ) 12, 45</div>
+                <div class="option">ঘ) int, float</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(57)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-57">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> বন্ধনী [ ], { }, ( ) বা সেমিকোলন এগুলো স্পেশাল ক্যারেক্টার টোকেন।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">58. C ভাষায় কিওয়ার্ডগুলো সাধারণত কোন কেস-এ লেখা হয়?</div>
+            <div class="options">
+                <div class="option">ক) আপারকেস (সব বড় হাতের)</div>
+                <div class="option">খ) লোয়ারকেস (সব ছোট হাতের)</div>
+                <div class="option">গ) টাইটেল কেস</div>
+                <div class="option">ঘ) যেকোনো কেস</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(58)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-58">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C একটি কেস-সেন্সিটিভ ভাষা এবং এর সব কিওয়ার্ড ছোট হাতের অক্ষরে (lowercase) লেখা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">59. একটি ফ্লোটিং পয়েন্ট ধ্রুবক (যেমন 3.1416) কোন শ্রেণীর টোকেন?</div>
+            <div class="options">
+                <div class="option">ক) Keyword</div>
+                <div class="option">খ) Identifier</div>
+                <div class="option">গ) Constant</div>
+                <div class="option">ঘ) Operator</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(59)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-59">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> যেকোনো সংখ্যা বা নির্দিষ্ট মান কনস্ট্যান্ট (Constant) টোকেন এর অন্তর্ভুক্ত।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">60. কোড বিশ্লেষণের সময় কম্পাইলার প্রথম কোন কাজটি করে?</div>
+            <div class="options">
+                <div class="option">ক) কোড এক্সিকিউশন</div>
+                <div class="option">খ) লেক্সিক্যাল অ্যানালাইসিস বা টোকেন বিভাজন</div>
+                <div class="option">গ) মেমোরি খালি করা</div>
+                <div class="option">ঘ) আউটপুট তৈরি</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(60)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-60">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> কম্পাইলারের লেক্সিক্যাল অ্যানালাইজার সোর্স কোডকে টোকেন বা ক্ষুদ্রতম অংশে বিভক্ত করে।</div>
+            </div>
+        </div>
+    <div class="topic-header">৬। আইডেন্টিফায়ার</div>
+        <div class="mcq-card">
+            <div class="question">61. ভেরিয়েবল, ফাংশন, অ্যারে বা স্ট্রাকচারের নামকরণ করার জন্য যে নাম ব্যবহৃত হয় তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) কিওয়ার্ড</div>
+                <div class="option">খ) আইডেন্টিফায়ার (Identifier)</div>
+                <div class="option">গ) লিটারেল</div>
+                <div class="option">ঘ) অপারেটর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(61)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-61">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> প্রোগ্রামের বিভিন্ন উপাদানকে চেনার জন্য ব্যবহারকারী প্রদত্ত নামই হলো আইডেন্টিফায়ার।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">62. আইডেন্টিফায়ার নামকরণের ক্ষেত্রে নিচের কোন নিয়মটি সঠিক?</div>
+            <div class="options">
+                <div class="option">ক) নামের শুরুতে সংখ্যা থাকতে পারবে</div>
+                <div class="option">খ) নামের শুরুতে শুধুমাত্র অক্ষর (Letter) বা আন্ডারস্কোর (_) থাকতে পারবে</div>
+                <div class="option">গ) নামের মাঝে স্পেস দেওয়া যাবে</div>
+                <div class="option">ঘ) কিওয়ার্ড ব্যবহার করা যাবে</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(62)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-62">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> আইডেন্টিফায়ারের প্রথম ক্যারেক্টার অবশ্যই একটি লেটার বা আন্ডারস্কোর হতে হবে, সংখ্যা হওয়া যাবে না।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">63. নিচের কোনটি একটি বৈধ (Valid) আইডেন্টিফায়ারের উদাহরণ?</div>
+            <div class="options">
+                <div class="option">ক) 2total</div>
+                <div class="option">খ) _my_var</div>
+                <div class="option">গ) roll no</div>
+                <div class="option">ঘ) float</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(63)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-63">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> আন্ডারস্কোর দিয়ে শুরু হওয়া বৈধ। অন্যগুলোতে শুরুতে সংখ্যা, স্পেস বা কিওয়ার্ড রয়েছে যা অবৈধ।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">64. আইডেন্টিফায়ারের নামের মধ্যে নিচের কোন বিশেষ চিহ্নটি ব্যবহার করা অনুমোদিত?</div>
+            <div class="options">
+                <div class="option">ক) ড্যাশ (-)</div>
+                <div class="option">খ) আন্ডারস্কোর (_)</div>
+                <div class="option">গ) ডলার ($)</div>
+                <div class="option">ঘ) হ্যাশ (#)</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(64)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-64">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C ভাষায় আইডেন্টিফায়ারে স্পেশাল ক্যারেক্টারের মধ্যে কেবল আন্ডারস্কোর (_) ব্যবহার করা যায়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">65. C ভাষা কেস-সেন্সিটিভ (Case-sensitive) হওয়ায় `Value` এবং `value` নাম দুটি কেমন বিবেচিত হবে?</div>
+            <div class="options">
+                <div class="option">ক) একই আইডেন্টিফায়ার</div>
+                <div class="option">খ) দুটি ভিন্ন আইডেন্টিফায়ার</div>
+                <div class="option">গ) এরর দেখাবে</div>
+                <div class="option">ঘ) কোনোটিই নয়</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(65)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-65">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> বড় হাতের ও ছোট হাতের অক্ষরের পার্থক্যের কারণে এরা দুটি আলাদা আইডেন্টিফায়ার হিসেবে গণ্য হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">66. আইডেন্টিফায়ারের নামের ভেতরে কোনো স্পেস বা ফাঁকা জায়গা থাকলে কম্পাইলার কী ধরনের এরর দেবে?</div>
+            <div class="options">
+                <div class="option">ক) রানটাইম এরর</div>
+                <div class="option">খ) সিনট্যাক্স এরর (Syntax Error)</div>
+                <div class="option">গ) লজিক্যাল এরর</div>
+                <div class="option">ঘ) কোনো এরর দেবে না</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(66)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-66">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> নামের মাঝে স্পেস দেওয়া ব্যাকরণগত বা সিনট্যাক্স ভুল।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">67. একটি আইডেন্টিফায়ারের দৈর্ঘ্য সাধারণত সর্বোচ্চ কত ক্যারেক্টার পর্যন্ত সি স্ট্যান্ডার্ডে বিশ্বস্তভাবে কাজ করে?</div>
+            <div class="options">
+                <div class="option">ক) ৮ ক্যারেক্টার</div>
+                <div class="option">খ) ৩১ ক্যারেক্টার</div>
+                <div class="option">গ) ১২৮ ক্যারেক্টার</div>
+                <div class="option">ঘ) কোনো সীমা নেই</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(67)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-67">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ঐতিহাসিকভাবে ANSI C স্ট্যান্ডার্ডে প্রথম ৩১টি ক্যারেক্টারকে আইডেন্টিফায়ার সনাক্তকরণের জন্য বিবেচনা করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">68. নিচের কোনটি অবৈধ (Invalid) আইডেন্টিফায়ার?</div>
+            <div class="options">
+                <div class="option">ক) sum_1</div>
+                <div class="option">খ) double</div>
+                <div class="option">গ) NetSalary</div>
+                <div class="option">ঘ) _test</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(68)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-68">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> double একটি কিওয়ার্ড, আর কিওয়ার্ডকে আইডেন্টিফায়ার হিসেবে ব্যবহার করা সম্পূর্ণ অবৈধ।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">69. যদি আমরা `int_num` লিখি, এটি কী ধরণের আইডেন্টিফায়ার?</div>
+            <div class="options">
+                <div class="option">ক) ফাংশন নাম</div>
+                <div class="option">খ) ভেরিয়েবল আইডেন্টিফায়ার</div>
+                <div class="option">গ) কনস্ট্যান্ট নাম</div>
+                <div class="option">ঘ) স্ট্রাকচার ট্যাগ</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(69)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-69">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ভেরিয়েবলের নাম ঘোষণা করার কারণে এটি একটি ভেরিয়েবল আইডেন্টিফায়ার।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">70. নিচের কোনটি আইডেন্টিফায়ার হতে পারে না?</div>
+            <div class="options">
+                <div class="option">ক) main</div>
+                <div class="option">খ) my_Function</div>
+                <div class="option">গ) employee-name</div>
+                <div class="option">ঘ) A123</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(70)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-70">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> হাইফেন (-) বা ড্যাশ আইডেন্টিফায়ারে ব্যবহার করা যায় না, তাই এটি অবৈধ।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">71. C স্ট্যান্ডার্ড লাইব্রেরির ভেতরের সিস্টেম আইডেন্টিফায়ারগুলো সাধারণত কী দিয়ে শুরু হয় যা সাধারণ কোডিংয়ে পরিহার করা উচিত?</div>
+            <div class="options">
+                <div class="option">ক) সংখ্যা</div>
+                <div class="option">খ) ডাবল আন্ডারস্কোর ( __ )</div>
+                <div class="option">গ) ক্যাপিটাল লেটার</div>
+                <div class="option">ঘ) স্পেশাল সিম্বল</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(71)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-71">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> সিস্টেম লেভেল বা লাইব্রেরি নামের শুরুতে সাধারণত আন্ডারস্কোর বা ডাবল আন্ডারস্কোর থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">72. আইডেন্টিফায়ারের ক্ষেত্রে নিচের কোন তথ্যটি সত্য?</div>
+            <div class="options">
+                <div class="option">ক) এরা আগে থেকেই মেমোরিতে সংরক্ষিত থাকে</div>
+                <div class="option">খ) ব্যবহারকারী প্রোগ্রামের উপাদানকে চিহ্নিত করার জন্য এগুলো নিজের মতো তৈরি করে</div>
+                <div class="option">গ) এরা কোনো মান ধারণ করতে পারে না</div>
+                <div class="option">ঘ) এদের পরিবর্তন করা যায় না</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(72)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-72">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> আইডেন্টিফায়ার হলো ব্যবহারকারী দ্বারা সংজ্ঞায়িত নাম (User-defined names)।</div>
+            </div>
+        </div>
+    <div class="topic-header">৭। সি-কনস্ট্রাক্ট ও স্ট্রাকচার ইনিশিয়ালাইজার</div>
+        <div class="mcq-card">
+            <div class="question">73. C ভাষায় অবজেক্ট ওরিয়েন্টেড ক্লাসের মতো 'কন্ট্রাক্টর' না থাকলেও, স্ট্রাকচার বা ভেরিয়েবলের প্রাথমিক মান নির্ধারণকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">ক) ডিক্লেয়ারেশন</div>
+                <div class="option">খ) ইনিশিয়ালাইজেশন (Initialization)</div>
+                <div class="option">গ) এক্সিকিউশন</div>
+                <div class="option">ঘ) ডেফিনিশন</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(73)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-73">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ভেরিয়েবল বা স্ট্রাকচার তৈরির সময় প্রাথমিক মান প্রদান করাকে ইনিশিয়ালাইজেশন বলে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">74. C ভাষায় বিভিন্ন ধরনের ভেরিয়েবলের লাইফটাইম (Lifetime) এবং স্কোপ (Scope) নির্ধারণকারী উপাদানকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) স্টোরেজ ক্লাস (Storage Class)</div>
+                <div class="option">খ) কোয়ালিফায়ার</div>
+                <div class="option">গ) মডিফায়ার</div>
+                <div class="option">ঘ) ফাংশন</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(74)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-74">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Storage Class (যেমন auto, static, register, extern) ভেরিয়েবলের আয়ুষ্কাল ও দৃশ্যমানতা নির্ধারণ করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">75. C ভাষায় স্টোরেজ ক্লাস (Storage Class) মূলত কত প্রকার?</div>
+            <div class="options">
+                <div class="option">ক) ২ প্রকার</div>
+                <div class="option">খ) ৩ প্রকার</div>
+                <div class="option">গ) ৪ প্রকার</div>
+                <div class="option">ঘ) ৫ প্রকার</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(75)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-75">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C তে ৪টি প্রধান স্টোরেজ ক্লাস আছে: auto, register, static, এবং extern।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">76. ফাংশনের ভেতরে কোনো স্টোরেজ ক্লাস উল্লেখ না করে ভেরিয়েবল ঘোষণা করলে তা ডিফল্টভাবে কোন ক্লাসের অন্তর্ভুক্ত হয়?</div>
+            <div class="options">
+                <div class="option">ক) static</div>
+                <div class="option">খ) auto (Automatic)</div>
+                <div class="option">গ) extern</div>
+                <div class="option">ঘ) register</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(76)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-76">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> লোকাল ভেরিয়েবলসমূহ ডিফল্টভাবে 'auto' স্টোরেজ ক্লাসের অন্তর্ভুক্ত থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">77. কোন স্টোরেজ ক্লাস ভেরিয়েবলের মান ফাংশন কল শেষ হওয়ার পরেও মেমোরিতে ধরে রাখে (Destroy করে না)?</div>
+            <div class="options">
+                <div class="option">ক) auto</div>
+                <div class="option">খ) register</div>
+                <div class="option">গ) static</div>
+                <div class="option">ঘ) volatile</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(77)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-77">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> static ভেরিয়েবল তার পূর্ববর্তী মান ধরে রাখে এবং প্রোগ্রামের শেষ পর্যন্ত টিকে থাকে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">78. ভেরিয়েবলকে দ্রুত অ্যাক্সেস করার জন্য র‌্যামের (RAM) পরিবর্তে সিপিইউ রেজিস্টারে (CPU Register) রাখার অনুরোধ কোন কিওয়ার্ড দিয়ে করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) static</div>
+                <div class="option">খ) register</div>
+                <div class="option">গ) extern</div>
+                <div class="option">ঘ) fast</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(78)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-78">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> register কিওয়ার্ড কম্পাইলারকে ভেরিয়েবলটি সরাসরি সিপিইউ রেজিস্টারে রাখার চেষ্টা করার নির্দেশ দেয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">79. একটি গ্লোবাল ভেরিয়েবলকে অন্য কোনো ফাইল থেকে অ্যাক্সেস বা ব্যবহার করার জন্য কোন কিওয়ার্ড ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) extern</div>
+                <div class="option">খ) static</div>
+                <div class="option">গ) auto</div>
+                <div class="option">ঘ) global</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(79)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-79">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> extern (External) কিওয়ার্ড দিয়ে অন্য ফাইলে ঘোষিত গ্লোবাল ভেরিয়েবল ব্যবহার করা যায়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">80. নিচের কোনটি সি ভাষায় ভিন্ন ভিন্ন ডাটা টাইপের ভেরিয়েবলকে একত্রিত করে একটি নতুন ইউজার-ডিফাইনড টাইপ তৈরি করে?</div>
+            <div class="options">
+                <div class="option">ক) Array</div>
+                <div class="option">খ) Structure</div>
+                <div class="option">গ) Pointer</div>
+                <div class="option">ঘ) Function</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(80)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-80">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Structure (struct) বিভিন্ন ধরনের ডাটা উপাদানকে একত্রে গ্রুপ করার সুবিধা দেয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">81. স্ট্রাকচার মেম্বার বা উপাদানগুলোকে অ্যাক্সেস করার জন্য কোন অপারেটর বা চিহ্ন ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) অ্যারো অপারেটর (->)</div>
+                <div class="option">খ) ডট অপারেটর (.)</div>
+                <div class="option">গ) এস্টারিস্ক (*)</div>
+                <div class="option">ঘ) ক ও খ উভয়ই</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(81)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-81">
+                <div class="ans-label">সঠিক উত্তর: ঘ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> স্বাভাবিক স্ট্রাকচার ভেরিয়েবলের জন্য ডট (.) এবং স্ট্রাকচার পয়েন্টারের জন্য অ্যারো (->) অপারেটর ব্যবহৃত হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">82. struct ভেরিয়েবল ঘোষণার সাথে সাথে মান সেকেন্ড বন্ধনীতে `{}` দিয়ে দেওয়ার প্রক্রিয়াকে কী ধরণের ইনিশিয়ালাইজার বলা যায়?</div>
+            <div class="options">
+                <div class="option">ক) ডায়নামিক</div>
+                <div class="option">খ) স্ট্যাটিক বা কম্পাইল-টাইম ইনিশিয়ালাইজেশন</div>
+                <div class="option">গ) অবৈধ পদ্ধতি</div>
+                <div class="option">ঘ) রানটাইম ইনপুট</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(82)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-82">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ঘোষণার সময় মানের তালিকা অ্যাসাইন করা কম্পাইল-টাইম স্ট্রাকচার ইনিশিয়ালাইজেশন।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">83. C99 স্ট্যান্ডার্ডে নির্দিষ্ট মেম্বারের নাম ধরে ইনিশিয়ালাইজ করাকে (যেমন `.age = 20`) কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">ক) Designated Initializer</div>
+                <div class="option">খ) Default Initializer</div>
+                <div class="option">গ) Sequential Initializer</div>
+                <div class="option">ঘ) কাস্টম মেথড</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(83)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-83">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> নির্দিষ্ট ফিল্ডের নাম উল্লেখ করে ইনিশিয়ালাইজ করাকে Designated Initialization বলে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">84. কোনো লোকাল `static` ভেরিয়েবলের ডিফল্ট প্রাথমিক মান কত থাকে যদি ব্যবহারকারী কোনো মান না দেয়?</div>
+            <div class="options">
+                <div class="option">ক) গার্বেজ মান (Garbage)</div>
+                <div class="option">খ) ১</div>
+                <div class="option">গ) ০ (শূণ্য)</div>
+                <div class="option">ঘ) নাল (NULL)</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(84)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-84">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> static এবং global ভেরিয়েবলের প্রাথমিক ডিফল্ট মান স্বয়ংক্রিয়ভাবে ০ বা শূন্য হয়।</div>
+            </div>
+        </div>
+    <div class="topic-header">৮। পয়েন্টার, তার খুঁটিনাটি, প্রকারভেদ</div>
+        <div class="mcq-card">
+            <div class="question">85. পয়েন্টার (Pointer) হলো এমন একটি বিশেষ ভেরিয়েবল যা অন্য একটি ভেরিয়েবলের কী ধারণ করে?</div>
+            <div class="options">
+                <div class="option">ক) মান (Value)</div>
+                <div class="option">খ) মেমোরি অ্যাড্রেস (Memory Address)</div>
+                <div class="option">গ) নাম (Name)</div>
+                <div class="option">ঘ) ডাটা টাইপ</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(85)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-85">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> পয়েন্টার সরাসরি কোনো মান ধারণ করে না, বরং অন্য ভেরিয়েবলের মেমোরি লোকেশনের ঠিকানা ধারণ করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">86. কোনো সাধারণ ভেরিয়েবলের মেমোরি অ্যাড্রেস বা ঠিকানা বের করার জন্য কোন অপারেটর ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">ক) এস্টারিস্ক (*)</div>
+                <div class="option">খ) অ্যাম্পারস্যান্ড (&)</div>
+                <div class="option">গ) অ্যারো (->)</div>
+                <div class="option">ঘ) পার্সেন্ট (%)</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(86)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-86">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> & অপারেটরকে Address-of অপারেটর বলা হয়, যা ভেরিয়েবলের ঠিকানা প্রদান করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">87. একটি পয়েন্টার ভেরিয়েবল ঘোষণা (Declaration) করার জন্য ভেরিয়েবলের নামের আগে কোন চিহ্ন দিতে হয়?</div>
+            <div class="options">
+                <div class="option">ক) &</div>
+                <div class="option">খ) *</div>
+                <div class="option">গ) #</div>
+                <div class="option">ঘ) ^</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(87)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-87">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> পয়েন্টার ভেরিয়েবল ঘোষণার জন্য নামের পূর্বে এস্টারিস্ক (*) বা Dereference চিহ্ন ব্যবহার করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">88. পয়েন্টার ভেরিয়েবলের মাধ্যমে ওই অ্যাড্রেসে সংরক্ষিত মানকে অ্যাক্সেস করাকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">ক) রেফারেন্সিং</div>
+                <div class="option">খ) ডিরেফারেন্সিং (Dereferencing)</div>
+                <div class="option">গ) ইনিশিয়ালাইজিং</div>
+                <div class="option">ঘ) অ্যালোকেটিং</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(88)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-88">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> *ptr ব্যবহারের মাধ্যমে নির্দিষ্ট ঠিকানার মান বের করাকে ডিরেফারেন্সিং বা Indirection বলে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">89. যে পয়েন্টার কোনো নির্দিষ্ট ডাটা টাইপের মেমোরি অ্যাড্রেস নির্দেশ করে না বা জেনেরিক অ্যাড্রেস ধারণ করে তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) Null Pointer</div>
+                <div class="option">খ) Void Pointer (জেনেরিক পয়েন্টার)</div>
+                <div class="option">গ) Dangling Pointer</div>
+                <div class="option">ঘ) Wild Pointer</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(89)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-89">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> void* হলো একটি জেনেরিক পয়েন্টার যা যেকোনো ডাটা টাইপের অ্যাড্রেস ধারণ করতে পারে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">90. কোনো পয়েন্টার যদি নির্দিষ্ট কোনো মেমোরি লোকেশনকে নির্দেশ না করে শূন্য বা ফাঁকা নির্দেশ করে, তবে তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) Wild Pointer</div>
+                <div class="option">খ) Null Pointer</div>
+                <div class="option">গ) Dangling Pointer</div>
+                <div class="option">ঘ) Complex Pointer</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(90)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-90">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> NULL পয়েন্টার একটি বিশেষ ধ্রুবক ধারণ করে যা নির্দেশ করে পয়েন্টারটি কোথাও পয়েন্ট করছে না।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">91. একটি মেমোরি লোকেশন ফ্রি (free) করে দেওয়ার পরও যদি কোনো পয়েন্টার ওই ডিলিট হওয়া মেমোরিকে পয়েন্ট করে থাকে, তবে তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) Null Pointer</div>
+                <div class="option">খ) Dangling Pointer</div>
+                <div class="option">গ) Void Pointer</div>
+                <div class="option">ঘ) Wild Pointer</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(91)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-91">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> অস্তিত্বহীন বা মুক্ত হওয়া মেমোরি অ্যাড্রেস নির্দেশকারী পয়েন্টারকে Dangling Pointer বলে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">92. একটি পয়েন্টার ভেরিয়েবল ঘোষণা করার পর যদি কোনো মান বা অ্যাড্রেস দিয়ে ইনিশিয়ালাইজ না করা হয়, তবে তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) Null Pointer</div>
+                <div class="option">খ) Wild Pointer</div>
+                <div class="option">গ) Empty Pointer</div>
+                <div class="option">ঘ) Static Pointer</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(92)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-92">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ইনিশিয়ালাইজ না করা পয়েন্টারকে Wild Pointer বলে, এতে যেকোনো গার্বেজ অ্যাড্রেস থাকতে পারে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">93. যদি `int *p;` একটি পয়েন্টার হয়, তবে `p++` করলে মেমোরি অ্যাড্রেস কত বাইট বৃদ্ধি পাবে (ধরি int এর সাইজ ৪ বাইট)?</div>
+            <div class="options">
+                <div class="option">ক) ১ বাইট</div>
+                <div class="option">খ) ২ বাইট</div>
+                <div class="option">গ) ৪ বাইট</div>
+                <div class="option">ঘ) ৮ বাইট</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(93)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-93">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> পয়েন্টার অ্যারিথমেটিকে p++ করলে তা ডাটা টাইপের সাইজ অনুযায়ী পরবর্তী মেমোরি লোকেশনে যায় (এখানে ৪ বাইট)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">94. পয়েন্টারের পয়েন্টার (Pointer to Pointer) প্রকাশের সঠিক রূপ কোনটি?</div>
+            <div class="options">
+                <div class="option">ক) int *p;</div>
+                <div class="option">খ) int **p;</div>
+                <div class="option">গ) int &&p;</div>
+                <div class="option">ঘ) int *&p;</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(94)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-94">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ডাবল এস্টারিস্ক (**) দিয়ে পয়েন্টার টু পয়েন্টার প্রকাশ করা হয়, যা অন্য একটি পয়েন্টারের অ্যাড্রেস রাখে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">95. একটি ৩২-বিট কম্পাইলারে একটি ক্যারেক্টার পয়েন্টার (char*) এবং একটি ইন্টিজার পয়েন্টার (int*) এর মেমোরি সাইজ কেমন হবে?</div>
+            <div class="options">
+                <div class="option">ক) ইন্টিজার পয়েন্টার বড় হবে</div>
+                <div class="option">খ) দুটি পয়েন্টারের সাইজই সমান হবে</div>
+                <div class="option">গ) ক্যারেক্টার পয়েন্টার বড় হবে</div>
+                <div class="option">ঘ) কম্পাইলারের ওপর নির্ভর করবে না</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(95)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-95">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ডাটা টাইপ যাই হোক না কেন, একই আর্কিটেকচারে সব পয়েন্টার ভেরিয়েবলের নিজস্ব সাইজ সমান হয় (অ্যাড্রেস ধারণের জন্য)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">96. নিচের কোনটি সি ভাষায় অ্যারের নামের সমান অর্থ বহন করে?</div>
+            <div class="options">
+                <div class="option">ক) অ্যারের প্রথম উপাদানের মান</div>
+                <div class="option">খ) অ্যারের প্রথম উপাদানের মেমোরি অ্যাড্রেস (Base Address)</div>
+                <div class="option">গ) অ্যারের শেষ উপাদানের মেমোরি অ্যাড্রেস</div>
+                <div class="option">ঘ) অ্যারের মোট আকার</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(96)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-96">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> একটি অ্যারের নাম মূলত তার প্রথম উপাদানের সূচনামূলক ঠিকানা বা কনস্ট্যান্ট পয়েন্টার হিসেবে কাজ করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">97. পয়েন্টারের মাধ্যমে মেমোরি অ্যাড্রেস সরাসরি পরিচালনা করার সুবিধা কোনটি?</div>
+            <div class="options">
+                <div class="option">ক) ডায়নামিক মেমোরি অ্যালোকেশন সম্ভব হয়</div>
+                <div class="option">খ) ডাটা স্ট্রাকচার (যেমন লিংকড লিস্ট, ট্রি) তৈরি করা যায়</div>
+                <div class="option">গ) ফাংশনে রেফারেন্স পাস করা যায়</div>
+                <div class="option">ঘ) উপরের সবগুলো</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(97)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-97">
+                <div class="ans-label">সঠিক উত্তর: ঘ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> পয়েন্টার সি ভাষার অন্যতম শক্তিশালী ফিচার যা ওপরের সবকটি সুবিধা প্রদান করে।</div>
+            </div>
+        </div>
+    <div class="topic-header">৯। ফাইল</div>
+        <div class="mcq-card">
+            <div class="question">98. C প্রোগ্রামে ফাইল হ্যান্ডলিংয়ের জন্য কোন বিশেষ বিল্ট-ইন স্ট্রাকচার টাইপ পয়েন্টার ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) struct Data</div>
+                <div class="option">খ) FILE</div>
+                <div class="option">গ) fpos_t</div>
+                <div class="option">ঘ) inline file</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(98)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-98">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাইল ওপেন ও পরিচালনার জন্য বড় হাতের অক্ষরে লেখা FILE স্ট্রাকচার পয়েন্টার (FILE *) ব্যবহৃত হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">99. কোনো ফাইল খোলার (Open) জন্য নিচের কোন লাইব্রেরি ফাংশনটি ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) fopen()</div>
+                <div class="option">খ) fclose()</div>
+                <div class="option">গ) fread()</div>
+                <div class="option">ঘ) openfile()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(99)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-99">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> fopen() ফাংশন দিয়ে নতুন বা বিদ্যমান ফাইল নির্দিষ্ট মোডে খোলা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">100. fopen() ফাংশন সফলভাবে ফাইল খুলতে না পারলে কী রিটার্ন করে?</div>
+            <div class="options">
+                <div class="option">ক) ০ (শূন্য)</div>
+                <div class="option">খ) ১</div>
+                <div class="option">গ) NULL</div>
+                <div class="option">ঘ) এরর কোড</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(100)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-100">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ফাইল খুঁজে না পেলে বা ওপেন করতে ব্যর্থ হলে fopen() সর্বদা NULL রিটার্ন করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">101. একটি টেক্সট ফাইল শুধুমাত্র পড়ার (Read-only) উদ্দেশ্যে খোলার জন্য কোন মোড (Mode) ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">ক) "w"</div>
+                <div class="option">খ) "r"</div>
+                <div class="option">গ) "a"</div>
+                <div class="option">ঘ) "r+"</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(101)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-101">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> "r" মোড দ্বারা ফাইলকে রিড বা পড়ার উদ্দেশ্যে ওপেন করা হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">102. বিদ্যমান কোনো ফাইলের ভেতরের তথ্য না মুছে তার শেষ থেকে নতুন তথ্য যুক্ত করার মোডকে কী বলে?</div>
+            <div class="options">
+                <div class="option">ক) Write মোড ("w")</div>
+                <div class="option">খ) Append মোড ("a")</div>
+                <div class="option">গ) Read মোড ("r")</div>
+                <div class="option">ঘ) Update মোড ("w+")</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(102)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-102">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> "a" (Append) মোড ফাইলের পূর্বের ডেটা ঠিক রেখে শেষে নতুন ডেটা অ্যাপেন্ড করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">103. ফাইল দিয়ে কাজ শেষ করার পর মেমোরি বাফার খালি করতে এবং ফাইল বন্ধ করতে কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">ক) ffree()</div>
+                <div class="option">খ) fclose()</div>
+                <div class="option">গ) exit()</div>
+                <div class="option">ঘ) fclear()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(103)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-103">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> fclose() ফাংশন খোলা ফাইলটিকে বন্ধ করে এবং রিসোর্স মুক্ত করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">104. নিচের কোনটি ফাইলে একটি ক্যারেক্টার বা বর্ণ লেখার (Write) জন্য ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">ক) fgetc()</div>
+                <div class="option">খ) fputc()</div>
+                <div class="option">গ) fprintf()</div>
+                <div class="option">ঘ) fputs()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(104)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-104">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> fputc() নির্দিষ্ট ফাইলে একটি একক ক্যারেক্টার লেখে বা পুট করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">105. ফাইল থেকে ডেটা পড়ার সময় ফাইলের শেষ প্রান্তে বা সমাপ্তিতে পৌঁছালে কোন ম্যাক্রো সিগন্যাল পাওয়া যায়?</div>
+            <div class="options">
+                <div class="option">ক) NULL</div>
+                <div class="option">খ) EOF (End of File)</div>
+                <div class="option">গ) STOP</div>
+                <div class="option">ঘ) TERMINATE</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(105)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-105">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> EOF হলো একটি স্ট্যান্ডার্ড ম্যাক্রো যা ফাইলের সমাপ্তি নির্দেশ করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">106. ফাইল পয়েন্টারকে ফাইলের যেকোনো অবস্থানে সরাসরি নিয়ে যাওয়ার (Random Access) জন্য কোন ফাংশনটি ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">ক) ftell()</div>
+                <div class="option">খ) rewind()</div>
+                <div class="option">গ) fseek()</div>
+                <div class="option">ঘ) fsetpos()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(106)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-106">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> fseek() ফাংশন ফাইল পয়েন্টারকে নির্দিষ্ট অফসেট অনুযায়ী যেকোনো পজিশনে সরাতে সাহায্য করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">107. ফাইল পয়েন্টারের বর্তমান অবস্থান (Current position) বাইট আকারে জানার জন্য কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">ক) ftell()</div>
+                <div class="option">খ) fseek()</div>
+                <div class="option">গ) rewind()</div>
+                <div class="option">ঘ) fgetpos()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(107)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-107">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ftell() ফাংশন ফাইলের শুরু থেকে বর্তমান পজিশনের বাইট সংখ্যা রিটার্ন করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">108. ফাইল পয়েন্টারকে একদম ফাইলের শুরুতে (Start of the file) পুনরায় নিয়ে যাওয়ার সহজ ফাংশন কোনটি?</div>
+            <div class="options">
+                <div class="option">ক) fseek()</div>
+                <div class="option">খ) rewind()</div>
+                <div class="option">গ) fstart()</div>
+                <div class="option">ঘ) fclose()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(108)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-108">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> rewind(fp) ফাংশনটি ফাইল পয়েন্টারকে ফাইলের জিরো অফসেটে বা শুরুতে সেট করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">109. বাইনারি ফাইল থেকে ব্লকরূপ ডেটা পড়ার এবং লেখার জন্য কোন জোড়া ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">ক) fscanf() এবং fprintf()</div>
+                <div class="option">খ) fread() এবং fwrite()</div>
+                <div class="option">গ) fgets() এবং fputs()</div>
+                <div class="option">ঘ) getc() এবং putc()</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(109)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-109">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> fread() ও fwrite() সরাসরি বাইনারি ব্লকের মেমোরি ডেটা ফাইলে আদান-প্রদান করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">110. "w" (Write) মোডে কোনো ফাইল ওপেন করলে যদি ফাইলটি আগে থেকেই মেমোরিতে থাকে তবে কী ঘটবে?</div>
+            <div class="options">
+                <div class="option">ক) এরর দেখাবে</div>
+                <div class="option">খ) ফাইলের পূর্বের সব ডাটা মুছে নতুন করে ফাইল তৈরি হবে (Truncate)</div>
+                <div class="option">গ) পূর্বের ডাটার শেষে যোগ হবে</div>
+                <div class="option">ঘ) ফাইল ওপেন হবে না</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(110)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-110">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> "w" মোড আগের ফাইল থাকলে তার ভেতরের সব তথ্য সম্পূর্ণ মুছে ফেলে নতুন করে লিখতে শুরু করে।</div>
+            </div>
+        </div>
+    <div class="topic-header">১০। কোড-ভিত্তিক এমসিকিউ</div>
+        <div class="mcq-card">
+            <div class="question">111. নিচের কোডটির আউটপুট কী হবে?<br><pre>#include &lt;stdio.h&gt;
+int main() {
+    int x = 5;
+    printf("%d", x++);
+    return 0;
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) 5</div>
+                <div class="option">খ) 6</div>
+                <div class="option">গ) 4</div>
+                <div class="option">ঘ) কম্পাইল এরর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(111)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-111">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> x++ হলো পোস্ট-ইনক্রিমেন্ট। প্রথমে x এর বর্তমান মান (5) প্রিন্ট হবে, তারপর x এর মান বেড়ে 6 হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">112. নিচের কোডটির আউটপুট কী হবে?<br><pre>#include &lt;stdio.h&gt;
+int main() {
+    int a = 10, b = 20;
+    int res = (a > b) ? a : b;
+    printf("%d", res);
+    return 0;
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) 10</div>
+                <div class="option">খ) 20</div>
+                <div class="option">গ) 1</div>
+                <div class="option">ঘ) 0</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(112)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-112">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> টারনারি কন্ডিশনাল অপারেটরে কন্ডিশন (10 > 20) মিথ্যা হওয়ায় কোলনের পরের অংশ অর্থাৎ b (20) নির্বাচিত হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">113. নিচের কোডটির আউটপুট কী হবে?<br><pre>#include &lt;stdio.h&gt;
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    printf("%d", *(arr + 2));
+    return 0;
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) 10</div>
+                <div class="option">খ) 20</div>
+                <div class="option">গ) 30</div>
+                <div class="option">ঘ) 40</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(113)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-113">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> *(arr + 2) বলতে arr[2] বোঝায়, যা অ্যারের ৩য় উপাদান অর্থাৎ 30।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">114. নিচের লুপটি কতবার চলবে?<br><pre>int i = 0;
+while(i < 5) {
+    if(i == 3) break;
+    i++;
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) ৩ বার</div>
+                <div class="option">খ) ৪ বার</div>
+                <div class="option">গ) ৫ বার</div>
+                <div class="option">ঘ) অনন্তবার</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(114)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-114">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> i এর মান 0, 1, 2 এর জন্য লুপের বডি সফলভাবে চলবে ও i বাড়বে। i=3 হলে ব্রেক হবে। ফলে লুপটি মোট ৪ বার কন্ডিশন চেক করে ৩ বার ভেতরে কাজ করবে (0,1,2)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">115. নিচের কোড ব্লকের আউটপুট কী হবে?<br><pre>int a = 5, b = 2;
+float c = a / b;
+printf("%.1f", c);</pre></div>
+            <div class="options">
+                <div class="option">ক) 2.5</div>
+                <div class="option">খ) 2.0</div>
+                <div class="option">গ) 2.00</div>
+                <div class="option">ঘ) 0.0</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(115)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-115">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ইন্টিজার ডিভিশন (5/2) এর ফলাফল ইন্টিজার 2 হয়। এরপর তা float ভেরিয়েবলে রাখায় 2.0 দেখাবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">116. নিচের কোডটির আউটপুট কী হবে?<br><pre>int x = 10;
+if(x = 5)
+    printf("True");
+else
+    printf("False");</pre></div>
+            <div class="options">
+                <div class="option">ক) True</div>
+                <div class="option">খ) False</div>
+                <div class="option">গ) কম্পাইল এরর</div>
+                <div class="option">ঘ) কোনো আউটপুট আসবে না</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(116)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-116">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> if কন্ডিশনে `x = 5` অ্যাসাইনমেন্ট অপারেটর। x এর মান 5 (নন-জিরো) হওয়ায় কন্ডিশনটি সত্য বা True হিসেবে গণ্য হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">117. নিচের কোডের আউটপুট কী হবে?<br><pre>#include &lt;stdio.h&gt;
+int main() {
+    int a = 1;
+    switch(a) {
+        case 1: printf("One ");
+        case 2: printf("Two ");
+        default: printf("Default");
+    }
+    return 0;
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) One</div>
+                <div class="option">খ) One Two Default</div>
+                <div class="option">গ) One Two</div>
+                <div class="option">ঘ) Default</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(117)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-117">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> case 1 এ কোনো break স্টেটমেন্ট না থাকায় পরবর্তী সকল কেস ও ডিফল্টও এক্সিকিউট হয়ে যাবে (Fall-through)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">118. নিচের কোডটির আউটপুট কী হবে?<br><pre>char str[] = "C-Prog";
+printf("%d", sizeof(str));</pre></div>
+            <div class="options">
+                <div class="option">ক) 6</div>
+                <div class="option">খ) 7</div>
+                <div class="option">গ) 8</div>
+                <div class="option">ঘ) 5</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(118)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-118">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> "C-Prog" স্ট্রিংটিতে ৬টি দৃশ্যমান ক্যারেক্টার আছে এবং শেষে ১টি নাল ক্যারেক্টার (\0) স্বয়ংক্রিয়ভাবে যুক্ত হওয়ায় মোট সাইজ 7 বাইট।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">119. নিচের কোডটির আউটপুট কী হবে?<br><pre>int i = 1;
+do {
+    printf("%d ", i);
+    i++;
+} while(i < 1);</pre></div>
+            <div class="options">
+                <div class="option">ক) ১ থেকে ইনফিনিটি</div>
+                <div class="option">খ) ১</div>
+                <div class="option">গ) কোনো আউটপুট নেই</div>
+                <div class="option">ঘ) ০</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(119)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-119">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> do-while লুপের শর্ত মিথ্যা হলেও লুপের বডি অন্তত একবার রান করে। তাই 1 প্রিন্ট হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">120. নিচের এক্সপ্রেশনটির মান কত হবে? `int static ans = 5 * 2 + 10 / 2;`</div>
+            <div class="options">
+                <div class="option">ক) 10</div>
+                <div class="option">খ) 15</div>
+                <div class="option">গ) 20</div>
+                <div class="option">ঘ) 12</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(120)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-120">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> অপারেটর প্রেসিডেন্স অনুযায়ী গুণ ও ভাগ আগে হবে: (5*2) + (10/2) = 10 + 5 = 15।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">121. নিচের রিকার্সিভ ফাংশনটিতে `fun(3)` কল করলে কী আউটপুট আসবে?<br><pre>void fun(int n) {
+    if(n == 0) return;
+    printf("%d ", n);
+    fun(n - 1);
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) 1 2 3</div>
+                <div class="option">খ) 3 2 1</div>
+                <div class="option">গ) 3 3 3</div>
+                <div class="option">ঘ) 0 1 2 3</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(121)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-121">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> প্রথমে প্রিন্ট হয় তারপর রিকার্সিভ কল হয়। তাই 3, তারপর 2, তারপর 1 প্রিন্ট হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">122. নিচের কোডটির আউটপুট কী হবে?<br><pre>int a = 10;
+int *p = &a;
+*p = 20;
+printf("%d", a);</pre></div>
+            <div class="options">
+                <div class="option">ক) 10</div>
+                <div class="option">খ) 20</div>
+                <div class="option">গ) অ্যাড্রেস</div>
+                <div class="option">ঘ) কম্পাইল এরর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(122)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-122">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> *p = 20 দ্বারা p পয়েন্টারটি যে ঠিকানাকে নির্দেশ করছে (অর্থাৎ a) তার মান পরিবর্তন করে 20 করা হচ্ছে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">123. নিচের কোডের আউটপুট কী হবে?<br><pre>int x = 4, y = 3;
+printf("%d", x & y);</pre></div>
+            <div class="options">
+                <div class="option">ক) 7</div>
+                <div class="option">খ) 0</div>
+                <div class="option">গ) 4</div>
+                <div class="option">ঘ) 1</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(123)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-123">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> বিটওয়াইজ অ্যান্ড (&): 4 এর বাইনারি 100 এবং 3 এর বাইনারি 011। বিটওয়াইজ অ্যান্ড করলে ফলাফল হয় 000 অর্থাৎ 0।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">124. নিচের কোডটির আউটপুট কী হবে?<br><pre>#include &lt;stdio.h&gt;
+#define PI 3.14
+int main() {
+    printf("%.2f", PI);
+    return 0;
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) PI</div>
+                <div class="option">খ) 3.14</div>
+                <div class="option">গ) 3.1</div>
+                <div class="option">ঘ) এরর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(124)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-124">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> #define দ্বারা ম্যাক্রো তৈরি করা হয়েছে। কম্পাইল হওয়ার আগে সোর্সে থাকা PI এর জায়গায় 3.14 বসে যাবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">125. নিচের লুপটি কতবার চলবে?<br><pre>for(int i = 0; i < 10; i += 2) {
+    if(i == 6) continue;
+    printf("%d ", i);
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) ৫ বার</div>
+                <div class="option">খ) ৪ বার</div>
+                <div class="option">গ) ১০ বার</div>
+                <div class="option">ঘ) ৬ বার</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(125)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-125">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> i এর মান হবে 0, 2, 4, 6, 8। মোট ৫ বার কন্ডিশন সত্য হবে এবং লুপ এক্সিকিউট হবে (যদিও i=6 এর সময় প্রিন্ট স্কিপ হবে, লুপ ৫ বারই আবর্তিত হবে)।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">126. নিচের কোডটির আউটপুট কী হবে?<br><pre>int a = 10;
+{
+    int a = 20;
+    printf("%d ", a);
+}
+printf("%d", a);</pre></div>
+            <div class="options">
+                <div class="option">ক) 20 10</div>
+                <div class="option">খ) 10 20</div>
+                <div class="option">গ) 20 20</div>
+                <div class="option">ঘ) 10 10</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(126)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-126">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ভেতরের ব্লকে লোকাল ভেরিয়েবল `a` বাইরের `a` কে হাইড বা ঢাকা দেয়। ব্লক শেষে ভেতরের `a` ধ্বংস হয়ে যায় এবং বাইরের `a` দৃশ্যমান হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">127. নিচের কোডটির আউটপুট কী হবে?<br><pre>printf("%d", 5 == 5);</pre></div>
+            <div class="options">
+                <div class="option">ক) 5</div>
+                <div class="option">খ) 0</div>
+                <div class="option">গ) 1</div>
+                <div class="option">ঘ) true</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(127)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-127">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C ভাষায় রিলেশনাল অপারেটর সত্য হলে ইন্টিজার 1 এবং মিথ্যা হলে 0 রিটার্ন করে। এখানে 5==5 সত্য, তাই 1।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">128. নিচের কোডটির আউটপুট কী হবে?<br><pre>int a = 10, b = 5;
+printf("%d", a >> 1);</pre></div>
+            <div class="options">
+                <div class="option">ক) 10</div>
+                <div class="option">খ) 5</div>
+                <div class="option">গ) 20</div>
+                <div class="option">ঘ) 2</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(128)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-128">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> রাইট শিফট (>>) ১ ঘর করলে মান অর্ধেক হয়ে যায়। 10 এর বাইনারি 1010 কে ১ ঘর ডানে সরালে হয় 101 অর্থাৎ 5।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">129. নিচের কোডের আউটপুট কী হবে?<br><pre>char c = 'A';
+printf("%d", c);</pre></div>
+            <div class="options">
+                <div class="option">ক) A</div>
+                <div class="option">খ) 65</div>
+                <div class="option">গ) 97</div>
+                <div class="option">ঘ) 0</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(129)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-129">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Format specifier %d ব্যবহার করার কারণে বড় হাতের 'A' এর ASCII মান 65 প্রিন্ট হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">130. নিচের কোনটি সঠিক কাস্টিং (Type Casting) এর উদাহরণ?</div>
+            <div class="options">
+                <div class="option">ক) (float)5 / 2</div>
+                <div class="option">খ) float(5) / 2</div>
+                <div class="option">গ) 5 / 2 (float)</div>
+                <div class="option">ঘ) valueOf(5) / 2</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(130)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-130">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C ভাষায় ডাটা টাইপ বন্ধনীতে ভেরিয়েবল বা মানের আগে লিখে টাইপ কাস্ট করতে হয়, যেমন `(float)a`।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">131. নিচের কোডটি রান করলে কী আউটপুট দেখা যাবে?<br><pre>int arr[3] = {10};
+printf("%d %d", arr[0], arr[1]);</pre></div>
+            <div class="options">
+                <div class="option">ক) 10 গার্বেজ</div>
+                <div class="option">খ) 10 0</div>
+                <div class="option">গ) 10 10</div>
+                <div class="option">ঘ) এরর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(131)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-131">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> অ্যারের আংশিক ইনিশিয়ালাইজেশন করলে অবশিষ্টাংশ উপাদান স্বয়ংক্রিয়ভাবে ০ (শূন্য) দিয়ে পূর্ণ হয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">132. নিচের কোডটির আউটপুট কী হবে?<br><pre>int x = 3;
+int y = ++x + x++;
+printf("%d", y);</pre></div>
+            <div class="options">
+                <div class="option">ক) 6</div>
+                <div class="option">খ) 7</div>
+                <div class="option">গ) 8</div>
+                <div class="option">ঘ) কম্পাইলারের ওপর নির্ভরশীল (Undefined)</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(132)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-132">
+                <div class="ans-label">সঠিক উত্তর: ঘ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> একই স্টেটমেন্টে একটি ভেরিয়েবলের একাধিকবার ইনক্রিমেন্ট/ডিক্রিমেন্ট করা C স্ট্যান্ডার্ড অনুযায়ী Undefined Behavior।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">133. নিচের কোডটির আউটপুট কী হবে?<br><pre>printf("%s", "Hello" + 2);</pre></div>
+            <div class="options">
+                <div class="option">ক) Hello2</div>
+                <div class="option">খ) llo</div>
+                <div class="option">গ) He</div>
+                <div class="option">ঘ) এরর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(133)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-133">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> স্ট্রিং লিটারেলের সাথে +2 করলে তা ৩য় ক্যারেক্টারের বেস অ্যাড্রেস নির্দেশ করে, ফলে "llo" প্রিন্ট হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">134. নিচের কোডটির আউটপুট কী হবে?<br><pre>int a = 0;
+a = printf("Hi");
+printf("%d", a);</pre></div>
+            <div class="options">
+                <div class="option">ক) Hi0</div>
+                <div class="option">খ) Hi2</div>
+                <div class="option">গ) 2</div>
+                <div class="option">ঘ) Hi</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(134)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-134">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> printf() ফাংশনটি সফলভাবে যতগুলো ক্যারেক্টার স্ক্রিনে প্রিন্ট করে সেই সংখ্যাটি রিটার্ন করে। "Hi" এর দৈর্ঘ্য 2।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">135. নিচের কোডটির আউটপুট কী হবে?<br><pre>int x = 10, y = 20;
+int *ptr = &x;
+ptr = &y;
+*ptr = 30;
+printf("%d", y);</pre></div>
+            <div class="options">
+                <div class="option">ক) 20</div>
+                <div class="option">খ) 10</div>
+                <div class="option">গ) 30</div>
+                <div class="option">ঘ) 0</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(135)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-135">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> ptr প্রথমে x কে এবং পরে y কে পয়েন্ট করে। সর্বশেষ *ptr = 30 এর মাধ্যমে y এর মান 30 হয়ে যাচ্ছে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">136. নিচের কোডটির আউটপুট কী হবে?<br><pre>#include &lt;stdio.h&gt;
+void test() {
+    static int count = 0;
+    count++;
+    printf("%d ", count);
+}
+int main() {
+    test(); test();
+    return 0;
+}</pre></div>
+            <div class="options">
+                <div class="option">ক) 1 1</div>
+                <div class="option">খ) 1 2</div>
+                <div class="option">গ) 2 2</div>
+                <div class="option">ঘ) 0 1</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(136)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-136">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> static ভেরিয়েবল তার পূর্ববর্তী মান ধরে রাখে। ১ম বার কলের পর count=1 হবে, ২য় বার কলের পর তা বেড়ে 2 হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">137. নিচের কোডটির আউটপুট কী হবে?<br><pre>int a = 5;
+printf("%d", a &lt;&lt; 2);</pre></div>
+            <div class="options">
+                <div class="option">ক) 10</div>
+                <div class="option">খ) 20</div>
+                <div class="option">গ) 2</div>
+                <div class="option">ঘ) 25</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(137)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-137">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> লেফট শিফট (<<) ২ ঘর করার অর্থ হলো সংখ্যাটিকে 2^2 বা 4 দিয়ে গুণ করা। 5 * 4 = 20।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">138. নিচের কোডটির আউটপুট কী হবে?<br><pre>int x = 5;
+if (x == 5);
+{
+    x = 10;
+}
+printf("%d", x);</pre></div>
+            <div class="options">
+                <div class="option">ক) 5</div>
+                <div class="option">খ) 10</div>
+                <div class="option">গ) এরর</div>
+                <div class="option">ঘ) 0</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(138)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-138">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> if এর পরে সেমিকোলন (;) থাকায় কন্ডিশনাল স্টেটমেন্ট সেখানেই শেষ। পরবর্তী সেকেন্ড বন্ধনীর ব্লকটি সাধারণ একটি স্বাধীন ব্লক হিসেবে চলবে এবং x=10 করবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">139. নিচের এক্সপ্রেশনের ফলাফল কত হবে? `int value = !0 + !5;`</div>
+            <div class="options">
+                <div class="option">ক) 0</div>
+                <div class="option">খ) 1</div>
+                <div class="option">গ) 2</div>
+                <div class="option">ঘ) এরর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(139)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-139">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> !0 মানে লজিক্যাল নট ট্রু অর্থাৎ 1। !5 (যেকোনো অ-শূন্য মান ট্রু) এর নট মিথ্যা অর্থাৎ 0। সুতরাং 1 + 0 = 1।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">140. নিচের কোডটির আউটপুট কী হবে?<br><pre>float x = 0.1;
+if (x == 0.1f)
+    printf("Equal");
+else
+    printf("Not Equal");</pre></div>
+            <div class="options">
+                <div class="option">ক) Equal</div>
+                <div class="option">খ) Not Equal</div>
+                <div class="option">গ) এরর</div>
+                <div class="option">ঘ) শূন্য</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(140)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-140">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> এখানে 0.1f ব্যবহার করায় এটি ফ্লোট লিটারেল হিসেবে x এর সাথে হুবহু মিলে যাবে এবং Equal প্রিন্ট করবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">141. নিচের কোনটি সি ভাষায় একটি খালি অবৃতি বা নাল স্টেটমেন্ট (Null Statement)?</div>
+            <div class="options">
+                <div class="option">ক) {}</div>
+                <div class="option">খ) ; (শুধুমাত্র সেমিকোলন)</div>
+                <div class="option">গ) void;</div>
+                <div class="option">ঘ) null;</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(141)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-141">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> একটি একক সেমিকোলন (;) সি ভাষায় Null Statement হিসেবে গণ্য হয় যা কোনো কাজ করে না।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">142. নিচের কোডটির আউটপুট কী হবে?<br><pre>printf("%d", sizeof('A'));</pre></div>
+            <div class="options">
+                <div class="option">ক) 1</div>
+                <div class="option">খ) 4 (বা ইন্টিজারের সাইজ)</div>
+                <div class="option">গ) 2</div>
+                <div class="option">ঘ) এরর</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(142)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-142">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C ভাষায় ক্যারেক্টার লিটারেল (যেমন 'A') কে অন্তর্বর্তীকালীনভাবে ইন্টিজার (int) হিসেবে বিবেচনা করা হয়, তাই sizeof('A') ইন্টিজারের সমান সাইজ (সাধারণত ৪) দেয়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">143. নিচের কোডটির আউটপুট কী হবে?<br><pre>int a = 3, b = 4;
+printf("%d", a ^ b);</pre></div>
+            <div class="options">
+                <div class="option">ক) 7</div>
+                <div class="option">খ) 12</div>
+                <div class="option">গ) 0</div>
+                <div class="option">ঘ) 1</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(143)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-143">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> Bitwise XOR (^): 3 (011) এবং 4 (100) এর এক্স-অর করলে হয় 111 যা ডেসিমেলে 7।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">144. নিচের কোডটির আউটপুট কী হবে?<br><pre>int x = 10, y = 5;
+printf("%d", x && (y = 0));
+printf(" %d", y);</pre></div>
+            <div class="options">
+                <div class="option">ক) 0 5</div>
+                <div class="option">খ) 0 0</div>
+                <div class="option">গ) 1 0</div>
+                <div class="option">ঘ) 1 5</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(144)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-144">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> x=10 সত্য (1), তাই ডানপাশের অংশটি এক্সিকিউট হবে এবং y=0 অ্যাসাইন হয়ে মিথ্যা রিটার্ন করবে। ফাইনাল অ্যান্ড রেজাল্ট 0 এবং y এর মান বদলে 0 হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">145. নিচের কোডটির আউটপুট কী হবে?<br><pre>int x = 0, y = 5;
+printf("%d", x || (y = 10));
+printf(" %d", y);</pre></div>
+            <div class="options">
+                <div class="option">ক) 1 10</div>
+                <div class="option">খ) 0 5</div>
+                <div class="option">গ) 1 5</div>
+                <div class="option">ঘ) 0 10</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(145)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-145">
+                <div class="ans-label">সঠিক উত্তর: ক</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> x=0 মিথ্যা, তাই শর্ট সার্কিট হবে না এবং ডানপাশের অংশ (y=10) চেক হবে। y=10 সত্য (1), তাই আউটপুট 1 এবং y এর মান পরিবর্তিত হয়ে 10 হবে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">146. নিচের কোনটি অবৈধ ডিক্লেয়ারেশন?</div>
+            <div class="options">
+                <div class="option">ক) int a, *b;</div>
+                <div class="option">খ) float c = 1.2;</div>
+                <div class="option">গ) int matrix[2][] = {1, 2, 3, 4};</div>
+                <div class="option">ঘ) char *s = "test";</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(146)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-146">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> মাল্টিডাইমেনশনাল অ্যারেতে দ্বিতীয় বা তার পরের ডাইমেনশনের সাইজ উল্লেখ করা আবশ্যিক।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">147. নিচের কোডটির আউটপুট কী হবে?<br><pre>int n = 123;
+printf("%d", n % 10);</pre></div>
+            <div class="options">
+                <div class="option">ক) 12</div>
+                <div class="option">খ) 1</div>
+                <div class="option">গ) 3</div>
+                <div class="option">ঘ) 2</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(147)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-147">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> মডুলাস অপারেটর (%) ১০ দিয়ে ভাগ করার পর ভাগশেষ দেয়, যা সংখ্যার শেষ অংকটি (3) বের করে।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">148. নিচের কোডটির আউটপুট কী হবে?<br><pre>int a = 10;
+int b = a / 0;
+printf("%d", b);</pre></div>
+            <div class="options">
+                <div class="option">ক) 0</div>
+                <div class="option">খ) ইনফিনিটি</div>
+                <div class="option">গ) রানটাইম ক্র্যাশ / কম্পাইল ওয়ার্নিং (Division by Zero)</div>
+                <div class="option">ঘ) 10</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(148)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-148">
+                <div class="ans-label">সঠিক উত্তর: গ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> যেকোনো সংখ্যাকে শূন্য দিয়ে ভাগ করলে Division by zero এরর ঘটে যা রানটাইমে প্রোগ্রাম ক্র্যাশ করায়।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">149. নিচের কোডটির আউটপুট কী হবে?<br><pre>int x = 012;
+printf("%d", x);</pre></div>
+            <div class="options">
+                <div class="option">ক) 12</div>
+                <div class="option">খ) 10</div>
+                <div class="option">গ) 8</div>
+                <div class="option">ঘ) 14</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(149)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-149">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> C ভাষায় সংখ্যার শুরুতে ০ (শূন্য) থাকলে তা অক্টাল (Octal) সংখ্যা পদ্ধতি নির্দেশ করে। অক্টাল 12 মানে ডেসিমেলে (1*8 + 2) = 10।</div>
+            </div>
+        </div>
+    
+        <div class="mcq-card">
+            <div class="question">150. সি প্রোগ্রামে `return 0;` স্টেটমেন্টটি মূলত কাকে সাফল্যের বার্তা পাঠায়?</div>
+            <div class="options">
+                <div class="option">ক) ব্যবহারকারীকে</div>
+                <div class="option">খ) অপারেটিং সিস্টেমকে (OS)</div>
+                <div class="option">গ) কম্পাইলারকে</div>
+                <div class="option">ঘ) প্রসেসরকে</div>
+            </div>
+            <button class="btn-show" onclick="toggleAns(150)">উত্তর ও ব্যাখ্যা দেখুন</button>
+            <div class="answer-box" id="ans-150">
+                <div class="ans-label">সঠিক উত্তর: খ</div>
+                <div class="exp-label"><strong>ব্যাখ্যা:</strong> main() ফাংশন থেকে ০ রিটার্ন করার মাধ্যমে অপারেটিং সিস্টেমকে জানানো হয় যে প্রোগ্রামটি কোনো ত্রুটি ছাড়াই সফলভাবে সম্পন্ন হয়েছে।</div>
+            </div>
+        </div>
+    
+    </div>
+    <script>
+        function toggleAns(id) {
+            var x = document.getElementById("ans-" + id);
+            if (x.style.display === "none" || x.style.display === "") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

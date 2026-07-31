@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Part 4 - Pointer, Structure & File IO</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fcf8f2;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h1 {
+            text-align: center;
+            color: #d35400;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            background-color: #fef5ec;
+            padding: 10px 15px;
+            border-left: 5px solid #e67e22;
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #d35400;
+        }
+        .question-card {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .option {
+            background: #fdfdfd;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .option:hover {
+            background: #f5f5f5;
+        }
+        .btn-ans {
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .btn-ans:hover {
+            background-color: #d35400;
+        }
+        .answer-block {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function toggleAnswer(id) {
+            var ans = document.getElementById('ans-' + id);
+            if (ans.style.display === 'block') {
+                ans.style.display = 'none';
+            } else {
+                ans.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>ICT Lecturer MCQ - Part 4</h1>
+        
+        <div class="section-title">পয়েন্টার, স্ট্রাকচার, ইউনিয়ন এবং ফাইল হ্যান্ডলিং</div>
+
+        <div class="question-card">
+            <div class="question-text">১. পয়েন্টার ভ্যারিয়েবল (Pointer Variable) মূলত কী সংরক্ষণ করে?</div>
+            <div class="options">
+                <div class="option">A. অন্য কোনো ভ্যারিয়েবলের মান</div>
+            <div class="option">B. অন্য কোনো ভ্যারিয়েবলের মেমোরি অ্যাড্রেস</div>
+            <div class="option">C. অ্যারের প্রথম ইনডেক্স</div>
+            <div class="option">D. ডেটার টাইপ</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(1)">উত্তর দেখুন</button>
+            <div id="ans-1" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২. সি ভাষায় একটি ভ্যারিয়েবলকে পয়েন্টার হিসেবে ঘোষণা করতে কোন অপারেটর ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">A. & (Ampersand)</div>
+            <div class="option">B. * (Asterisk)</div>
+            <div class="option">C. -> (Arrow)</div>
+            <div class="option">D. . (Dot)</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(2)">উত্তর দেখুন</button>
+            <div id="ans-2" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩. int *p; এখানে p কী ধরনের ভ্যারিয়েবল?</div>
+            <div class="options">
+                <div class="option">A. ইন্টিজার ভ্যারিয়েবল</div>
+            <div class="option">B. ফ্লোট ভ্যারিয়েবল</div>
+            <div class="option">C. ইন্টিজার পয়েন্টার ভ্যারিয়েবল</div>
+            <div class="option">D. ক্যারেক্টার ভ্যারিয়েবল</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(3)">উত্তর দেখুন</button>
+            <div id="ans-3" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪. পয়েন্টার ভ্যারিয়েবলের নিজস্ব মেমোরি সাইজ সাধারণত কত বাইট (৩২-বিট সিস্টেমে)?</div>
+            <div class="options">
+                <div class="option">A. ১ বাইট</div>
+            <div class="option">B. ২ বাইট</div>
+            <div class="option">C. ৪ বাইট</div>
+            <div class="option">D. ৮ বাইট</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(4)">উত্তর দেখুন</button>
+            <div id="ans-4" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৫. নাল পয়েন্টার (Null Pointer) বলতে কী বোঝায়?</div>
+            <div class="options">
+                <div class="option">A. যা মেমোরির যেকোনো ঠিকানাকে নির্দেশ করে</div>
+            <div class="option">B. যা কোনো বৈধ মেমোরি ঠিকানাকে নির্দেশ করে না</div>
+            <div class="option">C. যার মান শূন্যের চেয়ে কম</div>
+            <div class="option">D. যা ডিলিট হয়ে গেছে</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(5)">উত্তর দেখুন</button>
+            <div id="ans-5" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৬. সি ভাষায় Null Pointer এর ডিফল্ট মান কত ধরা হয়?</div>
+            <div class="options">
+                <div class="option">A. 1</div>
+            <div class="option">B. -1</div>
+            <div class="option">C. 0 (বা NULL)</div>
+            <div class="option">D. Garbage value</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(6)">উত্তর দেখুন</button>
+            <div id="ans-6" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৭. একটি পয়েন্টার ভ্যারিয়েবল যে মেমোরি অ্যাড্রেস ধারণ করছে, তার ভেতরের মান অ্যাক্সেস করতে কোন অপারেটর লাগে?</div>
+            <div class="options">
+                <div class="option">A. Address-of অপারেটর (&)</div>
+            <div class="option">B. Dereference অপারেটর (*)</div>
+            <div class="option">C. Dot অপারেটর (.)</div>
+            <div class="option">D. Sizeof অপারেটর</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(7)">উত্তর দেখুন</button>
+            <div id="ans-7" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৮. সি প্রোগ্রামিংয়ে dynamic memory allocation এর জন্য কোন লাইব্রেরি ফাইলটি প্রয়োজন?</div>
+            <div class="options">
+                <div class="option">A. stdio.h</div>
+            <div class="option">B. math.h</div>
+            <div class="option">C. stdlib.h</div>
+            <div class="option">D. string.h</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(8)">উত্তর দেখুন</button>
+            <div id="ans-8" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৯. রান-টাইমে মেমোরি বরাদ্দ করার প্রক্রিয়াকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Static Memory Allocation</div>
+            <div class="option">B. Dynamic Memory Allocation</div>
+            <div class="option">C. Automatic Allocation</div>
+            <div class="option">D. Compile-time Allocation</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(9)">উত্তর দেখুন</button>
+            <div id="ans-9" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১০. dynamic memory allocation এর জন্য নিচের কোন ফাংশনটি ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. malloc()</div>
+            <div class="option">B. calloc()</div>
+            <div class="option">C. realloc()</div>
+            <div class="option">D. উপরের সবকটি</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(10)">উত্তর দেখুন</button>
+            <div id="ans-10" class="answer-block">সঠিক উত্তর: D</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১১. malloc() ফাংশন সফলভাবে মেমোরি বরাদ্দ করতে না পারলে কী রিটার্ন করে?</div>
+            <div class="options">
+                <div class="option">A. 0</div>
+            <div class="option">B. -1</div>
+            <div class="option">C. NULL</div>
+            <div class="option">D. Void</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(11)">উত্তর দেখুন</button>
+            <div id="ans-11" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১২. calloc() ফাংশন বরাদ্দকৃত মেমোরির প্রতিটি ব্লককে ডিফল্টভাবে কী দ্বারা ইনিশিয়ালাইজ করে?</div>
+            <div class="options">
+                <div class="option">A. Garbage value</div>
+            <div class="option">B. 0 (Zero)</div>
+            <div class="option">C. 1 (One)</div>
+            <div class="option">D. NULL</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(12)">উত্তর দেখুন</button>
+            <div id="ans-12" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৩. ইতিমধ্যে বরাদ্দকৃত dynamic মেমোরির সাইজ পরিবর্তন করতে কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. malloc()</div>
+            <div class="option">B. calloc()</div>
+            <div class="option">C. realloc()</div>
+            <div class="option">D. free()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(13)">উত্তর দেখুন</button>
+            <div id="ans-13" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৪. ডাইনামিকভাবে বরাদ্দকৃত মেমোরি মুক্ত করতে (Free/Deallocate) কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. delete()</div>
+            <div class="option">B. remove()</div>
+            <div class="option">C. free()</div>
+            <div class="option">D. clear()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(14)">উত্তর দেখুন</button>
+            <div id="ans-14" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৫. মেমোরি লিক (Memory Leak) কেন ঘটে?</div>
+            <div class="options">
+                <div class="option">A. RAM নষ্ট হলে</div>
+            <div class="option">B. বরাদ্দকৃত ডাইনামিক মেমোরি free() না করলে</div>
+            <div class="option">C. পয়েন্টার ভুল ঠিকানায় নির্দেশ করলে</div>
+            <div class="option">D. বেশি লুপ ব্যবহার করলে</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(15)">উত্তর দেখুন</button>
+            <div id="ans-15" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৬. ড্যাঙ্গলিং পয়েন্টার (Dangling Pointer) কী?</div>
+            <div class="options">
+                <div class="option">A. যা শূন্য নির্দেশ করে</div>
+            <div class="option">B. যা এমন এক মেমোরি ঠিকানাকে নির্দেশ করে যা ইতিমধ্যে মুক্ত (free) করা হয়েছে</div>
+            <div class="option">C. যা কখনো ব্যবহার করা হয়নি</div>
+            <div class="option">D. যা সঠিক ঠিকানা ধারণ করে</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(16)">উত্তর দেখুন</button>
+            <div id="ans-16" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৭. ওয়াইল্ড পয়েন্টার (Wild Pointer) বলতে কী বোঝায়?</div>
+            <div class="options">
+                <div class="option">A. একটি সঠিক পয়েন্টার</div>
+            <div class="option">B. এমন একটি পয়েন্টার যা ইনিশিয়ালাইজ করা হয়নি (Uninitialized Pointer)</div>
+            <div class="option">C. গ্লোবাল পয়েন্টার</div>
+            <div class="option">D. কনস্ট্যান্ট পয়েন্টার</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(17)">উত্তর দেখুন</button>
+            <div id="ans-17" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৮. সি ভাষায় 'Structure' মূলত কী?</div>
+            <div class="options">
+                <div class="option">A. একই ধরনের ডেটার সমষ্টি</div>
+            <div class="option">B. বিভিন্ন ধরনের (Heterogeneous) ডেটার সমষ্টি</div>
+            <div class="option">C. শুধুমাত্র ফাংশনের সমষ্টি</div>
+            <div class="option">D. এক ধরনের লুপ</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(18)">উত্তর দেখুন</button>
+            <div id="ans-18" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৯. স্ট্রাকচার ঘোষণা করার জন্য কোন কিওয়ার্ড (Keyword) ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. structure</div>
+            <div class="option">B. struct</div>
+            <div class="option">C. Union</div>
+            <div class="option">D. class</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(19)">উত্তর দেখুন</button>
+            <div id="ans-19" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২০. স্ট্রাকচারের ভেতরের ভ্যারিয়েবলগুলোকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. অবজেক্ট (Object)</div>
+            <div class="option">B. মেম্বার (Member)</div>
+            <div class="option">C. এলিমেন্ট (Element)</div>
+            <div class="option">D. আর্গুমেন্ট</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(20)">উত্তর দেখুন</button>
+            <div id="ans-20" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২১. স্ট্রাকচারের মেম্বার ভ্যারিয়েবলগুলোকে অ্যাক্সেস করার জন্য কোন অপারেটর ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. ডট অপারেটর (.)</div>
+            <div class="option">B. অ্যারো অপারেটর (->)</div>
+            <div class="option">C. A এবং B উভয়ই</div>
+            <div class="option">D. কোনোটিই নয়</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(21)">উত্তর দেখুন</button>
+            <div id="ans-21" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২২. যদি একটি পয়েন্টার কোনো স্ট্রাকচারকে নির্দেশ করে, তবে তার মেম্বার অ্যাক্সেস করতে কোন অপারেটর লাগে?</div>
+            <div class="options">
+                <div class="option">A. . (Dot)</div>
+            <div class="option">B. -> (Arrow)</div>
+            <div class="option">C. * (Asterisk)</div>
+            <div class="option">D. & (Ampersand)</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(22)">উত্তর দেখুন</button>
+            <div id="ans-22" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৩. স্ট্রাকচারের মোট মেমোরি সাইজ কত হয়?</div>
+            <div class="options">
+                <div class="option">A. শুধুমাত্র বড় মেম্বারের সাইজ</div>
+            <div class="option">B. সবগুলো মেম্বারের মেমোরি সাইজের যোগফল (প্যাডিং সহ)</div>
+            <div class="option">C. প্রথম মেম্বারের সাইজ</div>
+            <div class="option">D. ৪ বাইট ফিক্সড</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(23)">উত্তর দেখুন</button>
+            <div id="ans-23" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৪. 'Union' তৈরি করার জন্য সি ভাষায় কোন কিওয়ার্ড ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. struct</div>
+            <div class="option">B. union</div>
+            <div class="option">C. enum</div>
+            <div class="option">D. typedef</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(24)">উত্তর দেখুন</button>
+            <div id="ans-24" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৫. ইউনিয়ন (Union) এর মোট মেমোরি সাইজ কত হয়?</div>
+            <div class="options">
+                <div class="option">A. সবগুলো মেম্বারের সাইজের যোগফল</div>
+            <div class="option">B. এর সবচেয়ে বড় মেম্বারের মেমোরি সাইজের সমান</div>
+            <div class="option">C. এর সবচেয়ে ছোট মেম্বারের সাইজের সমান</div>
+            <div class="option">D. সবসময় ২ বাইট</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(25)">উত্তর দেখুন</button>
+            <div id="ans-25" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৬. ইউনিয়ন এবং স্ট্রাকচারের মধ্যে মূল পার্থক্য কোথায়?</div>
+            <div class="options">
+                <div class="option">A. সিনট্যাক্সে</div>
+            <div class="option">B. মেমোরি ব্যবস্থাপনায় (Memory Management)</div>
+            <div class="option">C. ব্যবহারের জায়গায়</div>
+            <div class="option">D. ডেটা টাইপে</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(26)">উত্তর দেখুন</button>
+            <div id="ans-26" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৭. একই সময়ে ইউনিয়নের কয়টি মেম্বারে মান রাখা বা অ্যাক্সেস করা যায়?</div>
+            <div class="options">
+                <div class="option">A. সবগুলো মেম্বারে</div>
+            <div class="option">B. শুধুমাত্র যেকোনো একটি মেম্বারে</div>
+            <div class="option">C. দুটি মেম্বারে</div>
+            <div class="option">D. কোনোটিতেই নয়</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(27)">উত্তর দেখুন</button>
+            <div id="ans-27" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৮. সি ভাষায় ইউজার ডিফাইনড ডেটা টাইপের নতুন নাম দেওয়ার জন্য কোন কিওয়ার্ড ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. struct</div>
+            <div class="option">B. typedef</div>
+            <div class="option">C. enum</div>
+            <div class="option">D. define</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(28)">উত্তর দেখুন</button>
+            <div id="ans-28" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৯. Enumeration বা enum মূলত কী ধরনের ডেটা টাইপ?</div>
+            <div class="options">
+                <div class="option">A. ইউজার ডিফাইনড ইন্টিজার কনস্ট্যান্টের সেট</div>
+            <div class="option">B. ফ্লোটিং পয়েন্টের সেট</div>
+            <div class="option">C. ক্যারেক্টার অ্যারে</div>
+            <div class="option">D. ডাইনামিক ডেটা</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(29)">উত্তর দেখুন</button>
+            <div id="ans-29" class="answer-block">সঠিক উত্তর: A</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩০. enum এর উপাদানগুলোর ডিফল্ট মান কত থেকে শুরু হয়?</div>
+            <div class="options">
+                <div class="option">A. 1</div>
+            <div class="option">B. -1</div>
+            <div class="option">C. 0</div>
+            <div class="option">D. কম্পাইলার ইচ্ছামতো নির্ধারণ করে</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(30)">উত্তর দেখুন</button>
+            <div id="ans-30" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩১. স্থায়ীভাবে ডেটা সংরক্ষণের জন্য সি প্রোগ্রামে কী ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">A. Array</div>
+            <div class="option">B. Structure</div>
+            <div class="option">C. File (ফাইল)</div>
+            <div class="option">D. Pointer</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(31)">উত্তর দেখুন</button>
+            <div id="ans-31" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩২. সি ভাষায় ফাইল হ্যান্ডলিংয়ের জন্য কোন স্ট্রাকচার টাইপ পয়েন্টার ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">A. file *</div>
+            <div class="option">B. FILE * (সব ক্যাপিটাল)</div>
+            <div class="option">C. Doc *</div>
+            <div class="option">D. fstream *</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(32)">উত্তর দেখুন</button>
+            <div id="ans-32" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৩. একটি ফাইল খোলার জন্য বা ওপেন করার জন্য কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. open()</div>
+            <div class="option">B. fopen()</div>
+            <div class="option">C. file_open()</div>
+            <div class="option">D. read()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(33)">উত্তর দেখুন</button>
+            <div id="ans-33" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৪. fopen() ফাংশন ফাইল খুলতে ব্যর্থ হলে কী রিটার্ন করে?</div>
+            <div class="options">
+                <div class="option">A. 0</div>
+            <div class="option">B. NULL</div>
+            <div class="option">C. -1</div>
+            <div class="option">D. Error</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(34)">উত্তর দেখুন</button>
+            <div id="ans-34" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৫. একটি ফাইল সফলভাবে কাজ শেষে বন্ধ করার জন্য কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. close()</div>
+            <div class="option">B. fclose()</div>
+            <div class="option">C. file_close()</div>
+            <div class="option">D. exit()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(35)">উত্তর দেখুন</button>
+            <div id="ans-35" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৬. ফাইলে কোনো ডেটা লেখার (Write) জন্য নিচের কোন মোডটি (Mode) ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. "r"</div>
+            <div class="option">B. "w"</div>
+            <div class="option">C. "a"</div>
+            <div class="option">D. "rb"</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(36)">উত্তর দেখুন</button>
+            <div id="ans-36" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৭. ফাইলে নতুন ডেটা আগের ডেটা না মুছে শেষে যুক্ত করার মোডকে কী বলে?</div>
+            <div class="options">
+                <div class="option">A. Write Mode</div>
+            <div class="option">B. Append Mode ("a")</div>
+            <div class="option">C. Read Mode</div>
+            <div class="option">D. Update Mode</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(37)">উত্তর দেখুন</button>
+            <div id="ans-37" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৮. ফাইলে ফরম্যাটেড ডেটা লেখার জন্য কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. fputs()</div>
+            <div class="option">B. fprintf()</div>
+            <div class="option">C. fwrite()</div>
+            <div class="option">D. putc()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(38)">উত্তর দেখুন</button>
+            <div id="ans-38" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৯. ফাইল থেকে ফরম্যাটেড ডেটা পড়ার (Read) জন্য কোন ফাংশন ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">A. fgets()</div>
+            <div class="option">B. fscanf()</div>
+            <div class="option">C. fread()</div>
+            <div class="option">D. getc()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(39)">উত্তর দেখুন</button>
+            <div id="ans-39" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪০. EOF এর পূর্ণরূপ কী?</div>
+            <div class="options">
+                <div class="option">A. End of Format</div>
+            <div class="option">B. End of File</div>
+            <div class="option">C. Equal of File</div>
+            <div class="option">D. Encryption of File</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(40)">উত্তর দেখুন</button>
+            <div id="ans-40" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪১. ফাইল রিড করার সময় ফাইলের শেষ প্রান্তে পৌঁছেছে কি না তা যাচাই করার ফাংশন কোনটি?</div>
+            <div class="options">
+                <div class="option">A. feof()</div>
+            <div class="option">B. endfile()</div>
+            <div class="option">C. eof()</div>
+            <div class="option">D. checkeof()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(41)">উত্তর দেখুন</button>
+            <div id="ans-41" class="answer-block">সঠিক উত্তর: A</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪২. সি ভাষায় একটি টেক্সট ফাইল থেকে একটি একক ক্যারেক্টার পড়ার ফাংশন কোনটি?</div>
+            <div class="options">
+                <div class="option">A. fgetc()</div>
+            <div class="option">B. fgets()</div>
+            <div class="option">C. getchar()</div>
+            <div class="option">D. fread()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(42)">উত্তর দেখুন</button>
+            <div id="ans-42" class="answer-block">সঠিক উত্তর: A</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৩. সি ভাষায় বাইনারি ফাইল হ্যান্ডলিংয়ের জন্য কোন মোড ব্যবহার করা হয়?</div>
+            <div class="options">
+                <div class="option">A. "w"</div>
+            <div class="option">B. "wb"</div>
+            <div class="option">C. "r"</div>
+            <div class="option">D. "a"</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(43)">উত্তর দেখুন</button>
+            <div id="ans-43" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৪. ফাইলের যেকোনো নির্দিষ্ট অবস্থানে সরাসরি যাওয়ার জন্য (Random Access) কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. ftell()</div>
+            <div class="option">B. fseek()</div>
+            <div class="option">C. rewind()</div>
+            <div class="option">D. fpos()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(44)">উত্তর দেখুন</button>
+            <div id="ans-44" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৫. ফাইলের কার্সারের বর্তমান অবস্থান (Current Position) জানার জন্য কোন ফাংশন ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. fseek()</div>
+            <div class="option">B. ftell()</div>
+            <div class="option">C. rewind()</div>
+            <div class="option">D. fgetpos()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(45)">উত্তর দেখুন</button>
+            <div id="ans-45" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৬. ফাইলের কার্সারকে সরাসরি একদম শুরুতে (Beginning) ফিরিয়ে আনার ফাংশন কোনটি?</div>
+            <div class="options">
+                <div class="option">A. fseek()</div>
+            <div class="option">B. rewind()</div>
+            <div class="option">C. ftell()</div>
+            <div class="option">D. restart()</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(46)">উত্তর দেখুন</button>
+            <div id="ans-46" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৭. সি ভাষার প্রিপ্রসেসর ডিরেক্টিভ (Preprocessor Directive) কোন চিহ্ন দিয়ে শুরু হয়?</div>
+            <div class="options">
+                <div class="option">A. &</div>
+            <div class="option">B. # (Hash)</div>
+            <div class="option">C. $</div>
+            <div class="option">D. @</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(47)">উত্তর দেখুন</button>
+            <div id="ans-47" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৮. #define ডিরেক্টিভ মূলত কী কাজের জন্য ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. ভ্যারিয়েবল ডিক্লেয়ার করতে</div>
+            <div class="option">B. ম্যাক্রো (Macro) বা কনস্ট্যান্ট ডিফাইন করতে</div>
+            <div class="option">C. ফাইল রিড করতে</div>
+            <div class="option">D. লুপ চালাতে</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(48)">উত্তর দেখুন</button>
+            <div id="ans-48" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৯. কম্পাইল করার ঠিক পূর্বের ধাপকে সি প্রোগ্রামিংয়ে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Linking</div>
+            <div class="option">B. Preprocessing</div>
+            <div class="option">C. Execution</div>
+            <div class="option">D. Assembly</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(49)">উত্তর দেখুন</button>
+            <div id="ans-49" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৫০. একটি ম্যাক্রোকে কোড থেকে বাদ দিতে বা আন-ডিফাইন করতে কোনটি ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. #undef</div>
+            <div class="option">B. #delete</div>
+            <div class="option">C. #remove</div>
+            <div class="option">D. #clear</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(50)">উত্তর দেখুন</button>
+            <div id="ans-50" class="answer-block">সঠিক উত্তর: A</div>
+        </div>
+    
+    </div>
+</body>
+</html>

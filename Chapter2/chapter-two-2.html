@@ -1,0 +1,2536 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      NTRCA Teacher Registration Examination - Software Engineering Standard
+      Test
+    </title>
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background-color: #f7fafc;
+        color: #2d3748;
+        margin: 0;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow:
+          0 4px 6px rgba(0, 0, 0, 0.05),
+          0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        text-align: center;
+        border-bottom: 3px solid #3182ce;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+      .header h1 {
+        margin: 0;
+        color: #2b6cb0;
+        font-size: 26px;
+        font-weight: 700;
+      }
+      .header h2 {
+        margin: 10px 0 5px 0;
+        color: #4a5568;
+        font-size: 18px;
+      }
+      .header p {
+        margin: 5px 0 0 0;
+        color: #718096;
+        font-size: 14px;
+        font-style: italic;
+      }
+
+      /* Header Section Style */
+      .header-container {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid #e2e8f0;
+        font-family: "Segoe UI", Roboto, sans-serif;
+      }
+
+      .header-container h1 {
+        color: #0f172a;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Navigation Container */
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap; /* মোবাইলে অটোমেটিক রেসপনসিভ করার জন্য */
+      }
+
+      /* Button Design */
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #2563eb; /* Modern Blue */
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Hover & Active Effects */
+      .nav-btn:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+
+      .nav-btn:active {
+        transform: translateY(0);
+      }
+
+      .question-block {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 25px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .question-block:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      .question-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1a202c;
+        margin-bottom: 15px;
+      }
+      .options-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      @media (min-width: 650px) {
+        .options-container {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .option {
+        padding: 12px 15px;
+        background-color: #f8fafc;
+        border: 1px solid #edf2f7;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #4a5568;
+      }
+      .action-area {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .btn-show {
+        background-color: #3182ce;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .btn-show:hover {
+        background-color: #2b6cb0;
+      }
+      .answer-reveal {
+        display: none;
+        font-weight: bold;
+        color: #e53e3e;
+        font-size: 15px;
+        background: #fff5f5;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border-left: 4px solid #e53e3e;
+      }
+      .answer-reveal.show {
+        display: inline-block;
+      }
+      .master-answer-section {
+        margin-top: 50px;
+        border-top: 2px dashed #cbd5e0;
+        padding-top: 30px;
+        text-align: center;
+      }
+      .btn-master {
+        background-color: #38a169;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .btn-master:hover {
+        background-color: #2f855a;
+      }
+      .master-answers-table {
+        display: none;
+        margin: 30px auto 0 auto;
+        max-width: 600px;
+        background: #f7fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 20px;
+      }
+      .master-answers-table.show {
+        display: block;
+      }
+      .answer-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .answer-item {
+        padding: 8px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+      }
+      .answer-item span {
+        color: #3182ce;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <header class="header-container">
+          <h1>💻 Software Engineering - MCQs</h1>
+          <nav class="nav-buttons">
+            <a href="chapter-two-1.html" class="nav-btn">Part 1</a>
+            <a href="chapter-two-2.html" class="nav-btn">Part 2</a>
+            <a href="chapter-two-3.html" class="nav-btn">Part 3</a>
+            <a href="chapter-two-4.html" class="nav-btn">Part 4</a>
+            <a href="chapter-two-5.html" class="nav-btn">Part 5</a>
+            <a href="chapter-two-6.html" class="nav-btn">Part 6</a>
+            <a href="chapter-two-7.html" class="nav-btn">Part 7</a>
+            <a href="chapter-two-8.html" class="nav-btn">Part 8</a>
+          </nav>
+        </header>
+      </div>
+
+      <div id="quiz-container">
+        <div class="question-block">
+          <div class="question-title">
+            1. 'Software Engineering' শব্দটি প্রথম কোন আন্তর্জাতিক কনফারেন্সে
+            আনুষ্ঠানিকভাবে ব্যবহৃত হয়? <br />
+            In which international conference was the term 'Software
+            Engineering' first officially used?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) IEEE Conference 1965</div>
+            <div class="option">(C) ACM Conference 1971</div>
+            <div class="option">(B) NATO Science Committee Conference 1968</div>
+            <div class="option">(D) International Software Conference 1975</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(1)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-1">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            2. নিচের কোনটি সফটওয়্যারের প্রধান বা মৌলিক বৈশিষ্ট্য (Nature of
+            Software)? <br />
+            Which of the following is a primary characteristic of the nature of
+            software?
+          </div>
+          <div class="options-container">
+            <div class="option">
+              (A) Software wears out physically over time
+            </div>
+            <div class="option">
+              (C) Software does not "wear out" but deteriorates
+            </div>
+            <div class="option">
+              (B) Software is manufactured, not engineered
+            </div>
+            <div class="option">
+              (D) Software is custom-built and cannot be reused
+            </div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(2)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-2">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            3. সফটওয়্যার ইঞ্জিনিয়ারিং-এর সাথে কম্পিউটার বিজ্ঞানের (Computer
+            Science) প্রধান সম্পর্ক কী? <br />
+            What is the primary relationship between Software Engineering and
+            Computer Science? <br />
+            products
+          </div>
+          <div class="options-container">
+            <div class="option">
+              (A) Computer Science provides theories; SE applies them to build
+            </div>
+            <div class="option">
+              (B) SE is a pure theoretical branch of Computer Science
+            </div>
+            <div class="option">
+              (C) Both are completely independent disciplines with no relation
+            </div>
+            <div class="option">
+              (D) SE only deals with hardware design unlike Computer Science
+            </div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(3)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-3">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            4. SDLC (Software Development Life Cycle)-এর প্রথম ধাপ কোনটি? <br />
+            Which is the first phase of the Software Development Life Cycle?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) System Designing</div>
+            <div class="option">
+              (C) Requirement Analysis & Feasibility Study
+            </div>
+            <div class="option">(B) Coding and Implementation</div>
+            <div class="option">(D) Software Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(4)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-4">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            5. নির্দিষ্ট কোনো সিস্টেম বা ডোমেইনে রান-টাইম ত্রুটির অনুপস্থিতিতে
+            সফটওয়্যারের সঠিক ফলাফল প্রদানের ক্ষমতাকে কী <br />
+            বলে? <br />
+            The ability of software to perform its intended functions correctly
+            under specified conditions is called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Robustness</div>
+            <div class="option">(C) Usability</div>
+            <div class="option">(B) Correctness</div>
+            <div class="option">(D) Portability</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(5)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-5">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            6. অস্বাভাবিক বা অপ্রত্যাশিত ইনপুট বা প্রতিকূল পরিস্থিতিতেও
+            সফটওয়্যার ভেঙে না পড়ার ক্ষমতাকে কী বলা হয়? <br />
+            The capability of software to handle invalid inputs or stressful
+            environmental conditions gracefully is called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Correctness</div>
+            <div class="option">(C) Robustness</div>
+            <div class="option">(B) Maintainability</div>
+            <div class="option">(D) Portability</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(6)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-6">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            7. সফটওয়্যার সহজে এক হার্ডওয়্যার/ওপারেটিং সিস্টেম থেকে অন্যটিতে
+            স্থানান্তরের ক্ষমতাকে কী বলে? <br />
+            The ease with which software can be transferred from one environment
+            to another is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Portability</div>
+            <div class="option">(C) Reusability</div>
+            <div class="option">(B) Usability</div>
+            <div class="option">(D) Efficiency</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(7)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-7">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            8. ব্যবহারকারী কত সহজে ও স্বাচ্ছন্দ্যে সফটওয়্যারটি ব্যবহার করতে
+            পারেন, তা নির্দেশ করে কোন কোয়ালিটি? <br />
+            Which quality attribute measures how easy and satisfying a software
+            application is for users?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Maintainability</div>
+            <div class="option">(C) Reliability</div>
+            <div class="option">(B) Usability</div>
+            <div class="option">(D) Portability</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(8)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-8">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            9. নিচের কোনটি সফটওয়্যারের প্রোডাক্ট কোয়ালিটি (Product Quality)-এর
+            অন্তর্ভুক্ত নয়? <br />
+            Which of the following is NOT considered a Product Quality
+            attribute?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Correctness</div>
+            <div class="option">(C) Project Budget</div>
+            <div class="option">(B) Robustness</div>
+            <div class="option">(D) Maintainability</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(9)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-9">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            10. নিচের কোনটি প্রজেক্ট কোয়ালিটি (Project Quality)-র উদাহরণ? <br />
+            Which of the following is an example of Project Quality? <br />
+            সম্পন্ন হওয়া)
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Portability</div>
+            <div class="option">(C) Software Usability</div>
+            <div class="option">(B) Meeting Budget and Schedule</div>
+            <div class="option">(D) Code Correctness</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(10)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-10">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            11. সফটওয়্যার কোয়ালিটি পরিমাপের জন্য ব্যবহৃত মেট্রিক্সে 'Halstead
+            Metric' প্রধানত কী পরিমাপ করতে ব্যবহৃত হয়? <br />
+            In software quality measurement, what does 'Halstead Metric'
+            primarily measure?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Cost estimation</div>
+            <div class="option">(C) Number of test cases</div>
+            <div class="option">
+              (B) Code complexity and volume based on operators/operands
+            </div>
+            <div class="option">(D) Project risk factors</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(11)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-11">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            12. নিচের কোন মডেলটি সবচেয়ে প্রাচীন এবং রৈখিক (Linear Sequential)
+            পদ্ধতির অনুসারী? <br />
+            Which SDLC model is the oldest and follows a strictly linear
+            sequential approach?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Agile Model</div>
+            <div class="option">(B) Spiral Model</div>
+            <div class="option">(C) Waterfall Model</div>
+            <div class="option">(D) RAD Model</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(12)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-12">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            13. কোন মডেলটিতে প্রতি ধাপে 'Risk Analysis' বা ঝুঁকি বিশ্লেষণকে
+            সর্বাধিক গুরুত্ব দেওয়া হয়? <br />
+            In which SDLC model is 'Risk Analysis' given the highest priority at
+            each phase?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Waterfall Model</div>
+            <div class="option">(C) Spiral Model</div>
+            <div class="option">(B) Agile Model</div>
+            <div class="option">(D) Prototype Model</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(13)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-13">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            14. 'Agile Software Development' এর মূল চালিকাশক্তি বা ভিত্তি কোনটি?
+            <br />
+            What is the primary driving principle of 'Agile Software
+            Development'?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Detailed upfront documentation</div>
+            <div class="option">(C) Strict linear execution of phases</div>
+            <div class="option">
+              (B) Iterative development and customer collaboration
+            </div>
+            <div class="option">(D) Elimination of testing phase</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(14)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-14">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            15. RAD (Rapid Application Development) মডেলের প্রধান সুবিধা কোনটি?
+            <br />
+            What is the primary advantage of the RAD model?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Suitable for long-term complex systems</div>
+            <div class="option">
+              (C) Extremely low developer interaction required
+            </div>
+            <div class="option">
+              (B) Rapid development through high-speed prototyping and reuse
+            </div>
+            <div class="option">(D) Focuses purely on documentation</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(15)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-15">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            16. V-Model-এ প্রতিটি ডেভেলপমেন্ট ধাপের সাথে সাথে কোন প্রক্রিয়াটি
+            সমান্তরালভাবে চলে? <br />
+            In the V-Model, which activity runs in parallel with every
+            development phase?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Documentation</div>
+            <div class="option">(C) Verification and Validation</div>
+            <div class="option">(B) Risk Analysis</div>
+            <div class="option">(D) Re-coding</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(16)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-16">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            17. মডুলারিটি (Modularity)-র ক্ষেত্রে নিচের কোন অবস্থাটি সবচেয়ে
+            আদর্শ (Ideal)? <br />
+            In the context of modularity, which of the following is the ideal
+            state?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) High Coupling and Low Cohesion</div>
+            <div class="option">(C) High Coupling and High Cohesion</div>
+            <div class="option">(B) Low Coupling and High Cohesion</div>
+            <div class="option">(D) Low Coupling and Low Cohesion.</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(17)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-17">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            18. 'Abstraction' বলতে সফটওয়্যার ডিজাইনে কী বোঝায়? <br />
+            What does 'Abstraction' mean in software design?
+          </div>
+          <div class="options-container">
+            <div class="option">
+              (A) Hiding background details and showing essential features
+            </div>
+            <div class="option">
+              (C) Reducing the execution speed of software
+            </div>
+            <div class="option">
+              (B) Showing all structural codes to the client
+            </div>
+            <div class="option">
+              (D) Designing complex algorithms in single steps
+            </div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(18)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-18">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            19. সফটওয়্যারের একাধিক মডিউলের মধ্যে পারস্পরিক নির্ভরশীলতার মাত্রাকে
+            কী বলা হয়? <br />
+            The degree of interdependence between different software modules is
+            called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Cohesion</div>
+            <div class="option">(C) Abstraction</div>
+            <div class="option">(B) Coupling</div>
+            <div class="option">(D) Polymorphism</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(19)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-19">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            20. একটি নির্দিষ্ট একক মডিউলের অভ্যন্তরে উপাদানগুলোর পারস্পরিক
+            কার্যকারিতার বন্ধনকে কী বলা হয়? <br />
+            The strength of functional relationship of elements within a single
+            module is called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Coupling</div>
+            <div class="option">(C) Inheritance</div>
+            <div class="option">(B) Cohesion</div>
+            <div class="option">(D) Encapsulation</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(20)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-20">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            21. SRS-এর পূর্ণরূপ কী? <br />
+            What is the full form of SRS?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Software Requirement Specification</div>
+            <div class="option">(C) Standard Requirement Specifications</div>
+            <div class="option">(B) System Requirement Solution</div>
+            <div class="option">(D) Software Relational System</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(21)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-21">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            22. নিচের কোনটি একটি ভালো SRS-এর বৈশিষ্ট্য নয়? <br />
+            Which of the following is NOT a characteristic of a good SRS?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Unambiguous</div>
+            <div class="option">(C) Ambiguous</div>
+            <div class="option">(B) Traceable</div>
+            <div class="option">(D) Verifiable</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(22)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-22">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            23. সিস্টেমের কার্যকারিতা ও আচরণকে ম্যাথমেটিক্যাল লজিক ও
+            অ্যালজেব্রিক মেথড দ্বারা সুনির্দিষ্টভাবে উপস্থাপন করাকে <br />
+            কী বলে? <br />
+            Representing system behavior precisely using mathematical logic and
+            algebraic notation is called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Informal Specification</div>
+            <div class="option">(C) Prototype Designing</div>
+            <div class="option">(B) Formal / Descriptive Specification</div>
+            <div class="option">(D) Database Modeling</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(23)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-23">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            24. ডেভলপারের নিজের কোড নিজে টেস্ট করা বা ইন্টারনাল স্ট্রাকচার জেনে
+            যে টেস্টিং করা হয়, তাকে কী বলে? <br />
+            Testing based on an analysis of the internal structure of the
+            component or system is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Black-box testing</div>
+            <div class="option">(C) Integration testing</div>
+            <div class="option">(B) White-box testing</div>
+            <div class="option">(D) System testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(24)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-24">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            25. ইন্টারনাল কোড স্ট্রাকচার না জেনে শুধুমাত্র ইনপুট এবং আউটপুট
+            মিলিয়ে যে টেস্টিং করা হয়, তাকে কী বলে? <br />
+            Testing without knowledge of the internal workings of the
+            application or code is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) White-box testing</div>
+            <div class="option">(C) Unit testing</div>
+            <div class="option">(B) Black-box testing</div>
+            <div class="option">(D) Structural testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(25)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-25">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            26. সফটওয়্যারে বাগ (Bug) বা ত্রুটি খুঁজে বের করা এবং তা সংশোধন করার
+            প্রক্রিয়াকে কী বলে? <br />
+            The process of finding, analyzing, and fixing bugs in software is
+            called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Testing</div>
+            <div class="option">(C) Verification</div>
+            <div class="option">(B) Debugging</div>
+            <div class="option">(D) Validation</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(26)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-26">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            27. নিচের কোনটি অবজেক্ট-ওরিয়েন্টেড (OOP) সিস্টেমের মূল স্তম্ভ নয়?
+            <br />
+            Which of the following is NOT a pillar of Object-Oriented
+            Programming (OOP)?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Encapsulation</div>
+            <div class="option">(C) Global Variables</div>
+            <div class="option">(B) Inheritance</div>
+            <div class="option">(D) Polymorphism</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(27)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-27">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            28. একটি মডিউল বা কোডের অংশকে পরিবর্তন না করে বিভিন্ন স্থানে বারবার
+            ব্যবহারের ক্ষমতাকে কী বলে? <br />
+            The ability to use existing software elements/code again in multiple
+            configurations is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Reusability (পুনর্ব্যবহারযোগ্যতা)</div>
+            <div class="option">(C) Scalability</div>
+            <div class="option">(B) Portability</div>
+            <div class="option">(D) Generality</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(28)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-28">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            29. UML-এর পূর্ণরূপ কী? <br />
+            What does UML stand for?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Unified Modeling Language</div>
+            <div class="option">(C) United Model Library</div>
+            <div class="option">(B) Uniform Modular Layout</div>
+            <div class="option">(D) Universal Machine Language</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(29)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-29">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            30. নিচের কোনটি UML-এর একটি স্ট্রাকচারাল ডায়াগ্রাম (Structural
+            Diagram)? <br />
+            Which of the following is a Structural Diagram in UML?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Use Case Diagram</div>
+            <div class="option">(C) Class Diagram</div>
+            <div class="option">(B) Sequence Diagram</div>
+            <div class="option">(D) Activity Diagram</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(30)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-30">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            31. সিস্টেমের বাহ্যিক ব্যবহারকারী (Actors) এবং তাদের সাথে সিস্টেমের
+            ইন্টারেকশন দেখানোর জন্য কোন ডায়াগ্রাম <br />
+            ব্যব্যহৃত হয়? <br />
+            Which UML diagram represents user interactions with system
+            functions?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) State Chart Diagram</div>
+            <div class="option">(C) Class Diagram</div>
+            <div class="option">(B) Use Case Diagram</div>
+            <div class="option">(D) Deployment Diagram</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(31)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-31">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            32. অবজেক্টগুলোর মধ্যে সময়ের ক্রমানুসারে (Chronological Sequence)
+            তথ্যের আদান-প্রদান দেখানোর জন্য কোন <br />
+            ডায়াগ্রাম ব্যবহৃত হয়? <br />
+            Which diagram shows time-sequenced interactions between objects?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Collaboration Diagram</div>
+            <div class="option">(C) Class Diagram</div>
+            <div class="option">(B) Sequence Diagram</div>
+            <div class="option">(D) Use Case Diagram</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(32)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-32">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            33. ইউজার ইন্টারফেস (UI) ডিজাইনে 'User-Centered Design' বলতে কী
+            বোঝায়? <br />
+            What is 'User-Centered Design' in UI design? <br />
+            users
+          </div>
+          <div class="options-container">
+            <div class="option">
+              (A) Designing according to the developer's taste
+            </div>
+            <div class="option">(C) Minimizing the color usage</div>
+            <div class="option">
+              (B) Designing focusing entirely on the needs and behaviors of
+            </div>
+            <div class="option">
+              (D) Avoiding graphical components completely
+            </div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(33)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-33">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            34. প্রজেক্টের আকার, কাজ ও খরচ নির্ধারণ করার প্রক্রিয়াকে সফটওয়্যার
+            ম্যানেজমেন্টে কী বলা হয়? <br />
+            What is the process of predicting project resources, costs, and
+            schedule called?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Risk Analysis</div>
+            <div class="option">(C) Quality Assurance</div>
+            <div class="option">(B) Project Estimation</div>
+            <div class="option">(D) Requirement Gathering</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(34)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-34">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            35. সফটওয়্যার প্রজেক্টের আকার (Size) পরিমাপের সবচেয়ে সাধারণ একক
+            কোনটি? <br />
+            Which is the most common unit of measurement for Software Project
+            Size?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Lines of Code</div>
+            <div class="option">(C) CPU speed in MHz</div>
+            <div class="option">(B) Pages of Documentation</div>
+            <div class="option">(D) Hours of meeting</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(35)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-35">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            36. COCOMO মডেল মূলত কী কাজে ব্যবহৃত হয়? <br />
+            For what purpose is the COCOMO model primarily used?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) To detect structural bugs in coding</div>
+            <div class="option">(C) To design complex databases</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(36)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-36">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            37. COCOMO-এর পূর্ণরূপ কী? <br />
+            What is the full form of COCOMO?
+          </div>
+          <div class="options-container">
+            <div class="option">
+              (B) To estimate effort, cost, and schedule of a project
+            </div>
+            <div class="option">(D) To write specification requirements</div>
+            <div class="option">(A) Common Cost Model</div>
+            <div class="option">(C) Component Cost Management</div>
+            <div class="option">(B) Constructive Cost Model</div>
+            <div class="option">(D) Computer Cost Mode</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(37)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-37">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            38. সফটওয়্যার প্রজেক্ট ম্যানেজমেন্টে 'Risk Management'-এর প্রথম ধাপ
+            কোনটি? <br />
+            What is the first step in software project Risk Management?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Risk Monitoring</div>
+            <div class="option">(C) Risk Mitigation</div>
+            <div class="option">(B) Risk Identification</div>
+            <div class="option">(D) Risk Assessment</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(38)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-38">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            39. সফটওয়্যার ডেভেলপমেন্টে 'Milestone' বলতে কী বোঝায়? <br />
+            What does 'Milestone' mean in software development? <br />
+            schedule
+          </div>
+          <div class="options-container">
+            <div class="option">(A) The final code of the project</div>
+            <div class="option">(C) Total lines of code developed per day</div>
+            <div class="option">
+              (B) An important key event or achievement point in project
+            </div>
+            <div class="option">(D) A team meeting interval</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(39)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-39">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            40. সফটওয়্যার আর্কিটেকচারে 'Layered Architecture'-এর প্রধান সুবিধা
+            কোনটি? <br />
+            What is the main benefit of Layered Architecture in software design?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Increases the database complexity</div>
+            <div class="option">(C) Reduces execution speed</div>
+            <div class="option">
+              (B) Separation of concerns and ease of maintenance
+            </div>
+            <div class="option">(D) Eliminates the requirement of coding</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(40)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-40">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            41. 'Software Crisis' (সফটওয়্যার সংকট) শব্দটি কোন দশকে প্রথম বহুল
+            আলোচিত হয়? <br />
+            In which decade was the term 'Software Crisis' first widely
+            discussed?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) 1950s</div>
+            <div class="option">(C) 1980s</div>
+            <div class="option">(B) 1960s</div>
+            <div class="option">(D) 1990s</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(41)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-41">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            42. নিচের কোনটি সফটওয়্যারের একটি প্রধান অ-কার্যকরী (Non-functional)
+            রিকোয়ারমেন্ট? <br />
+            Which of the following is a non-functional requirement of a
+            software?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) User authentication module</div>
+            <div class="option">(B) Generation of monthly reports</div>
+            <div class="option">(C) System security and response time</div>
+            <div class="option">(D) Online payment processing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(42)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-42">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            43. কোডের জটিলতা পরিমাপের জন্য কোন মেট্রিকটি ব্যবহৃত হয়? <br />
+            Which metric is used to measure the structural complexity of program
+            code?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) McCabe's Cyclomatic Complexity</div>
+            <div class="option">(C) Function Point</div>
+            <div class="option">(B) LOC</div>
+            <div class="option">(D) COCOMO</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(43)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-43">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            44. সফটওয়্যার মেইনটেন্যান্স-এর কোন ধাপে বাগ সংশোধন বা ত্রুটি দূর করা
+            হয়? <br />
+            Which type of maintenance involves fixing bugs discovered after
+            release?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Adaptive Maintenance</div>
+            <div class="option">(C) Perfective Maintenance</div>
+            <div class="option">(B) Corrective Maintenance</div>
+            <div class="option">(D) Preventive Maintenance</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(44)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-44">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            45. নতুন অপারেটিং সিস্টেম বা পরিবেশের সাথে খাপ খাইয়ে নেওয়ার জন্য যে
+            রক্ষণাবেক্ষণ করা হয়, তাকে কী বলে? <br />
+            Maintenance performed to adapt the software to a new operating
+            environment is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Corrective Maintenance</div>
+            <div class="option">(C) Perfective Maintenance</div>
+            <div class="option">(B) Adaptive Maintenance</div>
+            <div class="option">(D) Preventive Maintenance</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(45)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-45">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            46. সফটওয়্যারের মান ও কর্মক্ষমতা বৃদ্ধির লক্ষ্যে কোড রি-রাইট বা
+            রিফ্যাক্টরিং করাকে কোন মেইনটেন্যান্স বলে? <br />
+            Modifying software to improve performance or maintainability without
+            changing its functions is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Preventive Maintenance</div>
+            <div class="option">(C) Corrective Maintenance</div>
+            <div class="option">(B) Perfective Maintenance</div>
+            <div class="option">(D) Adaptive Maintenance</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(46)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-46">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            47. সফটওয়্যার ইঞ্জিনিয়ারিংয়ে "Mythical Man-Month" ধারণার মূল
+            প্রবক্তা কে? <br />
+            Who is the author of the famous software engineering book "The
+            Mythical Man-Month"?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Alan Turing</div>
+            <div class="option">(C) Barry Boehm</div>
+            <div class="option">(B) Fred Brooks</div>
+            <div class="option">(D) Martin Fowler</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(47)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-47">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            48. Brooks' Law অনুযায়ী, "একটি বিলম্বিত সফটওয়্যার প্রজেক্টে নতুন
+            কর্মী যোগ করলে..." <br />
+            According to Brooks' Law, adding manpower to a late software
+            project:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Makes it finish faster</div>
+            <div class="option">(C) Reduces project cost</div>
+            <div class="option">(B) Makes it even later</div>
+            <div class="option">(D) Increases software quality</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(48)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-48">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            49. নিচের কোনটি ভ্যালিডেশন (Validation) প্রক্রিয়ার সাথে সম্পর্কিত?
+            <br />
+            Which question represents the process of "Validation"? <br />
+            তৈরি করছি?)
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Are we building the product right?</div>
+            <div class="option">(C) Are we coding efficiently?</div>
+            <div class="option">(B) Are we building the right product?</div>
+            <div class="option">(D) Is the system documented properly?</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(49)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-49">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            50. নিচের কোনটি ভেরিফিকেশন (Verification) প্রক্রিয়ার সাথে সম্পর্কিত?
+            <br />
+            Which question represents the process of "Verification"? <br />
+            সঠিকভাবে তৈরি করছি?)
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Are we building the product right?</div>
+            <div class="option">(C) Did the customer approve the design?</div>
+            <div class="option">(B) Are we building the right product?</div>
+            <div class="option">(D) Is the market ready for the product?</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(50)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-50">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            51. সফটওয়্যার রিকোয়ারমেন্ট গ্যাদারিংয়ের প্রধান উৎস কোনটি? <br />
+            What is the primary source of software requirements gathering?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) System Developers</div>
+            <div class="option">(C) Hardware Engineers</div>
+            <div class="option">
+              (B) Customers and End-users (গ্রাহক ও ব্যবহারকারী)
+            </div>
+            <div class="option">(D) Database Administrators</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(51)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-51">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            52. সফটওয়্যার ইঞ্জিনিয়ারিংয়ে CASE-এর পূর্ণরূপ কী? <br />
+            What does CASE stand for in Software Engineering?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Computer Aided Software Engineering</div>
+            <div class="option">(C) Control and Software Environment</div>
+
+            <div class="option">(B) Common Application System Engine</div>
+            <div class="option">
+              (D) Computerized Architecture and System Engineering
+            </div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(52)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-52">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            53. দুটি ভিন্ন মডিউলের মধ্যে ডেটা পাস করার মাধ্যমে যে কাপলিং তৈরি
+            হয়, তাকে কী বলে? <br />
+            The coupling that occurs when data are passed between modules is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Content Coupling</div>
+            <div class="option">(C) Data Coupling</div>
+            <div class="option">(B) Control Coupling</div>
+            <div class="option">(D) Stamp Coupling</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(53)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-53">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            54. সবচেয়ে ক্ষতিকর বা টাইট কাপলিং (Worst/Tight Coupling) কোনটি?
+            <br />
+            Which is the worst/tightest form of coupling?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Data Coupling</div>
+            <div class="option">(C) Common Coupling</div>
+            <div class="option">(B) Content Coupling</div>
+            <div class="option">(D) Control Coupling</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(54)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-54">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            55. সবচেয়ে ভালো বা কাঙ্ক্ষিত কোহিশন (Best/Most Desirable Cohesion)
+            কোনটি? <br />
+            Which is the best and most desirable type of cohesion?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Coincidental Cohesion</div>
+            <div class="option">(C) Logical Cohesion</div>
+            <div class="option">(B) Functional Cohesion</div>
+            <div class="option">(D) Temporal Cohesion</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(55)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-55">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            56. অবজেক্ট ওরিয়েন্টেড ডিজাইনে 'Component-Oriented' আর্কিটেকচারের
+            মূল লক্ষ্য কী? <br />
+            What is the main objective of Component-Oriented architecture?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Increase code complexity</div>
+            <div class="option">(C) Removing database linkages</div>
+            <div class="option">
+              (B) High degree of reusability of independent modules
+            </div>
+            <div class="option">(D) Relying on low-level instructions</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(56)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-56">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            57. সফটওয়্যার ডিজাইনের ক্ষেত্রে 'DFD' এর পূর্ণরূপ কী? <br />
+            What does 'DFD' stand for in software design?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Data Flow Diagram</div>
+            <div class="option">(C) Design Flow Documentation</div>
+
+            <div class="option">(B) Database Functional Design</div>
+            <div class="option">(D) Direct File Delivery</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(57)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-57">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            58. DFD-তে প্রক্রিয়া বা প্রসেস (Process) বোঝাতে কোন জ্যামিতিক
+            আকৃতিটি ব্যবহৃত হয়? <br />
+            Which shape is used to represent a Process in DFD?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Rectangle</div>
+            <div class="option">(C) Triangle</div>
+            <div class="option">(B) Circle / Oval</div>
+            <div class="option">(D) Diamond</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(58)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-58">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            59. সোর্স কোডের প্রতিটি লাইন বা স্টেটমেন্ট অন্তত একবার রান করানোর
+            টেস্টিং পদ্ধতিকে কী বলে? <br />
+            A testing method where every statement in the source code is
+            executed at least once:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Branch Coverage</div>
+            <div class="option">(C) Path Coverage</div>
+            <div class="option">(B) Statement Coverage</div>
+            <div class="option">(D) Boundary Value Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(59)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-59">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            60. সফটওয়্যার কোডিং বা প্রোগ্রামিং ল্যাঙ্গুয়েজ নির্বাচনের ক্ষেত্রে
+            প্রধান বিবেচ্য বিষয় কোনটি? <br />
+            What is the primary factor in selecting a programming language for a
+            software project? <br />
+            expertise
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Popularity of the language only</div>
+            <div class="option">(C) Price of compiler only</div>
+            <div class="option">
+              (B) Suitability for domain, performance requirements, and team
+            </div>
+            <div class="option">(D) Age of the language</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(60)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-60">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            61. নিচের কোনটি ডায়নামিক প্রোগ্রামিং ল্যাঙ্গুয়েজের উদাহরণ যা
+            সফটওয়্যারের র্যাপিড প্রোটোটাইপিংয়ে ব্যবহৃত হয়? <br />
+            Which of the following is a dynamic programming language commonly
+            used for rapid prototyping?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Assembly Language</div>
+            <div class="option">(C) COBOL</div>
+            <div class="option">(B) Python</div>
+            <div class="option">(D) Fortran</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(61)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-61">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            62. 'Generality' বা সাধারণীকরণ নীতি সফটওয়্যারে কীভাবে সাহায্য করে?
+            <br />
+            How does the principle of 'Generality' help in software development?
+            <br />
+            problems
+          </div>
+          <div class="options-container">
+            <div class="option">
+              (A) By making a module solve only one specific case
+            </div>
+            <div class="option">(C) By reducing the size of code to zero</div>
+            <div class="option">
+              (B) By designing a module to solve a broader range of similar
+            </div>
+            <div class="option">(D) By avoiding object-oriented paradigms</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(62)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-62">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            63. কোনো ডেটা আইটেম বা ইনপুট রেঞ্জের একদম শেষ সীমানার মানগুলো (Edge
+            cases) নিয়ে যে টেস্টিং করা হয় তাকে কী <br />
+            বলে? <br />
+            Testing techniques based on edge values of input ranges are called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Equivalence Partitioning</div>
+            <div class="option">(C) Stress Testing</div>
+            <div class="option">(B) Boundary Value Analysis</div>
+            <div class="option">(D) Monkey Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(63)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-63">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            64. কোডিং সম্পন্ন হওয়ার পর সব মডিউল একত্রিত করে যখন ইন্টারেকশন চেক
+            করা হয়, তখন তাকে কী টেস্ট বলে? <br />
+            Testing combined parts of an application to determine if they
+            function together correctly is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Unit Testing</div>
+            <div class="option">(C) System Testing</div>
+            <div class="option">(B) Integration Testing</div>
+            <div class="option">(D) Acceptance Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(64)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-64">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            65. এন্ড-ইউজার (End-user) দ্বারা একদম শেষ ধাপে সফটওয়্যারটি গ্রহণের
+            জন্য যে টেস্টিং করা হয়, তাকে কী বলে? <br />
+            The final testing phase performed by end-users before accepting the
+            software is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Integration Testing</div>
+            <div class="option">(B) Alpha Testing</div>
+            <div class="option">(C) Acceptance Testing</div>
+            <div class="option">(D) Regression Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(65)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-65">Correct Answer: C</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            66. সফটওয়্যারের কোনো পরিবর্তনের পর পূর্বের ফাংশনগুলো ঠিকঠাক কাজ করছে
+            কিনা তা নিশ্চিত করতে কোন টেস্ট <br />
+            করা হয়? <br />
+            Testing performed to ensure that new code changes have not adversely
+            affected existing features is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Unit Testing</div>
+            <div class="option">(C) Stress Testing</div>
+            <div class="option">(B) Regression Testing</div>
+            <div class="option">(D) Smoke Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(66)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-66">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            67. সফটওয়্যার ডেভেলপমেন্ট টিমের অভ্যন্তরীণ ল্যাবে সম্ভাব্য ইউজার বা
+            স্বাধীন টেস্টার দ্বারা নিয়ন্ত্রিত পরিবেশে যে টেস্ট <br />
+            করা হয়: <br />
+            Testing performed by potential users within the developer's
+            organization in a controlled environment is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Alpha Testing</div>
+            <div class="option">(C) Unit Testing</div>
+            <div class="option">(B) Beta Testing</div>
+            <div class="option">(D) Stress Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(67)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-67">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            68. প্রকৃত কাজের পরিবেশে রিয়েল ব্যবহারকারীদের দ্বারা যে টেস্টিং করা
+            হয়, তাকে কী বলে? <br />
+            Testing conducted by real users in their own environments is called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Alpha Testing</div>
+            <div class="option">(C) White-box Testing</div>
+            <div class="option">(B) Beta Testing</div>
+            <div class="option">(D) Static Analysis</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(68)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-68">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            69. সফটওয়্যারের পারফরমেন্সের সর্বোচ্চ সীমা বা চরম প্রতিকূলতা
+            (Extreme Load) যাচাইয়ের জন্য কোন টেস্ট করা হয়? <br />
+            Testing software behavior under extreme/beyond normal operational
+            capacity is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Functional Testing</div>
+            <div class="option">(C) Unit Testing</div>
+            <div class="option">(B) Stress Testing</div>
+            <div class="option">(D) Boundary Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(69)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-69">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            70. সফটওয়্যার কোড রান না করে কেবল কোড রিভিউ, ওয়াক-থ্রু বা
+            ইন্সপেকশনের মাধ্যমে যে ভেরিফিকেশন করা হয়: <br />
+            Evaluating code without executing the program is known as:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Dynamic Testing</div>
+            <div class="option">(C) Black Box Testing</div>
+            <div class="option">(B) Static Testing / Static Analysis</div>
+            <div class="option">(D) System Testing</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(70)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-70">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            71. ইউজার ইন্টারফেস (UI) ডিজাইনের ক্ষেত্রে 'Heuristic Evaluation'
+            বলতে কী বোঝায়? <br />
+            What is 'Heuristic Evaluation' in UI/UX design? <br />
+            usability principles
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Code debugging by compiler</div>
+            <div class="option">(C) Database query optimization</div>
+            <div class="option">
+              (B) Usability inspection of user interface against established
+            </div>
+            <div class="option">(D) Automated UI testing tool execution</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(71)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-71">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            72. সফটওয়্যার আর্কিটেকচারে '3-Tier Architecture'-এর তিনটি লেয়ার বা
+            স্তরের সঠিক বিন্যাস কোনটি? <br />
+            What are the three layers in a standard 3-Tier Architecture? <br />
+            বিজনেস লজিক, ডেটা)
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Hardware, Software, Network</div>
+            <div class="option">(C) Input, Processing, Output</div>
+            <div class="option">
+              (B) Presentation, Business Logic, Data Storage
+            </div>
+            <div class="option">(D) Client, Server, Internet</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(72)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-72">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            73. সফটওয়্যার ইঞ্জিনিয়ারিংয়ে "S/W Reliability" বলতে কী বোঝায়? <br />
+            What does "S/W Reliability" represent? <br />
+            environment for a specified time
+          </div>
+          <div class="options-container">
+            <div class="option">
+              (A) The probability of failure-free operation in a specified
+            </div>
+            <div class="option">
+              (C) The size of the code in secondary storage
+            </div>
+            <div class="option">(B) The speed of the execution</div>
+            <div class="option">
+              (D) Number of team members working in the project
+            </div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(73)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-73">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            74. Gantt Chart প্রজেক্ট ম্যানেজমেন্টে কী কাজে ব্যবহৃত হয়? <br />
+            What is a Gantt Chart used for in Project Management?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) For writing software codes</div>
+            <div class="option">(C) For database relationship design</div>
+            <div class="option">
+              (B) For showing project schedule and task durations over time
+            </div>
+            <div class="option">(D) For testing user interfaces</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(74)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-74">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            75. সফটওয়্যার প্রজেক্টের কোন পথে বিলম্ব হলে পুরো প্রজেক্টের সময়সীমা
+            পিছিয়ে যায় (Critical Path)? <br />
+            In project management, the sequence of stages determining the
+            minimum time needed for an operation is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Slack Path</div>
+            <div class="option">(C) Fast Path</div>
+            <div class="option">(B) Critical Path</div>
+            <div class="option">(D) Primary Path</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(75)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-75">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            76. ISO 9126 সফটওয়্যার কোয়ালিটি মডেলে প্রধান কয়টি কোয়ালিটি
+            ক্যারেক্টারিস্টিকস চিহ্নিত করা হয়েছে? <br />
+            How many main quality characteristics are defined in ISO 9126
+            standard?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) 4</div>
+            <div class="option">(C) 8</div>
+            <div class="option">(B) 6</div>
+            <div class="option">(D) 10</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(76)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-76">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            77. প্রজেক্টের খরচ ও আকার নির্ধারণে এফোর্ট পরিমাপের মৌলিক একক কোনটি?
+            <br />
+            What is the primary unit of effort measurement in software project
+            estimation?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Lines per Hour</div>
+            <div class="option">(C) Files per Day</div>
+            <div class="option">(B) Person-Months</div>
+            <div class="option">(D) Dollars per Line</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(77)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-77">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            78. এজাইল স্ক্রাম (Scrum) ফ্রেমওয়ার্কে প্রতিদিনের ১৫ মিনিটের
+            সংক্ষেপিত মিটিংকে কী বলে? <br />
+            In Scrum, what is the daily 15-minute sync meeting called?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Sprint Retrospective</div>
+            <div class="option">(C) Sprint Planning</div>
+            <div class="option">(B) Daily Standup</div>
+            <div class="option">(D) Review Meeting</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(78)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-78">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            79. স্ক্রামে ১ থেকে ৪ সপ্তাহের নির্দিষ্ট মেয়াদের ওয়ার্ক সাইকেলকে
+            (Work Cycle) কী বলে? <br />
+            In Scrum, a time-boxed development cycle of 1 to 4 weeks is called:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Increment</div>
+            <div class="option">(C) Backlog</div>
+            <div class="option">(B) Sprint</div>
+            <div class="option">(D) Epic</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(79)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-79">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            80. নিচের কোন ডায়াগ্রামটি UML-এর বিহেভিওরাল (Behavioral) বা আচরণগত
+            ডায়াগ্রামের অন্তর্গত? <br />
+            Which of the following UML diagrams falls under Behavioral diagrams?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Class Diagram</div>
+            <div class="option">(C) Component Diagram</div>
+            <div class="option">(B) State Machine Diagram</div>
+            <div class="option">(D) Object Diagram</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(80)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-80">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            81. অবজেক্ট-ওরিয়েন্টেড সফটওয়্যার ডেভেলপমেন্টে "Encapsulation" এর
+            প্রধান কাজ কী? <br />
+            What is the primary purpose of Encapsulation?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Sharing variables globally</div>
+            <div class="option">(C) Writing multi-threaded operations</div>
+            <div class="option">
+              (B) Binding data and functions together into a single unit and
+            </div>
+            <div class="option">(D) Creating abstract interfaces</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(81)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-81">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            82. "Software metrics" বলতে কী বোঝায়? <br />
+            What does "Software metrics" refer to? <br />
+            restricting access <br />
+            projects
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Programming language versions</div>
+            <div class="option">
+              (C) Hardware dimensions for server installation
+            </div>
+
+            <div class="option">
+              (B) Quantitative measures of software products, processes, or
+              projects
+            </div>
+            <div class="option">(D) Development team's salaries</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(82)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-82">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            83. সফটওয়্যার ইঞ্জিনিয়ারিংয়ের ক্ষেত্রে 'Verification' মূলত কোন কাজটি
+            সম্পন্ন করে? <br />
+            Verification in software engineering primarily checks: <br />
+            অনুযায়ী কাজ হয়েছে কিনা)
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Conformance to specifications</div>
+            <div class="option">(C) Compilation error fixing</div>
+            <div class="option">(B) End-user client satisfaction directly</div>
+            <div class="option">(D) Server uptime and speed</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(83)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-83">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            84. ক্লিনিক্যাল বা অত্যন্ত সংবেদনশীল সিস্টেমে ভুল বা এরর ঘটলে ব্যাপক
+            ক্ষতি হতে পারে, এই ধরনের সিস্টেমকে কী বলে? <br />
+            Systems where software failure can lead to injury, death, or severe
+            damage are:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Commercial Systems</div>
+            <div class="option">(C) Open Source Systems</div>
+            <div class="option">
+              (B) Safety-Critical Systems (সেফটি-ক্রিটিক্যাল সিস্টেম)
+            </div>
+            <div class="option">(D) Dynamic Web Apps</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(84)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-84">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            85. প্রজেক্ট ম্যানেজমেন্টের ক্ষেত্রে 'PERT" এর পূর্ণরূপ কী? <br />
+            What is the full form of PERT?
+          </div>
+          <div class="options-container">
+            <div class="option">
+              (A) Project Evaluation and Review Technique
+            </div>
+            <div class="option">(C) Process Efficiency Recovery Trial</div>
+
+            <div class="option">(B) Program Estimating Resource Tool</div>
+            <div class="option">(D) Product Engineering and Risk Tracking</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(85)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-85">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            86. অবজেক্ট ওরিয়েন্টেড ডিজাইন প্যাটার্ন কে জনপ্রিয় করেন (Gang of
+            Four)? <br />
+            Who popularized design patterns in software engineering under the
+            name "Gang of Four" (GoF)?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Brooks, Boehm, Martin, Fowler</div>
+            <div class="option">(C) Turing, Dijkstra, Knuth, Lovelace</div>
+            <div class="option">(B) Gamma, Helm, Johnson, Vlissides</div>
+            <div class="option">(D) Gates, Jobs, Wozniak, Allen</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(86)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-86">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            87. নিচের কোনটি একটি প্রজেক্ট এস্টিমেশন মেথড বা টেকনিক? <br />
+            Which of the following is a Project Estimation technique?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) White-box testing</div>
+            <div class="option">(C) Static analysis</div>
+            <div class="option">(B) Delphi Method / Expert Judgment</div>
+            <div class="option">(D) Equivalence partitioning</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(87)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-87">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            88. ডাটাবেজ টেবিলগুলোর সম্পর্ক ও গঠন দেখানোর জন্য কোন মডেল ব্যবহৃত
+            হয়? <br />
+            Which model diagram shows the logical structure of databases?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Use Case Diagram</div>
+            <div class="option">(C) Flowchart</div>
+            <div class="option">(B) Entity-Relationship Diagram</div>
+            <div class="option">(D) DFD</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(88)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-88">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            89. সফটওয়্যার ইঞ্জিনিয়ারিংয়ে 'CMMI' এর পূর্ণরূপ কী? <br />
+            What does CMMI stand for?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Capability Maturity Model Integration</div>
+            <div class="option">
+              (C) Computer Maturity Metrics International
+            </div>
+            <div class="option">(B) Common Method Management Initiative</div>
+            <div class="option">(D) Control Model and Module Integration</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(89)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-89">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            90. CMMI মডেলে মোট কয়টি ম্যাচিউরিটি লেভেল (Maturity Levels) থাকে?
+            <br />
+            How many maturity levels are defined in the CMMI model?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) 3</div>
+            <div class="option">(C) 7</div>
+            <div class="option">(B) 5</div>
+            <div class="option">(D) 10</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(90)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-90">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            91. নিচের কোনটি ডেসক্রিপটিভ রিকোয়ারমেন্ট স্পেসিফিকেশনের সবচেয়ে ছোট
+            ল্যাঙ্গুয়েজ? (Which is the smallest language for descriptive
+            requirement specification?) <br />
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Java</div>
+            <div class="option">(C) Python</div>
+            <div class="option">(B) Z Notation</div>
+            <div class="option">(D) C++</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(91)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-91">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            92. সফটওয়্যার ডিজাইনের ক্ষেত্রে 'Structure Chart' কী নির্দেশ করে?
+            <br />
+            What does a Structure Chart depict in software design? <br />
+            relationship
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Database index layout</div>
+            <div class="option">
+              (C) Complete flow of physical hardware setup
+            </div>
+            <div class="option">
+              (B) Hierarchical organization of modules and their control
+            </div>
+            <div class="option">(D) Network bandwidth optimization steps</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(92)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-92">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            93. সফটওয়্যার ইঞ্জিনিয়ারিংয়ে "Feasibility Study" কখন করা হয়? <br />
+            When is the Feasibility Study conducted in SDLC? <br />
+            প্রয়োজনীয়তা বিশ্লেষণের সময়)
+          </div>
+          <div class="options-container">
+            <div class="option">(A) After testing the system</div>
+            <div class="option">(C) During coding phase</div>
+            <div class="option">(B) Before or during Requirement Analysis</div>
+            <div class="option">(D) After releasing the product</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(93)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-93">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            94. সিস্টেম আর্কিটেকচারে "Coupling" এবং "Cohesion" এর সবচেয়ে খারাপ
+            সমন্বয় কোনটি? <br />
+            Which combination of coupling and cohesion is highly undesirable?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Low coupling, high cohesion</div>
+            <div class="option">(C) Medium coupling, medium cohesion</div>
+            <div class="option">(B) High coupling, low cohesion</div>
+            <div class="option">(D) No coupling, high cohesion</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(94)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-94">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            95. সফটওয়্যার ইঞ্জিনিয়ারিংয়ে রিফ্যাক্টরিং (Refactoring) করার প্রধান
+            উদ্দেশ্য কী? <br />
+            What is the primary purpose of Code Refactoring? <br />
+            external behavior
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Adding new functionalities to software</div>
+            <div class="option">(C) Finding compiled errors automatically</div>
+            <div class="option">
+              (B) Improving the internal structure of code without altering its
+            </div>
+            <div class="option">(D) Decreasing the physical disk size</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(95)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-95">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            96. কোড বা ডিজাইনের পুনর্ব্যবহারযোগ্যতা সবচেয়ে ভালো কাজ করে কোন
+            ওরিয়েন্টেড মডেলে? <br />
+            Where does code and design reuse work best? <br />
+            ও অবজেক্ট ওরিয়েন্টেড)
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Monolithic Structured</div>
+            <div class="option">
+              (C) Functional pure coding without variables
+            </div>
+            <div class="option">
+              (B) Component-Oriented & Object-Oriented Models
+            </div>
+            <div class="option">(D) Linear procedural models</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(96)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-96">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            97. নিচের কোনটি UI ডিজাইনের প্রধান 'Usability' নীতি হিসেবে পরিচিত?
+            <br />
+            Which of the following is a key Usability principle in UI Design?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Aesthetic and minimalist design</div>
+            <div class="option">(C) User control and freedom</div>
+            <div class="option">(B) Consistency and standards</div>
+            <div class="option">(D) All of the above</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(97)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-97">Correct Answer: D</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            98. সফটওয়্যার প্রজেক্টের সম্ভাব্য আর্থিক, সময় ও রিসোর্স সংক্রান্ত
+            অনিশ্চয়তাকে কী বলে? <br />
+            Uncertain events or conditions that could negatively impact project
+            objectives are:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Quality metrics</div>
+            <div class="option">(C) Milestones</div>
+            <div class="option">(B) Project Risks</div>
+            <div class="option">(D) Specifications</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(98)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-98">Correct Answer: B</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            99. সফটওয়্যার ডেভেলপমেন্টে "DevOps" ধারণাটি মূলত কোন দুটি বিভাগের
+            কাজকে ত্বরান্বিত ও সংযুক্ত করে? <br />
+            Which two domains are bridged by DevOps?
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Development and Operations</div>
+            <div class="option">(B) Design and Requirement gathering</div>
+            <div class="option">(C) Marketing and Sales</div>
+            <div class="option">(D) Database and UI design</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(99)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-99">Correct Answer: A</div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">
+            100. একটি সফটওয়্যারের পুরো কার্যকারিতা সফলভাবে রিলিজ করার পর
+            ক্লায়েন্টকে বুঝিয়ে দেওয়ার প্রক্রিয়াকে কী বলে? <br />
+            The final delivery and deployment phase of a fully tested software
+            to the production system is:
+          </div>
+          <div class="options-container">
+            <div class="option">(A) Requirement Elicitation</div>
+            <div class="option">(C) Dynamic Analysis</div>
+            <div class="option">(B) System Deployment</div>
+            <div class="option">(D) Architectural design</div>
+          </div>
+          <div class="action-area">
+            <button class="btn-show" onclick="toggleAnswer(100)">
+              Show Answer
+            </button>
+            <div class="answer-reveal" id="ans-100">Correct Answer: B</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="master-answer-section">
+        <button class="btn-master" onclick="toggleMasterAnswers()">
+          Show All Answers (সব উত্তর একসাথে দেখুন)
+        </button>
+        <div class="master-answers-table" id="master-answers-box">
+          <h3>NTRCA Software Engineering MCQ Answer Key (উত্তরপত্র)</h3>
+          <div class="answer-grid">
+            <div class="answer-item">1: <span>B</span></div>
+            <div class="answer-item">2: <span>C</span></div>
+            <div class="answer-item">3: <span>A</span></div>
+            <div class="answer-item">4: <span>C</span></div>
+            <div class="answer-item">5: <span>B</span></div>
+            <div class="answer-item">6: <span>C</span></div>
+            <div class="answer-item">7: <span>A</span></div>
+            <div class="answer-item">8: <span>B</span></div>
+            <div class="answer-item">9: <span>C</span></div>
+            <div class="answer-item">10: <span>B</span></div>
+            <div class="answer-item">11: <span>B</span></div>
+            <div class="answer-item">12: <span>C</span></div>
+            <div class="answer-item">13: <span>C</span></div>
+            <div class="answer-item">14: <span>B</span></div>
+            <div class="answer-item">15: <span>B</span></div>
+            <div class="answer-item">16: <span>C</span></div>
+            <div class="answer-item">17: <span>B</span></div>
+            <div class="answer-item">18: <span>A</span></div>
+            <div class="answer-item">19: <span>B</span></div>
+            <div class="answer-item">20: <span>B</span></div>
+            <div class="answer-item">21: <span>A</span></div>
+            <div class="answer-item">22: <span>C</span></div>
+            <div class="answer-item">23: <span>B</span></div>
+            <div class="answer-item">24: <span>B</span></div>
+            <div class="answer-item">25: <span>B</span></div>
+            <div class="answer-item">26: <span>B</span></div>
+            <div class="answer-item">27: <span>C</span></div>
+            <div class="answer-item">28: <span>A</span></div>
+            <div class="answer-item">29: <span>A</span></div>
+            <div class="answer-item">30: <span>C</span></div>
+            <div class="answer-item">31: <span>B</span></div>
+            <div class="answer-item">32: <span>B</span></div>
+            <div class="answer-item">33: <span>B</span></div>
+            <div class="answer-item">34: <span>B</span></div>
+            <div class="answer-item">35: <span>A</span></div>
+            <div class="answer-item">36: <span>B</span></div>
+            <div class="answer-item">37: <span>B</span></div>
+            <div class="answer-item">38: <span>B</span></div>
+            <div class="answer-item">39: <span>B</span></div>
+            <div class="answer-item">40: <span>B</span></div>
+            <div class="answer-item">41: <span>B</span></div>
+            <div class="answer-item">42: <span>C</span></div>
+            <div class="answer-item">43: <span>A</span></div>
+            <div class="answer-item">44: <span>B</span></div>
+            <div class="answer-item">45: <span>B</span></div>
+            <div class="answer-item">46: <span>B</span></div>
+            <div class="answer-item">47: <span>B</span></div>
+            <div class="answer-item">48: <span>B</span></div>
+            <div class="answer-item">49: <span>B</span></div>
+            <div class="answer-item">50: <span>A</span></div>
+            <div class="answer-item">51: <span>B</span></div>
+            <div class="answer-item">52: <span>A</span></div>
+            <div class="answer-item">53: <span>C</span></div>
+            <div class="answer-item">54: <span>B</span></div>
+            <div class="answer-item">55: <span>B</span></div>
+            <div class="answer-item">56: <span>B</span></div>
+            <div class="answer-item">57: <span>A</span></div>
+            <div class="answer-item">58: <span>B</span></div>
+            <div class="answer-item">59: <span>B</span></div>
+            <div class="answer-item">60: <span>B</span></div>
+            <div class="answer-item">61: <span>B</span></div>
+            <div class="answer-item">62: <span>B</span></div>
+            <div class="answer-item">63: <span>B</span></div>
+            <div class="answer-item">64: <span>B</span></div>
+            <div class="answer-item">65: <span>C</span></div>
+            <div class="answer-item">66: <span>B</span></div>
+            <div class="answer-item">67: <span>A</span></div>
+            <div class="answer-item">68: <span>B</span></div>
+            <div class="answer-item">69: <span>B</span></div>
+            <div class="answer-item">70: <span>B</span></div>
+            <div class="answer-item">71: <span>B</span></div>
+            <div class="answer-item">72: <span>B</span></div>
+            <div class="answer-item">73: <span>A</span></div>
+            <div class="answer-item">74: <span>B</span></div>
+            <div class="answer-item">75: <span>B</span></div>
+            <div class="answer-item">76: <span>B</span></div>
+            <div class="answer-item">77: <span>B</span></div>
+            <div class="answer-item">78: <span>B</span></div>
+            <div class="answer-item">79: <span>B</span></div>
+            <div class="answer-item">80: <span>B</span></div>
+            <div class="answer-item">81: <span>B</span></div>
+            <div class="answer-item">82: <span>B</span></div>
+            <div class="answer-item">83: <span>A</span></div>
+            <div class="answer-item">84: <span>B</span></div>
+            <div class="answer-item">85: <span>A</span></div>
+            <div class="answer-item">86: <span>B</span></div>
+            <div class="answer-item">87: <span>B</span></div>
+            <div class="answer-item">88: <span>B</span></div>
+            <div class="answer-item">89: <span>A</span></div>
+            <div class="answer-item">90: <span>B</span></div>
+            <div class="answer-item">91: <span>B</span></div>
+            <div class="answer-item">92: <span>B</span></div>
+            <div class="answer-item">93: <span>B</span></div>
+            <div class="answer-item">94: <span>B</span></div>
+            <div class="answer-item">95: <span>B</span></div>
+            <div class="answer-item">96: <span>B</span></div>
+            <div class="answer-item">97: <span>D</span></div>
+            <div class="answer-item">98: <span>B</span></div>
+            <div class="answer-item">99: <span>A</span></div>
+            <div class="answer-item">100: <span>B</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleAnswer(qNum) {
+        var ansDiv = document.getElementById("ans-" + qNum);
+        var btn = ansDiv.previousElementSibling;
+        if (ansDiv.classList.contains("show")) {
+          ansDiv.classList.remove("show");
+          btn.textContent = "Show Answer";
+        } else {
+          ansDiv.classList.add("show");
+          btn.textContent = "Hide Answer";
+        }
+      }
+
+      function toggleMasterAnswers() {
+        var masterBox = document.getElementById("master-answers-box");
+        var btn = document.querySelector(".btn-master");
+        if (masterBox.classList.contains("show")) {
+          masterBox.classList.remove("show");
+          btn.textContent = "Show All Answers (সব উত্তর একসাথে দেখুন)";
+        } else {
+          masterBox.classList.add("show");
+          btn.textContent = "Hide All Answers (উত্তরপত্র লুকান)";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Part 5 - Data Structure & Algorithm</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            background-color: #e8f5e9;
+            padding: 10px 15px;
+            border-left: 5px solid #2e7d32;
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #2e7d32;
+        }
+        .question-card {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .option {
+            background: #fdfdfd;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .option:hover {
+            background: #f5f5f5;
+        }
+        .btn-ans {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .btn-ans:hover {
+            background-color: #1b5e20;
+        }
+        .answer-block {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function toggleAnswer(id) {
+            var ans = document.getElementById('ans-' + id);
+            if (ans.style.display === 'block') {
+                ans.style.display = 'none';
+            } else {
+                ans.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>ICT Lecturer MCQ - Part 5</h1>
+        
+        <div class="section-title">ডেটা স্ট্রাকচার এবং অ্যালগরিদম (Data Structure & Algorithm)</div>
+
+        <div class="question-card">
+            <div class="question-text">১. নিচের কোনটি লিনিয়ার ডেটা স্ট্রাকচার (Linear Data Structure)?</div>
+            <div class="options">
+                <div class="option">A. Tree</div>
+            <div class="option">B. Graph</div>
+            <div class="option">C. Queue</div>
+            <div class="option">D. Binary Tree</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(1)">উত্তর দেখুন</button>
+            <div id="ans-1" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২. নিচের কোনটি নন-লিনিয়ার ডেটা স্ট্রাকচার (Non-Linear Data Structure)?</div>
+            <div class="options">
+                <div class="option">A. Array</div>
+            <div class="option">B. Stack</div>
+            <div class="option">C. Linked List</div>
+            <div class="option">D. Graph</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(2)">উত্তর দেখুন</button>
+            <div id="ans-2" class="answer-block">সঠিক উত্তর: D</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩. স্ট্যাক (Stack) কোন নীতি বা মেকানিজম মেনে কাজ করে?</div>
+            <div class="options">
+                <div class="option">A. FIFO</div>
+            <div class="option">B. LIFO</div>
+            <div class="option">C. LILO</div>
+            <div class="option">D. কোনোটাই নয়</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(3)">উত্তর দেখুন</button>
+            <div id="ans-3" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪. কিউ (Queue) কোন নীতি বা মেকানিজম মেনে কাজ করে?</div>
+            <div class="options">
+                <div class="option">A. LIFO</div>
+            <div class="option">B. FIFO</div>
+            <div class="option">C. FILO</div>
+            <div class="option">D. Random</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(4)">উত্তর দেখুন</button>
+            <div id="ans-4" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৫. স্ট্যাকে নতুন কোনো উপাদান বা ডেটা যুক্ত করাকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Pop</div>
+            <div class="option">B. Push</div>
+            <div class="option">C. Insert</div>
+            <div class="option">D. Enqueue</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(5)">উত্তর দেখুন</button>
+            <div id="ans-5" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৬. স্ট্যাক থেকে কোনো উপাদান বা ডেটা অপসারণ করাকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Push</div>
+            <div class="option">B. Dequeue</div>
+            <div class="option">C. Pop</div>
+            <div class="option">D. Delete</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(6)">উত্তর দেখুন</button>
+            <div id="ans-6" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৭. একটি পূর্ণ (Full) স্ট্যাকে নতুন ডেটা পুশ করার চেষ্টা করলে কোন কন্ডিশন ঘটে?</div>
+            <div class="options">
+                <div class="option">A. Underflow</div>
+            <div class="option">B. Overflow</div>
+            <div class="option">C. Garbage Collection</div>
+            <div class="option">D. Deadlock</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(7)">উত্তর দেখুন</button>
+            <div id="ans-7" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৮. একটি খালি (Empty) স্ট্যাক থেকে ডেটা পপ করার চেষ্টা করলে কোন কন্ডিশন ঘটে?</div>
+            <div class="options">
+                <div class="option">A. Overflow</div>
+            <div class="option">B. Underflow</div>
+            <div class="option">C. Null Pointer Exception</div>
+            <div class="option">D. Segmentation Fault</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(8)">উত্তর দেখুন</button>
+            <div id="ans-8" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৯. কিউ (Queue)-তে নতুন উপাদান যুক্ত করার প্রক্রিয়াকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Push</div>
+            <div class="option">B. Pop</div>
+            <div class="option">C. Enqueue</div>
+            <div class="option">D. Dequeue</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(9)">উত্তর দেখুন</button>
+            <div id="ans-9" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১০. কিউ (Queue) থেকে কোনো উপাদান অপসারণ করার প্রক্রিয়াকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Enqueue</div>
+            <div class="option">B. Dequeue</div>
+            <div class="option">C. Pop</div>
+            <div class="option">D. Remove</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(10)">উত্তর দেখুন</button>
+            <div id="ans-10" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১১. কিউ-এর যে প্রান্ত দিয়ে ডেটা প্রবেশ করানো হয় তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">A. Front</div>
+            <div class="option">B. Rear</div>
+            <div class="option">C. Top</div>
+            <div class="option">D. Bottom</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(11)">উত্তর দেখুন</button>
+            <div id="ans-11" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১২. কিউ-এর যে প্রান্ত দিয়ে ডেটা বের বা ডিলিট করা হয় তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">A. Rear</div>
+            <div class="option">B. Front</div>
+            <div class="option">C. Top</div>
+            <div class="option">D. End</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(12)">উত্তর দেখুন</button>
+            <div id="ans-12" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৩. মেমোরি অপচয় রোধ করতে সাধারণ কিউ-এর পরিবর্তে কোন কিউ ব্যবহার করা সুবিধাজনক?</div>
+            <div class="options">
+                <div class="option">A. Priority Queue</div>
+            <div class="option">B. Circular Queue</div>
+            <div class="option">C. Deque</div>
+            <div class="option">D. Double Ended Queue</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(13)">উত্তর দেখুন</button>
+            <div id="ans-13" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৪. রিকার্সন (Recursion) বা ফাংশন কলের হিসাব রাখতে অভ্যন্তরীণভাবে কোন ডেটা স্ট্রাকচার ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. Queue</div>
+            <div class="option">B. Array</div>
+            <div class="option">C. Stack</div>
+            <div class="option">D. Graph</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(14)">উত্তর দেখুন</button>
+            <div id="ans-14" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৫. লিন্ড লিস্টের (Linked List) প্রতিটি উপাদানকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Element</div>
+            <div class="option">B. Component</div>
+            <div class="option">C. Node (নোড)</div>
+            <div class="option">D. Block</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(15)">উত্তর দেখুন</button>
+            <div id="ans-15" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৬. একটি সিঙ্গলি লিংকড লিস্টের নোডে মূলত কয়টি অংশ থাকে?</div>
+            <div class="options">
+                <div class="option">A. ১টি</div>
+            <div class="option">B. ২টি (Data ও Next pointer)</div>
+            <div class="option">C. ৩টি</div>
+            <div class="option">D. ৪টি</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(16)">উত্তর দেখুন</button>
+            <div id="ans-16" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৭. সিঙ্গলি লিংকড লিস্টের শেষ নোডের পয়েন্টার অংশটি কাকে নির্দেশ করে?</div>
+            <div class="options">
+                <div class="option">A. প্রথম নোডকে</div>
+            <div class="option">B. হেড নোডকে</div>
+            <div class="option">C. NULL কে</div>
+            <div class="option">D. যেকোনো র‍্যান্ডম নোডকে</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(17)">উত্তর দেখুন</button>
+            <div id="ans-17" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৮. ডাবলি লিংকড লিস্টের (Doubly Linked List) একটি নোডে কয়টি পয়েন্টার থাকে?</div>
+            <div class="options">
+                <div class="option">A. ১টি</div>
+            <div class="option">B. ২টি (Previous ও Next)</div>
+            <div class="option">C. ৩টি</div>
+            <div class="option">D. কোনোটিই নয়</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(18)">উত্তর দেখুন</button>
+            <div id="ans-18" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">১৯. যে লিংকড লিস্টের শেষ নোডটি আবার প্রথম নোডকে নির্দেশ করে, তাকে কী বলে?</div>
+            <div class="options">
+                <div class="option">A. Singly Linked List</div>
+            <div class="option">B. Doubly Linked List</div>
+            <div class="option">C. Circular Linked List</div>
+            <div class="option">D. Header Linked List</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(19)">উত্তর দেখুন</button>
+            <div id="ans-19" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২০. লিংকড লিস্টের প্রথম নোডের অ্যাড্রেস বা ঠিকানা কোন ভ্যারিয়েবলে রাখা হয়?</div>
+            <div class="options">
+                <div class="option">A. Tail</div>
+            <div class="option">B. Head</div>
+            <div class="option">C. Top</div>
+            <div class="option">D. Front</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(20)">উত্তর দেখুন</button>
+            <div id="ans-20" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২১. বাইনারি সার্চ (Binary Search) অ্যালগরিদম ব্যবহারের পূর্বশর্ত কী?</div>
+            <div class="options">
+                <div class="option">A. ডেটা অবশ্যই আন-সর্টেড হতে হবে</div>
+            <div class="option">B. ডেটা অবশ্যই সর্টেড (Sorted) বা ক্রমানুসারে থাকতে হবে</div>
+            <div class="option">C. লিংকড লিস্ট ব্যবহার করতে হবে</div>
+            <div class="option">D. মেমোরি সাইজ বড় হতে হবে</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(21)">উত্তর দেখুন</button>
+            <div id="ans-21" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২২. লিনিয়ার সার্চ (Linear Search) এর ক্ষেত্রে সর্বোচ্চ বা ওর্স্ট-কেস (Worst-case) টাইম কমপ্লেক্সিটি কত?</div>
+            <div class="options">
+                <div class="option">A. O(1)</div>
+            <div class="option">B. O(log n)</div>
+            <div class="option">C. O(n)</div>
+            <div class="option">D. O(n log n)</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(22)">উত্তর দেখুন</button>
+            <div id="ans-22" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৩. বাইনারি সার্চ (Binary Search) অ্যালগরিদমের টাইম কমপ্লেক্সিটি কত?</div>
+            <div class="options">
+                <div class="option">A. O(n)</div>
+            <div class="option">B. O(log n)</div>
+            <div class="option">C. O(n^2)</div>
+            <div class="option">D. O(1)</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(23)">উত্তর দেখুন</button>
+            <div id="ans-23" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৪. বাবল সর্ট (Bubble Sort) এর ওর্স্ট-কেস টাইম কমপ্লেক্সিটি কত?</div>
+            <div class="options">
+                <div class="option">A. O(n log n)</div>
+            <div class="option">B. O(n)</div>
+            <div class="option">C. O(n^2)</div>
+            <div class="option">D. O(log n)</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(24)">উত্তর দেখুন</button>
+            <div id="ans-24" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৫. ডিভাইড অ্যান্ড কনকার (Divide and Conquer) নীতির ওপর ভিত্তি করে তৈরি সর্টিং অ্যালগরিদম কোনটি?</div>
+            <div class="options">
+                <div class="option">A. Bubble Sort</div>
+            <div class="option">B. Insertion Sort</div>
+            <div class="option">C. Merge Sort</div>
+            <div class="option">D. Selection Sort</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(25)">উত্তর দেখুন</button>
+            <div id="ans-25" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৬. মার্জ সর্ট (Merge Sort) এর ওর্স্ট-কেস টাইম কমপ্লেক্সিটি কত?</div>
+            <div class="options">
+                <div class="option">A. O(n^2)</div>
+            <div class="option">B. O(n log n)</div>
+            <div class="option">C. O(n)</div>
+            <div class="option">D. O(log n)</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(26)">উত্তর দেখুন</button>
+            <div id="ans-26" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৭. কুইক সর্ট (Quick Sort) এর ওর্স্ট-কেস (Worst-case) টাইম কমপ্লেক্সিটি কত?</div>
+            <div class="options">
+                <div class="option">A. O(n log n)</div>
+            <div class="option">B. O(n)</div>
+            <div class="option">C. O(n^2)</div>
+            <div class="option">D. O(1)</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(27)">উত্তর দেখুন</button>
+            <div id="ans-27" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৮. কুইক সর্টে ডেটা বিভাজনের জন্য ব্যবহৃত নির্দিষ্ট উপাদানটিকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Index</div>
+            <div class="option">B. Key</div>
+            <div class="option">C. Pivot</div>
+            <div class="option">D. Root</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(28)">উত্তর দেখুন</button>
+            <div id="ans-28" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">২৯. একটি বাইনারি ট্রির (Binary Tree) যেকোনো নোডের সর্বোচ্চ কয়টি চাইল্ড (Child) থাকতে পারে?</div>
+            <div class="options">
+                <div class="option">A. ১টি</div>
+            <div class="option">B. ২টি</div>
+            <div class="option">C. ৩টি</div>
+            <div class="option">D. যত খুশি</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(29)">উত্তর দেখুন</button>
+            <div id="ans-29" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩০. ট্রির একদম শীর্ষ বা শুরুর নোডটিকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Leaf Node</div>
+            <div class="option">B. Parent Node</div>
+            <div class="option">C. Root Node (রুট)</div>
+            <div class="option">D. Child Node</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(30)">উত্তর দেখুন</button>
+            <div id="ans-30" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩১. যেসকল নোডের কোনো চাইল্ড বা সন্তান নোড থাকে না, তাদের কী বলে?</div>
+            <div class="options">
+                <div class="option">A. Root Node</div>
+            <div class="option">B. Leaf Node (পাতা)</div>
+            <div class="option">C. Internal Node</div>
+            <div class="option">D. Ancestor</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(31)">উত্তর দেখুন</button>
+            <div id="ans-31" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩২. বাইনারি সার্চ ট্রির (BST) বাম পাশের সাব-ট্রির নোডগুলোর মান রুট নোডের চেয়ে কেমন হয়?</div>
+            <div class="options">
+                <div class="option">A. বড় হয়</div>
+            <div class="option">B. ছোট হয়</div>
+            <div class="option">C. সমান হয়</div>
+            <div class="option">D. ছোট বা সমান হয়</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(32)">উত্তর দেখুন</button>
+            <div id="ans-32" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৩. বাইনারি সার্চ ট্রির (BST) ডান পাশের সাব-ট্রির নোডগুলোর মান রুট নোডের চেয়ে কেমন হয়?</div>
+            <div class="options">
+                <div class="option">A. ছোট হয়</div>
+            <div class="option">B. বড় হয়</div>
+            <div class="option">C. সমান হয়</div>
+            <div class="option">D. শূন্য হয়</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(33)">উত্তর দেখুন</button>
+            <div id="ans-33" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৪. ট্রি ট্রাভার্সালের (Tree Traversal) ক্ষেত্রে 'In-order' অনুক্রমটি কেমন হয়?</div>
+            <div class="options">
+                <div class="option">A. Root -> Left -> Right</div>
+            <div class="option">B. Left -> Root -> Right</div>
+            <div class="option">C. Left -> Right -> Root</div>
+            <div class="option">D. Right -> Left -> Root</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(34)">উত্তর দেখুন</button>
+            <div id="ans-34" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৫. ট্রি ট্রাভার্সালের ক্ষেত্রে 'Pre-order' অনুক্রমটি কেমন হয়?</div>
+            <div class="options">
+                <div class="option">A. Left -> Root -> Right</div>
+            <div class="option">B. Root -> Left -> Right</div>
+            <div class="option">C. Left -> Right -> Root</div>
+            <div class="option">D. Root -> Right -> Left</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(35)">উত্তর দেখুন</button>
+            <div id="ans-35" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৬. ট্রি ট্রাভার্সালের ক্ষেত্রে 'Post-order' অনুক্রমটি কেমন হয়?</div>
+            <div class="options">
+                <div class="option">A. Left -> Right -> Root</div>
+            <div class="option">B. Root -> Left -> Right</div>
+            <div class="option">C. Left -> Root -> Right</div>
+            <div class="option">D. Right -> Root -> Left</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(36)">উত্তর দেখুন</button>
+            <div id="ans-36" class="answer-block">সঠিক উত্তর: A</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৭. একটি বাইনারি সার্চ ট্রিতে (BST) ইন-অর্ডার (In-order) ট্রাভার্সাল করলে উপাদানগুলো কীভাবে পাওয়া যায়?</div>
+            <div class="options">
+                <div class="option">A. উল্টোপাল্টা ভাবে</div>
+            <div class="option">B. ছোট থেকে বড় ক্রমানুসারে (Sorted)</div>
+            <div class="option">C. বড় থেকে ছোট ক্রমানুসারে</div>
+            <div class="option">D. সব শূন্য হয়ে যায়</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(37)">উত্তর দেখুন</button>
+            <div id="ans-37" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৮. গ্রাফের (Graph) উপাদানসমূহ মূলত কী কী?</div>
+            <div class="options">
+                <div class="option">A. Nodes এবং Pointer</div>
+            <div class="option">B. Vertices (Edges সহ)</div>
+            <div class="option">C. Vertices (Nodes) এবং Edges (সংযোগ রেখা)</div>
+            <div class="option">D. Root এবং Leaf</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(38)">উত্তর দেখুন</button>
+            <div id="ans-38" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৩৯. গ্রাফ ট্রাভার্সাল অ্যালগরিদম BFS এর পূর্ণরূপ কী?</div>
+            <div class="options">
+                <div class="option">A. Binary First Search</div>
+            <div class="option">B. Breadth First Search</div>
+            <div class="option">C. Best First Search</div>
+            <div class="option">D. Boundary First Search</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(39)">উত্তর দেখুন</button>
+            <div id="ans-39" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪০. গ্রাফ ট্রাভার্সাল অ্যালগরিদম DFS এর পূর্ণরূপ কী?</div>
+            <div class="options">
+                <div class="option">A. Depth First Search</div>
+            <div class="option">B. Direct First Search</div>
+            <div class="option">C. Double First Search</div>
+            <div class="option">D. Data First Search</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(40)">উত্তর দেখুন</button>
+            <div id="ans-40" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪১. BFS (Breadth First Search) অ্যালগরিদমে অভ্যন্তরীণভাবে কোন ডেটা স্ট্রাকচার ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. Stack</div>
+            <div class="option">B. Queue</div>
+            <div class="option">C. Linked List</div>
+            <div class="option">D. Tree</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(41)">উত্তর দেখুন</button>
+            <div id="ans-41" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪২. DFS (Depth First Search) অ্যালগরিদমে অভ্যন্তরীণভাবে কোন ডেটা স্ট্রাকচার ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. Queue</div>
+            <div class="option">B. Stack</div>
+            <div class="option">C. Array</div>
+            <div class="option">D. Heap</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(42)">উত্তর দেখুন</button>
+            <div id="ans-42" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৩. কোনো গ্রাফের শর্টেস্ট পাথ (Shortest Path) খোঁজার জন্য কোন অ্যালগরিদমটি বহুল ব্যবহৃত?</div>
+            <div class="options">
+                <div class="option">A. Kruskal's Algorithm</div>
+            <div class="option">B. Prim's Algorithm</div>
+            <div class="option">C. Dijkstra's Algorithm</div>
+            <div class="option">D. Huffman Coding</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(43)">উত্তর দেখুন</button>
+            <div id="ans-43" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৪. মিনিমাম স্প্যানিং ট্রি (MST) তৈরির জন্য নিচের কোন অ্যালগরিদমটি ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. Kruskal's Algorithm</div>
+            <div class="option">B. Prim's Algorithm</div>
+            <div class="option">C. A এবং B উভয়ই</div>
+            <div class="option">D. Dijkstra's Algorithm</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(44)">উত্তর দেখুন</button>
+            <div id="ans-44" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৫. ডেটা কম্প্রেশন (Data Compression) বা ফাইল ছোট করার জন্য কোন অ্যালগরিদম ব্যবহৃত হয়?</div>
+            <div class="options">
+                <div class="option">A. Huffman Coding</div>
+            <div class="option">B. Binary Search</div>
+            <div class="option">C. Merge Sort</div>
+            <div class="option">D. Floyd Warshall</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(45)">উত্তর দেখুন</button>
+            <div id="ans-45" class="answer-block">সঠিক উত্তর: A</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৬. কোনো অ্যালগরিদমের কার্যকারিতা পরিমাপের জন্য মূলত কোন দুটি বিষয় বিবেচনা করা হয়?</div>
+            <div class="options">
+                <div class="option">A. হার্ডওয়্যার এবং সফটওয়্যার</div>
+            <div class="option">B. টাইম কমপ্লেক্সিটি এবং স্পেস কমপ্লেক্সিটি</div>
+            <div class="option">C. কোডের দৈর্ঘ্য এবং ভ্যারিয়েবল সংখ্যা</div>
+            <div class="option">D. কম্পাইলার এবং ওএস</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(46)">উত্তর দেখুন</button>
+            <div id="ans-46" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৭. বিগ-ও (Big O) নোটেশন মূলত কী নির্দেশ করে?</div>
+            <div class="options">
+                <div class="option">A. অ্যালগরিদমের বেস্ট-কেস (Best Case)</div>
+            <div class="option">B. অ্যালগরিদমের আপার বাউন্ড বা ওর্স্ট-কেস (Worst Case)</div>
+            <div class="option">C. অ্যালগরিদমের গড় সময়</div>
+            <div class="option">D. মেমোরির মোট সাইজ</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(47)">উত্তর দেখুন</button>
+            <div id="ans-47" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৮. হ্যাশিং (Hashing) প্রক্রিয়ায় একই ইনডেক্সে একাধিক ডেটা চলে আসার সমস্যাকে কী বলা হয়?</div>
+            <div class="options">
+                <div class="option">A. Collision (কলিশন)</div>
+            <div class="option">B. Overflow</div>
+            <div class="option">C. Underflow</div>
+            <div class="option">D. Deadlock</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(48)">উত্তর দেখুন</button>
+            <div id="ans-48" class="answer-block">সঠিক উত্তর: A</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৪৯. হ্যাশ কলিশন (Hash Collision) সমাধানের একটি জনপ্রিয় পদ্ধতি কোনটি?</div>
+            <div class="options">
+                <div class="option">A. Binary Search</div>
+            <div class="option">B. Chaining (চেইনিং)</div>
+            <div class="option">C. Sorting</div>
+            <div class="option">D. Traversal</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(49)">উত্তর দেখুন</button>
+            <div id="ans-49" class="answer-block">সঠিক উত্তর: B</div>
+        </div>
+    
+        <div class="question-card">
+            <div class="question-text">৫০. ফিবোনাচ্চি সিরিজ বা কোনো জটিল সমস্যাকে সাব-প্রবলেমে ভাগ করে পূর্বের উত্তর মনে রেখে সমাধান করার পদ্ধতিকে কী বলে?</div>
+            <div class="options">
+                <div class="option">A. Greedy Method</div>
+            <div class="option">B. Divide and Conquer</div>
+            <div class="option">C. Dynamic Programming</div>
+            <div class="option">D. Backtracking</div>
+        </div>
+            <button class="btn-ans" onclick="toggleAnswer(50)">উত্তর দেখুন</button>
+            <div id="ans-50" class="answer-block">সঠিক উত্তর: C</div>
+        </div>
+    
+    </div>
+</body>
+</html>

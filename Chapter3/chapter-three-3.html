@@ -1,0 +1,1788 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium DSA Quiz - 100 MCQs</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-gradient: linear-gradient(135deg, #f6f8fd 0%, #f1f5f9 100%);
+        --primary: #4338ca;
+        --primary-hover: #3730a3;
+        --secondary: #3b82f6;
+        --success-bg: #dcfce7;
+        --success-text: #166534;
+        --success-border: #22c55e;
+        --error-bg: #fee2e2;
+        --error-text: #991b1b;
+        --error-border: #ef4444;
+        --card-bg: #ffffff;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --border-color: #e2e8f0;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Hind Siliguri", "Poppins", sans-serif;
+      }
+
+      body {
+        background: var(--bg-gradient);
+        color: var(--text-main);
+        line-height: 1.6;
+        padding: 30px 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* --- Header & Scoreboard --- */
+      header {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: var(--shadow-md);
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        border-top: 5px solid var(--primary);
+      }
+
+      h1 {
+        color: var(--primary);
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      p.subtitle {
+        color: var(--text-muted);
+        font-size: 16px;
+        margin-bottom: 25px;
+      }
+
+      .action-bar {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+      }
+
+      .btn-reset {
+        background: #fff0f0;
+        color: #dc2626;
+        border: 1px solid #fca5a5;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .btn-reset:hover {
+        background: #fee2e2;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(220, 38, 38, 0.2);
+      }
+
+      .scoreboard {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border-color);
+      }
+
+      .score-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .score-box span {
+        font-size: 14px;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+      .score-box strong {
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 5px;
+      }
+
+      .box-total strong {
+        color: var(--secondary);
+      }
+      .box-correct {
+        border-bottom: 4px solid var(--success-border);
+      }
+      .box-correct strong {
+        color: var(--success-border);
+      }
+      .box-wrong {
+        border-bottom: 4px solid var(--error-border);
+      }
+      .box-wrong strong {
+        color: var(--error-border);
+      }
+
+      /* --- Filters --- */
+      .filter-section {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: var(--radius);
+        margin-bottom: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        box-shadow: var(--shadow-sm);
+        justify-content: space-between;
+      }
+
+      .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .filter-group label {
+        font-weight: 600;
+        color: var(--text-main);
+        white-space: nowrap;
+      }
+
+      select {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        outline: none;
+        font-size: 15px;
+        background-color: #f8fafc;
+        color: var(--text-main);
+        font-weight: 500;
+        cursor: pointer;
+        transition: border-color 0.3s;
+      }
+
+      select:focus {
+        border-color: var(--primary);
+      }
+
+      /* --- Quiz Cards --- */
+      .quiz-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .quiz-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .quiz-card.hidden {
+        display: none;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed var(--border-color);
+      }
+
+      .q-number {
+        font-weight: 700;
+        color: var(--secondary);
+        font-size: 16px;
+        background: #eff6ff;
+        padding: 5px 12px;
+        border-radius: 20px;
+      }
+
+      .topic-badge {
+        background: #eef2ff;
+        color: var(--primary);
+        font-size: 13px;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+      }
+
+      .question {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-main);
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .options {
+        display: grid;
+        gap: 12px;
+      }
+
+      .option-btn {
+        background: #f8fafc;
+        border: 2px solid transparent;
+        padding: 15px 20px;
+        border-radius: 10px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-main);
+        transition: all 0.2s ease;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .option-btn:hover:not(:disabled) {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+        transform: scale(1.01);
+      }
+
+      .option-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.9;
+      }
+
+      .option-btn.correct-ans {
+        background-color: var(--success-bg) !important;
+        border-color: var(--success-border) !important;
+        color: var(--success-text);
+        font-weight: 700;
+        box-shadow: 0 4px 6px rgba(34, 197, 94, 0.1);
+      }
+
+      .option-btn.wrong-ans {
+        background-color: var(--error-bg) !important;
+        border-color: var(--error-border) !important;
+        color: var(--error-text);
+        text-decoration: line-through;
+        opacity: 0.7;
+      }
+
+      .explanation {
+        margin-top: 20px;
+        padding: 15px 20px;
+        background: #eff6ff;
+        border-left: 5px solid var(--secondary);
+        border-radius: 8px;
+        font-size: 15px;
+        color: #1e3a8a;
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .explanation strong {
+        color: var(--primary);
+        font-size: 16px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .scoreboard {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .filter-section {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Main Header with Navigation -->
+      <header
+        class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+      >
+        <div
+          class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <!-- Website Logo / Title -->
+          <div class="flex items-center gap-3">
+            <div
+              class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+            >
+              <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+            </div>
+            <div>
+              <h1
+                class="text-lg md:text-xl font-bold tracking-tight text-white"
+              >
+                DSA কুইজ পোর্টাল
+              </h1>
+              <p class="text-xs text-slate-400">
+                Data Structures & Algorithms Prep
+              </p>
+            </div>
+          </div>
+
+          <!-- Navigation Links for All 7 Pages -->
+          <nav
+            class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+          >
+            <a
+              href="chapter-three-1.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 1</a
+            >
+            <a
+              href="chapter-three-2.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 2</a
+            >
+            <a
+              href="chapter-three-3.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 3</a
+            >
+            <a
+              href="chapter-three-4.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 4</a
+            >
+            <a
+              href="chapter-three-5.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 5</a
+            >
+            <a
+              href="chapter-three-6.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 6</a
+            >
+            <a
+              href="chapter-three-7.html"
+              class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+              >সেট 7</a
+            >
+          </nav>
+        </div>
+      </header>
+      <header>
+        <div class="action-bar">
+          <button class="btn-reset" onclick="confirmReset()">
+            <span>🔄</span> Reset Quiz
+          </button>
+        </div>
+        <h1>Data Structures Pro Quiz</h1>
+        <p class="subtitle">
+          Factorial, Hanoi, Linked Lists, Stacks & Queues (100 MCQs)
+        </p>
+
+        <div class="scoreboard">
+          <div class="score-box box-total">
+            <span>📊 Total Questions</span>
+            <strong id="total-count">100</strong>
+          </div>
+          <div class="score-box box-correct">
+            <span>✅ Correct Answers</span>
+            <strong id="correct-count">0</strong>
+          </div>
+          <div class="score-box box-wrong">
+            <span>❌ Incorrect Answers</span>
+            <strong id="incorrect-count">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <div class="filter-section">
+        <div class="filter-group">
+          <label for="topic-filter">📚 টপিক:</label>
+          <select id="topic-filter" onchange="filterQuestions()">
+            <option value="all">সব টপিক (All Topics)</option>
+            <option value="Recursion">Recursion (Factorial & Hanoi)</option>
+            <option value="Linked List">Linked Lists</option>
+            <option value="Stack">Stacks</option>
+            <option value="Queue">Queues</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="status-filter">🎯 স্ট্যাটাস:</label>
+          <select id="status-filter" onchange="filterQuestions()">
+            <option value="all">সব প্রশ্ন (All Status)</option>
+            <option value="correct">✅ সঠিক উত্তর (Correct)</option>
+            <option value="incorrect">❌ ভুল উত্তর (Wrong)</option>
+            <option value="unanswered">⏳ উত্তর দেওয়া হয়নি (Unanswered)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="quiz-container"></div>
+    </div>
+
+    <script>
+      // ==========================================
+      // 100 Unique Questions Data
+      // ==========================================
+      const quizData = [
+        // --- Recursion (Factorial & Tower of Hanoi) ---
+        {
+          id: 1,
+          topic: "Recursion",
+          question:
+            "ফ্যাক্টোরিয়াল (Factorial) গণনার জন্য সবচেয়ে সাধারণ অ্যালগরিদম কৌশল কোনটি?",
+          options: [
+            "Divide and Conquer",
+            "Recursion",
+            "Greedy Method",
+            "Dynamic Programming",
+          ],
+          answer: 1,
+          explanation:
+            "Factorial n! = n * (n-1)! গাণিতিক নীতি অনুসরণে রিকার্সন (Recursion) ব্যবহার করা সবচেয়ে সাধারণ কৌশল।",
+        },
+        {
+          id: 2,
+          topic: "Recursion",
+          question:
+            "n সংখ্যক ডিস্কের জন্য Tower of Hanoi সমস্যা সমাধানের সর্বনিম্ন কতটি মুভ প্রয়োজন?",
+          options: ["2^n", "2^n - 1", "2^(n+1)", "n^2"],
+          answer: 1,
+          explanation:
+            "Tower of Hanoi-তে n টি ডিস্ক সরাতে ন্যূনতম (2^n - 1) টি স্টেপ লাগে।",
+        },
+        {
+          id: 3,
+          topic: "Recursion",
+          question:
+            "Tower of Hanoi সমস্যার টাইম কমপ্লেক্সিটি (Time Complexity) কত?",
+          options: ["O(n)", "O(n log n)", "O(2^n)", "O(n^2)"],
+          answer: 2,
+          explanation:
+            "মোট ধাপ সংখ্যা (2^n - 1) হওয়ায় এর টাইম কমপ্লেক্সিটি O(2^n)।",
+        },
+        {
+          id: 4,
+          topic: "Recursion",
+          question: "ফ্যাক্টোরিয়ালের রিকার্সিভ ফাংশনে মূল Base Case কোনটি?",
+          options: ["n == 0 বা n == 1", "n == 2", "n < 0", "n > 100"],
+          answer: 0,
+          explanation:
+            "0! = 1 এবং 1! = 1 হওয়ায় রিকার্সন থামানোর জন্য n <= 1 হলো Base Case।",
+        },
+        {
+          id: 5,
+          topic: "Recursion",
+          question:
+            "রিকার্সিভ ফ্যাক্টোরিয়াল ফাংশনে বেস কেস (Base case) না দিলে কী ঘটবে?",
+          options: [
+            "সঠিক উত্তর পাওয়া যাবে",
+            "Stack Overflow Error হবে",
+            "Program দ্রুত চলবে",
+            "Compilation Error হবে",
+          ],
+          answer: 1,
+          explanation:
+            "Base Case না থাকলে রিকার্সিভ কল কখনই থামবে না, ফলে Stack Overflow ঘটাবে।",
+        },
+        {
+          id: 6,
+          topic: "Recursion",
+          question:
+            "Tower of Hanoi তে ৩টি ডিস্ক থাকলে কতটি সরানোর পদ (Moves) প্রয়োজন?",
+          options: ["3", "7", "8", "15"],
+          answer: 1,
+          explanation: "2^3 - 1 = 8 - 1 = 7 টি মুভ।",
+        },
+        {
+          id: 7,
+          topic: "Recursion",
+          question:
+            "Iterative (Loop) উপায়ে Factoial বের করার Space Complexity কত?",
+          options: ["O(1)", "O(n)", "O(n^2)", "O(log n)"],
+          answer: 0,
+          explanation:
+            "Iterative পদ্ধতিতে কোনো অতিরিক্ত Call Stack মেমোরি লাগে না, তাই Space Complexity O(1)।",
+        },
+        {
+          id: 8,
+          topic: "Recursion",
+          question: "Recursive উপায়ে Factoial বের করার Space Complexity কত?",
+          options: ["O(1)", "O(n)", "O(2^n)", "O(log n)"],
+          answer: 1,
+          explanation:
+            "রিকার্সিভ কলে n সংখ্যক ফাংশন ফ্রেম মেমোরি স্ট্যাকে থাকে, তাই Space Complexity O(n)।",
+        },
+        {
+          id: 9,
+          topic: "Recursion",
+          question: "Tower of Hanoi তে ক্লাসিকাল নিয়মে কয়টি রড (Pegs) থাকে?",
+          options: ["২টি", "৩টি", "৪টি", "প্রয়োজন অনুযায়ী n টি"],
+          answer: 1,
+          explanation:
+            "ক্লাসিক সমস্যার ৩টি পেগ থাকে: Source, Auxiliary (Helper), এবং Destination।",
+        },
+        {
+          id: 10,
+          topic: "Recursion",
+          question: "Tail Recursion-এর বড় সুবিধা কী?",
+          options: [
+            "কম সময় লাগে",
+            "কম্পাইলার Stack Frame অপ্টিমাইজ করতে পারে",
+            "কোনো মেমোরি নেয় না",
+            "শুধুমাত্র C++ এ চলে",
+          ],
+          answer: 1,
+          explanation:
+            "Tail Call Optimization (TCO) এর মাধ্যমে কম্পাইলার অতিরিক্ত স্ট্যাক ফ্রেম বাদ দিতে পারে।",
+        },
+        {
+          id: 11,
+          topic: "Recursion",
+          question: "গাণিতিক নিয়ম অনুযায়ী 0! (Zero Factorial)-এর মান কত?",
+          options: ["0", "1", "Undefined", "-1"],
+          answer: 1,
+          explanation: "গাণিতিক নিয়ম এবং কনভেনশন অনুযায়ী 0! = 1।",
+        },
+        {
+          id: 12,
+          topic: "Recursion",
+          question:
+            "4 টি ডিস্কের জন্য Tower of Hanoi সমাধান করতে কতটি ধাপ লাগবে?",
+          options: ["7", "12", "15", "16"],
+          answer: 2,
+          explanation: "2^4 - 1 = 16 - 1 = 15 টি ধাপ।",
+        },
+        {
+          id: 13,
+          topic: "Recursion",
+          question: "রিকার্সিভ কলগুলো মেমোরির কোন অংশে জমানো হয়?",
+          options: [
+            "Heap Memory",
+            "Call Stack Memory",
+            "Data Segment",
+            "Register",
+          ],
+          answer: 1,
+          explanation: "ফাংশন কল ইন্টারনালি Call Stack Memory-তে রাখা হয়।",
+        },
+        {
+          id: 14,
+          topic: "Recursion",
+          question: "Tower of Hanoi সমস্যার সঠিক নিয়ম কোনটি?",
+          options: [
+            "একসাথে ২টি ডিস্ক সরানো যাবে",
+            "বড় ডিস্ক ছোট ডিস্কের নিচে থাকবে",
+            "বড় ডিস্ক ছোট ডিস্কের উপরে রাখা যাবে",
+            "যে কোনো ডিস্ক সরাসরি সরাব",
+          ],
+          answer: 1,
+          explanation: "কখনোই ছোট ডিস্কের ওপর বড় ডিস্ক রাখা যাবে না।",
+        },
+        {
+          id: 15,
+          topic: "Recursion",
+          question: "একটি নেগেটিভ পূর্ণসংখ্যার ফ্যাক্টোরিয়াল কত?",
+          options: ["0", "1", "সংজ্ঞায়িত নয় (Undefined)", "-120"],
+          answer: 2,
+          explanation: "Negative Integer-এর ফ্যাক্টোরিয়াল অসংজ্ঞায়িত।",
+        },
+        {
+          id: 16,
+          topic: "Recursion",
+          question:
+            "Tower of Hanoi সমস্যার মূল অ্যালগরিদম ডিজাইন টেকনিক কোনটি?",
+          options: [
+            "Greedy Method",
+            "Divide and Conquer",
+            "Dynamic Programming",
+            "Brute Force",
+          ],
+          answer: 1,
+          explanation:
+            "সমস্যাটিকে ছোট উপ-সমস্যায় ভাগ করে সমাধান করায় এটি Divide and Conquer।",
+        },
+        {
+          id: 17,
+          topic: "Recursion",
+          question:
+            "Memoization প্রয়োগ করে Factorial হিসাব করলে তাকে কী বলা হয়?",
+          options: [
+            "Backtracking",
+            "Dynamic Programming",
+            "Greedy Algorithm",
+            "Divide and Conquer",
+          ],
+          answer: 1,
+          explanation:
+            "পূর্ববর্তী হিসাব মেমোরিতে সেভ রেখে কাজ করাকে Dynamic Programming বলা হয়।",
+        },
+        {
+          id: 18,
+          topic: "Recursion",
+          question: "Direct Recursion এবং Indirect Recursion এর পার্থক্য কী?",
+          options: [
+            "Direct নিজের ফাংশনকে নিজে কল করে, Indirect অন্য ফাংশন হয়ে আবার ফেরত আসে",
+            "কোনো পার্থক্য নেই",
+            "Direct ধীরগতির",
+            "Indirect শুধুমাত্র C++ সাপোর্ট করে",
+          ],
+          answer: 0,
+          explanation:
+            "A() -> A() হলে Direct; আর A() -> B() -> A() হলে তা Indirect Recursion।",
+        },
+        {
+          id: 19,
+          topic: "Recursion",
+          question:
+            "Tower of Hanoi সমস্যা সমাধান করতে ব্যবহৃত রিকার্সিভ রিলেশনটি কী?",
+          options: [
+            "T(n) = T(n-1) + 1",
+            "T(n) = 2T(n-1) + 1",
+            "T(n) = 2T(n/2) + n",
+            "T(n) = T(n-2) + 2",
+          ],
+          answer: 1,
+          explanation: "n টি ডিস্কের জন্য রিকারেন্স রিলেশন T(n) = 2T(n-1) + 1।",
+        },
+        {
+          id: 20,
+          topic: "Recursion",
+          question: "5! (Five Factorial)-এর মান কত?",
+          options: ["24", "120", "720", "60"],
+          answer: 1,
+          explanation: "5! = 5 * 4 * 3 * 2 * 1 = 120।",
+        },
+
+        // --- Linked List & ADT (21 to 50) ---
+        {
+          id: 21,
+          topic: "Linked List",
+          question: "Abstract Data Type (ADT) মূলত কী নির্দেশ করে?",
+          options: [
+            "ডেটা কীভাবে মেমোরিতে স্টোর হবে",
+            "কী কী অপারেশন হবে কিন্তু কীভাবে ইমপ্লিমেন্ট হবে তা নয়",
+            "নির্দিষ্ট প্রোগ্রামিং ভাষা",
+            "একটি হার্ডওয়্যার মডিউল",
+          ],
+          answer: 1,
+          explanation:
+            "ADT হলো অপারেশনের একটি লজিক্যাল ইন্টারফেস, যেখানে ইমপ্লিমেন্টেশন ডিটেইলস হাইড থাকে।",
+        },
+        {
+          id: 22,
+          topic: "Linked List",
+          question: "Singly Linked List-এর একটি সাধারণ নোডে কয়টি ফিল্ড থাকে?",
+          options: ["১টি", "২টি (Data & Next Pointer)", "৩টি", "৪টি"],
+          answer: 1,
+          explanation:
+            "Singly Linked List নোডে Data এবং পরবর্তী নোডের Pointer থাকে।",
+        },
+        {
+          id: 23,
+          topic: "Linked List",
+          question:
+            "Doubly Linked List-এর প্রতিটি নোডে মোট কয়টি পয়েন্টার থাকে?",
+          options: ["১টি", "২টি (Prev & Next)", "৩টি", "০টি"],
+          answer: 1,
+          explanation:
+            "Doubly Linked List নোডে পূর্ববর্তী (Prev) এবং পরবর্তী (Next) পয়েন্টার থাকে।",
+        },
+        {
+          id: 24,
+          topic: "Linked List",
+          question:
+            "Circular Singly Linked List-এর শেষ নোডের Next পয়েন্টারে কী থাকে?",
+          options: [
+            "NULL",
+            "Head নোডের অ্যাড্রেস",
+            "Garbage value",
+            "Previous নোডের অ্যাড্রেস",
+          ],
+          answer: 1,
+          explanation:
+            "Circular Linked List এর শেষ নোড আবার প্রথম নোডকে (Head) পয়েন্ট করে।",
+        },
+        {
+          id: 25,
+          topic: "Linked List",
+          question:
+            "Linked List-এর শুরুতে (Beginning) নতুন নোড ইনসার্ট করার টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+          answer: 0,
+          explanation: "শুরুতে নোড যুক্ত করা একটি O(1) সময়ের অপারেশন।",
+        },
+        {
+          id: 26,
+          topic: "Linked List",
+          question:
+            "Tail Pointer রাখা থাকলে Singly Linked List-এর শেষে ইনসার্ট করার টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+          answer: 0,
+          explanation:
+            "Tail Pointer থাকলে সরাসরি শেষে এক স্টেপেই যোগ করা যায়, O(1)।",
+        },
+        {
+          id: 27,
+          topic: "Linked List",
+          question:
+            "Tail Pointer না থাকলে Singly Linked List-এর শেষে ইনসার্ট করার টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+          answer: 1,
+          explanation:
+            "Tail Pointer না থাকলে পুরো লিস্ট ট্রাভার্স করে শেষে যেতে হয়, তাই O(n)।",
+        },
+        {
+          id: 28,
+          topic: "Linked List",
+          question: "Array-এর তুলনায় Linked List-এর প্রধান সুবিধা কোনটি?",
+          options: [
+            "Random Access দ্রুত",
+            "Dynamic Size এবং সহজে Insertion/Deletion",
+            "মেমোরি কম লাগে",
+            "Cache locality ভালো",
+          ],
+          answer: 1,
+          explanation:
+            "Linked List রানটাইমে পয়েন্টার পরিবর্তনের মাধ্যমে সহজে সাইজ পরিবর্তন ও ইনসার্ট করতে পারে।",
+        },
+        {
+          id: 29,
+          topic: "Linked List",
+          question:
+            "Linked List-এ k-তম উপাদানটি খুঁজতে (Search) টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+          answer: 2,
+          explanation:
+            "সরাসরি ইনডেক্স ব্যবহার করা যায় না, তাই ক্রমান্বয়ে খুঁজে দেখতে O(n) সময় লাগে।",
+        },
+        {
+          id: 30,
+          topic: "Linked List",
+          question:
+            "Doubly Linked List-এর মাধ্যমে পেছনে ব্যাকট্র্যাক (Backward Traversal) করার সুবিধা কী?",
+          options: [
+            "Prev পয়েন্টার থাকা",
+            "Next পয়েন্টার থাকা",
+            "NULL না থাকা",
+            "ইনডেক্স ব্যবহার করা",
+          ],
+          answer: 0,
+          explanation:
+            "Prev পয়েন্টার দিয়ে খুব সহজেই পেছনের নোডে ফিরে যাওয়া যায়।",
+        },
+        {
+          id: 31,
+          topic: "Linked List",
+          question:
+            "নিচের কোন ডেটা স্ট্রাকচারে পয়েন্টারের কারণে মেমোরি ওভারহেড (Memory Overhead) বেশি হয়?",
+          options: ["Array", "Linked List", "Primitive Variables", "Matrix"],
+          answer: 1,
+          explanation:
+            "ডেটার পাশাপাশি পয়েন্টার সংরক্ষণের জন্য বাড়তি মেমোরি লাগে।",
+        },
+        {
+          id: 32,
+          topic: "Linked List",
+          question:
+            "Singly Linked List-এর যেকোনো মাঝের নোড Delete করতে ন্যূনতম কতটি পয়েন্টার মডিফাই করতে হয়?",
+          options: ["১টি", "২টি", "৩টি", "৪টি"],
+          answer: 0,
+          explanation:
+            "পূর্ববর্তী নোডের Next পয়েন্টারকে পরের নোডের দিকে নির্দেশ করিয়ে দিলেই ডিলিট হয়।",
+        },
+        {
+          id: 33,
+          topic: "Linked List",
+          question: "Header Linked List বলতে কী বোঝায়?",
+          options: [
+            "যার প্রথম নোডে বিশেষ হেডার ইনফরমেশন থাকে",
+            "যার কোনো হেড নেই",
+            "যেটি একটি সর্টেড লিস্ট",
+            "যা ডাবলি লিঙ্কড লিস্ট",
+          ],
+          answer: 0,
+          explanation:
+            "Header List এর শুরুতে একটি স্পেশাল নোড থাকে যাতে লিস্টের দৈর্ঘ্য বা মেটাডাটা থাকে।",
+        },
+        {
+          id: 34,
+          topic: "Linked List",
+          question:
+            "Singly Linked List কে Reverse করার সর্বাত্তম অ্যালগরিদমের টাইম ও স্পেস কমপ্লেক্সিটি কত?",
+          options: [
+            "Time: O(n), Space: O(1)",
+            "Time: O(n^2), Space: O(1)",
+            "Time: O(n), Space: O(n)",
+            "Time: O(1), Space: O(1)",
+          ],
+          answer: 0,
+          explanation:
+            "৩টি পয়েন্টার (prev, curr, next) ব্যবহার করে ওয়ান-পাসে O(n) টাইম ও O(1) স্পেসে রিভার্স করা যায়।",
+        },
+        {
+          id: 35,
+          topic: "Linked List",
+          question:
+            "Floyd's Cycle-Finding Algorithm (Slow & Fast Pointer) কী কাজে লাগে?",
+          options: [
+            "লিস্ট সর্ট করতে",
+            "লিস্টে লুপ বা সাইকেল খুঁজে বের করতে",
+            "লিস্ট রিভার্স করতে",
+            "নোড ডিলিট করতে",
+          ],
+          answer: 1,
+          explanation:
+            "Tortoise and Hare অ্যালগরিদম দিয়ে লিঙ্কড লিস্টে সাইকেল বা লুপ ডিটেক্ট করা হয়।",
+        },
+        {
+          id: 36,
+          topic: "Linked List",
+          question:
+            "Doubly Circular Linked List-এর প্রথম নোডের Prev পয়েন্টারে কী থাকে?",
+          options: [
+            "NULL",
+            "শেষ নোডের অ্যাড্রেস",
+            "Garbage Value",
+            "Head এর নিজের অ্যাড্রেস",
+          ],
+          answer: 1,
+          explanation: "প্রথম নোডের Prev পয়েন্টার সরাসরি শেষ নোডকে পয়েন্ট করে।",
+        },
+        {
+          id: 37,
+          topic: "Linked List",
+          question:
+            "Linked List-এ ডাইনামিকালি মেমোরি বরাদ্দ করতে C ভাষায় ব্যবহৃত হয় কোনটি?",
+          options: ["alloc()", "malloc() / calloc()", "new", "create()"],
+          answer: 1,
+          explanation:
+            "C তে ডাইনামিক মেমোরির জন্য malloc() বা calloc() ব্যবহৃত হয়।",
+        },
+        {
+          id: 38,
+          topic: "Linked List",
+          question:
+            "Linked List এর কোনো নোড মেমোরি থেকে মুক্ত করার জন্য C তে কী ব্যবহার করা হয়?",
+          options: ["delete()", "free()", "remove()", "clear()"],
+          answer: 1,
+          explanation: "malloc করা মেমোরি রিলিজ করতে free() ফাংশন ব্যবহৃত হয়।",
+        },
+        {
+          id: 39,
+          topic: "Linked List",
+          question:
+            "একটি Singly Linked List-এর মধ্যবিন্দু (Middle Element) এক পাসে খুঁজতে কী ব্যবহার করা হয়?",
+          options: [
+            "Binary Search",
+            "Two Pointers (Slow & Fast)",
+            "Recursion",
+            "Stack",
+          ],
+          answer: 1,
+          explanation:
+            "Slow পয়েন্টার ১ ধাপ এবং Fast পয়েন্টার ২ ধাপ করে এগোলে Fast শেষ হলে Slow মধ্যবিন্দুতে থাকে।",
+        },
+        {
+          id: 40,
+          topic: "Linked List",
+          question: "array[i] এর সাপেক্ষে Linked List এর অসুবিধা কোনটি?",
+          options: [
+            "Random Access সাপোর্ট করে না O(1)",
+            "মেমোরি ফ্লেক্সিবল নয়",
+            "ইনসার্ট করা কঠিন",
+            "কোনটাই নয়",
+          ],
+          answer: 0,
+          explanation:
+            "অ্যারেতে সরাসরি ইনডেক্সিং (Random Access) O(1) এ করা গেলেও লিঙ্কড লিস্টে O(n) লাগে।",
+        },
+        {
+          id: 41,
+          topic: "Linked List",
+          question:
+            "নিচের কোন অ্যাপ্লিকেশনটি Circular Linked List দ্বারা সহজে ইমপ্লিমেন্ট করা যায়?",
+          options: [
+            "Round-Robin CPU Scheduling",
+            "Undo Redo Feature",
+            "Recursion Call",
+            "Infix to Postfix",
+          ],
+          answer: 0,
+          explanation:
+            "প্রসেসগুলোকে চক্রাকারে ঘুরিয়ে সিপিসি শিডিউল করতে Circular Linked List আদর্শ।",
+        },
+        {
+          id: 42,
+          topic: "Linked List",
+          question: "Skip List ডেটা স্ট্রাকচারটি কোনটির ওপর ভিত্তি করে গঠিত?",
+          options: ["Array", "Linked List", "Tree", "Graph"],
+          answer: 1,
+          explanation:
+            "Skip List মূলত একাধিক লেয়ারের পয়েন্টার সমৃদ্ধ একটি লিঙ্কড লিস্ট যা O(log n) সার্চ দেয়।",
+        },
+        {
+          id: 43,
+          topic: "Linked List",
+          question:
+            "Singly Linked List-এ কোনো নোড ডিলিট করার পর মেমোরি free না করলে কী সমস্যা হয়?",
+          options: [
+            "Stack Overflow",
+            "Memory Leak",
+            "Segment Fault",
+            "Null Pointer Exception",
+          ],
+          answer: 1,
+          explanation:
+            "অব্যবহৃত মেমোরি রিলিজ না করলে মেমোরি লিক (Memory Leak) ঘটে।",
+        },
+        {
+          id: 44,
+          topic: "Linked List",
+          question: "Self-Referential Structure বলতে কী বোঝায়?",
+          options: [
+            "যে স্ট্রাকচারের ভেতরে নিজের টাইপেরই একটি পয়েন্টার থাকে",
+            "যে নিজে নিজেকে কল করে",
+            "গ্লোবাল স্ট্রাকচার",
+            "ইউজার ডিফাইন্ড স্ট্রাকচার",
+          ],
+          answer: 0,
+          explanation:
+            "struct Node { int data; struct Node* next; }; এটি একটি Self-Referential Structure।",
+        },
+        {
+          id: 45,
+          topic: "Linked List",
+          question:
+            "Doubly Linked List-এ একটি নোড ডিলিট করতে কয়টি পয়েন্টার চেঞ্জ করতে হয়?",
+          options: ["১টি", "২টি", "৩টি", "৪টি"],
+          answer: 1,
+          explanation:
+            "পূর্ববর্তী নোডের Next এবং পরবর্তী নোডের Prev আপডেট করতে হয়।",
+        },
+        {
+          id: 46,
+          topic: "Linked List",
+          question: "একটি লিঙ্কড লিস্ট খালি (Empty) কিনা তা বোঝার উপায় কী?",
+          options: [
+            "Head == NULL",
+            "Head->next == NULL",
+            "Tail == NULL",
+            "Data == 0",
+          ],
+          answer: 0,
+          explanation:
+            "যদি Head পয়েন্টারের মান NULL হয়, তবে লিস্টটি সম্পূর্ণ খালি।",
+        },
+        {
+          id: 47,
+          topic: "Linked List",
+          question:
+            "Circular Linked List ট্রাভার্স করার সময় লুপ থামানোর শর্ত কী?",
+          options: [
+            "পয়েন্টার NULL হওয়া",
+            "পয়েন্টার আবার Head এ ফিরে আসা",
+            "Data ০ হওয়া",
+            "পয়েন্টার শেষ হওয়া",
+          ],
+          answer: 1,
+          explanation:
+            "যেহেতু NULL থাকে না, তাই হেড নোডে ফিরে আসলেই লুপ থামানো হয়।",
+        },
+        {
+          id: 48,
+          topic: "Linked List",
+          question:
+            "দুটি Sorted Linked List কে একসাথে ড্রাইভ করে সর্টেড রাখা (Merge) এর টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(m + n)", "O(m * n)", "O(log(m+n))", "O(1)"],
+          answer: 0,
+          explanation:
+            "দুইটি লিস্টের দৈর্ঘ্য m ও n হলে ২-পয়েন্টার টেকনিকে Merge করতে O(m+n) সময় লাগে।",
+        },
+        {
+          id: 49,
+          topic: "Linked List",
+          question:
+            "নিচের কোনটিতে পলিনোমিয়াল (Polynomial Arithmetic) উপস্থাপন সহজ?",
+          options: ["Linked List", "Array", "Stack", "Queue"],
+          answer: 0,
+          explanation:
+            "সহগ ও পাওয়ার জোড়ায় জোড়ায় নোডে রেখে লিঙ্কড লিস্টে বহুপদী রাশি সহজে দেখানো যায়।",
+        },
+        {
+          id: 50,
+          topic: "Linked List",
+          question:
+            "Singly Linked List এর শেষ নোড মুছে ফেলতে (Deletion at end) টাইম কমপ্লেক্সিটি কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+          answer: 1,
+          explanation:
+            "শেষের আগের নোডের Next NULL করতে হয়, সেখানে পৌঁছাতে ওয়ান-ওয়ে ট্রাভার্সাল O(n) লাগে।",
+        },
+
+        // --- Stack & Implementation (51 to 75) ---
+        {
+          id: 51,
+          topic: "Stack",
+          question: "Stack কোন নীতি মেনে কাজ করে?",
+          options: ["FIFO", "LIFO (Last In First Out)", "LILO", "Random"],
+          answer: 1,
+          explanation:
+            "স্ট্যাকে সবার শেষে ঢোকা আইটেমটি সবার আগে বের হয় (LIFO)।",
+        },
+        {
+          id: 52,
+          topic: "Stack",
+          question: "Stack-এ উপাদান যোগ করার মূল অপারেশন কোনটি?",
+          options: ["Pop", "Push", "Peek", "Enqueue"],
+          answer: 1,
+          explanation: "Push এর মাধ্যমে স্ট্যাকে উপাদান যোগ করা হয়।",
+        },
+        {
+          id: 53,
+          topic: "Stack",
+          question: "Stack থেকে উপাদান বের করার অপারেশনের নাম কী?",
+          options: ["Pop", "Push", "Peek", "Dequeue"],
+          answer: 0,
+          explanation: "Pop এর মাধ্যমে স্ট্যাকের ওপর থেকে উপাদান বের করা হয়।",
+        },
+        {
+          id: 54,
+          topic: "Stack",
+          question: "একটি খালি (Empty) Stack থেকে Pop করতে গেলে কী ঘটে?",
+          options: [
+            "Underflow",
+            "Overflow",
+            "Segmentation Fault",
+            "Garbage output",
+          ],
+          answer: 0,
+          explanation:
+            "স্ট্যাকে ডেটা না থাকা অবস্থায় Pop করতে গেলে Stack Underflow হয়।",
+        },
+        {
+          id: 55,
+          topic: "Stack",
+          question: "একটি পূর্ণ (Full) স্ট্যাকে নতুন Push করলে কী ঘটে?",
+          options: ["Underflow", "Overflow", "Success", "Automatic Expansion"],
+          answer: 1,
+          explanation:
+            "নির্ধারিত মেমোরির বেশি ডেটা দিতে গেলে Stack Overflow ঘটে।",
+        },
+        {
+          id: 56,
+          topic: "Stack",
+          question:
+            "Stack-এর টপ ইলিমেন্ট অপসারণ না করে দেখতে কোন অপারেশন ব্যবহৃত হয়?",
+          options: ["Pop", "Push", "Peek / Top", "Seek"],
+          answer: 2,
+          explanation: "Peek বা Top দিয়ে রিমুভ না করে ওপরের উপাদান দেখা যায়।",
+        },
+        {
+          id: 57,
+          topic: "Stack",
+          question: "Infix Expression 'A + B' এর Postfix রূপ কোনটি?",
+          options: ["+ AB", "AB +", "A B +", "B A +"],
+          answer: 1,
+          explanation:
+            "Postfix রূপ রেখাচিত্র: Operand1 Operand2 Operator -> AB+",
+        },
+        {
+          id: 58,
+          topic: "Stack",
+          question: "Infix Expression 'A + B' এর Prefix রূপ কোনটি?",
+          options: ["+ AB", "AB +", "A B +", "B + A"],
+          answer: 0,
+          explanation:
+            "Prefix রূপ রেখাচিত্র: Operator Operand1 Operand2 -> +AB",
+        },
+        {
+          id: 59,
+          topic: "Stack",
+          question:
+            "ওয়েব ব্রাউজারের Back Button কাজ করার পেছনে কোন ডেটা স্ট্রাকচার থাকে?",
+          options: ["Queue", "Stack", "Tree", "Graph"],
+          answer: 1,
+          explanation:
+            "সর্বশেষ দেখা পেজ সবার ওপরে থাকে, যা LIFO অনুয়ায়ী Stack দিয়ে পরিচালিত।",
+        },
+        {
+          id: 60,
+          topic: "Stack",
+          question: "টেক্সট এডিটরসমূহের Undo/Redo অপারেশনে কী ব্যবহৃত হয়?",
+          options: ["Queue", "Stack", "Linked List", "Array"],
+          answer: 1,
+          explanation:
+            "অপারেশনগুলোর ইতিহাস LIFO অর্ডারে স্ট্যাকে সংরক্ষণ করা হয়।",
+        },
+        {
+          id: 61,
+          topic: "Stack",
+          question:
+            "Balanced Parentheses (বন্ধনী সমতা) যাচাই করতে কোন ডেটা স্ট্রাকচার লাগে?",
+          options: ["Queue", "Stack", "Tree", "Heap"],
+          answer: 1,
+          explanation:
+            "ওপেনিং ব্র্যাকেট স্ট্যাকে রেখে ক্লোজিং ব্র্যাকেটের সাথে ম্যাচ করা হয়।",
+        },
+        {
+          id: 62,
+          topic: "Stack",
+          question:
+            "Array দিয়ে বাস্তবায়িত স্ট্যাকে টপ (top) এর প্রাথমিক মান কত ধরা হয়?",
+          options: ["0", "-1", "1", "NULL"],
+          answer: 1,
+          explanation: "খালি স্ট্যাক বোঝাতে top = -1 সেট করা হয়।",
+        },
+        {
+          id: 63,
+          topic: "Stack",
+          question:
+            "Linked List দিয়ে Stack তৈরি করলে Push ও Pop কোথায় করা উচিত?",
+          options: ["Head এ", "Tail এ", "মাঝখানে", "যে কোনো জায়গায়"],
+          answer: 0,
+          explanation:
+            "Head এ ইনসার্ট ও ডিলিট করলে দুটিই O(1) সময়ের জটিলতায় সম্পন্ন হয়।",
+        },
+        {
+          id: 64,
+          topic: "Stack",
+          question: "Stack এ Push ও Pop অপারেশনের Time Complexity কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+          answer: 0,
+          explanation:
+            "স্ট্যাকের টপ থেকে সরাসরি উপাদান যোগ ও বাদ দেওয়া O(1) কাজ।",
+        },
+        {
+          id: 65,
+          topic: "Stack",
+          question:
+            "Postfix Expression মূল্যায়ন (Evaluation) করতে কোন ডেটা স্ট্রাকচার ব্যবহৃত হয়?",
+          options: ["Queue", "Stack", "Array", "Tree"],
+          answer: 1,
+          explanation:
+            "অপার্যান্ড স্ট্যাকে রেখে অপারেটর পেলেই পপ করে কাজ করা হয়।",
+        },
+        {
+          id: 66,
+          topic: "Stack",
+          question:
+            "Recursion কে Iteration-এ কনভার্ট করতে স্পষ্টভাবে কী প্রয়োজন?",
+          options: ["Explicit Stack", "Queue", "Array", "Linked List"],
+          answer: 0,
+          explanation:
+            "রিকার্সিভ কল ফ্রেম হাতে-কলমে সিমুলেট করতে Explicit Stack লাগে।",
+        },
+        {
+          id: 67,
+          topic: "Stack",
+          question:
+            "একটি স্ট্যাকের উপাদানের ক্রম 1, 2, 3 হলে Pop করার পর প্রাপ্ত ক্রম কী হবে?",
+          options: ["1, 2, 3", "3, 2, 1", "2, 1, 3", "3, 1, 2"],
+          answer: 1,
+          explanation: "LIFO অর্ডারে সর্বশেষ ঢোকা ৩ সবার আগে বের হবে: 3, 2, 1।",
+        },
+        {
+          id: 68,
+          topic: "Stack",
+          question:
+            "Auxiliary Stack ব্যবহার না করে ২টি Queue দিয়ে Stack বানানো যায় কি?",
+          options: [
+            "হ্যাঁ",
+            "না",
+            "শুধুমাত্র C++ এ সম্ভব",
+            "শুধুমাত্র Java তে সম্ভব",
+          ],
+          answer: 0,
+          explanation:
+            "হ্যাঁ, ২টি কিউ ব্যবহার করে পুশ বা পপ কস্টলি করে স্ট্যাক ইমপ্লিমেন্ট করা যায়।",
+        },
+        {
+          id: 69,
+          topic: "Stack",
+          question: "নিচের কোনটি Linear Data Structure নয়?",
+          options: ["Array", "Stack", "Queue", "Binary Tree"],
+          answer: 3,
+          explanation:
+            "Binary Tree একটি Non-Linear Data Structure, বাকি সব Linear।",
+        },
+        {
+          id: 70,
+          topic: "Stack",
+          question: "C++ STL এ Stack এর অন্তর্নিহিত ডিফল্ট কন্টেইনার কোনটি?",
+          options: ["vector", "deque", "list", "array"],
+          answer: 1,
+          explanation:
+            "std::stack ডিফল্টভাবে std::deque কন্টেইনারের ওপর আবৃত থাকে।",
+        },
+        {
+          id: 71,
+          topic: "Stack",
+          question: "Postfix Expression '2 3 + 4 *' এর আউটপুট মান কত?",
+          options: ["14", "20", "10", "24"],
+          answer: 1,
+          explanation: "(2 + 3) = 5; 5 * 4 = 20।",
+        },
+        {
+          id: 72,
+          topic: "Stack",
+          question:
+            "প্রোগ্রামে সংজ্ঞায়িত স্থানীয় ভ্যারিয়েবল (Local Variables) কোথায় জমা হয়?",
+          options: [
+            "Heap Area",
+            "Stack Area",
+            "Static Data Area",
+            "Code Segment",
+          ],
+          answer: 1,
+          explanation:
+            "ফাংশনের লোকাল ভ্যারিয়েবলসমূহ স্ট্যাক ফ্রেমে স্টোর থাকে।",
+        },
+        {
+          id: 73,
+          topic: "Stack",
+          question:
+            "Depth First Search (DFS) অ্যালগরিদমে কোন ডেটা স্ট্রাকচার ব্যবহৃত হয়?",
+          options: ["Queue", "Stack", "Priority Queue", "Hash Map"],
+          answer: 1,
+          explanation:
+            "DFS গভীরে যেতে ব্যাকট্র্যাকিং এর জন্য Stack ব্যবহার করে।",
+        },
+        {
+          id: 74,
+          topic: "Stack",
+          question:
+            "স্ট্যাকে ৩টি উপাদান PUSH করার পর ১টি POP করলে নিট বৃদ্ধি কত?",
+          options: ["3", "2", "1", "0"],
+          answer: 1,
+          explanation:
+            "৩টি ঢুকল, ১টি বের হলো, ফলে স্ট্যাকে ২টি উপাদান যুক্ত রইল।",
+        },
+        {
+          id: 75,
+          topic: "Stack",
+          question:
+            "Recursion মেমোরির কোন অংশ অতিরিক্ত ব্যবহারের কারণে ঝুঁকিপূর্ণ?",
+          options: ["Heap", "Call Stack", "BSS Segment", "Registers"],
+          answer: 1,
+          explanation:
+            "অতিরিক্ত গভীরে রিকার্সন গেলে Call Stack মেমোরি ফুল হয়ে ক্র্যাশ করে।",
+        },
+
+        // --- Queue & Implementation (76 to 100) ---
+        {
+          id: 76,
+          topic: "Queue",
+          question: "Queue কোন নীতি অনুসরণ করে কাজ সম্পন্ন করে?",
+          options: ["LIFO", "FIFO (First In First Out)", "FILO", "Random"],
+          answer: 1,
+          explanation:
+            "Queue হলো FIFO নীতিভুক্ত, যেখানে প্রথম ঢোকা আইটেম আগে প্রসেস হয়।",
+        },
+        {
+          id: 77,
+          topic: "Queue",
+          question: "Queue-তে নতুন ডেটা উপাদান যোগ করার প্রক্রিয়াকে কী বলে?",
+          options: ["Enqueue", "Dequeue", "Push", "Pop"],
+          answer: 0,
+          explanation: "Queue তে এনট্রি দেওয়াকে Enqueue বলে।",
+        },
+        {
+          id: 78,
+          topic: "Queue",
+          question: "Queue থেকে উপাদান সরিয়ে ফেলার কাজকে কী বলে?",
+          options: ["Enqueue", "Dequeue", "Push", "Pop"],
+          answer: 1,
+          explanation: "Queue থেকে রিমুভ করাকে Dequeue বলে।",
+        },
+        {
+          id: 79,
+          topic: "Queue",
+          question: "Queue-তে নতুন উপাদান সবসময় কোন প্রান্তে যোগ করা হয়?",
+          options: ["Front", "Rear / Tail", "Middle", "যে কোনো স্থানে"],
+          answer: 1,
+          explanation: "Enqueue প্রক্রিয়া সবসময় Rear (পিছনে) দিয়ে ঘটে।",
+        },
+        {
+          id: 80,
+          topic: "Queue",
+          question: "Queue থেকে উপাদান ডিলিট সবসময় কোন প্রান্ত থেকে হয়?",
+          options: ["Front", "Rear", "Middle", "যে কোনো স্থানে"],
+          answer: 0,
+          explanation: "Dequeue প্রক্রিয়া সবসময় Front (সামনে) দিয়ে ঘটে।",
+        },
+        {
+          id: 81,
+          topic: "Queue",
+          question: "Linear Array Queue এর মূল সীমাবদ্ধতা কী?",
+          options: [
+            "সামনের খালি মেমোরি পুনরাব্যবহার করা যায় না (Wastage)",
+            "ধীরগতি",
+            "ডেটা স্টোর করা যায় না",
+            "সবগুলো",
+          ],
+          answer: 0,
+          explanation:
+            "সামনে থেকে Dequeue করলে স্পেস খালি হলেও সাধারণ অ্যারিতে সেখানে নতুন Enqueue করা যায় না।",
+        },
+        {
+          id: 82,
+          topic: "Queue",
+          question:
+            "Linear Queue এর স্পেস অপচয় দূর করতে কোনটি উদ্ভাবিত হয়েছিল?",
+          options: [
+            "Priority Queue",
+            "Circular Queue",
+            "Deque",
+            "Double Queue",
+          ],
+          answer: 1,
+          explanation:
+            "Circular Queue খালি মেমোরিকে বৃত্তাকারে ঘুরিয়ে পুনরায় ব্যবহারে সাহায্য করে।",
+        },
+        {
+          id: 83,
+          topic: "Queue",
+          question: "Circular Queue-তে Rear অ্যাডভান্স করার সঠিক সূত্র কোনটি?",
+          options: [
+            "rear = rear + 1",
+            "rear = (rear + 1) % SIZE",
+            "rear = rear % SIZE",
+            "rear = (rear - 1) % SIZE",
+          ],
+          answer: 1,
+          explanation:
+            "মডিউলাস অপারেশনের মাধ্যমে বৃত্তাকারে ইনডেক্স ঘোরানো হয়: (rear + 1) % SIZE।",
+        },
+        {
+          id: 84,
+          topic: "Queue",
+          question: "Priority Queue এর উপাদানসমূহ কীভাবে নিস্কাশন করা হয়?",
+          options: [
+            "FIFO অর্ডারে",
+            "আইটেমের অগ্রাধিকার (Priority) মান অনুযায়ী",
+            "LIFO অর্ডারে",
+            "Randomly",
+          ],
+          answer: 1,
+          explanation:
+            "Priority Queue এ যার অগ্রাধিকার বেশি সে আগে Dequeue হয়।",
+        },
+        {
+          id: 85,
+          topic: "Queue",
+          question:
+            "Priority Queue চমৎকারভাবে ইমপ্লিমেন্ট করার জন্য আদর্শ ডেটা স্ট্রাকচার কোনটি?",
+          options: [
+            "Unsorted Array",
+            "Heap (Min-Heap / Max-Heap)",
+            "Singly Linked List",
+            "Stack",
+          ],
+          answer: 1,
+          explanation:
+            "Heap এর মাধ্যমে O(log n) সময়ে Priority Queue অপারেশন করা যায়।",
+        },
+        {
+          id: 86,
+          topic: "Queue",
+          question: "Deque (Double Ended Queue) এর বৈশিষ্ট্য কী?",
+          options: [
+            "শুধু সামনে ইনসার্ট হয়",
+            "উভয় প্রান্ত (Front & Rear) দিয়েই যোগ ও মোছা যায়",
+            "পিছনে মোছা যায় না",
+            "কোনটিই নয়",
+          ],
+          answer: 1,
+          explanation:
+            "Double Ended Queue তে Front এবং Rear উভয় দিক দিয়ে Push/Pop করা সম্ভব।",
+        },
+        {
+          id: 87,
+          topic: "Queue",
+          question:
+            "Breadth First Search (BFS) গ্রাফ অ্যালগরিদমে কোন ডেটা স্ট্রাকচার ব্যবহৃত হয়?",
+          options: ["Stack", "Queue", "Tree", "Hash Table"],
+          answer: 1,
+          explanation:
+            "লেভেল অনুযায়ী গ্রাফ ট্রাভার্স করতে BFS প্রক্রিয়ায় Queue ব্যবহৃত হয়।",
+        },
+        {
+          id: 88,
+          topic: "Queue",
+          question:
+            "অপারেটিং সিস্টেমের প্রিন্টার স্পুলিং (Printer Spooling)-এ কী ব্যবহৃত হয়?",
+          options: ["Queue", "Stack", "Tree", "Array"],
+          answer: 0,
+          explanation:
+            "প্রিন্ট রিকোয়েস্টগুলো সারিবদ্ধভাবে রাখতে FIFO Queue ব্যবহৃত হয়।",
+        },
+        {
+          id: 89,
+          topic: "Queue",
+          question:
+            "খালি কিউ (Empty Queue) থেকে Dequeue করার চেষ্টা করলে কী ঘটে?",
+          options: [
+            "Queue Overflow",
+            "Queue Underflow",
+            "Memory Leak",
+            "Garbage Value",
+          ],
+          answer: 1,
+          explanation: "উপাদানহীন কিউ থেকে রিমুভ করার চেষ্টাকে Underflow বলে।",
+        },
+        {
+          id: 90,
+          topic: "Queue",
+          question: "ফুল কিউ-তে Enqueue করার চেষ্টা করলে কী ঘটে?",
+          options: [
+            "Queue Overflow",
+            "Queue Underflow",
+            "Success",
+            "Segmentation Fault",
+          ],
+          answer: 0,
+          explanation:
+            "মেমোরি পূর্ণ থাকা অবস্থায় যোগ করার চেষ্টাকে Overflow বলে।",
+        },
+        {
+          id: 91,
+          topic: "Queue",
+          question:
+            "অ্যারে দিয়ে বাস্তবায়িত Queue খালি কি না তা বোঝার শর্ত কোনটি?",
+          options: [
+            "front == -1",
+            "rear == -1",
+            "front > rear (বা front == -1)",
+            "সবগুলো",
+          ],
+          answer: 2,
+          explanation:
+            "প্রাথমিকভাবে front == -1 অথবা সব পপ করার পর front > rear হলে কিউ খালি।",
+        },
+        {
+          id: 92,
+          topic: "Queue",
+          question:
+            "Linked List দিয়ে Queue ইমপ্লিমেন্ট করলে Enqueue ও Dequeue এর Time Complexity কত?",
+          options: [
+            "O(1) উভয়টিতে",
+            "O(n) উভয়টিতে",
+            "Enqueue O(1), Dequeue O(n)",
+            "Enqueue O(n), Dequeue O(1)",
+          ],
+          answer: 0,
+          explanation:
+            "Front ও Rear দুটো পয়েন্টার রাখলে দুটি অপারেশনেই O(1) সময় লাগে।",
+        },
+        {
+          id: 93,
+          topic: "Queue",
+          question:
+            "CPU Scheduling Algorithms (যেমন: Round Robin) তৈরিতে কোন ডেটা স্ট্রাকচার প্রয়োজন?",
+          options: ["Stack", "Ready Queue", "Binary Search Tree", "Heap"],
+          answer: 1,
+          explanation:
+            "প্রসেসসমূহ FIFO অনুযায়ী সার্ভিস পেতে Ready Queue গঠন করে।",
+        },
+        {
+          id: 94,
+          topic: "Queue",
+          question:
+            "২টি Stack ব্যবহার করে একটি Queue গঠন করলে Enqueue/Dequeue এর অ্যামোর্টাইজড টাইম কত?",
+          options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+          answer: 0,
+          explanation:
+            "২টি স্ট্যাক দিয়ে তৈরি কিউ-এর Amortized Time Complexity হলো O(1)।",
+        },
+        {
+          id: 95,
+          topic: "Queue",
+          question:
+            "একটি Circular Queue এর সাইজ 5। Front=2, Rear=4 হলে কয়টি উপাদান বিদ্যমান?",
+          options: ["2টি", "3টি", "4টি", "5টি"],
+          answer: 1,
+          explanation: "ইনডেক্স ২, ৩, এবং ৪ এ মোট ৩টি উপাদান রয়েছে।",
+        },
+        {
+          id: 96,
+          topic: "Queue",
+          question:
+            "Monotonic Queue প্রধানত কোন ধরনের সমস্যা সমাধানে ব্যবহৃত হয়?",
+          options: [
+            "Sliding Window Maximum/Minimum",
+            "Shortest Path",
+            "Sorting",
+            "String Matching",
+          ],
+          answer: 0,
+          explanation:
+            "Sliding Window প্রবলেমগুলোতে নির্দিষ্ট রেঞ্জে Min/Max O(1) এ পেতে Monotonic Queue লাগে।",
+        },
+        {
+          id: 97,
+          topic: "Queue",
+          question: "নিচের কোন ক্ষেত্রে Queue ব্যবহৃত হয় না?",
+          options: [
+            "Call Center Phone Systems",
+            "Asynchronous Data Transfer (Buffers)",
+            "Undo Redo in Text Editor",
+            "Resource Sharing (Disk Scheduling)",
+          ],
+          answer: 2,
+          explanation: "Undo Redo সম্পাদনে Stack ব্যবহৃত হয়, Queue নয়।",
+        },
+        {
+          id: 98,
+          topic: "Queue",
+          question: "অ্যারেভিত্তিক Circular Queue ফুল হওয়ার সঠিক শর্ত কোনটি?",
+          options: [
+            "(rear + 1) % SIZE == front",
+            "rear == SIZE - 1",
+            "front == rear",
+            "front == 0",
+          ],
+          answer: 0,
+          explanation:
+            "Rear এর পরের ঘর নির্দেশিত পয়েন্টার Front হলে সার্কুলার কিউ পূর্ণ।",
+        },
+        {
+          id: 99,
+          topic: "Queue",
+          question: "Blocking Queue সাধারণত কোন ক্ষেত্রে বেশি ব্যবহৃত হয়?",
+          options: [
+            "Single Threaded Program",
+            "Multi-threaded Producer-Consumer Problem",
+            "Database Indexing",
+            "Compiler Parsing",
+          ],
+          answer: 1,
+          explanation:
+            "কনকারেন্ট প্রোগ্রামিং এ প্রডিউসার-কনজিউমার থ্রেড সিঙ্ক্রোনাইজেশনে Blocking Queue ব্যবহৃত হয়।",
+        },
+        {
+          id: 100,
+          topic: "Queue",
+          question:
+            "গাড়ি টোল প্লাজায় লাইনে দাঁড়ানো কিসের বাস্তব জীবনভিত্তিক উদাহরণ?",
+          options: ["Stack", "Queue", "Tree", "Graph"],
+          answer: 1,
+          explanation:
+            "যে গাড়ি আগে আসবে সে আগে টোল দিয়ে যাবে, যা নিখুঁত FIFO Queue এর উদাহরণ।",
+        },
+      ];
+
+      // ==========================================
+      // State Management (Local Storage)
+      // ==========================================
+      const STORAGE_KEY = "premiumDsaQuizProgress";
+      let userAnswers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+      // ==========================================
+      // Initialization & Rendering
+      // ==========================================
+      function renderQuiz() {
+        const container = document.getElementById("quiz-container");
+        container.innerHTML = "";
+
+        quizData.forEach((q, index) => {
+          const card = document.createElement("div");
+          card.className = "quiz-card";
+          card.id = `q-card-${q.id}`;
+
+          // Determine status from saved data
+          let savedStatus = "unanswered";
+          if (userAnswers[q.id] !== undefined) {
+            savedStatus = userAnswers[q.id].isCorrect ? "correct" : "incorrect";
+          }
+          card.dataset.topic = q.topic;
+          card.dataset.status = savedStatus;
+
+          let optionsHTML = "";
+          const isAnswered = userAnswers[q.id] !== undefined;
+          const selectedIdx = isAnswered ? userAnswers[q.id].selected : null;
+
+          q.options.forEach((opt, optIdx) => {
+            // Apply saved classes if already answered
+            let btnClass = "option-btn";
+            if (isAnswered) {
+              if (optIdx === q.answer) {
+                btnClass += " correct-ans";
+              } else if (optIdx === selectedIdx) {
+                btnClass += " wrong-ans";
+              }
+            }
+
+            optionsHTML += `
+                <button class="${btnClass}" 
+                        onclick="checkAnswer(${q.id}, ${optIdx})" 
+                        id="opt-${q.id}-${optIdx}"
+                        ${isAnswered ? "disabled" : ""}>
+                    <span style="font-weight:700; margin-right:10px; color:var(--primary);">
+                        ${String.fromCharCode(65 + optIdx)}.
+                    </span> 
+                    ${opt}
+                </button>
+            `;
+          });
+
+          // Show explanation if already answered
+          const expDisplay = isAnswered ? "block" : "none";
+
+          card.innerHTML = `
+            <div class="card-header">
+                <span class="q-number">প্রশ্ন ${index + 1} / 100</span>
+                <span class="topic-badge">${q.topic}</span>
+            </div>
+            <div class="question">${q.question}</div>
+            <div class="options">${optionsHTML}</div>
+            <div class="explanation" id="exp-${q.id}" style="display: ${expDisplay}">
+                <strong>💡 ব্যাখ্যা:</strong> ${q.explanation}
+            </div>
+        `;
+
+          container.appendChild(card);
+        });
+
+        updateScore();
+      }
+
+      // ==========================================
+      // Logic
+      // ==========================================
+      function checkAnswer(qId, selectedIdx) {
+        const q = quizData.find((item) => item.id === qId);
+        if (!q || userAnswers[qId] !== undefined) return;
+
+        const isCorrect = selectedIdx === q.answer;
+
+        // Save to Local Storage state
+        userAnswers[qId] = { selected: selectedIdx, isCorrect: isCorrect };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userAnswers));
+
+        // Update UI
+        const card = document.getElementById(`q-card-${qId}`);
+        card.dataset.status = isCorrect ? "correct" : "incorrect";
+
+        const correctBtn = document.getElementById(`opt-${qId}-${q.answer}`);
+        const selectedBtn = document.getElementById(
+          `opt-${qId}-${selectedIdx}`,
+        );
+
+        if (isCorrect) {
+          selectedBtn.classList.add("correct-ans");
+        } else {
+          selectedBtn.classList.add("wrong-ans");
+          correctBtn.classList.add("correct-ans");
+        }
+
+        const allOptBtns = card.querySelectorAll(".option-btn");
+        allOptBtns.forEach((btn) => (btn.disabled = true));
+
+        const expDiv = document.getElementById(`exp-${qId}`);
+        expDiv.style.display = "block";
+
+        updateScore();
+        filterQuestions();
+      }
+
+      function updateScore() {
+        let correct = 0;
+        let incorrect = 0;
+
+        Object.values(userAnswers).forEach((ans) => {
+          if (ans.isCorrect) correct++;
+          else incorrect++;
+        });
+
+        document.getElementById("correct-count").textContent = correct;
+        document.getElementById("incorrect-count").textContent = incorrect;
+      }
+
+      function filterQuestions() {
+        const topicVal = document.getElementById("topic-filter").value;
+        const statusVal = document.getElementById("status-filter").value;
+        const cards = document.querySelectorAll(".quiz-card");
+
+        cards.forEach((card) => {
+          const topicMatch =
+            topicVal === "all" || card.dataset.topic === topicVal;
+          const statusMatch =
+            statusVal === "all" || card.dataset.status === statusVal;
+
+          if (topicMatch && statusMatch) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      }
+
+      // ==========================================
+      // Reset Functionality
+      // ==========================================
+      function confirmReset() {
+        if (
+          confirm(
+            "আপনি কি নিশ্চিত? এটি আপনার সব উত্তর মুছে ফেলবে এবং কুইজ নতুন করে শুরু হবে!",
+          )
+        ) {
+          localStorage.removeItem(STORAGE_KEY);
+          userAnswers = {};
+
+          // Reset Dropdowns
+          document.getElementById("topic-filter").value = "all";
+          document.getElementById("status-filter").value = "all";
+
+          // Re-render
+          renderQuiz();
+        }
+      }
+
+      // Start Quiz on Load
+      window.onload = () => {
+        renderQuiz();
+      };
+    </script>
+  </body>
+</html>
