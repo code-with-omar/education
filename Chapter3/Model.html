@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 MCQs Model Test - Data Structures & Algorithms | Job Exam Preparation</title>
+    <style>
+        :root {
+            --bg: #f5f0eb;
+            --card: #fffef9;
+            --text: #2c2416;
+            --accent: #8b5e3c;
+            --accent2: #c4884d;
+            --border: #d4c5b2;
+            --highlight: #fef3e4;
+            --correct: #2d6a4f;
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+            --radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Nikosh', 'Bangla', Tahoma, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+                max-width: 100%;
+                font-size: 9px;
+                line-height: 1.3;
+                color: #000;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin: 4px 0;
+                padding: 8px;
+                border-radius: 0;
+                background: #fff;
+            }
+            .question-block {
+                break-inside: avoid;
+                margin-bottom: 2px;
+                padding: 2px 4px;
+                border: none;
+                background: #fff;
+            }
+            .answers-section .question-block {
+                break-inside: avoid;
+                margin-bottom: 6px;
+                padding: 6px;
+                border-bottom: 1px dotted #ccc;
+            }
+            h2 {
+                font-size: 14px;
+                margin: 4px 0;
+            }
+            h3 {
+                font-size: 11px;
+            }
+            .header-info {
+                font-size: 8px;
+            }
+            .qn {
+                font-size: 9px;
+            }
+            .opt {
+                font-size: 8.5px;
+            }
+            .exam-tag {
+                font-size: 7px;
+            }
+            .ans-explanation {
+                font-size: 8px;
+            }
+            @page {
+                margin: 8mm;
+                size: A4;
+            }
+            .columns-2 {
+                column-count: 2;
+                column-gap: 12px;
+            }
+        }
+
+        @media screen {
+            .columns-2 {
+                column-count: 2;
+                column-gap: 20px;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #3e2c1c, #5c3d2e);
+            color: #f5e6d3;
+            border-radius: var(--radius);
+        }
+        .header h1 {
+            font-size: 1.8em;
+            letter-spacing: 1px;
+        }
+        .header .subtitle {
+            font-size: 0.95em;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        h2 {
+            color: #3e2c1c;
+            border-bottom: 2px solid var(--accent2);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+        h3 {
+            color: #5c3d2e;
+            margin: 10px 0 6px;
+            font-size: 1.05em;
+        }
+
+        .question-block {
+            padding: 5px 0;
+            border-bottom: 1px dotted #e8ddd0;
+            margin-bottom: 2px;
+        }
+        .question-block:last-child {
+            border-bottom: none;
+        }
+        .qn {
+            font-weight: 600;
+            color: #1a1008;
+        }
+        .qn .qnum {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            text-align: center;
+            line-height: 22px;
+            font-size: 0.8em;
+            margin-right: 6px;
+            flex-shrink: 0;
+        }
+        .exam-tag {
+            display: inline-block;
+            background: #e8ddd0;
+            color: #5c3d2e;
+            font-size: 0.7em;
+            padding: 2px 7px;
+            border-radius: 10px;
+            margin-left: 6px;
+            font-style: italic;
+        }
+        .opt {
+            margin-left: 30px;
+            font-size: 0.9em;
+            color: #3a2a1a;
+        }
+        .opt span {
+            margin-right: 16px;
+            white-space: nowrap;
+        }
+        .ans-correct {
+            color: var(--correct);
+            font-weight: 700;
+            background: #d8f3dc;
+            padding: 1px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 2px 0;
+        }
+        .ans-explanation {
+            background: #fefef9;
+            border-left: 4px solid var(--accent2);
+            padding: 8px 12px;
+            margin: 6px 0 6px 20px;
+            font-size: 0.85em;
+            color: #4a3525;
+            border-radius: 0 6px 6px 0;
+        }
+        .badge-topic {
+            display: inline-block;
+            background: #f0e6d3;
+            color: #6b4c30;
+            font-size: 0.7em;
+            padding: 1px 8px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .btn-print {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            font-size: 1em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .btn-print:hover {
+            background: #6b3e1f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .toc {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 10px 0;
+        }
+        .toc span {
+            background: #f0e6d3;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            color: #5c3d2e;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .columns-2 {
+                column-count: 1;
+            }
+            .header h1 {
+                font-size: 1.3em;
+            }
+            .card {
+                padding: 10px;
+            }
+            .opt span {
+                display: block;
+                margin: 2px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <div class="header no-print">
+        <h1>📘 ১০০টি এমসিকিউ মডেল টেস্ট</h1>
+        <p class="subtitle">Data Structures, Algorithms & Complexity | জব পরীক্ষার প্রশ্ন সমগ্র</p>
+        <p style="font-size:0.85em;opacity:0.85;">বিসিএস • ব্যাংক • বিশ্ববিদ্যালয় লেকচারার • সরকারি চাকরি • আইটি ফার্ম নিয়োগ</p>
+        <button class="btn-print" onclick="window.print()">🖨️ প্রিন্ট করুন (PDF Save)</button>
+    </div>
+
+    <!-- ==================== QUESTIONS PAGE 1-2 ==================== -->
+    <div class="card" id="questions-section">
+        <h2>📝 প্রশ্নপত্র (১-১০০) — Questions Page 1-2</h2>
+        <p class="header-info" style="font-size:0.8em;color:#888;">Total 100 MCQs | Time: 90 Minutes | প্রতিটি প্রশ্নের মান ১</p>
+
+        <div class="columns-2">
+            <!-- Q1-25 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">1</span> Which data structure uses LIFO principle?
+                    <span class="exam-tag">BCS 35th, 2014</span></p>
+                <p class="opt"><span>(A) Queue</span><span>(B) Stack</span><span>(C) Linked List</span><span>(D) Tree</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">2</span> What is the time complexity of binary search in a sorted array of n elements?
+                    <span class="exam-tag">Bank Recruitment 2018</span></p>
+                <p class="opt"><span>(A) O(n)</span><span>(B) O(n log n)</span><span>(C) O(log n)</span><span>(D) O(1)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">3</span> The recurrence relation T(n) = 2T(n/2) + n solves to:
+                    <span class="exam-tag">DU Lecturer ICT 2019</span></p>
+                <p class="opt"><span>(A) O(n)</span><span>(B) O(n log n)</span><span>(C) O(n²)</span><span>(D) O(log n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">4</span> Which sorting algorithm is NOT comparison-based?
+                    <span class="exam-tag">BUET Lecturer 2020</span></p>
+                <p class="opt"><span>(A) Quick Sort</span><span>(B) Merge Sort</span><span>(C) Radix Sort</span><span>(D) Heap Sort</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">5</span> In a singly linked list, each node contains:
+                    <span class="exam-tag">BCS 38th, 2017</span></p>
+                <p class="opt"><span>(A) Data and two pointers</span><span>(B) Only data</span><span>(C) Data and one pointer</span><span>(D) Data and three pointers</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">6</span> The infix expression A+B*C converts to postfix as:
+                    <span class="exam-tag">IT Officer Sonali Bank 2016</span></p>
+                <p class="opt"><span>(A) ABC*+</span><span>(B) AB+C*</span><span>(C) A*BC+</span><span>(D) ABC+*</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">7</span> What is the best-case time complexity of Insertion Sort?
+                    <span class="exam-tag">BCS 36th, 2015</span></p>
+                <p class="opt"><span>(A) O(n²)</span><span>(B) O(n log n)</span><span>(C) O(n)</span><span>(D) O(log n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">8</span> In a circular linked list, the last node points to:
+                    <span class="exam-tag">Jagannath University Lecturer 2018</span></p>
+                <p class="opt"><span>(A) NULL</span><span>(B) First node</span><span>(C) Second node</span><span>(D) Itself</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">9</span> Hash function h(k)=k mod m is called:
+                    <span class="exam-tag">BCS ICT 40th, 2018</span></p>
+                <p class="opt"><span>(A) Folding method</span><span>(B) Division method</span><span>(C) Mid-square</span><span>(D) Multiplication</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">10</span> The minimum number of moves to solve Tower of Hanoi with 4 disks is:
+                    <span class="exam-tag">RU CSE Lecturer 2017</span></p>
+                <p class="opt"><span>(A) 7</span><span>(B) 15</span><span>(C) 31</span><span>(D) 63</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">11</span> Which data structure is used in BFS graph traversal?
+                    <span class="exam-tag">BCS 41st, 2019</span></p>
+                <p class="opt"><span>(A) Stack</span><span>(B) Queue</span><span>(C) Priority Queue</span><span>(D) Tree</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">12</span> What is the height of a complete binary tree with 15 nodes?
+                    <span class="exam-tag">Bank IT Officer 2019</span></p>
+                <p class="opt"><span>(A) 2</span><span>(B) 3</span><span>(C) 4</span><span>(D) 5</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">13</span> Fractional Knapsack is solved optimally using:
+                    <span class="exam-tag">KUET Lecturer 2020</span></p>
+                <p class="opt"><span>(A) Dynamic Programming</span><span>(B) Greedy</span><span>(C) Backtracking</span><span>(D) Divide & Conquer</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">14</span> Which collision resolution technique uses a linked list?
+                    <span class="exam-tag">BCS 39th, 2017</span></p>
+                <p class="opt"><span>(A) Linear Probing</span><span>(B) Quadratic Probing</span><span>(C) Chaining</span><span>(D) Double Hashing</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">15</span> Merge Sort is based on which design technique?
+                    <span class="exam-tag">NTRCA Lecturer 2016</span></p>
+                <p class="opt"><span>(A) Greedy</span><span>(B) Divide & Conquer</span><span>(C) Dynamic Programming</span><span>(D) Backtracking</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">16</span> The postfix expression 5 3 + 6 * evaluates to:
+                    <span class="exam-tag">IT Officer Janata Bank 2017</span></p>
+                <p class="opt"><span>(A) 33</span><span>(B) 48</span><span>(C) 36</span><span>(D) 30</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">17</span> AVL tree is a:
+                    <span class="exam-tag">BCS 37th, 2016</span></p>
+                <p class="opt"><span>(A) Complete binary tree</span><span>(B) Height-balanced BST</span><span>(C) Min-heap</span><span>(D) B-tree of order 2</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">18</span> Which algorithm finds the shortest path from a single source?
+                    <span class="exam-tag">RUET Lecturer 2019</span></p>
+                <p class="opt"><span>(A) Kruskal</span><span>(B) Prim</span><span>(C) Dijkstra</span><span>(D) Floyd-Warshall</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">19</span> In a doubly linked list, each node has:
+                    <span class="exam-tag">BCS 40th ICT 2018</span></p>
+                <p class="opt"><span>(A) 1 pointer</span><span>(B) 2 pointers</span><span>(C) 3 pointers</span><span>(D) No pointer</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">20</span> The Huffman encoding technique is used for:
+                    <span class="exam-tag">Bank IT 2020</span></p>
+                <p class="opt"><span>(A) Sorting</span><span>(B) Data compression</span><span>(C) Graph traversal</span><span>(D) Hashing</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">21</span> 0/1 Knapsack problem is solved using:
+                    <span class="exam-tag">DU CSE Lecturer 2018</span></p>
+                <p class="opt"><span>(A) Greedy only</span><span>(B) Dynamic Programming</span><span>(C) Divide & Conquer</span><span>(D) Simple sorting</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">22</span> Which is NOT a linear data structure?
+                    <span class="exam-tag">BCS 35th, 2014</span></p>
+                <p class="opt"><span>(A) Array</span><span>(B) Stack</span><span>(C) Tree</span><span>(D) Queue</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">23</span> The worst-case time complexity of Quick Sort is:
+                    <span class="exam-tag">BCS 38th, 2017</span></p>
+                <p class="opt"><span>(A) O(n log n)</span><span>(B) O(n²)</span><span>(C) O(n)</span><span>(D) O(log n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">24</span> DFS uses which data structure?
+                    <span class="exam-tag">IT Officer Rupali Bank 2016</span></p>
+                <p class="opt"><span>(A) Queue</span><span>(B) Stack</span><span>(C) Heap</span><span>(D) Linked List</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">25</span> What is the space complexity of an algorithm?
+                    <span class="exam-tag">BCS 36th, 2015</span></p>
+                <p class="opt"><span>(A) Time taken</span><span>(B) Memory used</span><span>(C) Lines of code</span><span>(D) CPU cycles</span></p>
+            </div>
+            <!-- Q26-50 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">26</span> In Bubble Sort, after each pass, which element is placed correctly?
+                    <span class="exam-tag">NTRCA Lecturer 2017</span></p>
+                <p class="opt"><span>(A) Smallest</span><span>(B) Largest</span><span>(C) Middle</span><span>(D) Random</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">27</span> Which is an Abstract Data Type?
+                    <span class="exam-tag">BCS 41st, 2019</span></p>
+                <p class="opt"><span>(A) Integer</span><span>(B) Float</span><span>(C) Stack</span><span>(D) Char</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">28</span> The prefix expression +*AB+CD corresponds to infix:
+                    <span class="exam-tag">DU ICT Lecturer 2020</span></p>
+                <p class="opt"><span>(A) (A*B)+(C+D)</span><span>(B) A*(B+C+D)</span><span>(C) (A+B)*(C+D)</span><span>(D) A*B+C+D</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">29</span> Heap data structure is generally implemented using:
+                    <span class="exam-tag">BCS 39th, 2017</span></p>
+                <p class="opt"><span>(A) Linked List</span><span>(B) Array</span><span>(C) Stack</span><span>(D) Graph</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">30</span> Activity Selection Problem is solved using:
+                    <span class="exam-tag">BUET Post Grad 2018</span></p>
+                <p class="opt"><span>(A) DP</span><span>(B) Greedy</span><span>(C) Backtracking</span><span>(D) Branch & Bound</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">31</span> A B-Tree of order m can have at most how many children per node?
+                    <span class="exam-tag">CU CSE Lecturer 2019</span></p>
+                <p class="opt"><span>(A) m-1</span><span>(B) m</span><span>(C) m+1</span><span>(D) 2m</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">32</span> Topological sorting is applicable to:
+                    <span class="exam-tag">BCS 40th, 2018</span></p>
+                <p class="opt"><span>(A) Undirected graphs</span><span>(B) DAG</span><span>(C) Complete graphs</span><span>(D) Trees only</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">33</span> The time complexity of inserting an element in a heap is:
+                    <span class="exam-tag">Bank IT Officer 2017</span></p>
+                <p class="opt"><span>(A) O(1)</span><span>(B) O(log n)</span><span>(C) O(n)</span><span>(D) O(n log n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">34</span> Which algorithm is NOT a minimum spanning tree algorithm?
+                    <span class="exam-tag">RU CSE Lecturer 2018</span></p>
+                <p class="opt"><span>(A) Kruskal</span><span>(B) Prim</span><span>(C) Dijkstra</span><span>(D) Both A and B are MST</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">35</span> LCS problem is solved using:
+                    <span class="exam-tag">KU CSE Lecturer 2019</span></p>
+                <p class="opt"><span>(A) Greedy</span><span>(B) Dynamic Programming</span><span>(C) Divide & Conquer</span><span>(D) Brute Force only</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">36</span> In linear probing, when a collision occurs:
+                    <span class="exam-tag">BCS 37th ICT, 2016</span></p>
+                <p class="opt"><span>(A) Rehash with new function</span><span>(B) Search next slot</span><span>(C) Chain to list</span><span>(D) Discard the key</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">37</span> The Tower of Hanoi recurrence is:
+                    <span class="exam-tag">NTRCA CS Lecturer 2015</span></p>
+                <p class="opt"><span>(A) T(n)=T(n-1)+1</span><span>(B) T(n)=2T(n-1)+1</span><span>(C) T(n)=T(n/2)+n</span><span>(D) T(n)=2T(n/2)+1</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">38</span> Which sorting algorithm is stable?
+                    <span class="exam-tag">BCS 41st ICT, 2019</span></p>
+                <p class="opt"><span>(A) Quick Sort</span><span>(B) Heap Sort</span><span>(C) Merge Sort</span><span>(D) Selection Sort</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">39</span> A circular queue overcomes the limitation of:
+                    <span class="exam-tag">IT Officer Agrani Bank 2018</span></p>
+                <p class="opt"><span>(A) Overflow only</span><span>(B) Underflow only</span><span>(C) Wasted space in linear queue</span><span>(D) Speed</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">40</span> The balance factor in AVL tree is:
+                    <span class="exam-tag">DU CSE Lecturer 2017</span></p>
+                <p class="opt"><span>(A) LeftH - RightH</span><span>(B) RightH - LeftH</span><span>(C) Total nodes</span><span>(D) Depth of tree</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">41</span> Greedy choice property means:
+                    <span class="exam-tag">BUET Lecturer 2019</span></p>
+                <p class="opt"><span>(A) Local optimum leads to global optimum</span><span>(B) Solve subproblems</span><span>(C) Divide the problem</span><span>(D) Use memoization</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">42</span> The maximum number of edges in a simple graph with n vertices is:
+                    <span class="exam-tag">BCS 38th, 2017</span></p>
+                <p class="opt"><span>(A) n(n-1)</span><span>(B) n(n-1)/2</span><span>(C) n²</span><span>(D) 2n</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">43</span> Which is NOT a collision resolution technique?
+                    <span class="exam-tag">Bank Recruitment 2018</span></p>
+                <p class="opt"><span>(A) Chaining</span><span>(B) Linear Probing</span><span>(C) Binary Search</span><span>(D) Quadratic Probing</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">44</span> A full binary tree with n internal nodes has how many leaves?
+                    <span class="exam-tag">RUET Lecturer 2020</span></p>
+                <p class="opt"><span>(A) n</span><span>(B) n+1</span><span>(C) 2n</span><span>(D) 2n+1</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">45</span> The matrix chain multiplication uses:
+                    <span class="exam-tag">CUET Lecturer 2019</span></p>
+                <p class="opt"><span>(A) Greedy</span><span>(B) Dynamic Programming</span><span>(C) Divide & Conquer</span><span>(D) Simple recursion</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">46</span> In Selection Sort, the number of swaps in worst case is:
+                    <span class="exam-tag">BCS 36th ICT, 2015</span></p>
+                <p class="opt"><span>(A) n²</span><span>(B) n log n</span><span>(C) n-1</span><span>(D) 0</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">47</span> Dijkstra's algorithm uses which data structure for efficiency?
+                    <span class="exam-tag">IT Officer BDBL 2017</span></p>
+                <p class="opt"><span>(A) Stack</span><span>(B) Queue</span><span>(C) Priority Queue</span><span>(D) Linked List</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">48</span> In a B+ tree, all data records are stored in:
+                    <span class="exam-tag">DU Lecturer CS 2018</span></p>
+                <p class="opt"><span>(A) Internal nodes</span><span>(B) Root only</span><span>(C) Leaf nodes</span><span>(D) All nodes</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">49</span> The Viterbi algorithm is used for:
+                    <span class="exam-tag">KUET ECE Lecturer 2020</span></p>
+                <p class="opt"><span>(A) Sorting</span><span>(B) HMM decoding</span><span>(C) Graph coloring</span><span>(D) Hashing</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">50</span> What is the load factor in hashing?
+                    <span class="exam-tag">BCS 40th ICT, 2018</span></p>
+                <p class="opt"><span>(A) n/m</span><span>(B) m/n</span><span>(C) n*m</span><span>(D) n+m</span></p>
+            </div>
+            <!-- Q51-75 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">51</span> Dynamic programming requires:
+                    <span class="exam-tag">BCS 41st, 2019</span></p>
+                <p class="opt"><span>(A) Overlapping subproblems</span><span>(B) No subproblems</span><span>(C) Only greedy choice</span><span>(D) Linear structure</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">52</span> The recurrence T(n)=T(n-1)+O(1) solves to:
+                    <span class="exam-tag">NTRCA Lecturer ICT 2018</span></p>
+                <p class="opt"><span>(A) O(n)</span><span>(B) O(log n)</span><span>(C) O(n²)</span><span>(D) O(1)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">53</span> Which algorithm works for negative edge weights?
+                    <span class="exam-tag">RU CSE 2019</span></p>
+                <p class="opt"><span>(A) Dijkstra</span><span>(B) Bellman-Ford</span><span>(C) Prim</span><span>(D) Kruskal</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">54</span> A queue is a ___ data structure.
+                    <span class="exam-tag">BCS 35th, 2014</span></p>
+                <p class="opt"><span>(A) LIFO</span><span>(B) FIFO</span><span>(C) LILO</span><span>(D) FILO</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">55</span> The time to search in an unsorted linked list is:
+                    <span class="exam-tag">Bank IT 2016</span></p>
+                <p class="opt"><span>(A) O(1)</span><span>(B) O(log n)</span><span>(C) O(n)</span><span>(D) O(n²)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">56</span> In Quick Sort, the pivot element is placed at:
+                    <span class="exam-tag">BCS 39th, 2017</span></p>
+                <p class="opt"><span>(A) Random position</span><span>(B) Its correct sorted position</span><span>(C) Beginning</span><span>(D) End</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">57</span> Huffman coding gives:
+                    <span class="exam-tag">DU Lecturer 2018</span></p>
+                <p class="opt"><span>(A) Fixed-length codes</span><span>(B) Optimal prefix codes</span><span>(C) ASCII codes</span><span>(D) Unicode</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">58</span> Kruskal's algorithm uses which data structure?
+                    <span class="exam-tag">BCS 40th, 2018</span></p>
+                <p class="opt"><span>(A) Stack</span><span>(B) Disjoint Set</span><span>(C) Queue</span><span>(D) Heap only</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">59</span> The optimal substructure property is essential for:
+                    <span class="exam-tag">KU Lecturer 2020</span></p>
+                <p class="opt"><span>(A) Greedy only</span><span>(B) DP only</span><span>(C) Both Greedy and DP</span><span>(D) Brute force</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">60</span> A B-tree of order 4 is also called:
+                    <span class="exam-tag">CU CSE 2017</span></p>
+                <p class="opt"><span>(A) 2-3-4 tree</span><span>(B) AVL tree</span><span>(C) Red-Black tree</span><span>(D) Binary tree</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">61</span> Floyd-Warshall algorithm computes:
+                    <span class="exam-tag">BUET PG 2019</span></p>
+                <p class="opt"><span>(A) Single-source shortest path</span><span>(B) All-pairs shortest path</span><span>(C) MST</span><span>(D) Maximum flow</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">62</span> In a heap, the parent of node at index i (1-based) is at:
+                    <span class="exam-tag">BCS 38th ICT, 2017</span></p>
+                <p class="opt"><span>(A) i/2</span><span>(B) 2i</span><span>(C) 2i+1</span><span>(D) i-1</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">63</span> The coin changing problem is solved greedily if:
+                    <span class="exam-tag">NTRCA 2019</span></p>
+                <p class="opt"><span>(A) Coins are arbitrary</span><span>(B) Coins are canonical</span><span>(C) Always optimal</span><span>(D) Never optimal</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">64</span> A two-way linked list is also called:
+                    <span class="exam-tag">BCS 36th, 2015</span></p>
+                <p class="opt"><span>(A) Singly linked list</span><span>(B) Doubly linked list</span><span>(C) Circular list</span><span>(D) Array list</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">65</span> The time-space tradeoff refers to:
+                    <span class="exam-tag">IT Officer BASIC Bank 2018</span></p>
+                <p class="opt"><span>(A) Using more time to save space</span><span>(B) Using more space to save time</span><span>(C) Both A and B</span><span>(D) Neither</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">66</span> Radix Sort's time complexity is:
+                    <span class="exam-tag">BCS 41st ICT, 2019</span></p>
+                <p class="opt"><span>(A) O(n log n)</span><span>(B) O(n²)</span><span>(C) O(nk)</span><span>(D) O(log n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">67</span> The assembly line scheduling problem is solved by:
+                    <span class="exam-tag">DU CSE 2019</span></p>
+                <p class="opt"><span>(A) Greedy</span><span>(B) Dynamic Programming</span><span>(C) DFS</span><span>(D) BFS</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">68</span> In infix to postfix conversion, which data structure is used?
+                    <span class="exam-tag">Bank IT 2017</span></p>
+                <p class="opt"><span>(A) Queue</span><span>(B) Stack</span><span>(C) Tree</span><span>(D) Graph</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">69</span> Which is true for a complete graph with n vertices?
+                    <span class="exam-tag">RUET 2018</span></p>
+                <p class="opt"><span>(A) n edges</span><span>(B) n(n-1)/2 edges</span><span>(C) n-1 edges</span><span>(D) 2n edges</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">70</span> The recurrence for Merge Sort is:
+                    <span class="exam-tag">BCS 40th, 2018</span></p>
+                <p class="opt"><span>(A) T(n)=T(n-1)+O(n)</span><span>(B) T(n)=2T(n/2)+O(n)</span><span>(C) T(n)=T(n/2)+O(1)</span><span>(D) T(n)=2T(n/2)+O(1)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">71</span> Prim's algorithm starts with:
+                    <span class="exam-tag">BCS 37th, 2016</span></p>
+                <p class="opt"><span>(A) All vertices</span><span>(B) A single vertex</span><span>(C) All edges sorted</span><span>(D) Random edge</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">72</span> What is the maximum number of nodes at level L in a binary tree?
+                    <span class="exam-tag">Bank IT Officer 2019</span></p>
+                <p class="opt"><span>(A) L</span><span>(B) 2^L</span><span>(C) 2L</span><span>(D) L²</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">73</span> Bitonic TSP is solved using:
+                    <span class="exam-tag">KUET CSE 2020</span></p>
+                <p class="opt"><span>(A) Greedy</span><span>(B) Dynamic Programming</span><span>(C) BFS</span><span>(D) Simple sorting</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">74</span> In a stack, the push operation inserts at:
+                    <span class="exam-tag">BCS 35th, 2014</span></p>
+                <p class="opt"><span>(A) Bottom</span><span>(B) Top</span><span>(C) Middle</span><span>(D) Random</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">75</span> The time complexity of building a heap from n elements is:
+                    <span class="exam-tag">DU Lecturer 2017</span></p>
+                <p class="opt"><span>(A) O(n)</span><span>(B) O(n log n)</span><span>(C) O(log n)</span><span>(D) O(n²)</span></p>
+            </div>
+            <!-- Q76-100 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">76</span> Which is a Divide and Conquer algorithm?
+                    <span class="exam-tag">BCS 39th ICT, 2017</span></p>
+                <p class="opt"><span>(A) Prim's</span><span>(B) Merge Sort</span><span>(C) Dijkstra</span><span>(D) Bellman-Ford</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">77</span> The task scheduling problem minimizing lateness uses:
+                    <span class="exam-tag">NTRCA CS 2018</span></p>
+                <p class="opt"><span>(A) DP</span><span>(B) Greedy (EDD)</span><span>(C) BFS</span><span>(D) Backtracking</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">78</span> In hashing, a perfect hash function:
+                    <span class="exam-tag">BCS 41st, 2019</span></p>
+                <p class="opt"><span>(A) Has no collisions</span><span>(B) Has many collisions</span><span>(C) Is slow</span><span>(D) Uses chaining</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">79</span> The number of distinct binary trees with 3 nodes is:
+                    <span class="exam-tag">RU CSE 2017</span></p>
+                <p class="opt"><span>(A) 3</span><span>(B) 5</span><span>(C) 7</span><span>(D) 9</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">80</span> A flow network has:
+                    <span class="exam-tag">BUET Lecturer 2019</span></p>
+                <p class="opt"><span>(A) Source and sink</span><span>(B) Only source</span><span>(C) Only sink</span><span>(D) Neither</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">81</span> The principle of optimality is associated with:
+                    <span class="exam-tag">BCS 40th, 2018</span></p>
+                <p class="opt"><span>(A) Greedy</span><span>(B) Dynamic Programming</span><span>(C) Divide & Conquer</span><span>(D) Heuristics</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">82</span> Which is NOT a characteristic of an algorithm?
+                    <span class="exam-tag">BCS 35th ICT, 2014</span></p>
+                <p class="opt"><span>(A) Finiteness</span><span>(B) Definiteness</span><span>(C) Infinite loops</span><span>(D) Input/Output</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">83</span> In double hashing, the second hash function should:
+                    <span class="exam-tag">Bank IT 2018</span></p>
+                <p class="opt"><span>(A) Return 0</span><span>(B) Never return 0</span><span>(C) Be the same as first</span><span>(D) Use division only</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">84</span> Heap sort's space complexity is:
+                    <span class="exam-tag">BCS 38th, 2017</span></p>
+                <p class="opt"><span>(A) O(n)</span><span>(B) O(log n)</span><span>(C) O(1)</span><span>(D) O(n²)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">85</span> Backtracking is used in:
+                    <span class="exam-tag">DU Lecturer 2019</span></p>
+                <p class="opt"><span>(A) N-Queens problem</span><span>(B) Merge Sort</span><span>(C) Heap Sort</span><span>(D) Linear Search</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">86</span> A binary search tree has worst-case search time of:
+                    <span class="exam-tag">BCS 36th, 2015</span></p>
+                <p class="opt"><span>(A) O(log n)</span><span>(B) O(n)</span><span>(C) O(1)</span><span>(D) O(n log n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">87</span> The critical path in a DAG represents:
+                    <span class="exam-tag">RUET 2020</span></p>
+                <p class="opt"><span>(A) Shortest path</span><span>(B) Longest path</span><span>(C) Any path</span><span>(D) No path</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">88</span> Which of the following is a stable sorting algorithm?
+                    <span class="exam-tag">IT Officer BDBL 2019</span></p>
+                <p class="opt"><span>(A) Selection Sort</span><span>(B) Insertion Sort</span><span>(C) Quick Sort</span><span>(D) Heap Sort</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">89</span> Static hashing uses:
+                    <span class="exam-tag">BCS 41st ICT, 2019</span></p>
+                <p class="opt"><span>(A) Fixed table size</span><span>(B) Dynamic table size</span><span>(C) No table</span><span>(D) Linked list only</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">90</span> The inorder traversal of a BST gives:
+                    <span class="exam-tag">BCS 37th, 2016</span></p>
+                <p class="opt"><span>(A) Sorted descending</span><span>(B) Sorted ascending</span><span>(C) Random order</span><span>(D) Level order</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">91</span> The Edmonds-Karp algorithm is a:
+                    <span class="exam-tag">CUET PG 2018</span></p>
+                <p class="opt"><span>(A) MST algorithm</span><span>(B) Max Flow algorithm</span><span>(C) Sorting algorithm</span><span>(D) Hashing technique</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">92</span> What is the output of postfix evaluation: 6 2 3 + *?
+                    <span class="exam-tag">Bank IT 2016</span></p>
+                <p class="opt"><span>(A) 30</span><span>(B) 36</span><span>(C) 18</span><span>(D) 12</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">93</span> The number of rotations in AVL tree after insertion is at most:
+                    <span class="exam-tag">DU CSE 2018</span></p>
+                <p class="opt"><span>(A) 1</span><span>(B) 2</span><span>(C) 3</span><span>(D) O(log n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">94</span> Which graph representation is best for sparse graphs?
+                    <span class="exam-tag">BCS 40th ICT, 2018</span></p>
+                <p class="opt"><span>(A) Adjacency Matrix</span><span>(B) Adjacency List</span><span>(C) Incidence Matrix</span><span>(D) All equal</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">95</span> The optimal solution to Matrix Chain Multiplication has time complexity:
+                    <span class="exam-tag">KU Lecturer 2019</span></p>
+                <p class="opt"><span>(A) O(n²)</span><span>(B) O(n³)</span><span>(C) O(2^n)</span><span>(D) O(n log n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">96</span> In a priority queue, elements are removed based on:
+                    <span class="exam-tag">BCS 39th, 2017</span></p>
+                <p class="opt"><span>(A) FIFO</span><span>(B) LIFO</span><span>(C) Priority</span><span>(D) Random</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">97</span> The asymptotic notation for "at least" is:
+                    <span class="exam-tag">NTRCA 2017</span></p>
+                <p class="opt"><span>(A) Big O</span><span>(B) Big Omega</span><span>(C) Big Theta</span><span>(D) Small o</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">98</span> Factorial of n using recursion has time complexity:
+                    <span class="exam-tag">BCS 35th, 2014</span></p>
+                <p class="opt"><span>(A) O(log n)</span><span>(B) O(n)</span><span>(C) O(n²)</span><span>(D) O(2^n)</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">99</span> The number of spanning trees in a complete graph K4 is:
+                    <span class="exam-tag">RU CSE PG 2018</span></p>
+                <p class="opt"><span>(A) 4</span><span>(B) 8</span><span>(C) 16</span><span>(D) 32</span></p>
+            </div>
+            <div class="question-block">
+                <p class="qn"><span class="qnum">100</span> Which algorithm has the best worst-case for comparison-based sorting?
+                    <span class="exam-tag">BCS 41st, 2019</span></p>
+                <p class="opt"><span>(A) Quick Sort</span><span>(B) Merge Sort</span><span>(C) Insertion Sort</span><span>(D) Selection Sort</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE BREAK for Printing ==================== -->
+    <div class="page-break"></div>
+
+    <!-- ==================== ANSWERS PAGE 3-5 ==================== -->
+    <div class="card answers-section" id="answers-section">
+        <h2>✅ উত্তরমালা ও ব্যাখ্যা (Answers & Explanations) — Pages 3-5</h2>
+        <p class="header-info" style="font-size:0.8em;color:#888;">সঠিক উত্তর <span class="ans-correct">হাইলাইট</span> সহ বিস্তারিত ব্যাখ্যা</p>
+
+        <div class="columns-2">
+            <!-- Answer 1 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">1</span> <span class="ans-correct">(B) Stack</span>
+                    <span class="badge-topic">Stacks & Queues</span></p>
+                <p class="ans-explanation">Stack follows LIFO (Last In First Out) principle. The last element pushed is the first one popped. Queue follows FIFO.</p>
+            </div>
+            <!-- Answer 2 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">2</span> <span class="ans-correct">(C) O(log n)</span>
+                    <span class="badge-topic">Searching</span></p>
+                <p class="ans-explanation">Binary search halves the search space each iteration, requiring at most log₂(n) comparisons in the worst case.</p>
+            </div>
+            <!-- Answer 3 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">3</span> <span class="ans-correct">(B) O(n log n)</span>
+                    <span class="badge-topic">Complexity</span></p>
+                <p class="ans-explanation">By Master Theorem Case 2: T(n)=2T(n/2)+n → a=2, b=2, f(n)=n, n^(log_b a)=n. Since f(n)=Θ(n), T(n)=Θ(n log n).</p>
+            </div>
+            <!-- Answer 4 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">4</span> <span class="ans-correct">(C) Radix Sort</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Radix Sort uses digit-wise counting (non-comparison based). Quick, Merge, and Heap sort all use comparisons.</p>
+            </div>
+            <!-- Answer 5 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">5</span> <span class="ans-correct">(C) Data and one pointer</span>
+                    <span class="badge-topic">Linked Lists</span></p>
+                <p class="ans-explanation">A singly linked list node contains data and a single pointer to the next node. Doubly linked has two pointers.</p>
+            </div>
+            <!-- Answer 6 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">6</span> <span class="ans-correct">(A) ABC*+</span>
+                    <span class="badge-topic">Expressions</span></p>
+                <p class="ans-explanation">Infix A+B*C: Operator precedence: * over +. Postfix: A + (B*C) → A + BC* → ABC*+.</p>
+            </div>
+            <!-- Answer 7 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">7</span> <span class="ans-correct">(C) O(n)</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Insertion Sort's best case is when the array is already sorted. Each element is compared once, giving O(n).</p>
+            </div>
+            <!-- Answer 8 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">8</span> <span class="ans-correct">(B) First node</span>
+                    <span class="badge-topic">Linked Lists</span></p>
+                <p class="ans-explanation">In a circular linked list, the last node's next pointer points back to the first (head) node, forming a circle.</p>
+            </div>
+            <!-- Answer 9 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">9</span> <span class="ans-correct">(B) Division method</span>
+                    <span class="badge-topic">Hashing</span></p>
+                <p class="ans-explanation">h(k) = k mod m is the division method. It's simple and commonly used, with m typically chosen as a prime number.</p>
+            </div>
+            <!-- Answer 10 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">10</span> <span class="ans-correct">(B) 15</span>
+                    <span class="badge-topic">Recursion</span></p>
+                <p class="ans-explanation">Minimum moves = 2ⁿ - 1. For n=4: 2⁴ - 1 = 16 - 1 = 15 moves.</p>
+            </div>
+            <!-- Answer 11 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">11</span> <span class="ans-correct">(B) Queue</span>
+                    <span class="badge-topic">Graph Searching</span></p>
+                <p class="ans-explanation">BFS (Breadth First Search) uses a FIFO queue to explore nodes level by level. DFS uses a stack (or recursion).</p>
+            </div>
+            <!-- Answer 12 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">12</span> <span class="ans-correct">(B) 3</span>
+                    <span class="badge-topic">Trees</span></p>
+                <p class="ans-explanation">A complete binary tree with 15 nodes: levels 0,1,2,3 → height=3 (edges from root to deepest leaf). Number of nodes = 2^(h+1)-1=15 → h=3.</p>
+            </div>
+            <!-- Answer 13 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">13</span> <span class="ans-correct">(B) Greedy</span>
+                    <span class="badge-topic">Greedy Algorithms</span></p>
+                <p class="ans-explanation">Fractional Knapsack allows taking fractions of items. The greedy strategy (value/weight ratio) yields the optimal solution.</p>
+            </div>
+            <!-- Answer 14 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">14</span> <span class="ans-correct">(C) Chaining</span>
+                    <span class="badge-topic">Hashing</span></p>
+                <p class="ans-explanation">Chaining resolves collisions by maintaining a linked list at each hash table slot. All colliding keys are stored in the same chain.</p>
+            </div>
+            <!-- Answer 15 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">15</span> <span class="ans-correct">(B) Divide & Conquer</span>
+                    <span class="badge-topic">Divide & Conquer</span></p>
+                <p class="ans-explanation">Merge Sort divides the array into halves, recursively sorts them, and then merges the sorted halves — classic divide & conquer.</p>
+            </div>
+            <!-- Answer 16 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">16</span> <span class="ans-correct">(B) 48</span>
+                    <span class="badge-topic">Expressions</span></p>
+                <p class="ans-explanation">Postfix 5 3 + 6 *: Push 5, push 3, + → pop 3,5 → 5+3=8 push 8. Push 6, * → pop 6,8 → 8*6=48.</p>
+            </div>
+            <!-- Answer 17 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">17</span> <span class="ans-correct">(B) Height-balanced BST</span>
+                    <span class="badge-topic">Trees</span></p>
+                <p class="ans-explanation">AVL tree is a self-balancing Binary Search Tree where the height difference between left and right subtrees is at most 1.</p>
+            </div>
+            <!-- Answer 18 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">18</span> <span class="ans-correct">(C) Dijkstra</span>
+                    <span class="badge-topic">Shortest Path</span></p>
+                <p class="ans-explanation">Dijkstra's algorithm finds the single-source shortest path in a graph with non-negative edge weights.</p>
+            </div>
+            <!-- Answer 19 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">19</span> <span class="ans-correct">(B) 2 pointers</span>
+                    <span class="badge-topic">Linked Lists</span></p>
+                <p class="ans-explanation">A doubly (two-way) linked list has two pointers per node: one to the next node (next) and one to the previous node (prev).</p>
+            </div>
+            <!-- Answer 20 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">20</span> <span class="ans-correct">(B) Data compression</span>
+                    <span class="badge-topic">Huffman Encoding</span></p>
+                <p class="ans-explanation">Huffman encoding assigns variable-length codes based on frequency, achieving lossless data compression.</p>
+            </div>
+            <!-- Answer 21 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">21</span> <span class="ans-correct">(B) Dynamic Programming</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">0/1 Knapsack cannot be solved optimally by greedy (fractional can). DP provides the optimal solution via subproblems.</p>
+            </div>
+            <!-- Answer 22 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">22</span> <span class="ans-correct">(C) Tree</span>
+                    <span class="badge-topic">Data Structures</span></p>
+                <p class="ans-explanation">Tree is a hierarchical (non-linear) data structure. Array, Stack, and Queue are all linear data structures.</p>
+            </div>
+            <!-- Answer 23 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">23</span> <span class="ans-correct">(B) O(n²)</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Quick Sort's worst case occurs when the pivot is always the smallest or largest element (e.g., already sorted array), resulting in O(n²).</p>
+            </div>
+            <!-- Answer 24 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">24</span> <span class="ans-correct">(B) Stack</span>
+                    <span class="badge-topic">Graph Searching</span></p>
+                <p class="ans-explanation">DFS (Depth First Search) uses a stack (explicitly or via recursion) to explore as far as possible along each branch before backtracking.</p>
+            </div>
+            <!-- Answer 25 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">25</span> <span class="ans-correct">(B) Memory used</span>
+                    <span class="badge-topic">Complexity</span></p>
+                <p class="ans-explanation">Space complexity measures the amount of memory an algorithm requires relative to input size, including auxiliary space.</p>
+            </div>
+            <!-- Answer 26 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">26</span> <span class="ans-correct">(B) Largest</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">In Bubble Sort, each pass "bubbles up" the largest unsorted element to its correct position at the end of the array.</p>
+            </div>
+            <!-- Answer 27 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">27</span> <span class="ans-correct">(C) Stack</span>
+                    <span class="badge-topic">ADT</span></p>
+                <p class="ans-explanation">An Abstract Data Type (ADT) defines operations without specifying implementation. Stack, Queue, List are ADTs. Integer, Float are primitive types.</p>
+            </div>
+            <!-- Answer 28 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">28</span> <span class="ans-correct">(A) (A*B)+(C+D)</span>
+                    <span class="badge-topic">Expressions</span></p>
+                <p class="ans-explanation">Prefix +*AB+CD: + is root, left subtree *AB → A*B, right subtree +CD → C+D. So (A*B)+(C+D).</p>
+            </div>
+            <!-- Answer 29 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">29</span> <span class="ans-correct">(B) Array</span>
+                    <span class="badge-topic">Heaps</span></p>
+                <p class="ans-explanation">A heap is typically implemented using an array where parent-child relationships are determined by index calculations (i, 2i, 2i+1).</p>
+            </div>
+            <!-- Answer 30 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">30</span> <span class="ans-correct">(B) Greedy</span>
+                    <span class="badge-topic">Greedy Algorithms</span></p>
+                <p class="ans-explanation">Activity Selection is solved optimally by a greedy strategy: always pick the activity with the earliest finish time.</p>
+            </div>
+            <!-- Answer 31 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">31</span> <span class="ans-correct">(B) m</span>
+                    <span class="badge-topic">B-Tree</span></p>
+                <p class="ans-explanation">A B-Tree of order m can have at most m children per node and at most m-1 keys per node.</p>
+            </div>
+            <!-- Answer 32 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">32</span> <span class="ans-correct">(B) DAG</span>
+                    <span class="badge-topic">Graphs</span></p>
+                <p class="ans-explanation">Topological sorting is only possible for Directed Acyclic Graphs (DAGs). It gives a linear ordering respecting all dependencies.</p>
+            </div>
+            <!-- Answer 33 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">33</span> <span class="ans-correct">(B) O(log n)</span>
+                    <span class="badge-topic">Heaps</span></p>
+                <p class="ans-explanation">Inserting into a heap requires percolating up, which takes at most O(log n) comparisons/swaps (height of the heap).</p>
+            </div>
+            <!-- Answer 34 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">34</span> <span class="ans-correct">(C) Dijkstra</span>
+                    <span class="badge-topic">MST</span></p>
+                <p class="ans-explanation">Dijkstra finds shortest paths, not minimum spanning trees. Kruskal and Prim are MST algorithms.</p>
+            </div>
+            <!-- Answer 35 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">35</span> <span class="ans-correct">(B) Dynamic Programming</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">Longest Common Subsequence (LCS) is a classic DP problem. It builds a table to find the longest matching subsequence.</p>
+            </div>
+            <!-- Answer 36 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">36</span> <span class="ans-correct">(B) Search next slot</span>
+                    <span class="badge-topic">Hashing</span></p>
+                <p class="ans-explanation">Linear probing handles collisions by checking the next available slot (index+1, index+2, ...) until an empty slot is found.</p>
+            </div>
+            <!-- Answer 37 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">37</span> <span class="ans-correct">(B) T(n)=2T(n-1)+1</span>
+                    <span class="badge-topic">Recursion</span></p>
+                <p class="ans-explanation">To move n disks: move n-1 disks to auxiliary (T(n-1)), move the largest disk (1), move n-1 disks to target (T(n-1)). Total: 2T(n-1)+1.</p>
+            </div>
+            <!-- Answer 38 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">38</span> <span class="ans-correct">(C) Merge Sort</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Merge Sort preserves the relative order of equal elements (stable). Quick Sort and Heap Sort are typically unstable.</p>
+            </div>
+            <!-- Answer 39 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">39</span> <span class="ans-correct">(C) Wasted space in linear queue</span>
+                    <span class="badge-topic">Queues</span></p>
+                <p class="ans-explanation">A circular queue reuses vacated spaces at the front, preventing the "false overflow" problem of linear queues.</p>
+            </div>
+            <!-- Answer 40 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">40</span> <span class="ans-correct">(A) LeftH - RightH</span>
+                    <span class="badge-topic">AVL Tree</span></p>
+                <p class="ans-explanation">Balance factor = Height(Left Subtree) - Height(Right Subtree). In AVL, it must be -1, 0, or +1.</p>
+            </div>
+            <!-- Answer 41 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">41</span> <span class="ans-correct">(A) Local optimum leads to global optimum</span>
+                    <span class="badge-topic">Greedy Algorithms</span></p>
+                <p class="ans-explanation">The greedy choice property states that a locally optimal choice at each step leads to a globally optimal solution.</p>
+            </div>
+            <!-- Answer 42 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">42</span> <span class="ans-correct">(B) n(n-1)/2</span>
+                    <span class="badge-topic">Graphs</span></p>
+                <p class="ans-explanation">A simple graph with n vertices has at most n(n-1)/2 edges (complete graph). Each pair of vertices can have at most one edge.</p>
+            </div>
+            <!-- Answer 43 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">43</span> <span class="ans-correct">(C) Binary Search</span>
+                    <span class="badge-topic">Hashing</span></p>
+                <p class="ans-explanation">Binary search is a searching technique for sorted arrays, not a collision resolution method. Chaining and probing are collision resolution techniques.</p>
+            </div>
+            <!-- Answer 44 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">44</span> <span class="ans-correct">(B) n+1</span>
+                    <span class="badge-topic">Trees</span></p>
+                <p class="ans-explanation">In a full binary tree, leaves = internal nodes + 1. With n internal nodes, there are n+1 leaves.</p>
+            </div>
+            <!-- Answer 45 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">45</span> <span class="ans-correct">(B) Dynamic Programming</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">Matrix Chain Multiplication uses DP to find the optimal parenthesization, with O(n³) time complexity.</p>
+            </div>
+            <!-- Answer 46 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">46</span> <span class="ans-correct">(C) n-1</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Selection Sort makes exactly n-1 swaps in the worst case — one swap per pass to place each element (except the last).</p>
+            </div>
+            <!-- Answer 47 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">47</span> <span class="ans-correct">(C) Priority Queue</span>
+                    <span class="badge-topic">Shortest Path</span></p>
+                <p class="ans-explanation">Dijkstra's algorithm uses a min-priority queue to efficiently extract the vertex with the smallest tentative distance.</p>
+            </div>
+            <!-- Answer 48 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">48</span> <span class="ans-correct">(C) Leaf nodes</span>
+                    <span class="badge-topic">B+ Tree</span></p>
+                <p class="ans-explanation">In a B+ tree, all data records are stored only in the leaf nodes. Internal nodes store only keys for navigation.</p>
+            </div>
+            <!-- Answer 49 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">49</span> <span class="ans-correct">(B) HMM decoding</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">The Viterbi algorithm is a DP algorithm used to find the most likely sequence of hidden states in a Hidden Markov Model (HMM).</p>
+            </div>
+            <!-- Answer 50 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">50</span> <span class="ans-correct">(A) n/m</span>
+                    <span class="badge-topic">Hashing</span></p>
+                <p class="ans-explanation">Load factor α = n/m, where n is the number of stored keys and m is the table size. It indicates how full the hash table is.</p>
+            </div>
+            <!-- Answer 51 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">51</span> <span class="ans-correct">(A) Overlapping subproblems</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">DP requires overlapping subproblems (same subproblems solved multiple times) and optimal substructure to be efficient.</p>
+            </div>
+            <!-- Answer 52 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">52</span> <span class="ans-correct">(A) O(n)</span>
+                    <span class="badge-topic">Complexity</span></p>
+                <p class="ans-explanation">T(n)=T(n-1)+O(1) expands to T(n)=T(0)+n·O(1)=O(n). Example: linear search recursion.</p>
+            </div>
+            <!-- Answer 53 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">53</span> <span class="ans-correct">(B) Bellman-Ford</span>
+                    <span class="badge-topic">Shortest Path</span></p>
+                <p class="ans-explanation">Bellman-Ford algorithm can handle negative edge weights and detect negative cycles. Dijkstra cannot handle negative weights.</p>
+            </div>
+            <!-- Answer 54 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">54</span> <span class="ans-correct">(B) FIFO</span>
+                    <span class="badge-topic">Queues</span></p>
+                <p class="ans-explanation">A queue follows FIFO (First In First Out) — the first element inserted is the first one removed, like a line of people.</p>
+            </div>
+            <!-- Answer 55 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">55</span> <span class="ans-correct">(C) O(n)</span>
+                    <span class="badge-topic">Linked Lists</span></p>
+                <p class="ans-explanation">Searching in an unsorted linked list requires traversing all nodes in the worst case → O(n) time.</p>
+            </div>
+            <!-- Answer 56 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">56</span> <span class="ans-correct">(B) Its correct sorted position</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">In Quick Sort, after partitioning, the pivot is placed at its final sorted position — all left elements are smaller, all right are larger.</p>
+            </div>
+            <!-- Answer 57 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">57</span> <span class="ans-correct">(B) Optimal prefix codes</span>
+                    <span class="badge-topic">Huffman Encoding</span></p>
+                <p class="ans-explanation">Huffman coding produces optimal prefix-free codes, meaning no code is a prefix of another, minimizing the total encoded length.</p>
+            </div>
+            <!-- Answer 58 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">58</span> <span class="ans-correct">(B) Disjoint Set</span>
+                    <span class="badge-topic">MST</span></p>
+                <p class="ans-explanation">Kruskal's algorithm uses a Disjoint Set (Union-Find) data structure to efficiently detect cycles while adding edges.</p>
+            </div>
+            <!-- Answer 59 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">59</span> <span class="ans-correct">(C) Both Greedy and DP</span>
+                    <span class="badge-topic">Algorithm Design</span></p>
+                <p class="ans-explanation">Optimal substructure means an optimal solution contains optimal solutions to subproblems — required by both Greedy and DP approaches.</p>
+            </div>
+            <!-- Answer 60 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">60</span> <span class="ans-correct">(A) 2-3-4 tree</span>
+                    <span class="badge-topic">B-Tree</span></p>
+                <p class="ans-explanation">A B-Tree of order 4 is known as a 2-3-4 tree because each internal node can have 2, 3, or 4 children.</p>
+            </div>
+            <!-- Answer 61 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">61</span> <span class="ans-correct">(B) All-pairs shortest path</span>
+                    <span class="badge-topic">Shortest Path</span></p>
+                <p class="ans-explanation">Floyd-Warshall computes the shortest paths between all pairs of vertices in O(n³) using DP.</p>
+            </div>
+            <!-- Answer 62 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">62</span> <span class="ans-correct">(A) i/2</span>
+                    <span class="badge-topic">Heaps</span></p>
+                <p class="ans-explanation">In a 1-indexed heap array, parent of node i is at floor(i/2). Children are at 2i (left) and 2i+1 (right).</p>
+            </div>
+            <!-- Answer 63 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">63</span> <span class="ans-correct">(B) Coins are canonical</span>
+                    <span class="badge-topic">Greedy Algorithms</span></p>
+                <p class="ans-explanation">The greedy coin change algorithm works optimally only for canonical coin systems (like standard denominations). For arbitrary coins, DP is needed.</p>
+            </div>
+            <!-- Answer 64 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">64</span> <span class="ans-correct">(B) Doubly linked list</span>
+                    <span class="badge-topic">Linked Lists</span></p>
+                <p class="ans-explanation">A two-way linked list (doubly linked list) has two pointers per node — next and previous — allowing traversal in both directions.</p>
+            </div>
+            <!-- Answer 65 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">65</span> <span class="ans-correct">(C) Both A and B</span>
+                    <span class="badge-topic">Complexity</span></p>
+                <p class="ans-explanation">Time-space tradeoff means you can often use more memory to speed up computation (e.g., lookup tables) or use less memory with slower algorithms.</p>
+            </div>
+            <!-- Answer 66 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">66</span> <span class="ans-correct">(C) O(nk)</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Radix Sort's time complexity is O(nk) where n is the number of elements and k is the number of digits (or passes).</p>
+            </div>
+            <!-- Answer 67 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">67</span> <span class="ans-correct">(B) Dynamic Programming</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">Assembly line scheduling is a classic DP problem: find the optimal path through two assembly lines with transfer costs.</p>
+            </div>
+            <!-- Answer 68 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">68</span> <span class="ans-correct">(B) Stack</span>
+                    <span class="badge-topic">Expressions</span></p>
+                <p class="ans-explanation">Infix to postfix conversion uses a stack to hold operators temporarily, respecting precedence and associativity rules.</p>
+            </div>
+            <!-- Answer 69 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">69</span> <span class="ans-correct">(B) n(n-1)/2 edges</span>
+                    <span class="badge-topic">Graphs</span></p>
+                <p class="ans-explanation">A complete graph K_n has every pair of distinct vertices connected by an edge → n(n-1)/2 edges.</p>
+            </div>
+            <!-- Answer 70 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">70</span> <span class="ans-correct">(B) T(n)=2T(n/2)+O(n)</span>
+                    <span class="badge-topic">Divide & Conquer</span></p>
+                <p class="ans-explanation">Merge Sort: divide into two halves (2T(n/2)) and merge them (O(n)). Total recurrence: T(n)=2T(n/2)+O(n).</p>
+            </div>
+            <!-- Answer 71 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">71</span> <span class="ans-correct">(B) A single vertex</span>
+                    <span class="badge-topic">MST</span></p>
+                <p class="ans-explanation">Prim's algorithm starts from an arbitrary single vertex and grows the MST by adding the cheapest edge connecting the tree to a new vertex.</p>
+            </div>
+            <!-- Answer 72 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">72</span> <span class="ans-correct">(B) 2^L</span>
+                    <span class="badge-topic">Trees</span></p>
+                <p class="ans-explanation">At level L (root at level 0), a binary tree can have at most 2^L nodes. Level 0: 1, Level 1: 2, Level 2: 4, etc.</p>
+            </div>
+            <!-- Answer 73 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">73</span> <span class="ans-correct">(B) Dynamic Programming</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">The Bitonic Euclidean TSP is solved using DP, building optimal bitonic tours through sorted points.</p>
+            </div>
+            <!-- Answer 74 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">74</span> <span class="ans-correct">(B) Top</span>
+                    <span class="badge-topic">Stacks</span></p>
+                <p class="ans-explanation">In a stack, push inserts at the top and pop removes from the top — LIFO behavior. The top is the accessible end.</p>
+            </div>
+            <!-- Answer 75 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">75</span> <span class="ans-correct">(A) O(n)</span>
+                    <span class="badge-topic">Heaps</span></p>
+                <p class="ans-explanation">Building a heap from an unsorted array (heapify) takes O(n) time, not O(n log n), due to the decreasing work at lower levels.</p>
+            </div>
+            <!-- Answer 76 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">76</span> <span class="ans-correct">(B) Merge Sort</span>
+                    <span class="badge-topic">Divide & Conquer</span></p>
+                <p class="ans-explanation">Merge Sort is a classic divide & conquer algorithm: divide array, recursively sort, merge. Prim's and Dijkstra are greedy.</p>
+            </div>
+            <!-- Answer 77 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">77</span> <span class="ans-correct">(B) Greedy (EDD)</span>
+                    <span class="badge-topic">Greedy Algorithms</span></p>
+                <p class="ans-explanation">Minimizing maximum lateness is solved by Earliest Due Date (EDD) — a greedy strategy that schedules jobs by increasing deadlines.</p>
+            </div>
+            <!-- Answer 78 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">78</span> <span class="ans-correct">(A) Has no collisions</span>
+                    <span class="badge-topic">Hashing</span></p>
+                <p class="ans-explanation">A perfect hash function maps each distinct key to a unique slot with zero collisions. It's possible when the key set is known in advance.</p>
+            </div>
+            <!-- Answer 79 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">79</span> <span class="ans-correct">(B) 5</span>
+                    <span class="badge-topic">Trees</span></p>
+                <p class="ans-explanation">Number of distinct binary trees with n nodes = Catalan number C_n = (2n)!/((n+1)!n!). For n=3: C_3 = 5.</p>
+            </div>
+            <!-- Answer 80 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">80</span> <span class="ans-correct">(A) Source and sink</span>
+                    <span class="badge-topic">Flow Networks</span></p>
+                <p class="ans-explanation">A flow network has a source (where flow originates) and a sink (where flow terminates), with capacities on edges.</p>
+            </div>
+            <!-- Answer 81 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">81</span> <span class="ans-correct">(B) Dynamic Programming</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">The Principle of Optimality (Bellman) states that an optimal policy has the property that sub-policies are also optimal — foundational to DP.</p>
+            </div>
+            <!-- Answer 82 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">82</span> <span class="ans-correct">(C) Infinite loops</span>
+                    <span class="badge-topic">Algorithms</span></p>
+                <p class="ans-explanation">An algorithm must be finite (terminate after a finite number of steps). Infinite loops violate this fundamental property.</p>
+            </div>
+            <!-- Answer 83 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">83</span> <span class="ans-correct">(B) Never return 0</span>
+                    <span class="badge-topic">Hashing</span></p>
+                <p class="ans-explanation">In double hashing, the second hash function must never evaluate to 0, otherwise the probe sequence would stall at the same slot.</p>
+            </div>
+            <!-- Answer 84 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">84</span> <span class="ans-correct">(C) O(1)</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Heap Sort is an in-place sorting algorithm — it uses O(1) extra space beyond the input array.</p>
+            </div>
+            <!-- Answer 85 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">85</span> <span class="ans-correct">(A) N-Queens problem</span>
+                    <span class="badge-topic">Backtracking</span></p>
+                <p class="ans-explanation">N-Queens is solved using backtracking — place queens and backtrack when constraints are violated.</p>
+            </div>
+            <!-- Answer 86 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">86</span> <span class="ans-correct">(B) O(n)</span>
+                    <span class="badge-topic">BST</span></p>
+                <p class="ans-explanation">In a skewed BST (essentially a linked list), searching can take O(n) in the worst case. Balanced BSTs achieve O(log n).</p>
+            </div>
+            <!-- Answer 87 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">87</span> <span class="ans-correct">(B) Longest path</span>
+                    <span class="badge-topic">Graphs</span></p>
+                <p class="ans-explanation">The critical path in a DAG is the longest path from start to finish, determining the minimum project completion time.</p>
+            </div>
+            <!-- Answer 88 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">88</span> <span class="ans-correct">(B) Insertion Sort</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Insertion Sort is stable — it preserves the relative order of equal elements. Selection Sort (default) is not stable.</p>
+            </div>
+            <!-- Answer 89 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">89</span> <span class="ans-correct">(A) Fixed table size</span>
+                    <span class="badge-topic">Hashing</span></p>
+                <p class="ans-explanation">Static hashing uses a fixed-size hash table. Dynamic hashing allows the table to grow and shrink as needed.</p>
+            </div>
+            <!-- Answer 90 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">90</span> <span class="ans-correct">(B) Sorted ascending</span>
+                    <span class="badge-topic">BST</span></p>
+                <p class="ans-explanation">Inorder traversal (Left → Root → Right) of a BST visits nodes in sorted ascending order due to BST properties.</p>
+            </div>
+            <!-- Answer 91 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">91</span> <span class="ans-correct">(B) Max Flow algorithm</span>
+                    <span class="badge-topic">Flow Networks</span></p>
+                <p class="ans-explanation">Edmonds-Karp is an implementation of the Ford-Fulkerson method using BFS to find augmenting paths, solving the max flow problem.</p>
+            </div>
+            <!-- Answer 92 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">92</span> <span class="ans-correct">(A) 30</span>
+                    <span class="badge-topic">Expressions</span></p>
+                <p class="ans-explanation">Postfix 6 2 3 + *: Push 6,2,3. + → 2+3=5. Push 5. * → 6*5=30.</p>
+            </div>
+            <!-- Answer 93 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">93</span> <span class="ans-correct">(B) 2</span>
+                    <span class="badge-topic">AVL Tree</span></p>
+                <p class="ans-explanation">After an insertion in an AVL tree, at most 2 rotations (a double rotation) are needed to restore balance.</p>
+            </div>
+            <!-- Answer 94 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">94</span> <span class="ans-correct">(B) Adjacency List</span>
+                    <span class="badge-topic">Graphs</span></p>
+                <p class="ans-explanation">For sparse graphs, adjacency lists save memory (O(V+E) vs O(V²) for matrix) and are more efficient for traversal.</p>
+            </div>
+            <!-- Answer 95 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">95</span> <span class="ans-correct">(B) O(n³)</span>
+                    <span class="badge-topic">Dynamic Programming</span></p>
+                <p class="ans-explanation">Matrix Chain Multiplication DP solution fills an n×n table with O(n) work per cell → O(n³) total.</p>
+            </div>
+            <!-- Answer 96 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">96</span> <span class="ans-correct">(C) Priority</span>
+                    <span class="badge-topic">Queues</span></p>
+                <p class="ans-explanation">A priority queue removes elements based on priority (not insertion order). The highest (or lowest) priority element is dequeued first.</p>
+            </div>
+            <!-- Answer 97 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">97</span> <span class="ans-correct">(B) Big Omega</span>
+                    <span class="badge-topic">Complexity</span></p>
+                <p class="ans-explanation">Big Omega (Ω) provides an asymptotic lower bound ("at least"). Big O provides an upper bound ("at most"). Theta (Θ) provides both.</p>
+            </div>
+            <!-- Answer 98 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">98</span> <span class="ans-correct">(B) O(n)</span>
+                    <span class="badge-topic">Recursion</span></p>
+                <p class="ans-explanation">factorial(n) makes n recursive calls: fact(n)→fact(n-1)→...→fact(0). Each call does O(1) work → total O(n).</p>
+            </div>
+            <!-- Answer 99 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">99</span> <span class="ans-correct">(C) 16</span>
+                    <span class="badge-topic">Graphs</span></p>
+                <p class="ans-explanation">By Cayley's formula, the number of spanning trees in a complete graph K_n is n^(n-2). For K4: 4^(4-2) = 4² = 16.</p>
+            </div>
+            <!-- Answer 100 -->
+            <div class="question-block">
+                <p class="qn"><span class="qnum">100</span> <span class="ans-correct">(B) Merge Sort</span>
+                    <span class="badge-topic">Sorting</span></p>
+                <p class="ans-explanation">Among comparison-based sorts, Merge Sort guarantees O(n log n) in the worst case. Quick Sort can degrade to O(n²).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <div class="footer-note no-print">
+        <p>📌 <strong>Total: 100 MCQs</strong> | Topics: DS, Algo, Complexity, Searching, Sorting, LL, Stack, Queue, Hash, Tree, Graph, Greedy, D&C, DP</p>
+        <p>Exam Sources: BCS (35th–41st), Bank IT Officer, DU/RU/CU/KU/BUET Lecturer, NTRCA | Click <strong>Print</strong> to save as PDF</p>
+        <p style="margin-top:6px;">✅ Questions: Pages 1-2 &nbsp;|&nbsp; ✅ Answers & Explanations: Pages 3-5</p>
+    </div>
+
+</body>
+</html>

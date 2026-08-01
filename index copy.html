@@ -109,7 +109,7 @@
       /* Hero Section */
       .hero {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
       }
 
       .hero h1 {
@@ -121,34 +121,6 @@
       .hero p {
         color: var(--text-light);
         font-size: 1.1rem;
-      }
-
-      /* Tab Navigation */
-      .tabs-container {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .tab-btn {
-        padding: 0.8rem 1.8rem;
-        border: 2px solid var(--primary-color);
-        background-color: transparent;
-        color: var(--primary-color);
-        border-radius: 30px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .tab-btn.active,
-      .tab-btn:hover {
-        background-color: var(--primary-color);
-        color: #ffffff;
       }
 
       /* Chapters Grid */
@@ -219,7 +191,7 @@
         border-top: 1px solid #f1f5f9;
       }
 
-      /* Detail Page */
+      /* Detail Page (Only for chapters without explicit link) */
       .detail-page {
         display: none;
         background-color: var(--card-bg);
@@ -294,8 +266,8 @@
           <input
             type="text"
             id="searchInput"
-            placeholder="Search cards..."
-            onkeyup="filterCards()"
+            placeholder="Search chapters..."
+            onkeyup="filterChapters()"
           />
         </div>
       </div>
@@ -303,43 +275,29 @@
 
     <!-- Main Content Area -->
     <div class="container">
-      <!-- HOME VIEW -->
+      <!-- HOME VIEW: Chapter Cards -->
       <div id="homeView">
         <div class="hero">
           <h1>Welcome to Computer Science Portal</h1>
-          <p>Select a section below to start learning.</p>
-        </div>
-
-        <!-- Tab Buttons -->
-        <div class="tabs-container">
-          <button
-            class="tab-btn active"
-            id="btnChapters"
-            onclick="switchTab('chapters')"
-          >
-            <i class="fa-solid fa-book-open"></i> Chapters
-          </button>
-          <button class="tab-btn" id="btnExams" onclick="switchTab('exams')">
-            <i class="fa-solid fa-file-signature"></i> Final Exam Models
-          </button>
+          <p>Select a chapter below to start reading.</p>
         </div>
 
         <div class="chapters-grid" id="chaptersGrid">
-          <!-- Dynamically Rendered -->
+          <!-- Chapters will be rendered dynamically -->
         </div>
       </div>
 
-      <!-- DETAIL VIEW -->
+      <!-- DETAIL VIEW (If chapter has no direct link) -->
       <div id="detailView" class="detail-page">
         <button class="back-btn" onclick="showHome()">
-          <i class="fa-solid fa-arrow-left"></i> Back to Main Menu
+          <i class="fa-solid fa-arrow-left"></i> Back to Chapters
         </button>
         <div class="detail-header">
-          <span class="card-number" id="detailChapterNumber">ITEM 1</span>
-          <h2 id="detailChapterTitle">Title</h2>
+          <span class="card-number" id="detailChapterNumber">CHAPTER 1</span>
+          <h2 id="detailChapterTitle">Chapter Title</h2>
         </div>
         <p style="color: var(--text-light); margin-top: 1rem">
-          Content for this item will be updated soon.
+          Content for this chapter will be updated soon.
         </p>
       </div>
     </div>
@@ -351,12 +309,13 @@
 
     <!-- JavaScript Logic -->
     <script>
+      // 8 Chapters Data (Without topics)
       const chaptersData = [
         {
           id: 1,
           title: "Structured and Object Oriented Programming (OOP) Concept",
           icon: "fa-code",
-          link: "./Chapter1/chapter-one-1.html",
+          link: "./Chapter1/chapter-one-1.html", // আপনার চ্যাপ্টার ১ এর লিংক
         },
         {
           id: 2,
@@ -370,8 +329,18 @@
           icon: "fa-network-wired",
           link: "./Chapter3/chapter-three-1.html",
         },
-        { id: 4, title: "Web Technology", icon: "fa-globe", link: "" },
-        { id: 5, title: "Operating System", icon: "fa-desktop", link: "" },
+        {
+          id: 4,
+          title: "Web Technology",
+          icon: "fa-globe",
+          link: "",
+        },
+        {
+          id: 5,
+          title: "Operating System",
+          icon: "fa-desktop",
+          link: "",
+        },
         {
           id: 6,
           title: "Database Management System",
@@ -391,7 +360,6 @@
           link: "",
         },
       ];
-
       const finalExamData = [
         {
           id: 1,
@@ -442,38 +410,33 @@
           link: "./FinalExam/final-exam-8.html",
         },
       ];
-
-      let currentTab = "chapters";
-
-      // Render Cards
-      function renderCards(data) {
+      // Render Cards to Home Grid
+      function renderChapters(data) {
         const grid = document.getElementById("chaptersGrid");
         grid.innerHTML = "";
 
         if (data.length === 0) {
-          grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-light);">No items found.</p>`;
+          grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-light);">No chapters found.</p>`;
           return;
         }
 
-        const labelText = currentTab === "chapters" ? "Chapter" : "Exam";
-        const actionText =
-          currentTab === "chapters" ? "Read Chapter" : "Take Exam";
-
-        data.forEach((item) => {
+        data.forEach((chap) => {
           const card = document.createElement("div");
           card.className = "chapter-card";
-          card.onclick = () => openItem(item);
+
+          // Click Handler
+          card.onclick = () => openChapter(chap);
 
           card.innerHTML = `
             <div>
                 <div class="card-icon">
-                    <i class="fa-solid ${item.icon}"></i>
+                    <i class="fa-solid ${chap.icon}"></i>
                 </div>
-                <div class="card-number">${labelText} ${item.id}</div>
-                <div class="card-title">${item.title}</div>
+                <div class="card-number">Chapter ${chap.id}</div>
+                <div class="card-title">${chap.title}</div>
             </div>
             <div class="card-footer">
-                <span>${actionText}</span>
+                <span>Read Chapter</span>
                 <i class="fa-solid fa-arrow-right"></i>
             </div>
           `;
@@ -481,31 +444,16 @@
         });
       }
 
-      // Tab Switch Logic
-      function switchTab(tab) {
-        currentTab = tab;
-        document.getElementById("searchInput").value = "";
-
-        if (tab === "chapters") {
-          document.getElementById("btnChapters").classList.add("active");
-          document.getElementById("btnExams").classList.remove("active");
-          renderCards(chaptersData);
+      // Open Chapter Logic
+      function openChapter(chap) {
+        // Direct link থাকলে পেজে চলে যাবে
+        if (chap.link && chap.link.trim() !== "") {
+          window.location.href = chap.link;
         } else {
-          document.getElementById("btnExams").classList.add("active");
-          document.getElementById("btnChapters").classList.remove("active");
-          renderCards(finalExamData);
-        }
-      }
-
-      // Open Card Logic
-      function openItem(item) {
-        if (item.link && item.link.trim() !== "") {
-          window.location.href = item.link;
-        } else {
-          const labelText = currentTab === "chapters" ? "CHAPTER" : "EXAM";
+          // লিংক না থাকলে এই পেজেই ডিটেইল ভিউ দেখাবে
           document.getElementById("detailChapterNumber").innerText =
-            `${labelText} ${item.id}`;
-          document.getElementById("detailChapterTitle").innerText = item.title;
+            `CHAPTER ${chap.id}`;
+          document.getElementById("detailChapterTitle").innerText = chap.title;
 
           document.getElementById("homeView").style.display = "none";
           document.getElementById("detailView").style.display = "block";
@@ -513,32 +461,30 @@
         }
       }
 
-      // Return Home
+      // Return to Home Grid
       function showHome() {
         document.getElementById("detailView").style.display = "none";
         document.getElementById("homeView").style.display = "block";
         document.getElementById("searchInput").value = "";
-        switchTab(currentTab);
+        renderChapters(chaptersData);
       }
 
       // Search Filter
-      function filterCards() {
+      function filterChapters() {
         const query = document
           .getElementById("searchInput")
           .value.toLowerCase();
-        const activeData =
-          currentTab === "chapters" ? chaptersData : finalExamData;
-        const filtered = activeData.filter(
-          (item) =>
-            item.title.toLowerCase().includes(query) ||
-            item.id.toString().includes(query),
+        const filtered = chaptersData.filter(
+          (chap) =>
+            chap.title.toLowerCase().includes(query) ||
+            chap.id.toString().includes(query),
         );
-        renderCards(filtered);
+        renderChapters(filtered);
       }
 
-      // Initial Load
+      // Initial Initialization
       window.onload = () => {
-        renderCards(chaptersData);
+        renderChapters(chaptersData);
       };
     </script>
   </body>
