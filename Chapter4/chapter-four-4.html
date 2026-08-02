@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Job Prep Quiz – 74 MCQs (Set 4)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800 antialiased min-h-screen flex flex-col">
+    <!-- Main Header with Navigation -->
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              HTML কুইজ পোর্টাল
+            </h1>
+            <p class="text-xs text-slate-400">HTML Fundamentals – Job Prep</p>
+          </div>
+        </div>
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="chapter-four-1.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 1</a
+          >
+          <a
+            href="chapter-four-2.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 2</a
+          >
+          <a
+            href="chapter-four-3.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 3</a
+          >
+          <a
+            href="chapter-four-4.html"
+            class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white"
+            >সেট 4</a
+          >
+          <a
+            href="chapter-four-5.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 5</a
+          >
+          <a
+            href="chapter-four-6.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 6</a
+          >
+          <a
+            href="chapter-four-7.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 7</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Top Header -->
+    <header
+      class="bg-gradient-to-r from-blue-700 via-indigo-800 to-slate-900 text-white shadow-lg sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2.5 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20"
+          >
+            <i class="fa-solid fa-globe text-2xl text-amber-400"></i>
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+              HTML জব প্রিপারেশন স্পেশাল কুইজ – সেট ৪
+            </h1>
+            <p class="text-xs text-indigo-200">
+              ফর্ম, ফর্ম অ্যাট্রিবিউট, ফর্ম এলিমেন্টস, ইনপুট টাইপস, ইনপুট
+              অ্যাট্রিবিউটস, ইনপুট ফর্ম অ্যাট্রিবিউটস, মিডিয়া, ভিডিও ও অডিও
+              (৭৪ MCQs)
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 items-center">
+          <span
+            class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+          >
+            <i class="fa-solid fa-award mr-1"></i> Correct: +1.0
+          </span>
+          <span
+            class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+          >
+            <i class="fa-solid fa-circle-minus mr-1"></i> Incorrect: -0.25
+          </span>
+          <button
+            onclick="resetQuiz()"
+            class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1"
+          >
+            <i class="fa-solid fa-rotate-left"></i> রিস্টার্ট কুইজ
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6"
+    >
+      <!-- Sidebar -->
+      <aside class="w-full lg:w-80 flex flex-col gap-6 lg:shrink-0">
+        <div
+          class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sticky lg:top-24"
+        >
+          <h2
+            class="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center justify-between"
+          >
+            <span>লাইভ পারফরম্যান্স</span>
+            <i class="fa-solid fa-chart-line text-indigo-600"></i>
+          </h2>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                অ্যাক্টিভ মার্কস
+              </div>
+              <div
+                id="score-display"
+                class="text-2xl font-bold text-indigo-600"
+              >
+                0.00
+              </div>
+            </div>
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                মোট উত্তর
+              </div>
+              <div
+                id="attempted-display"
+                class="text-2xl font-bold text-slate-700"
+              >
+                0/74
+              </div>
+            </div>
+            <div
+              class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-center"
+            >
+              <div class="text-xs text-emerald-600 font-semibold mb-1">
+                সঠিক উত্তর
+              </div>
+              <div
+                id="correct-display"
+                class="text-xl font-bold text-emerald-600"
+              >
+                0
+              </div>
+            </div>
+            <div
+              class="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-center"
+            >
+              <div class="text-xs text-rose-500 font-semibold mb-1">
+                ভুল উত্তর
+              </div>
+              <div id="wrong-display" class="text-xl font-bold text-rose-600">
+                0
+              </div>
+            </div>
+          </div>
+          <div class="mb-5">
+            <div
+              class="flex justify-between text-xs font-semibold text-slate-500 mb-1"
+            >
+              <span>সম্পন্ন হয়েছে</span>
+              <span id="progress-percent">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2">
+              <div
+                id="progress-bar"
+                class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-5">
+            <label
+              class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+              >টপিক ফিল্টার করুন</label
+            >
+            <select
+              id="topic-filter"
+              onchange="filterQuestions()"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-700"
+            >
+              <option value="all">সব প্রশ্ন (৭৪টি)</option>
+              <option value="forms">Forms (১-১০)</option>
+              <option value="formattributes">Form Attributes (১১-২০)</option>
+              <option value="formelements">Form Elements (২১-৩০)</option>
+              <option value="inputtypes">Input Types (৩১-৪৫)</option>
+              <option value="inputattributes">Input Attributes (৪৬-৫৪)</option>
+              <option value="inputformattributes">Input Form Attributes (৫৫-৫৯)</option>
+              <option value="media">Media (৬০-৬৭)</option>
+              <option value="video">Video (৬৮-৭১)</option>
+              <option value="audio">Audio (৭২-৭৪)</option>
+            </select>
+          </div>
+          <div class="mb-2 flex items-center justify-between">
+            <label
+              class="text-xs font-bold text-slate-500 uppercase tracking-wider"
+              >দ্রুত প্রশ্নে যান (১ - ৭৪)</label
+            >
+            <span
+              class="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold"
+              >গ্রিড</span
+            >
+          </div>
+          <div
+            id="question-grid"
+            class="grid grid-cols-10 gap-1.5 max-h-48 overflow-y-auto custom-scrollbar p-1 bg-slate-50 border border-slate-200/60 rounded-xl"
+          ></div>
+        </div>
+      </aside>
+
+      <!-- Main Panel -->
+      <section class="flex-grow flex flex-col gap-5">
+        <div
+          class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex gap-3 items-start"
+        >
+          <i
+            class="fa-solid fa-circle-info text-amber-600 text-lg mt-0.5 shrink-0"
+          ></i>
+          <div class="text-xs md:text-sm text-amber-800 leading-relaxed">
+            <strong>গুরুত্বপূর্ণ নিয়মাবলি:</strong> যেকোনো অপশনে ক্লিক করলেই
+            সাথে সাথে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবেন। একবার কোনো প্রশ্ন উত্তর
+            দিয়ে ফেললে তা আর পরিবর্তন করা যাবে না। ভুল উত্তরের জন্য আপনার অর্জিত
+            মোট স্কোর থেকে
+            <strong class="text-red-700">০.২৫ মার্কস কাটা যাবে</strong>।
+          </div>
+        </div>
+        <div id="questions-list" class="flex flex-col gap-6"></div>
+        <div class="text-center py-6 border-t border-slate-200 mt-4">
+          <p class="text-sm text-slate-500">
+            সমস্ত ৭৪টি প্রশ্ন সফলভাবে লোড করা হয়েছে। শুভ পরীক্ষা!
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Sticky Bar -->
+    <div
+      class="lg:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 p-3 text-white flex justify-between items-center shadow-2xl z-50"
+    >
+      <div class="flex gap-4">
+        <div>
+          <p class="text-[10px] text-slate-400">মোট মার্কস</p>
+          <p id="mobile-score" class="text-lg font-bold text-amber-400">0.00</p>
+        </div>
+        <div>
+          <p class="text-[10px] text-slate-400">উত্তর দেওয়া</p>
+          <p id="mobile-attempted" class="text-lg font-bold text-slate-200">
+            0/74
+          </p>
+        </div>
+      </div>
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all"
+      >
+        <i class="fa-solid fa-chevron-up"></i> উপরে যান
+      </button>
+    </div>
+
+    <footer
+      class="bg-slate-950 text-slate-400 py-6 text-center border-t border-slate-800/60 text-xs mt-12 pb-16 lg:pb-6"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p class="mb-2">© ২০২৬ HTML কুইজ পোর্টাল – সেট ৪।</p>
+        <p class="text-slate-600">
+          নকশা ও কোডিং করা হয়েছে রিয়েল-টাইম জব প্রিপারেশনের জন্য।
+        </p>
+      </div>
+    </footer>
+
+    <script>
+        // ----------------------------------------------------------------
+        // 74 Questions – Set 4: Forms, Form Attributes, Form Elements,
+        // Input Types, Input Attributes, Input Form Attributes, Media, Video, Audio
+        // Correct answers randomly distributed across options
+        // ----------------------------------------------------------------
+        const quizDatabase = [
+            // ----- FORMS (1-10) -----
+            { q: "HTML-এ ফর্ম তৈরির জন্য কোন ট্যাগ ব্যবহার করা হয়?", options: ["<form>", "<input>", "<fieldset>", "<form> ও <input>"], correct: 0, topic: "forms", explanation: "ফর্মের মূল এলিমেন্ট হলো <form> ট্যাগ।" },
+            { q: "<form> ট্যাগের 'action' অ্যাট্রিবিউট কী নির্দেশ করে?", options: ["ফর্মের মেথড", "ফর্ম ডেটা পাঠানোর URL", "ফর্মের ইনপুট টাইপ", "ফর্মের এনকোডিং"], correct: 1, topic: "forms", explanation: "action অ্যাট্রিবিউট ফর্ম ডেটা কোথায় পাঠানো হবে তার URL নির্ধারণ করে।" },
+            { q: "<form> ট্যাগের 'method' অ্যাট্রিবিউট এর ডিফল্ট মান কী?", options: ["POST", "PUT", "GET", "DELETE"], correct: 2, topic: "forms", explanation: "method অ্যাট্রিবিউটের ডিফল্ট মান GET।" },
+            { q: "ফর্ম ডেটা সার্ভারে পাঠানোর জন্য কোন মেথড ব্যবহার করা হয়?", options: ["GET", "PUT", "PATCH", "POST"], correct: 3, topic: "forms", explanation: "POST মেথড ফর্ম ডেটা সার্ভারে পাঠানোর জন্য ব্যবহৃত হয়।" },
+            { q: "ফর্মের 'enctype' অ্যাট্রিবিউট কী কাজ করে?", options: ["ফর্ম ডেটার এনকোডিং টাইপ নির্ধারণ", "ফর্মের অ্যাকশন নির্ধারণ", "ফর্মের মেথড নির্ধারণ", "ফর্মের নাম নির্ধারণ"], correct: 0, topic: "forms", explanation: "enctype অ্যাট্রিবিউট ফর্ম ডেটার এনকোডিং টাইপ নির্ধারণ করে (যেমন multipart/form-data)।" },
+            { q: "ফাইল আপলোডের জন্য কোন enctype ব্যবহার করা হয়?", options: ["application/x-www-form-urlencoded", "multipart/form-data", "text/plain", "application/json"], correct: 1, topic: "forms", explanation: "ফাইল আপলোডের জন্য enctype='multipart/form-data' ব্যবহার করা হয়।" },
+            { q: "ফর্ম সাবমিট করার জন্য কোন ইভেন্ট ব্যবহার করা হয়?", options: ["onclick", "onchange", "onsubmit", "onload"], correct: 2, topic: "forms", explanation: "onsubmit ইভেন্ট ফর্ম সাবমিট হওয়ার আগে ট্রিগার হয়।" },
+            { q: "ফর্মের 'novalidate' অ্যাট্রিবিউট কী কাজ করে?", options: ["ফর্মের অ্যাকশন বন্ধ করে", "ফর্মের মেথড বন্ধ করে", "ফর্মের এনকোডিং বন্ধ করে", "ফর্মের ভ্যালিডেশন বন্ধ করে"], correct: 3, topic: "forms", explanation: "novalidate অ্যাট্রিবিউট ফর্মের HTML5 ভ্যালিডেশন বন্ধ করে দেয়।" },
+            { q: "ফর্মের 'target' অ্যাট্রিবিউট কী কাজ করে?", options: ["ফর্ম রেসপন্স কোথায় দেখাবে তা নির্ধারণ", "ফর্মের অ্যাকশন নির্ধারণ", "ফর্মের মেথড নির্ধারণ", "ফর্মের এনকোডিং নির্ধারণ"], correct: 0, topic: "forms", explanation: "target অ্যাট্রিবিউট ফর্ম রেসপন্স কোন ফ্রেম বা উইন্ডোতে দেখাবে তা নির্ধারণ করে।" },
+            { q: "ফর্মের 'autocomplete' অ্যাট্রিবিউট কী কাজ করে?", options: ["অটোফোকাস করে", "অটোফিল অন/অফ করে", "অটোসাবমিট করে", "অটোরিডাইরেক্ট করে"], correct: 1, topic: "forms", explanation: "autocomplete অ্যাট্রিবিউট ফর্মের অটোফিল ফিচার অন বা অফ করে।" },
+            
+            // ----- FORM ATTRIBUTES (11-20) -----
+            { q: "ইনপুটে 'disabled' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনপুট রিড-অনলি করে", "ইনপুট লুকায়", "ইনপুট নিষ্ক্রিয় করে", "ইনপুট রিমুভ করে"], correct: 2, topic: "formattributes", explanation: "disabled অ্যাট্রিবিউট ইনপুট ফিল্ডকে নিষ্ক্রিয় করে, যা ব্যবহারকারী এডিট করতে পারে না।" },
+            { q: "ইনপুটে 'readonly' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনপুট নিষ্ক্রিয় করে", "ইনপুট লুকায়", "ইনপুট ডিলিট করে", "ইনপুট এডিট করা যায় না"], correct: 3, topic: "formattributes", explanation: "readonly অ্যাট্রিবিউট ইনপুট ফিল্ডকে শুধুমাত্র পঠনযোগ্য করে, কিন্তু ফোকাস নেওয়া যায়।" },
+            { q: "ইনপুটে 'required' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনপুট আবশ্যক করে", "ইনপুট অপশনাল করে", "ইনপুট লুকায়", "ইনপুট ডিসেবল করে"], correct: 0, topic: "formattributes", explanation: "required অ্যাট্রিবিউট ফর্ম জমা দেওয়ার আগে ইনপুট পূরণ করা আবশ্যক করে।" },
+            { q: "ইনপুটে 'placeholder' অ্যাট্রিবিউট কী কাজ করে?", options: ["ডিফল্ট ভ্যালু সেট করে", "গাইড টেক্সট দেখায়", "ইনপুট লেবেল তৈরি করে", "ইনপুট হেল্প টেক্সট যোগ করে"], correct: 1, topic: "formattributes", explanation: "placeholder অ্যাট্রিবিউট ইনপুট ফিল্ডে হালকা গাইড টেক্সট দেখায় যা টাইপ করলে মুছে যায়।" },
+            { q: "ইনপুটে 'maxlength' অ্যাট্রিবিউট কী কাজ করে?", options: ["সর্বনিম্ন ক্যারেক্টার সংখ্যা নির্ধারণ", "ইনপুটের প্রস্থ নির্ধারণ", "সর্বোচ্চ ক্যারেক্টার সংখ্যা নির্ধারণ", "ইনপুটের উচ্চতা নির্ধারণ"], correct: 2, topic: "formattributes", explanation: "maxlength অ্যাট্রিবিউট ইনপুট ফিল্ডে সর্বোচ্চ কতটি অক্ষর লেখা যাবে তা নির্ধারণ করে।" },
+            { q: "ইনপুটে 'min' ও 'max' অ্যাট্রিবিউট কী কাজ করে?", options: ["সর্বনিম্ন ও সর্বোচ্চ দৈর্ঘ্য নির্ধারণ", "ইনপুটের সাইজ নির্ধারণ", "ইনপুটের রেঞ্জ নির্ধারণ", "সর্বনিম্ন ও সর্বোচ্চ মান নির্ধারণ"], correct: 3, topic: "formattributes", explanation: "min ও max অ্যাট্রিবিউট সংখ্যাগত ইনপুটের সর্বনিম্ন ও সর্বোচ্চ মান নির্ধারণ করে।" },
+            { q: "ইনপুটে 'step' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনক্রিমেন্টের ধাপ নির্ধারণ", "ইনপুটের ধাপ নির্ধারণ", "ইনপুটের সাইজ নির্ধারণ", "ইনপুটের রেঞ্জ নির্ধারণ"], correct: 0, topic: "formattributes", explanation: "step অ্যাট্রিবিউট সংখ্যাগত ইনপুটে কত ধাপে বাড়বে বা কমবে তা নির্ধারণ করে।" },
+            { q: "ইনপুটে 'value' অ্যাট্রিবিউট কী কাজ করে?", options: ["প্লেসহোল্ডার সেট করে", "ডিফল্ট ভ্যালু সেট করে", "ইনপুটের নাম সেট করে", "ইনপুটের টাইপ সেট করে"], correct: 1, topic: "formattributes", explanation: "value অ্যাট্রিবিউট ইনপুট ফিল্ডের ডিফল্ট বা প্রি-ফিল্ড ভ্যালু সেট করে।" },
+            { q: "ইনপুটে 'name' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনপুটের আইডি নির্ধারণ", "ইনপুটের ক্লাস নির্ধারণ", "ইনপুটের নাম নির্ধারণ", "ইনপুটের স্টাইল নির্ধারণ"], correct: 2, topic: "formattributes", explanation: "name অ্যাট্রিবিউট ইনপুটের নাম নির্ধারণ করে, যা ফর্ম ডেটা পাঠানোর সময় কী হিসেবে ব্যবহার হয়।" },
+            { q: "ইনপুটে 'id' অ্যাট্রিবিউট কী কাজ করে?", options: ["ক্লাস নির্ধারণ", "নাম নির্ধারণ", "স্টাইল নির্ধারণ", "ইউনিক আইডি নির্ধারণ"], correct: 3, topic: "formattributes", explanation: "id অ্যাট্রিবিউট পেজে ইউনিক আইডি নির্ধারণ করে, যা CSS ও জাভাস্ক্রিপ্টে টার্গেট করতে ব্যবহার হয়।" },
+            
+            // ----- FORM ELEMENTS (21-30) -----
+            { q: "ইনপুট ফিল্ড তৈরির জন্য কোন ট্যাগ ব্যবহার করা হয়?", options: ["<input>", "<field>", "<entry>", "<text>"], correct: 0, topic: "formelements", explanation: "ইনপুট ফিল্ডের জন্য <input> ট্যাগ ব্যবহার করা হয়।" },
+            { q: "ড্রপডাউন তালিকা তৈরির জন্য কোন ট্যাগ ব্যবহার করা হয়?", options: ["<input>", "<select>", "<dropdown>", "<list>"], correct: 1, topic: "formelements", explanation: "ড্রপডাউনের জন্য <select> ট্যাগ ব্যবহার করা হয়।" },
+            { q: "<select> এর সাথে কোন ট্যাগ ব্যবহার করা হয়?", options: ["<input>", "<item>", "<option>", "<choice>"], correct: 2, topic: "formelements", explanation: "<select> এর সাথে <option> ট্যাগ ব্যবহার করা হয়।" },
+            { q: "মাল্টি-লাইন টেক্সট ইনপুটের জন্য কোন ট্যাগ ব্যবহার করা হয়?", options: ["<input>", "<text>", "<paragraph>", "<textarea>"], correct: 3, topic: "formelements", explanation: "মাল্টি-লাইন ইনপুটের জন্য <textarea> ব্যবহার করা হয়।" },
+            { q: "<textarea> এর 'rows' ও 'cols' অ্যাট্রিবিউট কী করে?", options: ["সারি ও কলাম সংখ্যা নির্ধারণ", "সাইজ নির্ধারণ", "ফন্ট সাইজ নির্ধারণ", "কালার নির্ধারণ"], correct: 0, topic: "formelements", explanation: "rows ও cols অ্যাট্রিবিউট textarea-এর সাইজ নির্ধারণ করে।" },
+            { q: "বাটন তৈরির জন্য কোন ট্যাগ ব্যবহার করা হয়?", options: ["<button>", "<input>", "<btn>", "উভয় <button> ও <input>"], correct: 3, topic: "formelements", explanation: "বাটন তৈরির জন্য <button> ও <input type='button'> উভয়ই ব্যবহার করা যায়।" },
+            { q: "<button> ট্যাগের ডিফল্ট টাইপ কী?", options: ["button", "submit", "reset", "menu"], correct: 1, topic: "formelements", explanation: "<button> ট্যাগের ডিফল্ট টাইপ 'submit'।" },
+            { q: "ফর্মের গ্রুপিংয়ের জন্য কোন ট্যাগ ব্যবহার করা হয়?", options: ["<group>", "<section>", "<fieldset>", "<div>"], correct: 2, topic: "formelements", explanation: "<fieldset> ট্যাগ ফর্মের সম্পর্কিত ইনপুটগুলো গ্রুপ করতে ব্যবহৃত হয়।" },
+            { q: "<fieldset> এর সাথে কোন ট্যাগ ব্যবহার করা হয়?", options: ["<legend>", "<label>", "<input>", "<select>"], correct: 0, topic: "formelements", explanation: "<legend> ট্যাগ <fieldset> এর শিরোনাম বা ক্যাপশন প্রদান করে।" },
+            { q: "ইনপুটের লেবেল তৈরির জন্য কোন ট্যাগ ব্যবহার করা হয়?", options: ["<legend>", "<label>", "<caption>", "<title>"], correct: 1, topic: "formelements", explanation: "<label> ট্যাগ ইনপুট ফিল্ডের লেবেল বা নাম তৈরি করে।" },
+            
+            // ----- INPUT TYPES (31-45) -----
+            { q: "টেক্সট ইনপুটের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["string", "paragraph", "text", "textarea"], correct: 2, topic: "inputtypes", explanation: "টেক্সট ইনপুটের জন্য type='text' ব্যবহার করা হয়।" },
+            { q: "পাসওয়ার্ড ইনপুটের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["text", "secret", "hidden", "password"], correct: 3, topic: "inputtypes", explanation: "পাসওয়ার্ড ইনপুটের জন্য type='password' ব্যবহার করা হয়।" },
+            { q: "ইমেইল ইনপুটের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["email", "text", "mail", "string"], correct: 0, topic: "inputtypes", explanation: "ইমেইল ইনপুটের জন্য type='email' ব্যবহার করা হয়।" },
+            { q: "নম্বর ইনপুটের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["text", "number", "integer", "float"], correct: 1, topic: "inputtypes", explanation: "নম্বর ইনপুটের জন্য type='number' ব্যবহার করা হয়।" },
+            { q: "চেকবক্সের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["radio", "switch", "checkbox", "check"], correct: 2, topic: "inputtypes", explanation: "চেকবক্সের জন্য type='checkbox' ব্যবহার করা হয়।" },
+            { q: "রেডিও বাটনের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["checkbox", "select", "option", "radio"], correct: 3, topic: "inputtypes", explanation: "রেডিও বাটনের জন্য type='radio' ব্যবহার করা হয়।" },
+            { q: "ফাইল আপলোডের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["file", "upload", "image", "document"], correct: 0, topic: "inputtypes", explanation: "ফাইল আপলোডের জন্য type='file' ব্যবহার করা হয়।" },
+            { q: "সাবমিট বাটনের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["button", "submit", "reset", "send"], correct: 1, topic: "inputtypes", explanation: "সাবমিট বাটনের জন্য type='submit' ব্যবহার করা হয়।" },
+            { q: "রিসেট বাটনের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["submit", "button", "reset", "clear"], correct: 2, topic: "inputtypes", explanation: "রিসেট বাটনের জন্য type='reset' ব্যবহার করা হয়।" },
+            { q: "ইনপুট ফিল্ড লুকানোর জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["invisible", "secret", "none", "hidden"], correct: 3, topic: "inputtypes", explanation: "লুকানো ইনপুটের জন্য type='hidden' ব্যবহার করা হয়।" },
+            { q: "তারিখ ইনপুটের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["date", "datetime", "time", "calendar"], correct: 0, topic: "inputtypes", explanation: "তারিখ ইনপুটের জন্য type='date' ব্যবহার করা হয়।" },
+            { q: "কালার পিকার ইনপুটের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["colour", "color", "picker", "rgb"], correct: 1, topic: "inputtypes", explanation: "কালার পিকারের জন্য type='color' ব্যবহার করা হয়।" },
+            { q: "রেঞ্জ স্লাইডারের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["slider", "scroll", "range", "number"], correct: 2, topic: "inputtypes", explanation: "রেঞ্জ ইনপুটের জন্য type='range' ব্যবহার করা হয়।" },
+            { q: "অনুসন্ধান ইনপুটের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["text", "find", "query", "search"], correct: 3, topic: "inputtypes", explanation: "অনুসন্ধান ইনপুটের জন্য type='search' ব্যবহার করা হয়।" },
+            { q: "ইউআরএল ইনপুটের জন্য কোন টাইপ ব্যবহার করা হয়?", options: ["url", "link", "href", "website"], correct: 0, topic: "inputtypes", explanation: "ইউআরএল ইনপুটের জন্য type='url' ব্যবহার করা হয়।" },
+            
+            // ----- INPUT ATTRIBUTES (46-55) -----
+            { q: "ইনপুটে 'autofocus' অ্যাট্রিবিউট কী কাজ করে?", options: ["অটোফিল করে", "পেজ লোড হলে ফোকাস নেয়", "অটোসাবমিট করে", "অটোরিডাইরেক্ট করে"], correct: 1, topic: "inputattributes", explanation: "autofocus অ্যাট্রিবিউট পেজ লোড হওয়ার সময় নির্দিষ্ট ইনপুটে অটোমেটিক ফোকাস নিয়ে আসে।" },
+            { q: "ইনপুটে 'checked' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনপুট চেক করে", "ইনপুট ভ্যালিডেট করে", "চেকবক্স/রেডিও প্রি-সিলেক্ট করে", "ইনপুট সিলেক্ট করে"], correct: 2, topic: "inputattributes", explanation: "checked অ্যাট্রিবিউট চেকবক্স বা রেডিও বাটন প্রি-সিলেক্ট করে।" },
+            { q: "ইনপুটে 'selected' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনপুট সিলেক্ট করে", "ইনপুট হাইলাইট করে", "ইনপুট চেক করে", "<option> প্রি-সিলেক্ট করে"], correct: 3, topic: "inputattributes", explanation: "selected অ্যাট্রিবিউট <select> এর <option> প্রি-সিলেক্ট করে।" },
+            { q: "ইনপুটে 'multiple' অ্যাট্রিবিউট কী কাজ করে?", options: ["একাধিক সিলেকশন ও ফাইল আপলোড অনুমতি দেয়", "শুধুমাত্র একক ফাইল অনুমতি দেয়", "ইনপুট হাইড করে", "কোনোটিই নয়"], correct: 0, topic: "inputattributes", explanation: "multiple অ্যাট্রিবিউট <select> ও <input type='file'>-এ একাধিক সিলেকশনের অনুমতি দেয়।" },
+            { q: "ইনপুটে 'spellcheck' অ্যাট্রিবিউট কী কাজ করে?", options: ["গ্রামার চেক করে", "স্পেল চেক অন/অফ করে", "অটোকারেক্ট করে", "ভ্যালিডেশন করে"], correct: 1, topic: "inputattributes", explanation: "spellcheck অ্যাট্রিবিউট ইনপুটের স্পেল চেক ফিচার অন বা অফ করে।" },
+            { q: "ইনপুটে 'autocomplete' অ্যাট্রিবিউট কী কাজ করে?", options: ["অটোফোকাস করে", "অটোসাবমিট করে", "অটোফিল অন/অফ করে", "অটোরিডাইরেক্ট করে"], correct: 2, topic: "inputattributes", explanation: "autocomplete অ্যাট্রিবিউট ইনপুটের অটোফিল ফিচার অন বা অফ করে।" },
+            { q: "ইনপুটে 'pattern' অ্যাট্রিবিউট কী কাজ করে?", options: ["প্যাটার্ন ম্যাচ করে", "ইনপুট ফরম্যাট করে", "ইনপুট টাইপ নির্ধারণ", "রেগুলার এক্সপ্রেশন দিয়ে ভ্যালিডেশন করে"], correct: 3, topic: "inputattributes", explanation: "pattern অ্যাট্রিবিউট রেগুলার এক্সপ্রেশন ব্যবহার করে ইনপুট ভ্যালিডেশন করে।" },
+            { q: "ইনপুটে 'title' অ্যাট্রিবিউট কী কাজ করে?", options: ["টুলটিপ বা হোভার টেক্সট যোগ করে", "ইনপুটের টাইটেল সেট করে", "ইনপুটের নাম সেট করে", "ইনপুটের আইডি সেট করে"], correct: 0, topic: "inputattributes", explanation: "title অ্যাট্রিবিউট ইনপুটে টুলটিপ বা হোভার টেক্সট যোগ করে।" },
+            { q: "ইনপুটে 'size' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনপুটের সাইজ নির্ধারণ", "ইনপুটের প্রস্থ নির্ধারণ", "ইনপুটের দৈর্ঘ্য নির্ধারণ", "ইনপুটের উচ্চতা নির্ধারণ"], correct: 1, topic: "inputattributes", explanation: "size অ্যাট্রিবিউট ইনপুট ফিল্ডের প্রস্থ (অক্ষর সংখ্যা) নির্ধারণ করে।" },
+            
+            // ----- INPUT FORM ATTRIBUTES (56-60) -----
+            { q: "ইনপুটের 'form' অ্যাট্রিবিউট কী কাজ করে?", options: ["ফর্মের অ্যাকশন নির্ধারণ", "ফর্মের মেথড নির্ধারণ", "ইনপুট কোন ফর্মের সাথে সম্পর্কিত তা নির্ধারণ", "ফর্মের এনকোডিং নির্ধারণ"], correct: 2, topic: "inputformattributes", explanation: "form অ্যাট্রিবিউট ইনপুট এলিমেন্টকে নির্দিষ্ট ফর্মের সাথে যুক্ত করে।" },
+            { q: "ইনপুটের 'formaction' অ্যাট্রিবিউট কী কাজ করে?", options: ["ফর্মের মেথড সেট করে", "ফর্মের নাম নির্ধারণ করে", "ফর্মের ইনপুট চেক করে", "সাবমিটের জন্য আলাদা URL নির্ধারণ ও action ওভাররাইড করে"], correct: 3, topic: "inputformattributes", explanation: "formaction অ্যাট্রিবিউট সাবমিট বাটনের জন্য আলাদা URL নির্ধারণ করে এবং ফর্মের action ওভাররাইড করে।" },
+            { q: "ইনপুটের 'formenctype' অ্যাট্রিবিউট কী কাজ করে?", options: ["সাবমিটের জন্য আলাদা এনকোডিং নির্ধারণ ও enctype ওভাররাইড করে", "ফর্মের অ্যাকশন পরিবর্তন করে", "ইনপুট হাইড করে", "কোনোটিই নয়"], correct: 0, topic: "inputformattributes", explanation: "formenctype অ্যাট্রিবিউট সাবমিট বাটনের জন্য আলাদা এনকোডিং টাইপ নির্ধারণ করে।" },
+            { q: "ইনপুটের 'formmethod' অ্যাট্রিবিউট কী কাজ করে?", options: ["ফর্মের টার্গেট সেটিং", "সাবমিটের জন্য আলাদা মেথড (GET/POST) নির্ধারণ ও method ওভাররাইড করে", "ফর্ম ভ্যালিডেশন", "কোনোটিই নয়"], correct: 1, topic: "inputformattributes", explanation: "formmethod অ্যাট্রিবিউট সাবমিট বাটনের জন্য আলাদা মেথড (GET/POST) নির্ধারণ করে।" },
+            { q: "ইনপুটের 'formtarget' অ্যাট্রিবিউট কী কাজ করে?", options: ["ইনপুট স্টাইল সেট করে", "ফর্ম রিসেট করে", "সাবমিটের জন্য আলাদা টার্গেট নির্ধারণ ও target ওভাররাইড করে", "কোনোটিই নয়"], correct: 2, topic: "inputformattributes", explanation: "formtarget অ্যাট্রিবিউট সাবমিট রেসপন্স কোথায় দেখাবে তা নির্ধারণ করে।" },
+            
+            // ----- MEDIA (61-68) -----
+            { q: "HTML-এ ভিডিও এম্বেড করতে কোন ট্যাগ ব্যবহার করা হয়?", options: ["<media>", "<movie>", "<source>", "<video>"], correct: 3, topic: "media", explanation: "<video> ট্যাগ দিয়ে HTML-এ ভিডিও এম্বেড করা হয়।" },
+            { q: "HTML-এ অডিও এম্বেড করতে কোন ট্যাগ ব্যবহার করা হয়?", options: ["<audio>", "<sound>", "<music>", "<source>"], correct: 0, topic: "media", explanation: "<audio> ট্যাগ দিয়ে HTML-এ অডিও এম্বেড করা হয়।" },
+            { q: "<video> ট্যাগের 'controls' অ্যাট্রিবিউট কী কাজ করে?", options: ["ভিডিও অটোপ্লে করে", "প্লেব্যাক কন্ট্রোল দেখায়", "ভিডিও লুপ করে", "ভিডিও মিউট করে"], correct: 1, topic: "media", explanation: "controls অ্যাট্রিবিউট ভিডিওতে প্লে, পজ, ভলিউম ইত্যাদি কন্ট্রোল দেখায়।" },
+            { q: "<video> ট্যাগের 'autoplay' অ্যাট্রিবিউট কী কাজ করে?", options: ["ভিডিও কন্ট্রোল দেখায়", "ভিডিও লুপ করে", "পেজ লোড হলে ভিডিও অটোমেটিক প্লে করে", "ভিডিও মিউট করে"], correct: 2, topic: "media", explanation: "autoplay অ্যাট্রিবিউট পেজ লোড হলে ভিডিও অটোমেটিক প্লে করে।" },
+            { q: "<video> ট্যাগের 'loop' অ্যাট্রিবিউট কী কাজ করে?", options: ["ভিডিও অটোপ্লে করে", "ভিডিও কন্ট্রোল দেখায়", "ভিডিও মিউট করে", "ভিডিও শেষ হলে আবার শুরু থেকে প্লে করে"], correct: 3, topic: "media", explanation: "loop অ্যাট্রিবিউট ভিডিও শেষ হলে আবার শুরু থেকে প্লে করে।" },
+            { q: "<video> ট্যাগের 'muted' অ্যাট্রিবিউট কী কাজ করে?", options: ["ভিডিও মিউট করে", "ভিডিও আনমিউট করে", "ভিডিও কন্ট্রোল দেখায়", "ভিডিও লুপ করে"], correct: 0, topic: "media", explanation: "muted অ্যাট্রিবিউট ভিডিওর অডিও ডিফল্টভাবে মিউট করে।" },
+            { q: "<video> ট্যাগের 'poster' অ্যাট্রিবিউট কী কাজ করে?", options: ["ভিডিও প্লে করার গতি বাড়ায়", "ভিডিও না চলা পর্যন্ত একটি কভার ছবি দেখায়", "ভিডিও হাইড করে", "ভিডিও লুপ করে"], correct: 1, topic: "media", explanation: "poster অ্যাট্রিবিউট ভিডিও লোড না হওয়া বা না প্লে হওয়া পর্যন্ত একটি কভার ইমেজ দেখায়।" },
+            { q: "<source> ট্যাগের 'src' অ্যাট্রিবিউট কী কাজ করে?", options: ["মিডিয়া টাইপ নির্ধারণ", "মিডিয়া ফাইলের উৎস/পাথ নির্ধারণ", "মিডিয়া সাইজ নির্ধারণ", "মিডিয়া কোডেক নির্ধারণ"], correct: 1, topic: "media", explanation: "src অ্যাট্রিবিউট মিডিয়া ফাইলের URL বা পাথ নির্ধারণ করে।" },
+            
+            // ----- VIDEO (69-72) -----
+            { q: "<video> ট্যাগের 'width' ও 'height' অ্যাট্রিবিউট কী কাজ করে?", options: ["ভিডিওর রেজোলিউশন নির্ধারণ", "ভিডিও প্লেয়ারের সাইজ (প্রস্থ ও উচ্চতা) নির্ধারণ", "ভিডিওর ফ্রেম সাইজ নির্ধারণ", "ভিডিওর ফাইল সাইজ কমায়"], correct: 1, topic: "video", explanation: "width ও height অ্যাট্রিবিউট ভিডিও প্লেয়ারের প্রস্থ ও উচ্চতা নির্ধারণ করে।" },
+            { q: "ভিডিও ফরম্যাট যা HTML5 সমর্থন করে?", options: ["MP4", "WebM", "Ogg", "সবগুলো"], correct: 3, topic: "video", explanation: "HTML5 MP4, WebM ও Ogg ভিডিও ফরম্যাট সমর্থন করে।" },
+            { q: "<video> ট্যাগের 'preload' অ্যাট্রিবিউট কী কাজ করে?", options: ["ভিডিও লোড হওয়ার পদ্ধতি নির্ধারণ", "ভিডিও অটোপ্লে করে", "ভিডিও কন্ট্রোল দেখায়", "ভিডিও মিউট করে"], correct: 0, topic: "video", explanation: "preload অ্যাট্রিবিউট ভিডিও কিভাবে লোড হবে তা নির্ধারণ করে (auto, metadata, none)।" },
+            { q: "<video> ট্যাগের 'playbackRate' প্রপার্টি কী কাজ করে?", options: ["ভিডিওর ভলিউম নির্ধারণ", "ভিডিও প্লেব্যাকের গতি নির্ধারণ", "ভিডিওর সাইজ নির্ধারণ", "ভিডিওর রেজোলিউশন নির্ধারণ"], correct: 1, topic: "video", explanation: "playbackRate প্রপার্টি ভিডিও প্লেব্যাকের গতি (স্পিড) নির্ধারণ করে।" },
+            
+            // ----- AUDIO (73-75) -----
+            { q: "<audio> ট্যাগের 'controls' অ্যাট্রিবিউট কী কাজ করে?", options: ["অডিও অটোপ্লে করে", "অডিও লুপ করে", "অডিও প্লেব্যাক কন্ট্রোল দেখায়", "অডিও মিউট করে"], correct: 2, topic: "audio", explanation: "controls অ্যাট্রিবিউট অডিওতে প্লে, পজ, ভলিউম ইত্যাদি কন্ট্রোল দেখায়।" },
+            { q: "অডিও ফরম্যাট যা HTML5 সমর্থন করে?", options: ["MP3", "WAV", "OGG", "সবগুলো"], correct: 3, topic: "audio", explanation: "HTML5 MP3, WAV ও OGG অডিও ফরম্যাট সমর্থন করে।" },
+            { q: "<audio> ট্যাগের 'volume' প্রপার্টি কী কাজ করে?", options: ["অডিওর ভলিউম নির্ধারণ", "অডিও প্লেব্যাকের গতি নির্ধারণ", "অডিওর সাইজ নির্ধারণ", "অডিওর ফরম্যাট নির্ধারণ"], correct: 0, topic: "audio", explanation: "volume প্রপার্টি অডিওর ভলিউম লেভেল (০.০ থেকে ১.০) নির্ধারণ করে।" }
+        ];
+
+        // ----------------------------------------------------------------
+        // Global State
+        // ----------------------------------------------------------------
+        let userAnswers = {};
+        let currentFilter = "all";
+
+        // ----------------------------------------------------------------
+        // Utility
+        // ----------------------------------------------------------------
+        function escapeHtml(str) {
+            if (str === undefined || str === null) return "";
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+        }
+
+        // ----------------------------------------------------------------
+        // Render functions
+        // ----------------------------------------------------------------
+        function renderQuestionGrid() {
+            const grid = document.getElementById("question-grid");
+            grid.innerHTML = "";
+            quizDatabase.forEach((_, idx) => {
+                let btnClass = "bg-slate-200 text-slate-700 hover:bg-slate-300";
+                if (userAnswers[idx] !== undefined) {
+                    const isCorrect = userAnswers[idx] === quizDatabase[idx].correct;
+                    btnClass = isCorrect ? "bg-emerald-600 text-white font-bold" : "bg-rose-600 text-white font-bold";
+                }
+                const btn = document.createElement("button");
+                btn.className = "w-8 h-8 rounded-lg text-xs transition-all duration-200 flex items-center justify-center cursor-pointer " + btnClass;
+                btn.innerText = idx + 1;
+                btn.title = `প্রশ্ন ${idx + 1}`;
+                btn.onclick = () => {
+                    const el = document.getElementById(`q-card-${idx}`);
+                    if (el) {
+                        el.scrollIntoView({ behavior: "smooth", block: "center" });
+                        el.classList.add("ring-4", "ring-indigo-400");
+                        setTimeout(() => el.classList.remove("ring-4", "ring-indigo-400"), 1000);
+                    }
+                };
+                grid.appendChild(btn);
+            });
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById("questions-list");
+            container.innerHTML = "";
+            const topicLabels = {
+                forms: "Forms",
+                formattributes: "Form Attributes",
+                formelements: "Form Elements",
+                inputtypes: "Input Types",
+                inputattributes: "Input Attributes",
+                inputformattributes: "Input Form Attributes",
+                media: "Media",
+                video: "Video",
+                audio: "Audio"
+            };
+            const topicColors = {
+                forms: "bg-purple-100 text-purple-700 border-purple-200",
+                formattributes: "bg-amber-100 text-amber-700 border-amber-200",
+                formelements: "bg-blue-100 text-blue-700 border-blue-200",
+                inputtypes: "bg-indigo-100 text-indigo-700 border-indigo-200",
+                inputattributes: "bg-emerald-100 text-emerald-700 border-emerald-200",
+                inputformattributes: "bg-rose-100 text-rose-700 border-rose-200",
+                media: "bg-cyan-100 text-cyan-700 border-cyan-200",
+                video: "bg-fuchsia-100 text-fuchsia-700 border-fuchsia-200",
+                audio: "bg-orange-100 text-orange-700 border-orange-200"
+            };
+            const prefix = ["A", "B", "C", "D"];
+
+            quizDatabase.forEach((item, idx) => {
+                if (currentFilter !== "all" && item.topic !== currentFilter) return;
+
+                const card = document.createElement("div");
+                card.id = `q-card-${idx}`;
+                card.className = "question-card bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 md:p-6 transition-all duration-300 hover:shadow-md";
+
+                const isAnswered = userAnswers[idx] !== undefined;
+                let optionsHTML = "";
+                item.options.forEach((opt, optIdx) => {
+                    let optClass = "border-slate-200 hover:border-indigo-200 hover:bg-slate-50/60";
+                    let iconHTML = "";
+                    if (isAnswered) {
+                        const selected = userAnswers[idx];
+                        const correct = item.correct;
+                        if (optIdx === correct) {
+                            optClass = "border-emerald-500 bg-emerald-50/60 text-emerald-900 font-semibold";
+                            iconHTML = '<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>';
+                        } else if (optIdx === selected) {
+                            optClass = "border-rose-400 bg-rose-50/60 text-rose-900 font-semibold";
+                            iconHTML = '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>';
+                        } else {
+                            optClass = "border-slate-100 bg-slate-50/20 text-slate-400 cursor-not-allowed";
+                        }
+                    }
+                    optionsHTML += `
+                        <button onclick="selectOption(${idx}, ${optIdx})" ${isAnswered ? "disabled" : ""} 
+                            class="option w-full text-left flex items-center justify-between p-3.5 border rounded-xl text-sm md:text-base transition-all duration-200 group ${optClass} cursor-pointer">
+                            <span class="flex items-center gap-3">
+                                <span class="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-bold text-xs ${isAnswered ? "bg-slate-200 text-slate-600" : "bg-slate-100 text-slate-500 group-hover:bg-indigo-100 group-hover:text-indigo-600"} transition-all">
+                                    ${prefix[optIdx]}
+                                </span>
+                                <span>${escapeHtml(opt)}</span>
+                            </span>
+                            ${iconHTML}
+                        </button>
+                    `;
+                });
+
+                let explanationHTML = "";
+                if (isAnswered) {
+                    const isCorrect = userAnswers[idx] === item.correct;
+                    explanationHTML = `
+                        <div class="mt-4 p-4 rounded-xl border ${isCorrect ? "bg-emerald-50/40 border-emerald-100 text-emerald-900" : "bg-slate-50 border-slate-200 text-slate-700"} text-xs md:text-sm transition-all">
+                            <div class="flex items-center gap-1.5 font-bold mb-1">
+                                <i class="${isCorrect ? "fa-solid fa-square-check text-emerald-600" : "fa-solid fa-circle-exclamation text-amber-600"}"></i>
+                                <span>${isCorrect ? "অভিনন্দন! সঠিক উত্তর।" : "ভুল উত্তর! সঠিক উত্তর: " + prefix[item.correct]}</span>
+                            </div>
+                            <p class="leading-relaxed font-medium">${escapeHtml(item.explanation)}</p>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3.5">
+                        <span class="text-xs md:text-sm font-bold text-slate-400">প্রশ্ন ${idx + 1}/${quizDatabase.length}</span>
+                        <span class="text-[11px] font-semibold px-2.5 py-1 border rounded-full self-start md:self-auto ${topicColors[item.topic]}">
+                            ${topicLabels[item.topic] || item.topic}
+                        </span>
+                    </div>
+                    <p class="font-semibold text-base md:text-lg text-slate-900 mb-4 leading-relaxed">${escapeHtml(item.q)}</p>
+                    <div class="flex flex-col gap-2.5">${optionsHTML}</div>
+                    ${explanationHTML}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderDashboard() {
+            let correct = 0,
+                wrong = 0;
+            const attempted = Object.keys(userAnswers).length;
+            quizDatabase.forEach((q, idx) => {
+                if (userAnswers[idx] !== undefined) {
+                    if (userAnswers[idx] === q.correct) correct++;
+                    else wrong++;
+                }
+            });
+            const score = correct * 1.0 - wrong * 0.25;
+            const progress = Math.round((attempted / quizDatabase.length) * 100);
+
+            document.getElementById("score-display").innerText = score.toFixed(2);
+            document.getElementById("attempted-display").innerText = `${attempted}/${quizDatabase.length}`;
+            document.getElementById("correct-display").innerText = correct;
+            document.getElementById("wrong-display").innerText = wrong;
+            document.getElementById("progress-percent").innerText = `${progress}%`;
+            document.getElementById("progress-bar").style.width = `${progress}%`;
+            document.getElementById("mobile-score").innerText = score.toFixed(2);
+            document.getElementById("mobile-attempted").innerText = `${attempted}/${quizDatabase.length}`;
+        }
+
+        function selectOption(qIdx, optIdx) {
+            if (userAnswers[qIdx] !== undefined) return;
+            userAnswers[qIdx] = optIdx;
+            renderQuestions();
+            renderQuestionGrid();
+            renderDashboard();
+        }
+
+        function filterQuestions() {
+            currentFilter = document.getElementById("topic-filter").value;
+            renderQuestions();
+        }
+
+        function resetQuiz() {
+            if (confirm("আপনি কি নিশ্চিতভাবে কুইজটি পুনরায় শুরু করতে চান? আপনার বর্তমান সমস্ত স্কোর রিসেট হয়ে যাবে।")) {
+                userAnswers = {};
+                currentFilter = "all";
+                document.getElementById("topic-filter").value = "all";
+                renderDashboard();
+                renderQuestionGrid();
+                renderQuestions();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }
+
+        // ----------------------------------------------------------------
+        // Initial Render
+        // ----------------------------------------------------------------
+        window.onload = function() {
+            renderDashboard();
+            renderQuestionGrid();
+            renderQuestions();
+        };
+    </script>
+  </body>
+</html>

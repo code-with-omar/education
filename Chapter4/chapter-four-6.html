@@ -1,0 +1,2342 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server Side Programming – 150 MCQs (Set 5)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800 antialiased min-h-screen flex flex-col">
+    <!-- Main Header -->
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-server text-2xl text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              Server Side Programming কুইজ
+            </h1>
+            <p class="text-xs text-slate-400">
+              HTTP Server, MVC, ORM, Security & More – Job Prep
+            </p>
+          </div>
+        </div>
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="chapter-four-1.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 1</a
+          >
+          <a
+            href="chapter-four-2.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 2</a
+          >
+          <a
+            href="chapter-four-3.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 3</a
+          >
+          <a
+            href="chapter-four-4.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 4</a
+          >
+          <a
+            href="chapter-four-5.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 5</a
+          >
+          <a
+            href="chapter-four-6.html"
+            class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white"
+            >সেট 6</a
+          >
+          <a
+            href="chapter-four-7.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 7</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Top Header -->
+    <header
+      class="bg-gradient-to-r from-blue-700 via-indigo-800 to-slate-900 text-white shadow-lg sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2.5 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20"
+          >
+            <i class="fa-solid fa-cloud text-2xl text-amber-400"></i>
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+              Server Side Programming – সেট ৫
+            </h1>
+            <p class="text-xs text-indigo-200">
+              HTTP Server, Application Server, MVC, Web Services, ORM, Lambda,
+              LINQ, Data Reader/Writer, Web Security – ১৫০ MCQs
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 items-center">
+          <span
+            class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+            ><i class="fa-solid fa-award mr-1"></i> Correct: +1.0</span
+          >
+          <span
+            class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+            ><i class="fa-solid fa-circle-minus mr-1"></i> Incorrect:
+            -0.25</span
+          >
+          <button
+            onclick="resetQuiz()"
+            class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1"
+          >
+            <i class="fa-solid fa-rotate-left"></i> রিস্টার্ট
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6"
+    >
+      <!-- Sidebar -->
+      <aside class="w-full lg:w-80 flex flex-col gap-6 lg:shrink-0">
+        <div
+          class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sticky lg:top-24"
+        >
+          <h2
+            class="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center justify-between"
+          >
+            <span>লাইভ পারফরম্যান্স</span>
+            <i class="fa-solid fa-chart-line text-indigo-600"></i>
+          </h2>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                অ্যাক্টিভ মার্কস
+              </div>
+              <div
+                id="score-display"
+                class="text-2xl font-bold text-indigo-600"
+              >
+                0.00
+              </div>
+            </div>
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                মোট উত্তর
+              </div>
+              <div
+                id="attempted-display"
+                class="text-2xl font-bold text-slate-700"
+              >
+                0/150
+              </div>
+            </div>
+            <div
+              class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-center"
+            >
+              <div class="text-xs text-emerald-600 font-semibold mb-1">
+                সঠিক উত্তর
+              </div>
+              <div
+                id="correct-display"
+                class="text-xl font-bold text-emerald-600"
+              >
+                0
+              </div>
+            </div>
+            <div
+              class="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-center"
+            >
+              <div class="text-xs text-rose-500 font-semibold mb-1">
+                ভুল উত্তর
+              </div>
+              <div id="wrong-display" class="text-xl font-bold text-rose-600">
+                0
+              </div>
+            </div>
+          </div>
+          <div class="mb-5">
+            <div
+              class="flex justify-between text-xs font-semibold text-slate-500 mb-1"
+            >
+              <span>সম্পন্ন হয়েছে</span>
+              <span id="progress-percent">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2">
+              <div
+                id="progress-bar"
+                class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-5">
+            <label
+              class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+              >টপিক ফিল্টার</label
+            >
+            <select
+              id="topic-filter"
+              onchange="filterQuestions()"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-700"
+            >
+              <option value="all">সব প্রশ্ন (১৫০টি)</option>
+              <option value="httpserver">HTTP Server (১-২০)</option>
+              <option value="appserver">Application Server (২১-৩৫)</option>
+              <option value="mvc">MVC Web Framework (৩৬-৫৫)</option>
+              <option value="webservices">Web Services (৫৬-৭০)</option>
+              <option value="orm">ORM (৭১-৮৫)</option>
+              <option value="lambda">Lambda Expression (৮৬-৯৫)</option>
+              <option value="linq">LINQ (৯৬-১০৫)</option>
+              <option value="datareader">Data Reader/Writer (১০৬-১১৫)</option>
+              <option value="dos">DoS (১১৬-১২৫)</option>
+              <option value="bufferoverflow">Buffer Overflow (১২৬-১৩৫)</option>
+              <option value="xss">XSS (১৩৬-১৪৫)</option>
+              <option value="auth">
+                Authentication & Access Control (১৪৬-১৫০)
+              </option>
+            </select>
+          </div>
+          <div class="mb-2 flex items-center justify-between">
+            <label
+              class="text-xs font-bold text-slate-500 uppercase tracking-wider"
+              >দ্রুত প্রশ্নে যান</label
+            >
+            <span
+              class="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold"
+              >গ্রিড</span
+            >
+          </div>
+          <div
+            id="question-grid"
+            class="grid grid-cols-10 gap-1.5 max-h-48 overflow-y-auto custom-scrollbar p-1 bg-slate-50 border border-slate-200/60 rounded-xl"
+          ></div>
+        </div>
+      </aside>
+
+      <!-- Main Panel -->
+      <section class="flex-grow flex flex-col gap-5">
+        <div
+          class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex gap-3 items-start"
+        >
+          <i
+            class="fa-solid fa-circle-info text-amber-600 text-lg mt-0.5 shrink-0"
+          ></i>
+          <div class="text-xs md:text-sm text-amber-800 leading-relaxed">
+            <strong>গুরুত্বপূর্ণ নিয়মাবলি:</strong> যেকোনো অপশনে ক্লিক করলেই
+            সাথে সাথে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবেন। একবার উত্তর দিয়ে ফেললে
+            পরিবর্তন করা যাবে না। ভুল উত্তরের জন্য
+            <strong class="text-red-700">০.২৫ মার্কস কাটা যাবে</strong>।
+          </div>
+        </div>
+        <div id="questions-list" class="flex flex-col gap-6"></div>
+        <div class="text-center py-6 border-t border-slate-200 mt-4">
+          <p class="text-sm text-slate-500">
+            সমস্ত ১৫০টি প্রশ্ন সফলভাবে লোড করা হয়েছে। শুভ পরীক্ষা!
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Sticky Bar -->
+    <div
+      class="lg:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 p-3 text-white flex justify-between items-center shadow-2xl z-50"
+    >
+      <div class="flex gap-4">
+        <div>
+          <p class="text-[10px] text-slate-400">মোট মার্কস</p>
+          <p id="mobile-score" class="text-lg font-bold text-amber-400">0.00</p>
+        </div>
+        <div>
+          <p class="text-[10px] text-slate-400">উত্তর দেওয়া</p>
+          <p id="mobile-attempted" class="text-lg font-bold text-slate-200">
+            0/150
+          </p>
+        </div>
+      </div>
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1"
+      >
+        <i class="fa-solid fa-chevron-up"></i> উপরে
+      </button>
+    </div>
+
+    <footer
+      class="bg-slate-950 text-slate-400 py-6 text-center border-t border-slate-800/60 text-xs mt-12 pb-16 lg:pb-6"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p class="mb-2">© ২০২৬ Server Side Programming কুইজ পোর্টাল – সেট ৫।</p>
+        <p class="text-slate-600">
+          নকশা ও কোডিং করা হয়েছে রিয়েল-টাইম জব প্রিপারেশনের জন্য।
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // ----------------------------------------------------------------
+      // Function to shuffle array and assign random correct answers
+      // ----------------------------------------------------------------
+      function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+
+      // ----------------------------------------------------------------
+      // Generate 150 questions with randomly distributed correct answers
+      // ----------------------------------------------------------------
+      function generateQuestions() {
+        const topics = {
+          httpserver: { start: 1, end: 20, label: "HTTP Server" },
+          appserver: { start: 21, end: 35, label: "Application Server" },
+          mvc: { start: 36, end: 55, label: "MVC Web Framework" },
+          webservices: { start: 56, end: 70, label: "Web Services" },
+          orm: { start: 71, end: 85, label: "ORM" },
+          lambda: { start: 86, end: 95, label: "Lambda Expression" },
+          linq: { start: 96, end: 105, label: "LINQ" },
+          datareader: { start: 106, end: 115, label: "Data Reader/Writer" },
+          dos: { start: 116, end: 125, label: "Denial of Service" },
+          bufferoverflow: { start: 126, end: 135, label: "Buffer Overflow" },
+          xss: { start: 136, end: 145, label: "Cross Site Scripting" },
+          auth: {
+            start: 146,
+            end: 150,
+            label: "Authentication & Access Control",
+          },
+        };
+
+        const questions = [];
+
+        // Helper to create question with random correct index
+        function createQ(q, opts, exp, topic) {
+          // Randomly assign correct answer (0-3)
+          const correctIdx = Math.floor(Math.random() * 4);
+          return {
+            q: q,
+            options: opts,
+            correct: correctIdx,
+            topic: topic,
+            explanation: exp,
+          };
+        }
+
+        // ----- HTTP SERVER (1-20) -----
+        questions.push(
+          createQ(
+            "HTTP-এর পূর্ণরূপ কী?",
+            [
+              "HyperText Transfer Protocol",
+              "High Tech Transfer Protocol",
+              "Hyper Transfer Text Protocol",
+              "High Text Transfer Protocol",
+            ],
+            "HTTP-এর পূর্ণরূপ HyperText Transfer Protocol।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP-এর ডিফল্ট পোর্ট নম্বর কত?",
+            ["80", "443", "8080", "21"],
+            "HTTP-এর ডিফল্ট পোর্ট 80 এবং HTTPS-এর 443।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTPS-এর ডিফল্ট পোর্ট নম্বর কত?",
+            ["443", "80", "8080", "22"],
+            "HTTPS-এর ডিফল্ট পোর্ট 443।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP অনুরোধের পদ্ধতি (Method) কয়টি?",
+            ["৯টি", "৭টি", "৫টি", "১০টি"],
+            "HTTP-তে ৯টি প্রধান মেথড রয়েছে: GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS, TRACE, CONNECT।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP GET অনুরোধের বৈশিষ্ট্য কী?",
+            [
+              "ডেটা URL-এ দৃশ্যমান",
+              "ডেটা বডিতে পাঠায়",
+              "ডেটা এনক্রিপ্ট করে",
+              "ডেটা লুকিয়ে রাখে",
+            ],
+            "GET অনুরোধে ডেটা URL-এ দৃশ্যমান থাকে এবং ক্যাশ করা যায়।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP POST অনুরোধের বৈশিষ্ট্য কী?",
+            [
+              "ডেটা বডিতে পাঠায়",
+              "ডেটা URL-এ দৃশ্যমান",
+              "ডেটা ক্যাশ হয়",
+              "ডেটা সীমিত",
+            ],
+            "POST অনুরোধে ডেটা HTTP বডিতে পাঠানো হয়, যা URL-এ দৃশ্যমান নয়।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP স্ট্যাটাস কোড ২০০ কী বোঝায়?",
+            ["সফল (OK)", "রিডাইরেক্ট", "ক্লায়েন্ট এরর", "সার্ভার এরর"],
+            "HTTP ২০০ স্ট্যাটাস কোড সফল অনুরোধ বোঝায়।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP স্ট্যাটাস কোড ৪০৪ কী বোঝায়?",
+            ["পেজ পাওয়া যায়নি", "সার্ভার এরর", "রিডাইরেক্ট", "অনুমোদিত নয়"],
+            "HTTP ৪০৪ স্ট্যাটাস কোড নির্দেশ করে যে রিকোয়েস্ট করা রিসোর্স পাওয়া যায়নি।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP স্ট্যাটাস কোড ৫০০ কী বোঝায়?",
+            [
+              "ইন্টারনাল সার্ভার এরর",
+              "পেজ পাওয়া যায়নি",
+              "রিডাইরেক্ট",
+              "অনুমোদিত নয়",
+            ],
+            "HTTP ৫০০ স্ট্যাটাস কোড সার্ভারের অভ্যন্তরীণ সমস্যা বোঝায়।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP অনুরোধে 'Host' হেডারের কাজ কী?",
+            [
+              "টার্গেট হোস্ট নির্ধারণ",
+              "ক্লায়েন্ট তথ্য",
+              "কুকি পাঠানো",
+              "কনটেন্ট টাইপ",
+            ],
+            "Host হেডার নির্ধারণ করে কোন সার্ভারে অনুরোধ পাঠানো হচ্ছে।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP/2-এর একটি বৈশিষ্ট্য কী?",
+            ["মাল্টিপ্লেক্সিং", "কেবল টেক্সট", "কম্প্রেশন ছাড়া", "সিঙ্ক্রোনাস"],
+            "HTTP/2 মাল্টিপ্লেক্সিং সমর্থন করে, যা একাধিক অনুরোধ একই সংযোগে পাঠাতে দেয়।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP কুকি (Cookie) কী কাজ করে?",
+            [
+              "স্টেট মেইনটেইন",
+              "ডেটা এনক্রিপ্ট",
+              "ইউআরএল রিডাইরেক্ট",
+              "সার্ভার লগ",
+            ],
+            "কুকি স্টেট বা সেশন মেইনটেইন করতে ব্যবহৃত হয়।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP সেশন কী?",
+            [
+              "একাধিক অনুরোধের মধ্যে স্টেট ধরে রাখা",
+              "একটি অনুরোধ",
+              "সার্ভার রিস্টার্ট",
+              "ডেটাবেজ কানেকশন",
+            ],
+            "HTTP সেশন একাধিক অনুরোধের মধ্যে ব্যবহারকারীর স্টেট ধরে রাখে।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP পাইপলাইনিং কী?",
+            [
+              "একাধিক অনুরোধ একসাথে পাঠানো",
+              "একটি অনুরোধ",
+              "সার্ভার রেসপন্স",
+              "ডেটা কম্প্রেশন",
+            ],
+            "HTTP পাইপলাইনিং একাধিক অনুরোধ একই সংযোগে পাঠানোর সুবিধা দেয়।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP ক্যাশ কন্ট্রোল হেডার কী কাজ করে?",
+            [
+              "ক্যাশিং নীতি নির্ধারণ",
+              "ক্যাশ ডিলিট",
+              "ক্যাশ এনক্রিপ্ট",
+              "ক্যাশ রিড",
+            ],
+            "Cache-Control হেডার ব্রাউজার এবং প্রক্সি ক্যাশিং নীতি নির্ধারণ করে।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP অনুরোধে 'User-Agent' হেডারের কাজ কী?",
+            [
+              "ক্লায়েন্টের তথ্য পাঠায়",
+              "সার্ভারের তথ্য পাঠায়",
+              "কুকি পাঠায়",
+              "অথরাইজেশন পাঠায়",
+            ],
+            "User-Agent হেডার ক্লায়েন্ট (ব্রাউজার/অ্যাপ্লিকেশন) সম্পর্কে তথ্য পাঠায়।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP অনুরোধে 'Content-Type' হেডারের কাজ কী?",
+            [
+              "ডেটার ধরন নির্ধারণ",
+              "ডেটার দৈর্ঘ্য",
+              "ডেটা এনকোডিং",
+              "ডেটা কম্প্রেশন",
+            ],
+            "Content-Type হেডার রিকোয়েস্ট বা রেসপন্স বডির ডেটা টাইপ নির্ধারণ করে (যেমন application/json)।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP রেসপন্সে 'Location' হেডারের কাজ কী?",
+            [
+              "রিডাইরেক্ট URL নির্ধারণ",
+              "সার্ভার লোকেশন",
+              "ক্লায়েন্ট লোকেশন",
+              "ডেটা লোকেশন",
+            ],
+            "Location হেডার ৩xx রিডাইরেক্ট রেসপন্সে নতুন URL নির্ধারণ করে।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP/3 কোন প্রোটোকলের ওপর ভিত্তি করে কাজ করে?",
+            ["QUIC", "TCP", "UDP", "SCTP"],
+            "HTTP/3 QUIC প্রোটোকলের ওপর ভিত্তি করে কাজ করে, যা UDP ব্যবহার করে।",
+            "httpserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "HTTP অনুরোধের 'Referer' হেডার কী কাজ করে?",
+            [
+              "কোন পেজ থেকে এসেছে তা জানায়",
+              "রেফারেন্স ডেটা",
+              "কুকি পাঠায়",
+              "অথরাইজেশন পাঠায়",
+            ],
+            "Referer হেডার জানায় কোন পেজ বা ইউআরএল থেকে অনুরোধটি এসেছে।",
+            "httpserver",
+          ),
+        );
+
+        // ----- APPLICATION SERVER (21-35) -----
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারের প্রধান কাজ কী?",
+            [
+              "বিজনেস লজিক এক্সিকিউট",
+              "ওয়েব পেজ সার্ভ",
+              "ডেটাবেজ ম্যানেজ",
+              "নেটওয়ার্ক রাউটিং",
+            ],
+            "অ্যাপ্লিকেশন সার্ভার অ্যাপ্লিকেশনের বিজনেস লজিক এক্সিকিউট করে।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভার ও ওয়েব সার্ভারের মধ্যে পার্থক্য কী?",
+            [
+              "অ্যাপ্লিকেশন সার্ভার ডায়নামিক কন্টেন্ট তৈরি করে",
+              "ওয়েব সার্ভার ডায়নামিক কন্টেন্ট তৈরি করে",
+              "দুটোই একই",
+              "কোনোটিই নয়",
+            ],
+            "ওয়েব সার্ভার স্ট্যাটিক কন্টেন্ট সার্ভ করে, অ্যাপ্লিকেশন সার্ভার ডায়নামিক কন্টেন্ট তৈরি করে।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "J2EE অ্যাপ্লিকেশন সার্ভারের উদাহরণ কোনটি?",
+            ["Apache TomEE", "Apache HTTP Server", "Nginx", "IIS"],
+            "Apache TomEE একটি J2EE অ্যাপ্লিকেশন সার্ভার।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            ".NET অ্যাপ্লিকেশন সার্ভারের উদাহরণ কোনটি?",
+            ["IIS", "Apache", "Nginx", "Tomcat"],
+            "IIS (Internet Information Services) .NET অ্যাপ্লিকেশন সার্ভার।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে ক্লাস্টারিং (Clustering) কী?",
+            [
+              "একাধিক সার্ভার একসাথে কাজ করা",
+              "একটি সার্ভার",
+              "ডেটাবেজ ক্লাস্টার",
+              "নেটওয়ার্ক ক্লাস্টার",
+            ],
+            "ক্লাস্টারিং একাধিক সার্ভারকে একত্রে কাজ করানোর প্রক্রিয়া, যা লোড ব্যালেন্সিং ও হাই অ্যাভেইলেবিলিটি নিশ্চিত করে।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে লোড ব্যালেন্সিং কী?",
+            [
+              "ট্রাফিক বিতরণ",
+              "ট্রাফিক বন্ধ",
+              "ট্রাফিক এনক্রিপ্ট",
+              "ট্রাফিক মনিটর",
+            ],
+            "লোড ব্যালেন্সিং ইনকামিং ট্রাফিককে একাধিক সার্ভারের মধ্যে বিতরণ করে।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে সেশন রেপ্লিকেশন কী?",
+            ["সেশন ডেটা কপি করা", "সেশন ডিলিট", "সেশন এনক্রিপ্ট", "সেশন লগ"],
+            "সেশন রেপ্লিকেশন একাধিক সার্ভারে সেশন ডেটা কপি করে, যাতে ফেইলওভার হলে সেশন হারিয়ে না যায়।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারের JNDI কী?",
+            [
+              "নেমিং অ্যান্ড ডিরেক্টরি সার্ভিস",
+              "ডেটাবেজ কানেকশন",
+              "সেশন ম্যানেজমেন্ট",
+              "সিকিউরিটি",
+            ],
+            "JNDI (Java Naming and Directory Interface) অ্যাপ্লিকেশন সার্ভারে রিসোর্স লুকআপের জন্য ব্যবহৃত হয়।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে JDBC কানেকশন পুলিং কী?",
+            [
+              "ডেটাবেজ কানেকশন পুনঃব্যবহার",
+              "ডেটাবেজ কানেকশন বন্ধ",
+              "ডেটাবেজ কানেকশন এনক্রিপ্ট",
+              "ডেটাবেজ কানেকশন লগ",
+            ],
+            "কানেকশন পুলিং ডেটাবেজ কানেকশন পুনঃব্যবহার করে, যা পারফরম্যান্স উন্নত করে।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে EJB কী?",
+            [
+              "Enterprise JavaBean",
+              "Enterprise Java Browser",
+              "Extended Java Bean",
+              "External Java Bean",
+            ],
+            "EJB (Enterprise JavaBean) J2EE অ্যাপ্লিকেশন সার্ভারের একটি কম্পোনেন্ট মডেল।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে JMS কী?",
+            [
+              "Java Message Service",
+              "Java Mail Service",
+              "Java Management Service",
+              "Java Monitoring Service",
+            ],
+            "JMS (Java Message Service) অ্যাপ্লিকেশনগুলোর মধ্যে মেসেজিং সুবিধা প্রদান করে।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে JTA কী?",
+            [
+              "Java Transaction API",
+              "Java Transfer API",
+              "Java Trace API",
+              "Java Test API",
+            ],
+            "JTA (Java Transaction API) ডিস্ট্রিবিউটেড ট্রানজেকশন ম্যানেজমেন্টের জন্য ব্যবহৃত হয়।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে JAAS কী?",
+            [
+              "Java Authentication and Authorization Service",
+              "Java Access and Authorization Service",
+              "Java Authentication and Access Service",
+              "Java Authorization and Authentication Service",
+            ],
+            "JAAS Java অ্যাপ্লিকেশনে অথেনটিকেশন ও অথোরাইজেশন প্রদান করে।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে RMI কী?",
+            [
+              "Remote Method Invocation",
+              "Remote Method Interface",
+              "Remote Management Interface",
+              "Remote Method Integration",
+            ],
+            "RMI (Remote Method Invocation) জাভা অ্যাপ্লিকেশনগুলোর মধ্যে রিমোট মেথড কলের সুবিধা দেয়।",
+            "appserver",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অ্যাপ্লিকেশন সার্ভারে JMX কী?",
+            [
+              "Java Management Extensions",
+              "Java Mail Extensions",
+              "Java Monitoring Extensions",
+              "Java Memory Extensions",
+            ],
+            "JMX (Java Management Extensions) অ্যাপ্লিকেশন মনিটরিং ও ম্যানেজমেন্টের জন্য ব্যবহৃত হয়।",
+            "appserver",
+          ),
+        );
+
+        // ----- MVC WEB FRAMEWORK (36-55) -----
+        questions.push(
+          createQ(
+            "MVC-এর পূর্ণরূপ কী?",
+            [
+              "Model-View-Controller",
+              "Model-View-Component",
+              "Module-View-Controller",
+              "Model-View-Control",
+            ],
+            "MVC-এর পূর্ণরূপ Model-View-Controller।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে 'Model' এর কাজ কী?",
+            [
+              "ডেটা ও বিজনেস লজিক",
+              "ইউজার ইন্টারফেস",
+              "রিকোয়েস্ট হ্যান্ডলিং",
+              "রাউটিং",
+            ],
+            "Model ডেটা এবং বিজনেস লজিক পরিচালনা করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে 'View' এর কাজ কী?",
+            [
+              "ইউজার ইন্টারফেস প্রদর্শন",
+              "ডেটা ম্যানেজ",
+              "রিকোয়েস্ট প্রসেস",
+              "কন্ট্রোলার",
+            ],
+            "View ইউজার ইন্টারফেস বা প্রেজেন্টেশন লেয়ার প্রদর্শন করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে 'Controller' এর কাজ কী?",
+            [
+              "রিকোয়েস্ট হ্যান্ডলিং ও রেসপন্স",
+              "ডেটা স্টোর",
+              "ইউজার ইন্টারফেস",
+              "মডেল আপডেট",
+            ],
+            "Controller ইউজার ইনপুট হ্যান্ডল করে এবং উপযুক্ত Model ও View-কে রেসপন্স তৈরি করতে নির্দেশ দেয়।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC প্যাটার্নের সুবিধা কী?",
+            [
+              "কোড রিইউজেবিলিটি ও সেপারেশন",
+              "শুধু ডিজাইন",
+              "শুধু ডেটাবেজ",
+              "শুধু সিকিউরিটি",
+            ],
+            "MVC কোডের রিইউজেবিলিটি ও সেপারেশন অফ কনসার্নস নিশ্চিত করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ASP.NET Core MVC-তে রাউটিং কীভাবে কাজ করে?",
+            [
+              "কনভেনশন-বেসড ও অ্যাট্রিবিউট-বেসড",
+              "শুধু কনভেনশন",
+              "শুধু অ্যাট্রিবিউট",
+              "কোনোটিই নয়",
+            ],
+            "ASP.NET Core MVC উভয় কনভেনশন-বেসড ও অ্যাট্রিবিউট-বেসড রাউটিং সমর্থন করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Spring MVC-তে @Controller অ্যানোটেশন কী কাজ করে?",
+            [
+              "কন্ট্রোলার ক্লাস চিহ্নিত",
+              "মডেল চিহ্নিত",
+              "ভিউ চিহ্নিত",
+              "রাউটিং চিহ্নিত",
+            ],
+            "@Controller অ্যানোটেশন Spring MVC-তে কন্ট্রোলার ক্লাস চিহ্নিত করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Spring MVC-তে @RequestMapping অ্যানোটেশন কী কাজ করে?",
+            ["ইউআরএল ম্যাপিং", "মডেল ম্যাপিং", "ভিউ ম্যাপিং", "ডেটা ম্যাপিং"],
+            "@RequestMapping অ্যানোটেশন কন্ট্রোলার মেথডকে নির্দিষ্ট ইউআরএল-এর সাথে ম্যাপ করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ASP.NET MVC-তে ViewBag কী?",
+            ["ডাইনামিক প্রপার্টি", "স্ট্যাটিক প্রপার্টি", "মডেল", "কন্ট্রোলার"],
+            "ViewBag ডাইনামিক প্রপার্টি যা কন্ট্রোলার থেকে View-তে ডেটা পাঠায়।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ASP.NET MVC-তে ViewData কী?",
+            ["ডিকশনারি অবজেক্ট", "ডাইনামিক প্রপার্টি", "মডেল", "কন্ট্রোলার"],
+            "ViewData একটি ডিকশনারি অবজেক্ট যা কন্ট্রোলার থেকে View-তে ডেটা পাঠায়।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে ডিপেন্ডেন্সি ইনজেকশন কী?",
+            [
+              "অবজেক্টের ডিপেন্ডেন্সি ম্যানেজ",
+              "ডেটাবেজ কানেকশন",
+              "সেশন ম্যানেজ",
+              "ভিউ রেন্ডার",
+            ],
+            "ডিপেন্ডেন্সি ইনজেকশন অবজেক্টের ডিপেন্ডেন্সি ম্যানেজ করে, যা কাপলিং কমায়।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Razor View Engine কোন ফ্রেমওয়ার্কে ব্যবহৃত হয়?",
+            ["ASP.NET MVC", "Spring MVC", "Django", "Ruby on Rails"],
+            "Razor View Engine ASP.NET MVC-তে ব্যবহৃত হয়।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে ফিল্টার (Filter) কী কাজ করে?",
+            [
+              "রিকোয়েস্টের আগে/পরে কাজ করে",
+              "ডেটা স্টোর",
+              "ভিউ রেন্ডার",
+              "মডেল আপডেট",
+            ],
+            "ফিল্টার কন্ট্রোলার অ্যাকশনের আগে, পরে বা এক্সেপশনের সময় কাজ করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে অ্যাকশন রেজাল্ট (Action Result) কী?",
+            ["কন্ট্রোলার অ্যাকশনের রিটার্ন টাইপ", "মডেল", "ভিউ", "ডেটা"],
+            "অ্যাকশন রেজাল্ট কন্ট্রোলার অ্যাকশনের রিটার্ন টাইপ, যা ViewResult, JsonResult ইত্যাদি হতে পারে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে এলাকা (Area) কী?",
+            [
+              "মডিউল গ্রুপিং",
+              "ডেটা গ্রুপিং",
+              "ভিউ গ্রুপিং",
+              "কন্ট্রোলার গ্রুপিং",
+            ],
+            "Area বড় অ্যাপ্লিকেশনকে মডিউল বা সাব-সেকশনে ভাগ করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে বাইন্ডিং (Model Binding) কী?",
+            [
+              "রিকোয়েস্ট ডেটাকে মডেল অবজেক্টে ম্যাপ",
+              "ডেটাবেজ ম্যাপ",
+              "ভিউ ম্যাপ",
+              "কন্ট্রোলার ম্যাপ",
+            ],
+            "মডেল বাইন্ডিং HTTP রিকোয়েস্ট ডেটাকে মডেল অবজেক্টে অটোমেটিক ম্যাপ করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে ভ্যালিডেশন (Validation) কীভাবে কাজ করে?",
+            [
+              "অ্যাট্রিবিউট বা ফ্লুয়েন্ট API দিয়ে",
+              "শুধু JavaScript",
+              "শুধু সার্ভার",
+              "কোনোটিই নয়",
+            ],
+            "MVC-তে ভ্যালিডেশন অ্যাট্রিবিউট (যেমন Required) বা ফ্লুয়েন্ট API দিয়ে করা হয়।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে ট্যাগ হেল্পার (Tag Helper) কী?",
+            [
+              "HTML ট্যাগ তৈরি সহজ করে",
+              "CSS তৈরি সহজ করে",
+              "JavaScript তৈরি সহজ করে",
+              "ডেটা তৈরি সহজ করে",
+            ],
+            "Tag Helper সার্ভার-সাইড কোড ব্যবহার করে HTML ট্যাগ তৈরি সহজ করে।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে HTML হেল্পার (HTML Helper) কী?",
+            [
+              "HTML ট্যাগ তৈরি সহজ করে",
+              "CSS তৈরি সহজ করে",
+              "JavaScript তৈরি সহজ করে",
+              "ডেটা তৈরি সহজ করে",
+            ],
+            "HTML Helper মেথড HTML ট্যাগ তৈরি করতে সাহায্য করে (যেমন @Html.TextBox())।",
+            "mvc",
+          ),
+        );
+        questions.push(
+          createQ(
+            "MVC-তে সেশন (Session) কীভাবে ব্যবহৃত হয়?",
+            ["HttpContext.Session", "ViewBag", "ViewData", "TempData"],
+            "ASP.NET MVC-তে HttpContext.Session ব্যবহার করে সেশন ডেটা সংরক্ষণ করা হয়।",
+            "mvc",
+          ),
+        );
+
+        // ----- WEB SERVICES (56-70) -----
+        questions.push(
+          createQ(
+            "ওয়েব সার্ভিসের মূল উদ্দেশ্য কী?",
+            [
+              "অ্যাপ্লিকেশনগুলোর মধ্যে যোগাযোগ",
+              "ওয়েব পেজ সার্ভ",
+              "ডেটাবেজ ম্যানেজ",
+              "ফাইল ট্রান্সফার",
+            ],
+            "ওয়েব সার্ভিস অ্যাপ্লিকেশনগুলোর মধ্যে প্ল্যাটফর্ম-স্বাধীন যোগাযোগের সুবিধা দেয়।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "SOAP-এর পূর্ণরূপ কী?",
+            [
+              "Simple Object Access Protocol",
+              "Simple Object Application Protocol",
+              "Simple Object Access Procedure",
+              "Simple Object Application Procedure",
+            ],
+            "SOAP-এর পূর্ণরূপ Simple Object Access Protocol।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "REST-এর পূর্ণরূপ কী?",
+            [
+              "Representational State Transfer",
+              "Representational State Transport",
+              "Representational State Transmission",
+              "Representational State Transformation",
+            ],
+            "REST-এর পূর্ণরূপ Representational State Transfer।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "RESTful ওয়েব সার্ভিসের মূল নীতি কী?",
+            ["স্টেটলেস", "স্টেটফুল", "সিঙ্ক্রোনাস", "অ্যাসিঙ্ক্রোনাস"],
+            "RESTful ওয়েব সার্ভিস স্টেটলেস, অর্থাৎ প্রতিটি অনুরোধ স্বাধীন।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "SOAP ও REST-এর মধ্যে প্রধান পার্থক্য কী?",
+            [
+              "SOAP প্রোটোকল, REST আর্কিটেকচার",
+              "SOAP আর্কিটেকচার, REST প্রোটোকল",
+              "দুটোই প্রোটোকল",
+              "দুটোই আর্কিটেকচার",
+            ],
+            "SOAP একটি প্রোটোকল, আর REST একটি আর্কিটেকচারাল স্টাইল।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "RESTful ওয়েব সার্ভিসে ডেটা ফরম্যাট কী ব্যবহার করে?",
+            ["JSON বা XML", "শুধু XML", "শুধু JSON", "শুধু টেক্সট"],
+            "RESTful ওয়েব সার্ভিস সাধারণত JSON বা XML ফরম্যাট ব্যবহার করে।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "SOAP ওয়েব সার্ভিসে কোন প্রোটোকল ব্যবহার করা হয়?",
+            ["HTTP, SMTP, TCP", "শুধু HTTP", "শুধু TCP", "শুধু SMTP"],
+            "SOAP HTTP, SMTP, TCP等多种 প্রোটোকল ব্যবহার করতে পারে।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "WSDL-এর পূর্ণরূপ কী?",
+            [
+              "Web Services Description Language",
+              "Web Services Definition Language",
+              "Web Services Development Language",
+              "Web Services Design Language",
+            ],
+            "WSDL-এর পূর্ণরূপ Web Services Description Language।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "UDDI-এর পূর্ণরূপ কী?",
+            [
+              "Universal Description, Discovery and Integration",
+              "Universal Description, Discovery and Implementation",
+              "Universal Description, Discovery and Interface",
+              "Universal Description, Discovery and Information",
+            ],
+            "UDDI-এর পূর্ণরূপ Universal Description, Discovery and Integration।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "SOAP-এ এনভেলপ (Envelope) কী?",
+            [
+              "SOAP মেসেজের রুট এলিমেন্ট",
+              "SOAP হেডার",
+              "SOAP বডি",
+              "SOAP ফুটার",
+            ],
+            "SOAP Envelope হল SOAP মেসেজের রুট এলিমেন্ট।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "RESTful ওয়েব সার্ভিসে HTTP মেথড ব্যবহার কীভাবে হয়?",
+            ["GET, POST, PUT, DELETE", "শুধু GET", "শুধু POST", "শুধু PUT"],
+            "RESTful ওয়েব সার্ভিস HTTP মেথড (GET, POST, PUT, DELETE) ব্যবহার করে CRUD অপারেশন করে।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "RESTful ওয়েব সার্ভিসে রিসোর্স (Resource) কী?",
+            ["URL দ্বারা চিহ্নিত ডেটা", "ডেটাবেজ টেবিল", "ফাইল", "সার্ভার"],
+            "REST-এ রিসোর্স হল URL দ্বারা চিহ্নিত ডেটা বা অবজেক্ট।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "SOAP-তে ফল্ট (Fault) কী?",
+            ["এরর মেসেজ", "সফল মেসেজ", "ওয়ার্নিং মেসেজ", "ইনফো মেসেজ"],
+            "SOAP Fault হল SOAP মেসেজে এরর বা ব্যর্থতা নির্দেশ করার এলিমেন্ট।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ওয়েব সার্ভিসে JSON এবং XML-এর মধ্যে পার্থক্য কী?",
+            [
+              "JSON হালকা ও দ্রুত",
+              "XML হালকা ও দ্রুত",
+              "দুটোই সমান",
+              "JSON ভারী",
+            ],
+            "JSON XML-এর চেয়ে হালকা এবং পার্স করতে দ্রুত।",
+            "webservices",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ওয়েব সার্ভিসে API গেটওয়ে কী?",
+            ["একক এন্ট্রি পয়েন্ট", "ডেটাবেজ", "সার্ভার", "ক্লায়েন্ট"],
+            "API গেটওয়ে মাইক্রোসার্ভিস আর্কিটেকচারে একক এন্ট্রি পয়েন্ট হিসেবে কাজ করে।",
+            "webservices",
+          ),
+        );
+
+        // ----- ORM (71-85) -----
+        questions.push(
+          createQ(
+            "ORM-এর পূর্ণরূপ কী?",
+            [
+              "Object Relational Mapping",
+              "Object Relational Model",
+              "Object Relationship Mapping",
+              "Object Relational Mapper",
+            ],
+            "ORM-এর পূর্ণরূপ Object Relational Mapping।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ORM-এর প্রধান কাজ কী?",
+            [
+              "ডেটাবেজ টেবিলকে অবজেক্টে ম্যাপ",
+              "SQL কোড জেনারেট",
+              "ডেটা এনক্রিপ্ট",
+              "ডেটা কম্প্রেস",
+            ],
+            "ORM ডেটাবেজ টেবিলকে প্রোগ্রামিং ল্যাঙ্গুয়েজের অবজেক্টে ম্যাপ করে।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Entity Framework কোন টাইপের ORM?",
+            [".NET ORM", "Java ORM", "Python ORM", "PHP ORM"],
+            "Entity Framework একটি .NET ORM ফ্রেমওয়ার্ক।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Hibernate কোন টাইপের ORM?",
+            ["Java ORM", ".NET ORM", "Python ORM", "PHP ORM"],
+            "Hibernate একটি Java ORM ফ্রেমওয়ার্ক।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Django ORM কোন ল্যাঙ্গুয়েজের?",
+            ["Python", "Java", "C#", "PHP"],
+            "Django ORM পাইথনের জন্য।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Laravel Eloquent কোন ল্যাঙ্গুয়েজের?",
+            ["PHP", "Python", "Java", "C#"],
+            "Laravel Eloquent পিএইচপি-র জন্য।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ORM-তে লেজি লোডিং (Lazy Loading) কী?",
+            [
+              "প্রয়োজন হলে ডেটা লোড",
+              "সব ডেটা আগে লোড",
+              "ডেটা ক্যাশ",
+              "ডেটা কম্প্রেস",
+            ],
+            "লেজি লোডিং ডেটা তখনই লোড করে যখন সেটি অ্যাক্সেস করা হয়।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ORM-তে ইগার লোডিং (Eager Loading) কী?",
+            [
+              "সম্পর্কিত ডেটা আগে লোড",
+              "প্রয়োজন হলে ডেটা লোড",
+              "ডেটা ক্যাশ",
+              "ডেটা কম্প্রেস",
+            ],
+            "ইগার লোডিং সম্পর্কিত ডেটা একসাথে আগে লোড করে।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ORM-তে মাইগ্রেশন (Migration) কী?",
+            [
+              "ডেটাবেজ স্কিমা পরিবর্তন ট্র্যাক",
+              "ডেটা মাইগ্রেট",
+              "ডেটা কপি",
+              "ডেটা ডিলিট",
+            ],
+            "মাইগ্রেশন ডেটাবেজ স্কিমা পরিবর্তন ট্র্যাক ও ম্যানেজ করে।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Entity Framework-তে DbContext কী?",
+            [
+              "ডেটাবেজ সেশন",
+              "ডেটাবেজ কানেকশন",
+              "ডেটাবেজ ট্রানজেকশন",
+              "ডেটাবেজ ক্যাশ",
+            ],
+            "DbContext Entity Framework-তে ডেটাবেজ সেশন এবং ইউনিট অফ ওয়ার্ক হিসেবে কাজ করে।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Hibernate-তে Session কী?",
+            [
+              "ডেটাবেজ সেশন",
+              "ডেটাবেজ কানেকশন",
+              "ডেটাবেজ ট্রানজেকশন",
+              "ডেটাবেজ ক্যাশ",
+            ],
+            "Hibernate-তে Session ডেটাবেজ অপারেশনের জন্য ব্যবহৃত হয়।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ORM-তে ট্রানজেকশন ম্যানেজমেন্ট কীভাবে কাজ করে?",
+            [
+              "@Transactional বা BeginTransaction",
+              "অটোমেটিক",
+              "ম্যানুয়াল",
+              "কোনোটিই নয়",
+            ],
+            "ORM-তে ট্রানজেকশন @Transactional (Spring) বা BeginTransaction (Entity Framework) দিয়ে ম্যানেজ করা হয়।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ORM-তে ক্যাশিং (Caching) কী?",
+            [
+              "ডেটা ক্যাশ করে পারফরম্যান্স বাড়ায়",
+              "ডেটা ডিলিট",
+              "ডেটা এনক্রিপ্ট",
+              "ডেটা কম্প্রেস",
+            ],
+            "ক্যাশিং ডেটা মেমোরিতে স্টোর করে ডেটাবেজ কল কমায়।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ORM-তে নেভিগেশন প্রপার্টি (Navigation Property) কী?",
+            [
+              "সম্পর্কিত ডেটা অ্যাক্সেস",
+              "ডেটা প্রপার্টি",
+              "ডেটা মেথড",
+              "ডেটা ফিল্ড",
+            ],
+            "নেভিগেশন প্রপার্টি সম্পর্কিত ডেটা অ্যাক্সেস করতে ব্যবহৃত হয় (যেমন Orders.Customer)।",
+            "orm",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ORM-তে প্রথম-স্তরের ক্যাশ (First Level Cache) কী?",
+            [
+              "সেশন-স্তরের ক্যাশ",
+              "অ্যাপ্লিকেশন-স্তরের ক্যাশ",
+              "ডেটাবেজ-স্তরের ক্যাশ",
+              "গ্লোবাল ক্যাশ",
+            ],
+            "প্রথম-স্তরের ক্যাশ Hibernate-তে সেশন-স্তরের ক্যাশ।",
+            "orm",
+          ),
+        );
+
+        // ----- LAMBDA EXPRESSION (86-95) -----
+        questions.push(
+          createQ(
+            "Lambda এক্সপ্রেশন কী?",
+            ["অ্যানোনিমাস ফাংশন", "নামযুক্ত ফাংশন", "ক্লাস", "ইন্টারফেস"],
+            "Lambda এক্সপ্রেশন একটি অ্যানোনিমাস ফাংশন।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "C#-তে Lambda এক্সপ্রেশনের সিনট্যাক্স কী?",
+            [
+              "(parameters) => expression",
+              "parameters => expression",
+              "(parameters) -> expression",
+              "parameters -> expression",
+            ],
+            "C#-তে Lambda এক্সপ্রেশন (parameters) => expression সিনট্যাক্স ব্যবহার করে।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Java-তে Lambda এক্সপ্রেশনের সিনট্যাক্স কী?",
+            [
+              "(parameters) -> expression",
+              "parameters => expression",
+              "(parameters) => expression",
+              "parameters -> expression",
+            ],
+            "Java-তে Lambda এক্সপ্রেশন (parameters) -> expression সিনট্যাক্স ব্যবহার করে।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Lambda এক্সপ্রেশন ব্যবহারের সুবিধা কী?",
+            [
+              "কোড সংক্ষিপ্ত ও ফাংশনাল",
+              "কোড লম্বা",
+              "পারফরম্যান্স খারাপ",
+              "কঠিন",
+            ],
+            "Lambda এক্সপ্রেশন কোড সংক্ষিপ্ত করে এবং ফাংশনাল প্রোগ্রামিং সহজ করে।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "C#-তে Func ডেলিগেট কী?",
+            ["রিটার্ন টাইপসহ Lambda", "শুধু void", "শুধু int", "শুধু string"],
+            "Func ডেলিগেট রিটার্ন টাইপসহ Lambda এক্সপ্রেশন সংরক্ষণ করে।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "C#-তে Action ডেলিগেট কী?",
+            [
+              "void রিটার্ন টাইপসহ Lambda",
+              "রিটার্ন টাইপসহ",
+              "শুধু int",
+              "শুধু string",
+            ],
+            "Action ডেলিগেট void রিটার্ন টাইপসহ Lambda এক্সপ্রেশন সংরক্ষণ করে।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Java-তে ফাংশনাল ইন্টারফেস কী?",
+            [
+              "একটি অ্যাবস্ট্রাক্ট মেথডবিশিষ্ট ইন্টারফেস",
+              "একাধিক মেথড",
+              "ক্লাস",
+              "অ্যানোটেশন",
+            ],
+            "ফাংশনাল ইন্টারফেসে একটি মাত্র অ্যাবস্ট্রাক্ট মেথড থাকে, যা Lambda এক্সপ্রেশন ব্যবহারের অনুমতি দেয়।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "C#-তে Lambda এক্সপ্রেশনে '=>' কী বোঝায়?",
+            [
+              "গো টু (Goes to)",
+              "ইকুয়াল (Equal)",
+              "গ্রেটার (Greater)",
+              "লেস (Less)",
+            ],
+            "C#-তে '=>' Lambda অপারেটর, যা 'গো টু' বোঝায়।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Lambda এক্সপ্রেশন কোথায় ব্যবহার করা হয়?",
+            [
+              "LINQ, Event Handlers, Task",
+              "শুধু LINQ",
+              "শুধু Event",
+              "শুধু Task",
+            ],
+            "Lambda এক্সপ্রেশন LINQ, Event Handlers, Task, async/await ইত্যাদিতে ব্যবহৃত হয়।",
+            "lambda",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Lambda এক্সপ্রেশন কি ডেটা টাইপ ইনফারেন্স সমর্থন করে?",
+            ["হ্যাঁ", "না", "শুধু C#", "শুধু Java"],
+            "Lambda এক্সপ্রেশন টাইপ ইনফারেন্স সমর্থন করে, তাই টাইপ স্পেসিফাই না করলেও চলে।",
+            "lambda",
+          ),
+        );
+
+        // ----- LINQ (96-105) -----
+        questions.push(
+          createQ(
+            "LINQ-এর পূর্ণরূপ কী?",
+            [
+              "Language Integrated Query",
+              "Language Integrated Querying",
+              "Language Integrated Query Language",
+              "Language Integration Query",
+            ],
+            "LINQ-এর পূর্ণরূপ Language Integrated Query।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ কোন ল্যাঙ্গুয়েজের ফিচার?",
+            ["C# ও VB.NET", "শুধু Java", "শুধু Python", "শুধু PHP"],
+            "LINQ C# ও VB.NET-এর একটি ফিচার।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ-তে Query Syntax ও Method Syntax-এর পার্থক্য কী?",
+            [
+              "Query SQL-এর মতো, Method মেথড চেইন",
+              "দুটোই একই",
+              "Query দ্রুত",
+              "Method দ্রুত",
+            ],
+            "Query Syntax SQL-এর মতো দেখতে, Method Syntax মেথড কলের চেইন ব্যবহার করে।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ-তে 'from' ক্লজ কী কাজ করে?",
+            ["ডেটা সোর্স নির্ধারণ", "ফিল্টার", "প্রজেক্ট", "গ্রুপ"],
+            "from ক্লজ LINQ ক্যোয়ারিতে ডেটা সোর্স নির্ধারণ করে।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ-তে 'where' ক্লজ কী কাজ করে?",
+            ["ফিল্টার", "প্রজেক্ট", "গ্রুপ", "অর্ডার"],
+            "where ক্লজ ডেটা ফিল্টার করতে ব্যবহৃত হয়।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ-তে 'select' ক্লজ কী কাজ করে?",
+            ["প্রজেক্ট বা ফলাফল নির্বাচন", "ফিল্টার", "গ্রুপ", "অর্ডার"],
+            "select ক্লজ ফলাফল প্রজেক্ট বা নির্বাচন করে।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ-তে 'group' ক্লজ কী কাজ করে?",
+            ["ডেটা গ্রুপ করে", "ফিল্টার", "প্রজেক্ট", "অর্ডার"],
+            "group ক্লজ ডেটাকে গ্রুপে ভাগ করে।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ-তে 'join' ক্লজ কী কাজ করে?",
+            ["একাধিক ডেটা সোর্স জয়েন", "ফিল্টার", "প্রজেক্ট", "গ্রুপ"],
+            "join ক্লজ একাধিক ডেটা সোর্স জয়েন করতে ব্যবহৃত হয়।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ to Objects কী?",
+            [
+              "ইন-মেমরি ডেটার জন্য LINQ",
+              "ডেটাবেজের জন্য",
+              "XML-এর জন্য",
+              "SQL-এর জন্য",
+            ],
+            "LINQ to Objects ইন-মেমরি ডেটা (অ্যারে, লিস্ট) ক্যোয়েরি করার জন্য ব্যবহৃত হয়।",
+            "linq",
+          ),
+        );
+        questions.push(
+          createQ(
+            "LINQ to SQL কী?",
+            [
+              "SQL ডেটাবেজের জন্য LINQ",
+              "ইন-মেমরি ডেটার জন্য",
+              "XML-এর জন্য",
+              "Entity Framework",
+            ],
+            "LINQ to SQL SQL ডেটাবেজ ক্যোয়েরি করার জন্য ব্যবহৃত হয়।",
+            "linq",
+          ),
+        );
+
+        // ----- DATA READER/WRITER (106-115) -----
+        questions.push(
+          createQ(
+            "Data Reader এর কাজ কী?",
+            [
+              "ফরওয়ার্ড-ওনলি ডেটা রিড",
+              "র্যান্ডম অ্যাক্সেস",
+              "ডেটা রাইট",
+              "ডেটা আপডেট",
+            ],
+            "Data Reader ফরওয়ার্ড-ওনলি স্ট্রিম হিসেবে ডেটা রিড করে।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Data Reader ও DataSet-এর মধ্যে পার্থক্য কী?",
+            [
+              "Data Reader ফরওয়ার্ড-ওনলি, DataSet ডিসকানেক্টেড",
+              "দুটোই একই",
+              "Data Reader ডিসকানেক্টেড",
+              "DataSet ফরওয়ার্ড-ওনলি",
+            ],
+            "Data Reader ফরওয়ার্ড-ওনলি এবং সংযুক্ত থাকে, DataSet ডিসকানেক্টেড এবং ডেটা ক্যাশ করে।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "SqlDataReader কোন ক্লাসের?",
+            [".NET", "Java", "Python", "PHP"],
+            "SqlDataReader .NET-এর System.Data.SqlClient নেমস্পেসের একটি ক্লাস।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Data Reader ব্যবহারের সুবিধা কী?",
+            [
+              "দ্রুত ও কম মেমোরি",
+              "স্লো ও বেশি মেমোরি",
+              "র্যান্ডম অ্যাক্সেস",
+              "ডেটা আপডেট",
+            ],
+            "Data Reader দ্রুত এবং কম মেমোরি ব্যবহার করে।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Data Writer এর কাজ কী?",
+            ["ডেটা রাইট বা ইনসার্ট", "ডেটা রিড", "ডেটা ডিলিট", "ডেটা আপডেট"],
+            "Data Writer ডেটা রাইট বা ইনসার্ট করার জন্য ব্যবহৃত হয়।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "SqlBulkCopy কী কাজ করে?",
+            ["বাল্ক ডেটা কপি", "একক ডেটা কপি", "ডেটা রিড", "ডেটা ডিলিট"],
+            "SqlBulkCopy দ্রুত বাল্ক ডেটা কপি করার জন্য ব্যবহৃত হয়।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Data Reader বন্ধ না করলে কী হয়?",
+            ["কানেকশন খোলা থাকে", "কানেকশন বন্ধ হয়", "এরর হয়", "কিছু হয় না"],
+            "Data Reader বন্ধ না করলে ডেটাবেজ কানেকশন খোলা থাকে, যা রিসোর্স লিক করে।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Data Reader থেকে ডেটা পড়ার জন্য কোন মেথড ব্যবহার করা হয়?",
+            ["Read()", "Next()", "Get()", "Fetch()"],
+            "Read() মেথড Data Reader থেকে পরবর্তী রেকর্ড পড়ে।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Data Reader-এ GetString() মেথড কী করে?",
+            [
+              "স্ট্রিং ডেটা রিটার্ন",
+              "ইন্টিজার রিটার্ন",
+              "ডেটটাইম রিটার্ন",
+              "বুলিয়ান রিটার্ন",
+            ],
+            "GetString() মেথড কলাম থেকে স্ট্রিং ডেটা রিটার্ন করে।",
+            "datareader",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Data Reader-এ IsDBNull() মেথড কী করে?",
+            ["NULL চেক করে", "NULL সেট করে", "NULL ডিলিট", "NULL আপডেট"],
+            "IsDBNull() মেথড চেক করে কলামের মান NULL কিনা।",
+            "datareader",
+          ),
+        );
+
+        // ----- DOS (116-125) -----
+        questions.push(
+          createQ(
+            "DoS-এর পূর্ণরূপ কী?",
+            [
+              "Denial of Service",
+              "Denial of Security",
+              "Destruction of Service",
+              "Denial of System",
+            ],
+            "DoS-এর পূর্ণরূপ Denial of Service।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "DoS আক্রমণের প্রধান উদ্দেশ্য কী?",
+            [
+              "সার্ভিস অপ্রাপ্য করা",
+              "ডেটা চুরি",
+              "ডেটা ডিলিট",
+              "ডেটা পরিবর্তন",
+            ],
+            "DoS আক্রমণ সার্ভিসকে ইউজারদের কাছে অপ্রাপ্য করে তোলে।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "DDoS-এর পূর্ণরূপ কী?",
+            [
+              "Distributed Denial of Service",
+              "Distributed Denial of Security",
+              "Distributed Destruction of Service",
+              "Distributed Denial of System",
+            ],
+            "DDoS-এর পূর্ণরূপ Distributed Denial of Service।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "DoS আক্রমণ প্রতিরোধের উপায় কী?",
+            [
+              "রেট লিমিটিং, ফায়ারওয়াল",
+              "কিছু না",
+              "শুধু অ্যান্টিভাইরাস",
+              "শুধু এনক্রিপশন",
+            ],
+            "রেট লিমিটিং, ফায়ারওয়াল, লোড ব্যালেন্সিং DoS আক্রমণ প্রতিরোধ করে।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "SYN Flood কী ধরনের আক্রমণ?",
+            ["DoS", "XSS", "SQL Injection", "Buffer Overflow"],
+            "SYN Flood একটি DoS আক্রমণ, যা TCP সংযোগ স্থাপন প্রক্রিয়াকে লক্ষ্য করে।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Ping of Death কী?",
+            ["DoS আক্রমণ", "XSS আক্রমণ", "SQL Injection", "Buffer Overflow"],
+            "Ping of Death একটি DoS আক্রমণ, যা বড় ICMP প্যাকেট পাঠায়।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Smurf আক্রমণ কী?",
+            ["DoS আক্রমণ", "XSS আক্রমণ", "SQL Injection", "Buffer Overflow"],
+            "Smurf আক্রমণ একটি DoS আক্রমণ, যা IP স্পুফিং ব্যবহার করে।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "DoS আক্রমণে ট্রাফিক অ্যানালাইসিস কীভাবে সাহায্য করে?",
+            [
+              "অস্বাভাবিক ট্রাফিক চিহ্নিত",
+              "ট্রাফিক বন্ধ",
+              "ট্রাফিক এনক্রিপ্ট",
+              "ট্রাফিক কম্প্রেস",
+            ],
+            "ট্রাফিক অ্যানালাইসিস অস্বাভাবিক ট্রাফিক চিহ্নিত করে DoS আক্রমণ শনাক্ত করতে সাহায্য করে।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ক্যাপচা (CAPTCHA) কীসের জন্য ব্যবহৃত হয়?",
+            [
+              "DoS প্রতিরোধ",
+              "XSS প্রতিরোধ",
+              "SQL Injection প্রতিরোধ",
+              "Buffer Overflow প্রতিরোধ",
+            ],
+            "CAPTCHA অটোমেটেড DoS আক্রমণ প্রতিরোধে ব্যবহৃত হয়।",
+            "dos",
+          ),
+        );
+        questions.push(
+          createQ(
+            "DoS আক্রমণের প্রভাব কী?",
+            ["সার্ভিস ডাউন", "ডেটা চুরি", "ডেটা ডিলিট", "ডেটা পরিবর্তন"],
+            "DoS আক্রমণ সার্ভিস ডাউন করে, যা ইউজারদের জন্য অপ্রাপ্য করে তোলে।",
+            "dos",
+          ),
+        );
+
+        // ----- BUFFER OVERFLOW (126-135) -----
+        questions.push(
+          createQ(
+            "Buffer Overflow কী?",
+            [
+              "মেমোরি বাউন্ডারি অতিক্রম",
+              "ডেটা চুরি",
+              "ডেটা ডিলিট",
+              "ডেটা পরিবর্তন",
+            ],
+            "Buffer Overflow ঘটে যখন ডেটা বাফার সীমা অতিক্রম করে।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Buffer Overflow আক্রমণের বিপদ কী?",
+            [
+              "ম্যালিসিয়াস কোড এক্সিকিউট",
+              "সার্ভিস ডাউন",
+              "ডেটা চুরি",
+              "ডেটা ডিলিট",
+            ],
+            "Buffer Overflow আক্রমণে অ্যাটাকার ম্যালিসিয়াস কোড এক্সিকিউট করতে পারে।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Buffer Overflow প্রতিরোধের উপায় কী?",
+            [
+              "বাউন্ডারি চেক, স্ট্যাক প্রোটেকশন",
+              "কিছু না",
+              "শুধু অ্যান্টিভাইরাস",
+              "শুধু এনক্রিপশন",
+            ],
+            "বাউন্ডারি চেক, স্ট্যাক ক্যানারি, ASLR Buffer Overflow প্রতিরোধ করে।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Stack Overflow কী?",
+            [
+              "স্ট্যাক বাউন্ডারি অতিক্রম",
+              "হিপ বাউন্ডারি অতিক্রম",
+              "ডেটা চুরি",
+              "ডেটা ডিলিট",
+            ],
+            "Stack Overflow ঘটে যখন কল স্ট্যাক তার সীমা অতিক্রম করে।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Heap Overflow কী?",
+            [
+              "হিপ বাউন্ডারি অতিক্রম",
+              "স্ট্যাক বাউন্ডারি অতিক্রম",
+              "ডেটা চুরি",
+              "ডেটা ডিলিট",
+            ],
+            "Heap Overflow ঘটে যখন হিপ মেমোরি তার সীমা অতিক্রম করে।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Buffer Overflow আক্রমণ সাধারণত কোন ল্যাঙ্গুয়েজে বেশি হয়?",
+            ["C/C++", "Java", "Python", "C#"],
+            "C/C++-এ মেমোরি ম্যানেজমেন্ট ম্যানুয়াল, তাই Buffer Overflow বেশি হয়।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "ASLR-এর পূর্ণরূপ কী?",
+            [
+              "Address Space Layout Randomization",
+              "Address Space Location Randomization",
+              "Address Space Layout Randomization",
+              "Address Space Location Randomization",
+            ],
+            "ASLR-এর পূর্ণরূপ Address Space Layout Randomization।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Stack Canary কী?",
+            [
+              "স্ট্যাক প্রোটেকশন মেকানিজম",
+              "হিপ প্রোটেকশন",
+              "ডেটা প্রোটেকশন",
+              "নেটওয়ার্ক প্রোটেকশন",
+            ],
+            "Stack Canary স্ট্যাক বাফার ওভারফ্লো সনাক্ত করতে ব্যবহৃত হয়।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Buffer Overflow প্রতিরোধের জন্য কোন কম্পাইলার ফ্ল্যাগ ব্যবহার করা হয়?",
+            [
+              "-fstack-protector",
+              "-fno-stack-protector",
+              "-fstack-protect",
+              "-fstack",
+            ],
+            "-fstack-protector ফ্ল্যাগ স্ট্যাক প্রোটেকশন সক্রিয় করে।",
+            "bufferoverflow",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Format String Vulnerability কী?",
+            [
+              "Buffer Overflow এর প্রকার",
+              "XSS এর প্রকার",
+              "SQL Injection এর প্রকার",
+              "DoS এর প্রকার",
+            ],
+            "Format String Vulnerability একটি Buffer Overflow প্রকার, যা printf ফাংশনে ঘটে।",
+            "bufferoverflow",
+          ),
+        );
+
+        // ----- XSS (136-145) -----
+        questions.push(
+          createQ(
+            "XSS-এর পূর্ণরূপ কী?",
+            [
+              "Cross Site Scripting",
+              "Cross Site Security",
+              "Cross Site Script",
+              "Cross Site Scripting Security",
+            ],
+            "XSS-এর পূর্ণরূপ Cross Site Scripting।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "XSS আক্রমণের প্রধান কারণ কী?",
+            [
+              "ইনপুট ভ্যালিডেশন না করা",
+              "আউটপুট এনকোড না করা",
+              "উভয়ই",
+              "কোনোটিই নয়",
+            ],
+            "XSS আক্রমণ ঘটে যখন ইনপুট সঠিকভাবে ভ্যালিডেট বা আউটপুট এনকোড না করা হয়।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Reflected XSS কী?",
+            [
+              "তাত্ক্ষণিকভাবে প্রতিফলিত হয়",
+              "সংরক্ষিত হয়",
+              "সার্ভারে সংরক্ষিত হয়",
+              "ডেটাবেজে সংরক্ষিত",
+            ],
+            "Reflected XSS স্ক্রিপ্ট তাত্ক্ষণিকভাবে রেসপন্সে প্রতিফলিত হয়।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "Stored XSS কী?",
+            [
+              "সার্ভারে সংরক্ষিত হয়",
+              "তাত্ক্ষণিকভাবে প্রতিফলিত হয়",
+              "ডেটাবেজে সংরক্ষিত",
+              "উভয়ই",
+            ],
+            "Stored XSS স্ক্রিপ্ট সার্ভার বা ডেটাবেজে সংরক্ষিত হয়।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "XSS আক্রমণ প্রতিরোধের উপায় কী?",
+            [
+              "ইনপুট ভ্যালিডেশন, আউটপুট এনকোডিং",
+              "কিছু না",
+              "শুধু ফায়ারওয়াল",
+              "শুধু অ্যান্টিভাইরাস",
+            ],
+            "XSS প্রতিরোধে ইনপুট ভ্যালিডেশন ও আউটপুট এনকোডিং আবশ্যক।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "XSS আক্রমণে কী ক্ষতি হতে পারে?",
+            [
+              "কুকি চুরি, সেশন হাইজ্যাক",
+              "সার্ভিস ডাউন",
+              "ডেটা ডিলিট",
+              "ডেটা পরিবর্তন",
+            ],
+            "XSS আক্রমণে কুকি চুরি ও সেশন হাইজ্যাক হতে পারে।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "DOM-based XSS কী?",
+            [
+              "DOM পরিবর্তন করে",
+              "সার্ভারে স্ক্রিপ্ট পাঠায়",
+              "ডেটাবেজে সংরক্ষিত",
+              "তাত্ক্ষণিকভাবে প্রতিফলিত",
+            ],
+            "DOM-based XSS ব্রাউজারের DOM পরিবর্তন করে, সার্ভারে যায় না।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "XSS আক্রমণে 'document.cookie' কী কাজ করে?",
+            ["কুকি অ্যাক্সেস", "কুকি ডিলিট", "কুকি সেট", "কুকি পরিবর্তন"],
+            "XSS আক্রমণে document.cookie ব্যবহার করে কুকি অ্যাক্সেস করা হয়।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "XSS প্রতিরোধে HTTPOnly ফ্ল্যাগ কী কাজ করে?",
+            [
+              "JavaScript থেকে কুকি অ্যাক্সেস বন্ধ",
+              "কুকি এনক্রিপ্ট",
+              "কুকি ডিলিট",
+              "কুকি পরিবর্তন",
+            ],
+            "HTTPOnly ফ্ল্যাগ JavaScript থেকে কুকি অ্যাক্সেস বন্ধ করে, যা XSS প্রতিরোধে সাহায্য করে।",
+            "xss",
+          ),
+        );
+        questions.push(
+          createQ(
+            "XSS প্রতিরোধে CSP (Content Security Policy) কী?",
+            [
+              "স্ক্রিপ্ট সোর্স নিয়ন্ত্রণ",
+              "কুকি নিয়ন্ত্রণ",
+              "ডেটা নিয়ন্ত্রণ",
+              "সার্ভার নিয়ন্ত্রণ",
+            ],
+            "CSP ব্রাউজারকে কোন স্ক্রিপ্ট সোর্স লোড করতে পারবে তা নিয়ন্ত্রণ করে।",
+            "xss",
+          ),
+        );
+
+        // ----- AUTHENTICATION & ACCESS CONTROL (146-150) -----
+        questions.push(
+          createQ(
+            "অথেনটিকেশন (Authentication) কী?",
+            [
+              "ইউজার আইডেন্টিটি যাচাই",
+              "ইউজার অ্যাক্সেস নিয়ন্ত্রণ",
+              "ডেটা এনক্রিপ্ট",
+              "ডেটা ডিক্রিপ্ট",
+            ],
+            "অথেনটিকেশন ইউজারের আইডেন্টিটি যাচাই করে (যেমন লগইন)।",
+            "auth",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অথোরাইজেশন (Authorization) কী?",
+            [
+              "ইউজারের অ্যাক্সেস নিয়ন্ত্রণ",
+              "ইউজার আইডেন্টিটি যাচাই",
+              "ডেটা এনক্রিপ্ট",
+              "ডেটা ডিক্রিপ্ট",
+            ],
+            "অথোরাইজেশন ইউজারের কী কী রিসোর্স অ্যাক্সেস করতে পারবে তা নিয়ন্ত্রণ করে।",
+            "auth",
+          ),
+        );
+        questions.push(
+          createQ(
+            "অথেনটিকেশন ও অথোরাইজেশনের মধ্যে পার্থক্য কী?",
+            [
+              "অথেনটিকেশন আইডেন্টিটি যাচাই, অথোরাইজেশন অ্যাক্সেস নিয়ন্ত্রণ",
+              "অথোরাইজেশন আইডেন্টিটি যাচাই, অথেনটিকেশন অ্যাক্সেস নিয়ন্ত্রণ",
+              "দুটোই একই",
+              "কোনোটিই নয়",
+            ],
+            "অথেনটিকেশন 'কে তুমি?' এবং অথোরাইজেশন 'কী করতে পারো?' চেক করে।",
+            "auth",
+          ),
+        );
+        questions.push(
+          createQ(
+            "OAuth কী?",
+            [
+              "অথোরাইজেশন প্রোটোকল",
+              "অথেনটিকেশন প্রোটোকল",
+              "এনক্রিপশন প্রোটোকল",
+              "ডেটা ট্রান্সফার প্রোটোকল",
+            ],
+            "OAuth একটি অথোরাইজেশন প্রোটোকল, যা থার্ড-পার্টি অ্যাপ্লিকেশনকে অ্যাক্সেস দেয়।",
+            "auth",
+          ),
+        );
+        questions.push(
+          createQ(
+            "JWT-এর পূর্ণরূপ কী?",
+            [
+              "JSON Web Token",
+              "Java Web Token",
+              "JSON Web Transmission",
+              "Java Web Transmission",
+            ],
+            "JWT-এর পূর্ণরূপ JSON Web Token, যা অথেনটিকেশনের জন্য ব্যবহৃত হয়।",
+            "auth",
+          ),
+        );
+
+        return questions;
+      }
+
+      // ----------------------------------------------------------------
+      // Initialize with shuffled/randomized questions
+      // ----------------------------------------------------------------
+      const quizDatabase = generateQuestions();
+
+      // ----------------------------------------------------------------
+      // Global State
+      // ----------------------------------------------------------------
+      let userAnswers = {};
+      let currentFilter = "all";
+
+      // ----------------------------------------------------------------
+      // Utility
+      // ----------------------------------------------------------------
+      function escapeHtml(str) {
+        if (str === undefined || str === null) return "";
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      // ----------------------------------------------------------------
+      // Render functions
+      // ----------------------------------------------------------------
+      function renderQuestionGrid() {
+        const grid = document.getElementById("question-grid");
+        grid.innerHTML = "";
+        quizDatabase.forEach((_, idx) => {
+          let btnClass = "bg-slate-200 text-slate-700 hover:bg-slate-300";
+          if (userAnswers[idx] !== undefined) {
+            const isCorrect = userAnswers[idx] === quizDatabase[idx].correct;
+            btnClass = isCorrect
+              ? "bg-emerald-600 text-white font-bold"
+              : "bg-rose-600 text-white font-bold";
+          }
+          const btn = document.createElement("button");
+          btn.className =
+            "w-8 h-8 rounded-lg text-xs transition-all duration-200 flex items-center justify-center cursor-pointer " +
+            btnClass;
+          btn.innerText = idx + 1;
+          btn.title = `প্রশ্ন ${idx + 1}`;
+          btn.onclick = () => {
+            const el = document.getElementById(`q-card-${idx}`);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "center" });
+              el.classList.add("ring-4", "ring-indigo-400");
+              setTimeout(
+                () => el.classList.remove("ring-4", "ring-indigo-400"),
+                1000,
+              );
+            }
+          };
+          grid.appendChild(btn);
+        });
+      }
+
+      function renderQuestions() {
+        const container = document.getElementById("questions-list");
+        container.innerHTML = "";
+        const topicLabels = {
+          httpserver: "HTTP Server",
+          appserver: "Application Server",
+          mvc: "MVC Web Framework",
+          webservices: "Web Services",
+          orm: "ORM",
+          lambda: "Lambda Expression",
+          linq: "LINQ",
+          datareader: "Data Reader/Writer",
+          dos: "Denial of Service",
+          bufferoverflow: "Buffer Overflow",
+          xss: "Cross Site Scripting",
+          auth: "Authentication & Access Control",
+        };
+        const topicColors = {
+          httpserver: "bg-purple-100 text-purple-700 border-purple-200",
+          appserver: "bg-amber-100 text-amber-700 border-amber-200",
+          mvc: "bg-blue-100 text-blue-700 border-blue-200",
+          webservices: "bg-indigo-100 text-indigo-700 border-indigo-200",
+          orm: "bg-emerald-100 text-emerald-700 border-emerald-200",
+          lambda: "bg-rose-100 text-rose-700 border-rose-200",
+          linq: "bg-cyan-100 text-cyan-700 border-cyan-200",
+          datareader: "bg-fuchsia-100 text-fuchsia-700 border-fuchsia-200",
+          dos: "bg-orange-100 text-orange-700 border-orange-200",
+          bufferoverflow: "bg-lime-100 text-lime-700 border-lime-200",
+          xss: "bg-teal-100 text-teal-700 border-teal-200",
+          auth: "bg-sky-100 text-sky-700 border-sky-200",
+        };
+        const prefix = ["A", "B", "C", "D"];
+
+        quizDatabase.forEach((item, idx) => {
+          if (currentFilter !== "all" && item.topic !== currentFilter) return;
+
+          const card = document.createElement("div");
+          card.id = `q-card-${idx}`;
+          card.className =
+            "question-card bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 md:p-6 transition-all duration-300 hover:shadow-md";
+
+          const isAnswered = userAnswers[idx] !== undefined;
+          let optionsHTML = "";
+          item.options.forEach((opt, optIdx) => {
+            let optClass =
+              "border-slate-200 hover:border-indigo-200 hover:bg-slate-50/60";
+            let iconHTML = "";
+            if (isAnswered) {
+              const selected = userAnswers[idx];
+              const correct = item.correct;
+              if (optIdx === correct) {
+                optClass =
+                  "border-emerald-500 bg-emerald-50/60 text-emerald-900 font-semibold";
+                iconHTML =
+                  '<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>';
+              } else if (optIdx === selected) {
+                optClass =
+                  "border-rose-400 bg-rose-50/60 text-rose-900 font-semibold";
+                iconHTML =
+                  '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>';
+              } else {
+                optClass =
+                  "border-slate-100 bg-slate-50/20 text-slate-400 cursor-not-allowed";
+              }
+            }
+            optionsHTML += `
+                        <button onclick="selectOption(${idx}, ${optIdx})" ${isAnswered ? "disabled" : ""} 
+                            class="option w-full text-left flex items-center justify-between p-3.5 border rounded-xl text-sm md:text-base transition-all duration-200 group ${optClass} cursor-pointer">
+                            <span class="flex items-center gap-3">
+                                <span class="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-bold text-xs ${isAnswered ? "bg-slate-200 text-slate-600" : "bg-slate-100 text-slate-500 group-hover:bg-indigo-100 group-hover:text-indigo-600"} transition-all">
+                                    ${prefix[optIdx]}
+                                </span>
+                                <span>${escapeHtml(opt)}</span>
+                            </span>
+                            ${iconHTML}
+                        </button>
+                    `;
+          });
+
+          let explanationHTML = "";
+          if (isAnswered) {
+            const isCorrect = userAnswers[idx] === item.correct;
+            explanationHTML = `
+                        <div class="mt-4 p-4 rounded-xl border ${isCorrect ? "bg-emerald-50/40 border-emerald-100 text-emerald-900" : "bg-slate-50 border-slate-200 text-slate-700"} text-xs md:text-sm transition-all">
+                            <div class="flex items-center gap-1.5 font-bold mb-1">
+                                <i class="${isCorrect ? "fa-solid fa-square-check text-emerald-600" : "fa-solid fa-circle-exclamation text-amber-600"}"></i>
+                                <span>${isCorrect ? "অভিনন্দন! সঠিক উত্তর।" : "ভুল উত্তর! সঠিক উত্তর: " + prefix[item.correct]}</span>
+                            </div>
+                            <p class="leading-relaxed font-medium">${escapeHtml(item.explanation)}</p>
+                        </div>
+                    `;
+          }
+
+          card.innerHTML = `
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3.5">
+                        <span class="text-xs md:text-sm font-bold text-slate-400">প্রশ্ন ${idx + 1}/150</span>
+                        <span class="text-[11px] font-semibold px-2.5 py-1 border rounded-full self-start md:self-auto ${topicColors[item.topic]}">
+                            ${topicLabels[item.topic] || item.topic}
+                        </span>
+                    </div>
+                    <p class="font-semibold text-base md:text-lg text-slate-900 mb-4 leading-relaxed">${escapeHtml(item.q)}</p>
+                    <div class="flex flex-col gap-2.5">${optionsHTML}</div>
+                    ${explanationHTML}
+                `;
+          container.appendChild(card);
+        });
+      }
+
+      function renderDashboard() {
+        let correct = 0,
+          wrong = 0;
+        const attempted = Object.keys(userAnswers).length;
+        quizDatabase.forEach((q, idx) => {
+          if (userAnswers[idx] !== undefined) {
+            if (userAnswers[idx] === q.correct) correct++;
+            else wrong++;
+          }
+        });
+        const score = correct * 1.0 - wrong * 0.25;
+        const progress = Math.round((attempted / quizDatabase.length) * 100);
+
+        document.getElementById("score-display").innerText = score.toFixed(2);
+        document.getElementById("attempted-display").innerText =
+          `${attempted}/150`;
+        document.getElementById("correct-display").innerText = correct;
+        document.getElementById("wrong-display").innerText = wrong;
+        document.getElementById("progress-percent").innerText = `${progress}%`;
+        document.getElementById("progress-bar").style.width = `${progress}%`;
+        document.getElementById("mobile-score").innerText = score.toFixed(2);
+        document.getElementById("mobile-attempted").innerText =
+          `${attempted}/150`;
+      }
+
+      function selectOption(qIdx, optIdx) {
+        if (userAnswers[qIdx] !== undefined) return;
+        userAnswers[qIdx] = optIdx;
+        renderQuestions();
+        renderQuestionGrid();
+        renderDashboard();
+      }
+
+      function filterQuestions() {
+        currentFilter = document.getElementById("topic-filter").value;
+        renderQuestions();
+      }
+
+      function resetQuiz() {
+        if (
+          confirm(
+            "আপনি কি নিশ্চিতভাবে কুইজটি পুনরায় শুরু করতে চান? আপনার বর্তমান সমস্ত স্কোর রিসেট হয়ে যাবে।",
+          )
+        ) {
+          userAnswers = {};
+          currentFilter = "all";
+          document.getElementById("topic-filter").value = "all";
+          renderDashboard();
+          renderQuestionGrid();
+          renderQuestions();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      // ----------------------------------------------------------------
+      // Initial Render
+      // ----------------------------------------------------------------
+      window.onload = function () {
+        renderDashboard();
+        renderQuestionGrid();
+        renderQuestions();
+      };
+    </script>
+  </body>
+</html>

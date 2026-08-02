@@ -1,0 +1,1810 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSC ICT Chapter 3 - Web Design & HTML Quiz</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Inter & Hind Siliguri Fonts -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800 antialiased min-h-screen flex flex-col">
+    <!-- Main Header with Navigation -->
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <!-- Website Logo / Title -->
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              HSC ICT কুইজ পোর্টাল
+            </h1>
+            <p class="text-xs text-slate-400">
+              অধ্যায় ৩: ওয়েব ডিজাইন পরিচিতি এবং HTML
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="web.html"
+            class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white transition-all duration-200"
+            >ওয়েব ডিজাইন & HTML (১৭৪ MCQs)</a
+          >
+          <a
+            href="chapter-three-1.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট ১</a
+          >
+          <a
+            href="chapter-three-2.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট ২</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Top Header Banner -->
+    <header
+      class="bg-gradient-to-r from-blue-700 via-indigo-800 to-slate-900 text-white shadow-lg"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2.5 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20"
+          >
+            <i class="fa-solid fa-graduation-cap text-2xl text-amber-400"></i>
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+              এইচএসসি তথ্য ও যোগাযোগ প্রযুক্তি স্পেশাল কুইজ
+            </h1>
+            <p class="text-xs text-indigo-200">
+              অধ্যায় ৩: ওয়েব ডিজাইন পরিচিতি এবং HTML (১৭৪টি বহুনির্বাচনি প্রশ্ন)
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 items-center">
+          <span
+            class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+          >
+            <i class="fa-solid fa-award mr-1"></i> সঠিক: +১.০
+          </span>
+          <span
+            class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+          >
+            <i class="fa-solid fa-circle-minus mr-1"></i> ভুল: -০.২৫
+          </span>
+          <button
+            onclick="resetQuiz()"
+            class="bg-rose-600 hover:bg-rose-500 border border-rose-500 text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 shadow-sm"
+          >
+            <i class="fa-solid fa-rotate-left"></i> রিসেট কুইজ
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main
+      class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6"
+    >
+      <!-- Left Sidebar: Dashboard & Grid Navigation -->
+      <aside class="w-full lg:w-80 flex flex-col gap-6 lg:shrink-0">
+        <!-- Dynamic Scorecard Card -->
+        <div
+          class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sticky lg:top-24"
+        >
+          <h2
+            class="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center justify-between"
+          >
+            <span>লাইভ পারফরম্যান্স</span>
+            <i class="fa-solid fa-chart-line text-indigo-600"></i>
+          </h2>
+
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                অ্যাক্টিভ মার্কস
+              </div>
+              <div
+                id="score-display"
+                class="text-2xl font-bold text-indigo-600"
+              >
+                0.00
+              </div>
+            </div>
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                মোট উত্তর
+              </div>
+              <div
+                id="attempted-display"
+                class="text-2xl font-bold text-slate-700"
+              >
+                0/174
+              </div>
+            </div>
+            <div
+              class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-center"
+            >
+              <div class="text-xs text-emerald-600 font-semibold mb-1">
+                সঠিক উত্তর
+              </div>
+              <div
+                id="correct-display"
+                class="text-xl font-bold text-emerald-600"
+              >
+                0
+              </div>
+            </div>
+            <div
+              class="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-center"
+            >
+              <div class="text-xs text-rose-500 font-semibold mb-1">
+                ভুল উত্তর
+              </div>
+              <div id="wrong-display" class="text-xl font-bold text-rose-600">
+                0
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="mb-5">
+            <div
+              class="flex justify-between text-xs font-semibold text-slate-500 mb-1"
+            >
+              <span>সম্পন্ন হয়েছে</span>
+              <span id="progress-percent">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2">
+              <div
+                id="progress-bar"
+                class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Filter Segment -->
+          <div class="mb-5">
+            <label
+              class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+              >টপিক ফিল্টার করুন</label
+            >
+            <select
+              id="topic-filter"
+              onchange="filterQuestions()"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-700"
+            >
+              <option value="all">সব প্রশ্ন একসাথে (১৭৪টি)</option>
+              <option value="concept">ওয়েব ডিজাইনের ধারণা (১-২৭)</option>
+              <option value="structure">ওয়েবসাইটের কাঠামো (২৮-৪৪)</option>
+              <option value="element">HTML এলিমেন্ট, ট্যাগ ও ফরম্যাটিং (৪৫-৭ Show)</option>
+              <option value="advanced">HTML লিস্ট, লিংক, ইমেজে ও টেবিল (৭২-১৭৪)</option>
+            </select>
+          </div>
+
+          <!-- Jump-to Grid Title -->
+          <div class="mb-2 flex items-center justify-between">
+            <label
+              class="text-xs font-bold text-slate-500 uppercase tracking-wider"
+              >দ্রুত প্রশ্নে যান (১ - ১৭৪)</label
+            >
+            <span
+              class="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold"
+              >গ্রিড</span
+            >
+          </div>
+
+          <!-- Jump-to Grid -->
+          <div
+            id="question-grid"
+            class="grid grid-cols-8 gap-1.5 max-h-56 overflow-y-auto custom-scrollbar p-1.5 bg-slate-50 border border-slate-200/60 rounded-xl"
+          >
+            <!-- Javascript will inject buttons here -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Main Panel: Questions Container -->
+      <section class="flex-grow flex flex-col gap-5">
+        <!-- Rules Banner -->
+        <div
+          class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex gap-3 items-start"
+        >
+          <i
+            class="fa-solid fa-circle-info text-amber-600 text-lg mt-0.5 shrink-0"
+          ></i>
+          <div class="text-xs md:text-sm text-amber-800 leading-relaxed">
+            <strong>গুরুত্বপূর্ণ তথ্য:</strong> যেকোনো অপশনে ক্লিক করলেই সাথে সাথে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবেন। পেজ রিলোড বা রিফ্রেশ করলেও আপনার দেওয়া উত্তর ও স্কোর হারিয়ে যাবে না। শুধুমাত্র <strong>'রিসেট কুইজ'</strong> বাটনে ক্লিক করলেই কুইজ পুনরায় শুরু হবে।
+          </div>
+        </div>
+
+        <!-- Quiz Questions Target Container -->
+        <div id="questions-list" class="flex flex-col gap-6">
+          <!-- Dynamic Question Cards -->
+        </div>
+
+        <div class="text-center py-6 border-t border-slate-200 mt-4">
+          <p class="text-sm text-slate-500">
+            ১৭৪টি প্রশ্ন সফলভাবে লোড হয়েছে। শুভ পরীক্ষা!
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Sticky Scorebar -->
+    <div
+      class="lg:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 p-3 text-white flex justify-between items-center shadow-2xl z-50"
+    >
+      <div class="flex gap-4">
+        <div>
+          <p class="text-[10px] text-slate-400">মোট মার্কস</p>
+          <p id="mobile-score" class="text-lg font-bold text-amber-400">0.00</p>
+        </div>
+        <div>
+          <p class="text-[10px] text-slate-400">উত্তর দেওয়া</p>
+          <p id="mobile-attempted" class="text-lg font-bold text-slate-200">
+            0/174
+          </p>
+        </div>
+      </div>
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all"
+      >
+        <i class="fa-solid fa-chevron-up"></i> উপরে যান
+      </button>
+    </div>
+
+    <!-- Main Footer -->
+    <footer
+      class="bg-slate-950 text-slate-400 py-6 text-center border-t border-slate-800/60 text-xs mt-12 pb-16 lg:pb-6"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p class="mb-2">
+          © ২০২৬ এইচএসসি আইসিটি কুইজ পোর্টাল। সকল অধিকার সংরক্ষিত।
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript Engine & Quiz Questions Data -->
+    <script>
+      // Load questions dataset from PDF source
+      const quizDatabase = [
+        {
+          q: "১. ইন্টারনেটে লিখিত তথ্যের নাম কী?",
+          options: ["ওয়েবপেইজ", "হাইপারলিংক", "টেক্সট", "হাইপারটেক্সট"],
+          correct: 3,
+          topic: "concept",
+          explanation: "ইন্টারনেটে লিখিত তথ্যের সাধারণ নাম হলো হাইপারটেক্সট।"
+        },
+        {
+          q: "২. কত সালে টিম বার্নার্স-লি ওয়েবের ধারণা দেন?",
+          options: ["১৯৯০", "১৯৮৯", "১৯৮৮", "১৯৮৭"],
+          correct: 1,
+          topic: "concept",
+          explanation: "১৯৮৯ সালে টিম বার্নার্স-লি World Wide Web (WWW)-এর ধারণা প্রস্তাব করেন।"
+        },
+        {
+          q: "৩. ইন্টারনেটে তথ্য প্রদর্শনের পেইজকে কী বলে?",
+          options: ["HTTP পেইজ", "URL পেইজ", "Web page", "Home page"],
+          correct: 2,
+          topic: "concept",
+          explanation: "ইন্টারনেটে তথ্যাবলি প্রদর্শনের জন্য ব্যবহৃত পাতাকে Web page বলে।"
+        },
+        {
+          q: "৪. WWW-এর পূর্ণরূপ কোনটি?",
+          options: ["World Web Wire", "World Web Wide", "World Wire Web", "World Wide Web"],
+          correct: 3,
+          topic: "concept",
+          explanation: "WWW এর পূর্ণরূপ হলো World Wide Web।"
+        },
+        {
+          q: "৫. ওয়েব ব্রাউজার কী?",
+          options: ["সার্ভার", "স্মার্ট ডিভাইস", "সফটওয়্যার", "ওয়েবসাইট"],
+          correct: 2,
+          topic: "concept",
+          explanation: "ওয়েব ব্রাউজার হলো ওয়েবপেজ দেখার জন্য ব্যবহৃত একটি অ্যাপ্লিকেশন সফটওয়্যার।"
+        },
+        {
+          q: "৬. কোন ওয়েবসাইটে তথ্য অপরিবর্তিত থাকে?",
+          options: ["ডায়নামিক ওয়েবসাইট", "লোকাল ওয়েবসাইট", "রিমোট ওয়েবসাইট", "স্ট্যাটিক ওয়েবসাইট"],
+          correct: 3,
+          topic: "concept",
+          explanation: "স্ট্যাটিক ওয়েবসাইটে পূর্বে থেকে নির্ধারিত তথ্য থাকে যা ব্রাউজারে অপরিবর্তিতভাবে প্রদর্শিত হয়।"
+        },
+        {
+          q: "৭. ক্লায়েন্ট অংশে ব্যবহৃত প্রোগ্রামিং ভাষা কোনটি?",
+          options: ["Java", "Python", "HTML", "JavaScript"],
+          correct: 3,
+          topic: "concept",
+          explanation: "ক্লায়েন্ট সাইড স্ক্রিপ্টিং ও ইন্টারঅ্যাক্টিভিটির জন্য প্রধানত JavaScript ব্যবহৃত হয়।"
+        },
+        {
+          q: "৮. বুলেটিন বোর্ড বলা হয় কোনটিকে?",
+          options: ["WWW", "HTTP", "HTML", "URL"],
+          correct: 0,
+          topic: "concept",
+          explanation: "WWW কে ইন্টারনেটের ইলেকট্রনিক বুলেটিন বোর্ড বলা হয়ে থাকে।"
+        },
+        {
+          q: "৯. টিম বার্নার্স লি কোনটি ব্যবহার করে ডকুমেন্ট আদান-প্রদান করেন?",
+          options: ["টিসিপি", "এফটিপি", "আইপি অ্যাড্রেস", "ইন্টারনেট"],
+          correct: 2,
+          topic: "concept",
+          explanation: "টিম বার্নার্স লি ডকুমেন্টের অবস্থান চিহ্নিত করার জন্য আইপি অ্যাড্রেস ও ইউআরএল ব্যবহার করেন।"
+        },
+        {
+          q: "১০. ডেটাবেজের সাথে সংযোগ থাকে কোন ওয়েব সাইটের?",
+          options: ["স্ট্যাটিক ওয়েবপেইজ", "ডায়নামিক ওয়েবপেইজ", "গ্লোবাল ওয়েবপেইজ", "নরমাল ওয়েবপেইজ"],
+          correct: 1,
+          topic: "concept",
+          explanation: "ডায়নামিক ওয়েবসাইটে রিয়েল-টাইম ডাটা আদান-প্রদানের জন্য ব্যাকএন্ডে ডেটাবেজ যুক্ত থাকে।"
+        },
+        {
+          q: "১১. FTP এর পূর্ণরূপ কী?",
+          options: ["File Transfer Protocol", "File Transection Protocol", "File Transcript Protocol", "File Text Protocol"],
+          correct: 0,
+          topic: "concept",
+          explanation: "FTP এর পূর্ণরূপ হলো File Transfer Protocol।"
+        },
+        {
+          q: "১২. HTML এর পূর্ণরূপ কী?",
+          options: ["Hyper Transfer Markup Language", "Higher Text Markup Language", "Hyper Text Markup Language", "Hyper Text Making Language"],
+          correct: 2,
+          topic: "concept",
+          explanation: "HTML = Hyper Text Markup Language।"
+        },
+        {
+          q: "১৩. ওয়েব পেইজ ডিজাইনে কোন ভাষা ব্যবহৃত হয়?",
+          options: ["C++", "Q-Basic", "HTML", "PYTHON"],
+          correct: 2,
+          topic: "concept",
+          explanation: "ওয়েবপেজের মূল স্ট্রাকচার ও লেআউট তৈরির জন্য HTML ব্যবহৃত হয়।"
+        },
+        {
+          q: "১৪. URL-এর পূর্ণরূপ কোনটি?",
+          options: ["Union Resource Locator", "Uniform Research Locator", "Uniform Resource Locator", "Uniform Resolve Locator"],
+          correct: 2,
+          topic: "concept",
+          explanation: "URL = Uniform Resource Locator।"
+        },
+        {
+          q: "১৫. https:// এখানে s কী নির্দেশ করে?",
+          options: ["server", "security", "service", "save"],
+          correct: 1,
+          topic: "concept",
+          explanation: "HTTPS-এর 's' শব্দটি Secure/Security নির্দেশ করে।"
+        },
+        {
+          q: "১৬. কোনটি সঠিক URL?",
+          options: ["www.abc-com/xyz", "www.abc.com/xyz", "www-abc.com/xyz", "www.abc/com/xyz"],
+          correct: 1,
+          topic: "concept",
+          explanation: "সঠিক ইউআরএল ফরম্যাট: www.abc.com/xyz"
+        },
+        {
+          q: "১৭. HTML দ্বারা লিখিত ডকুমেন্ট অনুবাদ করে কোনটি?",
+          options: ["Browser", "FTP", "HTTP", "WEB"],
+          correct: 0,
+          topic: "concept",
+          explanation: "ওয়েব ব্রাউজার এইচটিএমএল কোডকে অনুবাদ করে ভিজ্যুয়াল ওয়েবপেজ হিসেবে প্রদর্শন করে।"
+        },
+        {
+          q: "১৮. একটি ওয়েব প্রযুক্তি গড়ে উঠে— i. HTML দ্বারা ii. HTTP দ্বারা iii. Web Browser দ্বারা",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "concept",
+          explanation: "ওয়েব প্রযুক্তি মূলত HTML, HTTP এবং Web Browser এর সমন্বয়ে কাজ করে।"
+        },
+        {
+          q: "১৯. হোমপেইজ দেখার জন্য ন্যূনতম আবশ্যক— i. ওয়েব ব্রাউজার ii. সার্চ ইঞ্জিন iii. ইন্টারনেট",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "concept",
+          explanation: "ওয়েবপেজ সরাসরি দেখার জন্য প্রধানত ওয়েব ব্রাউজার ও ইন্টারনেট সংযোগ আবশ্যক।"
+        },
+        {
+          q: "২০. আবরার উক্ত ওয়েব পেইজটির ডিজাইন করেছে কোনটির দ্বারা? (উদ্দীপক ভিত্তিক)",
+          options: ["HTTP", "HTML", "Web browser", "PHP"],
+          correct: 1,
+          topic: "concept",
+          explanation: "ওয়েবপেজ তৈরি ও ডিজাইনের প্রাথমিক ভাষা হলো HTML।"
+        },
+        {
+          q: "২১. তার সাইটটিকে আরও সুন্দর ও ইন্টারেক্টিভ করতে ব্যবহার করা যায়— i. ডেটাবেজ ii. এনিমেশন iii. অডিও, ভিডিও",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "concept",
+          explanation: "সাইটকে সমৃদ্ধ করতে ডেটাবেজ, অ্যানিমেশন, অডিও ও ভিডিও যুক্ত করা যায়।"
+        },
+        {
+          q: "২২. প্রথম কোনো ওয়েবসাইটে ঢুকলে যে পেইজটি প্রদর্শিত হয় তাকে কী বলে?",
+          options: ["মূলধারার পেইজ", "হোম পেইজ", "উপধারার পেইজ", "ওয়েবসাইট"],
+          correct: 1,
+          topic: "structure",
+          explanation: "ওয়েবসাইটের প্রবেশদ্বার বা প্রথম পেজকে Home Page বলে।"
+        },
+        {
+          q: "২৩. ওয়েব পেইজটি বড় হলে কোন স্ট্রাকচারটি ব্যবহার করা ভালো?",
+          options: ["নেটওয়ার্ক", "হায়ারার্কি", "লিনিয়ার", "কম্বিনেশন"],
+          correct: 1,
+          topic: "structure",
+          explanation: "বড় ওয়েবসাইটের জন্য ট্রি বা হায়ারার্কিক্যাল (Hierarchical) কাঠামো সবচেয়ে সুবিধাজনক।"
+        },
+        {
+          q: "২৪. Network স্ট্রাকচার সিস্টেমে কীসের মধ্যে ওয়েব পেইজগুলো লিঙ্কযুক্ত থাকে?",
+          options: ["ফ্রেমের মধ্যে", "নেটওয়ার্ক এর মধ্যে", "জালের মধ্যে", "তারের মধ্যে"],
+          correct: 0,
+          topic: "structure",
+          explanation: "ওয়েবপেজগুলোকে ফ্রেম বা লিনিয়ালি জালের মতো লিঙ্কবদ্ধ রাখা হয়।"
+        },
+        {
+          q: "২৫. চিত্রের কাঠামোটি কিসের? (ট্রি আকৃতির কাঠামো)",
+          options: ["লিনিয়ার", "হায়ারার্কি", "নেটওয়ার্ক", "কম্বিনেশন"],
+          correct: 1,
+          topic: "structure",
+          explanation: "শাখা-প্রশাখাযুক্ত স্ট্রাকচারকে হায়ারার্কিক্যাল (Hierarchical) বা ট্রি স্ট্রাকচার বলে।"
+        },
+        {
+          q: "২৬. ওয়েব পেইজে নেভিগেশন বাটন হলো— i. লিংক ii. বাটন iii. মেনু",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "structure",
+          explanation: "ওয়েবপেজে লিংক, বাটন এবং মেনু নেভিগেশনের কাজ করে।"
+        },
+        {
+          q: "২৭. ডাইনামিক ওয়েব সাইট তৈরি করার জন্য প্রয়োজন— i. HTML ii. HTTP iii. PHP",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "structure",
+          explanation: "ডাইনামিক ওয়েবসাইটের জন্য HTML এর পাশাপাশি ব্যাকএন্ড ল্যাঙ্গুয়েজ যেমন PHP আবশ্যক।"
+        },
+        {
+          q: "২৮. .htm বা .html বলতে বোঝায়?",
+          options: ["Title Element", "body Type", "Head Element", "Extension Name"],
+          correct: 3,
+          topic: "element",
+          explanation: ".html বা .htm হলো HTML ফাইলের ফাইল এক্সটেনশন।"
+        },
+        {
+          q: "২৯. এইচটিএমএল ডকুমেন্টের অংশ— i. ফুটার ii. হেডার iii. বডি",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "element",
+          explanation: "এইচটিএমএল ডকুমেন্টের প্রধান অংশের মধ্যে হেডার, বডি এবং ফুটার বিদ্যমান।"
+        },
+        {
+          q: "৩০. HTML দিয়ে কোনো ডকুমেন্ট তৈরির সময় ফাইল এক্সটেনশন দিতে হয়— i. .html ii. .htm iii. .doc",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 0,
+          topic: "element",
+          explanation: "HTML ফাইলের এক্সটেনশন .html অথবা .htm হয়ে থাকে।"
+        },
+        {
+          q: "৩১. এইচটিএমএল এলিমেন্ট লেখার জন্য কোনটি ব্যবহৃত হয়?",
+          options: ["ডকুমেন্ট", "ট্যাগ", "সারণি", "চিহ্ন"],
+          correct: 1,
+          topic: "element",
+          explanation: "এইচটিএমএল এলিমেন্ট প্রকাশের মূল মাধ্যম হলো ট্যাগ (Tag)।"
+        },
+        {
+          q: "৩২. ট্যাগকে কোনটির সাথে তুলনা করা যায়?",
+          options: ["ব্র্যাকেট", "ফরওয়ার্ড স্ল্যাশ", "ব্যাক স্ল্যাশ", "কন্টেন্ট"],
+          correct: 0,
+          topic: "element",
+          explanation: "ট্যাগ এঙ্গেল ব্র্যাকেট (< >) দিয়ে প্রকাশ করা হয়।"
+        },
+        {
+          q: "৩৩. এইচটিএমএল এলিমেন্টের শেষ বোঝাতে কোনটি ব্যবহৃত হয়?",
+          options: ["ব্যাক স্ল্যাশ", "ফরওয়ার্ড স্ল্যাশ", "ক্লোজিং ট্যাগ", "ওপেনিং ট্যাগ"],
+          correct: 2,
+          topic: "element",
+          explanation: "এলিমেন্টের সমাপ্তি ঘটাতে ক্লোজিং ট্যাগ (যেমন </p>) ব্যবহৃত হয়।"
+        },
+        {
+          q: "৩৪. <!DOCTYPE html> কে কী বলে?",
+          options: ["এইচটিএমএল ডিক্লারেশন", "এক্সটেনশন ডিক্লারেশন", "ফাইল ডিক্লারেশন", "ডকুমেন্ট টাইপ ডিক্লারেশন"],
+          correct: 3,
+          topic: "element",
+          explanation: "<!DOCTYPE html> হলো Document Type Declaration।"
+        },
+        {
+          q: "৩৫. ওপেনিং ট্যাগ ও ক্লোজিং ট্যাগের ভিতর কোনটির নাম লিখতে হয়?",
+          options: ["ট্যাগের", "ডকুমেন্টের", "স্ল্যাশের", "এলিমেন্টের"],
+          correct: 3,
+          topic: "element",
+          explanation: "সূচনা ও সমাপ্তি ট্যাগের মাঝে কন্টেন্ট বা এলিমেন্ট উপস্থাপন করা হয়।"
+        },
+        {
+          q: "৩৬. HTML-এ কমেন্টস লেখার সিনট্যাক্স কোনটি?",
+          options: ["<!--.......-->", "<-...........>", "<!-..........!>", "<--!>"],
+          correct: 0,
+          topic: "element",
+          explanation: "HTML কমেন্ট সিনট্যাক্স: <!-- কমেন্ট পাঠ -->"
+        },
+        {
+          q: "৩৭. কোন html ট্যাগটি ড্রপ ডাউন বক্স তৈরিতে ব্যবহৃত হয়?",
+          options: ["<select> / <option>", "<frame>", "<list>", "<input>"],
+          correct: 0,
+          topic: "element",
+          explanation: "ড্রপ ডাউন লিস্টের অপশন তৈরিতে <option> ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "৩৮. <p> এই ট্যাগ কোথায় ব্যবহৃত হয়?",
+          options: ["শুরুতে", "শেষে", "মাঝে", "উপরে"],
+          correct: 1,
+          topic: "element",
+          explanation: "প্যারাগ্রাফ প্রারম্ভে <p> এবং অনুচ্ছেদ শেষে </p> ব্যবহৃত হয়।"
+        },
+        {
+          q: "৩৯. html-এ একটি লাইন ফাঁকা/ভেঙে দিতে কোন ট্যাগ ব্যবহৃত হয়?",
+          options: ["<>", "<br>", "<hr>", "<h>"],
+          correct: 1,
+          topic: "element",
+          explanation: "Line Break দেওয়ার জন্য এম্পটি ট্যাগ <br> ব্যবহৃত হয়।"
+        },
+        {
+          q: "৪০. নিচের কোন ট্যাগে যেকোনো সংখ্যক স্পেস একটি স্পেস হিসেবে গণ্য হয়?",
+          options: ["<p>", "<Hr>", "<Br>", "<Title>"],
+          correct: 0,
+          topic: "element",
+          explanation: "<p> ট্যাগে অতিরিক্ত স্পেসসমূহকে ব্রাউজার একটি স্পেস হিসেবেই রেন্ডার করে।"
+        },
+        {
+          q: "৪১. <head> ট্যাগ এর এলিমেন্টগুলো হলো— i. স্টাইল ii. টাইটেল iii. স্ক্রিপ্ট",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "element",
+          explanation: "<head> সেকশনে style, title, script ইত্যাদি থাকে।"
+        },
+        {
+          q: "৪২. এম্পটি এলিমেন্টের থাকে না— i. কনটেন্ট ii. ওপেনিং ট্যাগ iii. ক্লোজিং ট্যাগ",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "element",
+          explanation: "Empty element এর কোনো কন্টেন্ট এবং ক্লোজিং ট্যাগ থাকে না।"
+        },
+        {
+          q: "৪৩. ফন্ট ট্যাগে অ্যাট্রিবিউট হিসেবে ব্যবহৃত হয়— i. size ii. color iii. face",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "element",
+          explanation: "<font> ট্যাগে size, color এবং face অ্যাট্রিবিউট ব্যবহার করা যায়।"
+        },
+        {
+          q: "৪৪. একটি HTML ফাইলে— i. শুরু ট্যাগ হিসেবে <html> থাকে ii. প্রতি জোড়া শুরু ও শেষ ট্যাগ থাকে iii. অ্যাট্রিবিউট শুরুর ট্যাগে থাকে",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "element",
+          explanation: "HTML ফাইলের মূল ট্যাগ <html> এবং অ্যাট্রিবিউট সর্বদা শুরুর ট্যাগে বসে।"
+        },
+        {
+          q: "৪৫. HTML এর সাধারণ গঠন পর্যায় হলো—",
+          options: ["html, head, body, title", "html, head, title, body", "head, html, body, title", "head, body, title, html"],
+          correct: 1,
+          topic: "element",
+          explanation: "সঠিক এইচটিএমএল স্ট্রাকচার: <html> -> <head> -> <title> -> <body>"
+        },
+        {
+          q: "৪৬. HTML-এর সম্পূর্ণ ডকুমেন্টটি নিচের কোন ট্যাগের অভ্যন্তরে থাকে?",
+          options: ["<Body>", "<Head>", "<HTML>", "<P>"],
+          correct: 2,
+          topic: "element",
+          explanation: "সম্পূর্ণ কোড <html>...</html> ট্যাগের ভেতর থাকে।"
+        },
+        {
+          q: "৪৭. Head section-এ থাকে নিচের কোনটি?",
+          options: ["ডকুমেন্টের Content", "ডকুমেন্টের Title সহ Meta tag", "Body section", "Text Formatting"],
+          correct: 1,
+          topic: "element",
+          explanation: "Head সেকশনে ডকুমেন্টের Title, Meta Information থাকে।"
+        },
+        {
+          q: "৪৮. বডি ট্যাগে থাকে— i. ইমেজ ট্যাগ ii. প্যারাগ্রাফ ট্যাগ iii. হাইপারলিংক ট্যাগ",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "element",
+          explanation: "ওয়েবপেজের মূল কন্টেন্ট দৃশ্যমান অংশ body ট্যাগে থাকে।"
+        },
+        {
+          q: "৪৯. HTML ডকুমেন্টের স্ট্রাকচার হলো— i. Head section ii. Body Section iii. Content",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 0,
+          topic: "element",
+          explanation: "HTML এর মূল ২টি অংশ: Head section ও Body section।"
+        },
+        {
+          q: "৫০. HTML ডকুমেন্ট তৈরিতে ব্যবহৃত হয়— i. Notepad ii. Notepad++ iii. Sublime text",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "element",
+          explanation: "Notepad, Notepad++, Sublime text ইত্যাদি টেক্সট এডিটর ব্যবহৃত হয়।"
+        },
+        {
+          q: "৫১. HTML এর বডি সেকশনে ব্যবহৃত বিভিন্ন ট্যাগ হলো— i. <p> ii. <pre> iii. <img>",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "element",
+          explanation: "<p>, <pre>, <img> সকল ট্যাগই Body অংশে কন্টেন্ট সাজাতে ব্যবহৃত হয়।"
+        },
+        {
+          q: "৫২. ওয়েবপেইজে কোনো কিছু তৈরি করার পর তাকে বিভিন্নভাবে সজ্জিত করাকে কী বলা হয়?",
+          options: ["ফরম্যাটিং", "কোডিং", "ডকুমেন্টেশন", "প্রোগ্রামিং"],
+          correct: 3,
+          topic: "element",
+          explanation: "টেক্সট বা উপাদানসমূহকে সুন্দর ও সজ্জিত করা হলো ফরম্যাটিং।"
+        },
+        {
+          q: "৫৩. টেক্সট আন্ডারলাইন করতে কোন এলিমেন্ট ব্যবহৃত হয়?",
+          options: ["<b>", "<u>", "<br>", "<p>"],
+          correct: 1,
+          topic: "element",
+          explanation: "আন্ডারলাইন করার জন্য <u> ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "৫৪. টেক্সট বাঁকা বা ইটালিক করতে কোন এলিমেন্ট ব্যবহৃত হয়?",
+          options: ["<b>", "<p>", "<u>", "<i>"],
+          correct: 3,
+          topic: "element",
+          explanation: "ইটালিক করার জন্য <i> অথবা <em> ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "৫৫. টেক্সটকে সুপারস্ক্রিপ্ট (উপরে) লেখার জন্য ব্যবহৃত হয় কোনটি?",
+          options: ["<sub>", "<p>", "<b>", "<sup>"],
+          correct: 3,
+          topic: "element",
+          explanation: "সুপারস্ক্রিপ্ট লেখার জন্য <sup> ট্যাগ ব্যবহার করা হয়।"
+        },
+        {
+          q: "৫৬. <em> এর মতো কাজ করে নিচের কোনটি?",
+          options: ["<del>", "<i>", "<q>", "<b>"],
+          correct: 1,
+          topic: "element",
+          explanation: "<em> (Emphasized text) এবং <i> উভয়ই টেক্সটকে ইটালিক করে।"
+        },
+        {
+          q: "৫৭. ডকুমেন্টকে বিভিন্ন সেকশনে বিভক্ত করার জন্য কোন এলিমেন্টটি ব্যবহৃত হয়?",
+          options: ["<pre>", "<div>", "<sub>", "<sup>"],
+          correct: 1,
+          topic: "element",
+          explanation: "ওয়েবপেজের সেকশন বা ব্লক বিভাজনে <div> (Division) ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "৫৮. কোনটি বাংলা ফন্টের ক্ষেত্রে ইউনিভার্সাল এনকোডিং সাপোর্ট করে?",
+          options: ["UNICODE", "EBCDIC", "ASCII", "BCD"],
+          correct: 0,
+          topic: "element",
+          explanation: "বাংলাসহ অন্যান্য সকল ভাষার জন্য UNICODE আন্তর্জাতিক স্ট্যান্ডার্ড।"
+        },
+        {
+          q: "৫৯. লেখাকে বড় করার জন্য ব্যবহৃত হয় কোন ট্যাগ?",
+          options: ["<b>", "<big>", "<biggest>", "<bigger>"],
+          correct: 1,
+          topic: "element",
+          explanation: "লেখাকে সাধারণের চেয়ে বড় করতে <big> ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "৬০. a² এর সঠিক HTML ট্যাগ প্রকাশ কোনটি?",
+          options: ["a<sub>2</sub>", "a<sup>2", "a<sup>2</sup>", "a<sup2>"],
+          correct: 2,
+          topic: "element",
+          explanation: "a<sup>2</sup> সঠিকভাবে a² প্রদর্শন করে।"
+        },
+        {
+          q: "৬১. H<sub>2</sub>O সিনট্যাক্সের ফলাফল নিচের কোনটি?",
+          options: ["HO", "2HO", "H₂O", "H₂O₂"],
+          correct: 2,
+          topic: "element",
+          explanation: "<sub>2</sub> এর কারণে ২ অক্ষরের নিচে নেমে H₂O তৈরি হয়।"
+        },
+        {
+          q: "৬২. <font> ট্যাগে নিচের কোনটি ব্যবহার করে ফন্টের নাম বা ধরন পরিবর্তন করা যায়?",
+          options: ["Style", "face", "font", "Name"],
+          correct: 1,
+          topic: "element",
+          explanation: "<font face='Arial'> এর মাধ্যমে ফন্টের টাইপ পরিবর্তন করা হয়।"
+        },
+        {
+          q: "৬৩. <font> ট্যাগের মধ্যে কোনটি ব্যবহার করে ফন্টের সাইজ পরিবর্তন করা যায়?",
+          options: ["font-size", "size", "font size", "fontsize"],
+          correct: 1,
+          topic: "element",
+          explanation: "ফন্টের আকার নির্ধারণে size অ্যাট্রিবিউট ব্যবহৃত হয়।"
+        },
+        {
+          q: "৬৪. একটি ওয়েব পেইজের ব্যাকগ্রাউন্ডে কালার দেওয়ার জন্য <body> ট্যাগে কোনটি ব্যবহার করা হয়?",
+          options: ["bgcolor", "Background colour", "Back color", "Form color"],
+          correct: 0,
+          topic: "element",
+          explanation: "body এর ব্যাকগ্রাউন্ড কালার সেট করতে bgcolor='color' ব্যবহৃত হয়।"
+        },
+        {
+          q: "৬৫. HTML এলিমেন্ট টেক্সটের সাধারণ ফরম্যাটিং হলো— i. বোল্ড করা ii. নতুন লাইন লেখা iii. ইটালিক করা",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "element",
+          explanation: "বোল্ড ও ইটালিক করা হলো টেক্সটের টেক্সট ফরম্যাটিং।"
+        },
+        {
+          q: "৬৬. নির্দিষ্ট অংশকে বিশেষ জোর দিয়ে লেখার জন্য ব্যবহৃত পদ্ধতি— i. এমফাসাইজ ii. আন্ডারলাইন iii. স্ট্রং",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "element",
+          explanation: "এমফাসাইজ (em) এবং স্ট্রং (strong) বিশেষ গুরুত্ব প্রদানে ব্যবহৃত হয়।"
+        },
+        {
+          q: "৬৭. HTML প্রোগ্রামিংয়ে লেখার মাঝখান দিয়ে কেটে দিতে (Strike-through) ব্যবহৃত ট্যাগ— i. <cut> ii. <del> iii. <strike>",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 2,
+          topic: "element",
+          explanation: "<del> এবং <strike> টেক্সট কেটে দেওয়ার কাজে ব্যবহৃত হয়।"
+        },
+        {
+          q: "৬৮. লেখাকে ইটালিক করতে ব্যবহৃত ট্যাগ হলো— i. <i> ii. <em> iii. <ita>",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 0,
+          topic: "element",
+          explanation: "<i> এবং <em> উভয়ই ইটালিকের কাজ করে।"
+        },
+        {
+          q: "৬৯. বিভিন্ন ধরনের টেক্সট ফরম্যাটিং ট্যাগ হলো— i. <b> ii. <i> iii. <h1>",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "element",
+          explanation: "<b>, <i> এবং হেডিং <h1> সবগুলোই ফরম্যাটিং নির্দেশ করে।"
+        },
+        {
+          q: "৭০. ওয়েব ডকুমেন্টে লেখার মধ্যে আন্ডার লাইন দিতে ব্যবহৃত হয়— i. <u> ii. <ins> iii. <ul>",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 0,
+          topic: "element",
+          explanation: "<u> এবং <ins> আন্ডারলাইন বা ইন্সার্টেড টেক্সট দেখায়।"
+        },
+        {
+          q: "৭১. HTML-এর font সেকশনে ব্যবহৃত বিভিন্ন অ্যাট্রিবিউট হলো— i. face ii. color iii. size",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "element",
+          explanation: "<font> ট্যাগে face, color, size তিনটি অ্যাট্রিবিউটই সঠিক।"
+        },
+        {
+          q: "৭২. HTML-এ সাধারণত কত ধরনের লিস্ট থাকে?",
+          options: ["৬", "৫", "৪", "৩"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "HTML এ প্রধানত ৩ ধরনের লিস্ট থাকে (Ordered, Unordered, Definition)।"
+        },
+        {
+          q: "৭৩. ul-এর পূর্ণরূপ কী?",
+          options: ["Underlined List", "Unordered List", "Unordered Line", "Underlined Line"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ul = Unordered List।"
+        },
+        {
+          q: "৭৪. ক্রমসহ (Ordered) তালিকা তৈরি করতে এইচটিএমএল-এ কোন এলিমেন্ট ব্যবহার করা হয়?",
+          options: ["ul", "lo", "ol", "li"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "ক্রমিক তালিকার জন্য <ol> (Ordered List) ব্যবহৃত হয়।"
+        },
+        {
+          q: "৭৫. আনঅর্ডারড লিস্টে type = 'Square' হলে আউটপুটের সিম্বল কেমন হবে?",
+          options: ["বৃত্ত (Circle)", "খালি গোলক (Disc)", "সংখ্যা (1, 2)", "ভরাট বর্গক্ষেত্র (Square)"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "type='Square' দিলে বর্গাকার বুলেট চিহ্ন আসে।"
+        },
+        {
+          q: "৭৬. ডেফিনিশন লিস্ট শুরু হয় কোনটি দিয়ে?",
+          options: ["<DD>", "<DT>", "<DL>", "<OL>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "ডেফিনিশন লিস্ট প্রারম্ভে <dl> ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "৭৭. ডেফিনিশন লিস্টে প্রতিটি টার্মের বর্ণনা শুরু হয় কোনটি দিয়ে?",
+          options: ["<DD>", "<DT>", "<DL>", "<UL>"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "টার্ম ডেসক্রিপশন শুরু হয় <dd> (Definition Description) দিয়ে।"
+        },
+        {
+          q: "৭৮. ক্রমবিহীন তালিকাতে ব্যবহৃত চিহ্ন— i. Square ii. Circle iii. Disc",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "আনঅর্ডারড লিস্টে Square, Circle, Disc ইত্যাদি ব্যবহৃত হয়।"
+        },
+        {
+          q: "৭৯. আবরারের ব্যবহৃত ডিকশনারির মতো লিস্ট (Definition List) কত অংশে বিভক্ত?",
+          options: ["২ অংশে", "৩ অংশে", "৪ অংশে", "৫ অংশে"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "এটি প্রধানত ২ অংশে বিভক্ত (dt = Term, dd = Description)।"
+        },
+        {
+          q: "৮০. উদ্দীপকে বর্ণিত লিস্টটি কোনটি?",
+          options: ["আনঅর্ডারড লিস্ট", "ডেফিনিশন লিস্ট / আইটেম লিস্ট", "অর্ডারড লিস্ট", "কম্বিনেশন লিস্ট"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ডিকশনারির মত টার্ম ও ডেফিনিশন সংবলিত লিস্ট হলো Definition List।"
+        },
+        {
+          q: "৮১. হাইপারলিংক-এর সঠিক এলিমেন্ট কোনটি?",
+          options: ["<a>", "<anchor>", "<a href>", "<a type>"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "হাইপারলিংকের মূল ট্যাগ হলো <a> (Anchor Tag)।"
+        },
+        {
+          q: "৮২. কোনটি অ্যাংকর <a> এলিমেন্টের প্রধান অ্যাট্রিবিউট?",
+          options: ["type", "href", "start", "url"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "href (Hypertext Reference) হলো <a> ট্যাগের প্রধান অ্যাট্রিবিউট।"
+        },
+        {
+          q: "৮৩. একই পেইজের মধ্যে নির্দিষ্ট কোনো অংশের সাথে তৈরি লিংক কোন ধরনের লিংক?",
+          options: ["Internal Link", "External Link", "Page Link", "Anchor Link"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "একই ডকুমেন্টের ভেতরের লিংকে Internal Link বলা হয়।"
+        },
+        {
+          q: "৮৪. একই ডকুমেন্টের নির্দিষ্ট কোনো অংশে জাম্প করে চলে যাওয়ার জন্য ব্যবহৃত হয় কোনটি?",
+          options: ["name / id", "target", "Jump", "blank"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "অভ্যন্তরীণ জাম্পিংয়ের জন্য name বা id অ্যাট্রিবিউট ব্যবহার করা হয়।"
+        },
+        {
+          q: "৮৫. <a> এলিমেন্টের অ্যাট্রিবিউট হলো— i. target ii. href iii. url",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "<a> ট্যাগে প্রধানত target ও href অ্যাট্রিবিউট সাপোর্ট করে।"
+        },
+        {
+          q: "৮৬. target অ্যাট্রিবিউটের সঠিক মান হতে পারে— i. _top ii. _self iii. _blank",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "target এর মান _top, _self, _blank ইত্যাদি হতে পারে।"
+        },
+        {
+          q: "৮৭. উদ্দীপকের www.google.com ওয়েবসাইটে যাওয়ার সঠিক লিংক কোনটি?",
+          options: ["<a href = 'google'>www.google.com</a>", "<a href = 'https://www.google.com'>Google</a>", "<href = 'www.google.com'>", "<a href = 'www.google.com'></href>"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "সঠিক ফরম্যাট: <a href='https://www.google.com'>Google</a>"
+        },
+        {
+          q: "৮৮. উক্ত ট্যাগে ব্যবহৃত অ্যাট্রিবিউট সমূহ— i. href ii. mailto iii. name",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "<a> ট্যাগে href, mailto, name ইত্যাদি ব্যবহার সম্ভব।"
+        },
+        {
+          q: "৮৯. ওয়েবপেইজে ছবি সংযুক্ত করতে কোন এলিমেন্ট ব্যবহার করা হয়?",
+          options: ["li", "img", "a", "image"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ওয়েবপেজে ছবি যুক্ত করার ট্যাগ হলো <img>।"
+        },
+        {
+          q: "৯০. ছবির ঠিকানা বা উৎস নির্দেশ করে কোন অ্যাট্রিবিউট?",
+          options: ["src", "sre", "img", "target"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "src (source) অ্যাট্রিবিউট দ্বারা ফাইলের লোকেশন বোঝানো হয়।"
+        },
+        {
+          q: "৯১. HTML-এ ইমেজ নির্ধারণ করার সঠিক সিনট্যাক্স কোনটি?",
+          options: ["<img src = 'url'>", "<img src='url'> image name </img>", "<img source = 'url'>", "<a href='url'>"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "ইমেজ একটি এম্পটি ট্যাগ, এর সিনট্যাক্স: <img src='url'>"
+        },
+        {
+          q: "৯২. ওয়েবে গ্রাফিক্স বা ছবি ব্যবহারের সুবিধা হলো— i. টেক্সটের ব্যবহার সহজে কমিয়ে আনা ii. মানুষের দৃষ্টি আকর্ষণ করা iii. ওয়েবপেইজটি দর্শনীয় করা",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "ছবি ব্যবহারের মাধ্যমে সাইট আকর্ষণীয় হয় এবং তথ্য সহজে উপস্থাপন করা যায়।"
+        },
+        {
+          q: "৯৩. <img src='ocean.jpg' width='415' height='332'> ট্যাগটির কাজ কী?",
+          options: ["বিভিন্ন ওয়েব পেইজের লিংক স্থাপনে", "বিভিন্ন চিত্রের মধ্যে লিংক স্থাপনে", "ওয়েব পেইজে চিত্র সংযোজন করা", "ওয়েব পেইজে ভিডিও সংযোজন করা"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "এটি পেজে ocean.jpg ছবিটি নির্দিষ্ট সাইজে যুক্ত করে।"
+        },
+        {
+          q: "৯৪. উদ্দীপকের ইমেজের আকৃতি কেমন নির্দেশ করা হয়েছে?",
+          options: ["width=415", "height=332", "size=332x415 পিক্সেলস", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "উইডথ ৪১৫ ও হাইট ৩৩২ পিক্সেল নির্দেশ করা হয়েছে।"
+        },
+        {
+          q: "৯৫. <table> এলিমেন্টের মধ্যে কয় ধরনের সাব-এলিমেন্ট বা ট্যাগ থাকে?",
+          options: ["১ ধরনের", "২ ধরনের", "৩ ধরনের", "৪ ধরনের"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "টেবিলে প্রধানত <tr>, <th>, <td> ইত্যাদি উপাদান থাকে।"
+        },
+        {
+          q: "৯৬. টেবিলের অণুভূমিক (Horizontal) বরাবর ঘরগুলোকে কী বলে?",
+          options: ["কলাম", "সারি (Row)", "স্তম্ভ", "সেল"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "অনুভূমিক সারিগুলোকে Row (সারি) বলা হয়।"
+        },
+        {
+          q: "৯৭. টেবিলের সেলে তথ্য বা ডেটা রাখার জন্য কোন এলিমেন্ট ব্যবহৃত হয়?",
+          options: ["<tr>", "<tdata>", "<td>", "<th>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "Table Data সংরক্ষণে <td> ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "৯৮. সেল বর্ডার ও টেক্সটের মধ্যে দূরত্ব নির্ধারণ করে কোন অ্যাট্রিবিউট?",
+          options: ["cellpadding", "cellspacing", "border", "tspace"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "সেলে বর্ডার ও কন্টেন্টের ভেতরের দূরত্ব হলো Cellpadding।"
+        },
+        {
+          q: "৯৯. টেবিল তৈরির প্রাথমিক সঠিক সূচনা ট্যাগ কোনটি?",
+          options: ["<table border='1'>", "<ta>", "<table><border>", "<table-data>"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "টেবিলে বর্ডার দেখানোর জন্য <table border='1'> আবশ্যক।"
+        },
+        {
+          q: "১০০. ওয়েবপেইজে রো, কলাম, সেল নিয়ে কী গঠিত হয়?",
+          options: ["ডকুমেন্ট", "টেবিল", "প্যারাগ্রাফ", "টেক্সট"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "রো, কলাম ও সেল এর সমন্বয়ে গঠিত হয় টেবিল।"
+        },
+        {
+          q: "১০১. টেবিলের হেডিং (Header) দেওয়ার ট্যাগ কোনটি?",
+          options: ["<TR>", "<TD>", "<TH>", "<BR>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "Table Heading এর জন্য <th> ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "১০২. টেবিলে খালি বা ফাঁকা স্থান তৈরির জন্য HTML-এ কোনটি ব্যবহার করতে হয়?",
+          options: ["&nbsp;", "&psp;", "&npsb;", "&spb;"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "Non-breaking space এর জন্য &nbsp; কোড ব্যবহৃত হয়।"
+        },
+        {
+          q: "১০৩. HTML টেবিলে দুটি সেলের মধ্যবর্তী ফাঁকা জায়গা নির্ধারণে ব্যবহৃত হয় কোনটি?",
+          options: ["rowspan", "cellspan", "cellspacing", "colspacing"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "দুটি সেলের মধ্যে বাহ্যিক দূরত্ব হলো Cellspacing।"
+        },
+        {
+          q: "১০৪. সেলের অভ্যন্তরে চতুর্দিকের মার্জিন রাখতে ব্যবহৃত হয় কোনটি?",
+          options: ["cell spacing", "cell padding", "cell span", "rowspan"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "সেলের ভেতরে লেখার চারপাশের ফাঁকা জায়গা হলো Cellpadding।"
+        },
+        {
+          q: "১০৫. টেবিলে সারি (Row) তৈরি করার জন্য শহিদকে কোন ট্যাগ ব্যবহার করতে হবে?",
+          options: ["<caption>", "<tr>", "<p>", "<th>"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "Table Row তৈরির জন্য <tr> ট্যাগ আবশ্যক।"
+        },
+        {
+          q: "১০৬. যে সকল উপাদান নিয়ে টেবিল কাঠামো গঠিত তা হলো— i. রো ii. কলাম iii. সেল",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "টেবিল মূলত রো, কলাম ও সেল সমন্বয়ে গঠিত।"
+        },
+        {
+          q: "১০৭. টেবিলটির ব্যাকগ্রাউন্ড সবুজ রঙের করার জন্য সঠিক কোড কোনটি?",
+          options: ["<table color='green'>", "<font color='green'>", "<table bgcolor='green'>", "<tr color='green'>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "টেবিলের ব্যাকগ্রাউন্ড কালার সেট করতে <table bgcolor='green'> লেখা হয়।"
+        },
+        {
+          q: "১০৮. <table width='300px' align='center' bgcolor='red'> কোডে ব্যবহৃত অ্যাট্রিবিউট হলো— i. table ii. width iii. bgcolor",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "এখানে width এবং bgcolor হলো অ্যাট্রিবিউট (table হলো ট্যাগ নাম)।"
+        },
+        {
+          q: "১০৯. দৃষ্টিনন্দন ওয়েবসাইট তৈরির প্রথম কাজ কী?",
+          options: ["ফিচার তৈরি", "রেজিস্ট্রেশন করা", "সার্ভার তৈরি", "সুন্দর লে-আউট বা ডিজাইন তৈরি"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "ওয়েবসাইটের প্রথম ধাপ হলো এর দৃষ্টিনন্দন লে-আউট বা ডিজাইন পরিকল্পনা।"
+        },
+        {
+          q: "১১০. ওয়েবপেইজের কোন অংশে কী থাকবে তা প্রারম্ভিকভাবে নির্ধারণ করে কোনটি?",
+          options: ["কাঠামো", "ব্যবহারকারী", "ওয়্যারফ্রেম", "লে-আউট"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "ওয়েবপেজ লে-আউট নির্ধারণ করে পেজের গঠন।"
+        },
+        {
+          q: "১১১. ওয়েবপেইজ ডিজাইনে স্টাইলিংয়ের জন্য প্রধানত ব্যবহৃত হয়—",
+          options: ["সিএসএস (CSS)", "গিম্প", "অ্যাডোব ইলাস্ট্রেটর", "পিএইচপি"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "CSS (Cascading Style Sheets) পেজ ডিজাইন ও স্টাইলিংয়ে ব্যবহৃত হয়।"
+        },
+        {
+          q: "১১২. প্রতিটি ওয়েবসাইটের সুনির্দিষ্ট ও স্বতন্ত্র নামকে কী বলে?",
+          options: ["ফটোশপ", "ডোমেইন (Domain Name)", "HTML", "সাইট ডিজাইন"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ওয়েবসাইটের অনন্য নামকে ডোমেইন নেম (Domain Name) বলে।"
+        },
+        {
+          q: "১১৩. কাগজে-কলমে আঁকা ওয়েবসাইটের প্রাথমিক নকশাকে কী বলে?",
+          options: ["ওয়্যারফ্রেম (Wireframe)", "ইন্টারফ্রেম", "লে-আউট", "হোস্টিং"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "প্রাথমিক স্কেচ বা ব্লুপ্রিন্টকে Wireframe বলা হয়।"
+        },
+        {
+          q: "১১৪. প্ল্যাটফর্মের ওপর ভিত্তি করে হোস্টিং সাধারণত কত প্রকার?",
+          options: ["২ ধরনের (Linux & Windows)", "৩ ধরনের", "৪ ধরনের", "৫ ধরনের"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "অপারেটিং সিস্টেম অনুযায়ী হোস্টিং প্রধানত ২ প্রকার: লিনাক্স ও উইন্ডোজ হোস্টিং।"
+        },
+        {
+          q: "১১৫. ওয়েবসাইট ইন্টারনেটে পাবলিশ করতে প্রয়োজন— i. ডোমেইন ii. হোস্টিং iii. পাবলিক আইপি/সার্ভার",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "ওয়েবসাইট পাবলিশের জন্য ডোমেন, হোস্টিং এবং সার্ভার এক্সেস প্রয়োজন।"
+        },
+        {
+          q: "১১৬. ওয়েবসাইটের ব্যাক-এন্ড (Back-end) ডেভেলপমেন্টে ব্যবহৃত হয়— i. সিএসএস ii. ডেটাবেজ সফটওয়্যার iii. প্রোগ্রামিং ভাষা (যেমন PHP, Python)",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "ব্যাকএন্ড প্রসেসিংয়ে প্রোগ্রামিং ল্যাঙ্গুয়েজ ও ডেটাবেজ যুক্ত থাকে।"
+        },
+        {
+          q: "১১৭. ইন্টারনেটে ওয়েবসাইটের ঠিকানা হিসেবে যা ব্যবহৃত হয়— i. আইপি অ্যাড্রেস ii. ডোমেইন নেম সিস্টেম (DNS) iii. লোকাল অ্যাড্রেস",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "ইন্টারনেটে ঠিকানা চেনার জন্য IP Address এবং DNS ব্যবহৃত হয়।"
+        },
+        {
+          q: "১১৮. পলাশের ওয়েবসাইটকে ইন্টারনেটে দ্রুত সবার কাছে প্রচারমুখী করার জন্য কী করা উচিত?",
+          options: ["এক্সেল ফাইল লাগাতে হবে", "সার্চ ইঞ্জিনে সাবমিশন (SEO) করতে হবে", "ডিএনএস পরিবর্তন করতে হবে", "শুধুমাত্র কোড ফাইল আপলোড করা"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ওয়েবসাইটকে দৃশ্যমান ও প্রচারমুখী করতে সার্চ ইঞ্জিন সাবমিশন বা SEO করা জরুরি।"
+        },
+        {
+          q: "১১৯. পলাশকে ওয়েবসাইটটি ইন্টারনেটে পাবলিশ করতে হলে পর্যায়ক্রমে কী করতে হবে?— i. ডোমেইন রেজিস্ট্রেশন ii. ওয়েব পেইজ ডিজাইন iii. হোস্টিং কেনা",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "পাবলিশিংয়ের প্রধান ৩ ধাপ: ডিজাইন, ডোমেন কেনা ও হোস্টিং করা।"
+        },
+        {
+          q: "১২০. একটি ওয়েবসাইটে প্রধানত কয়টি অংশ থাকে?",
+          options: ["২টি (Front-end & Back-end)", "৩টি", "৪টি", "৫টি"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "একটি পূর্ণাঙ্গ ওয়েবসাইটে ২টি অংশ থাকে: ফ্রন্টএন্ড ও ব্যাকএন্ড।"
+        },
+        {
+          q: "১২১. CSS এর পূর্ণরূপ কী?",
+          options: ["Cascading Style Sheet", "Cascading Style Shit", "Case Style Sheet", "Cascading Styling Sheet"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "CSS = Cascading Style Sheet।"
+        },
+        {
+          q: "১২২. HTML ট্যাগের প্রতীক বা চিহ্ন কোনটি?",
+          options: ["<>", "{}", "()", "[]"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "HTML ট্যাগ নির্দেশ করতে এঙ্গেল ব্র্যাকেট <> ব্যবহৃত হয়।"
+        },
+        {
+          q: "১২৩. নতুন ট্যাবে ওয়েবপেইজ খুলতে ব্যবহৃত অ্যাট্রিবিউট ভ্যালু কোনটি?",
+          options: ["Blank", "Href", "_blank", "Title"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "target='_blank' ব্যবহার করলে নতুন ট্যাবে পেজ ওপেন হয়।"
+        },
+        {
+          q: "১২৪. সবচেয়ে বড় সাইজের হেডিং ট্যাগ কোনটি?",
+          options: ["<h6>", "<h5>", "<h2>", "<h1>"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "<h1> হলো বৃহত্তম হেডিং এবং <h6> হলো ক্ষুদ্রতম হেডিং।"
+        },
+        {
+          q: "১২৫. ওয়েব ক্লায়েন্ট ব্যবহারকারীর কাছ থেকে ইনপুট নিয়ে ওয়েব সার্ভারে পাঠানোকে কী বলে?",
+          options: ["আপলোড", "রিকোয়েস্ট (Request)", "ব্রাউজ", "রেসপন্স"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ক্লায়েন্ট সার্ভারের নিকট রিকোয়েস্ট (HTTP Request) পাঠায়।"
+        },
+        {
+          q: "১২৬. স্ট্যাটিক ওয়েব সাইটের অন্যতম প্রধান বৈশিষ্ট্য কোনটি?",
+          options: ["কন্টেন্ট স্বয়ংক্রিয়ভাবে পরিবর্তিত হয়", "ব্রাউজারে দ্রুত লোড হয়", "ডেটাবেজ ব্যবহৃত হয়", "ইনপুট ফর্ম সক্রিয় থাকে"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "স্ট্যাটিক ওয়েবসাইটে ব্যাকএন্ড প্রসেসিং না থাকায় খুব দ্রুত লোড হয়।"
+        },
+        {
+          q: "১২৭. ওয়েবসাইটের একক অ্যাড্রেসকে কী বলে?",
+          options: ["IP Address", "URL / Domain Name", "HTTP", "HTML"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ওয়েবসাইটের নির্দিষ্ট একক ঠিকানাকে URL বা ডোমেন নাম বলা হয়।"
+        },
+        {
+          q: "১২৮. HTML-এ কোন এলিমেন্টের মাধ্যমে পেজের নির্দিষ্ট অংশ ব্লক নির্বাচন করা যায়?",
+          options: ["<div>", "<span>", "<style>", "<font>"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ইনলাইন সেকশন নির্ধারণে <span> এবং ব্লক বিভাজনে <div> ব্যবহৃত হয়।"
+        },
+        {
+          q: "১২৯. টেবিল বর্ডার থেকে ডাটাহগুলোর ভেতরের দূরত্ব নির্ধারণের অ্যাট্রিবিউট কোনটি?",
+          options: ["cellspacing", "rowspan", "colspan", "cellpadding"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "বর্ডার থেকে টেক্সট বা ডেটার ভেতরের দূরত্ব হলো cellpadding।"
+        },
+        {
+          q: "১৩০. আইপি এড্রেস (IPv4) মোট কত বিটের?",
+          options: ["৮ বিট", "৩২ বিট", "৬৪ বিট", "১২৮ বিট"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "IPv4 অ্যাড্রেস ৩২ বিট (৪ বাইট) বিশিষ্ট হয়।"
+        },
+        {
+          q: "১৩১. শিক্ষামূলক প্রতিষ্ঠানে ব্যবহৃত টপ লেভেল ডোমেইনের নাম কী?",
+          options: [".gov", ".com", ".edu", ".org"],
+          correct: 2,
+          topic: "advanced",
+          explanation: ".edu (educational) শিক্ষা প্রতিষ্ঠানের ডোমেন নির্দেশ করে।"
+        },
+        {
+          q: "১৩২. http://www.moedu.gov.bd/home এখানে টপ লেভেল ডোমেইন কোনটি?",
+          options: ["www.moedu.gov.bd", "www", "www.moedu", ".gov"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "এখানে .gov (সরকারি সংস্থা) হলো টপ লেভেল ডোমেন (TLD)।"
+        },
+        {
+          q: "১৩৩. ডোমেইন নাম মূলত কী?",
+          options: ["ওয়েব সাইটের একটি স্বতন্ত্র আলফানিউমেরিক নাম", "সার্ভারের মেমোরি নাম", "ওয়েব ফাইলের ফোল্ডার", "কম্পিউটার নাম"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "ডোমেন নাম হলো IP অ্যাড্রেসের মানুষের পঠনযোগ্য নাম রূপ।"
+        },
+        {
+          q: "১৩৪. নিচের কোন ট্যাগটি সঠিকভাবে সেলের ব্যাকগ্রাউন্ড কালার সবুজ করবে?",
+          options: ["<table bgcolor='green'>", "<tr bgcolor='green'>", "<td bgcolor='green'>", "<tr td bgcolor='green'>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "<td bgcolor='green'> সরাসরি নির্দিষ্ট সেলের রং সবুজ করে।"
+        },
+        {
+          q: "১৩৫. .edu দ্বারা কোন ধরনের প্রতিষ্ঠান বা ডোমেনকে বোঝায়?",
+          options: ["সামরিক", "সাংগঠনিক", "শিক্ষামূলক", "ব্যবসায়িক"],
+          correct: 2,
+          topic: "advanced",
+          explanation: ".edu নির্দেশ করে শিক্ষাপ্রতিষ্ঠান (Educational institution)।"
+        },
+        {
+          q: "১৩৬. ওয়েবপেইজ ব্রাউজারে প্রদর্শনের জন্য ক্লায়েন্ট প্রান্তে কী ব্যবহৃত হয়?",
+          options: ["ওয়েব ব্রাউজার", "অপারেটিং সিস্টেম", "লিংক", "সার্ভার"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "ব্যবহারকারী বা ক্লায়েন্ট প্রান্তে পেজ দেখতে ওয়েব ব্রাউজার লাগে।"
+        },
+        {
+          q: "১৩৭. কোন ওয়েবসাইট কাঠামোতে যেকোনো পেইজ থেকে সরাসরি হোম পেইজে যাওয়া যায়?",
+          options: ["Hierarchical", "Network", "Linear", "Combination"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "Network বা Mesh স্ট্রাকচারে সবগুলো পেজ পরস্পর সংযুক্ত থাকে।"
+        },
+        {
+          q: "১৩৮. DNS-এর পূর্ণরূপ কী?",
+          options: ["Domain Name Server", "Domain Name System", "Domain Number System", "Domain Number of Server"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "DNS = Domain Name System।"
+        },
+        {
+          q: "১৩৯. HTML এর উদ্ভাবক কে?",
+          options: ["টিম বার্নার্স লী", "স্টিভ জবস", "মার্ক জাকারবার্গ", "বিল গেটস"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "স্যার টিম বার্নার্স-লী ১৯৯০ সালে HTML তৈরি করেন।"
+        },
+        {
+          q: "১৪০. CERN গবেষণা সংস্থাটি কোথায় অবস্থিত?",
+          options: ["ইতালি", "আমেরিকা", "ইংল্যান্ড", " সুইজারল্যান্ড"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "CERN সুইজারল্যান্ডের জেনেভায় অবস্থিত।"
+        },
+        {
+          q: "১৪১. নিচের কোন স্থানে সাধারণত অ্যাট্রিবিউট লেখা হয়?",
+          options: ["শুরুর ট্যাগে (Opening Tag)", "শেষ ট্যাগে", "দুই ট্যাগের মাঝে", "উভয় ট্যাগে"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "অ্যাট্রিবিউট সর্বদাই প্রারম্ভিক বা ওপেনিং ট্যাগের ভেতর লিখতে হয়।"
+        },
+        {
+          q: "১৪২. নিচের কোন হেডিং ট্যাগের অক্ষরের সাইজ সবচেয়ে ছোট?",
+          options: ["<h1>", "<h3>", "<h5>", "<h6>"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "<h6> এর টেক্সট আকারে সর্বকনিষ্ঠ।"
+        },
+        {
+          q: "১৪৩. ফন্টের নাম বা ফন্ট ফ্যামিলি পরিবর্তন করতে কোন অ্যাট্রিবিউট ব্যবহৃত হয়?",
+          options: ["size", "font", "face", "name"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "<font face='SutonnyMJ'> এর মাধ্যমে ফন্টের নাম নির্ধারণ করা হয়।"
+        },
+        {
+          q: "১৪৪. এইচটিএমএল কোড <p>H<sup>2</sup>O</p> এর আউটপুট কোনটি?",
+          options: ["H2O", "H₂O", "H²O", "HO²"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "<sup> থাকার কারণে ২ উপরে উঠে H²O তৈরি হবে।"
+        },
+        {
+          q: "১৪৫. RGB (255, 255, 255) দ্বারা কোন রং নির্দেশ করে?",
+          options: ["লাল", "সবুজ", "সাদা", "নীল"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "RGB(255, 255, 255) সম্পূর্ণ সাদা (White) রং নির্দেশ করে।"
+        },
+        {
+          q: "১৪৬. একটি পেইজের সাথে অন্য পেইজের ইন্টার-সংযোগকে HTML ভাষায় কী বলে?",
+          options: ["Connection", "Hyperlink", "HTML", "PHP"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "ওয়েবপেজসমূহের আন্তঃসংযোগকে Hyperlink বলা হয়।"
+        },
+        {
+          q: "১৪৭. নিচের কোনটি সঠিক HTML link tag?",
+          options: ["<li>...</li>", "<a>...</a>", "<ol>...</ol>", "<link>...</link>"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "<a>...</a> ট্যাগ হলো হাইপারলিংক তৈরি করার স্ট্যান্ডার্ড ট্যাগ।"
+        },
+        {
+          q: "১৪৮. '#FFFFFF' কালার কোডটি কোন রং নির্দেশ করে?",
+          options: ["সাদা (White)", "নীল", "সায়ান", "লাল"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "হেক্সাডেসিমেল #FFFFFF বা #fff দ্বারা সাদা রঙ বোঝায়।"
+        },
+        {
+          q: "১৪৯. হাইপারলিংক ট্যাগের সঠিক সিনট্যাক্স কোনটি?",
+          options: ["<ol>...", "<li>...", "<a href='url'>Link Text</a>", "<q>..."],
+          correct: 2,
+          topic: "advanced",
+          explanation: "সঠিক হাইপারলিংক ফরম্যাট: <a href='url'>Link Text</a>"
+        },
+        {
+          q: "১৫০. ব্রাউজকারীর সময় সাশ্রয়ী হয় নিচের কোন প্রযুক্তির কারণে?",
+          options: ["<br>", "হাইপারলিংক (Hyperlink)", "<li>", "<i>"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "হাইপারলিংকের মাধ্যমে এক ক্লিপেই দ্রুত অন্য পেজে যাওয়া যায়।"
+        },
+        {
+          q: "১৫১. ওয়েবপেজে ছবি যুক্ত করার সঠিক HTML কোড কোনটি?",
+          options: ["<img> src='rose.jpg'</img>", "<img src=rose.jpg</img>", "<img src='rose.jpg'>", "<img><src='rose.jpg'>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "সঠিক ইমেজ কোড: <img src='rose.jpg'>"
+        },
+        {
+          q: "১৫২. ব্রাউজার যদি কোনো কারণে ইমেজ লোড করতে ব্যর্থ হয় তখন ইমেজের স্থানে যে বিকল্প টেক্সট দেখায় তার অ্যাট্রিবিউট কোনটি?",
+          options: ["src", "title", "alt", "align"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "alt (Alternate text) বিকল্প বর্ণনা দেখানোর কাজ করে।"
+        },
+        {
+          q: "১৫৩. pic-1.jpg নামের ইমেজটি ওয়েবপেইজে প্রদর্শনের সঠিক কোড কোনটি?",
+          options: ["<image src='pic-1.jpg'>", "<img src='pic-1.jpg'>", "<img>='pic-1.jpg'</img>", "<p>='pic-1.jpg'</p>"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "<img src='pic-1.jpg'> সঠিকভাবে ছবি প্রদর্শন করবে।"
+        },
+        {
+          q: "১৫৪. তালিকায় কোনো নতুন আইটেম যুক্ত করার ট্যাগ কোনটি?",
+          options: ["<ol>", "<li>", "<ul>", "<dl>"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "লিস্ট আইটেমের জন্য <li> (List Item) ট্যাগ ব্যবহৃত হয়।"
+        },
+        {
+          q: "১৫৫. <table><tr><td>A</td><td>B</td></tr><tr><td>C</td><td>D</td></tr></table> এর আউটপুট কেমন হবে?",
+          options: ["এক সারিতে A B C D", "A B C D আলাদা লাইনে", "২x২ গ্রিড টেবিল (A B প্রথম সারিতে, C D দ্বিতীয় সারিতে)", "কোনোটিই নয়"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "এটি প্রথম সারিতে A, B এবং দ্বিতীয় সারিতে C, D প্রদর্শন করবে।"
+        },
+        {
+          q: "১৫৬. টেবিলের সেলের ব্যাকগ্রাউন্ড কালার হলুদ করার সঠিক ট্যাগ কোনটি?",
+          options: ["<table bg color='Yellow'>", "<tr bg color='Yellow'>", "<td bgcolor='Yellow'>", "<tr td bgcolor='Yellow'>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "<td bgcolor='Yellow'> সেলের ব্যাকগ্রাউন্ড হলুদ করবে।"
+        },
+        {
+          q: "১৫৭. ওয়েবসাইট পাবলিশ করার পর ফাইলসমূহ কোথায় সংরক্ষিত রাখা হয়?",
+          options: ["র‍্যামে", "হোমপেজে", "হার্ডডিস্কে", "ওয়েব সার্ভারে (Server)"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "ওয়েব ফাইলসমূহ ২৪ ঘণ্টা সচল থাকা ওয়েব সার্ভারে হোস্টিং আকারে থাকে।"
+        },
+        {
+          q: "১৫৮. ইনলাইন স্টাইল (Style attribute) এর সঠিক ব্যবহার কোনটি?",
+          options: ["<div style='color: red, float = left'>", "<div style='color=red, float: left'>", "<div style='color: red; float: left'>", "<div style='color: red' 'float: left'>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "সঠিক CSS ইনলাইন ফরম্যাট: <div style='color: red; float: left'>"
+        },
+        {
+          q: "১৫৯. html-এর ওয়েবপেইজ তৈরির জন্য ফাইলের এক্সটেনশন হচ্ছে— i. .html ii. .htm iii. .doc",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 0,
+          topic: "advanced",
+          explanation: ".html এবং .htm বৈধ এক্সটেনশন।"
+        },
+        {
+          q: "১৬০. একটি HTML ফাইলে— i. শুরু ট্যাগ হিসেবে <html> থাকে ii. প্রতি জোড়া শুরু ও শেষ ট্যাগ থাকে iii. অ্যাট্রিবিউট শুরুর ট্যাগে থাকে",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "সব ট্যাগের জোড়া থাকা বাধ্যতামূলক নয় (যেমন এম্পটি ট্যাগ)। তবে i এবং iii একদম সঠিক।"
+        },
+        {
+          q: "১৬১. নিচের কোন ট্যাগের কোনো ক্লোজিং বা শেষ ট্যাগ ও কন্টেন্ট থাকে না (Empty Tag)?— i. <br> ii. <img> iii. <u>",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 0,
+          topic: "advanced",
+          explanation: "<br> এবং <img> উভয়ই এম্পটি ট্যাগ।"
+        },
+        {
+          q: "১৬২. HTML এ বহুল ব্যবহৃত ইমেজ ফরম্যাট হলো— i. .gif ii. .png iii. .jpg/.jpeg",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "ওয়েবে gif, png, jpg সকল ফরম্যাটই সাপোর্টেড।"
+        },
+        {
+          q: "১৬৩. HTML ফাইল তৈরি বা এডিট করার জন্য ব্যবহৃত টেক্সট এডিটর হলো— i. নোটপ্যাড++ ii. সাবলাইম টেক্সট iii. নোটপ্যাড",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "Notepad, Notepad++, Sublime Text সবই এডিটর।"
+        },
+        {
+          q: "১৬৪. <body><p><i>My page</i></p><a href='pic.html'>picture</a></body> কোডটিতে ব্যবহৃত ট্যাগের ধরণ— i. টেবিল ii. হাইপার লিঙ্ক iii. ফরম্যাটিং",
+          options: ["i ও ii", "ii ও iii", "i ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "এখানে <i> (ফরম্যাটিং) এবং <a> (হাইপারলিংক) ব্যবহৃত হয়েছে।"
+        },
+        {
+          q: "১৬৫. <td> ট্যাগের সাথে ব্যবহৃত সাধারণ অ্যাট্রিবিউট— i. align ii. face iii. colspan",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 1,
+          topic: "advanced",
+          explanation: "<td> এ align এবং colspan অ্যাট্রিবিউট ব্যবহার করা যায়।"
+        },
+        {
+          q: "১৬৬. Table তৈরি করতে প্রয়োজনীয় Tag সমূহ হলো— i. <th> ii. <tr> iii. <td>",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "<th>, <tr>, <td> সবগুলোই টেবিল কাঠামোর মৌলিক ট্যাগ।"
+        },
+        {
+          q: "১৬৭. ওয়েবসাইট পাবলিশ করার জন্য এমন একটি সার্ভার কম্পিউটার রাখতে হয় যা— i. সর্বক্ষণ সচল থাকতে হয় ii. সার্বক্ষণিক ইন্টারনেটের সাথে যুক্ত থাকতে হয় iii. পাবলিক আইপি থাকতে হয়",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "সার্ভারের জন্য ২৪/৭ পাওয়ার, ইন্টারনেট সংযোগ এবং স্থায়ি IP প্রয়োজন।"
+        },
+        {
+          q: "১৬৮. ওয়েবসাইট পাবলিশিং-এ গৃহীত প্রাথমিক ধাপসমূহ হচ্ছে— i. ডোমেন নেইম রেজিস্ট্রেশন করা ii. ওয়েব পেইজ ডিজাইন করা iii. ওয়েবসাইট হোস্টিং করা",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "রেজিস্ট্রেশন, ডিজাইন ও হোস্টিং তিনটিই আবশ্যক ধাপ।"
+        },
+        {
+          q: "১৬৯. <p><img src='Picture.jpg' width='300' height='200'></p> কোডটিতে অ্যাট্রিবিউট কোনটি?",
+          options: ["P", "img", "width", "Picture.jpg"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "এখানে width এবং height হলো ইমেজের অ্যাট্রিবিউট।"
+        },
+        {
+          q: "১৭০. রাসেলের কোডে সঠিক ফলাফল বা ছবি না আসার সম্ভাব্য কারণ— i. ফাইলের নাম বা এক্সটেনশন ভুল ii. ব্রাউজার সাপোর্ট না করা iii. ছবির সঠিক লোকেশন/পাথ না দেওয়া",
+          options: ["i ও ii", "ii ও iii", "i ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "ছবির পথ, ফাইল নেম ভুল থাকলে ছবি লোড হয় না।"
+        },
+        {
+          q: "১৭১. <font color='Red' face='Arial'>ICT</font> উদ্দীপকে মূল কন্টেন্ট (Content) কোনটি?",
+          options: ["Font", "Color", "Red", "ICT"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "ট্যাগের ভেতরে প্রদর্শনযোগ্য টেক্সট 'ICT' হলো কন্টেন্ট।"
+        },
+        {
+          q: "১৭২. উদ্দীপকের অ্যাট্রিবিউট ভ্যালু (Attribute Value) কোনগুলো?",
+          options: ["color", "face", "Red, Arial", "ICT"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "'Red' এবং 'Arial' হলো কালার ও ফেস অ্যাট্রিবিউটের মান (Value)।"
+        },
+        {
+          q: "১৭৩. শিক্ষক কেয়া ও দিয়াকে পরস্পরের ওয়েবসাইটে তথ্য আদান-প্রদানে কোন বিশেষ ট্যাগ ব্যবহারের পরামর্শ দিলেন?",
+          options: ["<p>", "<img>", "<a> (Anchor/Hyperlink)", "<sup>"],
+          correct: 2,
+          topic: "advanced",
+          explanation: "এক সাইট থেকে অন্য সাইটে সহজে যাতায়াতের জন্য <a> হাইপারলিংক ট্যাগ আবশ্যক।"
+        },
+        {
+          q: "১৭৪. হাইপারলিংক ট্যাগ ব্যবহার করলে— i. ভিন্ন অবস্থানের পেইজে যাওয়া যায় ii. সম্পর্কিত তথ্য দ্রুত প্রদর্শিত হয় iii. ব্রাউজকারীর সময় বাঁচে",
+          options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
+          correct: 3,
+          topic: "advanced",
+          explanation: "হাইপারলিংক ব্যবহারের মাধ্যমে এই তিনটি সুবিধাই লাভ করা যায়।"
+        }
+      ];
+
+      // LocalStorage Key
+      const STORAGE_KEY = "web_html_hsc_ict_quiz_state";
+
+      // App State (persisted in localStorage)
+      let userAnswers = {}; // { questionIndex: selectedOptionIndex }
+
+      // Initialize State on Load
+      function loadSavedState() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            userAnswers = JSON.parse(saved);
+          }
+        } catch (e) {
+          console.error("Failed to load saved state", e);
+          userAnswers = {};
+        }
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(userAnswers));
+        } catch (e) {
+          console.error("Failed to save state", e);
+        }
+      }
+
+      // Reset Quiz function (Triggered only on explicit Reset Button click)
+      function resetQuiz() {
+        if (confirm("আপনি কি নিশ্চিত যে কুইজটি সম্পূর্ণ রিসেট করতে চান? আপনার বর্তমান স্কোর মুছে যাবে।")) {
+          userAnswers = {};
+          localStorage.removeItem(STORAGE_KEY);
+          renderAll();
+        }
+      }
+
+      // Calculate Metrics
+      function calculateMetrics() {
+        let correctCount = 0;
+        let wrongCount = 0;
+        let attemptedCount = 0;
+
+        Object.keys(userAnswers).forEach((idx) => {
+          attemptedCount++;
+          const qIndex = parseInt(idx);
+          const chosen = userAnswers[qIndex];
+          if (chosen === quizDatabase[qIndex].correct) {
+            correctCount++;
+          } else {
+            wrongCount++;
+          }
+        });
+
+        const score = correctCount * 1.0 - wrongCount * 0.25;
+        const total = quizDatabase.length;
+        const percent = Math.round((attemptedCount / total) * 100);
+
+        return {
+          score: score.toFixed(2),
+          attemptedCount,
+          correctCount,
+          wrongCount,
+          percent,
+          total
+        };
+      }
+
+      // Update Header & Dashboard Stats
+      function updateDashboard() {
+        const m = calculateMetrics();
+
+        document.getElementById("score-display").innerText = m.score;
+        document.getElementById("attempted-display").innerText = `${m.attemptedCount}/${m.total}`;
+        document.getElementById("correct-display").innerText = m.correctCount;
+        document.getElementById("wrong-display").innerText = m.wrongCount;
+        document.getElementById("progress-percent").innerText = `${m.percent}%`;
+        document.getElementById("progress-bar").style.width = `${m.percent}%`;
+
+        // Mobile stats
+        const mobileScore = document.getElementById("mobile-score");
+        const mobileAttempted = document.getElementById("mobile-attempted");
+        if (mobileScore) mobileScore.innerText = m.score;
+        if (mobileAttempted) mobileAttempted.innerText = `${m.attemptedCount}/${m.total}`;
+      }
+
+      // Render Jump Grid
+      function renderGrid() {
+        const gridContainer = document.getElementById("question-grid");
+        const filterVal = document.getElementById("topic-filter").value;
+        gridContainer.innerHTML = "";
+
+        quizDatabase.forEach((q, idx) => {
+          if (filterVal !== "all" && q.topic !== filterVal) {
+            return;
+          }
+
+          const btn = document.createElement("button");
+          btn.className = "text-xs font-semibold py-1 rounded transition-all flex items-center justify-center border ";
+
+          const isAnswered = userAnswers.hasOwnProperty(idx);
+          if (isAnswered) {
+            const isCorrect = userAnswers[idx] === q.correct;
+            if (isCorrect) {
+              btn.className += "bg-emerald-500 text-white border-emerald-600";
+            } else {
+              btn.className += "bg-rose-500 text-white border-rose-600";
+            }
+          } else {
+            btn.className += "bg-white text-slate-700 border-slate-200 hover:bg-slate-100";
+          }
+
+          btn.innerText = idx + 1;
+          btn.onclick = () => {
+            const el = document.getElementById(`question-card-${idx}`);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          };
+
+          gridContainer.appendChild(btn);
+        });
+      }
+
+      // Select Option Handler
+      function selectOption(qIdx, optionIdx) {
+        if (userAnswers.hasOwnProperty(qIdx)) {
+          return; // Prevent changing answer once submitted
+        }
+
+        userAnswers[qIdx] = optionIdx;
+        saveState();
+        renderAll();
+      }
+
+      // Render Question List
+      function renderQuestions() {
+        const listContainer = document.getElementById("questions-list");
+        const filterVal = document.getElementById("topic-filter").value;
+        listContainer.innerHTML = "";
+
+        quizDatabase.forEach((q, idx) => {
+          if (filterVal !== "all" && q.topic !== filterVal) {
+            return;
+          }
+
+          const isAnswered = userAnswers.hasOwnProperty(idx);
+          const chosenOpt = isAnswered ? userAnswers[idx] : null;
+
+          const card = document.createElement("div");
+          card.id = `question-card-${idx}`;
+          card.className = "bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 md:p-6 transition-all";
+
+          let cardHeaderHTML = `
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="bg-indigo-50 text-indigo-700 border border-indigo-100 px-2.5 py-1 rounded-lg text-xs font-bold">
+                  প্রশ্ন #${idx + 1}
+                </span>
+              </div>
+          `;
+
+          if (isAnswered) {
+            const isCorrect = chosenOpt === q.correct;
+            if (isCorrect) {
+              cardHeaderHTML += `
+                <span class="bg-emerald-100 text-emerald-800 border border-emerald-200 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-circle-check"></i> সঠিক উত্তর (+১.০)
+                </span>
+              `;
+            } else {
+              cardHeaderHTML += `
+                <span class="bg-rose-100 text-rose-800 border border-rose-200 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-circle-xmark"></i> ভুল উত্তর (-০.২৫)
+                </span>
+              `;
+            }
+          }
+
+          cardHeaderHTML += `</div>`;
+
+          let questionTextHTML = `
+            <h3 class="text-base md:text-lg font-bold text-slate-800 mb-4 leading-relaxed">
+              ${q.q}
+            </h3>
+          `;
+
+          const labels = ["ক", "খ", "গ", "ঘ"];
+          let optionsHTML = `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">`;
+
+          q.options.forEach((optText, optIdx) => {
+            let optBtnClass = "w-full text-left p-3.5 rounded-xl text-sm font-medium border transition-all flex items-center justify-between ";
+
+            if (isAnswered) {
+              if (optIdx === q.correct) {
+                optBtnClass += "bg-emerald-50 border-emerald-500 text-emerald-900 font-bold shadow-sm";
+              } else if (optIdx === chosenOpt) {
+                optBtnClass += "bg-rose-50 border-rose-400 text-rose-900 font-bold";
+              } else {
+                optBtnClass += "bg-slate-50 border-slate-200 text-slate-400 opacity-60";
+              }
+            } else {
+              optBtnClass += "bg-slate-50/80 border-slate-200 text-slate-700 hover:bg-indigo-50/50 hover:border-indigo-300 hover:text-indigo-900 cursor-pointer";
+            }
+
+            let iconHTML = "";
+            if (isAnswered) {
+              if (optIdx === q.correct) {
+                iconHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>`;
+              } else if (optIdx === chosenOpt) {
+                iconHTML = `<i class="fa-solid fa-circle-xmark text-rose-500 text-base"></i>`;
+              }
+            }
+
+            optionsHTML += `
+              <button 
+                onclick="selectOption(${idx}, ${optIdx})"
+                ${isAnswered ? "disabled" : ""}
+                class="${optBtnClass}"
+              >
+                <div class="flex items-center gap-2.5">
+                  <span class="w-6 h-6 rounded-full bg-white border border-slate-300 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0">
+                    ${labels[optIdx]}
+                  </span>
+                  <span>${optText}</span>
+                </div>
+                ${iconHTML}
+              </button>
+            `;
+          });
+
+          optionsHTML += `</div>`;
+
+          let explanationHTML = "";
+          if (isAnswered && q.explanation) {
+            explanationHTML = `
+              <div class="bg-indigo-50/70 border border-indigo-100 rounded-xl p-3.5 text-xs md:text-sm text-indigo-950 flex gap-2.5 items-start">
+                <i class="fa-solid fa-lightbulb text-amber-500 text-base mt-0.5 shrink-0"></i>
+                <div>
+                  <strong class="font-bold text-indigo-900">ব্যাখ্যা:</strong> ${q.explanation}
+                </div>
+              </div>
+            `;
+          }
+
+          card.innerHTML = cardHeaderHTML + questionTextHTML + optionsHTML + explanationHTML;
+          listContainer.appendChild(card);
+        });
+      }
+
+      function filterQuestions() {
+        renderGrid();
+        renderQuestions();
+      }
+
+      function renderAll() {
+        updateDashboard();
+        renderGrid();
+        renderQuestions();
+      }
+
+      // Initial Call on Page Load
+      window.addEventListener("DOMContentLoaded", () => {
+        loadSavedState();
+        renderAll();
+      });
+    </script>
+  </body>
+</html>

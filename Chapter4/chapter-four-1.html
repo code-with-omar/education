@@ -1,0 +1,1688 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Job Prep Quiz – 100 MCQs</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Inter & Hind Siliguri Fonts -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800 antialiased min-h-screen flex flex-col">
+    <!-- Main Header with Navigation -->
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <!-- Website Logo / Title -->
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              HTML কুইজ পোর্টাল
+            </h1>
+            <p class="text-xs text-slate-400">HTML Fundamentals – Job Prep</p>
+          </div>
+        </div>
+
+        <!-- Navigation Links for All 7 Pages (chapter-four-1 to chapter-four-7) -->
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="chapter-four-1.html"
+            class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white"
+            >সেট 1</a
+          >
+          <a
+            href="chapter-four-2.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 2</a
+          >
+          <a
+            href="chapter-four-3.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 3</a
+          >
+          <a
+            href="chapter-four-4.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 4</a
+          >
+          <a
+            href="chapter-four-5.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 5</a
+          >
+          <a
+            href="chapter-four-6.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 6</a
+          >
+          <a
+            href="chapter-four-7.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 7</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Top Header (gradient bar) -->
+    <header
+      class="bg-gradient-to-r from-blue-700 via-indigo-800 to-slate-900 text-white shadow-lg sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2.5 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20"
+          >
+            <i class="fa-solid fa-globe text-2xl text-amber-400"></i>
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+              HTML জব প্রিপারেশন স্পেশাল কুইজ
+            </h1>
+            <p class="text-xs text-indigo-200">
+              সিলেবাস: ডকুমেন্ট স্ট্রাকচার, এলিমেন্ট, ট্যাগ, অ্যাট্রিবিউট, হেডিং
+              (১০০ MCQs)
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 items-center">
+          <span
+            class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+          >
+            <i class="fa-solid fa-award mr-1"></i> Correct: +1.0
+          </span>
+          <span
+            class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+          >
+            <i class="fa-solid fa-circle-minus mr-1"></i> Incorrect: -0.25
+          </span>
+          <button
+            onclick="resetQuiz()"
+            class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1"
+          >
+            <i class="fa-solid fa-rotate-left"></i> রিস্টার্ট কুইজ
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main
+      class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6"
+    >
+      <!-- Left Sidebar: Dashboard & Grid Navigation -->
+      <aside class="w-full lg:w-80 flex flex-col gap-6 lg:shrink-0">
+        <!-- Dynamic Scorecard Card -->
+        <div
+          class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sticky lg:top-24"
+        >
+          <h2
+            class="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center justify-between"
+          >
+            <span>লাইভ পারফরম্যান্স</span>
+            <i class="fa-solid fa-chart-line text-indigo-600"></i>
+          </h2>
+
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                অ্যাক্টিভ মার্কস
+              </div>
+              <div
+                id="score-display"
+                class="text-2xl font-bold text-indigo-600"
+              >
+                0.00
+              </div>
+            </div>
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                মোট উত্তর
+              </div>
+              <div
+                id="attempted-display"
+                class="text-2xl font-bold text-slate-700"
+              >
+                0/100
+              </div>
+            </div>
+            <div
+              class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-center"
+            >
+              <div class="text-xs text-emerald-600 font-semibold mb-1">
+                সঠিক উত্তর
+              </div>
+              <div
+                id="correct-display"
+                class="text-xl font-bold text-emerald-600"
+              >
+                0
+              </div>
+            </div>
+            <div
+              class="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-center"
+            >
+              <div class="text-xs text-rose-500 font-semibold mb-1">
+                ভুল উত্তর
+              </div>
+              <div id="wrong-display" class="text-xl font-bold text-rose-600">
+                0
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="mb-5">
+            <div
+              class="flex justify-between text-xs font-semibold text-slate-500 mb-1"
+            >
+              <span>সম্পন্ন হয়েছে</span>
+              <span id="progress-percent">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2">
+              <div
+                id="progress-bar"
+                class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Filter Segment -->
+          <div class="mb-5">
+            <label
+              class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+              >টপিক ফিল্টার করুন</label
+            >
+            <select
+              id="topic-filter"
+              onchange="filterQuestions()"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-700"
+            >
+              <option value="all">সব প্রশ্ন একসাথে (১০০টি)</option>
+              <option value="intro">Introduction & Structure (১-২০)</option>
+              <option value="elements">HTML Elements (২১-৪০)</option>
+              <option value="tags">HTML Tags (৪১-৬০)</option>
+              <option value="attributes">Attributes (৬১-৮০)</option>
+              <option value="headings">Headings (৮১-১০০)</option>
+            </select>
+          </div>
+
+          <!-- Jump-to Grid Title -->
+          <div class="mb-2 flex items-center justify-between">
+            <label
+              class="text-xs font-bold text-slate-500 uppercase tracking-wider"
+              >দ্রুত প্রশ্নে যান (১ - ১০০)</label
+            >
+            <span
+              class="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold"
+              >গ্রিড</span
+            >
+          </div>
+
+          <!-- Jump-to Grid -->
+          <div
+            id="question-grid"
+            class="grid grid-cols-10 gap-1.5 max-h-48 overflow-y-auto custom-scrollbar p-1 bg-slate-50 border border-slate-200/60 rounded-xl"
+          >
+            <!-- Javascript will inject 100 buttons here -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Main Panel: Questions Container -->
+      <section class="flex-grow flex flex-col gap-5">
+        <!-- Statistics Banner & Search Info -->
+        <div
+          class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex gap-3 items-start"
+        >
+          <i
+            class="fa-solid fa-circle-info text-amber-600 text-lg mt-0.5 shrink-0"
+          ></i>
+          <div class="text-xs md:text-sm text-amber-800 leading-relaxed">
+            <strong>গুরুত্বপূর্ণ নিয়মাবলি:</strong> যেকোনো অপশনে ক্লিক করলেই
+            সাথে সাথে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবেন। একবার কোনো প্রশ্ন উত্তর
+            দিয়ে ফেললে তা আর পরিবর্তন করা যাবে না। ভুল উত্তরের জন্য আপনার অর্জিত
+            মোট স্কোর থেকে
+            <strong class="text-red-700">০.২৫ মার্কস কাটা যাবে</strong>।
+          </div>
+        </div>
+
+        <!-- Quiz Questions Target Container -->
+        <div id="questions-list" class="flex flex-col gap-6">
+          <!-- Javascript will inject dynamic question cards here -->
+        </div>
+
+        <!-- Load More / Pagination status indicator (optional beauty) -->
+        <div class="text-center py-6 border-t border-slate-200 mt-4">
+          <p class="text-sm text-slate-500">
+            সমস্ত ১০০টি প্রশ্ন সফলভাবে লোড করা হয়েছে। শুভ পরীক্ষা!
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Sticky Score Bar for Mobile View -->
+    <div
+      class="lg:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 p-3 text-white flex justify-between items-center shadow-2xl z-50"
+    >
+      <div class="flex gap-4">
+        <div>
+          <p class="text-[10px] text-slate-400">মোট মার্কস</p>
+          <p id="mobile-score" class="text-lg font-bold text-amber-400">0.00</p>
+        </div>
+        <div>
+          <p class="text-[10px] text-slate-400">উত্তর দেওয়া</p>
+          <p id="mobile-attempted" class="text-lg font-bold text-slate-200">
+            0/100
+          </p>
+        </div>
+      </div>
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all"
+      >
+        <i class="fa-solid fa-chevron-up"></i> উপরে যান
+      </button>
+    </div>
+
+    <!-- Main Footer -->
+    <footer
+      class="bg-slate-950 text-slate-400 py-6 text-center border-t border-slate-800/60 text-xs mt-12 pb-16 lg:pb-6"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p class="mb-2">
+          © ২০২৬ HTML কুইজ পোর্টাল। সকল অধিকার সংরক্ষিত।
+        </p>
+        <p class="text-slate-600">
+          নকশা ও কোডিং করা হয়েছে রিয়েল-টাইম জব প্রিপারেশনের জন্য।
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript Logic & Quiz Database of exactly 100 elements -->
+    <script>
+      // ----------------------------------------------------------------
+      // 100 Premium HTML Questions (Job/IT/Assistant Programmer focused)
+      // Topics: Intro, Document Structure, Elements, Tags, Attributes, Headings
+      // Correct option index cycles: 0,1,2,3 to match distribution.
+      // ----------------------------------------------------------------
+      const quizDatabase = [
+        // ---- TOPIC: INTRO & DOCUMENT STRUCTURE (1-20) ----
+        {
+          q: "HTML এর পূর্ণরূপ কী?",
+          options: [
+            "Hyper Text Markup Language",
+            "High Tech Modern Language",
+            "Hyper Transfer Markup Language",
+            "Home Tool Markup Language",
+          ],
+          correct: 0,
+          topic: "intro",
+          explanation:
+            "HTML এর পূর্ণরূপ হলো Hyper Text Markup Language – ওয়েব পেজ তৈরির স্ট্যান্ডার্ড মার্কআপ ভাষা।",
+        },
+        {
+          q: "HTML ডকুমেন্টের প্রথম লাইনে কোন ডিক্লারেশনটি ব্যবহার করা হয়?",
+          options: [
+            "<!DOCTYPE html>",
+            "<html>",
+            "<head>",
+            "<!DOCTYPE HTML PUBLIC>",
+          ],
+          correct: 0,
+          topic: "intro",
+          explanation:
+            "<!DOCTYPE html> ডিক্লারেশনটি HTML5 ডকুমেন্টের শুরুতে ব্রাউজারকে সঠিক মোডে রেন্ডার করতে সাহায্য করে।",
+        },
+        {
+          q: "HTML ডকুমেন্টের মূল রুট এলিমেন্ট কোনটি?",
+          options: ["<head>", "<body>", "<html>", "<!DOCTYPE>"],
+          correct: 2,
+          topic: "intro",
+          explanation:
+            "<html> ট্যাগটি পুরো HTML ডকুমেন্টের রুট এলিমেন্ট, এর ভেতরেই <head> এবং <body> থাকে।",
+        },
+        {
+          q: "মেটাডেটা (metadata) সাধারণত HTML এর কোন অংশে রাখা হয়?",
+          options: ["<body>", "<footer>", "<head>", "<section>"],
+          correct: 2,
+          topic: "intro",
+          explanation:
+            "মেটাডেটা যেমন charset, viewport, টাইটেল ইত্যাদি <head> সেকশনে রাখা হয়।",
+        },
+        {
+          q: "HTML-এ কমেন্ট লেখার সঠিক সিনট্যাক্স কোনটি?",
+          options: [
+            "// কমেন্ট",
+            "<!-- কমেন্ট -->",
+            "/* কমেন্ট */",
+            "# কমেন্ট",
+          ],
+          correct: 1,
+          topic: "intro",
+          explanation:
+            "HTML-এ কমেন্ট লেখার জন্য <!-- কমেন্ট --> ব্যবহার করা হয়, যা ব্রাউজারে প্রদর্শিত হয় না।",
+        },
+        {
+          q: "নিচের কোনটি HTML ডকুমেন্টের <head> সেকশনে বসে না?",
+          options: ["<title>", "<meta>", "<link>", "<p>"],
+          correct: 3,
+          topic: "intro",
+          explanation:
+            "<p> ট্যাগটি প্যারাগ্রাফ তৈরির জন্য <body> সেকশনে ব্যবহৃত হয়।",
+        },
+        {
+          q: "HTML5-এ ডকটাইপ ডিক্লারেশন কেমন?",
+          options: [
+            "<!DOCTYPE html>",
+            "<!DOCTYPE HTML PUBLIC>",
+            "<!DOCTYPE html5>",
+            "<DOCTYPE html>",
+          ],
+          correct: 0,
+          topic: "intro",
+          explanation:
+            "HTML5-এ শুধুমাত্র <!DOCTYPE html> লিখলেই যথেষ্ট, যা সব আধুনিক ব্রাউজার সমর্থন করে।",
+        },
+        {
+          q: "HTML এলিমেন্টের ওপেনিং ট্যাগ ও ক্লোজিং ট্যাগের মধ্যে কী থাকে?",
+          options: [
+            "অ্যাট্রিবিউট",
+            "কন্টেন্ট",
+            "মেটাডেটা",
+            "শুধু স্পেস",
+          ],
+          correct: 1,
+          topic: "intro",
+          explanation:
+            "ওপেনিং ও ক্লোজিং ট্যাগের মধ্যে এলিমেন্টের কন্টেন্ট (যেমন টেক্সট বা অন্যান্য এলিমেন্ট) থাকে।",
+        },
+        {
+          q: "HTML ডকুমেন্টে ভাষা (language) নির্ধারণ করতে কোন অ্যাট্রিবিউট ব্যবহার করা হয়?",
+          options: ["lang", "xml:lang", "hreflang", "charset"],
+          correct: 0,
+          topic: "intro",
+          explanation:
+            "<html> ট্যাগে lang অ্যাট্রিবিউট দিয়ে ডকুমেন্টের ভাষা নির্ধারণ করা হয়, যেমন <html lang='bn'>।",
+        },
+        {
+          q: "নিচের কোনটি HTML-এ একটি খালি এলিমেন্ট (void element) এর উদাহরণ?",
+          options: ["<div>", "<span>", "<img>", "<p>"],
+          correct: 2,
+          topic: "intro",
+          explanation:
+            "<img> একটি ভয়েড এলিমেন্ট, এর কোনো ক্লোজিং ট্যাগ নেই।",
+        },
+        {
+          q: "HTML ডকুমেন্টের <body> সেকশনে সাধারণত কী থাকে?",
+          options: [
+            "টাইটেল ও মেটাডেটা",
+            "দৃশ্যমান কন্টেন্ট",
+            "স্ক্রিপ্ট লোড",
+            "স্টাইল শীট",
+          ],
+          correct: 1,
+          topic: "intro",
+          explanation:
+            "<body> ট্যাগের ভেতরেই ওয়েব পেজের দৃশ্যমান অংশ (টেক্সট, ছবি, লিংক, টেবিল ইত্যাদি) থাকে।",
+        },
+        {
+          q: "HTML5-এ <!DOCTYPE html> এর পরে কোন ট্যাগটি বসে?",
+          options: ["<head>", "<html>", "<body>", "<title>"],
+          correct: 1,
+          topic: "intro",
+          explanation:
+            "ডকটাইপের পরেই <html> ট্যাগ দিয়ে ডকুমেন্ট শুরু হয়।",
+        },
+        {
+          q: "HTML এলিমেন্টের নাম (tag name) কেস সেন্সিটিভ?",
+          options: [
+            "হ্যাঁ, সবসময়",
+            "না, HTML ট্যাগ কেস ইনসেন্সিটিভ",
+            "শুধু অ্যাট্রিবিউট কেস সেন্সিটিভ",
+            "শুধু কন্টেন্ট কেস সেন্সিটিভ",
+          ],
+          correct: 1,
+          topic: "intro",
+          explanation:
+            "HTML ট্যাগ নামগুলো কেস ইনসেন্সিটিভ, যেমন <div> ও <DIV> একই কাজ করে।",
+        },
+        {
+          q: "HTML-এ 'viewport' মেটা ট্যাগের প্রধান কাজ কী?",
+          options: [
+            "পেজের ফন্ট সাইজ ঠিক করা",
+            "মোবাইল ডিভাইসে পেজের স্কেল ও প্রস্থ ঠিক করা",
+            "সার্চ ইঞ্জিন অপটিমাইজেশন",
+            "কুকি সেট করা",
+          ],
+          correct: 1,
+          topic: "intro",
+          explanation:
+            "viewport মেটা ট্যাগ মোবাইল ডিভাইসে পেজের প্রস্থ ও স্কেলিং কন্ট্রোল করে, যা রেসপন্সিভ ডিজাইনের জন্য গুরুত্বপূর্ণ।",
+        },
+        {
+          q: "HTML ডকুমেন্টের 'title' ট্যাগটি কোথায় বসে?",
+          options: ["<body>", "<head>", "<footer>", "<section>"],
+          correct: 1,
+          topic: "intro",
+          explanation:
+            "পেজের টাইটেল <title> ট্যাগের মাধ্যমে <head> সেকশনে বসে।",
+        },
+        {
+          q: "নিচের কোনটি সঠিক HTML ডকুমেন্ট স্ট্রাকচার?",
+          options: [
+            "<html><head></head><body></body></html>",
+            "<body><head></head><html></html></body>",
+            "<head><html></html><body></body></head>",
+            "<html><body></body><head></head></html>",
+          ],
+          correct: 0,
+          topic: "intro",
+          explanation:
+            "সঠিক ক্রম: <html> -> <head> -> <body> -> </html>।",
+        },
+        {
+          q: "HTML-এ 'charset' মেটা ট্যাগ দিয়ে কী নির্ধারণ করা হয়?",
+          options: [
+            "পেজের রঙ",
+            "পেজের ভাষা",
+            "অক্ষর এনকোডিং (যেমন UTF-8)",
+            "পেজের প্রস্থ",
+          ],
+          correct: 2,
+          topic: "intro",
+          explanation:
+            "charset অ্যাট্রিবিউট দিয়ে পেজের অক্ষর এনকোডিং যেমন UTF-8 নির্ধারণ করা হয়।",
+        },
+        {
+          q: "HTML এলিমেন্টের মধ্যে অন্য এলিমেন্ট থাকাকে কী বলে?",
+          options: [
+            "নেস্টিং (Nesting)",
+            "প্যারেন্টিং",
+            "সিবলিং",
+            "অ্যাট্রিবিউট",
+          ],
+          correct: 0,
+          topic: "intro",
+          explanation:
+            "একটি এলিমেন্টের ভেতরে অন্য এলিমেন্ট থাকাকে নেস্টিং বলে।",
+        },
+        {
+          q: "নিচের কোনটি HTML-এ সঠিক কমেন্ট?",
+          options: [
+            "// This is comment",
+            "<!-- This is comment -->",
+            "/* This is comment */",
+            "# This is comment",
+          ],
+          correct: 1,
+          topic: "intro",
+          explanation: "HTML-এ কমেন্টের সঠিক সিনট্যাক্স <!-- -->।",
+        },
+        {
+          q: "HTML ডকুমেন্টের রেন্ডারিং মোড ব্রাউজারকে জানানোর জন্য কোন ডিক্লারেশন ব্যবহার করা হয়?",
+          options: [
+            "<!DOCTYPE>",
+            "<meta charset>",
+            "<html lang>",
+            "<title>",
+          ],
+          correct: 0,
+          topic: "intro",
+          explanation:
+            "<!DOCTYPE> ডিক্লারেশন ব্রাউজারকে ডকুমেন্টের HTML সংস্করণ জানায়।",
+        },
+        // ---- TOPIC: HTML ELEMENTS (21-40) ----
+        {
+          q: "HTML-এ 'ইনলাইন এলিমেন্ট' (inline element) এর বৈশিষ্ট্য কোনটি?",
+          options: [
+            "পূর্ণ প্রস্থ নেয়",
+            "শুধু প্রয়োজনীয় প্রস্থ নেয়",
+            "নতুন লাইন শুরু করে",
+            "ব্লক এলিমেন্টের মতো আচরণ করে",
+          ],
+          correct: 1,
+          topic: "elements",
+          explanation:
+            "ইনলাইন এলিমেন্ট যেমন <span>, <a> শুধু কন্টেন্টের প্রস্থ নেয় এবং লাইন ব্রেক করে না।",
+        },
+        {
+          q: "নিচের কোনটি ব্লক-লেভেল এলিমেন্ট (block-level element)?",
+          options: ["<span>", "<a>", "<div>", "<img>"],
+          correct: 2,
+          topic: "elements",
+          explanation:
+            "<div> একটি ব্লক-লেভেল এলিমেন্ট, যা পুরো প্রস্থ নেয় এবং নতুন লাইন শুরু করে।",
+        },
+        {
+          q: "HTML-এ লিংক তৈরি করতে কোন এলিমেন্ট ব্যবহার করা হয়?",
+          options: ["<link>", "<a>", "<href>", "<url>"],
+          correct: 1,
+          topic: "elements",
+          explanation:
+            "অ্যাঙ্কর ট্যাগ <a> href অ্যাট্রিবিউটের মাধ্যমে লিংক তৈরি করে।",
+        },
+        {
+          q: "ছবি যোগ করতে কোন এলিমেন্ট ব্যবহার করা হয়?",
+          options: ["<image>", "<img>", "<pic>", "<src>"],
+          correct: 1,
+          topic: "elements",
+          explanation: "ছবি যোগ করতে <img> এলিমেন্ট ব্যবহার করা হয়।",
+        },
+        {
+          q: "প্যারাগ্রাফ তৈরির জন্য কোন ট্যাগ ব্যবহার করা হয়?",
+          options: ["<p>", "<para>", "<paragraph>", "<text>"],
+          correct: 0,
+          topic: "elements",
+          explanation: "প্যারাগ্রাফের জন্য <p> ট্যাগ ব্যবহার করা হয়।",
+        },
+        {
+          q: "ব্রেক লাইন (নতুন লাইন) তৈরির জন্য কোন এলিমেন্ট?",
+          options: ["<br>", "<break>", "<lb>", "<newline>"],
+          correct: 0,
+          topic: "elements",
+          explanation:
+            "<br> একটি ভয়েড এলিমেন্ট যা টেক্সটের মধ্যে নতুন লাইন তৈরি করে।",
+        },
+        {
+          q: "নিচের কোনটি সেম্যান্টিক এলিমেন্ট (semantic element)?",
+          options: ["<div>", "<span>", "<article>", "<b>"],
+          correct: 2,
+          topic: "elements",
+          explanation:
+            "<article>, <section>, <header> ইত্যাদি সেম্যান্টিক এলিমেন্ট, যা কন্টেন্টের অর্থ বোঝায়।",
+        },
+        {
+          q: "HTML-এ তালিকা (list) তৈরির জন্য কোন এলিমেন্ট ব্যবহার করা হয়?",
+          options: ["<ul>", "<ol>", "<li>", "সবগুলো"],
+          correct: 3,
+          topic: "elements",
+          explanation:
+            "আনঅর্ডার্ড তালিকা <ul>, অর্ডার্ড তালিকা <ol> এবং তালিকার আইটেম <li> দিয়ে তৈরি হয়।",
+        },
+        {
+          q: "টেবিল তৈরির জন্য নিচের কোন এলিমেন্টটি প্রয়োজন?",
+          options: ["<table>", "<tr>", "<td>", "সবগুলো"],
+          correct: 3,
+          topic: "elements",
+          explanation:
+            "টেবিলের জন্য <table>, <tr> (row), <td> (cell) সবগুলো প্রয়োজন।",
+        },
+        {
+          q: "HTML-এ ফর্ম তৈরির জন্য কোন এলিমেন্ট ব্যবহার করা হয়?",
+          options: ["<form>", "<input>", "<button>", "সবগুলো"],
+          correct: 0,
+          topic: "elements",
+          explanation:
+            "ফর্মের মূল এলিমেন্ট হলো <form>, তার ভেতরে <input>, <button> ইত্যাদি থাকে।",
+        },
+        {
+          q: "নিচের কোনটি ইনলাইন এলিমেন্ট?",
+          options: ["<div>", "<p>", "<span>", "<h1>"],
+          correct: 2,
+          topic: "elements",
+          explanation: "<span> একটি ইনলাইন এলিমেন্ট।",
+        },
+        {
+          q: "নিচের কোনটি ব্লক এলিমেন্ট নয়?",
+          options: ["<div>", "<h1>", "<p>", "<a>"],
+          correct: 3,
+          topic: "elements",
+          explanation: "<a> একটি ইনলাইন এলিমেন্ট।",
+        },
+        {
+          q: "HTML-এ লাইন ব্রেক ছাড়া স্পেস বা হোয়াইটস্পেস কীভাবে যোগ করা যায়?",
+          options: [
+            "একাধিক স্পেস ব্যাবহার করে",
+            "&nbsp; (নন-ব্রেকিং স্পেস) ব্যবহার করে",
+            "<space> ট্যাগ ব্যবহার করে",
+            "কোনোটিই নয়",
+          ],
+          correct: 1,
+          topic: "elements",
+          explanation:
+            "HTML একাধিক স্পেস ইগনোর করে, তাই &nbsp; ব্যবহার করে অতিরিক্ত স্পেস যোগ করা যায়।",
+        },
+        {
+          q: "HTML-এ 'div' এলিমেন্টের প্রধান ব্যবহার কী?",
+          options: [
+            "টেক্সট ফরম্যাটিং",
+            "গ্রুপিং ও স্টাইলিং এর জন্য কন্টেইনার",
+            "ছবি যোগ করা",
+            "লিংক তৈরি করা",
+          ],
+          correct: 1,
+          topic: "elements",
+          explanation:
+            "<div> একটি জেনেরিক কন্টেইনার যা গ্রুপিং ও স্টাইলিং এর জন্য ব্যবহৃত হয়।",
+        },
+        {
+          q: "নিচের কোনটি HTML-এ একটি সেকশন এলিমেন্ট?",
+          options: ["<section>", "<div>", "<span>", "<a>"],
+          correct: 0,
+          topic: "elements",
+          explanation:
+            "<section> একটি সেম্যান্টিক এলিমেন্ট যা ডকুমেন্টের একটি অংশ নির্দেশ করে।",
+        },
+        {
+          q: "HTML-এ 'footer' এলিমেন্ট সাধারণত কোথায় বসে?",
+          options: [
+            "পেজের শুরুতে",
+            "পেজের শেষে",
+            "মাঝখানে",
+            "যেকোনো জায়গায়",
+          ],
+          correct: 1,
+          topic: "elements",
+          explanation:
+            "<footer> সাধারণত পেজ বা সেকশনের শেষে ফুটার কন্টেন্টের জন্য ব্যবহৃত হয়।",
+        },
+        {
+          q: "HTML-এ 'header' এলিমেন্টের কাজ কী?",
+          options: [
+            "ফুটার তৈরি করা",
+            "শিরোনাম বা নেভিগেশন গ্রুপিং",
+            "ছবি যোগ করা",
+            "টেবিল তৈরি",
+          ],
+          correct: 1,
+          topic: "elements",
+          explanation:
+            "<header> এলিমেন্ট পেজ বা সেকশনের শিরোনাম, লোগো বা নেভিগেশন ধারণ করে।",
+        },
+        {
+          q: "নিচের কোনটি HTML-এ একটি ইনপুট ফিল্ড তৈরির জন্য ব্যবহৃত হয়?",
+          options: ["<input>", "<textbox>", "<field>", "<entry>"],
+          correct: 0,
+          topic: "elements",
+          explanation: "ইনপুট ফিল্ড তৈরির জন্য <input> এলিমেন্ট ব্যবহার করা হয়।",
+        },
+        {
+          q: "HTML-এ 'button' এলিমেন্টের ভেতরে কী লেখা যায়?",
+          options: [
+            "শুধু টেক্সট",
+            "টেক্সট ও ছবি",
+            "শুধু আইকন",
+            "টেক্সট, ছবি ও অন্যান্য এলিমেন্ট",
+          ],
+          correct: 3,
+          topic: "elements",
+          explanation:
+            "<button> এলিমেন্টের ভেতরে টেক্সট, ছবি ও অন্যান্য এলিমেন্ট থাকতে পারে।",
+        },
+        {
+          q: "নিচের কোনটি HTML-এ একটি মিডিয়া এলিমেন্ট?",
+          options: ["<video>", "<audio>", "<source>", "সবগুলো"],
+          correct: 3,
+          topic: "elements",
+          explanation:
+            "<video>, <audio> ও <source> সবগুলো মিডিয়া এলিমেন্ট।",
+        },
+        // ---- TOPIC: HTML TAGS (41-60) ----
+        {
+          q: "<b> ট্যাগটি কী কাজ করে?",
+          options: [
+            "টেক্সট বোল্ড করে",
+            "টেক্সট ইটালিক করে",
+            "টেক্সট আন্ডারলাইন করে",
+            "টেক্সট স্ট্রাইকথ্রু করে",
+          ],
+          correct: 0,
+          topic: "tags",
+          explanation:
+            "<b> ট্যাগ টেক্সটকে বোল্ড বা মোটা করে দেখায়।",
+        },
+        {
+          q: "<i> ট্যাগটি কী কাজ করে?",
+          options: [
+            "টেক্সট বোল্ড করে",
+            "টেক্সট ইটালিক করে",
+            "টেক্সট আন্ডারলাইন করে",
+            "টেক্সট সাইজ বাড়ায়",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation: "<i> ট্যাগ টেক্সটকে ইটালিক বা তির্যক করে।",
+        },
+        {
+          q: "<u> ট্যাগটি কী কাজ করে?",
+          options: [
+            "টেক্সট বোল্ড করে",
+            "টেক্সট ইটালিক করে",
+            "টেক্সট আন্ডারলাইন করে",
+            "টেক্সট ডিলিট করে",
+          ],
+          correct: 2,
+          topic: "tags",
+          explanation: "<u> ট্যাগ টেক্সটকে আন্ডারলাইন করে।",
+        },
+        {
+          q: "<br> ট্যাগটি কী ধরনের ট্যাগ?",
+          options: [
+            "ক্লোজিং ট্যাগ",
+            "ভয়েড ট্যাগ",
+            "অ্যাট্রিবিউট ট্যাগ",
+            "কন্টেইনার ট্যাগ",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation: "<br> একটি ভয়েড ট্যাগ, এর কোনো ক্লোজিং ট্যাগ নেই।",
+        },
+        {
+          q: "<hr> ট্যাগটি কী কাজ করে?",
+          options: [
+            "হরাইজন্টাল লাইন তৈরি করে",
+            "ভার্টিকাল লাইন তৈরি করে",
+            "প্যারাগ্রাফ ব্রেক করে",
+            "টেক্সট সেন্টার করে",
+          ],
+          correct: 0,
+          topic: "tags",
+          explanation:
+            "<hr> ট্যাগ একটি হরাইজন্টাল রুল বা অনুভূমিক রেখা তৈরি করে।",
+        },
+        {
+          q: "<a> ট্যাগের 'href' অ্যাট্রিবিউট কী নির্দেশ করে?",
+          options: [
+            "লিংকের টেক্সট",
+            "লিংকের ইউআরএল",
+            "লিংকের টাইটেল",
+            "লিংকের টার্গেট",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "'href' অ্যাট্রিবিউট লিংকের গন্তব্য URL নির্ধারণ করে।",
+        },
+        {
+          q: "<img> ট্যাগের 'src' অ্যাট্রিবিউট কী নির্দেশ করে?",
+          options: [
+            "ছবির অল্টারনেট টেক্সট",
+            "ছবির উৎস (পাথ বা URL)",
+            "ছবির প্রস্থ",
+            "ছবির উচ্চতা",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "'src' অ্যাট্রিবিউট ছবির ফাইল লোকেশন বা URL নির্ধারণ করে।",
+        },
+        {
+          q: "<img> ট্যাগের 'alt' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "ছবি লোড না হলে টেক্সট দেখায়",
+            "ছবির টুলটিপ দেখায়",
+            "ছবির সাইজ ঠিক করে",
+            "ছবির লিংক তৈরি করে",
+          ],
+          correct: 0,
+          topic: "tags",
+          explanation:
+            "'alt' অ্যাট্রিবিউট ছবি লোড না হলে বিকল্প টেক্সট দেখায় এবং অ্যাক্সেসিবিলিটিতে সাহায্য করে।",
+        },
+        {
+          q: "<ul> ও <ol> ট্যাগের মধ্যে পার্থক্য কী?",
+          options: [
+            "<ul> অর্ডার্ড লিস্ট, <ol> আনঅর্ডার্ড",
+            "<ul> আনঅর্ডার্ড, <ol> অর্ডার্ড",
+            "দুটোই একই",
+            "<ul> ডিফিনেশন লিস্ট",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "<ul> হলো আনঅর্ডার্ড লিস্ট (বুলেটেড) এবং <ol> হলো অর্ডার্ড লিস্ট (নম্বরযুক্ত)।",
+        },
+        {
+          q: "<table> ট্যাগের ভেতরে সারি তৈরির জন্য কোন ট্যাগ ব্যবহার করা হয়?",
+          options: ["<td>", "<th>", "<tr>", "<tbody>"],
+          correct: 2,
+          topic: "tags",
+          explanation: "সারি বা রো তৈরির জন্য <tr> ট্যাগ ব্যবহার করা হয়।",
+        },
+        {
+          q: "টেবিলে হেডার সেল তৈরির জন্য কোন ট্যাগ ব্যবহার করা হয়?",
+          options: ["<td>", "<th>", "<tr>", "<thead>"],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "টেবিল হেডার সেল তৈরির জন্য <th> ট্যাগ ব্যবহার করা হয়।",
+        },
+        {
+          q: "<form> ট্যাগের 'action' অ্যাট্রিবিউট কী নির্দেশ করে?",
+          options: [
+            "ফর্মের মেথড",
+            "ফর্ম ডেটা পাঠানোর URL",
+            "ফর্মের ইনপুট টাইপ",
+            "ফর্মের এনকোডিং",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "'action' অ্যাট্রিবিউট ফর্ম ডেটা কোথায় পাঠানো হবে তার URL নির্ধারণ করে।",
+        },
+        {
+          q: "<input> ট্যাগের 'type' অ্যাট্রিবিউট 'email' হলে কী হয়?",
+          options: [
+            "ইমেইল অ্যাড্রেস ইনপুট নেয়",
+            "পাসওয়ার্ড ইনপুট নেয়",
+            "নম্বর ইনপুট নেয়",
+            "ডেট ইনপুট নেয়",
+          ],
+          correct: 0,
+          topic: "tags",
+          explanation: "'type=\"email\"' ইমেইল অ্যাড্রেস ইনপুটের জন্য বৈধতা দেয়।",
+        },
+        {
+          q: "<select> ট্যাগের সাথে কোন ট্যাগ ব্যবহার করা হয়?",
+          options: ["<option>", "<input>", "<textarea>", "<label>"],
+          correct: 0,
+          topic: "tags",
+          explanation:
+            "<select> ড্রপডাউন তৈরির জন্য <option> ট্যাগ ব্যবহার করা হয়।",
+        },
+        {
+          q: "HTML-এ <script> ট্যাগ কোথায় বসানো যায়?",
+          options: [
+            "শুধু <head> এ",
+            "শুধু <body> এ",
+            "<head> ও <body> উভয়েই",
+            "শুধু <footer> এ",
+          ],
+          correct: 2,
+          topic: "tags",
+          explanation:
+            "<script> ট্যাগ <head> ও <body> উভয় সেকশনে বসানো যেতে পারে।",
+        },
+        {
+          q: "<style> ট্যাগের কাজ কী?",
+          options: [
+            "জাভাস্ক্রিপ্ট কোড লেখা",
+            "CSS স্টাইল ডিফাইন করা",
+            "HTML এলিমেন্ট ডিফাইন করা",
+            "মেটাডেটা যোগ করা",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "<style> ট্যাগের ভেতরে CSS স্টাইল ডিফাইন করা হয়।",
+        },
+        {
+          q: "<meta> ট্যাগ সাধারণত কী কাজে ব্যবহৃত হয়?",
+          options: [
+            "পেজের টাইটেল সেট করা",
+            "পেজের মেটাডেটা প্রদান",
+            "ছবি যোগ করা",
+            "লিংক তৈরি করা",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation: "<meta> ট্যাগ পেজের মেটাডেটা (charset, viewport ইত্যাদি) প্রদান করে।",
+        },
+        {
+          q: "<link> ট্যাগটি কী কাজে ব্যবহৃত হয়?",
+          options: [
+            "ছবি যোগ করতে",
+            "বাহ্যিক CSS ফাইল লিঙ্ক করতে",
+            "জাভাস্ক্রিপ্ট ফাইল লিঙ্ক করতে",
+            "ফন্ট যোগ করতে",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "<link> ট্যাগ বাহ্যিক স্টাইলশীট বা অন্যান্য রিসোর্স লিঙ্ক করতে ব্যবহৃত হয়।",
+        },
+        {
+          q: "<title> ট্যাগের কন্টেন্ট কোথায় প্রদর্শিত হয়?",
+          options: [
+            "পেজের বডিতে",
+            "ব্রাউজারের ট্যাব বা টাইটেল বারে",
+            "পেজের ফুটারে",
+            "পেজের হেডারে",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "<title> ট্যাগের কন্টেন্ট ব্রাউজারের ট্যাব বা টাইটেল বারে প্রদর্শিত হয়।",
+        },
+        {
+          q: "HTML-এ <details> ট্যাগের কাজ কী?",
+          options: [
+            "ড্রপডাউন মেনু তৈরি করে",
+            "বিস্তারিত তথ্য লুকিয়ে/দেখানোর ব্যবস্থা করে",
+            "টেবিল তৈরির জন্য",
+            "লিংক তৈরির জন্য",
+          ],
+          correct: 1,
+          topic: "tags",
+          explanation:
+            "<details> ট্যাগ ব্যবহারকারী ক্লিক করলে বিস্তারিত তথ্য দেখাতে পারে।",
+        },
+        // ---- TOPIC: HTML ATTRIBUTES (61-80) ----
+        {
+          q: "HTML অ্যাট্রিবিউট কীভাবে লেখা হয়?",
+          options: [
+            "name=value",
+            "name='value'",
+            "name='value' বা name='value'",
+            "উভয়ই সঠিক",
+          ],
+          correct: 3,
+          topic: "attributes",
+          explanation:
+            "HTML অ্যাট্রিবিউট name=\"value\" বা name='value' ফরম্যাটে লেখা যায়।",
+        },
+        {
+          q: "'class' অ্যাট্রিবিউটের কাজ কী?",
+          options: [
+            "CSS স্টাইল গ্রুপিং",
+            "জাভাস্ক্রিপ্ট আইডি",
+            "লিংক টার্গেট",
+            "ছবির অল্টারনেট টেক্সট",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'class' অ্যাট্রিবিউট একাধিক এলিমেন্টে একই স্টাইল প্রয়োগের জন্য ব্যবহার হয়।",
+        },
+        {
+          q: "'id' অ্যাট্রিবিউটের বৈশিষ্ট্য কী?",
+          options: [
+            "একাধিক এলিমেন্টে ব্যবহার করা যায়",
+            "পেজে ইউনিক হতে হবে",
+            "শুধু CSS এর জন্য",
+            "শুধু জাভাস্ক্রিপ্টের জন্য",
+          ],
+          correct: 1,
+          topic: "attributes",
+          explanation:
+            "'id' অ্যাট্রিবিউট পেজে ইউনিক হতে হবে, একটি এলিমেন্টের জন্য নির্দিষ্ট।",
+        },
+        {
+          q: "'style' অ্যাট্রিবিউট দিয়ে কী করা যায়?",
+          options: [
+            "ইনলাইন CSS স্টাইল দেওয়া",
+            "বাহ্যিক CSS লিঙ্ক করা",
+            "জাভাস্ক্রিপ্ট চালানো",
+            "মেটাডেটা দেওয়া",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'style' অ্যাট্রিবিউট সরাসরি এলিমেন্টে ইনলাইন CSS স্টাইল দেওয়ার জন্য ব্যবহৃত হয়।",
+        },
+        {
+          q: "'href' অ্যাট্রিবিউট কোন ট্যাগে ব্যবহৃত হয়?",
+          options: ["<a>", "<link>", "উভয় <a> ও <link>", "<img>"],
+          correct: 2,
+          topic: "attributes",
+          explanation:
+            "'href' অ্যাট্রিবিউট <a> ও <link> উভয় ট্যাগেই ব্যবহৃত হয়।",
+        },
+        {
+          q: "'src' অ্যাট্রিবিউট কোন ট্যাগে ব্যবহৃত হয়?",
+          options: ["<img>", "<script>", "<iframe>", "সবগুলোতে"],
+          correct: 3,
+          topic: "attributes",
+          explanation:
+            "'src' অ্যাট্রিবিউট <img>, <script>, <iframe> ইত্যাদি ট্যাগে ব্যবহৃত হয়।",
+        },
+        {
+          q: "'alt' অ্যাট্রিবিউট কোন ট্যাগে ব্যবহৃত হয়?",
+          options: ["<img>", "<a>", "<input>", "<div>"],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'alt' অ্যাট্রিবিউট প্রধানত <img> ট্যাগে ছবির বিকল্প টেক্সট হিসেবে ব্যবহৃত হয়।",
+        },
+        {
+          q: "'target' অ্যাট্রিবিউটের '_blank' মান কী করে?",
+          options: [
+            "লিংক নতুন উইন্ডোতে খোলে",
+            "লিংক একই উইন্ডোতে খোলে",
+            "লিংক প্যারেন্ট উইন্ডোতে খোলে",
+            "লিংক টপ উইন্ডোতে খোলে",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'target=\"_blank\"' লিংকটি নতুন ট্যাব বা উইন্ডোতে খোলে।",
+        },
+        {
+          q: "'disabled' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "এলিমেন্ট অ্যাকটিভ করে",
+            "এলিমেন্ট নিষ্ক্রিয় করে",
+            "এলিমেন্ট লুকায়",
+            "এলিমেন্ট রিমুভ করে",
+          ],
+          correct: 1,
+          topic: "attributes",
+          explanation:
+            "'disabled' অ্যাট্রিবিউট ইনপুট বা বাটনকে নিষ্ক্রিয় (অ্যাকটিভ নয়) করে।",
+        },
+        {
+          q: "'readonly' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "ইনপুট ফিল্ড এডিট করা যায় না",
+            "ইনপুট ফিল্ড লুকানো থাকে",
+            "ইনপুট ফিল্ড ডিসেবল হয়",
+            "ইনপুট ফিল্ড রিমুভ হয়",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'readonly' অ্যাট্রিবিউট ইনপুট ফিল্ডকে শুধুমাত্র পঠনযোগ্য (এডিট করা যায় না) করে।",
+        },
+        {
+          q: "'placeholder' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "ইনপুটে ডিফল্ট ভ্যালু সেট করে",
+            "ইনপুটে গাইড টেক্সট দেখায়",
+            "ইনপুটে হেল্প টেক্সট যোগ করে",
+            "ইনপুট লেবেল তৈরি করে",
+          ],
+          correct: 1,
+          topic: "attributes",
+          explanation:
+            "'placeholder' অ্যাট্রিবিউট ইনপুট ফিল্ডে হালকা গাইড টেক্সট দেখায় যা টাইপ করলে মুছে যায়।",
+        },
+        {
+          q: "'required' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "ইনপুট ফিল্ড অপশনাল করে",
+            "ইনপুট ফিল্ড আবশ্যক (জমা দেওয়ার আগে পূরণ করতে হবে)",
+            "ইনপুট ফিল্ড লুকায়",
+            "ইনপুট ফিল্ড ডিসেবল করে",
+          ],
+          correct: 1,
+          topic: "attributes",
+          explanation:
+            "'required' অ্যাট্রিবিউট ফর্ম জমা দেওয়ার আগে ইনপুট ফিল্ডটি পূরণ করা আবশ্যক করে।",
+        },
+        {
+          q: "'maxlength' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "ইনপুটে সর্বোচ্চ ক্যারেক্টার সংখ্যা নির্ধারণ করে",
+            "ইনপুটে সর্বনিম্ন ক্যারেক্টার সংখ্যা নির্ধারণ করে",
+            "ইনপুটের প্রস্থ নির্ধারণ করে",
+            "ইনপুটের উচ্চতা নির্ধারণ করে",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'maxlength' অ্যাট্রিবিউট ইনপুট ফিল্ডে সর্বোচ্চ কতটি অক্ষর লেখা যাবে তা নির্ধারণ করে।",
+        },
+        {
+          q: "'cols' ও 'rows' অ্যাট্রিবিউট কোন ট্যাগে ব্যবহৃত হয়?",
+          options: ["<input>", "<textarea>", "<select>", "<button>"],
+          correct: 1,
+          topic: "attributes",
+          explanation:
+            "'cols' ও 'rows' অ্যাট্রিবিউট <textarea> ট্যাগের সাইজ নির্ধারণ করে।",
+        },
+        {
+          q: "'value' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "ইনপুটের ডিফল্ট ভ্যালু সেট করে",
+            "ইনপুটের প্লেসহোল্ডার সেট করে",
+            "ইনপুটের নাম সেট করে",
+            "ইনপুটের টাইপ সেট করে",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'value' অ্যাট্রিবিউট ইনপুট ফিল্ডের ডিফল্ট বা প্রি-ফিল্ড ভ্যালু সেট করে।",
+        },
+        {
+          q: "'checked' অ্যাট্রিবিউট কোন ট্যাগে ব্যবহৃত হয়?",
+          options: [
+            "<input type='text'>",
+            "<input type='checkbox'> বা <input type='radio'>",
+            "<select>",
+            "<textarea>",
+          ],
+          correct: 1,
+          topic: "attributes",
+          explanation:
+            "'checked' অ্যাট্রিবিউট চেকবক্স বা রেডিও বাটনে প্রি-সিলেক্টেড অবস্থা নির্ধারণ করে।",
+        },
+        {
+          q: "'selected' অ্যাট্রিবিউট কোন ট্যাগে ব্যবহৃত হয়?",
+          options: [
+            "<option>",
+            "<input>",
+            "<select>",
+            "<button>",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'selected' অ্যাট্রিবিউট <select> এর <option> ট্যাগে প্রি-সিলেক্টেড অপশন নির্ধারণ করে।",
+        },
+        {
+          q: "'multiple' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "একাধিক ফাইল আপলোডের অনুমতি দেয়",
+            "একাধিক অপশন সিলেক্টের অনুমতি দেয়",
+            "একাধিক ফর্ম জমা দেয়",
+            "একাধিক লিংক খোলে",
+          ],
+          correct: 1,
+          topic: "attributes",
+          explanation:
+            "'multiple' অ্যাট্রিবিউট <select> বা <input type='file'> এ একাধিক সিলেকশনের অনুমতি দেয়।",
+        },
+        {
+          q: "'autofocus' অ্যাট্রিবিউট কী কাজ করে?",
+          options: [
+            "পেজ লোড হলে ইনপুট ফিল্ডে ফোকাস নেয়",
+            "পেজ লোড হলে ফর্ম সাবমিট হয়",
+            "পেজ লোড হলে অ্যালার্ট দেখায়",
+            "পেজ লোড হলে স্ক্রল করে",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'autofocus' অ্যাট্রিবিউট পেজ লোড হওয়ার সময় নির্দিষ্ট ইনপুট ফিল্ডে অটোমেটিক ফোকাস নিয়ে আসে।",
+        },
+        {
+          q: "HTML-এ 'data-*' অ্যাট্রিবিউটের কাজ কী?",
+          options: [
+            "কাস্টম ডেটা স্টোর করা",
+            "CSS স্টাইল দেওয়া",
+            "জাভাস্ক্রিপ্ট ফাংশন কল করা",
+            "মেটাডেটা দেওয়া",
+          ],
+          correct: 0,
+          topic: "attributes",
+          explanation:
+            "'data-*' অ্যাট্রিবিউট কাস্টম ডেটা সংরক্ষণের জন্য ব্যবহৃত হয়, যা জাভাস্ক্রিপ্ট দিয়ে অ্যাক্সেস করা যায়।",
+        },
+        // ---- TOPIC: HEADINGS (81-100) ----
+        {
+          q: "HTML-এ হেডিং ট্যাগ কয়টি?",
+          options: ["৪টি", "৫টি", "৬টি", "৭টি"],
+          correct: 2,
+          topic: "headings",
+          explanation:
+            "HTML-এ ৬টি হেডিং ট্যাগ রয়েছে: <h1> থেকে <h6> পর্যন্ত।",
+        },
+        {
+          q: "সবচেয়ে গুরুত্বপূর্ণ হেডিং কোনটি?",
+          options: ["<h6>", "<h1>", "<h3>", "<h5>"],
+          correct: 1,
+          topic: "headings",
+          explanation:
+            "<h1> হলো সবচেয়ে গুরুত্বপূর্ণ হেডিং, যা পেজের প্রধান শিরোনাম নির্দেশ করে।",
+        },
+        {
+          q: "সবচেয়ে ছোট বা কম গুরুত্বপূর্ণ হেডিং কোনটি?",
+          options: ["<h1>", "<h2>", "<h6>", "<h4>"],
+          correct: 2,
+          topic: "headings",
+          explanation: "<h6> হলো সবচেয়ে ছোট বা কম গুরুত্বপূর্ণ হেডিং।",
+        },
+        {
+          q: "হেডিং ট্যাগের ডিফল্ট ফন্ট সাইজ কীভাবে পরিবর্তিত হয়?",
+          options: [
+            "<h1> সবচেয়ে বড়, <h6> সবচেয়ে ছোট",
+            "<h6> সবচেয়ে বড়, <h1> সবচেয়ে ছোট",
+            "সবগুলো একই সাইজ",
+            "CSS ছাড়া পরিবর্তন করা যায় না",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "<h1> সবচেয়ে বড় এবং <h6> সবচেয়ে ছোট ফন্ট সাইজে প্রদর্শিত হয়।",
+        },
+        {
+          q: "হেডিং ট্যাগের মধ্যে কী ধরনের কন্টেন্ট রাখা যায়?",
+          options: [
+            "শুধু টেক্সট",
+            "টেক্সট ও ইনলাইন এলিমেন্ট",
+            "ব্লক এলিমেন্ট",
+            "ছবি ও ভিডিও",
+          ],
+          correct: 1,
+          topic: "headings",
+          explanation:
+            "হেডিং ট্যাগের ভেতরে টেক্সট ও ইনলাইন এলিমেন্ট (যেমন <span>, <a>) রাখা যায়।",
+        },
+        {
+          q: "SEO-এর জন্য হেডিং ট্যাগ কতটা গুরুত্বপূর্ণ?",
+          options: [
+            "খুবই গুরুত্বপূর্ণ, কন্টেন্ট স্ট্রাকচার নির্ধারণ করে",
+            "মোটেও গুরুত্বপূর্ণ নয়",
+            "শুধু ডিজাইনের জন্য",
+            "শুধু অ্যাক্সেসিবিলিটির জন্য",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "সার্চ ইঞ্জিন হেডিং ট্যাগ ব্যবহার করে পেজের কন্টেন্ট স্ট্রাকচার বুঝে, তাই SEO-তে গুরুত্বপূর্ণ।",
+        },
+        {
+          q: "একটি পেজে কতটি <h1> ব্যবহার করা উচিত?",
+          options: [
+            "অসংখ্য",
+            "সাধারণত একটি (পেজের প্রধান শিরোনাম)",
+            "দুটি",
+            "পাঁচটি",
+          ],
+          correct: 1,
+          topic: "headings",
+          explanation:
+            "SEO-এর জন্য সাধারণত একটি পেজে একটি <h1> ব্যবহার করা উচিত, যা পেজের মূল শিরোনাম নির্দেশ করে।",
+        },
+        {
+          q: "হেডিং ট্যাগের ডিফল্ট স্টাইল কী?",
+          options: [
+            "বোল্ড ও বড় ফন্ট",
+            "ইটালিক ও ছোট ফন্ট",
+            "আন্ডারলাইন ও বড় ফন্ট",
+            "সাধারণ টেক্সট",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "হেডিং ট্যাগগুলো ডিফল্টভাবে বোল্ড এবং বিভিন্ন সাইজের ফন্টে দেখায়।",
+        },
+        {
+          q: "নিচের কোনটি সঠিক হেডিং সিকোয়েন্স?",
+          options: [
+            "<h1><h2><h3>",
+            "<h3><h1><h2>",
+            "<h5><h6><h1>",
+            "<h2><h4><h3>",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "হেডিং সিকোয়েন্স <h1> থেকে <h6> পর্যন্ত হাইয়ারার্কিক্যালভাবে ব্যবহার করা উচিত।",
+        },
+        {
+          q: "হেডিং ট্যাগে 'align' অ্যাট্রিবিউট ব্যবহার করা যায়?",
+          options: [
+            "হ্যাঁ, HTML5-এ সমর্থিত",
+            "না, HTML5-এ align অ্যাট্রিবিউট ডিপ্রিকেটেড",
+            "শুধু <h1> এ",
+            "শুধু CSS দিয়ে করা যায়",
+          ],
+          correct: 1,
+          topic: "headings",
+          explanation:
+            "HTML5-এ align অ্যাট্রিবিউট ডিপ্রিকেটেড, CSS ব্যবহার করে অ্যালাইনমেন্ট করা উচিত।",
+        },
+        {
+          q: "হেডিং ট্যাগের মধ্যে <br> ব্যবহার করলে কী হয়?",
+          options: [
+            "লাইন ব্রেক হয়",
+            "কিছু হয় না",
+            "এলিমেন্ট ভেঙে যায়",
+            "এরর দেখায়",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "হেডিং ট্যাগের ভেতরে <br> ব্যবহার করলে টেক্সটের মধ্যে লাইন ব্রেক হয়।",
+        },
+        {
+          q: "নিচের কোনটি হেডিং ট্যাগ নয়?",
+          options: ["<h1>", "<h3>", "<h7>", "<h6>"],
+          correct: 2,
+          topic: "headings",
+          explanation:
+            "<h7> HTML-এ কোনো হেডিং ট্যাগ নেই, হেডিং ট্যাগ <h1> থেকে <h6> পর্যন্ত।",
+        },
+        {
+          q: "হেডিং ট্যাগের ডিফল্ট ডিসপ্লে কী?",
+          options: [
+            "ইনলাইন",
+            "ব্লক",
+            "ইনলাইন-ব্লক",
+            "নেই",
+          ],
+          correct: 1,
+          topic: "headings",
+          explanation:
+            "হেডিং ট্যাগগুলো ব্লক-লেভেল এলিমেন্ট, অর্থাৎ তারা পুরো প্রস্থ নেয় এবং নতুন লাইন শুরু করে।",
+        },
+        {
+          q: "হেডিং ট্যাগের ফন্ট সাইজ পরিবর্তন করতে কী ব্যবহার করা যায়?",
+          options: [
+            "CSS ফন্ট-সাইজ প্রপার্টি",
+            "সাইজ অ্যাট্রিবিউট",
+            "শুধু <big> ট্যাগ",
+            "কোনোটিই নয়",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "হেডিং ট্যাগের ফন্ট সাইজ CSS-এর font-size প্রপার্টি দিয়ে পরিবর্তন করা যায়।",
+        },
+        {
+          q: "<hgroup> ট্যাগের কাজ কী?",
+          options: [
+            "একাধিক হেডিং গ্রুপ করা",
+            "একটি হেডিং তৈরি করা",
+            "হেডিং স্টাইল করা",
+            "ফুটার তৈরি করা",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "<hgroup> ট্যাগ একাধিক হেডিং (যেমন <h1> ও <h2>) একসাথে গ্রুপ করতে ব্যবহৃত হয়।",
+        },
+        {
+          q: "হেডিং ট্যাগে 'id' অ্যাট্রিবিউট ব্যবহার করলে কী সুবিধা?",
+          options: [
+            "CSS ও জাভাস্ক্রিপ্টে টার্গেট করা সহজ",
+            "সেইফ থাকে",
+            "আকর্ষণীয় দেখায়",
+            "কোনো সুবিধা নেই",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "'id' অ্যাট্রিবিউট ব্যবহার করলে CSS ও জাভাস্ক্রিপ্টে নির্দিষ্ট হেডিংকে টার্গেট করা সহজ হয়।",
+        },
+        {
+          q: "হেডিং ট্যাগের ভেতরে ইমোজি ব্যবহার করা যায়?",
+          options: [
+            "হ্যাঁ, যেকোনো টেক্সটের মতো",
+            "না, শুধু টেক্সট সম্ভব",
+            "শুধু CSS দিয়ে",
+            "শুধু জাভাস্ক্রিপ্ট দিয়ে",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "হ্যাঁ, হেডিং ট্যাগের ভেতরে ইমোজি বা ইউনিকোড ক্যারেক্টার ব্যবহার করা যায়।",
+        },
+        {
+          q: "হেডিং ট্যাগের মধ্যে অ্যাঙ্কর (<a>) ট্যাগ ব্যবহার করা যায়?",
+          options: [
+            "হ্যাঁ, ইনলাইন এলিমেন্ট হিসেবে",
+            "না, তা সম্ভব নয়",
+            "শুধু <h1> এ",
+            "শুধু CSS সহ",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "হ্যাঁ, হেডিং ট্যাগের ভেতরে <a> ট্যাগ ব্যবহার করে লিংক তৈরি করা যায়।",
+        },
+        {
+          q: "সাব-হেডিং বা সেকেন্ডারি টাইটেলের জন্য কোন হেডিং ট্যাগ উপযুক্ত?",
+          options: ["<h1>", "<h2>", "<h6>", "<h3>"],
+          correct: 1,
+          topic: "headings",
+          explanation:
+            "<h2> সাধারণত সাব-হেডিং বা সেকেন্ডারি টাইটেলের জন্য ব্যবহৃত হয়।",
+        },
+        {
+          q: "হেডিং ট্যাগের ডিফল্ট মার্জিন কেমন?",
+          options: [
+            "উপর ও নিচে মার্জিন থাকে",
+            "কোনো মার্জিন নেই",
+            "শুধু বামে মার্জিন",
+            "শুধু ডানে মার্জিন",
+          ],
+          correct: 0,
+          topic: "headings",
+          explanation:
+            "হেডিং ট্যাগের ডিফল্টভাবে উপরে ও নিচে কিছু মার্জিন থাকে, যা ব্রাউজার-নির্ভর।",
+        },
+      ];
+
+      // ----------------------------------------------------------------
+      // Global State
+      // ----------------------------------------------------------------
+      let userAnswers = {};
+      let currentFilter = "all";
+
+      // ----------------------------------------------------------------
+      // Render functions
+      // ----------------------------------------------------------------
+      function renderQuestionGrid() {
+        const grid = document.getElementById("question-grid");
+        grid.innerHTML = "";
+        quizDatabase.forEach((_, idx) => {
+          let btnClass = "bg-slate-200 text-slate-700 hover:bg-slate-300";
+          if (userAnswers[idx] !== undefined) {
+            const isCorrect = userAnswers[idx] === quizDatabase[idx].correct;
+            btnClass = isCorrect
+              ? "bg-emerald-600 text-white font-bold"
+              : "bg-rose-600 text-white font-bold";
+          }
+          const btn = document.createElement("button");
+          btn.className =
+            "w-8 h-8 rounded-lg text-xs transition-all duration-200 flex items-center justify-center cursor-pointer " +
+            btnClass;
+          btn.innerText = idx + 1;
+          btn.title = `প্রশ্ন ${idx + 1}`;
+          btn.onclick = () => {
+            const el = document.getElementById(`q-card-${idx}`);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "center" });
+              el.classList.add("ring-4", "ring-indigo-400");
+              setTimeout(() => el.classList.remove("ring-4", "ring-indigo-400"), 1000);
+            }
+          };
+          grid.appendChild(btn);
+        });
+      }
+
+      function escapeHtml(str) {
+        if (str === undefined || str === null) return "";
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function renderQuestions() {
+        const container = document.getElementById("questions-list");
+        container.innerHTML = "";
+        const topicLabels = {
+          intro: "Intro & Structure",
+          elements: "HTML Elements",
+          tags: "HTML Tags",
+          attributes: "Attributes",
+          headings: "Headings",
+        };
+        const topicColors = {
+          intro: "bg-purple-100 text-purple-700 border-purple-200",
+          elements: "bg-amber-100 text-amber-700 border-amber-200",
+          tags: "bg-blue-100 text-blue-700 border-blue-200",
+          attributes: "bg-indigo-100 text-indigo-700 border-indigo-200",
+          headings: "bg-emerald-100 text-emerald-700 border-emerald-200",
+        };
+        const prefix = ["A", "B", "C", "D"];
+
+        quizDatabase.forEach((item, idx) => {
+          if (currentFilter !== "all" && item.topic !== currentFilter) return;
+
+          const card = document.createElement("div");
+          card.id = `q-card-${idx}`;
+          card.className =
+            "question-card bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 md:p-6 transition-all duration-300 hover:shadow-md";
+
+          const isAnswered = userAnswers[idx] !== undefined;
+          let optionsHTML = "";
+          item.options.forEach((opt, optIdx) => {
+            let optClass =
+              "border-slate-200 hover:border-indigo-200 hover:bg-slate-50/60";
+            let iconHTML = "";
+            if (isAnswered) {
+              const selected = userAnswers[idx];
+              const correct = item.correct;
+              if (optIdx === correct) {
+                optClass =
+                  "border-emerald-500 bg-emerald-50/60 text-emerald-900 font-semibold";
+                iconHTML =
+                  '<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>';
+              } else if (optIdx === selected) {
+                optClass =
+                  "border-rose-400 bg-rose-50/60 text-rose-900 font-semibold";
+                iconHTML =
+                  '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>';
+              } else {
+                optClass =
+                  "border-slate-100 bg-slate-50/20 text-slate-400 cursor-not-allowed";
+              }
+            }
+            optionsHTML += `
+              <button onclick="selectOption(${idx}, ${optIdx})" ${isAnswered ? "disabled" : ""} 
+                class="option w-full text-left flex items-center justify-between p-3.5 border rounded-xl text-sm md:text-base transition-all duration-200 group ${optClass} cursor-pointer">
+                <span class="flex items-center gap-3">
+                  <span class="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-bold text-xs ${isAnswered ? "bg-slate-200 text-slate-600" : "bg-slate-100 text-slate-500 group-hover:bg-indigo-100 group-hover:text-indigo-600"} transition-all">
+                    ${prefix[optIdx]}
+                  </span>
+                  <span>${escapeHtml(opt)}</span>
+                </span>
+                ${iconHTML}
+              </button>
+            `;
+          });
+
+          let explanationHTML = "";
+          if (isAnswered) {
+            const isCorrect = userAnswers[idx] === item.correct;
+            explanationHTML = `
+              <div class="mt-4 p-4 rounded-xl border ${isCorrect ? "bg-emerald-50/40 border-emerald-100 text-emerald-900" : "bg-slate-50 border-slate-200 text-slate-700"} text-xs md:text-sm transition-all">
+                <div class="flex items-center gap-1.5 font-bold mb-1">
+                  <i class="${isCorrect ? "fa-solid fa-square-check text-emerald-600" : "fa-solid fa-circle-exclamation text-amber-600"}"></i>
+                  <span>${isCorrect ? "অভিনন্দন! সঠিক উত্তর।" : "ভুল উত্তর! সঠিক উত্তর: " + prefix[item.correct]}</span>
+                </div>
+                <p class="leading-relaxed font-medium">${escapeHtml(item.explanation)}</p>
+              </div>
+            `;
+          }
+
+          card.innerHTML = `
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3.5">
+              <span class="text-xs md:text-sm font-bold text-slate-400">প্রশ্ন ${idx + 1}/100</span>
+              <span class="text-[11px] font-semibold px-2.5 py-1 border rounded-full self-start md:self-auto ${topicColors[item.topic]}">
+                ${topicLabels[item.topic]}
+              </span>
+            </div>
+            <p class="font-semibold text-base md:text-lg text-slate-900 mb-4 leading-relaxed">${escapeHtml(item.q)}</p>
+            <div class="flex flex-col gap-2.5">${optionsHTML}</div>
+            ${explanationHTML}
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      function renderDashboard() {
+        let correct = 0,
+          wrong = 0;
+        const attempted = Object.keys(userAnswers).length;
+        quizDatabase.forEach((q, idx) => {
+          if (userAnswers[idx] !== undefined) {
+            if (userAnswers[idx] === q.correct) correct++;
+            else wrong++;
+          }
+        });
+        const score = correct * 1.0 - wrong * 0.25;
+        const progress = Math.round((attempted / quizDatabase.length) * 100);
+
+        document.getElementById("score-display").innerText = score.toFixed(2);
+        document.getElementById("attempted-display").innerText =
+          `${attempted}/100`;
+        document.getElementById("correct-display").innerText = correct;
+        document.getElementById("wrong-display").innerText = wrong;
+        document.getElementById("progress-percent").innerText = `${progress}%`;
+        document.getElementById("progress-bar").style.width = `${progress}%`;
+        document.getElementById("mobile-score").innerText = score.toFixed(2);
+        document.getElementById("mobile-attempted").innerText =
+          `${attempted}/100`;
+      }
+
+      function selectOption(qIdx, optIdx) {
+        if (userAnswers[qIdx] !== undefined) return;
+        userAnswers[qIdx] = optIdx;
+        renderQuestions();
+        renderQuestionGrid();
+        renderDashboard();
+      }
+
+      function filterQuestions() {
+        currentFilter = document.getElementById("topic-filter").value;
+        renderQuestions();
+      }
+
+      function resetQuiz() {
+        if (
+          confirm(
+            "আপনি কি নিশ্চিতভাবে কুইজটি পুনরায় শুরু করতে চান? আপনার বর্তমান সমস্ত স্কোর রিসেট হয়ে যাবে।"
+          )
+        ) {
+          userAnswers = {};
+          currentFilter = "all";
+          document.getElementById("topic-filter").value = "all";
+          renderDashboard();
+          renderQuestionGrid();
+          renderQuestions();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      // ----------------------------------------------------------------
+      // Initial Render
+      // ----------------------------------------------------------------
+      window.onload = function () {
+        renderDashboard();
+        renderQuestionGrid();
+        renderQuestions();
+      };
+    </script>
+  </body>
+</html>

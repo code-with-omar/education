@@ -1,0 +1,1289 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Technology Job Prep Quiz - Part 1</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Fonts -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800 antialiased min-h-screen flex flex-col">
+    <!-- Main Header -->
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-solid fa-code text-2xl text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              Web Portal Quiz
+            </h1>
+            <p class="text-xs text-slate-400">HTML & CSS Premium Preparation</p>
+          </div>
+        </div>
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="chapter-four-1.html"
+            class="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 1</a
+          >
+          <a
+            href="chapter-four-2.html"
+            class="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 2</a
+          >
+          <a
+            href="chapter-four-3.html"
+            class="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 3</a
+          >
+          <a
+            href="chapter-four-4.html"
+            class="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 4</a
+          >
+
+          <a
+            href="chapter-four-5.html"
+            class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white transition-all duration-200"
+            >সেট 5</a
+          >
+          <a
+            href="chapter-four-6.html"
+            class="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 6</a
+          >
+        </nav>
+          <a
+            href="chapter-four-7.html"
+            class="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 6</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <header
+      class="bg-gradient-to-r from-blue-700 via-indigo-800 to-slate-900 text-white shadow-lg"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+            IT Job Preparation Quiz (Part-1)
+          </h1>
+          <p class="text-xs text-indigo-200">সিলেবাস: HTML & CSS (১০০ MCQs)</p>
+        </div>
+        <div class="flex flex-wrap gap-2 items-center">
+          <span
+            class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+            >+1.0 Correct</span
+          >
+          <span
+            class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+            >-0.25 Wrong</span
+          >
+          <button
+            onclick="resetQuiz()"
+            class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1"
+          >
+            <i class="fa-solid fa-rotate-left"></i> রিস্টার্ট কুইজ
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main
+      class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6"
+    >
+      <aside class="w-full lg:w-80 flex flex-col gap-6 lg:shrink-0">
+        <div
+          class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sticky lg:top-24"
+        >
+          <h2
+            class="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center justify-between"
+          >
+            <span>লাইভ স্কোর</span
+            ><i class="fa-solid fa-chart-line text-indigo-600"></i>
+          </h2>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                মার্কস
+              </div>
+              <div
+                id="score-display"
+                class="text-2xl font-bold text-indigo-600"
+              >
+                0.00
+              </div>
+            </div>
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                মোট উত্তর
+              </div>
+              <div
+                id="attempted-display"
+                class="text-2xl font-bold text-slate-700"
+              >
+                0/100
+              </div>
+            </div>
+            <div
+              class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-center"
+            >
+              <div class="text-xs text-emerald-600 font-semibold mb-1">
+                সঠিক
+              </div>
+              <div
+                id="correct-display"
+                class="text-xl font-bold text-emerald-600"
+              >
+                0
+              </div>
+            </div>
+            <div
+              class="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-center"
+            >
+              <div class="text-xs text-rose-500 font-semibold mb-1">ভুল</div>
+              <div id="wrong-display" class="text-xl font-bold text-rose-600">
+                0
+              </div>
+            </div>
+          </div>
+          <div class="mb-5">
+            <div
+              class="flex justify-between text-xs font-semibold text-slate-500 mb-1"
+            >
+              <span>অগ্রগতি</span><span id="progress-percent">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2">
+              <div
+                id="progress-bar"
+                class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-5">
+            <label
+              class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+              >টপিক ফিল্টার</label
+            >
+            <select
+              id="topic-filter"
+              onchange="filterQuestions()"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm font-semibold focus:outline-none text-slate-700"
+            >
+              <option value="all">সব প্রশ্ন একসাথে (১০০টি)</option>
+              <option value="html">HTML Basic & Advanced (১-৫০)</option>
+              <option value="css">CSS Concepts & Layouts (৫১-১০০)</option>
+            </select>
+          </div>
+          <div
+            id="question-grid"
+            class="grid grid-cols-10 gap-1.5 max-h-48 overflow-y-auto custom-scrollbar p-1 bg-slate-50 border border-slate-200/60 rounded-xl"
+          ></div>
+        </div>
+      </aside>
+
+      <section class="flex-grow flex flex-col gap-5">
+        <div id="questions-list" class="flex flex-col gap-6"></div>
+      </section>
+    </main>
+
+    <script>
+      // Generate 100 HTML & CSS Unique Quiz Questions
+      const quizDatabase = [];
+
+      // HTML Questions (1-50)
+      const htmlQuestions = [
+        {
+          q: "HTML এর পূর্ণরূপ কী?",
+          o: [
+            "Hyper Text Markup Language",
+            "High Text Markup Language",
+            "Hyper Tabular Markup Language",
+            "Hyper Tech Marking Language",
+          ],
+          c: 0,
+          t: "html",
+          e: "HTML এর পূর্ণরূপ হলো Hyper Text Markup Language যা ওয়েব পেজ তৈরির মূল স্ট্রাকচার।",
+        },
+        {
+          q: "HTML এর সর্বশেষ স্ট্যান্ডার্ড সংস্করণ কোনটি?",
+          o: ["HTML 4.01", "HTML5", "XHTML", "HTML6"],
+          c: 1,
+          t: "html",
+          e: "বর্তমানে ব্যবহৃত সর্বশেষ অফিসিয়াল স্ট্যান্ডার্ড সংস্করণ হচ্ছে HTML5।",
+        },
+        {
+          q: "HTML ডকুমেন্টের রুট (Root) এলিমেন্ট বা ট্যাগ কোনটি?",
+          o: ["<body>", "<head>", "<html>", "<doctype>"],
+          c: 2,
+          t: "html",
+          e: "<html> ট্যাগটি হলো একটি HTML ডকুমেন্টের রুট বা মূল কন্টেইনার।",
+        },
+        {
+          q: "HTML5 এ সঠিক DOCTYPE ডিক্লারেশন কোনটি?",
+          o: [
+            "<!DOCTYPE html>",
+            "<doctype html5>",
+            "<html doctype>",
+            "<!DOCTYPE HTML PUBLIC>",
+          ],
+          c: 0,
+          t: "html",
+          e: "HTML5 এর জন্য স্ট্যান্ডার্ড ও সহজ ডিক্লারেশন হলো <!DOCTYPE html>।",
+        },
+        {
+          q: "সবচেয়ে বড় সাইজের হেডিং তৈরি করার জন্য কোন ট্যাগটি ব্যবহৃত হয়?",
+          o: ["<h6>", "<heading>", "<h1>", "<head>"],
+          c: 2,
+          t: "html",
+          e: "<h1> ট্যাগ সবচেয়ে বড় এবং <h6> ট্যাগ সবচেয়ে ছোট হেডিং তৈরি করে।",
+        },
+        {
+          q: "HTML পেজে একটি লাইন ব্রেক (Line Break) তৈরি করার সঠিক ট্যাগ কোনটি?",
+          o: ["<lb>", "<br>", "<break>", "<newline>"],
+          c: 1,
+          t: "html",
+          e: "<br> হলো একটি এম্পটি (Empty) ট্যাগ যা নতুন লাইনে যাওয়ার জন্য ব্যবহৃত হয়।",
+        },
+        {
+          q: "কোনটি একটি এম্পটি বা ভয়েড (Void) এলিমেন্ট যার কোনো ক্লোজিং ট্যাগ নেই?",
+          o: ["<p>", "<img>", "<a>", "<div>"],
+          c: 1,
+          t: "html",
+          e: "<img> ট্যাগের কোনো ক্লোজিং ট্যাগ বা শেষ অংশ থাকে না।",
+        },
+        {
+          q: "ওয়েব পেজে হাইপারলিঙ্ক (Hyperlink) তৈরি করার জন্য কোন ট্যাগ ব্যবহার করা হয়?",
+          o: ["<link>", "<a>", "<href>", "<url>"],
+          c: 1,
+          t: "html",
+          e: "Anchor বা <a> ট্যাগ হাইপারলিঙ্ক তৈরির জন্য ব্যবহৃত হয়।",
+        },
+        {
+          q: "<a> ট্যাগের ভেতরে লিঙ্কের গন্তব্য বা URL যুক্ত করার জন্য কোন অ্যাট্রিবিউট ব্যবহার করা হয়?",
+          o: ["src", "link", "href", "target"],
+          c: 2,
+          t: "html",
+          e: "href (Hypertext Reference) অ্যাট্রিবিউট লিঙ্কের গন্তব্য নির্দিষ্ট করে।",
+        },
+        {
+          q: "কোনো লিঙ্ককে ব্রাউজারের নতুন ট্যাবে ওপেন করতে হলে target অ্যাট্রিবিউটের মান কী হতে হবে?",
+          o: ["_self", "_parent", "_top", "_blank"],
+          c: 3,
+          t: "html",
+          e: "target='_blank' ব্যবহার করলে লিঙ্কটি নতুন ট্যাব বা উইন্ডোতে খোলে।",
+        },
+        {
+          q: "HTML এ ইমেজ বা ছবি যুক্ত করার সঠিক সিনট্যাক্স কোনটি?",
+          o: [
+            "<img src='image.jpg' alt='myImage'>",
+            "<image src='image.jpg'>",
+            "<img href='image.jpg'>",
+            "<img source='image.jpg'>",
+          ],
+          c: 0,
+          t: "html",
+          e: "<img> ট্যাগ এবং src ও alt অ্যাট্রিবিউটের সমন্বয়ে ইমেজ ডিফাইন করা হয়।",
+        },
+        {
+          q: "ইমেজ ট্যাগে alt অ্যাট্রিবিউট ব্যবহারের মূল কারণ কী?",
+          o: [
+            "ছবির বর্ডার দেওয়া",
+            "ছবি লোড না হলে বিকল্প টেক্সট প্রদর্শন করা",
+            "ছবির সাইজ বড় করা",
+            "ছবির এনিমেশন দেওয়া",
+          ],
+          c: 1,
+          t: "html",
+          e: "কোনো কারণে ছবি লোড হতে ব্যর্থ হলে alt (Alternative) টেক্সট স্ক্রিনে প্রদর্শিত হয়।",
+        },
+        {
+          q: "HTML এ একটি বুলেটযুক্ত বা আনঅর্ডারড লিস্ট (Unordered List) তৈরি করার ট্যাগ কোনটি?",
+          o: ["<ol>", "<ul>", "<li>", "<list>"],
+          c: 1,
+          t: "html",
+          e: "<ul> ট্যাগ দ্বারা আনঅর্ডারড (বুলেট পয়েন্ট) এবং <ol> দ্বারা অর্ডারড (নাম্বারড) লিস্ট তৈরি করা হয়।",
+        },
+        {
+          q: "লিস্টের প্রতিটি উপাদান বা আইটেম ডিফাইন করার জন্য কোন ট্যাগ ব্যবহার করা হয়?",
+          o: ["<list>", "<item>", "<li>", "<ul-item>"],
+          c: 2,
+          t: "html",
+          e: "<li> (List Item) ট্যাগ <ol> অথবা <ul> এর ভেতরে প্রতিটি আইটেম তৈরি করে।",
+        },
+        {
+          q: "HTML এ অর্ডারড লিস্টের সংখ্যা পরিবর্তনের জন্য নিচের কোন অ্যাট্রিবিউটটি ব্যবহৃত হয়?",
+          o: ["type", "start", "value", "num"],
+          c: 1,
+          t: "html",
+          e: "start অ্যাট্রিবিউট দিয়ে লিস্ট কোন সংখ্যা থেকে শুরু হবে তা নির্ধারণ করা যায়।",
+        },
+        {
+          q: "HTML টেবিল তৈরিতে টেবিলের একটি রো (Row) বা সারি ডিফাইন করার ট্যাগ কোনটি?",
+          o: ["<td>", "<th>", "<tr>", "<table-row>"],
+          c: 2,
+          t: "html",
+          e: "<tr> (Table Row) ট্যাগ টেবিলের সারি তৈরির জন্য ব্যবহৃত হয়।",
+        },
+        {
+          q: "টেবিলের কোনো ডাটা সেলকে হেডার সেল (যা সাধারণত বোল্ড ও সেন্টারে থাকে) হিসেবে দেখানোর ট্যাগ কোনটি?",
+          o: ["<th>", "<td>", "<thead>", "<header>"],
+          c: 0,
+          t: "html",
+          e: "<th> (Table Header) সেলকে ডিফল্টভাবে বোল্ড এবং সেন্টারড করে।",
+        },
+        {
+          q: "একাধিক কলামকে একত্রিত (Merge) করার জন্য কোন টেবিল অ্যাট্রিবিউট ব্যবহৃত হয়?",
+          o: ["rowspan", "colspan", "cellpadding", "cellspacing"],
+          c: 1,
+          t: "html",
+          e: "colspan (Column Span) কলাম এবং rowspan সারি মার্জ করার জন্য ব্যবহৃত হয়।",
+        },
+        {
+          q: "ব্যবহারকারীর কাছ থেকে ইনপুট বা ডেটা নেওয়ার জন্য কোন ট্যাগটি কন্টেইনার হিসেবে কাজ করে?",
+          o: ["<input>", "<form>", "<select>", "<textarea>"],
+          c: 1,
+          t: "html",
+          e: "<form> ট্যাগ ব্যবহারকারীর ডেটা সাবমিট করার জন্য সমস্ত ইনপুট এলিমেন্টকে ধারণ করে।",
+        },
+        {
+          q: "ইনপুট ফিল্ডে পাসওয়ার্ড টাইপ করার সময় অক্ষরগুলো লুকিয়ে রাখার জন্য সঠিক type কোনটি?",
+          o: [
+            "type='text'",
+            "type='hidden'",
+            "type='password'",
+            "type='secure'",
+          ],
+          c: 2,
+          t: "html",
+          e: "type='password' ব্যবহার করলে ইনপুট ক্যারেক্টারগুলো ডট বা স্টারে রূপান্তরিত হয়।",
+        },
+        {
+          q: "একাধিক অপশন থেকে যেকোনো একটি মাত্র অপশন সিলেক্ট করার ইনপুট টাইপ কোনটি?",
+          o: ["checkbox", "radio", "select", "button"],
+          c: 1,
+          t: "html",
+          e: "Radio বাটনের সাহায্যে একাধিক বিকল্প থেকে কেবল একটি সিলেক্ট করা সম্ভব।",
+        },
+        {
+          q: "একাধিক বিকল্প একসাথে সিলেক্ট বা টিক দেওয়ার জন্য কোন ইনপুট টাইপ ব্যবহার করা হয়?",
+          o: ["radio", "checkbox", "button", "switch"],
+          c: 1,
+          t: "html",
+          e: "Checkbox ব্যবহারের মাধ্যমে ব্যবহারকারী একাধিক অপশন চুজ করতে পারেন।",
+        },
+        {
+          q: "ড্রপ-ডাউন লিস্ট (Drop-down List) তৈরি করার জন্য মূল ট্যাগ কোনটি?",
+          o: ["<list>", "<dropdown>", "<select>", "<option>"],
+          c: 2,
+          t: "html",
+          e: "<select> ট্যাগের মাধ্যমে ড্রপ-ডাউন এবং এর ভেতরে <option> দিয়ে উপাদান ডিফাইন করা হয়।",
+        },
+        {
+          q: "HTML5 এর কোন নতুন ইনপুট টাইপ ক্যালেন্ডার ইন্টারফেস বা তারিখ সিলেক্ট করার সুবিধা দেয়?",
+          o: ["type='time'", "type='date'", "type='month'", "type='calender'"],
+          c: 1,
+          t: "html",
+          e: "type='date' ব্রাউজারে বিল্ট-ইন ডেট পিকার বা ক্যালেন্ডার লোড করে।",
+        },
+        {
+          q: "কোনো ফর্ম সাবমিট করার পর ডেটা কোন পেজে প্রসেস হবে তা কোন অ্যাট্রিবিউট নির্ধারণ করে?",
+          o: ["method", "action", "target", "path"],
+          c: 1,
+          t: "html",
+          e: "form এর action অ্যাট্রিবিউট ব্যাকএন্ড ইউআরএল বা গন্তব্য পেজকে নির্দেশ করে।",
+        },
+        {
+          q: "HTML এ টেক্সটকে বোল্ড (Bold) করার জন্য <b> ট্যাগের পাশাপাশি আধুনিক সিমেন্টিক ট্যাগ কোনটি?",
+          o: ["<bold>", "<strong>", "<i>", "<emp>"],
+          c: 1,
+          t: "html",
+          e: "<strong> ট্যাগ টেক্সট বোল্ড করার পাশাপাশি এর গুরুত্ব (Importance) প্রকাশ করে।",
+        },
+        {
+          q: "নিচের কোনটি একটি ব্লক-লেভেল (Block-level) এলিমেন্ট যা স্ক্রিনের পুরো প্রস্থ জুড়ে জায়গা নেয়?",
+          o: ["<span>", "<a>", "<div>", "<img>"],
+          c: 2,
+          t: "html",
+          e: "<div> একটি ব্লক-লেভেল এলিমেন্ট। অন্যদিকে <span>, <a>, <img> হলো ইনলাইন এলিমেন্ট।",
+        },
+        {
+          q: "নিচের কোনটি ইনলাইন (Inline) এলিমেন্টের উদাহরণ যা শুধুমাত্র তার ভেতরের কন্টেন্ট পরিমাণ জায়গা নেয়?",
+          o: ["<p>", "<div>", "<span>", "<ul>"],
+          c: 2,
+          t: "html",
+          e: "<span> ট্যাগ একটি ইনলাইন টেক্সট কন্টেইনার।",
+        },
+        {
+          q: "HTML5 এর কোন নতুন ট্যাগটি ওয়েবসাইটের প্রধান নেভিগেশন লিঙ্কগুলোর জন্য ব্যবহৃত হয়?",
+          o: ["<nav>", "<header>", "<menu>", "<section>"],
+          c: 0,
+          t: "html",
+          e: "<nav> হলো একটি সিমেন্টিক ট্যাগ যা নেভিগেশন মেনু তৈরিতে ব্যবহার করা হয়।",
+        },
+        {
+          q: "কোনো দীর্ঘ আর্টিকেলের পাদটীকা বা কপিরাইট তথ্যের জন্য HTML5 এর কোন সিমেন্টিক ট্যাগ উপযুক্ত?",
+          o: ["<bottom>", "<end>", "<footer>", "<aside>"],
+          c: 2,
+          t: "html",
+          e: "<footer> ট্যাগ পেজ বা সেকশনের ফুটার অংশ তৈরিতে ব্যবহৃত হয়।",
+        },
+        {
+          q: "কোনো সার্চ ইঞ্জিন বা ব্রাউজারের ট্যাব বারে ওয়েবসাইটের নাম দেখানোর জন্য কোন ট্যাগ ব্যবহৃত হয়?",
+          o: ["<meta>", "<heading>", "<title>", "<head>"],
+          c: 2,
+          t: "html",
+          e: "<title> ট্যাগের কন্টেন্ট ব্রাউজার ট্যাবে এবং এসইও (SEO) এর জন্য প্রদর্শিত হয়।",
+        },
+        {
+          q: "মেটাডাটা (Metadata) বা পেজের অতিরিক্ত তথ্যসমূহ HTML এর কোন অংশের ভেতরে রাখতে হয়?",
+          o: ["<body>", "<head>", "<html>", "<section>"],
+          c: 1,
+          t: "html",
+          e: "<head> সেকশনের ভেতর স্ক্রিপ্ট, মেটা ট্যাগ এবং স্টাইলশিট যুক্ত করা হয়।",
+        },
+        {
+          q: "HTML এ ক্যারেক্টার এনকোডিং (যেমন UTF-8) সেট করার সঠিক মেটা ট্যাগ কোনটি?",
+          o: [
+            "<meta charset='UTF-8'>",
+            "<meta encoding='UTF-8'>",
+            "<meta type='UTF-8'>",
+            "<meta language='UTF-8'>",
+          ],
+          c: 0,
+          t: "html",
+          e: "<meta charset='UTF-8'> এর মাধ্যমে বাংলাসহ গ্লোবাল সব ক্যারেক্টার সাপোর্ট নিশ্চিত করা হয়।",
+        },
+        {
+          q: "HTML কমেন্ট বা মন্তব্য লেখার সঠিক নিয়ম কোনটি?",
+          o: [
+            "// এইটি কমেন্ট",
+            "/* এইটি কমেন্ট */",
+            "<!-- এইটি কমেন্ট -->",
+            "# এইটি কমেন্ট",
+          ],
+          c: 2,
+          t: "html",
+          e: "<!-- কন্টেন্ট --> সিনট্যাক্স দিয়ে HTML এ কমেন্ট করা হয়।",
+        },
+        {
+          q: "HTML5 এ সরাসরি কোনো প্লাগইন ছাড়া অডিও ফাইল প্লে করার ট্যাগ কোনটি?",
+          o: ["<sound>", "<music>", "<audio>", "<media>"],
+          c: 2,
+          t: "html",
+          e: "<audio> ট্যাগ HTML5 এ নেটিভ অডিও প্লেয়ার সুবিধা দেয়।",
+        },
+        {
+          q: "ভিডিও ট্যাগে প্লে, পজ, ভলিউম ইত্যাদি বাটন দেখানোর জন্য কোন অ্যাট্রিবিউট ব্যবহার করা বাধ্যতামূলক?",
+          o: ["play", "buttons", "controls", "autoplay"],
+          c: 2,
+          t: "html",
+          e: "controls অ্যাট্রিবিউট না দিলে ভিডিও প্লেয়ারের কন্ট্রোল বাটনগুলো দৃশ্যমান হয় না।",
+        },
+        {
+          q: "HTML5 এ ভেক্টর গ্রাফিক্স বা জ্যামিতিক চিত্র আঁকার জন্য এক্সএমএল (XML) ভিত্তিক ট্যাগ কোনটি?",
+          o: ["<canvas>", "<svg>", "<graphics>", "<drawing>"],
+          c: 1,
+          t: "html",
+          e: "<svg> (Scalable Vector Graphics) হলো এক্সএমএল ভিত্তিক এবং <canvas> হলো জাভাস্ক্রিপ্ট ডিপেন্ডেন্ট।",
+        },
+        {
+          q: "ইনলাইন ফ্রেম বা অন্য কোনো ওয়েব পেজকে বর্তমান পেজের ভেতরে প্রদর্শন করার ট্যাগ কোনটি?",
+          o: ["<frame>", "<window>", "<iframe>", "<embed>"],
+          c: 2,
+          t: "html",
+          e: "<iframe> (Inline Frame) অন্য পেজ এম্বেড করার জন্য বহুল ব্যবহৃত।",
+        },
+        {
+          q: "একটি ফর্মে ইনপুট দেওয়া বাধ্যতামূলক করার জন্য কোন এইচটিএমএল অ্যাট্রিবিউট ব্যবহার করা হয়?",
+          o: ["validate", "required", "secure", "check"],
+          c: 1,
+          t: "html",
+          e: "required অ্যাট্রিবিউট যুক্ত ফিল্ড ফাঁকা রেখে ফর্ম সাবমিট করা যায়浅না।",
+        },
+        {
+          q: "নিচের কোনটি গ্লোবাল অ্যাট্রিবিউট (Global Attribute) যা যেকোনো HTML ট্যাগে ব্যবহার করা সম্ভব?",
+          o: ["href", "src", "id", "alt"],
+          c: 2,
+          t: "html",
+          e: "id, class, style ইত্যাদি হলো গ্লোবাল অ্যাট্রিবিউট, যা যেকোনো ট্যাগে চলে।",
+        },
+        {
+          q: "HTML এ বুকমার্ক (Bookmark) বা পেজের নির্দিষ্ট সেকশনে লাফিয়ে যাওয়ার জন্য কোন গ্লোবাল অ্যাট্রিবিউট ব্যবহৃত হয়?",
+          o: ["class", "id", "name", "target"],
+          c: 1,
+          t: "html",
+          e: "নির্দিষ্ট id ধরে href='#idName' দিয়ে বুকমার্কিং লিঙ্ক করা হয়।",
+        },
+        {
+          q: "HTML এ 'কম্পিউটার কোড' বা প্রোগ্রামিং কোড দেখানোর জন্য সঠিক ট্যাগ কোনটি?",
+          o: ["<program>", "<system>", "<code>", "<samp>"],
+          c: 2,
+          t: "html",
+          e: "<code> ট্যাগ টেক্সটকে মনোস্পেস ফন্টে কোড আকারে রিপ্রেজেন্ট করে।",
+        },
+        {
+          q: "প্রি-ফরমেটেড টেক্সট (ফাঁকা জায়গা ও লাইন ব্রেক হুবহু বজায় রাখা) দেখানোর ট্যাগ কোনটি?",
+          o: ["<pre>", "<code>", "<paragraph>", "<format>"],
+          c: 0,
+          t: "html",
+          e: "<pre> ಟ্যাগ সোর্স কোডের স্পেস ও নিউলাইন হুবহু ব্রাউজারে রেন্ডার করে।",
+        },
+        {
+          q: "HTML ডকুমেন্টে গাণিতিক ফ্র্যাকশন বা বিশেষ চিহ্ন (যেমন ©) দেখানোর কোডকে কী বলা হয়?",
+          o: ["Tags", "Attributes", "Entities", "Styles"],
+          c: 2,
+          t: "html",
+          e: "এগুলোকে HTML Entities বলা হয়, যেমন &copy; দিলে © চিহ্ন আসে।",
+        },
+        {
+          q: "HTML5 এর কোন ট্যাগটি মূলত কোনো আর্টিকেলের সাথে সম্পর্কিত কিন্তু মূল বিষয়ের বাইরের তথ্য (যেমন সাইডবার) ধারণ করে?",
+          o: ["<section>", "<aside>", "<article>", "<summary>"],
+          c: 1,
+          t: "html",
+          e: "<aside> ট্যাগ দিয়ে মূলত সাইডবার বা সম্পূরক তথ্য প্রকাশ করা হয়।",
+        },
+        {
+          q: "কোনো টেক্সটকে হাইলাইট বা হলুদ রঙের ব্যাকগ্রাউন্ড দিয়ে চিহ্নিত করার HTML5 ট্যাগ কোনটি?",
+          o: ["<high>", "<mark>", "<yellow>", "<paint>"],
+          c: 1,
+          t: "html",
+          e: "<mark> ট্যাগ টেক্সটকে ডিফল্টভাবে হাইলাইট করে।",
+        },
+        {
+          q: "HTML ফর্মে বড় কোনো প্যারাগ্রাফ বা মেসেজ লেখার জন্য বহুসারি বিশিষ্ট ইনপুট ফিল্ড কোনটি?",
+          o: [
+            "<input type='text'>",
+            "<textarea>",
+            "<textbox>",
+            "<input type='textarea'>",
+          ],
+          c: 1,
+          t: "html",
+          e: "<textarea> ট্যাগ স্ক্রলযোগ্য বহুসারির বড় টেক্সট ইনপুট এরিয়া তৈরি করে।",
+        },
+        {
+          q: "HTML ডকুমেন্টের বডি সেকশনের ভেতরের কন্টেন্ট কার কাছে দৃশ্যমান হয়?",
+          o: [
+            "সার্চ ইঞ্জিন রোবট",
+            "শুধুমাত্র ডেভেলপার",
+            "ওয়েবসাইট ভিজিটর বা ব্যবহারকারী",
+            "কোনোটিই নয়",
+          ],
+          c: 2,
+          t: "html",
+          e: "<body> ট্যাগের ভেতরের অংশই ব্রাউজারের মূল স্ক্রিনে ব্যবহারকারী দেখতে পান।",
+        },
+        {
+          q: "HTML ফর্মে মেথড হিসেবে 'GET' ব্যবহার করলে ডেটা কোথায় দেখা যায়?",
+          o: [
+            "ব্রাউজারের ইউআরএল (URL) বারে",
+            "সার্ভারের মেমোরিতে",
+            "ফাইল ফোল্ডারে",
+            "ডেটাবেজে গোপনীয়ভাবে",
+          ],
+          c: 0,
+          t: "html",
+          e: "GET মেথডের মাধ্যমে ডেটা ইউআরএল কুয়েরি স্ট্রিং আকারে সবার কাছে দৃশ্যমান থাকে।",
+        },
+        {
+          q: "গোপন ও সংবেদনশীল তথ্যের জন্য ফর্মে কোন মেথডটি ব্যবহার করা নিরাপদ?",
+          o: ["GET", "POST", "SEND", "REQUEST"],
+          c: 1,
+          t: "html",
+          e: "POST মেথডের মাধ্যমে ডেটা এইচটিটিপি বডিতে ইনক্রিপ্ট বা হাইড হয়ে যায় যা নিরাপদ।",
+        },
+      ];
+
+      // CSS Questions (51-100)
+      const cssQuestions = [
+        {
+          q: "CSS এর পূর্ণরূপ কী?",
+          o: [
+            "Cascading Style Sheets",
+            "Creative Style Sheets",
+            "Computer Style Sheets",
+            "Colorful Style Sheets",
+          ],
+          c: 0,
+          t: "css",
+          e: "CSS এর পূর্ণরূপ হলো Cascading Style Sheets যা ওয়েব পেজের ডিজাইন নিয়ন্ত্রণ করে।",
+        },
+        {
+          q: "HTML ট্যাগের ভেতরে সরাসরি style অ্যাট্রিবিউট ব্যবহার করে সিএসএস লেখাকে কী বলে?",
+          o: ["External CSS", "Internal CSS", "Inline CSS", "Embedded CSS"],
+          c: 2,
+          t: "css",
+          e: "ট্যাগের ভেতরে স্টাইল লেখাকে Inline CSS বলা হয়।",
+        },
+        {
+          q: "HTML এর <head> অংশে <style> ট্যাগ ব্যবহার করে সিএসএস লেখাকে কী বলে?",
+          o: ["Inline CSS", "Internal CSS", "External CSS", "Imported CSS"],
+          c: 1,
+          t: "css",
+          e: "একই ডকুমেন্টের হেডে স্টাইল ট্যাগে সিএসএস লেখাকে Internal/Embedded বলে।",
+        },
+        {
+          q: "আলাদা .css ফাইলে স্টাইল লিখে <link> ট্যাগ দিয়ে যুক্ত করাকে কী বলে?",
+          o: ["External CSS", "Internal CSS", "Inline CSS", "Linked CSS"],
+          c: 0,
+          t: "css",
+          e: "প্রফেশনাল কাজের জন্য আলাদা ফাইলে External CSS লিখে প্রজেক্টে লিঙ্ক করা হয়।",
+        },
+        {
+          q: "HTML এর নির্দিষ্ট কোনো ID কে সিলেক্ট করার জন্য সিএসএস সিলেক্টর চিহ্ন কোনটি?",
+          o: [". (dot)", "# (hash)", "* (asterisk)", "@ (at)"],
+          c: 1,
+          t: "css",
+          e: "আইডি সিলেক্টরের জন্য # (যেমন #header) এবং ক্লাসের জন্য . ব্যবহৃত হয়।",
+        },
+        {
+          q: "HTML এর নির্দিষ্ট কোনো Class কে সিলেক্ট করার জন্য সিএসএস সিলেক্টর চিহ্ন কোনটি?",
+          o: ["#", ".", "*", ":"],
+          c: 1,
+          t: "css",
+          e: "ক্লাস সিলেক্ট করার জন্য ডট বা বিন্দু (.) চিহ্ন ব্যবহৃত হয়।",
+        },
+        {
+          q: "ওয়েব পেজের ব্যাকগ্রাউন্ড কালার পরিবর্তন করার সঠিক সিএসএস প্রোপার্টি কোনটি?",
+          o: ["color", "bg-color", "background-color", "background-style"],
+          c: 2,
+          t: "css",
+          e: "background-color প্রোপার্টি এলিমেন্টের ব্যাকগ্রাউন্ডের রঙ ঠিক করে।",
+        },
+        {
+          q: "কোনো টেক্সটের ফন্ট কালার বা অক্ষরের রঙ পরিবর্তন করার প্রোপার্টি কোনটি?",
+          o: ["font-color", "text-color", "color", "text-style"],
+          c: 2,
+          t: "css",
+          e: "সিএসএস এ সরাসরি color প্রোপার্টি দিয়ে টেক্সটের রঙ বদলানো হয়।",
+        },
+        {
+          q: "কোনো এলিমেন্টের বর্ডারের ভেতরের অংশ এবং কন্টেন্টের মধ্যকার ফাঁকা জায়গা (Internal Space) বাড়ানোকে কী বলে?",
+          o: ["margin", "padding", "border-width", "spacing"],
+          c: 1,
+          t: "css",
+          e: "বর্ডারের ভেতরের দিকের স্পেসকে padding এবং বাইরের দিকের স্পেসকে margin বলে।",
+        },
+        {
+          q: "কোনো এলিমেন্টের বর্ডারের বাইরের চারপাশের ফাঁকা জায়গা (External Space) তৈরি করার প্রোপার্টি কোনটি?",
+          o: ["padding", "margin", "border-spacing", "outline"],
+          c: 1,
+          t: "css",
+          e: "অন্যান্য এলিমেন্ট থেকে দূরত্ব বজায় রাখার জন্য বাইরের দিকে margin ব্যবহার করা হয়।",
+        },
+        {
+          q: "অক্ষরের সাইজ বা ফন্টের আকার ছোট-বড় করার সিএসএস প্রোপার্টি কোনটি?",
+          o: ["text-size", "font-size", "font-style", "size"],
+          c: 1,
+          t: "css",
+          e: "font-size প্রোপার্টির মাধ্যমে পিক্সেল বা রেম এককে অক্ষরের সাইজ নির্ধারণ করা হয়।",
+        },
+        {
+          q: "টেক্সটকে বোল্ড বা মোটা করার জন্য সিএসএস প্রোপার্টি কোনটি?",
+          o: [
+            "font-style: bold",
+            "text-transform: bold",
+            "font-weight: bold",
+            "font-size: bold",
+          ],
+          c: 2,
+          t: "css",
+          e: "font-weight প্রোপার্টির মান bold বা নম্বরে (যেমন ৭০০) দিয়ে মোটা করা হয়।",
+        },
+        {
+          q: "টেক্সটের আন্ডারলাইন (Underline) মুছে ফেলার জন্য সঠিক সিএসএস কোড কোনটি?",
+          o: [
+            "text-decoration: none",
+            "text-style: no-underline",
+            "text-transform: none",
+            "font-style: normal",
+          ],
+          c: 0,
+          t: "css",
+          e: "লিঙ্কের ডিফল্ট আন্ডারলাইন সরাতে text-decoration: none ব্যবহার করা হয়।",
+        },
+        {
+          q: "কোনো টেক্সটের সব অক্ষরকে একসাথে আপারকেস বা বড় হাতের অক্ষরে রূপান্তর করার প্রোপার্টি কোনটি?",
+          o: [
+            "font-style: uppercase",
+            "text-transform: uppercase",
+            "text-case: upper",
+            "font-weight: uppercase",
+          ],
+          c: 1,
+          t: "css",
+          e: "text-transform: uppercase টেক্সটের কেস কনভার্ট করে দেয়।",
+        },
+        {
+          q: "কোনো টেক্সটকে পেজের মাঝখানে (Center) নেওয়ার সঠিক প্রোপার্টি ও মান কোনটি?",
+          o: [
+            "align: center",
+            "text-align: center",
+            "text-align: middle",
+            "vertical-align: center",
+          ],
+          c: 1,
+          t: "css",
+          e: "text-align: center এর মাধ্যমে ব্লক এলিমেন্টের ভেতরের টেক্সট মাঝে নেওয়া হয়।",
+        },
+        {
+          q: "সিএসএস বক্স মডেলে (Box Model) ক্রমানুসারে ভেতরের দিক থেকে বাইরের দিকের সঠিক লেয়ার বিন্যাস কোনটি?",
+          o: [
+            "Content -> Padding -> Border -> Margin",
+            "Content -> Margin -> Border -> Padding",
+            "Content -> Border -> Padding -> Margin",
+            "Margin -> Border -> Padding -> Content",
+          ],
+          c: 0,
+          t: "css",
+          e: "বক্স মডেল অনুযায়ী কন্টেন্টের পর প্যাডিং, তারপর বর্ডার এবং সবশেষে বাইরে মার্জিন থাকে।",
+        },
+        {
+          q: "কোনো উপাদানের চারপাশের কোণা বা বর্ডারকে গোলাকার (Rounded) করার প্রোপার্টি কোনটি?",
+          o: ["border-round", "border-radius", "box-radius", "border-curve"],
+          c: 1,
+          t: "css",
+          e: "border-radius প্রোপার্টির মাধ্যমে এলিমেন্টের কোণা বাঁকানো বা গোল করা হয়।",
+        },
+        {
+          q: "সিএসএস এ একটি কমেন্ট বা মন্তব্য লেখার সঠিক নিয়ম কোনটি?",
+          o: ["// কমেন্ট", "<!-- কমেন্ট -->", "/* কমেন্ট */", "# কমেন্ট"],
+          c: 2,
+          t: "css",
+          e: "/* কন্টেন্ট */ হলো সিএসএস ডকুমেন্টের স্ট্যান্ডার্ড কমেন্ট সিনট্যাক্স।",
+        },
+        {
+          q: "কোনো এলিমেন্টের পজিশন স্ক্রিনের এক জায়গায় ফিক্সড বা স্ক্রল করলেও নড়বে না এমন করার মান কোনটি?",
+          o: [
+            "position: absolute",
+            "position: relative",
+            "position: fixed",
+            "position: static",
+          ],
+          c: 2,
+          t: "css",
+          e: "position: fixed দিলে এলিমেন্টটি ব্রাউজার উইন্ডোর সাপেক্ষে নির্দিষ্ট স্থানে স্থির থাকে।",
+        },
+        {
+          q: "একটি সম্পূর্ণ ওয়েবসাইটকে রেসপনসিভ বা সব ডিভাইসের স্ক্রিন ফিট করার সিএসএস টেকনিক কোনটি?",
+          o: ["Media Queries", "Keyframes", "Flexbox only", "Animations"],
+          c: 0,
+          t: "css",
+          e: "Media Queries (@media) এর সাহায্যে ভিন্ন ভিন্ন স্ক্রিন সাইজের জন্য কাস্টম স্টাইল লেখা হয়।",
+        },
+        {
+          q: "সিএসএস এ সব ট্যাগের ওপর একসাথে স্টাইল বা মার্জিন জিরো করার সিলেক্টর কোনটি?",
+          o: [".all", "#all", "* (Universal Selector)", "@universal"],
+          c: 2,
+          t: "css",
+          e: "* বা ইউনিভার্সাল সিলেক্টর ডকুমেন্টের প্রতিটি এলিমেন্টকে টার্গেট করে।",
+        },
+        {
+          q: "কোনো ইনলাইন এলিমেন্টকে ব্লক এলিমেন্টে রূপান্তর করার জন্য display প্রোপার্টির মান কী হবে?",
+          o: [
+            "display: inline",
+            "display: block",
+            "display: flex",
+            "display: inline-block",
+          ],
+          c: 1,
+          t: "css",
+          e: "display: block ব্যবহার করলে ইনলাইন এলিমেন্টও ব্লক এলিমেন্টের মতো আচরণ করে।",
+        },
+        {
+          q: "কোনো এলিমেন্টকে স্ক্রিন থেকে পুরোপুরি গায়েব বা অদৃশ্য করে দেওয়ার এবং কোনো জায়গাও দখল করবে না এমন কোড কোনটি?",
+          o: [
+            "display: none",
+            "visibility: hidden",
+            "opacity: 0",
+            "display: invisible",
+          ],
+          c: 0,
+          t: "css",
+          e: "display: none এলিমেন্টকে রেন্ডার করে না এবং জায়গাও ছাড়ে। visibility: hidden জায়গা ধরে রেখে অদৃশ্য করে।",
+        },
+        {
+          q: "সিএসএস গ্রিড (Grid) লেআউট মূলত কোন মাত্রার লেআউট সিস্টেম?",
+          o: [
+            "১-মাত্রিক (1D)",
+            "২-মাত্রিক (2D)",
+            "৩-মাত্রিক (3D)",
+            "কোনো মাত্রা নেই",
+          ],
+          c: 1,
+          t: "css",
+          e: "গ্রিড হলো টু-ডাইমেনশনাল (সারি ও কলাম উভয় দিকে) এবং ফ্লেক্সবক্স হলো ওয়ান-ডাইমেনশনাল।",
+        },
+        {
+          q: "সিএসএস ফ্লেক্সবক্স (Flexbox) এ উপাদানগুলোকে প্রধান অক্ষ বরাবর সারিবদ্ধ করার প্রোপার্টি কোনটি?",
+          o: [
+            "align-items",
+            "justify-content",
+            "flex-direction",
+            "align-content",
+          ],
+          c: 1,
+          t: "css",
+          e: "justify-content মেইন অ্যাক্সিস (হরাইজন্টাল ডিফল্ট) বরাবর ফ্লেক্স আইটেম সাজায়।",
+        },
+        {
+          q: "কোনো উপাদানের ওপর মাউস পয়েন্টার নিয়ে গেলে (Hover) স্টাইল পরিবর্তনের সুডোক্লাস (Pseudo-class) কোনটি?",
+          o: [":active", ":focus", ":hover", ":visited"],
+          c: 2,
+          t: "css",
+          e: ":hover সুডোক্লাস মাউস কার্সার কোনো এলিমেন্টের ওপরে যাওয়ার ইভেন্ট ট্র্যাক করে।",
+        },
+        {
+          q: "লিস্টের বুলেটের ধরন (যেমন সার্কেল বা স্কয়ার) পরিবর্তন করার সিএসএস প্রোপার্টি কোনটি?",
+          o: [
+            "list-style-type",
+            "list-type",
+            "bullet-style",
+            "list-style-image",
+          ],
+          c: 0,
+          t: "css",
+          e: "list-style-type প্রোপার্টি দিয়ে লিস্টের আইকন স্কয়ার, ডট বা নান (none) করা যায়।",
+        },
+        {
+          q: "সিএসএস এ রঙের মান হিসেবে 'Hex Code' লেখার সঠিক ফরম্যাট কোনটি?",
+          o: ["rgb(255,0,0)", "red", "#FF0000", "hsl(0, 100%, 50%)"],
+          c: 2,
+          t: "css",
+          e: "# চিহ্নের পর ৬টি হেক্সাডেসিমেল ক্যারেক্টার দিয়ে হেক্স কালার কোড লেখা হয়।",
+        },
+        {
+          q: "একটি ডিভ (div) এর সর্বোচ্চ চওড়া নির্ধারণ করার জন্য কোন প্রোপার্টি ব্যবহার করা হয়?",
+          o: ["width", "max-width", "min-width", "ch-width"],
+          c: 1,
+          t: "css",
+          e: "max-width এলিমেন্টকে একটি নির্দিষ্ট সীমার বেশি চওড়া হতে দেয় না যা রেসপনসিভ ডিজাইনে কাজের।",
+        },
+        {
+          q: "কোনো লেখার ফন্টের ফ্যামিলি বা ফন্ট স্টাইল (যেমন Arial, Tahoma) সেট করার প্রোপার্টি কোনটি?",
+          o: ["font-style", "font-family", "font-type", "text-font"],
+          c: 1,
+          t: "css",
+          e: "font-family এর সাহায্যে ওয়েব পেজের অক্ষরের ফন্ট ফেস ঠিক করা হয়।",
+        },
+        {
+          q: "সিএসএস এ রিলেটিভ ইউনিট (Relative Unit) কোনটি যা প্যারেন্ট ফন্টের সাইজের ওপর নির্ভর করে বাড়ে কমে?",
+          o: ["px", "cm", "em", "pt"],
+          c: 2,
+          t: "css",
+          e: "em এবং rem হলো আপেক্ষিক ইউনিট। px হলো অ্যাবসোলিউট বা ফিক্সড ইউনিট।",
+        },
+        {
+          q: "আউটলাইন (Outline) এবং বর্ডার (Border) এর মূল পার্থক্য কী?",
+          o: [
+            "আউটলাইন মেমোরি বেশি নেয়",
+            "আউটলাইন বক্স মডেলে কোনো অতিরিক্ত জায়গা নেয় না ও এলিমেন্ট সাইজ বাড়ায় না",
+            "বর্ডার বাইরের দিকে থাকে",
+            "কোনো পার্থক্য নেই",
+          ],
+          c: 1,
+          t: "css",
+          e: "Outline এলিমেন্টের বক্স মডেলে প্রভাব ফেলে না এবং লেআউটকে নড়াচড়া করায় না।",
+        },
+        {
+          q: "টেক্সটের পেছনে ছায়া বা শ্যাডো ইফেক্ট তৈরি করার সিএসএস প্রোপার্টি কোনটি?",
+          o: ["box-shadow", "text-shadow", "shadow-effect", "font-shadow"],
+          c: 1,
+          t: "css",
+          e: "টেক্সটের জন্য text-shadow এবং বক্স বা ডিভের চারপাশের ছায়ার জন্য box-shadow ব্যবহৃত হয়।",
+        },
+        {
+          q: "কোনো উপাদানের কন্টেন্ট যদি তার নির্দিষ্ট হাইটের চেয়ে বেশি উপচে পড়ে (Overflow), তা লুকানোর কোড কোনটি?",
+          o: [
+            "overflow: hidden",
+            "overflow: scroll",
+            "overflow: visible",
+            "display: hide",
+          ],
+          c: 0,
+          t: "css",
+          e: "overflow: hidden উপচে পড়া অতিরিক্ত অংশকে কেটে বা হাইড করে ফেলে।",
+        },
+        {
+          q: "সিএসএস এ একাধিক ক্লাসের স্টাইলের মধ্যে বিরোধ হলে সব নিয়ম ভেঙে কোন ডিক্লারেশনটি সর্বোচ্চ অগ্রাধিকার পায়?",
+          o: ["!important", "@override", "max-priority", "strong"],
+          c: 0,
+          t: "css",
+          e: "যেকোনো সিএসএস মানের শেষে !important যুক্ত করলে তা স্পেসিফিসিটি রুল ভেঙে সবার আগে কার্যকর হয়।",
+        },
+        {
+          q: "ফ্লেক্সবক্স লেআউটে উপাদানগুলোকে একের নিচে আর এক (ভার্টিকাল কলাম) সাজানোর জন্য সঠিক ডিরেকশন কোনটি?",
+          o: [
+            "flex-direction: row",
+            "flex-direction: column",
+            "flex-wrap: wrap",
+            "align-content: column",
+          ],
+          c: 1,
+          t: "css",
+          e: "flex-direction: column ফ্লেক্স আইটেমগুলোকে কলাম আকারে ওপর-নিচ বিন্যস্ত করে।",
+        },
+        {
+          q: "সিএসএস ৩ এর ট্রানজিশন (Transition) প্রোপার্টির মূল কাজ কী?",
+          o: [
+            "অ্যানিমেশন স্থায়ী করা",
+            "ডিজাইনের পরিবর্তনকে মখমল বা মসৃণ গতিতে (Smooth Effect) রূপ দেওয়া",
+            "রঙ বদলে ফেলা",
+            "জাভাস্ক্রিপ্ট রান করা",
+          ],
+          c: 1,
+          t: "css",
+          e: "Transition প্রোপার্টির মাধ্যমে এক স্টাইল থেকে অন্য স্টাইলে রূপান্তর স্মুথ ও আকর্ষণীয় দেখায়।",
+        },
+        {
+          q: "সিএসএস কীফ্রেম (@keyframes) মূলত কী তৈরির জন্য ব্যবহৃত হয়?",
+          o: [
+            "রেসপনসিভ গ্রিড",
+            "অ্যাডভান্সড সিএসএস অ্যানিমেশন (Animation)",
+            "মিডিয়া কুয়েরি ফিল্টার",
+            "ডাটাবেজ কানেকশন",
+          ],
+          c: 1,
+          t: "css",
+          e: "@keyframes এর মাধ্যমে জটিল অ্যানিমেশনের বিভিন্ন স্টেজের স্টাইল ডিফাইন করা হয়।",
+        },
+        {
+          q: "Z-index প্রোপার্টি ব্যবহারের পূর্বশর্ত কী?",
+          o: [
+            "এলিমেন্টের ব্যাকগ্রাউন্ড থাকতে হবে",
+            "এলিমেন্টের পজিশন অবশ্যই static বাদে অন্য কিছু (যেমন relative/absolute/fixed) হতে হবে",
+            "এলিমেন্টটি টেবিল হতে হবে",
+            "কোনো শর্ত নেই",
+          ],
+          c: 1,
+          t: "css",
+          e: "পজিশন ডিফাইন করা না থাকলে z-index (যা এলিমেন্টের থ্রিডি লেয়ার বা ওপরে-নিচে থাকা ঠিক করে) কাজ করে না।",
+        },
+        {
+          q: "কোনো এলিমেন্টের চারপাশে সবদিকে একসাথে ২০ পিক্সেল মার্জিন দেওয়ার সঠিক সংক্ষিপ্ত রূপ কোনটি?",
+          o: [
+            "margin: 20px 20px;",
+            "margin: 20px;",
+            "margin: 20px 0px 20px 0px;",
+            "margin-all: 20px;",
+          ],
+          c: 1,
+          t: "css",
+          e: "margin: 20px; লিখলে টপ, রাইট, বটম, লেফট চারদিকেই ২০ পিক্সেল মার্জিন সেট হয়ে যায়।",
+        },
+        {
+          q: "সিএসএস এ অপাসিটি (Opacity) প্রোপার্টির রেঞ্জ কতটুকু হয়?",
+          o: ["০ থেকে ১০০", "১ থেকে ১০", "০.০ থেকে ১.০", "-১ থেকে ১"],
+          c: 2,
+          t: "css",
+          e: "Opacity এর মান ০.০ (সম্পূর্ণ স্বচ্ছ) থেকে ১.০ (সম্পূর্ণ অস্বচ্ছ) পর্যন্ত হয়ে থাকে।",
+        },
+        {
+          q: "কোন সিলেক্টরের মাধ্যমে কোনো প্যারেন্টের শুধুমাত্র প্রথম চাইল্ড বা উপাদানকে স্টাইল করা যায়?",
+          o: [":first-child", ":last-child", ":nth-child(all)", ":only-child"],
+          c: 0,
+          t: "css",
+          e: ":first-child সুডো-সিলেক্টর তালিকার প্রথম উপাদানটিকে সুনির্দিষ্ট করে।",
+        },
+        {
+          q: "সিএসএস এ 'Float' প্রোপার্টির মূল ব্যবহার কী ছিল?",
+          o: [
+            "উপাদানকে এনিমেট করা",
+            "টেক্সট বা ইমেজকে ডানে বা বামে ভাসিয়ে লেআউট তৈরি করা",
+            "উচ্চতা বাড়ানো",
+            "ফন্ট স্টাইল চেঞ্জ করা",
+          ],
+          c: 1,
+          t: "css",
+          e: "Float প্রোপার্টি (left/right) ইমেজ বা উপাদানকে কোনো একপাশে পুশ করে টেক্সট র‍্যাপ করতে ব্যবহৃত হতো।",
+        },
+        {
+          q: "আধুনিক সিএসএস এ বক্সের সাইজ গণনা সহজ করতে (প্যাডিং ও বর্ডারকে মোট উইডথের ভেতরে রাখতে) কোন কোডটি বেস্ট প্র্যাকটিস?",
+          o: [
+            "box-sizing: content-box",
+            "box-sizing: border-box",
+            "box-sizing: padding-box",
+            "box-size: fix",
+          ],
+          c: 1,
+          t: "css",
+          e: "box-sizing: border-box ব্যবহার করলে প্যাডিং ও বর্ডার যোগ হয়ে এলিমেন্টের মোট চওড়া বৃদ্ধি পায় না।",
+        },
+        {
+          q: "কোনো উপাদানের ওপর মাউস কার্সারের চেহারা (যেমন হাতের চিহ্ন বা পয়েন্টার) পরিবর্তন করার প্রোপার্টি কোনটি?",
+          o: ["mouse-style", "cursor", "pointer-type", "link-cursor"],
+          c: 1,
+          t: "css",
+          e: "cursor: pointer ব্যবহার করলে এলিমেন্টের ওপর মাউস নিলে হাতের আইকন প্রদর্শিত হয়।",
+        },
+        {
+          q: "সিএসএস এ জিপিইউ এক্সিলারেটেড ২D বা ৩D পজিশন পরিবর্তন, স্কেলিং ও ঘোরানোর প্রোপার্টি কোনটি?",
+          o: ["transition", "transform", "translate", "rotate"],
+          c: 1,
+          t: "css",
+          e: "transform প্রোপার্টির অধীনে rotate(), scale(), translate() ইত্যাদি ফাংশন ব্যবহার করা হয়।",
+        },
+        {
+          q: "কোনো ব্লক এলিমেন্টকে হরাইজন্টালি একদম স্ক্রিনের সেন্টারে বা মাঝে বসানোর জন্য মার্জিনের শর্টকাট ট্রিক কোনটি?",
+          o: [
+            "margin: 0 auto;",
+            "margin: center;",
+            "margin: auto 0;",
+            "margin-left: center;",
+          ],
+          c: 0,
+          t: "css",
+          e: "নির্দিষ্ট উইডথ সহ এলিমেন্টে margin: 0 auto; দিলে তা স্বয়ংক্রিয়ভাবে মাঝে বসে যায়।",
+        },
+        {
+          q: "সিএসএস এ মাল্টিপল সিলেক্টর একসাথে লেখার জন্য কোন বিরামচিহ্ন ব্যবহার করে আলাদা করতে হয়?",
+          o: ["; (semicolon)", ": (colon)", ", (comma)", ". (dot)"],
+          c: 2,
+          t: "css",
+          e: "কমা (,) চিহ্নের মাধ্যমে একাধিক ট্যাগ বা ক্লাসকে একসাথে একই সিএসএস রুল দেওয়া যায় (যেমন: h1, h2, p {})।",
+        },
+        {
+          q: "নিচের কোনটি সিএসএস প্রিপসেসর (Pre-processor) এর উদাহরণ যা কোড লেখাকে আরও ডাইনামিক করে?",
+          o: ["Sass / SCSS", "JavaScript", "Tailwind", "Bootstrap"],
+          c: 0,
+          t: "css",
+          e: "Sass এবং Less হলো জনপ্রিয় সিএসএস প্রিপসেসর। Tailwind ও Bootstrap হলো সিএসএস ফ্রেমওয়ার্ক।",
+        },
+        {
+          q: "ব্রাউজারের ডিফল্ট সিএসএস স্টাইল বা মার্জিন-প্যাডিং মুছে ফেলে সব ব্রাউজারে কোড একরকম দেখানোর ফাইলকে কী বলে?",
+          o: [
+            "Main CSS",
+            "Reset CSS / Normalize.css",
+            "Clear CSS",
+            "Bootstrap",
+          ],
+          c: 1,
+          t: "css",
+          e: "Reset CSS বা Normalize.css ব্রাউজারের নিজস্ব ডিফল্ট ইনকনসিস্টেন্সিগুলো ক্লিন করে দেয়।",
+        },
+      ];
+
+      // Combine arrays into quizDatabase
+      quizDatabase.push(...htmlQuestions, ...cssQuestions);
+
+      let userAnswers = {};
+      let currentFilter = "all";
+
+      window.onload = function () {
+        renderDashboard();
+        renderQuestionGrid();
+        renderQuestions();
+      };
+
+      function renderQuestionGrid() {
+        const gridContainer = document.getElementById("question-grid");
+        gridContainer.innerHTML = "";
+        quizDatabase.forEach((q, idx) => {
+          let btnClass = "bg-slate-200 text-slate-700 hover:bg-slate-300";
+          if (userAnswers[idx] !== undefined) {
+            btnClass =
+              userAnswers[idx] === q.c
+                ? "bg-emerald-600 text-white font-bold"
+                : "bg-rose-600 text-white font-bold";
+          }
+          const btn = document.createElement("button");
+          btn.className = `w-8 h-8 rounded-lg text-xs transition-all flex items-center justify-center cursor-pointer ${btnClass}`;
+          btn.innerText = idx + 1;
+          btn.onclick = () => {
+            const element = document.getElementById(`q-card-${idx}`);
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth", block: "center" });
+              element.classList.add("ring-4", "ring-indigo-400");
+              setTimeout(
+                () => element.classList.remove("ring-4", "ring-indigo-400"),
+                1000,
+              );
+            }
+          };
+          gridContainer.appendChild(btn);
+        });
+      }
+
+      // প্রশ্ন/অপশনের টেক্সটে থাকা <img>, <html>, <li> ইত্যাদি রিয়েল ট্যাগ ভেঙে ব্রাউজার যেন
+      // আসল HTML এলিমেন্ট হিসেবে রেন্ডার না করে ফেলে (ফলে টেক্সট অদৃশ্য হয়ে যাচ্ছিল),
+      // তাই < ও > কে HTML entity তে কনভার্ট করে প্লেইন টেক্সট হিসেবে দেখানো হচ্ছে।
+      function escapeHtml(str) {
+        const div = document.createElement("div");
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function renderQuestions() {
+        const listContainer = document.getElementById("questions-list");
+        listContainer.innerHTML = "";
+        quizDatabase.forEach((item, idx) => {
+          if (currentFilter !== "all" && item.t !== currentFilter) return;
+
+          const card = document.createElement("div");
+          card.id = `q-card-${idx}`;
+          card.className =
+            "bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 md:p-6 transition-all duration-300";
+
+          const isAnswered = userAnswers[idx] !== undefined;
+          let optionsHTML = "";
+          const prefix = ["A", "B", "C", "D"];
+
+          item.o.forEach((opt, optIdx) => {
+            let optClass =
+              "border-slate-200 hover:border-indigo-200 hover:bg-slate-50/60";
+            let icon = "";
+            if (isAnswered) {
+              if (optIdx === item.c) {
+                optClass =
+                  "border-emerald-500 bg-emerald-50/60 text-emerald-900 font-semibold";
+                icon =
+                  '<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>';
+              } else if (optIdx === userAnswers[idx]) {
+                optClass =
+                  "border-rose-400 bg-rose-50/60 text-rose-900 font-semibold";
+                icon =
+                  '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>';
+              } else {
+                optClass =
+                  "border-slate-100 bg-slate-50/20 text-slate-400 cursor-not-allowed";
+              }
+            }
+
+            optionsHTML += `
+              <button onclick="selectOption(${idx}, ${optIdx})" ${isAnswered ? "disabled" : ""} class="w-full text-left flex items-center justify-between p-3.5 border rounded-xl text-sm md:text-base transition-all group ${optClass} cursor-pointer">
+                <span class="flex items-center gap-3">
+                  <span class="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-bold text-xs ${isAnswered ? "bg-slate-200 text-slate-600" : "bg-slate-100 text-slate-500 group-hover:bg-indigo-100 group-hover:text-indigo-600"}">${prefix[optIdx]}</span>
+                  <span>${escapeHtml(opt)}</span>
+                </span>
+                ${icon}
+              </button>
+            `;
+          });
+
+          let expHTML = "";
+          if (isAnswered) {
+            const isCorrect = userAnswers[idx] === item.c;
+            expHTML = `
+              <div class="mt-4 p-4 rounded-xl border ${isCorrect ? "bg-emerald-50/40 border-emerald-100 text-emerald-900" : "bg-slate-50 border-slate-200 text-slate-700"} text-xs md:text-sm">
+                <div class="flex items-center gap-1.5 font-bold mb-1">
+                  <i class="${isCorrect ? "fa-solid fa-square-check text-emerald-600" : "fa-solid fa-circle-exclamation text-amber-600"}"></i>
+                  <span>${isCorrect ? "সঠিক উত্তর!" : "ভুল উত্তর! সঠিক উত্তর: " + prefix[item.c]}</span>
+                </div>
+                <p class="leading-relaxed font-medium">${escapeHtml(item.e)}</p>
+              </div>
+            `;
+          }
+
+          card.innerHTML = `
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs font-bold text-slate-400">প্রশ্ন ${idx + 1}/100</span>
+              <span class="text-[11px] font-semibold px-2.5 py-1 border rounded-full ${item.t === "html" ? "bg-purple-100 text-purple-700" : "bg-amber-100 text-amber-700"}">${item.t.toUpperCase()}</span>
+            </div>
+            <p class="font-semibold text-base md:text-lg text-slate-900 mb-4">${escapeHtml(item.q)}</p>
+            <div class="flex flex-col gap-2.5">${optionsHTML}</div>
+            ${expHTML}
+          `;
+          listContainer.appendChild(card);
+        });
+      }
+
+      function selectOption(qIdx, optIdx) {
+        if (userAnswers[qIdx] !== undefined) return;
+        userAnswers[qIdx] = optIdx;
+        renderQuestions();
+        renderQuestionGrid();
+        renderDashboard();
+      }
+
+      function renderDashboard() {
+        let correct = 0,
+          wrong = 0;
+        const attempted = Object.keys(userAnswers).length;
+        quizDatabase.forEach((q, idx) => {
+          if (userAnswers[idx] !== undefined) {
+            if (userAnswers[idx] === q.c) correct++;
+            else wrong++;
+          }
+        });
+        const score = correct * 1.0 - wrong * 0.25;
+        document.getElementById("score-display").innerText = score.toFixed(2);
+        document.getElementById("attempted-display").innerText =
+          `${attempted}/100`;
+        document.getElementById("correct-display").innerText = correct;
+        document.getElementById("wrong-display").innerText = wrong;
+        const percent = Math.round((attempted / quizDatabase.length) * 100);
+        document.getElementById("progress-percent").innerText = `${percent}%`;
+        document.getElementById("progress-bar").style.width = `${percent}%`;
+      }
+
+      function filterQuestions() {
+        currentFilter = document.getElementById("topic-filter").value;
+        renderQuestions();
+      }
+
+      function resetQuiz() {
+        if (
+          confirm(
+            "আপনি কি কুইজটি পুনরায় শুরু করতে চান? বর্তমান স্কোর মুছে যাবে।",
+          )
+        ) {
+          userAnswers = {};
+          currentFilter = "all";
+          document.getElementById("topic-filter").value = "all";
+          renderDashboard();
+          renderQuestionGrid();
+          renderQuestions();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+    </script>
+  </body>
+</html>

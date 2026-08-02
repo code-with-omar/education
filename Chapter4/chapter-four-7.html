@@ -1,0 +1,1444 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Job Prep – 100 MCQs (Set 6)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+      body {
+        font-family: "Hind Siliguri", "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800 antialiased min-h-screen flex flex-col">
+    <!-- Main Header -->
+    <header
+      class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2 bg-indigo-600/30 rounded-xl border border-indigo-400/30 backdrop-blur-sm"
+          >
+            <i class="fa-brands fa-js text-2xl text-yellow-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white">
+              JavaScript কুইজ পোর্টাল
+            </h1>
+            <p class="text-xs text-slate-400">
+              JavaScript Basic to Advanced – Job Prep
+            </p>
+          </div>
+        </div>
+        <nav
+          class="flex flex-wrap items-center justify-center gap-1.5 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/50 text-xs md:text-sm font-medium"
+        >
+          <a
+            href="chapter-four-1.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 1</a
+          >
+          <a
+            href="chapter-four-2.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 2</a
+          >
+          <a
+            href="chapter-four-3.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 3</a
+          >
+          <a
+            href="chapter-four-4.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 4</a
+          >
+          <a
+            href="chapter-four-5.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 5</a
+          >
+
+          <a
+            href="chapter-four-6.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >সেট 6</a
+          >
+          <a
+            href="chapter-four-6.html"
+            class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white"
+            >সেট 7</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Top Header -->
+    <header
+      class="bg-gradient-to-r from-yellow-600 via-amber-600 to-orange-700 text-white shadow-lg sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="p-2.5 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20"
+          >
+            <i class="fa-brands fa-js text-2xl text-yellow-300"></i>
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+              JavaScript স্পেশাল কুইজ – সেট ৬
+            </h1>
+            <p class="text-xs text-yellow-200">
+              Basic Syntax, ES6, DOM, Events, Async, OOP, Closures, Hoisting,
+              Prototypes & More (১০০ MCQs)
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 items-center">
+          <span
+            class="bg-amber-500/20 text-amber-200 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+            ><i class="fa-solid fa-award mr-1"></i> Correct: +1.0</span
+          >
+          <span
+            class="bg-rose-500/20 text-rose-200 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-semibold"
+            ><i class="fa-solid fa-circle-minus mr-1"></i> Incorrect:
+            -0.25</span
+          >
+          <button
+            onclick="resetQuiz()"
+            class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1"
+          >
+            <i class="fa-solid fa-rotate-left"></i> রিস্টার্ট
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6"
+    >
+      <!-- Sidebar -->
+      <aside class="w-full lg:w-80 flex flex-col gap-6 lg:shrink-0">
+        <div
+          class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sticky lg:top-24"
+        >
+          <h2
+            class="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center justify-between"
+          >
+            <span>লাইভ পারফরম্যান্স</span>
+            <i class="fa-solid fa-chart-line text-indigo-600"></i>
+          </h2>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                অ্যাক্টিভ মার্কস
+              </div>
+              <div
+                id="score-display"
+                class="text-2xl font-bold text-indigo-600"
+              >
+                0.00
+              </div>
+            </div>
+            <div
+              class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center"
+            >
+              <div class="text-xs text-slate-500 font-semibold mb-1">
+                মোট উত্তর
+              </div>
+              <div
+                id="attempted-display"
+                class="text-2xl font-bold text-slate-700"
+              >
+                0/100
+              </div>
+            </div>
+            <div
+              class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-center"
+            >
+              <div class="text-xs text-emerald-600 font-semibold mb-1">
+                সঠিক উত্তর
+              </div>
+              <div
+                id="correct-display"
+                class="text-xl font-bold text-emerald-600"
+              >
+                0
+              </div>
+            </div>
+            <div
+              class="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-center"
+            >
+              <div class="text-xs text-rose-500 font-semibold mb-1">
+                ভুল উত্তর
+              </div>
+              <div id="wrong-display" class="text-xl font-bold text-rose-600">
+                0
+              </div>
+            </div>
+          </div>
+          <div class="mb-5">
+            <div
+              class="flex justify-between text-xs font-semibold text-slate-500 mb-1"
+            >
+              <span>সম্পন্ন হয়েছে</span>
+              <span id="progress-percent">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2">
+              <div
+                id="progress-bar"
+                class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-5">
+            <label
+              class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+              >টপিক ফিল্টার</label
+            >
+            <select
+              id="topic-filter"
+              onchange="filterQuestions()"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-700"
+            >
+              <option value="all">সব প্রশ্ন (১০০টি)</option>
+              <option value="basics">Basic Syntax (১-১৫)</option>
+              <option value="variables">Variables & Data Types (১৬-২৫)</option>
+              <option value="functions">Functions (২৬-৩৫)</option>
+              <option value="arrays">Arrays (৩৬-৪৫)</option>
+              <option value="objects">Objects (৪৬-৫৫)</option>
+              <option value="es6">ES6 (৫৬-৬৫)</option>
+              <option value="dom">DOM (৬৬-৭৫)</option>
+              <option value="events">Events (৭৬-৮০)</option>
+              <option value="async">Async (৮১-৮৮)</option>
+              <option value="oop">OOP (৮৯-৯৫)</option>
+              <option value="advanced">Advanced (৯৬-১০০)</option>
+            </select>
+          </div>
+          <div class="mb-2 flex items-center justify-between">
+            <label
+              class="text-xs font-bold text-slate-500 uppercase tracking-wider"
+              >দ্রুত প্রশ্নে যান</label
+            >
+            <span
+              class="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold"
+              >গ্রিড</span
+            >
+          </div>
+          <div
+            id="question-grid"
+            class="grid grid-cols-10 gap-1.5 max-h-48 overflow-y-auto custom-scrollbar p-1 bg-slate-50 border border-slate-200/60 rounded-xl"
+          ></div>
+        </div>
+      </aside>
+
+      <!-- Main Panel -->
+      <section class="flex-grow flex flex-col gap-5">
+        <div
+          class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex gap-3 items-start"
+        >
+          <i
+            class="fa-solid fa-circle-info text-amber-600 text-lg mt-0.5 shrink-0"
+          ></i>
+          <div class="text-xs md:text-sm text-amber-800 leading-relaxed">
+            <strong>গুরুত্বপূর্ণ নিয়মাবলি:</strong> যেকোনো অপশনে ক্লিক করলেই
+            সাথে সাথে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবেন। একবার উত্তর দিয়ে ফেললে
+            পরিবর্তন করা যাবে না। ভুল উত্তরের জন্য
+            <strong class="text-red-700">০.২৫ মার্কস কাটা যাবে</strong>।
+          </div>
+        </div>
+        <div id="questions-list" class="flex flex-col gap-6"></div>
+        <div class="text-center py-6 border-t border-slate-200 mt-4">
+          <p class="text-sm text-slate-500">
+            সমস্ত ১০০টি প্রশ্ন সফলভাবে লোড করা হয়েছে। শুভ পরীক্ষা!
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Sticky Bar -->
+    <div
+      class="lg:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 p-3 text-white flex justify-between items-center shadow-2xl z-50"
+    >
+      <div class="flex gap-4">
+        <div>
+          <p class="text-[10px] text-slate-400">মোট মার্কস</p>
+          <p id="mobile-score" class="text-lg font-bold text-amber-400">0.00</p>
+        </div>
+        <div>
+          <p class="text-[10px] text-slate-400">উত্তর দেওয়া</p>
+          <p id="mobile-attempted" class="text-lg font-bold text-slate-200">
+            0/100
+          </p>
+        </div>
+      </div>
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1"
+      >
+        <i class="fa-solid fa-chevron-up"></i> উপরে
+      </button>
+    </div>
+
+    <footer
+      class="bg-slate-950 text-slate-400 py-6 text-center border-t border-slate-800/60 text-xs mt-12 pb-16 lg:pb-6"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p class="mb-2">© ২০২৬ JavaScript কুইজ পোর্টাল – সেট ৬।</p>
+        <p class="text-slate-600">
+          নকশা ও কোডিং করা হয়েছে রিয়েল-টাইম জব প্রিপারেশনের জন্য।
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // ----------------------------------------------------------------
+      // 100 JavaScript Questions – Basic to Advanced
+      // Randomly distributed correct answers (0,1,2,3)
+      // ----------------------------------------------------------------
+      function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+
+      function createQ(q, opts, exp, topic) {
+        const correctIdx = Math.floor(Math.random() * 4);
+        return {
+          q,
+          options: opts,
+          correct: correctIdx,
+          topic,
+          explanation: exp,
+        };
+      }
+
+      const quizDatabase = [
+        // ----- BASIC SYNTAX (1-15) -----
+        createQ(
+          "JavaScript কী ধরনের ভাষা?",
+          [
+            "সিঙ্ক্রোনাস",
+            "অ্যাসিঙ্ক্রোনাস",
+            "সিঙ্গেল-থ্রেডেড",
+            "মাল্টি-থ্রেডেড",
+          ],
+          "JavaScript একটি সিঙ্গেল-থ্রেডেড, অ্যাসিঙ্ক্রোনাস প্রোগ্রামিং ভাষা।",
+          "basics",
+        ),
+        createQ(
+          "JavaScript-এ স্টেটমেন্ট শেষ করতে কী ব্যবহার করা হয়?",
+          ["সেমিকোলন (;)", "কোলন (:)", "কমা (,)", "পিরিয়ড (.)"],
+          "JavaScript-এ স্টেটমেন্ট শেষ করতে সেমিকোলন (;) ব্যবহার করা হয়।",
+          "basics",
+        ),
+        createQ(
+          "JavaScript-এ কমেন্টের সিনট্যাক্স কী?",
+          ["//", "/* */", "উভয়ই", "কোনোটিই নয়"],
+          "JavaScript-এ // এক-লাইন ও /* */ মাল্টি-লাইন কমেন্টের জন্য ব্যবহৃত হয়।",
+          "basics",
+        ),
+        createQ(
+          "console.log() কী কাজ করে?",
+          [
+            "কনসোলে আউটপুট দেখায়",
+            "এরর দেখায়",
+            "ভেরিয়েবল ডিক্লেয়ার করে",
+            "ফাংশন কল করে",
+          ],
+          "console.log() ডিবাগিংয়ের জন্য কনসোলে আউটপুট দেখায়।",
+          "basics",
+        ),
+        createQ(
+          "JavaScript-এ কেস সেন্সিটিভ?",
+          ["হ্যাঁ", "না", "শুধু ভেরিয়েবল", "শুধু ফাংশন"],
+          "JavaScript কেস সেন্সিটিভ, myVar এবং myvar আলাদা।",
+          "basics",
+        ),
+        createQ(
+          "typeof অপারেটর কী করে?",
+          [
+            "ডেটা টাইপ চেক করে",
+            "ভেরিয়েবল ডিক্লেয়ার করে",
+            "ভ্যালু অ্যাসাইন করে",
+            "ফাংশন কল করে",
+          ],
+          "typeof অপারেটর কোনো ভেরিয়েবলের ডেটা টাইপ চেক করে।",
+          "basics",
+        ),
+        createQ(
+          "JavaScript-এ ইকুয়ালিটি চেকের জন্য কোন অপারেটর ব্যবহার করা হয়?",
+          ["==", "===", "উভয়ই", "="],
+          "== ভ্যালু চেক করে, === ভ্যালু ও টাইপ উভয়ই চেক করে।",
+          "basics",
+        ),
+        createQ(
+          "null ও undefined-এর মধ্যে পার্থক্য কী?",
+          [
+            "null ইচ্ছাকৃত খালি, undefined ডিক্লেয়ার করা হয়নি",
+            "দুটোই একই",
+            "undefined ইচ্ছাকৃত",
+            "null ডিক্লেয়ার করা হয়নি",
+          ],
+          "null একটি ইচ্ছাকৃত খালি মান, undefined ডিক্লেয়ার করা হয়েছে কিন্তু মান দেওয়া হয়নি।",
+          "basics",
+        ),
+        createQ(
+          "JavaScript-এ NaN কী?",
+          ["Not a Number", "Null and Number", "Number and Null", "Not Null"],
+          "NaN (Not a Number) একটি সংখ্যা নয় এমন মান নির্দেশ করে।",
+          "basics",
+        ),
+        createQ(
+          "isNaN() ফাংশন কী করে?",
+          [
+            "NaN চেক করে",
+            "সংখ্যা চেক করে",
+            "স্ট্রিং চেক করে",
+            "বুলিয়ান চেক করে",
+          ],
+          "isNaN() চেক করে মানটি NaN কিনা।",
+          "basics",
+        ),
+        createQ(
+          "JavaScript-এ টাইপ কনভার্সনের জন্য কোন মেথড ব্যবহার করা হয়?",
+          ["Number()", "String()", "Boolean()", "সবগুলো"],
+          "Number(), String(), Boolean() সবগুলো টাইপ কনভার্সনের জন্য ব্যবহৃত হয়।",
+          "basics",
+        ),
+        createQ(
+          "parseInt() ফাংশন কী করে?",
+          [
+            "স্ট্রিংকে ইন্টিজারে কনভার্ট",
+            "স্ট্রিংকে ফ্লোটে কনভার্ট",
+            "নম্বরকে স্ট্রিংয়ে কনভার্ট",
+            "বুলিয়ান চেক",
+          ],
+          "parseInt() স্ট্রিংকে পূর্ণসংখ্যায় (integer) কনভার্ট করে।",
+          "basics",
+        ),
+        createQ(
+          "parseFloat() ফাংশন কী করে?",
+          [
+            "স্ট্রিংকে ফ্লোটে কনভার্ট",
+            "স্ট্রিংকে ইন্টিজারে কনভার্ট",
+            "নম্বরকে স্ট্রিংয়ে কনভার্ট",
+            "বুলিয়ান চেক",
+          ],
+          "parseFloat() স্ট্রিংকে দশমিক সংখ্যায় (float) কনভার্ট করে।",
+          "basics",
+        ),
+        createQ(
+          "JavaScript-এ else if ব্যবহারের সঠিক সিনট্যাক্স কী?",
+          [
+            "else if (condition) {}",
+            "elseif (condition) {}",
+            "else if condition {}",
+            "elif (condition) {}",
+          ],
+          "সঠিক সিনট্যাক্স: else if (condition) {}",
+          "basics",
+        ),
+        createQ(
+          "switch স্টেটমেন্টে break না দিলে কী হয়?",
+          ["পরবর্তী কেস এক্সিকিউট হয়", "এরর হয়", "লুপ থেমে যায়", "কিছু হয় না"],
+          "break না দিলে পরবর্তী কেসগুলোও এক্সিকিউট হয় (fall-through)।",
+          "basics",
+        ),
+        // ----- VARIABLES & DATA TYPES (16-25) -----
+        createQ(
+          "var, let, const-এর মধ্যে পার্থক্য কী?",
+          [
+            "var ফাংশন-স্কোপ, let/const ব্লক-স্কোপ",
+            "সবগুলো ব্লক-স্কোপ",
+            "var ব্লক-স্কোপ",
+            "কোনোটিই নয়",
+          ],
+          "var ফাংশন-স্কোপ, let ও const ব্লক-স্কোপ।",
+          "variables",
+        ),
+        createQ(
+          "const ভেরিয়েবল পুনরায় অ্যাসাইন করা যায়?",
+          ["না", "হ্যাঁ", "শুধু অবজেক্ট", "শুধু অ্যারে"],
+          "const ভেরিয়েবল পুনরায় অ্যাসাইন করা যায় না।",
+          "variables",
+        ),
+        createQ(
+          "JavaScript-এ প্রিমিটিভ ডেটা টাইপ কয়টি?",
+          ["৭টি", "৫টি", "৬টি", "৮টি"],
+          "JavaScript-এ ৭টি প্রিমিটিভ টাইপ: string, number, boolean, null, undefined, symbol, bigint।",
+          "variables",
+        ),
+        createQ(
+          "typeof null এর রিটার্ন কী?",
+          ["object", "null", "undefined", "string"],
+          'typeof null রিটার্ন করে "object" (এটি একটি পুরানো বাগ)।',
+          "variables",
+        ),
+        createQ(
+          "বিগিন্ট (BigInt) ডেটা টাইপ কী কাজে ব্যবহৃত হয়?",
+          ["বড় পূর্ণসংখ্যা", "ছোট পূর্ণসংখ্যা", "দশমিক সংখ্যা", "স্ট্রিং"],
+          "BigInt ২^৫৩-১-এর চেয়ে বড় পূর্ণসংখ্যার জন্য ব্যবহৃত হয়।",
+          "variables",
+        ),
+        createQ(
+          "সিম্বল (Symbol) ডেটা টাইপ কী?",
+          ["ইউনিক আইডেন্টিফায়ার", "স্ট্রিং", "নম্বর", "বুলিয়ান"],
+          "Symbol একটি ইউনিক এবং ইমিউটেবল প্রিমিটিভ ডেটা টাইপ।",
+          "variables",
+        ),
+        createQ(
+          "টেম্পলেট লিটারেল কী?",
+          [
+            "ব্যাকটিক (`) দিয়ে স্ট্রিং",
+            "সিঙ্গেল কোট",
+            "ডাবল কোট",
+            "স্ট্রিং কনক্যাট",
+          ],
+          "টেম্পলেট লিটারেল ব্যাকটিক (`) ব্যবহার করে এবং ${} দিয়ে এক্সপ্রেশন এম্বেড করা যায়।",
+          "variables",
+        ),
+        createQ(
+          "JavaScript-এ ডাইনামিক টাইপিং কী?",
+          [
+            "ভেরিয়েবল যেকোনো টাইপ ধারণ করতে পারে",
+            "ভেরিয়েবল নির্দিষ্ট টাইপের",
+            "টাইপ পরিবর্তন করা যায় না",
+            "কোনোটিই নয়",
+          ],
+          "JavaScript ডাইনামিক টাইপিং সমর্থন করে, ভেরিয়েবল যেকোনো টাইপের মান ধারণ করতে পারে।",
+          "variables",
+        ),
+        createQ(
+          "একটি ভেরিয়েবল ডিক্লেয়ার না করলে কী হয়?",
+          [
+            "গ্লোবাল অবজেক্টে প্রপার্টি হয়",
+            "এরর হয়",
+            "undefined হয়",
+            "null হয়",
+          ],
+          "ডিক্লেয়ার না করা ভেরিয়েবল গ্লোবাল অবজেক্টের প্রপার্টি হয় (strict mode এ এরর)।",
+          "variables",
+        ),
+        createQ(
+          "ভেরিয়েবলের হোইস্টিং (Hoisting) কী?",
+          [
+            "ডিক্লেয়ারেশন উপরে সরানো",
+            "ভ্যালু উপরে সরানো",
+            "ফাংশন উপরে সরানো",
+            "কিছু না",
+          ],
+          "Hoisting-এ ভেরিয়েবল ও ফাংশন ডিক্লেয়ারেশন স্কোপের উপরে সরানো হয়।",
+          "variables",
+        ),
+        // ----- FUNCTIONS (26-35) -----
+        createQ(
+          "ফাংশন ডিক্লেয়ার করার সিনট্যাক্স কী?",
+          [
+            "function name() {}",
+            "const name = function() {}",
+            "উভয়ই",
+            "কোনোটিই নয়",
+          ],
+          "function name() {} এবং const name = function() {} উভয়ই ফাংশন ডিক্লেয়ারেশনের উপায়।",
+          "functions",
+        ),
+        createQ(
+          "অ্যারো ফাংশনের সিনট্যাক্স কী?",
+          ["() => {}", "function() {}", "const fn = function() {}", "() =>"],
+          "অ্যারো ফাংশন () => {} সিনট্যাক্স ব্যবহার করে।",
+          "functions",
+        ),
+        createQ(
+          "অ্যারো ফাংশন ও রেগুলার ফাংশনের মধ্যে পার্থক্য কী?",
+          ["this বাইন্ডিং আলাদা", "সিনট্যাক্স আলাদা", "উভয়ই", "কোনোটিই নয়"],
+          "অ্যারো ফাংশনের this নিজস্ব নেই, এটি লেক্সিকাল this ব্যবহার করে।",
+          "functions",
+        ),
+        createQ(
+          "ফাংশনের প্যারামিটার ডিফল্ট ভ্যালু কীভাবে দেওয়া হয়?",
+          [
+            "function fn(x=5) {}",
+            "function fn(x) {x=x||5}",
+            "উভয়ই",
+            "কোনোটিই নয়",
+          ],
+          "function fn(x=5) {} দিয়ে ডিফল্ট প্যারামিটার দেওয়া যায়।",
+          "functions",
+        ),
+        createQ(
+          "রেস্ট প্যারামিটার (...) কী কাজ করে?",
+          [
+            "একাধিক আর্গুমেন্টকে অ্যারেতে রূপান্তর",
+            "অ্যারে থেকে ভ্যালু বের করে",
+            "অবজেক্ট স্প্রেড",
+            "কোনোটিই নয়",
+          ],
+          "রেস্ট প্যারামিটার (...) একাধিক আর্গুমেন্টকে অ্যারেতে রূপান্তর করে।",
+          "functions",
+        ),
+        createQ(
+          "স্প্রেড অপারেটর (...) কী কাজ করে?",
+          [
+            "অ্যারে/অবজেক্ট স্প্রেড করে",
+            "রেস্ট প্যারামিটার",
+            "উভয়ই",
+            "কোনোটিই নয়",
+          ],
+          "স্প্রেড অপারেটর অ্যারে/অবজেক্টের এলিমেন্ট স্প্রেড করে।",
+          "functions",
+        ),
+        createQ(
+          "ক্লোজার (Closure) কী?",
+          [
+            "অভ্যন্তরীণ ফাংশন বাইরের ভেরিয়েবল অ্যাক্সেস করতে পারে",
+            "একটি ফাংশন",
+            "একটি অবজেক্ট",
+            "একটি অ্যারে",
+          ],
+          "Closure হলো অভ্যন্তরীণ ফাংশন যা বাইরের ফাংশনের ভেরিয়েবল অ্যাক্সেস করতে পারে।",
+          "functions",
+        ),
+        createQ(
+          "ইমিডিয়েটলি ইনভোকড ফাংশন এক্সপ্রেশন (IIFE) কী?",
+          ["ডিক্লেয়ারের সাথে সাথে কল", "পরে কল", "অ্যারো ফাংশন", "কোনোটিই নয়"],
+          "IIFE ডিক্লেয়ারের সাথে সাথে কল হয়: (function(){})()",
+          "functions",
+        ),
+        createQ(
+          "ক্যালব্যাক ফাংশন কী?",
+          [
+            "অন্য ফাংশনে আর্গুমেন্ট হিসেবে পাস",
+            "অ্যারো ফাংশন",
+            "রিকার্সিভ ফাংশন",
+            "কোনোটিই নয়",
+          ],
+          "ক্যালব্যাক ফাংশন অন্য ফাংশনে আর্গুমেন্ট হিসেবে পাস করা হয় এবং পরে কল হয়।",
+          "functions",
+        ),
+        createQ(
+          "রিকার্সিভ ফাংশন কী?",
+          ["যে ফাংশন নিজেকে কল করে", "অ্যারো ফাংশন", "ক্যালব্যাক", "IIFE"],
+          "রিকার্সিভ ফাংশন নিজেকে কল করে।",
+          "functions",
+        ),
+        // ----- ARRAYS (36-45) -----
+        createQ(
+          "অ্যারে তৈরি করার উপায় কী?",
+          ["[]", "new Array()", "উভয়ই", "কোনোটিই নয়"],
+          "অ্যারে [] বা new Array() দিয়ে তৈরি করা যায়।",
+          "arrays",
+        ),
+        createQ(
+          "অ্যারের দৈর্ঘ্য বের করতে কোন প্রপার্টি ব্যবহার করা হয়?",
+          ["length", "size", "count", "len"],
+          "অ্যারের দৈর্ঘ্য বের করতে length প্রপার্টি ব্যবহার করা হয়।",
+          "arrays",
+        ),
+        createQ(
+          "অ্যারেতে এলিমেন্ট যোগ করতে কোন মেথড ব্যবহার করা হয়?",
+          ["push()", "pop()", "shift()", "unshift()"],
+          "push() অ্যারের শেষে এলিমেন্ট যোগ করে।",
+          "arrays",
+        ),
+        createQ(
+          "অ্যারে থেকে শেষ এলিমেন্ট রিমুভ করতে কোন মেথড ব্যবহার করা হয়?",
+          ["pop()", "push()", "shift()", "unshift()"],
+          "pop() অ্যারের শেষ এলিমেন্ট রিমুভ করে।",
+          "arrays",
+        ),
+        createQ(
+          "অ্যারে থেকে প্রথম এলিমেন্ট রিমুভ করতে কোন মেথড ব্যবহার করা হয়?",
+          ["shift()", "pop()", "push()", "unshift()"],
+          "shift() অ্যারের প্রথম এলিমেন্ট রিমুভ করে।",
+          "arrays",
+        ),
+        createQ(
+          "অ্যারেতে প্রথমে এলিমেন্ট যোগ করতে কোন মেথড ব্যবহার করা হয়?",
+          ["unshift()", "push()", "pop()", "shift()"],
+          "unshift() অ্যারের শুরুতে এলিমেন্ট যোগ করে।",
+          "arrays",
+        ),
+        createQ(
+          "map() মেথড কী করে?",
+          [
+            "প্রতি এলিমেন্টে ফাংশন কল করে নতুন অ্যারে তৈরি",
+            "ফিল্টার করে",
+            "রিডিউস করে",
+            "ফরইচ করে",
+          ],
+          "map() প্রতি এলিমেন্টে ফাংশন কল করে নতুন অ্যারে তৈরি করে।",
+          "arrays",
+        ),
+        createQ(
+          "filter() মেথড কী করে?",
+          [
+            "শর্ত অনুযায়ী ফিল্টার করে নতুন অ্যারে তৈরি",
+            "ম্যাপ করে",
+            "রিডিউস করে",
+            "ফরইচ করে",
+          ],
+          "filter() শর্ত অনুযায়ী এলিমেন্ট ফিল্টার করে নতুন অ্যারে তৈরি করে।",
+          "arrays",
+        ),
+        createQ(
+          "reduce() মেথড কী করে?",
+          [
+            "অ্যারে রিডিউস করে একক মান তৈরি",
+            "ম্যাপ করে",
+            "ফিল্টার করে",
+            "ফরইচ করে",
+          ],
+          "reduce() অ্যারের সব এলিমেন্ট প্রসেস করে একক মান তৈরি করে।",
+          "arrays",
+        ),
+        createQ(
+          "forEach() মেথড কী করে?",
+          [
+            "প্রতি এলিমেন্টে ফাংশন কল করে",
+            "নতুন অ্যারে তৈরি",
+            "ফিল্টার করে",
+            "রিডিউস করে",
+          ],
+          "forEach() প্রতি এলিমেন্টে ফাংশন কল করে, কিন্তু নতুন অ্যারে তৈরি করে না।",
+          "arrays",
+        ),
+        // ----- OBJECTS (46-55) -----
+        createQ(
+          "অবজেক্ট তৈরি করার উপায় কী?",
+          ["{}", "new Object()", "উভয়ই", "কোনোটিই নয়"],
+          "অবজেক্ট {} বা new Object() দিয়ে তৈরি করা যায়।",
+          "objects",
+        ),
+        createQ(
+          "অবজেক্টের প্রপার্টি অ্যাক্সেস করার উপায় কী?",
+          ["dot notation (.)", "bracket notation ([])", "উভয়ই", "কোনোটিই নয়"],
+          "অবজেক্ট প্রপার্টি . বা [] দিয়ে অ্যাক্সেস করা যায়।",
+          "objects",
+        ),
+        createQ(
+          "Object.keys() কী করে?",
+          [
+            "অবজেক্টের কীগুলোর অ্যারে রিটার্ন",
+            "ভ্যালুগুলোর অ্যারে",
+            "এন্ট্রিগুলোর অ্যারে",
+            "কোনোটিই নয়",
+          ],
+          "Object.keys() অবজেক্টের প্রপার্টি কীগুলোর অ্যারে রিটার্ন করে।",
+          "objects",
+        ),
+        createQ(
+          "Object.values() কী করে?",
+          [
+            "অবজেক্টের ভ্যালুগুলোর অ্যারে রিটার্ন",
+            "কীগুলোর অ্যারে",
+            "এন্ট্রিগুলোর অ্যারে",
+            "কোনোটিই নয়",
+          ],
+          "Object.values() অবজেক্টের ভ্যালুগুলোর অ্যারে রিটার্ন করে।",
+          "objects",
+        ),
+        createQ(
+          "Object.entries() কী করে?",
+          [
+            "[কী, ভ্যালু] জোড়ার অ্যারে রিটার্ন",
+            "কীগুলোর অ্যারে",
+            "ভ্যালুগুলোর অ্যারে",
+            "কোনোটিই নয়",
+          ],
+          "Object.entries() [কী, ভ্যালু] জোড়ার অ্যারে রিটার্ন করে।",
+          "objects",
+        ),
+        createQ(
+          "অবজেক্টের প্রপার্টি ডিলিট করতে কী ব্যবহার করা হয়?",
+          ["delete", "remove", "erase", "clear"],
+          "delete কীওয়ার্ড দিয়ে প্রপার্টি ডিলিট করা যায়।",
+          "objects",
+        ),
+        createQ(
+          "অবজেক্টের প্রপার্টি আছে কিনা চেক করতে কী ব্যবহার করা হয়?",
+          ["hasOwnProperty()", "in", "উভয়ই", "কোনোটিই নয়"],
+          "hasOwnProperty() ও in উভয়ই প্রপার্টি আছে কিনা চেক করে।",
+          "objects",
+        ),
+        createQ(
+          "অবজেক্ট ফ্রিজ (Object.freeze()) কী করে?",
+          [
+            "অবজেক্ট ইমিউটেবল করে",
+            "অবজেক্ট ডিলিট করে",
+            "অবজেক্ট কপি করে",
+            "অবজেক্ট সিল করে",
+          ],
+          "Object.freeze() অবজেক্টকে ইমিউটেবল করে, নতুন প্রপার্টি যোগ/পরিবর্তন করা যায় না।",
+          "objects",
+        ),
+        createQ(
+          "অবজেক্ট সিল (Object.seal()) কী করে?",
+          [
+            "নতুন প্রপার্টি যোগ করা যায় না, তবে বিদ্যমান পরিবর্তন করা যায়",
+            "সম্পূর্ণ ইমিউটেবল",
+            "ডিলিট করে",
+            "কপি করে",
+          ],
+          "Object.seal() নতুন প্রপার্টি যোগ করা আটকায়, কিন্তু বিদ্যমান প্রপার্টি পরিবর্তন করা যায়।",
+          "objects",
+        ),
+        createQ(
+          "অবজেক্ট ডেস্ট্রাকচারিং কী?",
+          [
+            "অবজেক্ট থেকে প্রপার্টি বের করে ভেরিয়েবলে অ্যাসাইন",
+            "অবজেক্ট ডিলিট",
+            "অবজেক্ট কপি",
+            "অবজেক্ট ফ্রিজ",
+          ],
+          "ডেস্ট্রাকচারিং অবজেক্ট থেকে প্রপার্টি বের করে ভেরিয়েবলে অ্যাসাইন করে।",
+          "objects",
+        ),
+        // ----- ES6 (56-65) -----
+        createQ(
+          "let এবং const কী দিয়ে ডিক্লেয়ার করা হয়?",
+          ["ES6", "ES5", "ES3", "ES7"],
+          "let ও const ES6-তে যোগ করা হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "অ্যারো ফাংশন কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "অ্যারো ফাংশন ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "টেম্পলেট লিটারেল কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "টেম্পলেট লিটারেল ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "ডেস্ট্রাকচারিং অ্যাসাইনমেন্ট কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "ডেস্ট্রাকচারিং ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "স্প্রেড অপারেটর (...) কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "স্প্রেড অপারেটর ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "রেস্ট প্যারামিটার (...) কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "রেস্ট প্যারামিটার ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "ক্লাস (Class) কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "ক্লাস ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "মডিউল (Module) কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "মডিউল ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "প্রমিজ (Promise) কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "প্রমিজ ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        createQ(
+          "Symbol ডেটা টাইপ কোন ভার্সনে যোগ হয়েছে?",
+          ["ES6", "ES5", "ES7", "ES8"],
+          "Symbol ES6-তে যোগ হয়েছে।",
+          "es6",
+        ),
+        // ----- DOM (66-75) -----
+        createQ(
+          "DOM-এর পূর্ণরূপ কী?",
+          [
+            "Document Object Model",
+            "Document Object Module",
+            "Document Oriented Model",
+            "Data Object Model",
+          ],
+          "DOM-এর পূর্ণরূপ Document Object Model।",
+          "dom",
+        ),
+        createQ(
+          "document.getElementById() কী কাজ করে?",
+          [
+            "আইডি দ্বারা এলিমেন্ট সিলেক্ট",
+            "ক্লাস দ্বারা সিলেক্ট",
+            "ট্যাগ দ্বারা সিলেক্ট",
+            "কোয়েরি সিলেক্ট",
+          ],
+          "getElementById() আইডি দ্বারা একটি এলিমেন্ট সিলেক্ট করে।",
+          "dom",
+        ),
+        createQ(
+          "document.querySelector() কী কাজ করে?",
+          [
+            "CSS সিলেক্টর দ্বারা প্রথম এলিমেন্ট সিলেক্ট",
+            "সব এলিমেন্ট সিলেক্ট",
+            "আইডি দ্বারা সিলেক্ট",
+            "ক্লাস দ্বারা সিলেক্ট",
+          ],
+          "querySelector() CSS সিলেক্টর দ্বারা প্রথম ম্যাচিং এলিমেন্ট সিলেক্ট করে।",
+          "dom",
+        ),
+        createQ(
+          "document.querySelectorAll() কী কাজ করে?",
+          [
+            "CSS সিলেক্টর দ্বারা সব এলিমেন্ট সিলেক্ট",
+            "প্রথম এলিমেন্ট সিলেক্ট",
+            "আইডি দ্বারা সিলেক্ট",
+            "ক্লাস দ্বারা সিলেক্ট",
+          ],
+          "querySelectorAll() CSS সিলেক্টর দ্বারা সব ম্যাচিং এলিমেন্ট সিলেক্ট করে।",
+          "dom",
+        ),
+        createQ(
+          "এলিমেন্টের টেক্সট পরিবর্তন করতে কোন প্রপার্টি ব্যবহার করা হয়?",
+          ["textContent", "innerHTML", "উভয়ই", "কোনোটিই নয়"],
+          "textContent ও innerHTML উভয়ই টেক্সট পরিবর্তন করতে পারে।",
+          "dom",
+        ),
+        createQ(
+          "এলিমেন্টের HTML কন্টেন্ট পরিবর্তন করতে কোন প্রপার্টি ব্যবহার করা হয়?",
+          ["innerHTML", "textContent", "outerHTML", "innerText"],
+          "innerHTML এলিমেন্টের HTML কন্টেন্ট পরিবর্তন করে।",
+          "dom",
+        ),
+        createQ(
+          "নতুন এলিমেন্ট তৈরি করতে কোন মেথড ব্যবহার করা হয়?",
+          ["createElement()", "appendChild()", "removeChild()", "cloneNode()"],
+          "createElement() নতুন এলিমেন্ট তৈরি করে।",
+          "dom",
+        ),
+        createQ(
+          "এলিমেন্টে চাইল্ড যোগ করতে কোন মেথড ব্যবহার করা হয়?",
+          [
+            "appendChild()",
+            "createElement()",
+            "removeChild()",
+            "replaceChild()",
+          ],
+          "appendChild() চাইল্ড এলিমেন্ট যোগ করে।",
+          "dom",
+        ),
+        createQ(
+          "এলিমেন্ট রিমুভ করতে কোন মেথড ব্যবহার করা হয়?",
+          ["removeChild()", "appendChild()", "createElement()", "cloneNode()"],
+          "removeChild() চাইল্ড এলিমেন্ট রিমুভ করে।",
+          "dom",
+        ),
+        createQ(
+          "এলিমেন্টের ক্লাস যোগ/রিমুভ করতে কোন মেথড ব্যবহার করা হয়?",
+          [
+            "classList.add() / remove()",
+            "className",
+            "setAttribute()",
+            "getAttribute()",
+          ],
+          "classList.add() ও remove() ক্লাস যোগ/রিমুভ করে।",
+          "dom",
+        ),
+        // ----- EVENTS (76-80) -----
+        createQ(
+          "ইভেন্ট লিসেনার যোগ করতে কোন মেথড ব্যবহার করা হয়?",
+          ["addEventListener()", "onclick", "attachEvent()", "listen()"],
+          "addEventListener() ইভেন্ট লিসেনার যোগ করে।",
+          "events",
+        ),
+        createQ(
+          "ক্লিক ইভেন্টের জন্য কোন ইভেন্ট টাইপ ব্যবহার করা হয়?",
+          ["click", "onclick", "mouseclick", "press"],
+          "click ইভেন্ট টাইপ ক্লিকের জন্য ব্যবহৃত হয়।",
+          "events",
+        ),
+        createQ(
+          "ইভেন্ট বাবলিং (Event Bubbling) কী?",
+          [
+            "ইভেন্ট চাইল্ড থেকে প্যারেন্টে যায়",
+            "প্যারেন্ট থেকে চাইল্ডে যায়",
+            "ইভেন্ট থেমে যায়",
+            "কোনোটিই নয়",
+          ],
+          "ইভেন্ট বাবলিং-এ ইভেন্ট চাইল্ড থেকে প্যারেন্ট এলিমেন্টে যায়।",
+          "events",
+        ),
+        createQ(
+          "ইভেন্ট ক্যাপচারিং (Event Capturing) কী?",
+          [
+            "প্যারেন্ট থেকে চাইল্ডে যায়",
+            "চাইল্ড থেকে প্যারেন্টে যায়",
+            "ইভেন্ট থেমে যায়",
+            "কোনোটিই নয়",
+          ],
+          "ইভেন্ট ক্যাপচারিং-এ ইভেন্ট প্যারেন্ট থেকে চাইল্ডে যায়।",
+          "events",
+        ),
+        createQ(
+          "ইভেন্ট থামাতে কোন মেথড ব্যবহার করা হয়?",
+          ["stopPropagation()", "preventDefault()", "উভয়ই", "কোনোটিই নয়"],
+          "stopPropagation() ইভেন্ট বাবলিং/ক্যাপচারিং থামায়, preventDefault() ডিফল্ট আচরণ থামায়।",
+          "events",
+        ),
+        // ----- ASYNC (81-88) -----
+        createQ(
+          "প্রমিজ (Promise) কী?",
+          [
+            "অ্যাসিঙ্ক্রোনাস অপারেশনের ফলাফল",
+            "সিঙ্ক্রোনাস",
+            "ক্যালব্যাক",
+            "ইভেন্ট",
+          ],
+          "Promise অ্যাসিঙ্ক্রোনাস অপারেশনের ফলাফল ধারণ করে।",
+          "async",
+        ),
+        createQ(
+          "প্রমিজের ৩টি স্টেট কী কী?",
+          [
+            "Pending, Fulfilled, Rejected",
+            "Start, End, Error",
+            "Pending, Complete, Error",
+            "Start, Progress, End",
+          ],
+          "Promise-এর ৩টি স্টেট: pending, fulfilled, rejected।",
+          "async",
+        ),
+        createQ(
+          "async/await কী কাজে ব্যবহৃত হয়?",
+          [
+            "অ্যাসিঙ্ক্রোনাস কোডকে সিঙ্ক্রোনাসের মতো লেখা",
+            "সিঙ্ক্রোনাস কোড",
+            "ক্যালব্যাক",
+            "ইভেন্ট",
+          ],
+          "async/await অ্যাসিঙ্ক্রোনাস কোডকে সিঙ্ক্রোনাসের মতো লিখতে সাহায্য করে।",
+          "async",
+        ),
+        createQ(
+          "await কী কাজ করে?",
+          [
+            "প্রমিজ রেজল্ভ হওয়া পর্যন্ত অপেক্ষা",
+            "প্রমিজ রিজেক্ট",
+            "প্রমিজ তৈরি",
+            "কোনোটিই নয়",
+          ],
+          "await প্রমিজ রেজল্ভ হওয়া পর্যন্ত অপেক্ষা করে।",
+          "async",
+        ),
+        createQ(
+          "setTimeout() কী কাজ করে?",
+          [
+            "নির্দিষ্ট সময় পর ফাংশন এক্সিকিউট",
+            "তাত্ক্ষণিক এক্সিকিউট",
+            "ইন্টারভালে এক্সিকিউট",
+            "কোনোটিই নয়",
+          ],
+          "setTimeout() নির্দিষ্ট সময় পর একটি ফাংশন এক্সিকিউট করে।",
+          "async",
+        ),
+        createQ(
+          "setInterval() কী কাজ করে?",
+          [
+            "নির্দিষ্ট ইন্টারভালে ফাংশন এক্সিকিউট",
+            "একবার এক্সিকিউট",
+            "তাত্ক্ষণিক এক্সিকিউট",
+            "কোনোটিই নয়",
+          ],
+          "setInterval() নির্দিষ্ট ইন্টারভালে ফাংশনটি বারবার এক্সিকিউট করে।",
+          "async",
+        ),
+        createQ(
+          "clearTimeout() কী কাজ করে?",
+          [
+            "setTimeout() বাতিল করে",
+            "setInterval() বাতিল করে",
+            "প্রমিজ বাতিল",
+            "কোনোটিই নয়",
+          ],
+          "clearTimeout() setTimeout() দ্বারা সেট করা টাইমআউট বাতিল করে।",
+          "async",
+        ),
+        createQ(
+          "clearInterval() কী কাজ করে?",
+          [
+            "setInterval() বাতিল করে",
+            "setTimeout() বাতিল করে",
+            "প্রমিজ বাতিল",
+            "কোনোটিই নয়",
+          ],
+          "clearInterval() setInterval() দ্বারা সেট করা ইন্টারভাল বাতিল করে।",
+          "async",
+        ),
+        // ----- OOP (89-95) -----
+        createQ(
+          "JavaScript-এ ক্লাস ডিক্লেয়ার করার সিনট্যাক্স কী?",
+          [
+            "class MyClass {}",
+            "function MyClass() {}",
+            "const MyClass = class {}",
+            "উভয়ই",
+          ],
+          "class MyClass {} এবং const MyClass = class {} উভয়ই ক্লাস ডিক্লেয়ারের উপায়।",
+          "oop",
+        ),
+        createQ(
+          "ক্লাসের কনস্ট্রাক্টর কী?",
+          ["অবজেক্ট ইনিশিয়ালাইজ করে", "মেথড", "প্রপার্টি", "ইভেন্ট"],
+          "constructor() মেথড ক্লাসের অবজেক্ট ইনিশিয়ালাইজ করে।",
+          "oop",
+        ),
+        createQ(
+          "ইনহেরিটেন্স (Inheritance) কী?",
+          [
+            "এক ক্লাস থেকে অন্য ক্লাসের প্রপার্টি/মেথড পাওয়া",
+            "অবজেক্ট তৈরি",
+            "মেথড ওভাররাইট",
+            "কোনোটিই নয়",
+          ],
+          "ইনহেরিটেন্স এক ক্লাস থেকে অন্য ক্লাসের প্রপার্টি ও মেথড পেতে ব্যবহৃত হয়।",
+          "oop",
+        ),
+        createQ(
+          "extends কীওয়ার্ড কী কাজে ব্যবহৃত হয়?",
+          ["সাব-ক্লাস তৈরি", "অবজেক্ট তৈরি", "মেথড কল", "প্রপার্টি অ্যাক্সেস"],
+          "extends কীওয়ার্ড সাব-ক্লাস (চাইল্ড ক্লাস) তৈরি করতে ব্যবহৃত হয়।",
+          "oop",
+        ),
+        createQ(
+          "super() কী কাজে ব্যবহৃত হয়?",
+          [
+            "প্যারেন্ট ক্লাসের কনস্ট্রাক্টর কল",
+            "প্যারেন্ট মেথড কল",
+            "উভয়ই",
+            "কোনোটিই নয়",
+          ],
+          "super() প্যারেন্ট ক্লাসের কনস্ট্রাক্টর ও মেথড কল করতে ব্যবহৃত হয়।",
+          "oop",
+        ),
+        createQ(
+          "স্ট্যাটিক মেথড কী?",
+          [
+            "ক্লাসের ইনস্ট্যান্স ছাড়া কল করা যায়",
+            "ইনস্ট্যান্স মেথড",
+            "প্রাইভেট মেথড",
+            "পাবলিক মেথড",
+          ],
+          "স্ট্যাটিক মেথড ক্লাসের ইনস্ট্যান্স ছাড়াই কল করা যায়।",
+          "oop",
+        ),
+        createQ(
+          "গেটার (get) ও সেটার (set) কী?",
+          ["প্রপার্টি অ্যাক্সেস নিয়ন্ত্রণ", "মেথড", "ইভেন্ট", "কোনোটিই নয়"],
+          "get ও set প্রপার্টি অ্যাক্সেস নিয়ন্ত্রণ করতে ব্যবহৃত হয়।",
+          "oop",
+        ),
+        // ----- ADVANCED (96-100) -----
+        createQ(
+          "প্রোটোটাইপ (Prototype) কী?",
+          ["অবজেক্টের প্যারেন্ট", "ক্লাস", "ফাংশন", "অ্যারে"],
+          "প্রোটোটাইপ হলো অবজেক্টের প্যারেন্ট অবজেক্ট, যা থেকে প্রপার্টি/মেথড ইনহেরিট হয়।",
+          "advanced",
+        ),
+        createQ(
+          "ক্লোজারের একটি উদাহরণ কী?",
+          [
+            "অভ্যন্তরীণ ফাংশন বাইরের ভেরিয়েবল অ্যাক্সেস করে",
+            "গ্লোবাল ভেরিয়েবল",
+            "লোকাল ভেরিয়েবল",
+            "কোনোটিই নয়",
+          ],
+          "Closure-এ অভ্যন্তরীণ ফাংশন বাইরের ফাংশনের ভেরিয়েবল অ্যাক্সেস করতে পারে।",
+          "advanced",
+        ),
+        createQ(
+          "কারি (Currying) কী?",
+          [
+            "একাধিক আর্গুমেন্টের ফাংশনকে একক আর্গুমেন্টের ফাংশনে রূপান্তর",
+            "ফাংশন কম্পোজ",
+            "ফাংশন কপি",
+            "কোনোটিই নয়",
+          ],
+          "Currying একাধিক আর্গুমেন্টের ফাংশনকে একক আর্গুমেন্টের ফাংশনের সিরিজে রূপান্তর করে।",
+          "advanced",
+        ),
+        createQ(
+          "মেমোইজেশন (Memoization) কী?",
+          ["ফাংশনের ফলাফল ক্যাশ করা", "ফাংশন কপি", "ফাংশন ডিলিট", "কোনোটিই নয়"],
+          "মেমোইজেশন ফাংশনের ফলাফল ক্যাশ করে, যাতে বারবার একই আর্গুমেন্টে কল করলে দ্রুত ফলাফল পাওয়া যায়।",
+          "advanced",
+        ),
+        createQ(
+          "ইভেন্ট লুপ (Event Loop) কী?",
+          [
+            "অ্যাসিঙ্ক্রোনাস অপারেশন ম্যানেজ করে",
+            "সিঙ্ক্রোনাস",
+            "ফাংশন কল",
+            "কোনোটিই নয়",
+          ],
+          "ইভেন্ট লুপ অ্যাসিঙ্ক্রোনাস অপারেশন (setTimeout, Promise) ম্যানেজ করে এবং কল স্ট্যাক খালি হলে সেগুলো এক্সিকিউট করে।",
+          "advanced",
+        ),
+      ];
+
+      // ----------------------------------------------------------------
+      // Global State
+      // ----------------------------------------------------------------
+      let userAnswers = {};
+      let currentFilter = "all";
+
+      // ----------------------------------------------------------------
+      // Utility
+      // ----------------------------------------------------------------
+      function escapeHtml(str) {
+        if (str === undefined || str === null) return "";
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      // ----------------------------------------------------------------
+      // Render functions
+      // ----------------------------------------------------------------
+      function renderQuestionGrid() {
+        const grid = document.getElementById("question-grid");
+        grid.innerHTML = "";
+        quizDatabase.forEach((_, idx) => {
+          let btnClass = "bg-slate-200 text-slate-700 hover:bg-slate-300";
+          if (userAnswers[idx] !== undefined) {
+            const isCorrect = userAnswers[idx] === quizDatabase[idx].correct;
+            btnClass = isCorrect
+              ? "bg-emerald-600 text-white font-bold"
+              : "bg-rose-600 text-white font-bold";
+          }
+          const btn = document.createElement("button");
+          btn.className =
+            "w-8 h-8 rounded-lg text-xs transition-all duration-200 flex items-center justify-center cursor-pointer " +
+            btnClass;
+          btn.innerText = idx + 1;
+          btn.title = `প্রশ্ন ${idx + 1}`;
+          btn.onclick = () => {
+            const el = document.getElementById(`q-card-${idx}`);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "center" });
+              el.classList.add("ring-4", "ring-indigo-400");
+              setTimeout(
+                () => el.classList.remove("ring-4", "ring-indigo-400"),
+                1000,
+              );
+            }
+          };
+          grid.appendChild(btn);
+        });
+      }
+
+      function renderQuestions() {
+        const container = document.getElementById("questions-list");
+        container.innerHTML = "";
+        const topicLabels = {
+          basics: "Basic Syntax",
+          variables: "Variables & Data Types",
+          functions: "Functions",
+          arrays: "Arrays",
+          objects: "Objects",
+          es6: "ES6",
+          dom: "DOM",
+          events: "Events",
+          async: "Async",
+          oop: "OOP",
+          advanced: "Advanced",
+        };
+        const topicColors = {
+          basics: "bg-purple-100 text-purple-700 border-purple-200",
+          variables: "bg-amber-100 text-amber-700 border-amber-200",
+          functions: "bg-blue-100 text-blue-700 border-blue-200",
+          arrays: "bg-indigo-100 text-indigo-700 border-indigo-200",
+          objects: "bg-emerald-100 text-emerald-700 border-emerald-200",
+          es6: "bg-rose-100 text-rose-700 border-rose-200",
+          dom: "bg-cyan-100 text-cyan-700 border-cyan-200",
+          events: "bg-fuchsia-100 text-fuchsia-700 border-fuchsia-200",
+          async: "bg-orange-100 text-orange-700 border-orange-200",
+          oop: "bg-lime-100 text-lime-700 border-lime-200",
+          advanced: "bg-teal-100 text-teal-700 border-teal-200",
+        };
+        const prefix = ["A", "B", "C", "D"];
+
+        quizDatabase.forEach((item, idx) => {
+          if (currentFilter !== "all" && item.topic !== currentFilter) return;
+
+          const card = document.createElement("div");
+          card.id = `q-card-${idx}`;
+          card.className =
+            "question-card bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 md:p-6 transition-all duration-300 hover:shadow-md";
+
+          const isAnswered = userAnswers[idx] !== undefined;
+          let optionsHTML = "";
+          item.options.forEach((opt, optIdx) => {
+            let optClass =
+              "border-slate-200 hover:border-indigo-200 hover:bg-slate-50/60";
+            let iconHTML = "";
+            if (isAnswered) {
+              const selected = userAnswers[idx];
+              const correct = item.correct;
+              if (optIdx === correct) {
+                optClass =
+                  "border-emerald-500 bg-emerald-50/60 text-emerald-900 font-semibold";
+                iconHTML =
+                  '<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>';
+              } else if (optIdx === selected) {
+                optClass =
+                  "border-rose-400 bg-rose-50/60 text-rose-900 font-semibold";
+                iconHTML =
+                  '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>';
+              } else {
+                optClass =
+                  "border-slate-100 bg-slate-50/20 text-slate-400 cursor-not-allowed";
+              }
+            }
+            optionsHTML += `
+                        <button onclick="selectOption(${idx}, ${optIdx})" ${isAnswered ? "disabled" : ""} 
+                            class="option w-full text-left flex items-center justify-between p-3.5 border rounded-xl text-sm md:text-base transition-all duration-200 group ${optClass} cursor-pointer">
+                            <span class="flex items-center gap-3">
+                                <span class="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-bold text-xs ${isAnswered ? "bg-slate-200 text-slate-600" : "bg-slate-100 text-slate-500 group-hover:bg-indigo-100 group-hover:text-indigo-600"} transition-all">
+                                    ${prefix[optIdx]}
+                                </span>
+                                <span>${escapeHtml(opt)}</span>
+                            </span>
+                            ${iconHTML}
+                        </button>
+                    `;
+          });
+
+          let explanationHTML = "";
+          if (isAnswered) {
+            const isCorrect = userAnswers[idx] === item.correct;
+            explanationHTML = `
+                        <div class="mt-4 p-4 rounded-xl border ${isCorrect ? "bg-emerald-50/40 border-emerald-100 text-emerald-900" : "bg-slate-50 border-slate-200 text-slate-700"} text-xs md:text-sm transition-all">
+                            <div class="flex items-center gap-1.5 font-bold mb-1">
+                                <i class="${isCorrect ? "fa-solid fa-square-check text-emerald-600" : "fa-solid fa-circle-exclamation text-amber-600"}"></i>
+                                <span>${isCorrect ? "অভিনন্দন! সঠিক উত্তর।" : "ভুল উত্তর! সঠিক উত্তর: " + prefix[item.correct]}</span>
+                            </div>
+                            <p class="leading-relaxed font-medium">${escapeHtml(item.explanation)}</p>
+                        </div>
+                    `;
+          }
+
+          card.innerHTML = `
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3.5">
+                        <span class="text-xs md:text-sm font-bold text-slate-400">প্রশ্ন ${idx + 1}/100</span>
+                        <span class="text-[11px] font-semibold px-2.5 py-1 border rounded-full self-start md:self-auto ${topicColors[item.topic]}">
+                            ${topicLabels[item.topic] || item.topic}
+                        </span>
+                    </div>
+                    <p class="font-semibold text-base md:text-lg text-slate-900 mb-4 leading-relaxed">${escapeHtml(item.q)}</p>
+                    <div class="flex flex-col gap-2.5">${optionsHTML}</div>
+                    ${explanationHTML}
+                `;
+          container.appendChild(card);
+        });
+      }
+
+      function renderDashboard() {
+        let correct = 0,
+          wrong = 0;
+        const attempted = Object.keys(userAnswers).length;
+        quizDatabase.forEach((q, idx) => {
+          if (userAnswers[idx] !== undefined) {
+            if (userAnswers[idx] === q.correct) correct++;
+            else wrong++;
+          }
+        });
+        const score = correct * 1.0 - wrong * 0.25;
+        const progress = Math.round((attempted / quizDatabase.length) * 100);
+
+        document.getElementById("score-display").innerText = score.toFixed(2);
+        document.getElementById("attempted-display").innerText =
+          `${attempted}/100`;
+        document.getElementById("correct-display").innerText = correct;
+        document.getElementById("wrong-display").innerText = wrong;
+        document.getElementById("progress-percent").innerText = `${progress}%`;
+        document.getElementById("progress-bar").style.width = `${progress}%`;
+        document.getElementById("mobile-score").innerText = score.toFixed(2);
+        document.getElementById("mobile-attempted").innerText =
+          `${attempted}/100`;
+      }
+
+      function selectOption(qIdx, optIdx) {
+        if (userAnswers[qIdx] !== undefined) return;
+        userAnswers[qIdx] = optIdx;
+        renderQuestions();
+        renderQuestionGrid();
+        renderDashboard();
+      }
+
+      function filterQuestions() {
+        currentFilter = document.getElementById("topic-filter").value;
+        renderQuestions();
+      }
+
+      function resetQuiz() {
+        if (
+          confirm(
+            "আপনি কি নিশ্চিতভাবে কুইজটি পুনরায় শুরু করতে চান? আপনার বর্তমান সমস্ত স্কোর রিসেট হয়ে যাবে।",
+          )
+        ) {
+          userAnswers = {};
+          currentFilter = "all";
+          document.getElementById("topic-filter").value = "all";
+          renderDashboard();
+          renderQuestionGrid();
+          renderQuestions();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      // ----------------------------------------------------------------
+      // Initial Render
+      // ----------------------------------------------------------------
+      window.onload = function () {
+        renderDashboard();
+        renderQuestionGrid();
+        renderQuestions();
+      };
+    </script>
+  </body>
+</html>

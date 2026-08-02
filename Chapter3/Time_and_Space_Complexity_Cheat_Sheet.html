@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time & Space Complexity Cheat Sheet</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #2563eb;
+            --accent: #3b82f6;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --danger: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 700;
+            margin: 25px 0 12px 0;
+            padding-bottom: 6px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            background-color: white;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:nth-child(even) td:not(.algo-name) {
+            background-color: #f1f5f9;
+        }
+
+        td.algo-name {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-main);
+            background-color: #e2e8f0;
+        }
+
+        .math {
+            font-family: 'Cambria Math', 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: 600;
+            color: #0284c7;
+        }
+
+        .note-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--secondary);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .yes { color: var(--success); font-weight: bold; font-size: 16px; }
+        .no { color: var(--danger); font-weight: bold; font-size: 16px; }
+
+        .legend-box {
+            margin-top: 25px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .legend-box h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .container { padding: 15px; }
+            .header h1 { font-size: 20px; }
+            th, td { padding: 8px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Time & Space Complexity Cheat Sheet</h1>
+            <p>Data Structures & Algorithms Reference</p>
+        </div>
+
+        <!-- 1. Search Algorithms -->
+        <div class="section-title">1. Search Algorithms</div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">Algorithm</th>
+                        <th>Best</th>
+                        <th>Average</th>
+                        <th>Worst Time</th>
+                        <th>Space</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="algo-name">Linear Search</td>
+                        <td><span class="math">O(1)</span></td>
+                        <td><span class="math">O(n)</span></td>
+                        <td><span class="math">O(n)</span></td>
+                        <td><span class="math">O(1)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Binary Search (Sorted)</td>
+                        <td><span class="math">O(1)</span></td>
+                        <td><span class="math">O(log n)</span></td>
+                        <td><span class="math">O(log n)</span></td>
+                        <td><span class="math">O(1)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <strong>Notes:</strong>
+            <ul>
+                <li><strong>Linear Search:</strong> Works on both unsorted and sorted data.</li>
+                <li><strong>Binary Search:</strong> Requires data to be pre-sorted.</li>
+            </ul>
+        </div>
+
+        <!-- 2. Sorting Algorithms -->
+        <div class="section-title">2. Sorting Algorithms</div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">Algorithm</th>
+                        <th>Best Time</th>
+                        <th>Average</th>
+                        <th>Worst</th>
+                        <th>Space</th>
+                        <th>Stable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="algo-name">Bubble Sort</td>
+                        <td><span class="math">O(n)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(1)</span></td>
+                        <td class="yes">&#10004;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Selection Sort</td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(1)</span></td>
+                        <td class="no">&#10008;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Insertion Sort</td>
+                        <td><span class="math">O(n)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(1)</span></td>
+                        <td class="yes">&#10004;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Merge Sort</td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(n)</span></td>
+                        <td class="yes">&#10004;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Quick Sort</td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(log n)</span></td>
+                        <td class="no">&#10008;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Heap Sort</td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(1)</span></td>
+                        <td class="no">&#10008;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Counting Sort</td>
+                        <td><span class="math">O(n + k)</span></td>
+                        <td><span class="math">O(n + k)</span></td>
+                        <td><span class="math">O(n + k)</span></td>
+                        <td><span class="math">O(k)</span></td>
+                        <td class="yes">&#10004;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Radix Sort</td>
+                        <td><span class="math">O(nk)</span></td>
+                        <td><span class="math">O(nk)</span></td>
+                        <td><span class="math">O(nk)</span></td>
+                        <td><span class="math">O(n + k)</span></td>
+                        <td class="yes">&#10004;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Bucket Sort</td>
+                        <td><span class="math">O(n + k)</span></td>
+                        <td><span class="math">O(n + k)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(n)</span></td>
+                        <td class="yes">&#10004;</td>
+                    </tr>
+                    <tr>
+                        <td class="algo-name">Shell Sort</td>
+                        <td><span class="math">O(n log n)</span></td>
+                        <td><span class="math">O(n<sup>3/2</sup>)</span></td>
+                        <td><span class="math">O(n²)</span></td>
+                        <td><span class="math">O(1)</span></td>
+                        <td class="no">&#10008;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="legend-box">
+            <h4>Variables Definition:</h4>
+            <div>• <span class="math">n</span> = Number of elements in the input dataset.</div>
+            <div>• <span class="math">k</span> = Range of key values (for non-comparison sorts).</div>
+        </div>
+    </div>
+
+</body>
+</html>
