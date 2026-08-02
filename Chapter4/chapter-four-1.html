@@ -97,6 +97,11 @@
             class="px-3 py-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
             >সেট 7</a
           >
+          <a
+            href="book.html"
+            class="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-200"
+            >HSC</a
+          >
         </nav>
       </div>
     </header>
@@ -335,9 +340,7 @@
       class="bg-slate-950 text-slate-400 py-6 text-center border-t border-slate-800/60 text-xs mt-12 pb-16 lg:pb-6"
     >
       <div class="max-w-7xl mx-auto px-4">
-        <p class="mb-2">
-          © ২০২৬ HTML কুইজ পোর্টাল। সকল অধিকার সংরক্ষিত।
-        </p>
+        <p class="mb-2">© ২০২৬ HTML কুইজ পোর্টাল। সকল অধিকার সংরক্ষিত।</p>
         <p class="text-slate-600">
           নকশা ও কোডিং করা হয়েছে রিয়েল-টাইম জব প্রিপারেশনের জন্য।
         </p>
@@ -397,12 +400,7 @@
         },
         {
           q: "HTML-এ কমেন্ট লেখার সঠিক সিনট্যাক্স কোনটি?",
-          options: [
-            "// কমেন্ট",
-            "<!-- কমেন্ট -->",
-            "/* কমেন্ট */",
-            "# কমেন্ট",
-          ],
+          options: ["// কমেন্ট", "<!-- কমেন্ট -->", "/* কমেন্ট */", "# কমেন্ট"],
           correct: 1,
           topic: "intro",
           explanation:
@@ -431,12 +429,7 @@
         },
         {
           q: "HTML এলিমেন্টের ওপেনিং ট্যাগ ও ক্লোজিং ট্যাগের মধ্যে কী থাকে?",
-          options: [
-            "অ্যাট্রিবিউট",
-            "কন্টেন্ট",
-            "মেটাডেটা",
-            "শুধু স্পেস",
-          ],
+          options: ["অ্যাট্রিবিউট", "কন্টেন্ট", "মেটাডেটা", "শুধু স্পেস"],
           correct: 1,
           topic: "intro",
           explanation:
@@ -455,8 +448,7 @@
           options: ["<div>", "<span>", "<img>", "<p>"],
           correct: 2,
           topic: "intro",
-          explanation:
-            "<img> একটি ভয়েড এলিমেন্ট, এর কোনো ক্লোজিং ট্যাগ নেই।",
+          explanation: "<img> একটি ভয়েড এলিমেন্ট, এর কোনো ক্লোজিং ট্যাগ নেই।",
         },
         {
           q: "HTML ডকুমেন্টের <body> সেকশনে সাধারণত কী থাকে?",
@@ -476,8 +468,7 @@
           options: ["<head>", "<html>", "<body>", "<title>"],
           correct: 1,
           topic: "intro",
-          explanation:
-            "ডকটাইপের পরেই <html> ট্যাগ দিয়ে ডকুমেন্ট শুরু হয়।",
+          explanation: "ডকটাইপের পরেই <html> ট্যাগ দিয়ে ডকুমেন্ট শুরু হয়।",
         },
         {
           q: "HTML এলিমেন্টের নাম (tag name) কেস সেন্সিটিভ?",
@@ -523,8 +514,7 @@
           ],
           correct: 0,
           topic: "intro",
-          explanation:
-            "সঠিক ক্রম: <html> -> <head> -> <body> -> </html>।",
+          explanation: "সঠিক ক্রম: <html> -> <head> -> <body> -> </html>।",
         },
         {
           q: "HTML-এ 'charset' মেটা ট্যাগ দিয়ে কী নির্ধারণ করা হয়?",
@@ -566,12 +556,7 @@
         },
         {
           q: "HTML ডকুমেন্টের রেন্ডারিং মোড ব্রাউজারকে জানানোর জন্য কোন ডিক্লারেশন ব্যবহার করা হয়?",
-          options: [
-            "<!DOCTYPE>",
-            "<meta charset>",
-            "<html lang>",
-            "<title>",
-          ],
+          options: ["<!DOCTYPE>", "<meta charset>", "<html lang>", "<title>"],
           correct: 0,
           topic: "intro",
           explanation:
@@ -711,12 +696,7 @@
         },
         {
           q: "HTML-এ 'footer' এলিমেন্ট সাধারণত কোথায় বসে?",
-          options: [
-            "পেজের শুরুতে",
-            "পেজের শেষে",
-            "মাঝখানে",
-            "যেকোনো জায়গায়",
-          ],
+          options: ["পেজের শুরুতে", "পেজের শেষে", "মাঝখানে", "যেকোনো জায়গায়"],
           correct: 1,
           topic: "elements",
           explanation:
@@ -740,7 +720,8 @@
           options: ["<input>", "<textbox>", "<field>", "<entry>"],
           correct: 0,
           topic: "elements",
-          explanation: "ইনপুট ফিল্ড তৈরির জন্য <input> এলিমেন্ট ব্যবহার করা হয়।",
+          explanation:
+            "ইনপুট ফিল্ড তৈরির জন্য <input> এলিমেন্ট ব্যবহার করা হয়।",
         },
         {
           q: "HTML-এ 'button' এলিমেন্টের ভেতরে কী লেখা যায়?",
@@ -760,8 +741,7 @@
           options: ["<video>", "<audio>", "<source>", "সবগুলো"],
           correct: 3,
           topic: "elements",
-          explanation:
-            "<video>, <audio> ও <source> সবগুলো মিডিয়া এলিমেন্ট।",
+          explanation: "<video>, <audio> ও <source> সবগুলো মিডিয়া এলিমেন্ট।",
         },
         // ---- TOPIC: HTML TAGS (41-60) ----
         {
@@ -774,8 +754,7 @@
           ],
           correct: 0,
           topic: "tags",
-          explanation:
-            "<b> ট্যাগ টেক্সটকে বোল্ড বা মোটা করে দেখায়।",
+          explanation: "<b> ট্যাগ টেক্সটকে বোল্ড বা মোটা করে দেখায়।",
         },
         {
           q: "<i> ট্যাগটি কী কাজ করে?",
@@ -836,8 +815,7 @@
           ],
           correct: 1,
           topic: "tags",
-          explanation:
-            "'href' অ্যাট্রিবিউট লিংকের গন্তব্য URL নির্ধারণ করে।",
+          explanation: "'href' অ্যাট্রিবিউট লিংকের গন্তব্য URL নির্ধারণ করে।",
         },
         {
           q: "<img> ট্যাগের 'src' অ্যাট্রিবিউট কী নির্দেশ করে?",
@@ -890,8 +868,7 @@
           options: ["<td>", "<th>", "<tr>", "<thead>"],
           correct: 1,
           topic: "tags",
-          explanation:
-            "টেবিল হেডার সেল তৈরির জন্য <th> ট্যাগ ব্যবহার করা হয়।",
+          explanation: "টেবিল হেডার সেল তৈরির জন্য <th> ট্যাগ ব্যবহার করা হয়।",
         },
         {
           q: "<form> ট্যাগের 'action' অ্যাট্রিবিউট কী নির্দেশ করে?",
@@ -916,7 +893,8 @@
           ],
           correct: 0,
           topic: "tags",
-          explanation: "'type=\"email\"' ইমেইল অ্যাড্রেস ইনপুটের জন্য বৈধতা দেয়।",
+          explanation:
+            "'type=\"email\"' ইমেইল অ্যাড্রেস ইনপুটের জন্য বৈধতা দেয়।",
         },
         {
           q: "<select> ট্যাগের সাথে কোন ট্যাগ ব্যবহার করা হয়?",
@@ -949,8 +927,7 @@
           ],
           correct: 1,
           topic: "tags",
-          explanation:
-            "<style> ট্যাগের ভেতরে CSS স্টাইল ডিফাইন করা হয়।",
+          explanation: "<style> ট্যাগের ভেতরে CSS স্টাইল ডিফাইন করা হয়।",
         },
         {
           q: "<meta> ট্যাগ সাধারণত কী কাজে ব্যবহৃত হয়?",
@@ -962,7 +939,8 @@
           ],
           correct: 1,
           topic: "tags",
-          explanation: "<meta> ট্যাগ পেজের মেটাডেটা (charset, viewport ইত্যাদি) প্রদান করে।",
+          explanation:
+            "<meta> ট্যাগ পেজের মেটাডেটা (charset, viewport ইত্যাদি) প্রদান করে।",
         },
         {
           q: "<link> ট্যাগটি কী কাজে ব্যবহৃত হয়?",
@@ -1194,12 +1172,7 @@
         },
         {
           q: "'selected' অ্যাট্রিবিউট কোন ট্যাগে ব্যবহৃত হয়?",
-          options: [
-            "<option>",
-            "<input>",
-            "<select>",
-            "<button>",
-          ],
+          options: ["<option>", "<input>", "<select>", "<button>"],
           correct: 0,
           topic: "attributes",
           explanation:
@@ -1250,8 +1223,7 @@
           options: ["৪টি", "৫টি", "৬টি", "৭টি"],
           correct: 2,
           topic: "headings",
-          explanation:
-            "HTML-এ ৬টি হেডিং ট্যাগ রয়েছে: <h1> থেকে <h6> পর্যন্ত।",
+          explanation: "HTML-এ ৬টি হেডিং ট্যাগ রয়েছে: <h1> থেকে <h6> পর্যন্ত।",
         },
         {
           q: "সবচেয়ে গুরুত্বপূর্ণ হেডিং কোনটি?",
@@ -1382,12 +1354,7 @@
         },
         {
           q: "হেডিং ট্যাগের ডিফল্ট ডিসপ্লে কী?",
-          options: [
-            "ইনলাইন",
-            "ব্লক",
-            "ইনলাইন-ব্লক",
-            "নেই",
-          ],
+          options: ["ইনলাইন", "ব্লক", "ইনলাইন-ব্লক", "নেই"],
           correct: 1,
           topic: "headings",
           explanation:
@@ -1512,7 +1479,10 @@
             if (el) {
               el.scrollIntoView({ behavior: "smooth", block: "center" });
               el.classList.add("ring-4", "ring-indigo-400");
-              setTimeout(() => el.classList.remove("ring-4", "ring-indigo-400"), 1000);
+              setTimeout(
+                () => el.classList.remove("ring-4", "ring-indigo-400"),
+                1000,
+              );
             }
           };
           grid.appendChild(btn);
@@ -1662,7 +1632,7 @@
       function resetQuiz() {
         if (
           confirm(
-            "আপনি কি নিশ্চিতভাবে কুইজটি পুনরায় শুরু করতে চান? আপনার বর্তমান সমস্ত স্কোর রিসেট হয়ে যাবে।"
+            "আপনি কি নিশ্চিতভাবে কুইজটি পুনরায় শুরু করতে চান? আপনার বর্তমান সমস্ত স্কোর রিসেট হয়ে যাবে।",
           )
         ) {
           userAnswers = {};
